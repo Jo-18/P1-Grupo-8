@@ -1,0 +1,39 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyc
+.pytest_cache/
+
+# ===== Entorno virtual =====
+.venv/
+venv/
+
+# ===== IDE / editor =====
+.vscode/
+.idea/
+
+# ===== Directorios de trabajo locales (no son fuente publicable) =====
+/Proyecto_Edificio_Ingenieria/
+/ErrorReports/
+resultados/
+tmp/
+temp/
+evidencia_ocr/
+
+# ===== Datos temporales / sueltos de la raiz de trabajo =====
+*.zip
+*.bak
+*.sv$
+*.dwl
+*.dwl2
+# Archivos PDF/TXT sueltos de trabajo en la raiz
+/pdf*.txt
+
+# ===== Formatos CAD / propietarios =====
+*.dwg
+*.dxf
+
+# ===== Secretos =====
+.env
+.env.*
+!.env.example
