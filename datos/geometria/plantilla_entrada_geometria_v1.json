@@ -1,0 +1,56 @@
+{
+  "titulo": "Plantilla de entrada de geometria (areas tributarias) - v1",
+  "instrucciones": "COPIAR este archivo a una nueva ubicacion y rellenarlo por piso/edificio. NO modificar este archivo original. Usar exclusivamente rutas relativas. No inventar valores reales: usar null, por_definir, listas vacias o pendiente donde no se conozca el dato.",
+  "version_formato": "1.0",
+  "estado": "borrador_no_ejecutable",
+  "proyecto": {
+    "nombre": "",
+    "edificio": "",
+    "unidades": {
+      "longitud": "m",
+      "area": "m2",
+      "carga_superficial": "kN/m2",
+      "carga_lineal": "kN/m"
+    }
+  },
+  "fuente": {
+    "plano": "",
+    "lamina": "",
+    "origen_datos": "pendiente",
+    "id_dxf": ""
+  },
+  "sistema_coordenadas": {
+    "origen": [0.0, 0.0],
+    "eje_x_positivo": "pendiente",
+    "eje_y_positivo": "pendiente"
+  },
+  "nivel": {
+    "id": "",
+    "cota": null,
+    "espesor_losa": null
+  },
+  "configuracion_calculo": {
+    "representacion_inicial": "por_definir",
+    "tolerancia_relativa_area": 1e-6,
+    "tolerancia_relativa_carga": 1e-6,
+    "generar_trazabilidad_celdas": false
+  },
+  "losas": [],
+  "vigas": [],
+  "muros": [],
+  "columnas_referencia": [],
+  "aberturas_globales": [],
+  "bordes_libres": [],
+  "juntas_dilatacion": [],
+  "interfaces_junta": [],
+  "cargas_superficiales": {},
+  "validacion": {
+    "validado_contra_esquema": false,
+    "resultado": "pendiente",
+    "residuos_mm": null
+  },
+  "pendientes": [],
+  "notas": [
+    "Esta plantilla es un MOLDE: no contiene geometria real. Debe copiarse y rellenarse por nivel. conservar estado=borrador_no_ejecutable hasta validar contra el esquema."
+  ]
+}

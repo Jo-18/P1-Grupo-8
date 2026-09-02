@@ -1,0 +1,1608 @@
+{
+  "version_formato": "1.0",
+  "estado": "borrador_no_ejecutable",
+  "completitud_geometrica": "completo_para_ensayo",
+  "proyecto": {
+    "nombre": "Edificio de Ingenieria - Planta Cielo Piso 1 Subterraneo",
+    "edificio": "I",
+    "unidades": {
+      "longitud": "m",
+      "area": "m2",
+      "carga_superficial": "kN/m2",
+      "carga_lineal": "kN/m"
+    }
+  },
+  "sistema_coordenadas": {
+    "origen": [
+      0.0,
+      0.0
+    ],
+    "eje_x_positivo": "de E hacia F,G (E=0,F=10,G=20...). x_m=(DXF_X-1026.30)/100",
+    "eje_y_positivo": "creciente hacia arriba en el plano. y_m=(DXF_Y-5515.10)/100; origen=esquina inf-izq de pared cortante izq"
+  },
+  "nivel": {
+    "id": "Cielo_Piso_1_Subterraneo",
+    "cota": -4.01,
+    "espesor_losa": 0.15
+  },
+  "configuracion_calculo": {
+    "tamano_celda_inicial": 0.1
+  },
+  "notas": [
+    "AUDITORIA DE VIGAS (88 entidades reexaminadas): se distinguen VIGAS ESTRUCTURALES (V.60/80, M.H.A. e=20/30 -> principales/secundarias/receptoras) de los NERVIOS DE BOVEDILLA (V.20/VAR, V.S.I. 20/150, V.30/VAR, +V.I. 15/VAR, pasadas 45/15,45/30,55/35 y 7.5mm -> NO estructurales). Los nervios NO se convierten en limites ni receptores del modelo de vigas; quedan documentados como sistema de bovedilla.",
+    "HALLAZGO CLAVE (dominio revisit): el lobo inferior (antes D_INFERIOR_CENTRAL) tiene DOS lineas V.60/80 a todo lo ancho en y=7.3 y y=7.9, separadas 0.60m. Son las DOS CARAS FISICAS de una UNICA viga estructural divisor de 0.60m de ancho. Su EJE ANALITICO y=7.6 divide D1 en dos dominios: D1_INFERIOR (hasta y7.6) y D1_SUPERIOR (desde y7.6). No se elimina franja de 0.60m de la huella y no se modela como 2 vigas.",
+    "EL RESTO DE LA CUADRICULA M.H.A./cassete de D1 (y0.6, y16.25, x0.6, x10.1) son vigas secundarias RECEPTORAS interiores, NO divisoras.",
+    "D2 NO se divide: las lineas VERTICALES entre y16.95 y y27.32 (x10.25/10.45, x12.75/12.95, ..., x20.25/20.45) son NERVIOS V.20/VAR de bovedilla, y la viga alrededor de y25.25 es PARCIAL (solo este x9.83-21.9). D2 permanece como UN SOLO dominio (x[0.2,21.6] x y[16.951,27.32]).",
+    "REQUISITO #10 (huella de la capa de losa): la capa RLE-LOSA en la subterranea es SOLO un fragmento central y NO da la huella completa; se reconstruye del PERIMETRO ESTRUCTURAL REAL (pared cortante x0/0.2, muro contencion der x21.6/21.9, nucleo F x10, viga base y0, escalon y16.951, V.S.I. y27.32).",
+    "MUROS: borde izquierdo M_001 (e=20), derecho M_002 (e=30), nucleo F M_003 (e=70), muros de pozo M_004-007 (e=20) receptores; + vigas secundarias cassete M.H.A. (x0.6, x10.1, y0.6, y16.25) como receptores. Columnas P.70x70 (7 en subterraneo) como apoyos puntuales.",
+    "AUDITORIA DE COBERTURA (nueva particion): huela fisica en L bruta = 388.0164 m2 (D1a 74.4800 + D1b 91.6398 + D2 221.8966); aberturas 20.8535 m2 (AB_001 14.3328, AB_002 5.2000, AB_003 1.3207); huela neta = 366.17702 m2. Union de losas neta = 366.17702 m2. HUECOS=0, EXCESOS=0. Ningun valor tributario calculado.",
+    "REGISTRO DE AREAS Y CONGELADO (Piso 1S): huela bruta = 387.03052 m2; aberturas (3 de nucleo) = 20.8535 m2; AREA NETA GEOMETRICA = 366.17702 m2. TRES dominios computacionales: D_INFERIOR_A (74.48 m2 -> neta 58.8265, rot 120-122), D_INFERIOR_B_SUPERIOR (90.65392 m2 -> neta 86.4398, rot 118-119), D_SUPERIOR (221.8966 m2, rot 100-117). NERVIOS DE BOVEDILLA (V.20/VAR, V.S.I., V.30/VAR, V.I.15/VAR, pasadas) EXCLUIDOS del modelo de vigas y DOCUMENTADOS en notas (no son limites ni receptores). COMPLETITUD GEOMETRICA = COMPLETO_PARA_ENSAYO tras resolver J_CP1S_A y J_CP1S_04 (confirmacion visual aprobada; geometria lista para preparar copia de ensayo, pero NO autoriza calculo definitivo). ESTADO = borrador_no_ejecutable, transferencias por_definir. PISO 1S CONGELADO; NO se creo copia de ensayo y NO se ejecuto areas tributarias.",
+    "AUDITORIA DE JUNTAS: se hallaron textos y leaders en la banda superior, pero no extremos de interfaz suficientemente verificables. Se registran puntos candidatos sin dividir dominios ni declarar transferencia impedida.",
+    "AUDITORIA DE JUNTAS: se hallaron textos y leaders en la banda superior, pero no extremos de interfaz suficientemente verificables. Se registran puntos candidatos sin dividir dominios ni declarar transferencia impedida.",
+    "AUDITORIA DE JUNTAS: se hallaron textos y leaders en la banda superior, pero no extremos de interfaz suficientemente verificables. Se registran puntos candidatos sin dividir dominios ni declarar transferencia impedida.",
+    "AUDITORIA DE JUNTAS: se hallaron textos y leaders en la banda superior, pero no extremos de interfaz suficientemente verificables. Se registran puntos candidatos sin dividir dominios ni declarar transferencia impedida.",
+    "AUDITORIA DE JUNTAS: J_CP1S_01..03 se consolidan como una interfaz horizontal de 10 cm con caras y puntas verificadas; J_CP1S_04 permanece sin trazado. RLE-HATCH no es junta.",
+    "AUDITORIA DE JUNTAS: J_CP1S_01..03 se consolidan como una interfaz horizontal de 10 cm con caras y puntas verificadas; D_INFERIOR_B_SUPERIOR se ajusta a la cara inferior y D_SUPERIOR queda sin dividir; J_CP1S_04 permanece sin trazado. RLE-HATCH no es junta.",
+    "AUDITORIA DE JUNTAS: J_CP1S_01..03 se consolidan como una interfaz horizontal de 10 cm; J_CP1S_04 es junta perimetral en cara exterior de M_EI_CP1S_002; D_INFERIOR_B_SUPERIOR se ajusta a la cara inferior, D_SUPERIOR queda sin dividir y RLE-HATCH no es junta.",
+    "JUNTA EI-EII NORMALIZADA: paginas 19 del PDF del Edificio II documentan 10 (JUNTA DE DILATACION) junto a D-D'. Se registra una sola interfaz global de 0.10 m; no se suma una segunda junta ni se copian coordenadas del Edificio II. La cara propia del Edificio I queda por correlacionar."
+  ],
+  "_trazabilidad": {
+    "dxf_fuente": "2017_67-101.dxf (banda superior = PLANTA CIELO 1 SUBTERRANEO)",
+    "esquema": "esquema_entrada_areas_tributarias_v1.json",
+    "template": "edificio_I_cielo_piso_2_borrador.json",
+    "paso_1": "Sistema de coordenadas (escala 100, origen [1026.30,5515.10])",
+    "paso_2": "Confirmar espesor 15cm y nivel cota -4.01",
+    "paso_3": "Reconstruir huela fisica desde perimetro estructural (RLE-LOSA fragmentario)",
+    "paso_4": "Extraer muros RLE-MURO y aberturas RLE-VANOS",
+    "paso_5": "Extraer red RLE-VIGA y columnas RLE-TEXTO-1",
+    "paso_6": "AUDITORIA de las 88 entidades viga: separar estructurales de nervios de bovedilla",
+    "paso_7": "Redefinir dominios: D1 dividido en D1a/D1b por la viga V.60/80 y=7.6 (caras y7.3/y7.9); D2 unico",
+    "paso_8": "Reasignar aberturas (AB_001,AB_003 en D1a; AB_002 en D1b) y apoyos",
+    "paso_9": "Regenerar JSON y auditoria de cobertura",
+    "paso_10": "Auditoria de juntas: J_CP1S_A y J_CP1S_04 verificadas; D1b ajustado a cara inferior, RLE-HATCH excluida; Piso 1S completo_para_ensayo y congelado.",
+    "juntas_dilatacion": "2017_67-101.dxf banda superior: J_CP1S_A consolidada con caras y eje derivados; J_CP1S_04 verificada como perimetral sobre cara exterior de M_EI_CP1S_002; RLE-HATCH excluida. No se usa continuidad del Piso 1.",
+    "junta_EI_EII": "JD_EI_EII_10CM / JD_EI_EII_CP1S; Edificio II PDF pagina 19; cara Edificio I por_correlacionar."
+  },
+  "losas": [
+    {
+      "id": "L_EI_CP1S_D_INFERIOR_A",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          0.2,
+          0.0
+        ],
+        [
+          10.0,
+          0.0
+        ],
+        [
+          10.0,
+          7.6
+        ],
+        [
+          0.2,
+          7.6
+        ]
+      ],
+      "aberturas": [
+        "AB_EI_CP1S_001",
+        "AB_EI_CP1S_003"
+      ],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP1S_y0000_0.200-10.000",
+        "H_EI_CP1S_y0760_0.200-10.000",
+        "M_EI_CP1S_001",
+        "M_EI_CP1S_003",
+        "M_EI_CP1S_004",
+        "M_EI_CP1S_005",
+        "V_EI_CP1S_x0060_0.700-16.150",
+        "V_EI_CP1S_x1010_0.700-16.150",
+        "H_EI_CP1S_y0601_0.700-10.000"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "huella_continua_2_lobulos_divide_y7.6",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        120,
+        121,
+        122
+      ],
+      "_rotulo_plano": 120,
+      "_nota_estructural": "Dominio D1 inferior: x[0.2,10.0] x y[0,7.6]. Parte baja del nucleo eje E-F. Division con D1 superior sobre la VIGA ESTRUCTURAL DIVISORA (V.60/80, ancho 0.60m, caras fisicas y7.3/y7.9, eje analitico y=7.6 compartido por ambos dominios). Aberturas AB_001 (ascensor) y AB_003 (pasada) como vacios. Apoyos: viga y0 e y7.6 + muro contencion izquierdo M_001 + nucleo F M_003 + muros pozo M_004/M_005 + receptores cassete (x0.6, x10.1, y0.6)."
+    },
+    {
+      "id": "L_EI_CP1S_D_INFERIOR_B_SUPERIOR",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          0.2,
+          7.6
+        ],
+        [
+          10.0,
+          7.6
+        ],
+        [
+          10.0,
+          16.8504
+        ],
+        [
+          0.2,
+          16.8504
+        ]
+      ],
+      "aberturas": [
+        "AB_EI_CP1S_002"
+      ],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP1S_y0760_0.200-10.000",
+        "H_EI_CP1S_y1695_0.200-21.600",
+        "M_EI_CP1S_001",
+        "M_EI_CP1S_003",
+        "M_EI_CP1S_006",
+        "M_EI_CP1S_007",
+        "V_EI_CP1S_x0060_0.700-16.150",
+        "V_EI_CP1S_x1010_0.700-16.150",
+        "H_EI_CP1S_y1625_0.700-10.000"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "huella_continua_2_lobulos_divide_y7.6",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        118,
+        119
+      ],
+      "_rotulo_plano": 118,
+      "_nota_estructural": "Dominio D1 superior: x[0.2,10.0] x y[7.6,16.951]. Division inferior por la VIGA DIVISORA y7.6 (ancho 0.60, caras y7.3/y7.9). Abertura AB_002 (pozo) como vacio. Apoyos: viga y7.6 e y16.951 + muro M_001 + nucleo F M_003 + muros pozo M_006/M_007 + receptores cassete (x0.6, x10.1, y16.25)."
+    },
+    {
+      "id": "L_EI_CP1S_D_SUPERIOR",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          0.2,
+          16.951
+        ],
+        [
+          21.6,
+          16.951
+        ],
+        [
+          21.6,
+          27.32
+        ],
+        [
+          0.2,
+          27.32
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP1S_y1695_0.200-21.600",
+        "H_EI_CP1S_y2732_0.200-21.600",
+        "M_EI_CP1S_001",
+        "M_EI_CP1S_002"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "huella_continua_2_lobulos_divide_y7.6",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117
+      ],
+      "_rotulo_plano": 100,
+      "_nota_estructural": "Dominio superior D2: x[0.2,21.6] x y[16.951,27.32]. Lobo ancho de bovedilla. LAS LINEAS VERTICALES (x10.25..20.45) SON NERVIOS DE BOVEDILLA V.20/VAR (NO estructurales, NO dividen) y la viga alrededor de y25.25 es PARCIAL (solo este) -> D2 es UN SOLO DOMINIO. Apoyos: viga y16.951 e y27.32 (V.S.I.) + muros contencion M_001/M_002. Red de bovedilla V.20/VAR y pasadas documentadas en notas, no modeladas como vigas."
+    }
+  ],
+  "vigas": [
+    {
+      "id": "H_EI_CP1S_y0000_0.200-10.000",
+      "inicio": [
+        0.2,
+        0.0
+      ],
+      "fin": [
+        10.0,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "_clasificacion": "VIGA PRINCIPAL (borde base)",
+      "_es_limite_dominio": true
+    },
+    {
+      "id": "H_EI_CP1S_y0760_0.200-10.000",
+      "inicio": [
+        0.2,
+        7.6
+      ],
+      "fin": [
+        10.0,
+        7.6
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "eje_analitico_derivado",
+      "_clasificacion": "VIGA PRINCIPAL (divisora)",
+      "_es_limite_dominio": true,
+      "_caras_fisicas": {
+        "inferior": 7.3,
+        "superior": 7.9
+      },
+      "_ancho": 0.6,
+      "_eje_analitico": 7.6,
+      "_nota": "Una unica viga estructural de 0.60m de ancho cuyas caras fisicas son y=7.3 y y=7.9 (ambas V.60/80 a todo lo ancho). Su eje analitico y=7.6 divide D1 inferior (hasta y7.6) y D1 superior (desde y7.6). No se elimina franja de huella y no se modelan las dos caras como 2 vigas."
+    },
+    {
+      "id": "H_EI_CP1S_y1695_0.200-21.600",
+      "inicio": [
+        0.2,
+        16.951
+      ],
+      "fin": [
+        21.6,
+        16.951
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "_clasificacion": "VIGA PRINCIPAL (escalon entre D1b y D2)",
+      "_es_limite_dominio": true
+    },
+    {
+      "id": "H_EI_CP1S_y2732_0.200-21.600",
+      "inicio": [
+        0.2,
+        27.32
+      ],
+      "fin": [
+        21.6,
+        27.32
+      ],
+      "seccion": {
+        "nombre": "V.S.I. 20/150"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "_clasificacion": "VIGA PRINCIPAL (borde tope V.S.I.)",
+      "_es_limite_dominio": true
+    },
+    {
+      "id": "H_EI_CP1S_y0601_0.700-10.000",
+      "inicio": [
+        0.700227,
+        0.600535
+      ],
+      "fin": [
+        10.000227,
+        0.600535
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "_clasificacion": "VIGA SECUNDARIA (receptor cassete D1a)",
+      "_es_limite_dominio": false
+    },
+    {
+      "id": "H_EI_CP1S_y1625_0.700-10.000",
+      "inicio": [
+        0.700227,
+        16.250535
+      ],
+      "fin": [
+        10.000227,
+        16.250535
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "_clasificacion": "VIGA SECUNDARIA (receptor cassete D1b)",
+      "_es_limite_dominio": false
+    },
+    {
+      "id": "V_EI_CP1S_x0060_0.700-16.150",
+      "inicio": [
+        0.600223,
+        0.700368
+      ],
+      "fin": [
+        0.600223,
+        16.150535
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "_clasificacion": "VIGA SECUNDARIA (receptor cassete D1) / M.H.A.",
+      "_es_limite_dominio": false
+    },
+    {
+      "id": "V_EI_CP1S_x1010_0.700-16.150",
+      "inicio": [
+        10.100227,
+        0.700368
+      ],
+      "fin": [
+        10.100227,
+        16.150535
+      ],
+      "seccion": {
+        "nombre": "M.H.A. e=30"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "_clasificacion": "VIGA SECUNDARIA (receptor cassete D1) / M.H.A.",
+      "_es_limite_dominio": false
+    }
+  ],
+  "muros": [
+    {
+      "id": "M_EI_CP1S_001",
+      "eje": {
+        "inicio": [
+          0.0,
+          0.0
+        ],
+        "fin": [
+          0.0,
+          25.25
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            0.0,
+            0.0
+          ],
+          "fin": [
+            0.0,
+            25.25
+          ]
+        },
+        {
+          "inicio": [
+            0.2,
+            0.0
+          ],
+          "fin": [
+            0.2,
+            25.25
+          ]
+        }
+      ],
+      "espesor": 0.2,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=20; muro contencion izquierdo (caras x0.000/x0.200). Borde de dominio."
+    },
+    {
+      "id": "M_EI_CP1S_002",
+      "eje": {
+        "inicio": [
+          21.6,
+          16.951
+        ],
+        "fin": [
+          21.6,
+          25.25
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            21.6,
+            16.951
+          ],
+          "fin": [
+            21.6,
+            25.25
+          ]
+        },
+        {
+          "inicio": [
+            21.9,
+            16.951
+          ],
+          "fin": [
+            21.9,
+            25.25
+          ]
+        }
+      ],
+      "espesor": 0.3,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=30; muro contencion derecho (caras x21.600/x21.900). Borde de dominio D2."
+    },
+    {
+      "id": "M_EI_CP1S_003",
+      "eje": {
+        "inicio": [
+          10.0,
+          0.0
+        ],
+        "fin": [
+          10.0,
+          16.951
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            10.0,
+            0.0
+          ],
+          "fin": [
+            10.0,
+            16.951
+          ]
+        },
+        {
+          "inicio": [
+            10.7,
+            0.0
+          ],
+          "fin": [
+            10.7,
+            16.951
+          ]
+        }
+      ],
+      "espesor": 0.7,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=70; nucleo eje F (caras x10.000/x10.700). Borde derecho D1a/D1b."
+    },
+    {
+      "id": "M_EI_CP1S_004",
+      "eje": {
+        "inicio": [
+          3.75,
+          2.755
+        ],
+        "fin": [
+          3.75,
+          7.234
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            3.75,
+            2.755
+          ],
+          "fin": [
+            3.75,
+            7.234
+          ]
+        },
+        {
+          "inicio": [
+            3.95,
+            2.755
+          ],
+          "fin": [
+            3.95,
+            7.234
+          ]
+        }
+      ],
+      "espesor": 0.2,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=20; muro pozo ascensor izq AB_001. Receptor interior D1a."
+    },
+    {
+      "id": "M_EI_CP1S_005",
+      "eje": {
+        "inicio": [
+          6.95,
+          2.755
+        ],
+        "fin": [
+          6.95,
+          7.234
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            6.75,
+            2.755
+          ],
+          "fin": [
+            6.75,
+            7.234
+          ]
+        },
+        {
+          "inicio": [
+            6.95,
+            2.755
+          ],
+          "fin": [
+            6.95,
+            7.234
+          ]
+        }
+      ],
+      "espesor": 0.2,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=20; muro pozo ascensor der AB_001. Receptor interior D1a."
+    },
+    {
+      "id": "M_EI_CP1S_006",
+      "eje": {
+        "inicio": [
+          4.05,
+          10.35
+        ],
+        "fin": [
+          4.05,
+          12.7
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            4.05,
+            10.35
+          ],
+          "fin": [
+            4.05,
+            12.7
+          ]
+        },
+        {
+          "inicio": [
+            4.25,
+            10.35
+          ],
+          "fin": [
+            4.25,
+            12.7
+          ]
+        }
+      ],
+      "espesor": 0.2,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=20; muro pozo AB_002. Receptor interior D1b."
+    },
+    {
+      "id": "M_EI_CP1S_007",
+      "eje": {
+        "inicio": [
+          6.65,
+          10.35
+        ],
+        "fin": [
+          6.65,
+          12.7
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            6.45,
+            10.35
+          ],
+          "fin": [
+            6.45,
+            12.7
+          ]
+        },
+        {
+          "inicio": [
+            6.65,
+            10.35
+          ],
+          "fin": [
+            6.65,
+            12.7
+          ]
+        }
+      ],
+      "espesor": 0.2,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=20; muro pozo AB_002. Receptor interior D1b."
+    }
+  ],
+  "aberturas_globales": [
+    {
+      "id": "AB_EI_CP1S_001",
+      "tipo": "vacio_nucleo_ascensor",
+      "poligono": [
+        [
+          3.75,
+          2.755
+        ],
+        [
+          6.95,
+          2.755
+        ],
+        [
+          6.95,
+          7.234
+        ],
+        [
+          3.75,
+          7.234
+        ]
+      ]
+    },
+    {
+      "id": "AB_EI_CP1S_002",
+      "tipo": "vacio_nucleo_pozo",
+      "poligono": [
+        [
+          4.05,
+          10.5
+        ],
+        [
+          6.65,
+          10.5
+        ],
+        [
+          6.65,
+          12.5
+        ],
+        [
+          4.05,
+          12.5
+        ]
+      ]
+    },
+    {
+      "id": "AB_EI_CP1S_003",
+      "tipo": "pasada_losa",
+      "poligono": [
+        [
+          3.695,
+          2.156
+        ],
+        [
+          7.005,
+          2.156
+        ],
+        [
+          7.005,
+          2.555
+        ],
+        [
+          3.695,
+          2.555
+        ]
+      ]
+    }
+  ],
+  "columnas_referencia": [
+    {
+      "id": "COL_EI_CP1S_C_E_0.71_16.16",
+      "posicion": [
+        0.71,
+        16.16
+      ],
+      "seccion": "P. 70x70",
+      "eje": "E-1S",
+      "nota": "Columna concreto P.70x70; RLE-TEXTO-1 (MTEXT)."
+    },
+    {
+      "id": "COL_EI_CP1S_C_E_0.72_7.14",
+      "posicion": [
+        0.72,
+        7.14
+      ],
+      "seccion": "P. 70x70",
+      "eje": "E-1S",
+      "nota": "Columna concreto P.70x70; RLE-TEXTO-1 (MTEXT)."
+    },
+    {
+      "id": "COL_EI_CP1S_C_E_0.73_1.35",
+      "posicion": [
+        0.73,
+        1.35
+      ],
+      "seccion": "P. 70x70",
+      "eje": "E-1S",
+      "nota": "Columna concreto P.70x70; RLE-TEXTO-1 (MTEXT)."
+    },
+    {
+      "id": "COL_EI_CP1S_C_F_8.95_8.64",
+      "posicion": [
+        8.95,
+        8.64
+      ],
+      "seccion": "P. 70x70",
+      "eje": "F-1S",
+      "nota": "Columna concreto P.70x70; RLE-TEXTO-1 (MTEXT)."
+    },
+    {
+      "id": "COL_EI_CP1S_C_F_9.00_1.35",
+      "posicion": [
+        9.0,
+        1.35
+      ],
+      "seccion": "P. 70x70",
+      "eje": "F-1S",
+      "nota": "Columna concreto P.70x70; RLE-TEXTO-1 (MTEXT)."
+    },
+    {
+      "id": "COL_EI_CP1S_C_F_9.20_16.16",
+      "posicion": [
+        9.2,
+        16.16
+      ],
+      "seccion": "P. 70x70",
+      "eje": "F-1S",
+      "nota": "Columna concreto P.70x70; RLE-TEXTO-1 (MTEXT)."
+    },
+    {
+      "id": "COL_EI_CP1S_C_H_20.81_16.21",
+      "posicion": [
+        20.81,
+        16.21
+      ],
+      "seccion": "P. 70x70",
+      "eje": "H-1S",
+      "nota": "Columna concreto P.70x70; RLE-TEXTO-1 (MTEXT)."
+    }
+  ],
+  "bordes_libres": [
+    {
+      "id": "BL_EI_CP1S_bottom",
+      "inicio": [
+        0.2,
+        0.0
+      ],
+      "fin": [
+        10.0,
+        0.0
+      ],
+      "_viga": "H_EI_CP1S_y0000_0.200-10.000"
+    },
+    {
+      "id": "BL_EI_CP1S_step",
+      "inicio": [
+        10.0,
+        16.951
+      ],
+      "fin": [
+        21.6,
+        16.951
+      ],
+      "_viga": "H_EI_CP1S_y1695_10.000-21.600"
+    }
+  ],
+  "cargas_superficiales": {
+    "G_prueba_tributacion_1kpa": {
+      "valor": 1.0,
+      "unidad": "kN/m2",
+      "notas": "CARGA DE ENSAYO uniforme de 1 kN/m2 para prueba exclusivamente numerica. Separada de las cargas reales."
+    }
+  },
+  "juntas_dilatacion": [
+    {
+      "id": "J_CP1S_A",
+      "tipo": "junta_dilatacion_real_anotada",
+      "texto": [
+        "DILATACION 10 CM",
+        "DILATACION 10 CM",
+        "DILATACION"
+      ],
+      "origen_ancho": "texto_plano",
+      "ancho_nominal_m": 0.1,
+      "geometria_exacta": "caras_verificadas_dxf",
+      "trazado": "eje_interfaz_derivado_de_caras",
+      "alineacion": "horizontal",
+      "eje_interfaz": {
+        "inicio": [
+          0.0002,
+          16.90045
+        ],
+        "fin": [
+          21.9002,
+          16.90045
+        ]
+      },
+      "caras_fisicas": {
+        "superior": {
+          "handle": "1c0c0",
+          "capa": "RLE-MURO",
+          "inicio": [
+            21.9002,
+            16.9505
+          ],
+          "fin": [
+            6.8265,
+            16.9505
+          ]
+        },
+        "inferior": [
+          {
+            "handle": "1c119",
+            "capa": "RLE-MURO",
+            "inicio": [
+              6.8265,
+              16.8504
+            ],
+            "fin": [
+              10.0002,
+              16.8504
+            ]
+          }
+        ]
+      },
+      "puntas_leader": [
+        [
+          0.005,
+          16.91
+        ],
+        [
+          10.717,
+          16.894
+        ],
+        [
+          20.702,
+          16.856
+        ]
+      ],
+      "anotaciones_fuente": [
+        "J_CP1S_03",
+        "J_CP1S_01",
+        "J_CP1S_02"
+      ],
+      "segmentos_colineales_dxf": [
+        {
+          "handle": "1C0BF",
+          "capa": "RLE-MURO",
+          "inicio": [
+            0.2002,
+            16.9505
+          ],
+          "fin": [
+            0.0002,
+            16.9505
+          ]
+        },
+        {
+          "handle": "1C125",
+          "capa": "RLE-MURO",
+          "inicio": [
+            0.2002,
+            16.9505
+          ],
+          "fin": [
+            5.0265,
+            16.9505
+          ]
+        },
+        {
+          "handle": "2815A",
+          "capa": "RLE-VIGA",
+          "inicio": [
+            5.0265,
+            16.9505
+          ],
+          "fin": [
+            6.8265,
+            16.9505
+          ]
+        },
+        {
+          "handle": "1C0C5",
+          "capa": "RLE-MURO",
+          "inicio": [
+            10.0002,
+            16.8505
+          ],
+          "fin": [
+            10.7002,
+            16.8505
+          ]
+        },
+        {
+          "handle": "1C0D6",
+          "capa": "RLE-MURO",
+          "inicio": [
+            0.0002,
+            16.8505
+          ],
+          "fin": [
+            0.7002,
+            16.8505
+          ]
+        },
+        {
+          "handle": "1C10B",
+          "capa": "RLE-VIGA",
+          "inicio": [
+            0.7002,
+            16.8505
+          ],
+          "fin": [
+            4.9366,
+            16.8505
+          ]
+        },
+        {
+          "handle": "24468",
+          "capa": "RLE-MURO",
+          "inicio": [
+            0.7002,
+            16.8505
+          ],
+          "fin": [
+            5.0265,
+            16.8505
+          ]
+        },
+        {
+          "handle": "24467",
+          "capa": "RLE-VIGA",
+          "inicio": [
+            5.0265,
+            16.8505
+          ],
+          "fin": [
+            10.0002,
+            16.8505
+          ]
+        }
+      ],
+      "interrupciones": [
+        {
+          "elemento": "pilares/elementos estructurales locales",
+          "nota": "las interrupciones entre segmentos no son terminaciones de la junta"
+        }
+      ],
+      "evidencia": {
+        "dxf_capa_texto": "RLE-TEXTO-1",
+        "leader_capa": "A-ANNO-TEXT",
+        "region": "banda superior",
+        "separacion_caras_dwg": 10.01,
+        "separacion_caras_m": 0.1001
+      },
+      "impide_continuidad_losa": true,
+      "separa_dominios": true,
+      "no_borde_libre": true,
+      "apoyos_por_separado": true,
+      "_nota": "J_CP1S_01, J_CP1S_02 y J_CP1S_03 son anotaciones de una misma interfaz horizontal. Las puntas se corrigieron: [10.717,16.894], [20.702,16.856] y [0.005,16.910]. El RLE-HATCH cercano se excluye: no es junta.",
+      "id_interfaz_global": null,
+      "correlacion_global": "no_confirmada_no_asignar_automaticamente",
+      "relacion_con_junta_EI_EII": "por_verificar"
+    },
+    {
+      "id": "J_CP1S_04",
+      "tipo": "junta_dilatacion_real_anotada",
+      "texto": "DILATACION CON MURO DE CONTENCION",
+      "origen_ancho": "por_resolver",
+      "ancho_nominal_m": "por_resolver",
+      "ubicacion_puntual": [
+        21.912,
+        25.034
+      ],
+      "geometria_exacta": "cara_exterior_muro_verificada_dxf",
+      "trazado": "cara_exterior_muro_dxf_mas_texto_plano",
+      "alineacion": "vertical",
+      "caras_fisicas": {
+        "muro": "M_EI_CP1S_002",
+        "cara_interior": {
+          "x": 21.6,
+          "inicio_y": 16.951,
+          "fin_y": 25.25
+        },
+        "cara_exterior": {
+          "x": 21.9,
+          "inicio_y": 16.951,
+          "fin_y": 25.25
+        }
+      },
+      "eje_interfaz": {
+        "inicio": [
+          21.9,
+          16.951
+        ],
+        "fin": [
+          21.9,
+          25.25
+        ]
+      },
+      "origen_trazado": "cara_exterior_muro_dxf_mas_texto_plano",
+      "impide_continuidad_losa": true,
+      "separa_dominios": false,
+      "no_borde_libre": true,
+      "apoyos_por_separado": true,
+      "evidencia": {
+        "dxf_capa_texto": "RLE-TEXTO-1",
+        "leader_capa": "A-ANNO-TEXT",
+        "leader": [
+          [
+            21.912,
+            25.034
+          ],
+          [
+            22.826,
+            24.438
+          ]
+        ],
+        "punta_leader": [
+          21.912,
+          25.034
+        ],
+        "muro": {
+          "id": "M_EI_CP1S_002",
+          "capa": "RLE-MURO",
+          "caras": {
+            "interior_x": 21.6,
+            "exterior_x": 21.9,
+            "inicio_y": 16.951,
+            "fin_y": 25.25
+          }
+        }
+      },
+      "_nota": "Junta perimetral con muro de contencion. [21.912,25.034] es la punta sobre la estructura y [22.826,24.438] el extremo proximo al texto. La interfaz usa la cara exterior x=21.90; M_EI_CP1S_002 se conserva como receptor por su cara interior x=21.60. No se agregan receptores al exterior.",
+      "id_interfaz_global": null,
+      "correlacion_global": "no_confirmada_no_asignar_automaticamente",
+      "relacion_con_junta_EI_EII": "por_verificar"
+    },
+    {
+      "id": "JD_EI_EII_CP1S",
+      "junta_id": "JD_EI_EII_CP1S",
+      "id_tramo_nivel": "JD_EI_EII_CP1S",
+      "id_interfaz_global": "JD_EI_EII_10CM",
+      "tipo": "junta_entre_edificios_real_documentada",
+      "origen_ancho": "cota_plano_edificio_II",
+      "ancho_total_m": 0.1,
+      "ancho_por_lado_m": null,
+      "ancho_nominal_m": 0.1,
+      "estado_ancho": "confirmado",
+      "contabilizacion": "una_sola_vez_en_modelo_conjunto",
+      "lado": "Edificio I",
+      "cara_propia": {
+        "estado": "por_correlacionar",
+        "sistema_coordenadas": "propio_del_nivel",
+        "geometria": null
+      },
+      "edificios_separados": [
+        "Edificio I",
+        "Edificio II"
+      ],
+      "fuentes": [
+        {
+          "edificio": "Edificio II",
+          "archivo": "Union PDF's Edificio II.pdf",
+          "paginas": [
+            19
+          ],
+          "texto": "10 (JUNTA DE DILATACION)",
+          "ejes": "D-D' Fase 2"
+        },
+        {
+          "edificio": "Edificio I",
+          "archivo": "fuente DXF/JSON propia del nivel",
+          "paginas": [],
+          "texto": null,
+          "ejes": null
+        }
+      ],
+      "estado_correlacion": "por_correlacionar",
+      "trazado_edificio_I": "por_correlacionar",
+      "eje_interfaz": null,
+      "caras_fisicas": [],
+      "impide_continuidad_losa": true,
+      "separa_dominios": true,
+      "apoyos_por_separado": true,
+      "no_borde_libre": true,
+      "receptores_edificio_II": [],
+      "transferencia_entre_edificios": false,
+      "_nota": "Una misma junta documentada en ambos edificios se contabiliza una sola vez. Los anchos informados desde cada lado no se suman. La página del Edificio II confirma la interfaz global, pero la cara propia del Edificio I queda por correlacionar sin copiar coordenadas."
+    }
+  ],
+  "interfaces_junta": [
+    {
+      "id": "J_CP1S_A",
+      "tipo": "junta_dilatacion_real_anotada",
+      "texto": [
+        "DILATACION 10 CM",
+        "DILATACION 10 CM",
+        "DILATACION"
+      ],
+      "origen_ancho": "texto_plano",
+      "ancho_nominal_m": 0.1,
+      "geometria_exacta": "caras_verificadas_dxf",
+      "trazado": "eje_interfaz_derivado_de_caras",
+      "alineacion": "horizontal",
+      "eje_interfaz": {
+        "inicio": [
+          0.0002,
+          16.90045
+        ],
+        "fin": [
+          21.9002,
+          16.90045
+        ]
+      },
+      "caras_fisicas": {
+        "superior": {
+          "handle": "1c0c0",
+          "capa": "RLE-MURO",
+          "inicio": [
+            21.9002,
+            16.9505
+          ],
+          "fin": [
+            6.8265,
+            16.9505
+          ]
+        },
+        "inferior": [
+          {
+            "handle": "1c119",
+            "capa": "RLE-MURO",
+            "inicio": [
+              6.8265,
+              16.8504
+            ],
+            "fin": [
+              10.0002,
+              16.8504
+            ]
+          }
+        ]
+      },
+      "puntas_leader": [
+        [
+          0.005,
+          16.91
+        ],
+        [
+          10.717,
+          16.894
+        ],
+        [
+          20.702,
+          16.856
+        ]
+      ],
+      "anotaciones_fuente": [
+        "J_CP1S_03",
+        "J_CP1S_01",
+        "J_CP1S_02"
+      ],
+      "segmentos_colineales_dxf": [
+        {
+          "handle": "1C0BF",
+          "capa": "RLE-MURO",
+          "inicio": [
+            0.2002,
+            16.9505
+          ],
+          "fin": [
+            0.0002,
+            16.9505
+          ]
+        },
+        {
+          "handle": "1C125",
+          "capa": "RLE-MURO",
+          "inicio": [
+            0.2002,
+            16.9505
+          ],
+          "fin": [
+            5.0265,
+            16.9505
+          ]
+        },
+        {
+          "handle": "2815A",
+          "capa": "RLE-VIGA",
+          "inicio": [
+            5.0265,
+            16.9505
+          ],
+          "fin": [
+            6.8265,
+            16.9505
+          ]
+        },
+        {
+          "handle": "1C0C5",
+          "capa": "RLE-MURO",
+          "inicio": [
+            10.0002,
+            16.8505
+          ],
+          "fin": [
+            10.7002,
+            16.8505
+          ]
+        },
+        {
+          "handle": "1C0D6",
+          "capa": "RLE-MURO",
+          "inicio": [
+            0.0002,
+            16.8505
+          ],
+          "fin": [
+            0.7002,
+            16.8505
+          ]
+        },
+        {
+          "handle": "1C10B",
+          "capa": "RLE-VIGA",
+          "inicio": [
+            0.7002,
+            16.8505
+          ],
+          "fin": [
+            4.9366,
+            16.8505
+          ]
+        },
+        {
+          "handle": "24468",
+          "capa": "RLE-MURO",
+          "inicio": [
+            0.7002,
+            16.8505
+          ],
+          "fin": [
+            5.0265,
+            16.8505
+          ]
+        },
+        {
+          "handle": "24467",
+          "capa": "RLE-VIGA",
+          "inicio": [
+            5.0265,
+            16.8505
+          ],
+          "fin": [
+            10.0002,
+            16.8505
+          ]
+        }
+      ],
+      "interrupciones": [
+        {
+          "elemento": "pilares/elementos estructurales locales",
+          "nota": "las interrupciones entre segmentos no son terminaciones de la junta"
+        }
+      ],
+      "evidencia": {
+        "dxf_capa_texto": "RLE-TEXTO-1",
+        "leader_capa": "A-ANNO-TEXT",
+        "region": "banda superior",
+        "separacion_caras_dwg": 10.01,
+        "separacion_caras_m": 0.1001
+      },
+      "impide_continuidad_losa": true,
+      "separa_dominios": true,
+      "no_borde_libre": true,
+      "apoyos_por_separado": true,
+      "_nota": "J_CP1S_01, J_CP1S_02 y J_CP1S_03 son anotaciones de una misma interfaz horizontal. Las puntas se corrigieron: [10.717,16.894], [20.702,16.856] y [0.005,16.910]. El RLE-HATCH cercano se excluye: no es junta.",
+      "id_interfaz_global": null,
+      "correlacion_global": "no_confirmada_no_asignar_automaticamente",
+      "relacion_con_junta_EI_EII": "por_verificar"
+    },
+    {
+      "id": "J_CP1S_04",
+      "tipo": "junta_dilatacion_real_anotada",
+      "texto": "DILATACION CON MURO DE CONTENCION",
+      "origen_ancho": "por_resolver",
+      "ancho_nominal_m": "por_resolver",
+      "ubicacion_puntual": [
+        21.912,
+        25.034
+      ],
+      "geometria_exacta": "cara_exterior_muro_verificada_dxf",
+      "trazado": "cara_exterior_muro_dxf_mas_texto_plano",
+      "alineacion": "vertical",
+      "caras_fisicas": {
+        "muro": "M_EI_CP1S_002",
+        "cara_interior": {
+          "x": 21.6,
+          "inicio_y": 16.951,
+          "fin_y": 25.25
+        },
+        "cara_exterior": {
+          "x": 21.9,
+          "inicio_y": 16.951,
+          "fin_y": 25.25
+        }
+      },
+      "eje_interfaz": {
+        "inicio": [
+          21.9,
+          16.951
+        ],
+        "fin": [
+          21.9,
+          25.25
+        ]
+      },
+      "origen_trazado": "cara_exterior_muro_dxf_mas_texto_plano",
+      "impide_continuidad_losa": true,
+      "separa_dominios": false,
+      "no_borde_libre": true,
+      "apoyos_por_separado": true,
+      "evidencia": {
+        "dxf_capa_texto": "RLE-TEXTO-1",
+        "leader_capa": "A-ANNO-TEXT",
+        "leader": [
+          [
+            21.912,
+            25.034
+          ],
+          [
+            22.826,
+            24.438
+          ]
+        ],
+        "punta_leader": [
+          21.912,
+          25.034
+        ],
+        "muro": {
+          "id": "M_EI_CP1S_002",
+          "capa": "RLE-MURO",
+          "caras": {
+            "interior_x": 21.6,
+            "exterior_x": 21.9,
+            "inicio_y": 16.951,
+            "fin_y": 25.25
+          }
+        }
+      },
+      "_nota": "Junta perimetral con muro de contencion. [21.912,25.034] es la punta sobre la estructura y [22.826,24.438] el extremo proximo al texto. La interfaz usa la cara exterior x=21.90; M_EI_CP1S_002 se conserva como receptor por su cara interior x=21.60. No se agregan receptores al exterior.",
+      "id_interfaz_global": null,
+      "correlacion_global": "no_confirmada_no_asignar_automaticamente",
+      "relacion_con_junta_EI_EII": "por_verificar"
+    },
+    {
+      "id": "JD_EI_EII_CP1S",
+      "junta_id": "JD_EI_EII_CP1S",
+      "id_tramo_nivel": "JD_EI_EII_CP1S",
+      "id_interfaz_global": "JD_EI_EII_10CM",
+      "tipo": "junta_entre_edificios_real_documentada",
+      "origen_ancho": "cota_plano_edificio_II",
+      "ancho_total_m": 0.1,
+      "ancho_por_lado_m": null,
+      "ancho_nominal_m": 0.1,
+      "estado_ancho": "confirmado",
+      "contabilizacion": "una_sola_vez_en_modelo_conjunto",
+      "lado": "Edificio I",
+      "cara_propia": {
+        "estado": "por_correlacionar",
+        "sistema_coordenadas": "propio_del_nivel",
+        "geometria": null
+      },
+      "edificios_separados": [
+        "Edificio I",
+        "Edificio II"
+      ],
+      "fuentes": [
+        {
+          "edificio": "Edificio II",
+          "archivo": "Union PDF's Edificio II.pdf",
+          "paginas": [
+            19
+          ],
+          "texto": "10 (JUNTA DE DILATACION)",
+          "ejes": "D-D' Fase 2"
+        },
+        {
+          "edificio": "Edificio I",
+          "archivo": "fuente DXF/JSON propia del nivel",
+          "paginas": [],
+          "texto": null,
+          "ejes": null
+        }
+      ],
+      "estado_correlacion": "por_correlacionar",
+      "trazado_edificio_I": "por_correlacionar",
+      "eje_interfaz": null,
+      "caras_fisicas": [],
+      "impide_continuidad_losa": true,
+      "separa_dominios": true,
+      "apoyos_por_separado": true,
+      "no_borde_libre": true,
+      "receptores_edificio_II": [],
+      "transferencia_entre_edificios": false,
+      "_nota": "Una misma junta documentada en ambos edificios se contabiliza una sola vez. Los anchos informados desde cada lado no se suman. La página del Edificio II confirma la interfaz global, pero la cara propia del Edificio I queda por correlacionar sin copiar coordenadas."
+    }
+  ],
+  "junta_dilatacion": {
+    "id_interfaz_global": "JD_EI_EII_10CM",
+    "id_tramo_nivel": "JD_EI_EII_CP1S",
+    "estado": "verificada_en_planos_edificio_II",
+    "tipo": "junta_entre_edificios_real_documentada",
+    "origen_ancho": "cota_plano_edificio_II",
+    "ancho_total_m": 0.1,
+    "ancho_por_lado_m": null,
+    "contabilizacion": "una_sola_vez_en_modelo_conjunto",
+    "lado": "Edificio I",
+    "edificios_separados": [
+      "Edificio I",
+      "Edificio II"
+    ],
+    "impide_continuidad_losa": true,
+    "apoyos_por_separado": true,
+    "no_borde_libre": true,
+    "fuentes": [
+      {
+        "edificio": "Edificio II",
+        "archivo": "Union PDF's Edificio II.pdf",
+        "paginas": [
+          19
+        ],
+        "texto": "10 (JUNTA DE DILATACION)",
+        "ejes": "D-D' Fase 2"
+      },
+      {
+        "edificio": "Edificio I",
+        "archivo": "fuente DXF/JSON propia del nivel",
+        "paginas": [],
+        "texto": null,
+        "ejes": null
+      }
+    ],
+    "estado_correlacion": "por_correlacionar",
+    "trazado_edificio_I": "por_correlacionar",
+    "junta_id": "JD_EI_EII_CP1S",
+    "nota_contabilizacion": "Una misma junta documentada en ambos edificios se contabiliza una sola vez. Los anchos informados desde cada lado no se suman. La página del Edificio II confirma la interfaz global, pero la cara propia del Edificio I queda por correlacionar sin copiar coordenadas."
+  },
+  "auditoria_juntas_dilatacion": {
+    "fuente": "2017_67-101.dxf",
+    "region": "banda superior / Cielo Piso 1 Subterraneo",
+    "textos_relevantes": [
+      "DILATACION 10 CM",
+      "DILATACION 10 CM",
+      "DILATACION",
+      "DILATACION CON"
+    ],
+    "capas_geometricas_revisadas": [
+      "RLE-MURO",
+      "RLE-LOSA",
+      "RLE-VIGA",
+      "RLE-PILAR",
+      "RLA-MURO DILATADO",
+      "RLA-MURO INV DILATADO"
+    ],
+    "entidades_dxf_relevantes": [
+      "RLE-MURO: horizontales y=16.1505/16.6504/16.8505/16.9505 y cierres locales en x=10.0002 y x=20.0002",
+      "RLE-VIGA: horizontal [0.7002,16.2505]-[10.0002,16.2505] y elementos verticales del sector superior",
+      "RLA-MURO INV DILATADO: trazos locales y=26.51/26.66 y detalles repetidos de elementos; no constituyen por si solos una junta continua",
+      "A-ANNO-TEXT: leaders de los puntos J_CP1S_01..04; la discontinuidad de entidades no se interpreta como extremo"
+    ],
+    "resultado": "J_CP1S_A_confirmada_por_caras_y_puntas; J_CP1S_04_confirmada_como_perimetral",
+    "interfaces_activas": 2,
+    "rle_hatch_excluida": {
+      "capa": "RLE-HATCH",
+      "segmentos_transversales_m": [
+        1.5,
+        0.6073,
+        0.85
+      ],
+      "uso": "no dividir D_SUPERIOR"
+    },
+    "pendiente": "Ninguna pendiente para J_CP1S_04; conservar como control que la junta esta en la cara exterior del muro y no como receptor exterior.",
+    "ajuste_topologico": "D_INFERIOR_B_SUPERIOR termina en y=16.8504; D_SUPERIOR comienza en y=16.9505; J_CP1S_A no atraviesa dominios; J_CP1S_04 queda en el perimetro exterior x=21.90 y no atraviesa D_SUPERIOR."
+  },
+  "congelado": true,
+  "auditoria_geometrica_juntas": {
+    "dominios": 3,
+    "suma_areas_dominios_m2": 387.03052,
+    "union_areas_dominios_m2": 387.03052,
+    "solape_max_dominios_m2": 0.0,
+    "huecos_y_excesos": "no_recalculables_sin_huella_canonica_en_este_json",
+    "aberturas_fuera_de_dominio": [],
+    "receptores_no_referenciados": [],
+    "interfaces_activas_que_atraviesan_dominio": [
+      {
+        "id": "J_CP1S_A",
+        "dominios_atravesados": []
+      },
+      {
+        "id": "J_CP1S_04",
+        "dominios_atravesados": []
+      }
+    ],
+    "transferencias": "por_definir"
+  },
+  "normalizacion_junta_edificio_II": {
+    "id_interfaz_global": "JD_EI_EII_10CM",
+    "id_tramo_nivel": "JD_EI_EII_CP1S",
+    "ancho_total_m": 0.1,
+    "ancho_por_lado_m": null,
+    "contabilizacion": "una_sola_vez_en_modelo_conjunto",
+    "lado": "Edificio I",
+    "edificios_separados": [
+      "Edificio I",
+      "Edificio II"
+    ],
+    "impide_continuidad_losa": true,
+    "apoyos_por_separado": true,
+    "no_borde_libre": true,
+    "estado_correlacion": "por_correlacionar",
+    "trazado_edificio_I": "por_correlacionar",
+    "fuentes": [
+      {
+        "edificio": "Edificio II",
+        "archivo": "Union PDF's Edificio II.pdf",
+        "paginas": [
+          19
+        ],
+        "texto": "10 (JUNTA DE DILATACION)",
+        "ejes": "D-D' Fase 2"
+      },
+      {
+        "edificio": "Edificio I",
+        "archivo": "fuente DXF/JSON propia del nivel",
+        "paginas": [],
+        "texto": null,
+        "ejes": null
+      }
+    ],
+    "nota": "Una misma junta documentada en ambos edificios se contabiliza una sola vez. Los anchos informados desde cada lado no se suman."
+  }
+}

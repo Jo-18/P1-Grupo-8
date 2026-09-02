@@ -1,0 +1,423 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "titulo": "Esquema de entrada para areas tributarias",
+  "descripcion": "Contrato de datos para geometria de losas, vigas, muros, aberturas y cargas superficiales.",
+  "type": "object",
+  "required": [
+    "version_formato",
+    "proyecto",
+    "sistema_coordenadas",
+    "nivel",
+    "losas",
+    "vigas",
+    "muros",
+    "bordes_libres",
+    "cargas_superficiales"
+  ],
+  "properties": {
+    "version_formato": {
+      "type": "string"
+    },
+    "estado": {
+      "type": "string"
+    },
+    "proyecto": {
+      "type": "object",
+      "required": [
+        "nombre",
+        "unidades"
+      ],
+      "properties": {
+        "nombre": {
+          "type": "string"
+        },
+        "edificio": {
+          "type": "string"
+        },
+        "unidades": {
+          "type": "object",
+          "required": [
+            "longitud",
+            "area",
+            "carga_superficial",
+            "carga_lineal"
+          ],
+          "properties": {
+            "longitud": {
+              "const": "m"
+            },
+            "area": {
+              "const": "m2"
+            },
+            "carga_superficial": {
+              "const": "kN/m2"
+            },
+            "carga_lineal": {
+              "const": "kN/m"
+            }
+          }
+        }
+      }
+    },
+    "sistema_coordenadas": {
+      "type": "object",
+      "required": [
+        "origen",
+        "eje_x_positivo",
+        "eje_y_positivo"
+      ],
+      "properties": {
+        "origen": {
+          "$ref": "#/$defs/punto2d"
+        },
+        "eje_x_positivo": {
+          "type": "string"
+        },
+        "eje_y_positivo": {
+          "type": "string"
+        }
+      }
+    },
+    "nivel": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "cota": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "espesor_losa": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "configuracion_calculo": {
+      "type": "object",
+      "properties": {
+        "representacion_inicial": {
+          "type": "string"
+        },
+        "tamano_celda_inicial": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "tolerancia_geometrica": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "tolerancia_relativa_area": {
+          "type": "number",
+          "minimum": 0
+        },
+        "tolerancia_relativa_carga": {
+          "type": "number",
+          "minimum": 0
+        },
+        "generar_trazabilidad_celdas": {
+          "type": "boolean"
+        }
+      }
+    },
+    "losas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/losa"
+      }
+    },
+    "vigas": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/viga"
+      }
+    },
+    "muros": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/muro"
+      }
+    },
+    "aberturas_globales": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/abertura"
+      }
+    },
+    "bordes_libres": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/borde_libre"
+      }
+    },
+    "columnas_referencia": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "cargas_superficiales": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "valor",
+          "unidad"
+        ],
+        "properties": {
+          "valor": {
+            "type": "number"
+          },
+          "unidad": {
+            "const": "kN/m2"
+          }
+        }
+      }
+    },
+    "junta_dilatacion": {
+      "$ref": "#/$defs/junta_interfaz"
+    },
+    "juntas_dilatacion": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/junta_interfaz"
+      }
+    },
+    "interfaces_junta": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/junta_interfaz"
+      }
+    },
+    "congelado": {
+      "type": "boolean"
+    },
+    "resultados_esperados_benchmark": {
+      "type": "object"
+    },
+    "notas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "punto2d": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "poligono": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/$defs/punto2d"
+      }
+    },
+    "losa": {
+      "type": "object",
+      "required": [
+        "id",
+        "poligono_exterior",
+        "aberturas",
+        "tipo_transferencia"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "espesor": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "poligono_exterior": {
+          "$ref": "#/$defs/poligono"
+        },
+        "aberturas": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "object"
+            ]
+          }
+        },
+        "tipo_transferencia": {
+          "enum": [
+            "bidireccional",
+            "unidireccional",
+            "por_definir"
+          ]
+        },
+        "direccion_transferencia": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/punto2d"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "apoyos_validos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "viga": {
+      "type": "object",
+      "required": [
+        "id",
+        "inicio",
+        "fin",
+        "recibe_losa"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "inicio": {
+          "$ref": "#/$defs/punto2d"
+        },
+        "fin": {
+          "$ref": "#/$defs/punto2d"
+        },
+        "seccion": {
+          "type": "object"
+        },
+        "recibe_losa": {
+          "type": "boolean"
+        }
+      }
+    },
+    "muro": {
+      "type": "object",
+      "required": [
+        "id",
+        "eje",
+        "espesor",
+        "recibe_losa"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "eje": {
+          "type": "object",
+          "required": [
+            "inicio",
+            "fin"
+          ],
+          "properties": {
+            "inicio": {
+              "$ref": "#/$defs/punto2d"
+            },
+            "fin": {
+              "$ref": "#/$defs/punto2d"
+            }
+          }
+        },
+        "espesor": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "recibe_losa": {
+          "type": "boolean"
+        },
+        "nota_modelo_opensees": {
+          "type": "string",
+          "description": "La geometria fisica del muro se usa para transferencia de losa; offsets rigidos se resuelven despues."
+        }
+      }
+    },
+    "abertura": {
+      "type": "object",
+      "required": [
+        "id",
+        "poligono"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "tipo": {
+          "type": "string"
+        },
+        "poligono": {
+          "$ref": "#/$defs/poligono"
+        }
+      }
+    },
+    "borde_libre": {
+      "type": "object",
+      "required": [
+        "id",
+        "inicio",
+        "fin"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "inicio": {
+          "$ref": "#/$defs/punto2d"
+        },
+        "fin": {
+          "$ref": "#/$defs/punto2d"
+        }
+      }
+    },
+    "junta_interfaz": {
+      "type": "object",
+      "description": "Interfaz de junta de dilatacion. Una misma junta documentada en ambos edificios se contabiliza una sola vez; los anchos informados desde cada lado no se suman.",
+      "properties": {
+        "id": {"type": "string"},
+        "junta_id": {"type": "string"},
+        "id_tramo_nivel": {"type": "string"},
+        "id_interfaz_global": {"type": ["string", "null"]},
+        "tipo": {"type": "string"},
+        "origen_ancho": {"type": "string"},
+        "ancho_total_m": {"type": ["number", "null"]},
+        "ancho_por_lado_m": {"type": ["number", "null"]},
+        "ancho_nominal_m": {"type": ["number", "null", "string"]},
+        "estado_ancho": {"type": "string"},
+        "lado": {"enum": ["Edificio I", "Edificio II"]},
+        "cara_propia": {"type": ["object", "null"]},
+        "edificios_separados": {"type": "array", "items": {"type": "string"}},
+        "contabilizacion": {"type": "string"},
+        "fuentes": {"type": "array", "items": {"type": "object"}},
+        "estado_correlacion": {"type": "string"},
+        "eje_interfaz": {"type": ["object", "null"]},
+        "caras_fisicas": {"type": ["array", "object"]},
+        "impide_continuidad_losa": {"type": ["boolean", "null"]},
+        "separa_dominios": {"type": ["boolean", "null"]},
+        "apoyos_por_separado": {"type": ["boolean", "null"]},
+        "no_borde_libre": {"type": ["boolean", "null"]}
+      }
+    }
+  }
+}
