@@ -1,0 +1,22 @@
+{
+  "tipo": "paquete_candidato_prueba_visual",
+  "no_publicado": true,
+  "archivos_json_nivel": {
+    "CP1S": "edificio_I_cielo_piso_1_subterraneo_candidata_unity.json",
+    "P1": "edificio_I_cielo_piso_1_borrador.json",
+    "P2": "edificio_I_cielo_piso_2_borrador.json",
+    "P3": "edificio_I_cielo_piso_3_borrador.json",
+    "P4": "edificio_I_cielo_piso_4_candidata_unity.json"
+  },
+  "matrices": "matrices_transformacion_unity.json",
+  "vistas_referencia": ["superposicion_candidata_comun.png", "vista_3d_candidata_comun.png"],
+  "instrucciones": "INSTRUCCIONES_PRUEBA_UNITY.md",
+  "regla_importacion": "Los JSON locales se transforman una sola vez con local_json_to_common y luego common_to_unity. No aplicar dxf_to_local_json al importar JSON.",
+  "ejes_unity": "X=u, Y=cota, Z=v",
+  "cotas_m": {"CP1S": -4.01, "P1": -0.05, "P2": 3.91, "P3": 7.87, "P4": 11.83},
+  "advertencias": [
+    "P4 conserva 8 columnas metalicas sin revisar; no son evidencia de centro fisico.",
+    "No hay alturas o extensiones verticales explicitas para muros/columnas.",
+    "No usar resultados de cargas ni declarar validado el importador sin inspeccionar su salida."
+  ]
+}

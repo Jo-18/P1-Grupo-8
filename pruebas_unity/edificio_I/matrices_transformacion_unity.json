@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "unidades": {
+    "dxf": "cm",
+    "json_local": "m",
+    "comun": "m",
+    "unity": "m"
+  },
+  "cadena_importacion_json": "p_unity = M_common_to_unity * M_local_to_common * p_local_json",
+  "cadena_trazabilidad_cad": "p_local_json = M_dxf_to_local * (X_dxf,Y_dxf,0,1)",
+  "vector_local_json": "(x,y,cota,1)",
+  "vector_comun": "(u,v,cota,1)",
+  "vector_unity": "(X,Y,Z,1)",
+  "convencion_vector": "vector columna homogeneo",
+  "dxf_to_local_json": {
+    "P1": [[0.01, 0.0, 0.0, -0.613], [0.0, 0.01, 0.0, -0.58], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]],
+    "P2": [[0.01, 0.0, 0.0, -8.9323], [0.0, -0.01, 0.0, 78.8492], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]],
+    "P3": [[0.01, 0.0, 0.0, -5.35], [0.0, -0.01, 0.0, 42.6035], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]],
+    "P4": [[0.01, 0.0, 0.0, -4.903], [0.0, -0.01, 0.0, 62.973], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]],
+    "CP1S": [[0.01, 0.0, 0.0, -10.263], [0.0, 0.01, 0.0, -55.151], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]]
+  },
+  "local_json_to_common": {
+    "P1": {"matriz": [[1.0, 0.0, 0.0, -10.0], [0.0, -1.0, 0.0, 35.0], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]], "origen": "auditoria de P1; u=x-10, v=35-y"},
+    "P2": {"matriz": [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]], "origen": "sistema_coordenadas P2; ya local"},
+    "P3": {"matriz": [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]], "origen": "sistema_coordenadas P3; ya local"},
+    "P4": {"matriz": [[1.0, 0.0, 0.0, 0.0], [0.0, 1.0, 0.0, 0.0], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]], "origen": "sistema_coordenadas P4; ya local; desfase fisico +0.1812 m documentado, no compensado"},
+    "CP1S": {"matriz": [[1.0, 0.0, 0.0, -0.35022726894], [0.0, -1.0, 0.0, 16.5005345365], [0.0, 0.0, 1.0, 0.0], [0.0, 0.0, 0.0, 1.0]], "estado": "referencia_RLE_EJES_identificada", "u": "x-0.35022726894", "v": "16.5005345365-y", "origen": "RLE-EJES handles 1C32D/1C32C/1C32B y etiquetas RLE-EJE E/F/G; E'=1C206 y F'=1C20D excluidos"}
+  },
+  "common_to_unity": {
+    "formula": "(X,Y,Z)=(u,cota,v)",
+    "matriz": [[1.0, 0.0, 0.0, 0.0], [0.0, 0.0, 1.0, 0.0], [0.0, 1.0, 0.0, 0.0], [0.0, 0.0, 0.0, 1.0]],
+    "origen": "sistema comun; una sola conversion de ejes, sin segunda reflexion"
+  },
+  "cotas_nivel_z_m": {"CP1S": -4.01, "P1": -0.05, "P2": 3.91, "P3": 7.87, "P4": 11.83},
+  "comprobaciones_json_local": {
+    "P1": {"entrada_local": [10.0, 18.85, -0.05, 1.0], "salida_comun": [0.0, 16.15, -0.05, 1.0], "salida_unity": [0.0, -0.05, 16.15, 1.0]},
+    "P2": {"entrada_local": [0.0, 0.0, 3.91, 1.0], "salida_comun": [0.0, 0.0, 3.91, 1.0], "salida_unity": [0.0, 3.91, 0.0, 1.0]},
+    "P3": {"entrada_local": [0.0, 0.0, 7.87, 1.0], "salida_comun": [0.0, 0.0, 7.87, 1.0], "salida_unity": [0.0, 7.87, 0.0, 1.0]},
+    "P4": {"entrada_local": [0.0, 0.18122100205444439, 11.83, 1.0], "salida_comun": [0.0, 0.18122100205444439, 11.83, 1.0], "salida_unity": [0.0, 11.83, 0.18122100205444439, 1.0]},
+    "CP1S": {"entrada_local": [0.35022726893962497, 16.50053453653941, -4.01, 1.0], "salida_comun": [0.0, 0.0, -4.01, 1.0], "salida_unity": [0.0, -4.01, 0.0, 1.0]}
+  },
+  "puntos_control_cp1s": {
+    "eje_1": {"linea_handle": "1C32A", "etiqueta_handle": "1C1E9", "y_dxf_cm": 7165.153453653878, "v_comun_m": 0.0},
+    "eje_2": {"linea_handle": "1C328", "etiqueta_handle": "1C1EC", "y_dxf_cm": 6275.153453651895, "v_comun_m": 8.9},
+    "eje_3": {"linea_handle": "1C327", "etiqueta_handle": "1C1EE", "y_dxf_cm": 5550.13678811925, "v_comun_m": 16.1501666553, "residuo_fisico_m": 0.0001666553},
+    "ejes_verticales": {
+      "E": {"linea_handle": "1C32D", "etiqueta_handle": "1C1E3", "x_dxf_cm": 1061.322726894, "x_local_m": 0.35022726894, "u_esperado_m": 0.0, "u_comun_m": 0.0, "residuo_m": 0.0},
+      "F": {"linea_handle": "1C32C", "etiqueta_handle": "1C1E5", "x_dxf_cm": 2061.322726891, "x_local_m": 10.35022726891, "u_esperado_m": 10.0, "u_comun_m": 9.99999999997, "residuo_m": -3.0e-11},
+      "G": {"linea_handle": "1C32B", "etiqueta_handle": "1C1E7", "x_dxf_cm": 3061.322726903, "x_local_m": 20.35022726903, "u_esperado_m": 20.0, "u_comun_m": 20.00000000009, "residuo_m": 9.0e-11},
+      "excluidos": {"E_prima": {"etiqueta_handle": "1C206", "x_dxf_cm": 962.000211335}, "F_prima": {"etiqueta_handle": "1C20D", "x_dxf_cm": 2166.041310833}}
+    }
+  },
+  "nota": "Para importar JSON locales se usa solo local_json_to_common y common_to_unity; DXF->local es trazabilidad de origen y no se vuelve a aplicar."
+}
