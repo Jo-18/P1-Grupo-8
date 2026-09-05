@@ -380,12 +380,12 @@
    "peralte": 0.3,
    "estado_seccion": "confirmado",
    "posicion": [
-    21.5,
+    20.0,
     11.83,
-    21.03
+    20.45
    ],
    "eje": "G-S6",
-   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1.",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | REUBICADA (P4): (21.50,21.03)->(20.00,20.45) sobre huella RLE-PILAR huella u[19.85,20.15] v[20.30,20.60] (plano 2017_67-103.dxf).",
    "edificio": "I",
    "nivel": "P4"
   },
@@ -396,12 +396,12 @@
    "peralte": 0.3,
    "estado_seccion": "confirmado",
    "posicion": [
-    31.55,
+    30.0,
     11.83,
-    21.03
+    20.45
    ],
    "eje": "H-S7",
-   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1.",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | REUBICADA (P4): (31.55,21.03)->(30.00,20.45) sobre huella RLE-PILAR huella u[29.85,30.15] v[20.30,20.60] (plano 2017_67-103.dxf).",
    "edificio": "I",
    "nivel": "P4"
   },

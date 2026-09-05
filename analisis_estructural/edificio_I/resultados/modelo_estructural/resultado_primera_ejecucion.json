@@ -1,0 +1,1558 @@
+{
+  "estado": "resuelto_laboratorio_no_utilizable_para_diseno",
+  "modelo": {
+    "n_nodos": 324,
+    "n_columnas": 97,
+    "n_vigas": 206,
+    "n_muros": 46,
+    "master_por_nivel": {
+      "P1": 2,
+      "P2": 5,
+      "P3": 7,
+      "P4": 179
+    }
+  },
+  "solucion": {
+    "ok": true,
+    "success": true,
+    "analyze_retcode": 0,
+    "diagnostico": null,
+    "singular_info": null
+  },
+  "hipotesis": {
+    "material": "Hormigon G40, E=29725.5 MPa (ACI 318-19 19.2.2.1, f'c=40 MPa)",
+    "continuidad_vertical": "HIPOTESIS senalada: pilar/muro como continuo base->cota superior; columnas solo en tramos con evidencia por nivel",
+    "apoyo_base": "base fija 6DOF en z=CP1S (-4.01 m) (hipotesis de cimentacion)",
+    "diafragma": "rigido en plano (u,v) con relacion de cuerpo rigido (rigidDiaphragm, incluye rotacion y distancia al maestro); vertical libre; CP1S excluido",
+    "sotano": "cielo del subterraneo (CP1S): solo restriccion vertical (w) como hipotesis de descanso sobre la cimentacion",
+    "muros": "dos montantes por extremo, cada uno con la mitad del ancho (area total t x L conservada; sin duplicar rigidez)",
+    "carga_sin_clasificar": "0 carga superficial correlacionada (hipotesis)",
+    "conector_excentrico_P1": "union excentrica (v=-0.2) modelada con conector corto ELASTICO de rigidez elevada (E*mult, G*mult, mult=rigidez_mult), NO un vinculo rigido exacto. La deformacion propia del conector tiende a cero al subir el multiplicador pero NO es identicamente cero."
+  },
+  "rigidez_mult_conector_excentrico_P1": 1000.0,
+  "cargas_nodales_total_kN": [
+    0.0,
+    0.0,
+    -25227.732,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "verificaciones": {
+    "areas_y_carga_por_nivel": {
+      "CP1S": {
+        "area_neta_geometrica_m2": 387.0305,
+        "area_superficial_carga_correlacion_m2": 387.0305,
+        "area_asignada_receptores_m2": 387.0305,
+        "area_no_asignada_m2": 0.0,
+        "receptores_sin_fe": [],
+        "losas": {
+          "L_EI_CP1S_D_INFERIOR_A": {
+            "area_neta_geometrica_m2": 74.48,
+            "area_superficial_carga_correlacion_m2": 74.48,
+            "area_asignada_receptores_m2": 74.48,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 273.8997,
+              "pm_adic": 189.8922,
+              "sc": 0.0,
+              "total": 463.7919
+            },
+            "n_receptores": 8
+          },
+          "L_EI_CP1S_D_INFERIOR_B_SUPERIOR": {
+            "area_neta_geometrica_m2": 90.6539,
+            "area_superficial_carga_correlacion_m2": 90.6539,
+            "area_asignada_receptores_m2": 90.6539,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 333.3792,
+              "pm_adic": 231.1391,
+              "sc": 0.0,
+              "total": 564.5184
+            },
+            "n_receptores": 8
+          },
+          "L_EI_CP1S_D_SUPERIOR": {
+            "area_neta_geometrica_m2": 221.8966,
+            "area_superficial_carga_correlacion_m2": 221.8966,
+            "area_asignada_receptores_m2": 221.8966,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 816.0234,
+              "pm_adic": 652.8187,
+              "sc": 0.0,
+              "total": 1468.842
+            },
+            "n_receptores": 4
+          }
+        },
+        "ok_area": true
+      },
+      "P1": {
+        "area_neta_geometrica_m2": 1005.7293,
+        "area_superficial_carga_correlacion_m2": 1005.7293,
+        "area_asignada_receptores_m2": 1005.7293,
+        "area_no_asignada_m2": 0.0,
+        "receptores_sin_fe": [],
+        "losas": {
+          "L_EI_CP1_D_INF_W_E": {
+            "area_neta_geometrica_m2": 1.8125,
+            "area_superficial_carga_correlacion_m2": 1.8125,
+            "area_asignada_receptores_m2": 1.8125,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 6.6655,
+              "pm_adic": 4.6214,
+              "sc": 0.0,
+              "total": 11.2868
+            },
+            "n_receptores": 3
+          },
+          "L_EI_CP1_D_INF_E_F": {
+            "area_neta_geometrica_m2": 72.5,
+            "area_superficial_carga_correlacion_m2": 72.5,
+            "area_asignada_receptores_m2": 72.5,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 266.6183,
+              "pm_adic": 184.8554,
+              "sc": 0.0,
+              "total": 451.4736
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_INF_F_G": {
+            "area_neta_geometrica_m2": 72.5,
+            "area_superficial_carga_correlacion_m2": 72.5,
+            "area_asignada_receptores_m2": 72.5,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 266.6183,
+              "pm_adic": 184.8551,
+              "sc": 0.0,
+              "total": 451.4734
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_INF_G_H": {
+            "area_neta_geometrica_m2": 72.5,
+            "area_superficial_carga_correlacion_m2": 72.5,
+            "area_asignada_receptores_m2": 72.5,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 266.6183,
+              "pm_adic": 184.8554,
+              "sc": 0.0,
+              "total": 451.4736
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_INF_H_I": {
+            "area_neta_geometrica_m2": 73.5875,
+            "area_superficial_carga_correlacion_m2": 73.5875,
+            "area_asignada_receptores_m2": 73.5875,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 270.6176,
+              "pm_adic": 187.6282,
+              "sc": 0.0,
+              "total": 458.2458
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_INF_I_Ip": {
+            "area_neta_geometrica_m2": 37.7,
+            "area_superficial_carga_correlacion_m2": 37.7,
+            "area_asignada_receptores_m2": 37.7,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 138.6415,
+              "pm_adic": 96.1248,
+              "sc": 0.0,
+              "total": 234.7663
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_MED_W_E": {
+            "area_neta_geometrica_m2": 2.225,
+            "area_superficial_carga_correlacion_m2": 2.225,
+            "area_asignada_receptores_m2": 2.225,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 8.1824,
+              "pm_adic": 5.6731,
+              "sc": 0.0,
+              "total": 13.8556
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP1_D_MED_E_F": {
+            "area_neta_geometrica_m2": 89.0,
+            "area_superficial_carga_correlacion_m2": 89.0,
+            "area_asignada_receptores_m2": 89.0,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 327.2969,
+              "pm_adic": 226.9259,
+              "sc": 0.0,
+              "total": 554.2228
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_MED_F_G": {
+            "area_neta_geometrica_m2": 89.0,
+            "area_superficial_carga_correlacion_m2": 89.0,
+            "area_asignada_receptores_m2": 89.0,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 327.2969,
+              "pm_adic": 226.9259,
+              "sc": 0.0,
+              "total": 554.2228
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_MED_G_H": {
+            "area_neta_geometrica_m2": 89.0,
+            "area_superficial_carga_correlacion_m2": 89.0,
+            "area_asignada_receptores_m2": 89.0,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 327.2969,
+              "pm_adic": 226.9259,
+              "sc": 0.0,
+              "total": 554.2228
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_MED_H_I": {
+            "area_neta_geometrica_m2": 92.365,
+            "area_superficial_carga_correlacion_m2": 92.365,
+            "area_asignada_receptores_m2": 92.365,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 339.6717,
+              "pm_adic": 235.5057,
+              "sc": 0.0,
+              "total": 575.1774
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_MED_I_Ip": {
+            "area_neta_geometrica_m2": 47.32,
+            "area_superficial_carga_correlacion_m2": 47.32,
+            "area_asignada_receptores_m2": 47.32,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 174.019,
+              "pm_adic": 120.6532,
+              "sc": 0.0,
+              "total": 294.6722
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP1_D_SUP_OESTE_VOL": {
+            "area_neta_geometrica_m2": 34.7875,
+            "area_superficial_carga_correlacion_m2": 34.7875,
+            "area_asignada_receptores_m2": 34.7875,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 127.9308,
+              "pm_adic": 74.4606,
+              "sc": 0.0,
+              "total": 202.3914
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP1_D_VOL_ESTE_OE": {
+            "area_neta_geometrica_m2": 79.2228,
+            "area_superficial_carga_correlacion_m2": 79.2228,
+            "area_asignada_receptores_m2": 79.2228,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 291.3414,
+              "pm_adic": 156.7234,
+              "sc": 0.0,
+              "total": 448.0648
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP1_D_VOL_ESTE_ES": {
+            "area_neta_geometrica_m2": 64.168,
+            "area_superficial_carga_correlacion_m2": 64.168,
+            "area_asignada_receptores_m2": 64.168,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 235.9774,
+              "pm_adic": 100.3581,
+              "sc": 0.0,
+              "total": 336.3355
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP1_D_ATRIO_ESTE": {
+            "area_neta_geometrica_m2": 88.041,
+            "area_superficial_carga_correlacion_m2": 88.041,
+            "area_asignada_receptores_m2": 88.041,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 323.7702,
+              "pm_adic": 597.6881,
+              "sc": 0.0,
+              "total": 921.4583
+            },
+            "n_receptores": 2
+          }
+        },
+        "ok_area": true
+      },
+      "P2": {
+        "area_neta_geometrica_m2": 849.229,
+        "area_superficial_carga_correlacion_m2": 849.229,
+        "area_asignada_receptores_m2": 849.229,
+        "area_no_asignada_m2": 0.0,
+        "receptores_sin_fe": [],
+        "losas": {
+          "L_EI_CP2_200": {
+            "area_neta_geometrica_m2": 89.0,
+            "area_superficial_carga_correlacion_m2": 89.0,
+            "area_asignada_receptores_m2": 89.0,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 327.2969,
+              "pm_adic": 226.9229,
+              "sc": 0.0,
+              "total": 554.2198
+            },
+            "n_receptores": 7
+          },
+          "L_EI_CP2_202": {
+            "area_neta_geometrica_m2": 72.5,
+            "area_superficial_carga_correlacion_m2": 72.5,
+            "area_asignada_receptores_m2": 72.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 266.6183,
+              "pm_adic": 184.7984,
+              "sc": 0.0,
+              "total": 451.4167
+            },
+            "n_receptores": 7
+          },
+          "L_EI_CP2_204": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_205": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 5
+          },
+          "L_EI_CP2_206": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_207": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_208": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_209": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_210": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_211": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_212": {
+            "area_neta_geometrica_m2": 15.95,
+            "area_superficial_carga_correlacion_m2": 15.95,
+            "area_asignada_receptores_m2": 15.95,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 58.656,
+              "pm_adic": 40.6682,
+              "sc": 0.0,
+              "total": 99.3242
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_213": {
+            "area_neta_geometrica_m2": 20.3,
+            "area_superficial_carga_correlacion_m2": 20.3,
+            "area_asignada_receptores_m2": 20.3,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 74.6531,
+              "pm_adic": 51.7595,
+              "sc": 0.0,
+              "total": 126.4126
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_214": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_215": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_216": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_217": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_218": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP2_219": {
+            "area_neta_geometrica_m2": 27.504,
+            "area_superficial_carga_correlacion_m2": 27.504,
+            "area_asignada_receptores_m2": 27.504,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 101.1458,
+              "pm_adic": 70.1277,
+              "sc": 0.0,
+              "total": 171.2735
+            },
+            "n_receptores": 2
+          },
+          "L_EI_CP2_220": {
+            "area_neta_geometrica_m2": 11.55,
+            "area_superficial_carga_correlacion_m2": 11.55,
+            "area_asignada_receptores_m2": 11.55,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 42.4751,
+              "pm_adic": 29.4494,
+              "sc": 0.0,
+              "total": 71.9244
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP2_221": {
+            "area_neta_geometrica_m2": 11.55,
+            "area_superficial_carga_correlacion_m2": 11.55,
+            "area_asignada_receptores_m2": 11.55,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 42.4751,
+              "pm_adic": 29.4494,
+              "sc": 0.0,
+              "total": 71.9244
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP2_D_VOLADIZO_EXTERIOR_EJE_1": {
+            "area_neta_geometrica_m2": 52.555,
+            "area_superficial_carga_correlacion_m2": 52.555,
+            "area_asignada_receptores_m2": 52.555,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 193.2707,
+              "pm_adic": 112.4674,
+              "sc": 0.0,
+              "total": 305.7381
+            },
+            "n_receptores": 8
+          },
+          "L_EI_CP2_D_VOLADIZO_EXTERIOR_E": {
+            "area_neta_geometrica_m2": 5.6525,
+            "area_superficial_carga_correlacion_m2": 5.6525,
+            "area_asignada_receptores_m2": 5.6525,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 20.787,
+              "pm_adic": 14.3675,
+              "sc": 0.0,
+              "total": 35.1545
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP2_D_VOLADIZO_EXTERIOR_EJE_3_OESTE": {
+            "area_neta_geometrica_m2": 3.255,
+            "area_superficial_carga_correlacion_m2": 3.255,
+            "area_asignada_receptores_m2": 3.255,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 11.9702,
+              "pm_adic": 8.2994,
+              "sc": 0.0,
+              "total": 20.2696
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP2_D_VOLADIZO_EXTERIOR_EJE_3_ESTE_1": {
+            "area_neta_geometrica_m2": 3.255,
+            "area_superficial_carga_correlacion_m2": 3.255,
+            "area_asignada_receptores_m2": 3.255,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 11.9702,
+              "pm_adic": 8.2994,
+              "sc": 0.0,
+              "total": 20.2696
+            },
+            "n_receptores": 2
+          },
+          "L_EI_CP2_D_VOLADIZO_EXTERIOR_EJE_3_ESTE_2": {
+            "area_neta_geometrica_m2": 1.505,
+            "area_superficial_carga_correlacion_m2": 1.505,
+            "area_asignada_receptores_m2": 1.505,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 5.5346,
+              "pm_adic": 3.8373,
+              "sc": 0.0,
+              "total": 9.372
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP2_D_VOLADIZO_EXTERIOR_IP": {
+            "area_neta_geometrica_m2": 5.6525,
+            "area_superficial_carga_correlacion_m2": 5.6525,
+            "area_asignada_receptores_m2": 5.6525,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 20.787,
+              "pm_adic": 14.4106,
+              "sc": 0.0,
+              "total": 35.1976
+            },
+            "n_receptores": 1
+          }
+        },
+        "ok_area": true
+      },
+      "P3": {
+        "area_neta_geometrica_m2": 932.527,
+        "area_superficial_carga_correlacion_m2": 932.527,
+        "area_asignada_receptores_m2": 932.527,
+        "area_no_asignada_m2": 0.0,
+        "receptores_sin_fe": [],
+        "losas": {
+          "L_EI_CP3_304": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 5
+          },
+          "L_EI_CP3_305": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_306": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_307": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_308": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_309": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_310": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 113.4629,
+              "sc": 0.0,
+              "total": 277.1114
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_311": {
+            "area_neta_geometrica_m2": 22.25,
+            "area_superficial_carga_correlacion_m2": 22.25,
+            "area_asignada_receptores_m2": 22.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 65.4594,
+              "pm_adic": 56.7315,
+              "sc": 0.0,
+              "total": 122.1909
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_312": {
+            "area_neta_geometrica_m2": 21.36,
+            "area_superficial_carga_correlacion_m2": 21.36,
+            "area_asignada_receptores_m2": 21.36,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 62.841,
+              "pm_adic": 54.4622,
+              "sc": 0.0,
+              "total": 117.3032
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_313": {
+            "area_neta_geometrica_m2": 15.95,
+            "area_superficial_carga_correlacion_m2": 15.95,
+            "area_asignada_receptores_m2": 15.95,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 58.656,
+              "pm_adic": 40.6682,
+              "sc": 0.0,
+              "total": 99.3242
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_314": {
+            "area_neta_geometrica_m2": 20.3,
+            "area_superficial_carga_correlacion_m2": 20.3,
+            "area_asignada_receptores_m2": 20.3,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 74.6531,
+              "pm_adic": 51.7595,
+              "sc": 0.0,
+              "total": 126.4126
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_316": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_317": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_318": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_319": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_320": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_321": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 92.4277,
+              "sc": 0.0,
+              "total": 225.7368
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_322": {
+            "area_neta_geometrica_m2": 18.125,
+            "area_superficial_carga_correlacion_m2": 18.125,
+            "area_asignada_receptores_m2": 18.125,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 53.3237,
+              "pm_adic": 46.2138,
+              "sc": 0.0,
+              "total": 99.5375
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_323": {
+            "area_neta_geometrica_m2": 17.4,
+            "area_superficial_carga_correlacion_m2": 17.4,
+            "area_asignada_receptores_m2": 17.4,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 51.1907,
+              "pm_adic": 44.3653,
+              "sc": 0.0,
+              "total": 95.556
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP3_300": {
+            "area_neta_geometrica_m2": 89.0,
+            "area_superficial_carga_correlacion_m2": 89.0,
+            "area_asignada_receptores_m2": 89.0,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 327.2969,
+              "pm_adic": 225.2957,
+              "sc": 0.0,
+              "total": 552.5926
+            },
+            "n_receptores": 7
+          },
+          "L_EI_CP3_302": {
+            "area_neta_geometrica_m2": 72.5,
+            "area_superficial_carga_correlacion_m2": 72.5,
+            "area_asignada_receptores_m2": 72.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 266.6183,
+              "pm_adic": 182.7757,
+              "sc": 0.0,
+              "total": 449.394
+            },
+            "n_receptores": 7
+          },
+          "L_EI_CP3_315": {
+            "area_neta_geometrica_m2": 5.082,
+            "area_superficial_carga_correlacion_m2": 5.082,
+            "area_asignada_receptores_m2": 5.082,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 18.689,
+              "pm_adic": 12.9577,
+              "sc": 0.0,
+              "total": 31.6467
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP3_324": {
+            "area_neta_geometrica_m2": 38.2,
+            "area_superficial_carga_correlacion_m2": 38.2,
+            "area_asignada_receptores_m2": 38.2,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 140.4803,
+              "pm_adic": 97.3996,
+              "sc": 0.0,
+              "total": 237.8799
+            },
+            "n_receptores": 2
+          },
+          "L_EI_CP3_D_VOLADIZO_BAJO": {
+            "area_neta_geometrica_m2": 59.225,
+            "area_superficial_carga_correlacion_m2": 59.225,
+            "area_asignada_receptores_m2": 59.225,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 217.7996,
+              "pm_adic": 125.0598,
+              "sc": 0.0,
+              "total": 342.8593
+            },
+            "n_receptores": 10
+          },
+          "L_EI_CP3_D_VOLADIZO_ALTO_OESTE": {
+            "area_neta_geometrica_m2": 3.5,
+            "area_superficial_carga_correlacion_m2": 3.5,
+            "area_asignada_receptores_m2": 3.5,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 12.8712,
+              "pm_adic": 8.9241,
+              "sc": 0.0,
+              "total": 21.7953
+            },
+            "n_receptores": 1
+          },
+          "L_EI_CP3_D_VOLADIZO_ALTO_CENTRO": {
+            "area_neta_geometrica_m2": 2.5025,
+            "area_superficial_carga_correlacion_m2": 2.5025,
+            "area_asignada_receptores_m2": 2.5025,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 9.2029,
+              "pm_adic": 6.3807,
+              "sc": 0.0,
+              "total": 15.5836
+            },
+            "n_receptores": 2
+          },
+          "L_EI_CP3_D_VOLADIZO_ALTO_ESTE": {
+            "area_neta_geometrica_m2": 5.005,
+            "area_superficial_carga_correlacion_m2": 5.005,
+            "area_asignada_receptores_m2": 5.005,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 18.4059,
+              "pm_adic": 12.7614,
+              "sc": 0.0,
+              "total": 31.1672
+            },
+            "n_receptores": 3
+          },
+          "L_EI_CP3_D_VOLADIZO_ALTO_LENGUA": {
+            "area_neta_geometrica_m2": 7.475,
+            "area_superficial_carga_correlacion_m2": 7.475,
+            "area_asignada_receptores_m2": 7.475,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 27.4893,
+              "pm_adic": 15.6399,
+              "sc": 0.0,
+              "total": 43.1291
+            },
+            "n_receptores": 3
+          },
+          "L_EI_CP3_D_VOLADIZO_IZQ": {
+            "area_neta_geometrica_m2": 5.6525,
+            "area_superficial_carga_correlacion_m2": 5.6525,
+            "area_asignada_receptores_m2": 5.6525,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 20.787,
+              "pm_adic": 14.4123,
+              "sc": 0.0,
+              "total": 35.1994
+            },
+            "n_receptores": 1
+          }
+        },
+        "ok_area": true
+      },
+      "P4": {
+        "area_neta_geometrica_m2": 934.9565,
+        "area_superficial_carga_correlacion_m2": 934.9565,
+        "area_asignada_receptores_m2": 934.9565,
+        "area_no_asignada_m2": 0.0,
+        "receptores_sin_fe": [],
+        "losas": {
+          "L_EI_CP4_407": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 87.2792,
+              "sc": 0.0,
+              "total": 250.9277
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_417": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 115.0467,
+              "sc": 0.0,
+              "total": 248.3558
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_309": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 87.2792,
+              "sc": 0.0,
+              "total": 250.9277
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_418": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 115.9122,
+              "sc": 0.0,
+              "total": 249.2213
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_410": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 87.2792,
+              "sc": 0.0,
+              "total": 250.9277
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_419": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 69.815,
+              "sc": 0.0,
+              "total": 203.1241
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_411": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 87.2792,
+              "sc": 0.0,
+              "total": 250.9277
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_420": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 69.8084,
+              "sc": 0.0,
+              "total": 203.1175
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_412": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 87.2792,
+              "sc": 0.0,
+              "total": 250.9277
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_421": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 69.8084,
+              "sc": 0.0,
+              "total": 203.1175
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_413": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 87.2792,
+              "sc": 0.0,
+              "total": 250.9277
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_422": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 69.8084,
+              "sc": 0.0,
+              "total": 203.1175
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_414": {
+            "area_neta_geometrica_m2": 44.5,
+            "area_superficial_carga_correlacion_m2": 44.5,
+            "area_asignada_receptores_m2": 44.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 163.6485,
+              "pm_adic": 87.2792,
+              "sc": 0.0,
+              "total": 250.9277
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_423": {
+            "area_neta_geometrica_m2": 36.25,
+            "area_superficial_carga_correlacion_m2": 36.25,
+            "area_asignada_receptores_m2": 36.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 133.3091,
+              "pm_adic": 69.8981,
+              "sc": 0.0,
+              "total": 203.2073
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_415": {
+            "area_neta_geometrica_m2": 22.25,
+            "area_superficial_carga_correlacion_m2": 22.25,
+            "area_asignada_receptores_m2": 22.25,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 65.4594,
+              "pm_adic": 43.6396,
+              "sc": 0.0,
+              "total": 109.099
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_424": {
+            "area_neta_geometrica_m2": 18.125,
+            "area_superficial_carga_correlacion_m2": 18.125,
+            "area_asignada_receptores_m2": 18.125,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 66.6546,
+              "pm_adic": 35.5491,
+              "sc": 0.0,
+              "total": 102.2037
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_416": {
+            "area_neta_geometrica_m2": 21.36,
+            "area_superficial_carga_correlacion_m2": 21.36,
+            "area_asignada_receptores_m2": 21.36,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 62.841,
+              "pm_adic": 41.894,
+              "sc": 0.0,
+              "total": 104.735
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_425": {
+            "area_neta_geometrica_m2": 17.4,
+            "area_superficial_carga_correlacion_m2": 17.4,
+            "area_asignada_receptores_m2": 17.4,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 51.1907,
+              "pm_adic": 34.1271,
+              "sc": 0.0,
+              "total": 85.3179
+            },
+            "n_receptores": 4
+          },
+          "L_EI_CP4_400": {
+            "area_neta_geometrica_m2": 89.0,
+            "area_superficial_carga_correlacion_m2": 89.0,
+            "area_asignada_receptores_m2": 89.0,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 327.2969,
+              "pm_adic": 174.5584,
+              "sc": 0.0,
+              "total": 501.8553
+            },
+            "n_receptores": 7
+          },
+          "L_EI_CP4_404": {
+            "area_neta_geometrica_m2": 72.5,
+            "area_superficial_carga_correlacion_m2": 72.5,
+            "area_asignada_receptores_m2": 72.5,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 266.6183,
+              "pm_adic": 142.1143,
+              "sc": 0.0,
+              "total": 408.7326
+            },
+            "n_receptores": 7
+          },
+          "L_EI_CP4_426": {
+            "area_neta_geometrica_m2": 35.2,
+            "area_superficial_carga_correlacion_m2": 35.2,
+            "area_asignada_receptores_m2": 35.2,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 103.5582,
+              "pm_adic": 68.0309,
+              "sc": 0.0,
+              "total": 171.5891
+            },
+            "n_receptores": 2
+          },
+          "L_EI_CP4_D_VOLADIZO_BAJO": {
+            "area_neta_geometrica_m2": 49.955,
+            "area_superficial_carga_correlacion_m2": 49.955,
+            "area_asignada_receptores_m2": 49.955,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 183.7092,
+              "pm_adic": 97.839,
+              "sc": 0.0,
+              "total": 281.5482
+            },
+            "n_receptores": 10
+          },
+          "L_EI_CP4_D_VOLADIZO_ALTO_OESTE": {
+            "area_neta_geometrica_m2": 10.6,
+            "area_superficial_carga_correlacion_m2": 10.6,
+            "area_asignada_receptores_m2": 10.6,
+            "area_no_asignada_m2": 0.0,
+            "por_comp_kN": {
+              "pp": 38.9814,
+              "pm_adic": 10.395,
+              "sc": 0.0,
+              "total": 49.3765
+            },
+            "n_receptores": 3
+          },
+          "L_EI_CP4_D_VOLADIZO_ALTO_ESTE": {
+            "area_neta_geometrica_m2": 27.664,
+            "area_superficial_carga_correlacion_m2": 27.664,
+            "area_asignada_receptores_m2": 27.664,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 101.7342,
+              "pm_adic": 16.9549,
+              "sc": 0.0,
+              "total": 118.6891
+            },
+            "n_receptores": 5
+          },
+          "L_EI_CP4_D_VOLADIZO_IZQ": {
+            "area_neta_geometrica_m2": 5.6525,
+            "area_superficial_carga_correlacion_m2": 5.6525,
+            "area_asignada_receptores_m2": 5.6525,
+            "area_no_asignada_m2": -0.0,
+            "por_comp_kN": {
+              "pp": 20.787,
+              "pm_adic": 11.0774,
+              "sc": 0.0,
+              "total": 31.8644
+            },
+            "n_receptores": 1
+          }
+        },
+        "ok_area": true
+      }
+    },
+    "equilibrio_vertical": {
+      "R_z_kN": 25227.7316,
+      "P_z_kN": 25227.7316,
+      "residuo_kN": -0.0,
+      "ok": true
+    },
+    "equilibrio_horizontal": {
+      "F_x_kN": -0.0,
+      "F_y_kN": 0.0,
+      "ok": true
+    },
+    "equilibrio_momentos": {
+      "Mx_reacciones_kN_m": 182062.453,
+      "Mx_cargas_kN_m": -182873.206,
+      "My_reacciones_kN_m": 585174.942,
+      "My_cargas_kN_m": -586330.068,
+      "res_Mx_kN_m": -810.753,
+      "res_My_kN_m": -1155.126,
+      "ok": true
+    },
+    "diafragmas": {
+      "P1": {
+        "n_esclavos_diafragma": 28,
+        "n_esclavos_rigidlink_excl_por_nivel": 0,
+        "n_comprobados_diafragma": 28,
+        "n_extremos_excentricos_comprobados": 2,
+        "max_derr_cinematico_m": 0.0,
+        "peor_nodo": null,
+        "max_derr_extremo_excentrico_m": 0.0,
+        "peor_extremo_excentrico": [
+          430,
+          45.35,
+          -0.2,
+          0.0,
+          0.0
+        ],
+        "ok": true
+      },
+      "P2": {
+        "n_esclavos_diafragma": 41,
+        "n_esclavos_rigidlink_excl_por_nivel": 0,
+        "n_comprobados_diafragma": 41,
+        "n_extremos_excentricos_comprobados": 0,
+        "max_derr_cinematico_m": 0.0,
+        "peor_nodo": null,
+        "max_derr_extremo_excentrico_m": 0.0,
+        "peor_extremo_excentrico": null,
+        "ok": true
+      },
+      "P3": {
+        "n_esclavos_diafragma": 62,
+        "n_esclavos_rigidlink_excl_por_nivel": 0,
+        "n_comprobados_diafragma": 62,
+        "n_extremos_excentricos_comprobados": 0,
+        "max_derr_cinematico_m": 0.0,
+        "peor_nodo": null,
+        "max_derr_extremo_excentrico_m": 0.0,
+        "peor_extremo_excentrico": null,
+        "ok": true
+      },
+      "P4": {
+        "n_esclavos_diafragma": 68,
+        "n_esclavos_rigidlink_excl_por_nivel": 0,
+        "n_comprobados_diafragma": 68,
+        "n_extremos_excentricos_comprobados": 0,
+        "max_derr_cinematico_m": 0.0,
+        "peor_nodo": null,
+        "max_derr_extremo_excentrico_m": 0.0,
+        "peor_extremo_excentrico": null,
+        "ok": true
+      },
+      "_conectores_estructurales_vertical": {
+        "429": {
+          "columna": 79,
+          "dx_m": 0.35,
+          "dy_m": -0.2,
+          "dif_uz_conector_m": -9.867e-06,
+          "rigid_body_uz_m": 9.865e-06,
+          "def_uz_conector_m": -1.9732e-05,
+          "err_rx": 1e-08,
+          "err_ry": 0.0
+        },
+        "430": {
+          "columna": 121,
+          "dx_m": 0.35,
+          "dy_m": -0.2,
+          "dif_uz_conector_m": -1.7616e-05,
+          "rigid_body_uz_m": 1.7614e-05,
+          "def_uz_conector_m": -3.523e-05,
+          "err_rx": 1.2e-08,
+          "err_ry": 2e-09
+        },
+        "399": {
+          "columna": 16,
+          "dx_m": 0.35,
+          "dy_m": -0.25,
+          "dif_uz_conector_m": 0.0,
+          "rigid_body_uz_m": 0.0,
+          "def_uz_conector_m": 0.0,
+          "err_rx": 0.0,
+          "err_ry": 0.0
+        },
+        "400": {
+          "columna": 30,
+          "dx_m": -0.35,
+          "dy_m": -0.25,
+          "dif_uz_conector_m": 0.0,
+          "rigid_body_uz_m": 0.0,
+          "def_uz_conector_m": 0.0,
+          "err_rx": 0.0,
+          "err_ry": 0.0
+        },
+        "402": {
+          "columna": 180,
+          "dx_m": 0.35,
+          "dy_m": 0.069,
+          "dif_uz_conector_m": 0.0,
+          "rigid_body_uz_m": 0.0,
+          "def_uz_conector_m": 0.0,
+          "err_rx": 0.0,
+          "err_ry": 0.0
+        },
+        "403": {
+          "columna": 183,
+          "dx_m": -0.35,
+          "dy_m": 0.069,
+          "dif_uz_conector_m": 0.0,
+          "rigid_body_uz_m": 0.0,
+          "def_uz_conector_m": 0.0,
+          "err_rx": 0.0,
+          "err_ry": 0.0
+        },
+        "405": {
+          "columna": 16,
+          "dx_m": 0.25,
+          "dy_m": -0.35,
+          "dif_uz_conector_m": 0.0,
+          "rigid_body_uz_m": 0.0,
+          "def_uz_conector_m": 0.0,
+          "err_rx": 0.0,
+          "err_ry": 0.0
+        },
+        "406": {
+          "columna": 180,
+          "dx_m": 0.25,
+          "dy_m": 0.169,
+          "dif_uz_conector_m": 0.0,
+          "rigid_body_uz_m": 0.0,
+          "def_uz_conector_m": 0.0,
+          "err_rx": 0.0,
+          "err_ry": 0.0
+        }
+      }
+    },
+    "balance_carga_casoG_vs_aplicada": {
+      "carga_casoG_integrada_kN": 25227.7308,
+      "carga_aplicada_nodal_total_kN": 25227.7316,
+      "carga_omitida_receptores_sin_fe_kN": 0.0,
+      "residuo_kN": -0.0008,
+      "rel_dif": 0.0,
+      "ok": true,
+      "nota": "caso G = PP + PM.ADIC (sin SC). Falla si existe carga tributaria omitida (receptores sin nodos FE)."
+    },
+    "balance_carga_aplicada_vs_reacciones": {
+      "carga_aplicada_total_kN": 25227.7316,
+      "reacciones_total_kN": 25227.7316,
+      "ok": true,
+      "nota": "ver equilibrio_vertical (R_z vs P_z) y equilibrio_momentos."
+    },
+    "carga_no_aplicada_por_receptores_sin_fe": {
+      "carga_total_no_aplicada_kN": 0.0,
+      "por_nivel": {},
+      "ok": true,
+      "nota": "receptores con carga tributaria asignada pero sin nodos FE en el modelo; su carga NO se aplica. Debe resolverse, no descartarse."
+    }
+  },
+  "tiempos_s": 3.74
+}

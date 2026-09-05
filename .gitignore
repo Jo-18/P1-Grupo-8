@@ -16,6 +16,17 @@ venv/
 /Proyecto_Edificio_Ingenieria/
 /ErrorReports/
 resultados/
+
+# ===== Excepcion limitada: solo los seis entregables publicados del paquete Edificio I =====
+!analisis_estructural/edificio_I/resultados/
+!analisis_estructural/edificio_I/resultados/modelo_estructural/
+analisis_estructural/edificio_I/resultados/modelo_estructural/*
+!analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json
+!analisis_estructural/edificio_I/resultados/modelo_estructural/esfuerzos_elementos_edificio_I.csv
+!analisis_estructural/edificio_I/resultados/modelo_estructural/paquete_entrega_edificio_I.json
+!analisis_estructural/edificio_I/resultados/modelo_estructural/resultado_primera_ejecucion.json
+!analisis_estructural/edificio_I/resultados/modelo_estructural/solucion_cruda_primera_ejecucion.json
+!analisis_estructural/edificio_I/resultados/modelo_estructural/trazabilidad_losa_receptor_fe.json
 tmp/
 temp/
 evidencia_ocr/

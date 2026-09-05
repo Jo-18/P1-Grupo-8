@@ -1,0 +1,8467 @@
+{
+ "nivel": {
+  "CP1S": {
+   "n_losas": 3,
+   "n_receptores": 20
+  },
+  "P1": {
+   "n_losas": 16,
+   "n_receptores": 49
+  },
+  "P2": {
+   "n_losas": 26,
+   "n_receptores": 93
+  },
+  "P3": {
+   "n_losas": 29,
+   "n_receptores": 114
+  },
+  "P4": {
+   "n_losas": 25,
+   "n_receptores": 107
+  }
+ },
+ "detalle": {
+  "CP1S": {
+   "losas": {
+    "L_EI_CP1S_D_INFERIOR_A": {
+     "area_neta_m2": 74.48,
+     "carga_por_comp_kN": {
+      "pp": 273.8997,
+      "pm_adic": 189.8922,
+      "sc": 0.0,
+      "total": 463.7919
+     },
+     "receptores": {
+      "M_EI_CP1S_005": {
+       "area_tributaria_m2": 15.9145,
+       "carga_total_kN": 99.1008,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        262,
+        261
+       ],
+       "longitudes_segmento_m": [
+        4.479
+       ],
+       "pesos_por_nodo": {
+        "262": 0.5,
+        "261": 0.5
+       }
+      },
+      "M_EI_CP1S_004": {
+       "area_tributaria_m2": 14.9597,
+       "carga_total_kN": 93.1548,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        260,
+        259
+       ],
+       "longitudes_segmento_m": [
+        4.479
+       ],
+       "pesos_por_nodo": {
+        "260": 0.5,
+        "259": 0.5
+       }
+      },
+      "H_EI_CP1S_y0601_0.700-10.000": {
+       "area_tributaria_m2": 13.6228,
+       "carga_total_kN": 84.8303,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        399,
+        400
+       ],
+       "longitudes_segmento_m": [
+        9.3
+       ],
+       "pesos_por_nodo": {
+        "399": 0.5,
+        "400": 0.5
+       }
+      },
+      "V_EI_CP1S_x0060_0.700-16.150": {
+       "area_tributaria_m2": 11.5221,
+       "carga_total_kN": 71.749,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        406,
+        405
+       ],
+       "longitudes_segmento_m": [
+        15.45
+       ],
+       "pesos_por_nodo": {
+        "406": 0.5,
+        "405": 0.5
+       }
+      },
+      "M_EI_CP1S_003": {
+       "area_tributaria_m2": 8.5302,
+       "carga_total_kN": 53.118,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        258,
+        257
+       ],
+       "longitudes_segmento_m": [
+        16.951
+       ],
+       "pesos_por_nodo": {
+        "258": 0.5,
+        "257": 0.5
+       }
+      },
+      "H_EI_CP1S_y0760_0.200-10.000": {
+       "area_tributaria_m2": 7.448,
+       "carga_total_kN": 46.3792,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        388,
+        9,
+        9,
+        390
+       ],
+       "longitudes_segmento_m": [
+        0.15,
+        9.65
+       ],
+       "pesos_por_nodo": {
+        "388": 0.00765,
+        "9": 0.5,
+        "390": 0.49235
+       }
+      },
+      "H_EI_CP1S_y0000_0.200-10.000": {
+       "area_tributaria_m2": 2.419,
+       "carga_total_kN": 15.0633,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        385,
+        257
+       ],
+       "longitudes_segmento_m": [
+        9.8
+       ],
+       "pesos_por_nodo": {
+        "385": 0.5,
+        "257": 0.5
+       }
+      },
+      "M_EI_CP1S_001": {
+       "area_tributaria_m2": 0.0637,
+       "carga_total_kN": 0.3964,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        671,
+        672
+       ],
+       "longitudes_segmento_m": [
+        0.0
+       ],
+       "pesos_por_nodo": {
+        "671": 0.5,
+        "672": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP1S_D_INFERIOR_B_SUPERIOR": {
+     "area_neta_m2": 90.6539,
+     "carga_por_comp_kN": {
+      "pp": 333.3792,
+      "pm_adic": 231.1391,
+      "sc": 0.0,
+      "total": 564.5184
+     },
+     "receptores": {
+      "H_EI_CP1S_y1625_0.700-10.000": {
+       "area_tributaria_m2": 17.402,
+       "carga_total_kN": 108.3656,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        402,
+        403
+       ],
+       "longitudes_segmento_m": [
+        9.3
+       ],
+       "pesos_por_nodo": {
+        "402": 0.5,
+        "403": 0.5
+       }
+      },
+      "V_EI_CP1S_x0060_0.700-16.150": {
+       "area_tributaria_m2": 15.5802,
+       "carga_total_kN": 97.0205,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        406,
+        405
+       ],
+       "longitudes_segmento_m": [
+        15.45
+       ],
+       "pesos_por_nodo": {
+        "406": 0.5,
+        "405": 0.5
+       }
+      },
+      "M_EI_CP1S_007": {
+       "area_tributaria_m2": 15.5173,
+       "carga_total_kN": 96.6293,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        266,
+        265
+       ],
+       "longitudes_segmento_m": [
+        2.35
+       ],
+       "pesos_por_nodo": {
+        "266": 0.5,
+        "265": 0.5
+       }
+      },
+      "M_EI_CP1S_006": {
+       "area_tributaria_m2": 15.0148,
+       "carga_total_kN": 93.4996,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        264,
+        263
+       ],
+       "longitudes_segmento_m": [
+        2.35
+       ],
+       "pesos_por_nodo": {
+        "264": 0.5,
+        "263": 0.5
+       }
+      },
+      "H_EI_CP1S_y0760_0.200-10.000": {
+       "area_tributaria_m2": 12.5646,
+       "carga_total_kN": 78.2423,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        388,
+        9,
+        9,
+        390
+       ],
+       "longitudes_segmento_m": [
+        0.15,
+        9.65
+       ],
+       "pesos_por_nodo": {
+        "388": 0.00765,
+        "9": 0.5,
+        "390": 0.49235
+       }
+      },
+      "M_EI_CP1S_003": {
+       "area_tributaria_m2": 12.1249,
+       "carga_total_kN": 75.5038,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        258,
+        257
+       ],
+       "longitudes_segmento_m": [
+        16.951
+       ],
+       "pesos_por_nodo": {
+        "258": 0.5,
+        "257": 0.5
+       }
+      },
+      "H_EI_CP1S_y1695_0.200-21.600": {
+       "area_tributaria_m2": 2.3873,
+       "carga_total_kN": 14.866,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        392,
+        258,
+        258,
+        394
+       ],
+       "longitudes_segmento_m": [
+        9.8,
+        11.6
+       ],
+       "pesos_por_nodo": {
+        "392": 0.22897,
+        "258": 0.5,
+        "394": 0.27103
+       }
+      },
+      "M_EI_CP1S_001": {
+       "area_tributaria_m2": 0.0628,
+       "carga_total_kN": 0.3912,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        671,
+        672
+       ],
+       "longitudes_segmento_m": [
+        0.0
+       ],
+       "pesos_por_nodo": {
+        "671": 0.5,
+        "672": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP1S_D_SUPERIOR": {
+     "area_neta_m2": 221.8966,
+     "carga_por_comp_kN": {
+      "pp": 816.0234,
+      "pm_adic": 652.8187,
+      "sc": 0.0,
+      "total": 1468.842
+     },
+     "receptores": {
+      "H_EI_CP1S_y1695_0.200-21.600": {
+       "area_tributaria_m2": 85.575,
+       "carga_total_kN": 566.463,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        392,
+        258,
+        258,
+        394
+       ],
+       "longitudes_segmento_m": [
+        9.8,
+        11.6
+       ],
+       "pesos_por_nodo": {
+        "392": 0.22897,
+        "258": 0.5,
+        "394": 0.27103
+       }
+      },
+      "H_EI_CP1S_y2732_0.200-21.600": {
+       "area_tributaria_m2": 84.2379,
+       "carga_total_kN": 557.6121,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        396,
+        397
+       ],
+       "longitudes_segmento_m": [
+        21.4
+       ],
+       "pesos_por_nodo": {
+        "396": 0.5,
+        "397": 0.5
+       }
+      },
+      "M_EI_CP1S_002": {
+       "area_tributaria_m2": 27.1879,
+       "carga_total_kN": 179.97,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        674,
+        397
+       ],
+       "longitudes_segmento_m": [
+        0.0
+       ],
+       "pesos_por_nodo": {
+        "674": 0.5,
+        "397": 0.5
+       }
+      },
+      "M_EI_CP1S_001": {
+       "area_tributaria_m2": 24.8957,
+       "carga_total_kN": 164.7969,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        671,
+        672
+       ],
+       "longitudes_segmento_m": [
+        0.0
+       ],
+       "pesos_por_nodo": {
+        "671": 0.5,
+        "672": 0.5
+       }
+      }
+     }
+    }
+   }
+  },
+  "P1": {
+   "losas": {
+    "L_EI_CP1_D_INF_W_E": {
+     "area_neta_m2": 1.8125,
+     "carga_por_comp_kN": {
+      "pp": 6.6655,
+      "pm_adic": 4.6214,
+      "sc": 0.0,
+      "total": 11.2868
+     },
+     "receptores": {
+      "V_COL_CP1_E": {
+       "area_tributaria_m2": 1.6875,
+       "carga_total_kN": 10.5084,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        2,
+        10,
+        10,
+        17
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "2": 0.27554,
+        "10": 0.5,
+        "17": 0.22446
+       }
+      },
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 0.0625,
+       "carga_total_kN": 0.3892,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "GV_CP1_G3": {
+       "area_tributaria_m2": 0.0625,
+       "carga_total_kN": 0.3892,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        267,
+        17,
+        17,
+        31,
+        31,
+        51,
+        51,
+        65,
+        65,
+        86,
+        86,
+        107,
+        107,
+        414
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "267": 0.00274,
+        "17": 0.11239,
+        "31": 0.2193,
+        "51": 0.2193,
+        "65": 0.2193,
+        "86": 0.16447,
+        "107": 0.05866,
+        "414": 0.00384
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_INF_E_F": {
+     "area_neta_m2": 72.5,
+     "carga_por_comp_kN": {
+      "pp": 266.6183,
+      "pm_adic": 184.8554,
+      "sc": 0.0,
+      "total": 451.4736
+     },
+     "receptores": {
+      "GV_CP1_G3": {
+       "area_tributaria_m2": 24.375,
+       "carga_total_kN": 151.7886,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        267,
+        17,
+        17,
+        31,
+        31,
+        51,
+        51,
+        65,
+        65,
+        86,
+        86,
+        107,
+        107,
+        414
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "267": 0.00274,
+        "17": 0.11239,
+        "31": 0.2193,
+        "51": 0.2193,
+        "65": 0.2193,
+        "86": 0.16447,
+        "107": 0.05866,
+        "414": 0.00384
+       }
+      },
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 23.625,
+       "carga_total_kN": 147.1181,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "V_COL_CP1_E": {
+       "area_tributaria_m2": 12.25,
+       "carga_total_kN": 76.2835,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        2,
+        10,
+        10,
+        17
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "2": 0.27554,
+        "10": 0.5,
+        "17": 0.22446
+       }
+      },
+      "V_COL_CP1_F": {
+       "area_tributaria_m2": 12.25,
+       "carga_total_kN": 76.2835,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        38,
+        24,
+        24,
+        31
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "38": 0.27554,
+        "24": 0.5,
+        "31": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_INF_F_G": {
+     "area_neta_m2": 72.5,
+     "carga_por_comp_kN": {
+      "pp": 266.6183,
+      "pm_adic": 184.8551,
+      "sc": 0.0,
+      "total": 451.4734
+     },
+     "receptores": {
+      "GV_CP1_G3": {
+       "area_tributaria_m2": 24.375,
+       "carga_total_kN": 151.7885,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        267,
+        17,
+        17,
+        31,
+        31,
+        51,
+        51,
+        65,
+        65,
+        86,
+        86,
+        107,
+        107,
+        414
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "267": 0.00274,
+        "17": 0.11239,
+        "31": 0.2193,
+        "51": 0.2193,
+        "65": 0.2193,
+        "86": 0.16447,
+        "107": 0.05866,
+        "414": 0.00384
+       }
+      },
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 23.625,
+       "carga_total_kN": 147.1181,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "V_COL_CP1_F": {
+       "area_tributaria_m2": 12.25,
+       "carga_total_kN": 76.2834,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        38,
+        24,
+        24,
+        31
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "38": 0.27554,
+        "24": 0.5,
+        "31": 0.22446
+       }
+      },
+      "V_COL_CP1_G": {
+       "area_tributaria_m2": 12.25,
+       "carga_total_kN": 76.2834,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        45,
+        58,
+        58,
+        51
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "45": 0.27554,
+        "58": 0.5,
+        "51": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_INF_G_H": {
+     "area_neta_m2": 72.5,
+     "carga_por_comp_kN": {
+      "pp": 266.6183,
+      "pm_adic": 184.8554,
+      "sc": 0.0,
+      "total": 451.4736
+     },
+     "receptores": {
+      "GV_CP1_G3": {
+       "area_tributaria_m2": 24.375,
+       "carga_total_kN": 151.7886,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        267,
+        17,
+        17,
+        31,
+        31,
+        51,
+        51,
+        65,
+        65,
+        86,
+        86,
+        107,
+        107,
+        414
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "267": 0.00274,
+        "17": 0.11239,
+        "31": 0.2193,
+        "51": 0.2193,
+        "65": 0.2193,
+        "86": 0.16447,
+        "107": 0.05866,
+        "414": 0.00384
+       }
+      },
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 23.625,
+       "carga_total_kN": 147.1181,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "V_COL_CP1_G": {
+       "area_tributaria_m2": 12.25,
+       "carga_total_kN": 76.2835,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        45,
+        58,
+        58,
+        51
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "45": 0.27554,
+        "58": 0.5,
+        "51": 0.22446
+       }
+      },
+      "V_COL_CP1_H": {
+       "area_tributaria_m2": 12.25,
+       "carga_total_kN": 76.2835,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        79,
+        72,
+        72,
+        65
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "79": 0.27554,
+        "72": 0.5,
+        "65": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_INF_H_I": {
+     "area_neta_m2": 73.5875,
+     "carga_por_comp_kN": {
+      "pp": 270.6176,
+      "pm_adic": 187.6282,
+      "sc": 0.0,
+      "total": 458.2458
+     },
+     "receptores": {
+      "GV_CP1_G3": {
+       "area_tributaria_m2": 23.7891,
+       "carga_total_kN": 148.1398,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        267,
+        17,
+        17,
+        31,
+        31,
+        51,
+        51,
+        65,
+        65,
+        86,
+        86,
+        107,
+        107,
+        414
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "267": 0.00274,
+        "17": 0.11239,
+        "31": 0.2193,
+        "51": 0.2193,
+        "65": 0.2193,
+        "86": 0.16447,
+        "107": 0.05866,
+        "414": 0.00384
+       }
+      },
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 23.0912,
+       "carga_total_kN": 143.7944,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "V_COL_CP1_I": {
+       "area_tributaria_m2": 14.2734,
+       "carga_total_kN": 88.8839,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        100,
+        93,
+        93,
+        86
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "100": 0.27554,
+        "93": 0.5,
+        "86": 0.22446
+       }
+      },
+      "V_COL_CP1_H": {
+       "area_tributaria_m2": 12.4337,
+       "carga_total_kN": 77.4277,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        79,
+        72,
+        72,
+        65
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "79": 0.27554,
+        "72": 0.5,
+        "65": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_INF_I_Ip": {
+     "area_neta_m2": 37.7,
+     "carga_por_comp_kN": {
+      "pp": 138.6415,
+      "pm_adic": 96.1248,
+      "sc": 0.0,
+      "total": 234.7663
+     },
+     "receptores": {
+      "V_COL_CP1_Ip": {
+       "area_tributaria_m2": 14.625,
+       "carga_total_kN": 91.0731,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        121,
+        114,
+        114,
+        107
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "121": 0.27554,
+        "114": 0.5,
+        "107": 0.22446
+       }
+      },
+      "M_EI_CP1_002": {
+       "area_tributaria_m2": 11.115,
+       "carga_total_kN": 69.2156,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        276,
+        273
+       ],
+       "longitudes_segmento_m": [
+        17.08
+       ],
+       "pesos_por_nodo": {
+        "276": 0.5,
+        "273": 0.5
+       }
+      },
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 5.98,
+       "carga_total_kN": 37.2388,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "GV_CP1_G3": {
+       "area_tributaria_m2": 5.98,
+       "carga_total_kN": 37.2388,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        267,
+        17,
+        17,
+        31,
+        31,
+        51,
+        51,
+        65,
+        65,
+        86,
+        86,
+        107,
+        107,
+        414
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "267": 0.00274,
+        "17": 0.11239,
+        "31": 0.2193,
+        "51": 0.2193,
+        "65": 0.2193,
+        "86": 0.16447,
+        "107": 0.05866,
+        "414": 0.00384
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_MED_W_E": {
+     "area_neta_m2": 2.225,
+     "carga_por_comp_kN": {
+      "pp": 8.1824,
+      "pm_adic": 5.6731,
+      "sc": 0.0,
+      "total": 13.8556
+     },
+     "receptores": {
+      "V_COL_CP1_E": {
+       "area_tributaria_m2": 2.225,
+       "carga_total_kN": 13.8556,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        2,
+        10,
+        10,
+        17
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "2": 0.27554,
+        "10": 0.5,
+        "17": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_MED_E_F": {
+     "area_neta_m2": 89.0,
+     "carga_por_comp_kN": {
+      "pp": 327.2969,
+      "pm_adic": 226.9259,
+      "sc": 0.0,
+      "total": 554.2228
+     },
+     "receptores": {
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 24.03,
+       "carga_total_kN": 149.6402,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "GV_CP1_G1_oeste": {
+       "area_tributaria_m2": 23.7757,
+       "carga_total_kN": 148.0567,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        270,
+        2,
+        2,
+        38,
+        38,
+        45,
+        45,
+        79
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "270": 0.00413,
+        "2": 0.16942,
+        "38": 0.33058,
+        "45": 0.33058,
+        "79": 0.16529
+       }
+      },
+      "V_COL_CP1_E": {
+       "area_tributaria_m2": 20.5971,
+       "carga_total_kN": 128.263,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        2,
+        10,
+        10,
+        17
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "2": 0.27554,
+        "10": 0.5,
+        "17": 0.22446
+       }
+      },
+      "V_COL_CP1_F": {
+       "area_tributaria_m2": 20.5971,
+       "carga_total_kN": 128.263,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        38,
+        24,
+        24,
+        31
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "38": 0.27554,
+        "24": 0.5,
+        "31": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_MED_F_G": {
+     "area_neta_m2": 89.0,
+     "carga_por_comp_kN": {
+      "pp": 327.2969,
+      "pm_adic": 226.9259,
+      "sc": 0.0,
+      "total": 554.2228
+     },
+     "receptores": {
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 24.03,
+       "carga_total_kN": 149.6402,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "GV_CP1_G1_oeste": {
+       "area_tributaria_m2": 23.7757,
+       "carga_total_kN": 148.0567,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        270,
+        2,
+        2,
+        38,
+        38,
+        45,
+        45,
+        79
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "270": 0.00413,
+        "2": 0.16942,
+        "38": 0.33058,
+        "45": 0.33058,
+        "79": 0.16529
+       }
+      },
+      "V_COL_CP1_F": {
+       "area_tributaria_m2": 20.5971,
+       "carga_total_kN": 128.263,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        38,
+        24,
+        24,
+        31
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "38": 0.27554,
+        "24": 0.5,
+        "31": 0.22446
+       }
+      },
+      "V_COL_CP1_G": {
+       "area_tributaria_m2": 20.5971,
+       "carga_total_kN": 128.263,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        45,
+        58,
+        58,
+        51
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "45": 0.27554,
+        "58": 0.5,
+        "51": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_MED_G_H": {
+     "area_neta_m2": 89.0,
+     "carga_por_comp_kN": {
+      "pp": 327.2969,
+      "pm_adic": 226.9259,
+      "sc": 0.0,
+      "total": 554.2228
+     },
+     "receptores": {
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 24.03,
+       "carga_total_kN": 149.6402,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "GV_CP1_G1_oeste": {
+       "area_tributaria_m2": 23.7757,
+       "carga_total_kN": 148.0567,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        270,
+        2,
+        2,
+        38,
+        38,
+        45,
+        45,
+        79
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "270": 0.00413,
+        "2": 0.16942,
+        "38": 0.33058,
+        "45": 0.33058,
+        "79": 0.16529
+       }
+      },
+      "V_COL_CP1_G": {
+       "area_tributaria_m2": 20.5971,
+       "carga_total_kN": 128.263,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        45,
+        58,
+        58,
+        51
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "45": 0.27554,
+        "58": 0.5,
+        "51": 0.22446
+       }
+      },
+      "V_COL_CP1_H": {
+       "area_tributaria_m2": 20.5971,
+       "carga_total_kN": 128.263,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        79,
+        72,
+        72,
+        65
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "79": 0.27554,
+        "72": 0.5,
+        "65": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_MED_H_I": {
+     "area_neta_m2": 92.365,
+     "carga_por_comp_kN": {
+      "pp": 339.6717,
+      "pm_adic": 235.5057,
+      "sc": 0.0,
+      "total": 575.1774
+     },
+     "receptores": {
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 25.4004,
+       "carga_total_kN": 158.1738,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      },
+      "GV_CP1_GE_este": {
+       "area_tributaria_m2": 25.3362,
+       "carga_total_kN": 157.7744,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        429,
+        430
+       ],
+       "longitudes_segmento_m": [
+        15.0
+       ],
+       "pesos_por_nodo": {
+        "429": 0.5,
+        "430": 0.5
+       }
+      },
+      "V_COL_CP1_I": {
+       "area_tributaria_m2": 21.9367,
+       "carga_total_kN": 136.6046,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        100,
+        93,
+        93,
+        86
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "100": 0.27554,
+        "93": 0.5,
+        "86": 0.22446
+       }
+      },
+      "V_COL_CP1_H": {
+       "area_tributaria_m2": 19.6917,
+       "carga_total_kN": 122.6246,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        79,
+        72,
+        72,
+        65
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "79": 0.27554,
+        "72": 0.5,
+        "65": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_MED_I_Ip": {
+     "area_neta_m2": 47.32,
+     "carga_por_comp_kN": {
+      "pp": 174.019,
+      "pm_adic": 120.6532,
+      "sc": 0.0,
+      "total": 294.6722
+     },
+     "receptores": {
+      "V_COL_CP1_Ip": {
+       "area_tributaria_m2": 19.9796,
+       "carga_total_kN": 124.4171,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        121,
+        114,
+        114,
+        107
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "121": 0.27554,
+        "114": 0.5,
+        "107": 0.22446
+       }
+      },
+      "V_COL_CP1_I": {
+       "area_tributaria_m2": 15.379,
+       "carga_total_kN": 95.7685,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        100,
+        93,
+        93,
+        86
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "100": 0.27554,
+        "93": 0.5,
+        "86": 0.22446
+       }
+      },
+      "GV_CP1_GE_este": {
+       "area_tributaria_m2": 5.9807,
+       "carga_total_kN": 37.2433,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        429,
+        430
+       ],
+       "longitudes_segmento_m": [
+        15.0
+       ],
+       "pesos_por_nodo": {
+        "429": 0.5,
+        "430": 0.5
+       }
+      },
+      "GV_CP1_G2": {
+       "area_tributaria_m2": 5.9807,
+       "carga_total_kN": 37.2433,
+       "n_nodos_fe": 14,
+       "nodos_fe_en_orden": [
+        416,
+        10,
+        10,
+        24,
+        24,
+        58,
+        58,
+        72,
+        72,
+        93,
+        93,
+        114,
+        114,
+        423
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0,
+        10.0,
+        5.0,
+        0.35
+       ],
+       "pesos_por_nodo": {
+        "416": 0.00274,
+        "10": 0.11239,
+        "24": 0.2193,
+        "58": 0.2193,
+        "72": 0.2193,
+        "93": 0.16447,
+        "114": 0.05866,
+        "423": 0.00384
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_SUP_OESTE_VOL": {
+     "area_neta_m2": 34.7875,
+     "carga_por_comp_kN": {
+      "pp": 127.9308,
+      "pm_adic": 74.4606,
+      "sc": 0.0,
+      "total": 202.3914
+     },
+     "receptores": {
+      "GV_CP1_G1_oeste": {
+       "area_tributaria_m2": 34.7875,
+       "carga_total_kN": 202.3914,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        270,
+        2,
+        2,
+        38,
+        38,
+        45,
+        45,
+        79
+       ],
+       "longitudes_segmento_m": [
+        0.25,
+        10.0,
+        10.0,
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "270": 0.00413,
+        "2": 0.16942,
+        "38": 0.33058,
+        "45": 0.33058,
+        "79": 0.16529
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_VOL_ESTE_OE": {
+     "area_neta_m2": 79.2228,
+     "carga_por_comp_kN": {
+      "pp": 291.3414,
+      "pm_adic": 156.7234,
+      "sc": 0.0,
+      "total": 448.0648
+     },
+     "receptores": {
+      "M_EI_CP1_002": {
+       "area_tributaria_m2": 79.2228,
+       "carga_total_kN": 448.0648,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        276,
+        273
+       ],
+       "longitudes_segmento_m": [
+        17.08
+       ],
+       "pesos_por_nodo": {
+        "276": 0.5,
+        "273": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_VOL_ESTE_ES": {
+     "area_neta_m2": 64.168,
+     "carga_por_comp_kN": {
+      "pp": 235.9774,
+      "pm_adic": 100.3581,
+      "sc": 0.0,
+      "total": 336.3355
+     },
+     "receptores": {
+      "M_EI_CP1_002": {
+       "area_tributaria_m2": 64.168,
+       "carga_total_kN": 336.3355,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        276,
+        273
+       ],
+       "longitudes_segmento_m": [
+        17.08
+       ],
+       "pesos_por_nodo": {
+        "276": 0.5,
+        "273": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP1_D_ATRIO_ESTE": {
+     "area_neta_m2": 88.041,
+     "carga_por_comp_kN": {
+      "pp": 323.7702,
+      "pm_adic": 597.6881,
+      "sc": 0.0,
+      "total": 921.4583
+     },
+     "receptores": {
+      "M_EI_CP1_004": {
+       "area_tributaria_m2": 68.4551,
+       "carga_total_kN": 716.4673,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        288,
+        285
+       ],
+       "longitudes_segmento_m": [
+        3.05
+       ],
+       "pesos_por_nodo": {
+        "288": 0.5,
+        "285": 0.5
+       }
+      },
+      "M_EI_CP1_003": {
+       "area_tributaria_m2": 19.5859,
+       "carga_total_kN": 204.9911,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        282,
+        279
+       ],
+       "longitudes_segmento_m": [
+        6.1
+       ],
+       "pesos_por_nodo": {
+        "282": 0.5,
+        "279": 0.5
+       }
+      }
+     }
+    }
+   }
+  },
+  "P2": {
+   "losas": {
+    "L_EI_CP2_200": {
+     "area_neta_m2": 89.0,
+     "carga_por_comp_kN": {
+      "pp": 327.2969,
+      "pm_adic": 226.9229,
+      "sc": 0.0,
+      "total": 554.2198
+     },
+     "receptores": {
+      "M_EI_CP2_003": {
+       "area_tributaria_m2": 19.8979,
+       "carga_total_kN": 123.9077,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        311,
+        316
+       ],
+       "longitudes_segmento_m": [
+        6.95
+       ],
+       "pesos_por_nodo": {
+        "311": 0.5,
+        "316": 0.5
+       }
+      },
+      "H_EI_CP2_y0000_0.00-10.00": {
+       "area_tributaria_m2": 15.7657,
+       "carga_total_kN": 98.1761,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        5,
+        40
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "5": 0.5,
+        "40": 0.5
+       }
+      },
+      "V_EI_CP2_x10.00_0-16.15": {
+       "area_tributaria_m2": 13.2229,
+       "carga_total_kN": 82.3412,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        40,
+        26,
+        26,
+        33
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "40": 0.27554,
+        "26": 0.5,
+        "33": 0.22446
+       }
+      },
+      "H_EI_CP2_y0089_0.00-10.00": {
+       "area_tributaria_m2": 12.5871,
+       "carga_total_kN": 78.3825,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        12,
+        26
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "12": 0.5,
+        "26": 0.5
+       }
+      },
+      "V_EI_CP2_x0.00_0-16.15": {
+       "area_tributaria_m2": 9.9171,
+       "carga_total_kN": 61.7559,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        5,
+        12,
+        12,
+        19
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "5": 0.27554,
+        "12": 0.5,
+        "19": 0.22446
+       }
+      },
+      "M_EI_CP2_002": {
+       "area_tributaria_m2": 9.2179,
+       "carga_total_kN": 57.4013,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        301,
+        306
+       ],
+       "longitudes_segmento_m": [
+        2.25
+       ],
+       "pesos_por_nodo": {
+        "301": 0.5,
+        "306": 0.5
+       }
+      },
+      "M_EI_CP2_001": {
+       "area_tributaria_m2": 8.3914,
+       "carga_total_kN": 52.255,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        291,
+        296
+       ],
+       "longitudes_segmento_m": [
+        2.15
+       ],
+       "pesos_por_nodo": {
+        "291": 0.5,
+        "296": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_202": {
+     "area_neta_m2": 72.5,
+     "carga_por_comp_kN": {
+      "pp": 266.6183,
+      "pm_adic": 184.7984,
+      "sc": 0.0,
+      "total": 451.4167
+     },
+     "receptores": {
+      "H_EI_CP2_y0089_0.00-10.00": {
+       "area_tributaria_m2": 14.7589,
+       "carga_total_kN": 91.8955,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        12,
+        26
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "12": 0.5,
+        "26": 0.5
+       }
+      },
+      "M_EI_CP2_004": {
+       "area_tributaria_m2": 10.6161,
+       "carga_total_kN": 66.1003,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        321,
+        324
+       ],
+       "longitudes_segmento_m": [
+        1.679
+       ],
+       "pesos_por_nodo": {
+        "321": 0.5,
+        "324": 0.5
+       }
+      },
+      "M_EI_CP2_005": {
+       "area_tributaria_m2": 10.6161,
+       "carga_total_kN": 66.1003,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        327,
+        330
+       ],
+       "longitudes_segmento_m": [
+        1.679
+       ],
+       "pesos_por_nodo": {
+        "327": 0.5,
+        "330": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_0.00-10.00": {
+       "area_tributaria_m2": 10.0982,
+       "carga_total_kN": 62.8759,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        19,
+        33
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "19": 0.5,
+        "33": 0.5
+       }
+      },
+      "V_EI_CP2_x0.00_0-16.15": {
+       "area_tributaria_m2": 10.0335,
+       "carga_total_kN": 62.4729,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        5,
+        12,
+        12,
+        19
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "5": 0.27554,
+        "12": 0.5,
+        "19": 0.22446
+       }
+      },
+      "V_EI_CP2_x10.00_0-16.15": {
+       "area_tributaria_m2": 10.0335,
+       "carga_total_kN": 62.4729,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        40,
+        26,
+        26,
+        33
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "40": 0.27554,
+        "26": 0.5,
+        "33": 0.22446
+       }
+      },
+      "M_EI_CP2_006": {
+       "area_tributaria_m2": 6.3438,
+       "carga_total_kN": 39.499,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        333,
+        338
+       ],
+       "longitudes_segmento_m": [
+        3.45
+       ],
+       "pesos_por_nodo": {
+        "333": 0.5,
+        "338": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_204": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP2_x10.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        40,
+        26,
+        26,
+        33
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "40": 0.27554,
+        "26": 0.5,
+        "33": 0.22446
+       }
+      },
+      "V_EI_CP2_x15.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        445,
+        456,
+        456,
+        469
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "445": 0.27554,
+        "456": 0.5,
+        "469": 0.22446
+       }
+      },
+      "H_EI_CP2_y0000_10.00-15.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        40,
+        445
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "40": 0.5,
+        "445": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_10.00-15.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        26,
+        456
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "26": 0.5,
+        "456": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_205": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP2_x15.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        445,
+        456,
+        456,
+        469
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "445": 0.27554,
+        "456": 0.5,
+        "469": 0.22446
+       }
+      },
+      "V_EI_CP2_x20.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        47,
+        59,
+        59,
+        52
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "47": 0.27554,
+        "59": 0.5,
+        "52": 0.22446
+       }
+      },
+      "H_EI_CP2_y0000_15.00-20.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        445,
+        47
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "445": 0.5,
+        "47": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_17.20-20.00": {
+       "area_tributaria_m2": 3.4329,
+       "carga_total_kN": 21.3772,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        458,
+        59
+       ],
+       "longitudes_segmento_m": [
+        2.8
+       ],
+       "pesos_por_nodo": {
+        "458": 0.5,
+        "59": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_15.00-17.20": {
+       "area_tributaria_m2": 2.2886,
+       "carga_total_kN": 14.2514,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        456,
+        458
+       ],
+       "longitudes_segmento_m": [
+        2.2
+       ],
+       "pesos_por_nodo": {
+        "456": 0.5,
+        "458": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_206": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP2_x20.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        47,
+        59,
+        59,
+        52
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "47": 0.27554,
+        "59": 0.5,
+        "52": 0.22446
+       }
+      },
+      "V_EI_CP2_x25.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        448,
+        461,
+        461,
+        474
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "448": 0.27554,
+        "461": 0.5,
+        "474": 0.22446
+       }
+      },
+      "H_EI_CP2_y0000_20.00-25.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        47,
+        448
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "47": 0.5,
+        "448": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_20.00-25.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        59,
+        461
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "59": 0.5,
+        "461": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_207": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP2_x25.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        448,
+        461,
+        461,
+        474
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "448": 0.27554,
+        "461": 0.5,
+        "474": 0.22446
+       }
+      },
+      "V_EI_CP2_x30.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        80,
+        73,
+        73,
+        66
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "80": 0.27554,
+        "73": 0.5,
+        "66": 0.22446
+       }
+      },
+      "H_EI_CP2_y0000_25.00-30.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        448,
+        80
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "448": 0.5,
+        "80": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_25.00-30.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        461,
+        73
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "461": 0.5,
+        "73": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_208": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP2_x30.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        80,
+        73,
+        73,
+        66
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "80": 0.27554,
+        "73": 0.5,
+        "66": 0.22446
+       }
+      },
+      "V_EI_CP2_x35.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        451,
+        464,
+        464,
+        477
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "451": 0.27554,
+        "464": 0.5,
+        "477": 0.22446
+       }
+      },
+      "H_EI_CP2_y0000_30.00-35.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        80,
+        451
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "80": 0.5,
+        "451": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_30.00-35.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        73,
+        464
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "73": 0.5,
+        "464": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_209": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP2_x35.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        451,
+        464,
+        464,
+        477
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "451": 0.27554,
+        "464": 0.5,
+        "477": 0.22446
+       }
+      },
+      "V_EI_CP2_x40.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        101,
+        94,
+        94,
+        87
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "101": 0.27554,
+        "94": 0.5,
+        "87": 0.22446
+       }
+      },
+      "H_EI_CP2_y0000_35.00-40.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        451,
+        101
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "451": 0.5,
+        "101": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_35.00-40.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        464,
+        94
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "464": 0.5,
+        "94": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_210": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP2_x40.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        101,
+        94,
+        94,
+        87
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "101": 0.27554,
+        "94": 0.5,
+        "87": 0.22446
+       }
+      },
+      "V_EI_CP2_x45.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        122,
+        115,
+        115,
+        108
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "122": 0.27554,
+        "115": 0.5,
+        "108": 0.22446
+       }
+      },
+      "H_EI_CP2_y0000_40.00-45.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        101,
+        122
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "101": 0.5,
+        "122": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_40.00-45.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        94,
+        115
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "94": 0.5,
+        "115": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_211": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP2_x10.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        40,
+        26,
+        26,
+        33
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "40": 0.27554,
+        "26": 0.5,
+        "33": 0.22446
+       }
+      },
+      "V_EI_CP2_x15.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        445,
+        456,
+        456,
+        469
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "445": 0.27554,
+        "456": 0.5,
+        "469": 0.22446
+       }
+      },
+      "H_EI_CP2_y0089_10.00-15.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        26,
+        456
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "26": 0.5,
+        "456": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_10.00-15.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        33,
+        469
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "33": 0.5,
+        "469": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_212": {
+     "area_neta_m2": 15.95,
+     "carga_por_comp_kN": {
+      "pp": 58.656,
+      "pm_adic": 40.6682,
+      "sc": 0.0,
+      "total": 99.3242
+     },
+     "receptores": {
+      "V_EI_CP2_x15.00_0-16.15": {
+       "area_tributaria_m2": 6.5509,
+       "carga_total_kN": 40.7939,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        445,
+        456,
+        456,
+        469
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "445": 0.27554,
+        "456": 0.5,
+        "469": 0.22446
+       }
+      },
+      "V_EI_CP2_x17.20_890-1615": {
+       "area_tributaria_m2": 6.5509,
+       "carga_total_kN": 40.7939,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        458,
+        471
+       ],
+       "longitudes_segmento_m": [
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "458": 0.5,
+        "471": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_15.00-17.20": {
+       "area_tributaria_m2": 1.4241,
+       "carga_total_kN": 8.8682,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        456,
+        458
+       ],
+       "longitudes_segmento_m": [
+        2.2
+       ],
+       "pesos_por_nodo": {
+        "456": 0.5,
+        "458": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_15.00-17.20": {
+       "area_tributaria_m2": 1.4241,
+       "carga_total_kN": 8.8682,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        469,
+        471
+       ],
+       "longitudes_segmento_m": [
+        2.2
+       ],
+       "pesos_por_nodo": {
+        "469": 0.5,
+        "471": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_213": {
+     "area_neta_m2": 20.3,
+     "carga_por_comp_kN": {
+      "pp": 74.6531,
+      "pm_adic": 51.7595,
+      "sc": 0.0,
+      "total": 126.4126
+     },
+     "receptores": {
+      "V_EI_CP2_x20.00_0-16.15": {
+       "area_tributaria_m2": 9.0955,
+       "carga_total_kN": 56.6394,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        47,
+        59,
+        59,
+        52
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "47": 0.27554,
+        "59": 0.5,
+        "52": 0.22446
+       }
+      },
+      "V_EI_CP2_x17.20_890-1615": {
+       "area_tributaria_m2": 7.9091,
+       "carga_total_kN": 49.2517,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        458,
+        471
+       ],
+       "longitudes_segmento_m": [
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "458": 0.5,
+        "471": 0.5
+       }
+      },
+      "H_EI_CP2_y0089_17.20-20.00": {
+       "area_tributaria_m2": 1.6477,
+       "carga_total_kN": 10.2608,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        458,
+        59
+       ],
+       "longitudes_segmento_m": [
+        2.8
+       ],
+       "pesos_por_nodo": {
+        "458": 0.5,
+        "59": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_17.20-20.00": {
+       "area_tributaria_m2": 1.6477,
+       "carga_total_kN": 10.2608,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        471,
+        52
+       ],
+       "longitudes_segmento_m": [
+        2.8
+       ],
+       "pesos_por_nodo": {
+        "471": 0.5,
+        "52": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_214": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP2_x20.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        47,
+        59,
+        59,
+        52
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "47": 0.27554,
+        "59": 0.5,
+        "52": 0.22446
+       }
+      },
+      "V_EI_CP2_x25.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        448,
+        461,
+        461,
+        474
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "448": 0.27554,
+        "461": 0.5,
+        "474": 0.22446
+       }
+      },
+      "H_EI_CP2_y0089_20.00-25.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        59,
+        461
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "59": 0.5,
+        "461": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_20.00-25.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        52,
+        474
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "52": 0.5,
+        "474": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_215": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP2_x25.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        448,
+        461,
+        461,
+        474
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "448": 0.27554,
+        "461": 0.5,
+        "474": 0.22446
+       }
+      },
+      "V_EI_CP2_x30.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        80,
+        73,
+        73,
+        66
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "80": 0.27554,
+        "73": 0.5,
+        "66": 0.22446
+       }
+      },
+      "H_EI_CP2_y0089_25.00-30.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        461,
+        73
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "461": 0.5,
+        "73": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_25.00-30.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        474,
+        66
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "474": 0.5,
+        "66": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_216": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP2_x30.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        80,
+        73,
+        73,
+        66
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "80": 0.27554,
+        "73": 0.5,
+        "66": 0.22446
+       }
+      },
+      "V_EI_CP2_x35.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        451,
+        464,
+        464,
+        477
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "451": 0.27554,
+        "464": 0.5,
+        "477": 0.22446
+       }
+      },
+      "H_EI_CP2_y0089_30.00-35.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        73,
+        464
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "73": 0.5,
+        "464": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_30.00-35.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        66,
+        477
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "66": 0.5,
+        "477": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_217": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP2_x35.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        451,
+        464,
+        464,
+        477
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "451": 0.27554,
+        "464": 0.5,
+        "477": 0.22446
+       }
+      },
+      "V_EI_CP2_x40.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        101,
+        94,
+        94,
+        87
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "101": 0.27554,
+        "94": 0.5,
+        "87": 0.22446
+       }
+      },
+      "H_EI_CP2_y0089_35.00-40.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        464,
+        94
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "464": 0.5,
+        "94": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_35.00-40.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        477,
+        87
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "477": 0.5,
+        "87": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_218": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP2_x40.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        101,
+        94,
+        94,
+        87
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "101": 0.27554,
+        "94": 0.5,
+        "87": 0.22446
+       }
+      },
+      "V_EI_CP2_x45.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        122,
+        115,
+        115,
+        108
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "122": 0.27554,
+        "115": 0.5,
+        "108": 0.22446
+       }
+      },
+      "H_EI_CP2_y0089_40.00-45.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        94,
+        115
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "94": 0.5,
+        "115": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_40.00-45.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        87,
+        108
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "87": 0.5,
+        "108": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_219": {
+     "area_neta_m2": 27.504,
+     "carga_por_comp_kN": {
+      "pp": 101.1458,
+      "pm_adic": 70.1277,
+      "sc": 0.0,
+      "total": 171.2735
+     },
+     "receptores": {
+      "H_EI_CP2_y0162_10.00-15.00": {
+       "area_tributaria_m2": 18.6634,
+       "carga_total_kN": 116.2213,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        33,
+        469
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "33": 0.5,
+        "469": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_15.00-17.20": {
+       "area_tributaria_m2": 8.8406,
+       "carga_total_kN": 55.0522,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        469,
+        471
+       ],
+       "longitudes_segmento_m": [
+        2.2
+       ],
+       "pesos_por_nodo": {
+        "469": 0.5,
+        "471": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_220": {
+     "area_neta_m2": 11.55,
+     "carga_por_comp_kN": {
+      "pp": 42.4751,
+      "pm_adic": 29.4494,
+      "sc": 0.0,
+      "total": 71.9244
+     },
+     "receptores": {
+      "H_EI_CP2_y0162_20.00-25.00": {
+       "area_tributaria_m2": 11.55,
+       "carga_total_kN": 71.9244,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        52,
+        474
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "52": 0.5,
+        "474": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_221": {
+     "area_neta_m2": 11.55,
+     "carga_por_comp_kN": {
+      "pp": 42.4751,
+      "pm_adic": 29.4494,
+      "sc": 0.0,
+      "total": 71.9244
+     },
+     "receptores": {
+      "H_EI_CP2_y0162_25.00-30.00": {
+       "area_tributaria_m2": 11.55,
+       "carga_total_kN": 71.9244,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        474,
+        66
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "474": 0.5,
+        "66": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_D_VOLADIZO_EXTERIOR_EJE_1": {
+     "area_neta_m2": 52.555,
+     "carga_por_comp_kN": {
+      "pp": 193.2707,
+      "pm_adic": 112.4674,
+      "sc": 0.0,
+      "total": 305.7381
+     },
+     "receptores": {
+      "H_EI_CP2_y0000_0.00-10.00": {
+       "area_tributaria_m2": 11.8393,
+       "carga_total_kN": 68.8751,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        5,
+        40
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "5": 0.5,
+        "40": 0.5
+       }
+      },
+      "H_EI_CP2_y0000_40.00-45.00": {
+       "area_tributaria_m2": 6.064,
+       "carga_total_kN": 35.2775,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        101,
+        122
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "101": 0.5,
+        "122": 0.5
+       }
+      },
+      "H_EI_CP2_y0000_10.00-15.00": {
+       "area_tributaria_m2": 5.7753,
+       "carga_total_kN": 33.5976,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        40,
+        445
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "40": 0.5,
+        "445": 0.5
+       }
+      },
+      "H_EI_CP2_y0000_15.00-20.00": {
+       "area_tributaria_m2": 5.7753,
+       "carga_total_kN": 33.5976,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        445,
+        47
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "445": 0.5,
+        "47": 0.5
+       }
+      },
+      "H_EI_CP2_y0000_20.00-25.00": {
+       "area_tributaria_m2": 5.7753,
+       "carga_total_kN": 33.5976,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        47,
+        448
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "47": 0.5,
+        "448": 0.5
+       }
+      },
+      "H_EI_CP2_y0000_25.00-30.00": {
+       "area_tributaria_m2": 5.7753,
+       "carga_total_kN": 33.5976,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        448,
+        80
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "448": 0.5,
+        "80": 0.5
+       }
+      },
+      "H_EI_CP2_y0000_30.00-35.00": {
+       "area_tributaria_m2": 5.7753,
+       "carga_total_kN": 33.5976,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        80,
+        451
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "80": 0.5,
+        "451": 0.5
+       }
+      },
+      "H_EI_CP2_y0000_35.00-40.00": {
+       "area_tributaria_m2": 5.7753,
+       "carga_total_kN": 33.5976,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        451,
+        101
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "451": 0.5,
+        "101": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_D_VOLADIZO_EXTERIOR_E": {
+     "area_neta_m2": 5.6525,
+     "carga_por_comp_kN": {
+      "pp": 20.787,
+      "pm_adic": 14.3675,
+      "sc": 0.0,
+      "total": 35.1545
+     },
+     "receptores": {
+      "V_EI_CP2_x0.00_0-16.15": {
+       "area_tributaria_m2": 5.6525,
+       "carga_total_kN": 35.1545,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        5,
+        12,
+        12,
+        19
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "5": 0.27554,
+        "12": 0.5,
+        "19": 0.22446
+       }
+      }
+     }
+    },
+    "L_EI_CP2_D_VOLADIZO_EXTERIOR_EJE_3_OESTE": {
+     "area_neta_m2": 3.255,
+     "carga_por_comp_kN": {
+      "pp": 11.9702,
+      "pm_adic": 8.2994,
+      "sc": 0.0,
+      "total": 20.2696
+     },
+     "receptores": {
+      "H_EI_CP2_y0162_0.00-10.00": {
+       "area_tributaria_m2": 3.255,
+       "carga_total_kN": 20.2696,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        19,
+        33
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "19": 0.5,
+        "33": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_D_VOLADIZO_EXTERIOR_EJE_3_ESTE_1": {
+     "area_neta_m2": 3.255,
+     "carga_por_comp_kN": {
+      "pp": 11.9702,
+      "pm_adic": 8.2994,
+      "sc": 0.0,
+      "total": 20.2696
+     },
+     "receptores": {
+      "H_EI_CP2_y0162_30.00-35.00": {
+       "area_tributaria_m2": 1.6715,
+       "carga_total_kN": 10.4087,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        66,
+        477
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "66": 0.5,
+        "477": 0.5
+       }
+      },
+      "H_EI_CP2_y0162_35.00-40.00": {
+       "area_tributaria_m2": 1.5835,
+       "carga_total_kN": 9.8609,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        477,
+        87
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "477": 0.5,
+        "87": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_D_VOLADIZO_EXTERIOR_EJE_3_ESTE_2": {
+     "area_neta_m2": 1.505,
+     "carga_por_comp_kN": {
+      "pp": 5.5346,
+      "pm_adic": 3.8373,
+      "sc": 0.0,
+      "total": 9.372
+     },
+     "receptores": {
+      "H_EI_CP2_y0162_40.00-45.00": {
+       "area_tributaria_m2": 1.505,
+       "carga_total_kN": 9.372,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        87,
+        108
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "87": 0.5,
+        "108": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP2_D_VOLADIZO_EXTERIOR_IP": {
+     "area_neta_m2": 5.6525,
+     "carga_por_comp_kN": {
+      "pp": 20.787,
+      "pm_adic": 14.4106,
+      "sc": 0.0,
+      "total": 35.1976
+     },
+     "receptores": {
+      "V_EI_CP2_x45.00_0-16.15": {
+       "area_tributaria_m2": 5.6525,
+       "carga_total_kN": 35.1976,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        122,
+        115,
+        115,
+        108
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "122": 0.27554,
+        "115": 0.5,
+        "108": 0.22446
+       }
+      }
+     }
+    }
+   }
+  },
+  "P3": {
+   "losas": {
+    "L_EI_CP3_304": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP3_x10.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        42,
+        28,
+        28,
+        35
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "42": 0.27554,
+        "28": 0.5,
+        "35": 0.22446
+       }
+      },
+      "V_EI_CP3_x15.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        501,
+        518,
+        518,
+        535
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "501": 0.27554,
+        "518": 0.5,
+        "535": 0.22446
+       }
+      },
+      "H_EI_CP3_y0000_10.00-15.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        42,
+        501
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "42": 0.5,
+        "501": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_12.20-15.00": {
+       "area_tributaria_m2": 3.4329,
+       "carga_total_kN": 21.3772,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        516,
+        518
+       ],
+       "longitudes_segmento_m": [
+        2.8
+       ],
+       "pesos_por_nodo": {
+        "516": 0.5,
+        "518": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_10.00-12.20": {
+       "area_tributaria_m2": 2.2886,
+       "carga_total_kN": 14.2514,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        28,
+        516
+       ],
+       "longitudes_segmento_m": [
+        2.2
+       ],
+       "pesos_por_nodo": {
+        "28": 0.5,
+        "516": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_305": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP3_x15.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        501,
+        518,
+        518,
+        535
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "501": 0.27554,
+        "518": 0.5,
+        "535": 0.22446
+       }
+      },
+      "V_EI_CP3_x20.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        49,
+        61,
+        61,
+        54
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "49": 0.27554,
+        "61": 0.5,
+        "54": 0.22446
+       }
+      },
+      "H_EI_CP3_y0000_15.00-20.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        501,
+        49
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "501": 0.5,
+        "49": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_15.00-20.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        518,
+        61
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "518": 0.5,
+        "61": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_306": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP3_x20.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        49,
+        61,
+        61,
+        54
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "49": 0.27554,
+        "61": 0.5,
+        "54": 0.22446
+       }
+      },
+      "V_EI_CP3_x25.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        504,
+        521,
+        521,
+        538
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "504": 0.27554,
+        "521": 0.5,
+        "538": 0.22446
+       }
+      },
+      "H_EI_CP3_y0000_20.00-25.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        49,
+        504
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "49": 0.5,
+        "504": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_20.00-25.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        61,
+        521
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "61": 0.5,
+        "521": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_307": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP3_x25.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        504,
+        521,
+        521,
+        538
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "504": 0.27554,
+        "521": 0.5,
+        "538": 0.22446
+       }
+      },
+      "V_EI_CP3_x30.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        82,
+        75,
+        75,
+        68
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "82": 0.27554,
+        "75": 0.5,
+        "68": 0.22446
+       }
+      },
+      "H_EI_CP3_y0000_25.00-30.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        504,
+        82
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "504": 0.5,
+        "82": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_25.00-30.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        521,
+        75
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "521": 0.5,
+        "75": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_308": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP3_x30.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        82,
+        75,
+        75,
+        68
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "82": 0.27554,
+        "75": 0.5,
+        "68": 0.22446
+       }
+      },
+      "V_EI_CP3_x35.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        507,
+        524,
+        524,
+        541
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "507": 0.27554,
+        "524": 0.5,
+        "541": 0.22446
+       }
+      },
+      "H_EI_CP3_y0000_30.00-35.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        82,
+        507
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "82": 0.5,
+        "507": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_30.00-35.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        75,
+        524
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "75": 0.5,
+        "524": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_309": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP3_x35.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        507,
+        524,
+        524,
+        541
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "507": 0.27554,
+        "524": 0.5,
+        "541": 0.22446
+       }
+      },
+      "V_EI_CP3_x40.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        103,
+        96,
+        96,
+        89
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "103": 0.27554,
+        "96": 0.5,
+        "89": 0.22446
+       }
+      },
+      "H_EI_CP3_y0000_35.00-40.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        507,
+        103
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "507": 0.5,
+        "103": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_35.00-40.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        524,
+        96
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "524": 0.5,
+        "96": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_310": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 113.4629,
+      "sc": 0.0,
+      "total": 277.1114
+     },
+     "receptores": {
+      "V_EI_CP3_x40.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        103,
+        96,
+        96,
+        89
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "103": 0.27554,
+        "96": 0.5,
+        "89": 0.22446
+       }
+      },
+      "V_EI_CP3_x45.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 102.9271,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        124,
+        117,
+        117,
+        110
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "124": 0.27554,
+        "117": 0.5,
+        "110": 0.22446
+       }
+      },
+      "H_EI_CP3_y0000_40.00-45.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        103,
+        124
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "103": 0.5,
+        "124": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_40.00-45.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 35.6286,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        96,
+        117
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "96": 0.5,
+        "117": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_311": {
+     "area_neta_m2": 22.25,
+     "carga_por_comp_kN": {
+      "pp": 65.4594,
+      "pm_adic": 56.7315,
+      "sc": 0.0,
+      "total": 122.1909
+     },
+     "receptores": {
+      "V_EI_CP3_x45.00_0-16.15": {
+       "area_tributaria_m2": 9.8536,
+       "carga_total_kN": 54.1131,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        124,
+        117,
+        117,
+        110
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "124": 0.27554,
+        "117": 0.5,
+        "110": 0.22446
+       }
+      },
+      "V_EI_CP3_x47.50_0-16.15": {
+       "area_tributaria_m2": 9.8536,
+       "carga_total_kN": 54.1131,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        511,
+        528,
+        528,
+        545
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "511": 0.27554,
+        "528": 0.5,
+        "545": 0.22446
+       }
+      },
+      "H_EI_CP3_y0000_45.00-47.50": {
+       "area_tributaria_m2": 1.2714,
+       "carga_total_kN": 6.9823,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        124,
+        511
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "124": 0.5,
+        "511": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_45.00-47.50": {
+       "area_tributaria_m2": 1.2714,
+       "carga_total_kN": 6.9823,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        117,
+        528
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "117": 0.5,
+        "528": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_312": {
+     "area_neta_m2": 21.36,
+     "carga_por_comp_kN": {
+      "pp": 62.841,
+      "pm_adic": 54.4622,
+      "sc": 0.0,
+      "total": 117.3032
+     },
+     "receptores": {
+      "V_EI_CP3_x49.90_0-16.15": {
+       "area_tributaria_m2": 9.8324,
+       "carga_total_kN": 53.9967,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        513,
+        530,
+        530,
+        547
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "513": 0.27554,
+        "530": 0.5,
+        "547": 0.22446
+       }
+      },
+      "V_EI_CP3_x47.50_0-16.15": {
+       "area_tributaria_m2": 8.1371,
+       "carga_total_kN": 44.6869,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        511,
+        528,
+        528,
+        545
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "511": 0.27554,
+        "528": 0.5,
+        "545": 0.22446
+       }
+      },
+      "H_EI_CP3_y0000_47.50-49.90": {
+       "area_tributaria_m2": 1.6952,
+       "carga_total_kN": 9.3098,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        511,
+        513
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "511": 0.5,
+        "513": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_47.50-49.90": {
+       "area_tributaria_m2": 1.6952,
+       "carga_total_kN": 9.3098,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        528,
+        530
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "528": 0.5,
+        "530": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_313": {
+     "area_neta_m2": 15.95,
+     "carga_por_comp_kN": {
+      "pp": 58.656,
+      "pm_adic": 40.6682,
+      "sc": 0.0,
+      "total": 99.3242
+     },
+     "receptores": {
+      "V_EI_CP3_x10.00_0-16.15": {
+       "area_tributaria_m2": 6.5509,
+       "carga_total_kN": 40.7939,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        42,
+        28,
+        28,
+        35
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "42": 0.27554,
+        "28": 0.5,
+        "35": 0.22446
+       }
+      },
+      "V_EI_CP3_x12.20_890-1615": {
+       "area_tributaria_m2": 6.5509,
+       "carga_total_kN": 40.7939,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        516,
+        533
+       ],
+       "longitudes_segmento_m": [
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "516": 0.5,
+        "533": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_10.00-12.20": {
+       "area_tributaria_m2": 1.4241,
+       "carga_total_kN": 8.8682,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        28,
+        516
+       ],
+       "longitudes_segmento_m": [
+        2.2
+       ],
+       "pesos_por_nodo": {
+        "28": 0.5,
+        "516": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_10.00-12.20": {
+       "area_tributaria_m2": 1.4241,
+       "carga_total_kN": 8.8682,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        35,
+        533
+       ],
+       "longitudes_segmento_m": [
+        2.2
+       ],
+       "pesos_por_nodo": {
+        "35": 0.5,
+        "533": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_314": {
+     "area_neta_m2": 20.3,
+     "carga_por_comp_kN": {
+      "pp": 74.6531,
+      "pm_adic": 51.7595,
+      "sc": 0.0,
+      "total": 126.4126
+     },
+     "receptores": {
+      "V_EI_CP3_x15.00_0-16.15": {
+       "area_tributaria_m2": 9.0955,
+       "carga_total_kN": 56.6394,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        501,
+        518,
+        518,
+        535
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "501": 0.27554,
+        "518": 0.5,
+        "535": 0.22446
+       }
+      },
+      "V_EI_CP3_x12.20_890-1615": {
+       "area_tributaria_m2": 7.9091,
+       "carga_total_kN": 49.2517,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        516,
+        533
+       ],
+       "longitudes_segmento_m": [
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "516": 0.5,
+        "533": 0.5
+       }
+      },
+      "H_EI_CP3_y0089_12.20-15.00": {
+       "area_tributaria_m2": 1.6477,
+       "carga_total_kN": 10.2608,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        516,
+        518
+       ],
+       "longitudes_segmento_m": [
+        2.8
+       ],
+       "pesos_por_nodo": {
+        "516": 0.5,
+        "518": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_12.20-15.00": {
+       "area_tributaria_m2": 1.6477,
+       "carga_total_kN": 10.2608,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        533,
+        535
+       ],
+       "longitudes_segmento_m": [
+        2.8
+       ],
+       "pesos_por_nodo": {
+        "533": 0.5,
+        "535": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_316": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP3_x15.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        501,
+        518,
+        518,
+        535
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "501": 0.27554,
+        "518": 0.5,
+        "535": 0.22446
+       }
+      },
+      "V_EI_CP3_x20.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        49,
+        61,
+        61,
+        54
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "49": 0.27554,
+        "61": 0.5,
+        "54": 0.22446
+       }
+      },
+      "H_EI_CP3_y0089_15.00-20.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        518,
+        61
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "518": 0.5,
+        "61": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_15.00-20.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        535,
+        54
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "535": 0.5,
+        "54": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_317": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP3_x20.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        49,
+        61,
+        61,
+        54
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "49": 0.27554,
+        "61": 0.5,
+        "54": 0.22446
+       }
+      },
+      "V_EI_CP3_x25.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        504,
+        521,
+        521,
+        538
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "504": 0.27554,
+        "521": 0.5,
+        "538": 0.22446
+       }
+      },
+      "H_EI_CP3_y0089_20.00-25.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        61,
+        521
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "61": 0.5,
+        "521": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_20.00-25.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        54,
+        538
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "54": 0.5,
+        "538": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_318": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP3_x25.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        504,
+        521,
+        521,
+        538
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "504": 0.27554,
+        "521": 0.5,
+        "538": 0.22446
+       }
+      },
+      "V_EI_CP3_x30.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        82,
+        75,
+        75,
+        68
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "82": 0.27554,
+        "75": 0.5,
+        "68": 0.22446
+       }
+      },
+      "H_EI_CP3_y0089_25.00-30.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        521,
+        75
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "521": 0.5,
+        "75": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_25.00-30.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        538,
+        68
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "538": 0.5,
+        "68": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_319": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP3_x30.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        82,
+        75,
+        75,
+        68
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "82": 0.27554,
+        "75": 0.5,
+        "68": 0.22446
+       }
+      },
+      "V_EI_CP3_x35.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        507,
+        524,
+        524,
+        541
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "507": 0.27554,
+        "524": 0.5,
+        "541": 0.22446
+       }
+      },
+      "H_EI_CP3_y0089_30.00-35.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        75,
+        524
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "75": 0.5,
+        "524": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_30.00-35.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        68,
+        541
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "68": 0.5,
+        "541": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_320": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP3_x35.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        507,
+        524,
+        524,
+        541
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "507": 0.27554,
+        "524": 0.5,
+        "541": 0.22446
+       }
+      },
+      "V_EI_CP3_x40.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        103,
+        96,
+        96,
+        89
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "103": 0.27554,
+        "96": 0.5,
+        "89": 0.22446
+       }
+      },
+      "H_EI_CP3_y0089_35.00-40.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        524,
+        96
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "524": 0.5,
+        "96": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_35.00-40.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        541,
+        89
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "541": 0.5,
+        "89": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_321": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 92.4277,
+      "sc": 0.0,
+      "total": 225.7368
+     },
+     "receptores": {
+      "V_EI_CP3_x40.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        103,
+        96,
+        96,
+        89
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "103": 0.27554,
+        "96": 0.5,
+        "89": 0.22446
+       }
+      },
+      "V_EI_CP3_x45.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 76.5893,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        124,
+        117,
+        117,
+        110
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "124": 0.27554,
+        "117": 0.5,
+        "110": 0.22446
+       }
+      },
+      "H_EI_CP3_y0089_40.00-45.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        96,
+        117
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "96": 0.5,
+        "117": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_40.00-45.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 36.2791,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        89,
+        110
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "89": 0.5,
+        "110": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_322": {
+     "area_neta_m2": 18.125,
+     "carga_por_comp_kN": {
+      "pp": 53.3237,
+      "pm_adic": 46.2138,
+      "sc": 0.0,
+      "total": 99.5375
+     },
+     "receptores": {
+      "V_EI_CP3_x45.00_0-16.15": {
+       "area_tributaria_m2": 7.7679,
+       "carga_total_kN": 42.6589,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        124,
+        117,
+        117,
+        110
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "124": 0.27554,
+        "117": 0.5,
+        "110": 0.22446
+       }
+      },
+      "V_EI_CP3_x47.50_0-16.15": {
+       "area_tributaria_m2": 7.7679,
+       "carga_total_kN": 42.6589,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        511,
+        528,
+        528,
+        545
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "511": 0.27554,
+        "528": 0.5,
+        "545": 0.22446
+       }
+      },
+      "H_EI_CP3_y0089_45.00-47.50": {
+       "area_tributaria_m2": 1.2946,
+       "carga_total_kN": 7.1098,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        117,
+        528
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "117": 0.5,
+        "528": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_45.00-47.50": {
+       "area_tributaria_m2": 1.2946,
+       "carga_total_kN": 7.1098,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        110,
+        545
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "110": 0.5,
+        "545": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_323": {
+     "area_neta_m2": 17.4,
+     "carga_por_comp_kN": {
+      "pp": 51.1907,
+      "pm_adic": 44.3653,
+      "sc": 0.0,
+      "total": 95.556
+     },
+     "receptores": {
+      "V_EI_CP3_x49.90_0-16.15": {
+       "area_tributaria_m2": 7.5952,
+       "carga_total_kN": 41.711,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        513,
+        530,
+        530,
+        547
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "513": 0.27554,
+        "530": 0.5,
+        "547": 0.22446
+       }
+      },
+      "V_EI_CP3_x47.50_0-16.15": {
+       "area_tributaria_m2": 6.3524,
+       "carga_total_kN": 34.8855,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        511,
+        528,
+        528,
+        545
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "511": 0.27554,
+        "528": 0.5,
+        "545": 0.22446
+       }
+      },
+      "H_EI_CP3_y0089_47.50-49.90": {
+       "area_tributaria_m2": 1.7262,
+       "carga_total_kN": 9.4798,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        528,
+        530
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "528": 0.5,
+        "530": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_47.50-49.90": {
+       "area_tributaria_m2": 1.7262,
+       "carga_total_kN": 9.4798,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        545,
+        547
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "545": 0.5,
+        "547": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_300": {
+     "area_neta_m2": 89.0,
+     "carga_por_comp_kN": {
+      "pp": 327.2969,
+      "pm_adic": 225.2957,
+      "sc": 0.0,
+      "total": 552.5926
+     },
+     "receptores": {
+      "M_EI_CP3_001": {
+       "area_tributaria_m2": 19.8979,
+       "carga_total_kN": 123.5439,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        312,
+        317
+       ],
+       "longitudes_segmento_m": [
+        6.95
+       ],
+       "pesos_por_nodo": {
+        "312": 0.5,
+        "317": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_0.00-10.00": {
+       "area_tributaria_m2": 15.7657,
+       "carga_total_kN": 97.8878,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        7,
+        42
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "7": 0.5,
+        "42": 0.5
+       }
+      },
+      "V_EI_CP3_x10.00_0-16.15": {
+       "area_tributaria_m2": 13.2864,
+       "carga_total_kN": 82.4942,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        42,
+        28,
+        28,
+        35
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "42": 0.27554,
+        "28": 0.5,
+        "35": 0.22446
+       }
+      },
+      "H_EI_CP3_y0089_0.00-10.00": {
+       "area_tributaria_m2": 12.5871,
+       "carga_total_kN": 78.1524,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        14,
+        28
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "14": 0.5,
+        "28": 0.5
+       }
+      },
+      "V_EI_CP3_x0.00_0-16.15": {
+       "area_tributaria_m2": 9.8536,
+       "carga_total_kN": 61.1799,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        7,
+        14,
+        14,
+        21
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "7": 0.27554,
+        "14": 0.5,
+        "21": 0.22446
+       }
+      },
+      "M_EI_CP3_003": {
+       "area_tributaria_m2": 9.1543,
+       "carga_total_kN": 56.8381,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        302,
+        307
+       ],
+       "longitudes_segmento_m": [
+        2.25
+       ],
+       "pesos_por_nodo": {
+        "302": 0.5,
+        "307": 0.5
+       }
+      },
+      "M_EI_CP3_002": {
+       "area_tributaria_m2": 8.455,
+       "carga_total_kN": 52.4963,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        292,
+        297
+       ],
+       "longitudes_segmento_m": [
+        2.15
+       ],
+       "pesos_por_nodo": {
+        "292": 0.5,
+        "297": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_302": {
+     "area_neta_m2": 72.5,
+     "carga_por_comp_kN": {
+      "pp": 266.6183,
+      "pm_adic": 182.7757,
+      "sc": 0.0,
+      "total": 449.394
+     },
+     "receptores": {
+      "H_EI_CP3_y0089_0.00-10.00": {
+       "area_tributaria_m2": 14.7589,
+       "carga_total_kN": 91.4838,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        14,
+        28
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "14": 0.5,
+        "28": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_0.00-10.00": {
+       "area_tributaria_m2": 10.3571,
+       "carga_total_kN": 64.1991,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        21,
+        35
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "21": 0.5,
+        "35": 0.5
+       }
+      },
+      "M_EI_CP3_006": {
+       "area_tributaria_m2": 10.2277,
+       "carga_total_kN": 63.3967,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        334,
+        339
+       ],
+       "longitudes_segmento_m": [
+        3.45
+       ],
+       "pesos_por_nodo": {
+        "334": 0.5,
+        "339": 0.5
+       }
+      },
+      "V_EI_CP3_x0.00_0-16.15": {
+       "area_tributaria_m2": 10.0335,
+       "carga_total_kN": 62.1929,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        7,
+        14,
+        14,
+        21
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "7": 0.27554,
+        "14": 0.5,
+        "21": 0.22446
+       }
+      },
+      "V_EI_CP3_x10.00_0-16.15": {
+       "area_tributaria_m2": 10.0335,
+       "carga_total_kN": 62.1929,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        42,
+        28,
+        28,
+        35
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "42": 0.27554,
+        "28": 0.5,
+        "35": 0.22446
+       }
+      },
+      "M_EI_CP3_004": {
+       "area_tributaria_m2": 8.5446,
+       "carga_total_kN": 52.9643,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        343,
+        345
+       ],
+       "longitudes_segmento_m": [
+        1.479
+       ],
+       "pesos_por_nodo": {
+        "343": 0.5,
+        "345": 0.5
+       }
+      },
+      "M_EI_CP3_005": {
+       "area_tributaria_m2": 8.5446,
+       "carga_total_kN": 52.9643,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        348,
+        350
+       ],
+       "longitudes_segmento_m": [
+        1.479
+       ],
+       "pesos_por_nodo": {
+        "348": 0.5,
+        "350": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_315": {
+     "area_neta_m2": 5.082,
+     "carga_por_comp_kN": {
+      "pp": 18.689,
+      "pm_adic": 12.9577,
+      "sc": 0.0,
+      "total": 31.6467
+     },
+     "receptores": {
+      "H_EI_CP3_y0162_10.00-12.20": {
+       "area_tributaria_m2": 5.082,
+       "carga_total_kN": 31.6467,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        35,
+        533
+       ],
+       "longitudes_segmento_m": [
+        2.2
+       ],
+       "pesos_por_nodo": {
+        "35": 0.5,
+        "533": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_324": {
+     "area_neta_m2": 38.2,
+     "carga_por_comp_kN": {
+      "pp": 140.4803,
+      "pm_adic": 97.3996,
+      "sc": 0.0,
+      "total": 237.8799
+     },
+     "receptores": {
+      "H_EI_CP3_y0162_20.00-25.00": {
+       "area_tributaria_m2": 19.1,
+       "carga_total_kN": 118.94,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        54,
+        538
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "54": 0.5,
+        "538": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_25.00-30.00": {
+       "area_tributaria_m2": 19.1,
+       "carga_total_kN": 118.94,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        538,
+        68
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "538": 0.5,
+        "68": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_D_VOLADIZO_BAJO": {
+     "area_neta_m2": 59.225,
+     "carga_por_comp_kN": {
+      "pp": 217.7996,
+      "pm_adic": 125.0598,
+      "sc": 0.0,
+      "total": 342.8593
+     },
+     "receptores": {
+      "H_EI_CP3_y0000_0.00-10.00": {
+       "area_tributaria_m2": 11.7875,
+       "carga_total_kN": 68.239,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        7,
+        42
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "7": 0.5,
+        "42": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_10.00-15.00": {
+       "area_tributaria_m2": 5.75,
+       "carga_total_kN": 33.2873,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        42,
+        501
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "42": 0.5,
+        "501": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_15.00-20.00": {
+       "area_tributaria_m2": 5.75,
+       "carga_total_kN": 33.2873,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        501,
+        49
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "501": 0.5,
+        "49": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_20.00-25.00": {
+       "area_tributaria_m2": 5.75,
+       "carga_total_kN": 33.2873,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        49,
+        504
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "49": 0.5,
+        "504": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_25.00-30.00": {
+       "area_tributaria_m2": 5.75,
+       "carga_total_kN": 33.2873,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        504,
+        82
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "504": 0.5,
+        "82": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_30.00-35.00": {
+       "area_tributaria_m2": 5.75,
+       "carga_total_kN": 33.2873,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        82,
+        507
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "82": 0.5,
+        "507": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_35.00-40.00": {
+       "area_tributaria_m2": 5.75,
+       "carga_total_kN": 33.2873,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        507,
+        103
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "507": 0.5,
+        "103": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_40.00-45.00": {
+       "area_tributaria_m2": 5.75,
+       "carga_total_kN": 33.2873,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        103,
+        124
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "103": 0.5,
+        "124": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_47.50-49.90": {
+       "area_tributaria_m2": 4.3125,
+       "carga_total_kN": 24.9655,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        511,
+        513
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "511": 0.5,
+        "513": 0.5
+       }
+      },
+      "H_EI_CP3_y0000_45.00-47.50": {
+       "area_tributaria_m2": 2.875,
+       "carga_total_kN": 16.6437,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        124,
+        511
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "124": 0.5,
+        "511": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_D_VOLADIZO_ALTO_OESTE": {
+     "area_neta_m2": 3.5,
+     "carga_por_comp_kN": {
+      "pp": 12.8712,
+      "pm_adic": 8.9241,
+      "sc": 0.0,
+      "total": 21.7953
+     },
+     "receptores": {
+      "H_EI_CP3_y0162_0.00-10.00": {
+       "area_tributaria_m2": 3.5,
+       "carga_total_kN": 21.7953,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        21,
+        35
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "21": 0.5,
+        "35": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_D_VOLADIZO_ALTO_CENTRO": {
+     "area_neta_m2": 2.5025,
+     "carga_por_comp_kN": {
+      "pp": 9.2029,
+      "pm_adic": 6.3807,
+      "sc": 0.0,
+      "total": 15.5836
+     },
+     "receptores": {
+      "H_EI_CP3_y0162_15.00-20.00": {
+       "area_tributaria_m2": 1.6088,
+       "carga_total_kN": 10.018,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        535,
+        54
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "535": 0.5,
+        "54": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_12.20-15.00": {
+       "area_tributaria_m2": 0.8938,
+       "carga_total_kN": 5.5656,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        533,
+        535
+       ],
+       "longitudes_segmento_m": [
+        2.8
+       ],
+       "pesos_por_nodo": {
+        "533": 0.5,
+        "535": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_D_VOLADIZO_ALTO_ESTE": {
+     "area_neta_m2": 5.005,
+     "carga_por_comp_kN": {
+      "pp": 18.4059,
+      "pm_adic": 12.7614,
+      "sc": 0.0,
+      "total": 31.1672
+     },
+     "receptores": {
+      "H_EI_CP3_y0162_30.00-35.00": {
+       "area_tributaria_m2": 1.6683,
+       "carga_total_kN": 10.3891,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        68,
+        541
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "68": 0.5,
+        "541": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_35.00-40.00": {
+       "area_tributaria_m2": 1.6683,
+       "carga_total_kN": 10.3891,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        541,
+        89
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "541": 0.5,
+        "89": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_40.00-45.00": {
+       "area_tributaria_m2": 1.6683,
+       "carga_total_kN": 10.3891,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        89,
+        110
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "89": 0.5,
+        "110": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_D_VOLADIZO_ALTO_LENGUA": {
+     "area_neta_m2": 7.475,
+     "carga_por_comp_kN": {
+      "pp": 27.4893,
+      "pm_adic": 15.6399,
+      "sc": 0.0,
+      "total": 43.1291
+     },
+     "receptores": {
+      "H_EI_CP3_y0162_47.50-49.90": {
+       "area_tributaria_m2": 4.3125,
+       "carga_total_kN": 24.8822,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        545,
+        547
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "545": 0.5,
+        "547": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_45.00-47.50": {
+       "area_tributaria_m2": 2.875,
+       "carga_total_kN": 16.5881,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        110,
+        545
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "110": 0.5,
+        "545": 0.5
+       }
+      },
+      "H_EI_CP3_y0162_40.00-45.00": {
+       "area_tributaria_m2": 0.2875,
+       "carga_total_kN": 1.6588,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        89,
+        110
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "89": 0.5,
+        "110": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP3_D_VOLADIZO_IZQ": {
+     "area_neta_m2": 5.6525,
+     "carga_por_comp_kN": {
+      "pp": 20.787,
+      "pm_adic": 14.4123,
+      "sc": 0.0,
+      "total": 35.1994
+     },
+     "receptores": {
+      "V_EI_CP3_x0.00_0-16.15": {
+       "area_tributaria_m2": 5.6525,
+       "carga_total_kN": 35.1994,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        7,
+        14,
+        14,
+        21
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "7": 0.27554,
+        "14": 0.5,
+        "21": 0.22446
+       }
+      }
+     }
+    }
+   }
+  },
+  "P4": {
+   "losas": {
+    "L_EI_CP4_407": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 87.2792,
+      "sc": 0.0,
+      "total": 250.9277
+     },
+     "receptores": {
+      "V_EI_CP4_x10.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        573,
+        182,
+        182,
+        594,
+        594,
+        200,
+        200,
+        615
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "573": 0.0056,
+        "182": 0.27554,
+        "594": 0.27554,
+        "200": 0.22446,
+        "615": 0.21885
+       }
+      },
+      "V_EI_CP4_x15.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        575,
+        596,
+        596,
+        617
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "575": 0.27554,
+        "596": 0.5,
+        "617": 0.22446
+       }
+      },
+      "H_EI_CP4_y0000_10.00-15.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        573,
+        575
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "573": 0.5,
+        "575": 0.5
+       }
+      },
+      "H_EI_CP4_y0089_10.00-15.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        594,
+        596
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "594": 0.5,
+        "596": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_417": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 115.0467,
+      "sc": 0.0,
+      "total": 248.3558
+     },
+     "receptores": {
+      "V_EI_CP4_x10.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 84.2636,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        573,
+        182,
+        182,
+        594,
+        594,
+        200,
+        200,
+        615
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "573": 0.0056,
+        "182": 0.27554,
+        "594": 0.27554,
+        "200": 0.22446,
+        "615": 0.21885
+       }
+      },
+      "V_EI_CP4_x15.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 84.2636,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        575,
+        596,
+        596,
+        617
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "575": 0.27554,
+        "596": 0.5,
+        "617": 0.22446
+       }
+      },
+      "H_EI_CP4_y0089_10.00-15.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 39.9143,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        594,
+        596
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "594": 0.5,
+        "596": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_10.00-15.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 39.9143,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        615,
+        617
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "615": 0.5,
+        "617": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_309": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 87.2792,
+      "sc": 0.0,
+      "total": 250.9277
+     },
+     "receptores": {
+      "V_EI_CP4_x15.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        575,
+        596,
+        596,
+        617
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "575": 0.27554,
+        "596": 0.5,
+        "617": 0.22446
+       }
+      },
+      "V_EI_CP4_x20.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        577,
+        188,
+        188,
+        598,
+        598,
+        203,
+        203,
+        619
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "577": 0.0056,
+        "188": 0.27554,
+        "598": 0.27554,
+        "203": 0.22446,
+        "619": 0.21885
+       }
+      },
+      "H_EI_CP4_y0000_15.00-20.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        575,
+        577
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "575": 0.5,
+        "577": 0.5
+       }
+      },
+      "H_EI_CP4_y0089_15.00-20.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        596,
+        598
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "596": 0.5,
+        "598": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_418": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 115.9122,
+      "sc": 0.0,
+      "total": 249.2213
+     },
+     "receptores": {
+      "V_EI_CP4_x15.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 84.5572,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        575,
+        596,
+        596,
+        617
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "575": 0.27554,
+        "596": 0.5,
+        "617": 0.22446
+       }
+      },
+      "V_EI_CP4_x20.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 84.5572,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        577,
+        188,
+        188,
+        598,
+        598,
+        203,
+        203,
+        619
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "577": 0.0056,
+        "188": 0.27554,
+        "598": 0.27554,
+        "203": 0.22446,
+        "619": 0.21885
+       }
+      },
+      "H_EI_CP4_y0089_15.00-20.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 40.0534,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        596,
+        598
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "596": 0.5,
+        "598": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_15.00-20.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 40.0534,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        617,
+        619
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "617": 0.5,
+        "619": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_410": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 87.2792,
+      "sc": 0.0,
+      "total": 250.9277
+     },
+     "receptores": {
+      "V_EI_CP4_x20.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        577,
+        188,
+        188,
+        598,
+        598,
+        203,
+        203,
+        619
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "577": 0.0056,
+        "188": 0.27554,
+        "598": 0.27554,
+        "203": 0.22446,
+        "619": 0.21885
+       }
+      },
+      "V_EI_CP4_x25.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        579,
+        600,
+        600,
+        621
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "579": 0.27554,
+        "600": 0.5,
+        "621": 0.22446
+       }
+      },
+      "H_EI_CP4_y0000_20.00-25.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        577,
+        579
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "577": 0.5,
+        "579": 0.5
+       }
+      },
+      "H_EI_CP4_y0089_20.00-25.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        598,
+        600
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "598": 0.5,
+        "600": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_419": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 69.815,
+      "sc": 0.0,
+      "total": 203.1241
+     },
+     "receptores": {
+      "V_EI_CP4_x20.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9171,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        577,
+        188,
+        188,
+        598,
+        598,
+        203,
+        203,
+        619
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "577": 0.0056,
+        "188": 0.27554,
+        "598": 0.27554,
+        "203": 0.22446,
+        "619": 0.21885
+       }
+      },
+      "V_EI_CP4_x25.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9171,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        579,
+        600,
+        600,
+        621
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "579": 0.27554,
+        "600": 0.5,
+        "621": 0.22446
+       }
+      },
+      "H_EI_CP4_y0089_20.00-25.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6449,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        598,
+        600
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "598": 0.5,
+        "600": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_20.00-25.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6449,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        619,
+        621
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "619": 0.5,
+        "621": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_411": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 87.2792,
+      "sc": 0.0,
+      "total": 250.9277
+     },
+     "receptores": {
+      "V_EI_CP4_x25.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        579,
+        600,
+        600,
+        621
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "579": 0.27554,
+        "600": 0.5,
+        "621": 0.22446
+       }
+      },
+      "V_EI_CP4_x30.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        581,
+        185,
+        185,
+        602,
+        602,
+        206,
+        206,
+        623
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "581": 0.0056,
+        "185": 0.27554,
+        "602": 0.27554,
+        "206": 0.22446,
+        "623": 0.21885
+       }
+      },
+      "H_EI_CP4_y0000_25.00-30.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        579,
+        581
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "579": 0.5,
+        "581": 0.5
+       }
+      },
+      "H_EI_CP4_y0089_25.00-30.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        600,
+        602
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "600": 0.5,
+        "602": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_420": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 69.8084,
+      "sc": 0.0,
+      "total": 203.1175
+     },
+     "receptores": {
+      "V_EI_CP4_x25.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9149,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        579,
+        600,
+        600,
+        621
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "579": 0.27554,
+        "600": 0.5,
+        "621": 0.22446
+       }
+      },
+      "V_EI_CP4_x30.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9149,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        581,
+        185,
+        185,
+        602,
+        602,
+        206,
+        206,
+        623
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "581": 0.0056,
+        "185": 0.27554,
+        "602": 0.27554,
+        "206": 0.22446,
+        "623": 0.21885
+       }
+      },
+      "H_EI_CP4_y0089_25.00-30.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6439,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        600,
+        602
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "600": 0.5,
+        "602": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_25.00-30.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6439,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        621,
+        623
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "621": 0.5,
+        "623": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_412": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 87.2792,
+      "sc": 0.0,
+      "total": 250.9277
+     },
+     "receptores": {
+      "V_EI_CP4_x30.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        581,
+        185,
+        185,
+        602,
+        602,
+        206,
+        206,
+        623
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "581": 0.0056,
+        "185": 0.27554,
+        "602": 0.27554,
+        "206": 0.22446,
+        "623": 0.21885
+       }
+      },
+      "V_EI_CP4_x35.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        583,
+        604,
+        604,
+        625
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "583": 0.27554,
+        "604": 0.5,
+        "625": 0.22446
+       }
+      },
+      "H_EI_CP4_y0000_30.00-35.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        581,
+        583
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "581": 0.5,
+        "583": 0.5
+       }
+      },
+      "H_EI_CP4_y0089_30.00-35.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        602,
+        604
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "602": 0.5,
+        "604": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_421": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 69.8084,
+      "sc": 0.0,
+      "total": 203.1175
+     },
+     "receptores": {
+      "V_EI_CP4_x30.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9149,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        581,
+        185,
+        185,
+        602,
+        602,
+        206,
+        206,
+        623
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "581": 0.0056,
+        "185": 0.27554,
+        "602": 0.27554,
+        "206": 0.22446,
+        "623": 0.21885
+       }
+      },
+      "V_EI_CP4_x35.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9149,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        583,
+        604,
+        604,
+        625
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "583": 0.27554,
+        "604": 0.5,
+        "625": 0.22446
+       }
+      },
+      "H_EI_CP4_y0089_30.00-35.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6439,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        602,
+        604
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "602": 0.5,
+        "604": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_30.00-35.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6439,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        623,
+        625
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "623": 0.5,
+        "625": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_413": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 87.2792,
+      "sc": 0.0,
+      "total": 250.9277
+     },
+     "receptores": {
+      "V_EI_CP4_x35.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        583,
+        604,
+        604,
+        625
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "583": 0.27554,
+        "604": 0.5,
+        "625": 0.22446
+       }
+      },
+      "V_EI_CP4_x40.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        585,
+        191,
+        191,
+        606,
+        606,
+        209,
+        209,
+        627
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "585": 0.0056,
+        "191": 0.27554,
+        "606": 0.27554,
+        "209": 0.22446,
+        "627": 0.21885
+       }
+      },
+      "H_EI_CP4_y0000_35.00-40.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        583,
+        585
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "583": 0.5,
+        "585": 0.5
+       }
+      },
+      "H_EI_CP4_y0089_35.00-40.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        604,
+        606
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "604": 0.5,
+        "606": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_422": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 69.8084,
+      "sc": 0.0,
+      "total": 203.1175
+     },
+     "receptores": {
+      "V_EI_CP4_x35.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9149,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        583,
+        604,
+        604,
+        625
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "583": 0.27554,
+        "604": 0.5,
+        "625": 0.22446
+       }
+      },
+      "V_EI_CP4_x40.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9149,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        585,
+        191,
+        191,
+        606,
+        606,
+        209,
+        209,
+        627
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "585": 0.0056,
+        "191": 0.27554,
+        "606": 0.27554,
+        "209": 0.22446,
+        "627": 0.21885
+       }
+      },
+      "H_EI_CP4_y0089_35.00-40.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6439,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        604,
+        606
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "604": 0.5,
+        "606": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_35.00-40.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6439,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        625,
+        627
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "625": 0.5,
+        "627": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_414": {
+     "area_neta_m2": 44.5,
+     "carga_por_comp_kN": {
+      "pp": 163.6485,
+      "pm_adic": 87.2792,
+      "sc": 0.0,
+      "total": 250.9277
+     },
+     "receptores": {
+      "V_EI_CP4_x40.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        585,
+        191,
+        191,
+        606,
+        606,
+        209,
+        209,
+        627
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "585": 0.0056,
+        "191": 0.27554,
+        "606": 0.27554,
+        "209": 0.22446,
+        "627": 0.21885
+       }
+      },
+      "V_EI_CP4_x45.00_0-16.15": {
+       "area_tributaria_m2": 16.5286,
+       "carga_total_kN": 93.2017,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        587,
+        194,
+        194,
+        608,
+        608,
+        212,
+        212,
+        629
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "587": 0.0056,
+        "194": 0.27554,
+        "608": 0.27554,
+        "212": 0.22446,
+        "629": 0.21885
+       }
+      },
+      "H_EI_CP4_y0000_40.00-45.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        585,
+        587
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "585": 0.5,
+        "587": 0.5
+       }
+      },
+      "H_EI_CP4_y0089_40.00-45.00": {
+       "area_tributaria_m2": 5.7214,
+       "carga_total_kN": 32.2621,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        606,
+        608
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "606": 0.5,
+        "608": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_423": {
+     "area_neta_m2": 36.25,
+     "carga_por_comp_kN": {
+      "pp": 133.3091,
+      "pm_adic": 69.8981,
+      "sc": 0.0,
+      "total": 203.2073
+     },
+     "receptores": {
+      "V_EI_CP4_x40.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9453,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        585,
+        191,
+        191,
+        606,
+        606,
+        209,
+        209,
+        627
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "585": 0.0056,
+        "191": 0.27554,
+        "606": 0.27554,
+        "209": 0.22446,
+        "627": 0.21885
+       }
+      },
+      "V_EI_CP4_x45.00_0-16.15": {
+       "area_tributaria_m2": 12.2991,
+       "carga_total_kN": 68.9453,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        587,
+        194,
+        194,
+        608,
+        608,
+        212,
+        212,
+        629
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "587": 0.0056,
+        "194": 0.27554,
+        "608": 0.27554,
+        "212": 0.22446,
+        "629": 0.21885
+       }
+      },
+      "H_EI_CP4_y0089_40.00-45.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6583,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        606,
+        608
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "606": 0.5,
+        "608": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_40.00-45.00": {
+       "area_tributaria_m2": 5.8259,
+       "carga_total_kN": 32.6583,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        627,
+        629
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "627": 0.5,
+        "629": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_415": {
+     "area_neta_m2": 22.25,
+     "carga_por_comp_kN": {
+      "pp": 65.4594,
+      "pm_adic": 43.6396,
+      "sc": 0.0,
+      "total": 109.099
+     },
+     "receptores": {
+      "V_EI_CP4_x45.00_0-16.15": {
+       "area_tributaria_m2": 9.8536,
+       "carga_total_kN": 48.3153,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        587,
+        194,
+        194,
+        608,
+        608,
+        212,
+        212,
+        629
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "587": 0.0056,
+        "194": 0.27554,
+        "608": 0.27554,
+        "212": 0.22446,
+        "629": 0.21885
+       }
+      },
+      "V_EI_CP4_x47.50_0-16.15": {
+       "area_tributaria_m2": 9.8536,
+       "carga_total_kN": 48.3153,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        589,
+        610,
+        610,
+        631
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "589": 0.27554,
+        "610": 0.5,
+        "631": 0.22446
+       }
+      },
+      "H_EI_CP4_y0000_45.00-47.50": {
+       "area_tributaria_m2": 1.2714,
+       "carga_total_kN": 6.2342,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        587,
+        589
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "587": 0.5,
+        "589": 0.5
+       }
+      },
+      "H_EI_CP4_y0089_45.00-47.50": {
+       "area_tributaria_m2": 1.2714,
+       "carga_total_kN": 6.2342,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        608,
+        610
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "608": 0.5,
+        "610": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_424": {
+     "area_neta_m2": 18.125,
+     "carga_por_comp_kN": {
+      "pp": 66.6546,
+      "pm_adic": 35.5491,
+      "sc": 0.0,
+      "total": 102.2037
+     },
+     "receptores": {
+      "V_EI_CP4_x45.00_0-16.15": {
+       "area_tributaria_m2": 7.7679,
+       "carga_total_kN": 43.8016,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        587,
+        194,
+        194,
+        608,
+        608,
+        212,
+        212,
+        629
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "587": 0.0056,
+        "194": 0.27554,
+        "608": 0.27554,
+        "212": 0.22446,
+        "629": 0.21885
+       }
+      },
+      "V_EI_CP4_x47.50_0-16.15": {
+       "area_tributaria_m2": 7.7679,
+       "carga_total_kN": 43.8016,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        589,
+        610,
+        610,
+        631
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "589": 0.27554,
+        "610": 0.5,
+        "631": 0.22446
+       }
+      },
+      "H_EI_CP4_y0089_45.00-47.50": {
+       "area_tributaria_m2": 1.2946,
+       "carga_total_kN": 7.3003,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        608,
+        610
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "608": 0.5,
+        "610": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_45.00-47.50": {
+       "area_tributaria_m2": 1.2946,
+       "carga_total_kN": 7.3003,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        629,
+        631
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "629": 0.5,
+        "631": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_416": {
+     "area_neta_m2": 21.36,
+     "carga_por_comp_kN": {
+      "pp": 62.841,
+      "pm_adic": 41.894,
+      "sc": 0.0,
+      "total": 104.735
+     },
+     "receptores": {
+      "V_EI_CP4_x49.90_0-16.15": {
+       "area_tributaria_m2": 9.8324,
+       "carga_total_kN": 48.2114,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        591,
+        612,
+        612,
+        633
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "591": 0.27554,
+        "612": 0.5,
+        "633": 0.22446
+       }
+      },
+      "V_EI_CP4_x47.50_0-16.15": {
+       "area_tributaria_m2": 8.1371,
+       "carga_total_kN": 39.8991,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        589,
+        610,
+        610,
+        631
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "589": 0.27554,
+        "610": 0.5,
+        "631": 0.22446
+       }
+      },
+      "H_EI_CP4_y0000_47.50-49.90": {
+       "area_tributaria_m2": 1.6952,
+       "carga_total_kN": 8.3123,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        589,
+        591
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "589": 0.5,
+        "591": 0.5
+       }
+      },
+      "H_EI_CP4_y0089_47.50-49.90": {
+       "area_tributaria_m2": 1.6952,
+       "carga_total_kN": 8.3123,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        610,
+        612
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "610": 0.5,
+        "612": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_425": {
+     "area_neta_m2": 17.4,
+     "carga_por_comp_kN": {
+      "pp": 51.1907,
+      "pm_adic": 34.1271,
+      "sc": 0.0,
+      "total": 85.3179
+     },
+     "receptores": {
+      "V_EI_CP4_x49.90_0-16.15": {
+       "area_tributaria_m2": 7.5952,
+       "carga_total_kN": 37.2419,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        591,
+        612,
+        612,
+        633
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "591": 0.27554,
+        "612": 0.5,
+        "633": 0.22446
+       }
+      },
+      "V_EI_CP4_x47.50_0-16.15": {
+       "area_tributaria_m2": 6.3524,
+       "carga_total_kN": 31.1478,
+       "n_nodos_fe": 4,
+       "nodos_fe_en_orden": [
+        589,
+        610,
+        610,
+        631
+       ],
+       "longitudes_segmento_m": [
+        8.9,
+        7.25
+       ],
+       "pesos_por_nodo": {
+        "589": 0.27554,
+        "610": 0.5,
+        "631": 0.22446
+       }
+      },
+      "H_EI_CP4_y0089_47.50-49.90": {
+       "area_tributaria_m2": 1.7262,
+       "carga_total_kN": 8.4641,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        610,
+        612
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "610": 0.5,
+        "612": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_47.50-49.90": {
+       "area_tributaria_m2": 1.7262,
+       "carga_total_kN": 8.4641,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        631,
+        633
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "631": 0.5,
+        "633": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_400": {
+     "area_neta_m2": 89.0,
+     "carga_por_comp_kN": {
+      "pp": 327.2969,
+      "pm_adic": 174.5584,
+      "sc": 0.0,
+      "total": 501.8553
+     },
+     "receptores": {
+      "M_EI_CP4_001": {
+       "area_tributaria_m2": 19.1986,
+       "carga_total_kN": 108.2574,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        353,
+        356
+       ],
+       "longitudes_segmento_m": [
+        6.8
+       ],
+       "pesos_por_nodo": {
+        "353": 0.5,
+        "356": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_0.00-10.00": {
+       "area_tributaria_m2": 15.8293,
+       "carga_total_kN": 89.2586,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        572,
+        573
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "572": 0.5,
+        "573": 0.5
+       }
+      },
+      "V_EI_CP4_x10.00_0-16.15": {
+       "area_tributaria_m2": 13.4136,
+       "carga_total_kN": 75.6368,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        573,
+        182,
+        182,
+        594,
+        594,
+        200,
+        200,
+        615
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "573": 0.0056,
+        "182": 0.27554,
+        "594": 0.27554,
+        "200": 0.22446,
+        "615": 0.21885
+       }
+      },
+      "H_EI_CP4_y0089_0.00-10.00": {
+       "area_tributaria_m2": 12.0786,
+       "carga_total_kN": 68.1089,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        593,
+        594
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "593": 0.5,
+        "594": 0.5
+       }
+      },
+      "V_EI_CP4_x0.00_0-16.15": {
+       "area_tributaria_m2": 10.1714,
+       "carga_total_kN": 57.3549,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        572,
+        179,
+        179,
+        593,
+        593,
+        197,
+        197,
+        614
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "572": 0.0056,
+        "179": 0.27554,
+        "593": 0.27554,
+        "197": 0.22446,
+        "614": 0.21885
+       }
+      },
+      "M_EI_CP4_003": {
+       "area_tributaria_m2": 10.0443,
+       "carga_total_kN": 56.638,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        365,
+        368
+       ],
+       "longitudes_segmento_m": [
+        2.15
+       ],
+       "pesos_por_nodo": {
+        "365": 0.5,
+        "368": 0.5
+       }
+      },
+      "M_EI_CP4_002": {
+       "area_tributaria_m2": 8.2643,
+       "carga_total_kN": 46.6009,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        359,
+        362
+       ],
+       "longitudes_segmento_m": [
+        2.15
+       ],
+       "pesos_por_nodo": {
+        "359": 0.5,
+        "362": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_404": {
+     "area_neta_m2": 72.5,
+     "carga_por_comp_kN": {
+      "pp": 266.6183,
+      "pm_adic": 142.1143,
+      "sc": 0.0,
+      "total": 408.7326
+     },
+     "receptores": {
+      "H_EI_CP4_y0089_0.00-10.00": {
+       "area_tributaria_m2": 15.0179,
+       "carga_total_kN": 84.666,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        593,
+        594
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "593": 0.5,
+        "594": 0.5
+       }
+      },
+      "M_EI_CP4_004": {
+       "area_tributaria_m2": 10.2924,
+       "carga_total_kN": 58.0254,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        371,
+        374
+       ],
+       "longitudes_segmento_m": [
+        1.578
+       ],
+       "pesos_por_nodo": {
+        "371": 0.5,
+        "374": 0.5
+       }
+      },
+      "M_EI_CP4_005": {
+       "area_tributaria_m2": 10.2924,
+       "carga_total_kN": 58.0254,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        377,
+        380
+       ],
+       "longitudes_segmento_m": [
+        1.578
+       ],
+       "pesos_por_nodo": {
+        "377": 0.5,
+        "380": 0.5
+       }
+      },
+      "V_EI_CP4_x0.00_0-16.15": {
+       "area_tributaria_m2": 10.0982,
+       "carga_total_kN": 56.9306,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        572,
+        179,
+        179,
+        593,
+        593,
+        197,
+        197,
+        614
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "572": 0.0056,
+        "179": 0.27554,
+        "593": 0.27554,
+        "197": 0.22446,
+        "614": 0.21885
+       }
+      },
+      "V_EI_CP4_x10.00_0-16.15": {
+       "area_tributaria_m2": 10.0982,
+       "carga_total_kN": 56.9306,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        573,
+        182,
+        182,
+        594,
+        594,
+        200,
+        200,
+        615
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "573": 0.0056,
+        "182": 0.27554,
+        "594": 0.27554,
+        "200": 0.22446,
+        "615": 0.21885
+       }
+      },
+      "H_EI_CP4_y0162_0.00-10.00": {
+       "area_tributaria_m2": 9.9688,
+       "carga_total_kN": 56.2007,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        614,
+        615
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "614": 0.5,
+        "615": 0.5
+       }
+      },
+      "M_EI_CP4_006": {
+       "area_tributaria_m2": 6.7321,
+       "carga_total_kN": 37.9537,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        374,
+        380
+       ],
+       "longitudes_segmento_m": [
+        3.45
+       ],
+       "pesos_por_nodo": {
+        "374": 0.5,
+        "380": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_426": {
+     "area_neta_m2": 35.2,
+     "carga_por_comp_kN": {
+      "pp": 103.5582,
+      "pm_adic": 68.0309,
+      "sc": 0.0,
+      "total": 171.5891
+     },
+     "receptores": {
+      "H_EI_CP4_y0162_20.00-25.00": {
+       "area_tributaria_m2": 17.6,
+       "carga_total_kN": 85.7946,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        619,
+        621
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "619": 0.5,
+        "621": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_25.00-30.00": {
+       "area_tributaria_m2": 17.6,
+       "carga_total_kN": 85.7946,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        621,
+        623
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "621": 0.5,
+        "623": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_D_VOLADIZO_BAJO": {
+     "area_neta_m2": 49.955,
+     "carga_por_comp_kN": {
+      "pp": 183.7092,
+      "pm_adic": 97.839,
+      "sc": 0.0,
+      "total": 281.5482
+     },
+     "receptores": {
+      "H_EI_CP4_y0000_0.00-10.00": {
+       "area_tributaria_m2": 9.9425,
+       "carga_total_kN": 56.0363,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        572,
+        573
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "572": 0.5,
+        "573": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_10.00-15.00": {
+       "area_tributaria_m2": 4.85,
+       "carga_total_kN": 27.3348,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        573,
+        575
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "573": 0.5,
+        "575": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_15.00-20.00": {
+       "area_tributaria_m2": 4.85,
+       "carga_total_kN": 27.3348,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        575,
+        577
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "575": 0.5,
+        "577": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_20.00-25.00": {
+       "area_tributaria_m2": 4.85,
+       "carga_total_kN": 27.3348,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        577,
+        579
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "577": 0.5,
+        "579": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_25.00-30.00": {
+       "area_tributaria_m2": 4.85,
+       "carga_total_kN": 27.3348,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        579,
+        581
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "579": 0.5,
+        "581": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_30.00-35.00": {
+       "area_tributaria_m2": 4.85,
+       "carga_total_kN": 27.3348,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        581,
+        583
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "581": 0.5,
+        "583": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_35.00-40.00": {
+       "area_tributaria_m2": 4.85,
+       "carga_total_kN": 27.3348,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        583,
+        585
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "583": 0.5,
+        "585": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_40.00-45.00": {
+       "area_tributaria_m2": 4.85,
+       "carga_total_kN": 27.3348,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        585,
+        587
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "585": 0.5,
+        "587": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_47.50-49.90": {
+       "area_tributaria_m2": 3.6375,
+       "carga_total_kN": 20.5011,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        589,
+        591
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "589": 0.5,
+        "591": 0.5
+       }
+      },
+      "H_EI_CP4_y0000_45.00-47.50": {
+       "area_tributaria_m2": 2.425,
+       "carga_total_kN": 13.6674,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        587,
+        589
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "587": 0.5,
+        "589": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_D_VOLADIZO_ALTO_OESTE": {
+     "area_neta_m2": 10.6,
+     "carga_por_comp_kN": {
+      "pp": 38.9814,
+      "pm_adic": 10.395,
+      "sc": 0.0,
+      "total": 49.3765
+     },
+     "receptores": {
+      "H_EI_CP4_y0162_0.00-10.00": {
+       "area_tributaria_m2": 5.4325,
+       "carga_total_kN": 25.3054,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        614,
+        615
+       ],
+       "longitudes_segmento_m": [
+        10.0
+       ],
+       "pesos_por_nodo": {
+        "614": 0.5,
+        "615": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_10.00-15.00": {
+       "area_tributaria_m2": 2.65,
+       "carga_total_kN": 12.3441,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        615,
+        617
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "615": 0.5,
+        "617": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_15.00-20.00": {
+       "area_tributaria_m2": 2.5175,
+       "carga_total_kN": 11.7269,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        617,
+        619
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "617": 0.5,
+        "619": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_D_VOLADIZO_ALTO_ESTE": {
+     "area_neta_m2": 27.664,
+     "carga_por_comp_kN": {
+      "pp": 101.7342,
+      "pm_adic": 16.9549,
+      "sc": 0.0,
+      "total": 118.6891
+     },
+     "receptores": {
+      "H_EI_CP4_y0162_35.00-40.00": {
+       "area_tributaria_m2": 6.666,
+       "carga_total_kN": 28.5998,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        625,
+        627
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "625": 0.5,
+        "627": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_30.00-35.00": {
+       "area_tributaria_m2": 6.3327,
+       "carga_total_kN": 27.1698,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        623,
+        625
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "623": 0.5,
+        "625": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_40.00-45.00": {
+       "area_tributaria_m2": 6.3327,
+       "carga_total_kN": 27.1698,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        627,
+        629
+       ],
+       "longitudes_segmento_m": [
+        5.0
+       ],
+       "pesos_por_nodo": {
+        "627": 0.5,
+        "629": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_47.50-49.90": {
+       "area_tributaria_m2": 4.9995,
+       "carga_total_kN": 21.4498,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        631,
+        633
+       ],
+       "longitudes_segmento_m": [
+        2.4
+       ],
+       "pesos_por_nodo": {
+        "631": 0.5,
+        "633": 0.5
+       }
+      },
+      "H_EI_CP4_y0162_45.00-47.50": {
+       "area_tributaria_m2": 3.333,
+       "carga_total_kN": 14.2999,
+       "n_nodos_fe": 2,
+       "nodos_fe_en_orden": [
+        629,
+        631
+       ],
+       "longitudes_segmento_m": [
+        2.5
+       ],
+       "pesos_por_nodo": {
+        "629": 0.5,
+        "631": 0.5
+       }
+      }
+     }
+    },
+    "L_EI_CP4_D_VOLADIZO_IZQ": {
+     "area_neta_m2": 5.6525,
+     "carga_por_comp_kN": {
+      "pp": 20.787,
+      "pm_adic": 11.0774,
+      "sc": 0.0,
+      "total": 31.8644
+     },
+     "receptores": {
+      "V_EI_CP4_x0.00_0-16.15": {
+       "area_tributaria_m2": 5.6525,
+       "carga_total_kN": 31.8644,
+       "n_nodos_fe": 8,
+       "nodos_fe_en_orden": [
+        572,
+        179,
+        179,
+        593,
+        593,
+        197,
+        197,
+        614
+       ],
+       "longitudes_segmento_m": [
+        0.181,
+        8.719,
+        0.181,
+        7.069
+       ],
+       "pesos_por_nodo": {
+        "572": 0.0056,
+        "179": 0.27554,
+        "593": 0.27554,
+        "197": 0.22446,
+        "614": 0.21885
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

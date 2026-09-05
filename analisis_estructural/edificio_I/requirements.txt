@@ -1,0 +1,7 @@
+openseespy==3.7.0.3
+openseespywin==3.7.0.1
+numpy>=1.24
+shapely>=2.0
+matplotlib>=3.7
+ezdxf
+opencv-python

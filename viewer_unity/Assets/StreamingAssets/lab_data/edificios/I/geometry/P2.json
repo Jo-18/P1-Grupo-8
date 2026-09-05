@@ -300,14 +300,28 @@
    "peralte": 0.3,
    "estado_seccion": "confirmado",
    "posicion": [
-    18.96,
+    17.5,
     3.91,
-    14.79
+    20.27
    ],
    "eje": "G-3-S1",
-   "nota": "Columna acero; RLE-TEXTO-1.",
+   "nota": "Columna acero; RLE-TEXTO-1. | REUBICADA (P2): (18.96,14.79)->(17.50,20.27) sobre huella RLE-PILAR huella u[17.34,17.64] v[20.12,20.42] (plano 2017_67-102.dxf (banda P2)).",
    "edificio": "I",
    "nivel": "P2"
+  },
+  {
+   "id": "COL_EI_CP2_RLE_PILAR_10.00_20.27",
+   "grid": "B",
+   "seccion": "0.30 x 0.30 (huella RLE-PILAR 2017_67-102)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    10.0,
+    3.91,
+    20.27
+   ],
+   "nota": "Incorporada desde huella fisica RLE-PILAR (u[9.85,10.15] v[20.12,20.42]) del plano 2017_67-102.dxf. Seccion geometrica demostrada por la huella; material/perfil asumido por el modelo: sin perfil inventado, acero del voladizo norte (convencion de las demas columnas P2)"
   }
  ],
  "vigas": [
@@ -1066,6 +1080,72 @@
    "recibe_losa": true,
    "edificio": "I",
    "nivel": "P2"
+  },
+  {
+   "id": "H_EI_CP2_y2027_10.30-17.79_PLA2017-102",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     10.3,
+     3.91,
+     20.27
+    ],
+    [
+     17.79,
+     3.91,
+     20.27
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P2",
+   "nota": "Viga de borde norte voladizo P2, eje v=20.27 entre caras RLE-VIGA v=19.97 y v=20.57 (u[10.30,17.79]); geometria de viewer desde plano 2017_67-102, sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP2_x1000_16.50-20.57_PLA2017-102",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     10.0,
+     3.91,
+     16.5
+    ],
+    [
+     10.0,
+     3.91,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P2",
+   "nota": "Apoyo/cabeza de pilar OESTE del voladizo P2, eje u=10.00 entre caras RLE-VIGA u=9.70 y u=10.30 (v[16.50,20.57]); geometria de viewer desde plano 2017_67-102, sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP2_x1749_16.45-19.97_PLA2017-102",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     17.49,
+     3.91,
+     16.45
+    ],
+    [
+     17.49,
+     3.91,
+     19.97
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P2",
+   "nota": "Apoyo/cabeza de pilar ESTE del voladizo P2, eje u=17.49 entre caras RLE-VIGA u=17.19 y u=17.79 (v[16.45,19.97]); geometria de viewer desde plano 2017_67-102, sin FE/tributaria. La pareja u=17.34/17.64 (0.30) es la propia columna G3S1, no una viga."
   }
  ],
  "muros": [
