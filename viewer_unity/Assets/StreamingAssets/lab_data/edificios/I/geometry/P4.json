@@ -305,7 +305,7 @@
     1.36
    ],
    "eje": "Ip-S1",
-   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=45.97 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=45.97 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103.dxf). Dentro_huella=False.",
    "edificio": "I",
    "nivel": "P4"
   },
@@ -321,7 +321,7 @@
     7.46
    ],
    "eje": "J-S2",
-   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=48.77 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=48.77 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103.dxf). Dentro_huella=False.",
    "edificio": "I",
    "nivel": "P4"
   },
@@ -337,7 +337,7 @@
     8.12
    ],
    "eje": "J-S3",
-   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=51.97 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=51.97 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103.dxf). Dentro_huella=False.",
    "edificio": "I",
    "nivel": "P4"
   },
@@ -353,7 +353,7 @@
     15.23
    ],
    "eje": "J-S4",
-   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=52.11 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=52.11 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103.dxf). Dentro_huella=False.",
    "edificio": "I",
    "nivel": "P4"
   },
@@ -369,7 +369,7 @@
     17.3
    ],
    "eje": "J-S5",
-   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=48.73 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=48.73 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103.dxf). Dentro_huella=False.",
    "edificio": "I",
    "nivel": "P4"
   },
@@ -417,7 +417,7 @@
     -0.87
    ],
    "eje": "J-S8",
-   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=52.08 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=52.08 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103.dxf). Dentro_huella=False.",
    "edificio": "I",
    "nivel": "P4"
   }
