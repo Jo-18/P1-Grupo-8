@@ -1,0 +1,44 @@
+{
+ "convencion": "unity (X,Y,Z)=(u,cota,v); metros",
+ "frame_geometria_exportada": "cada edificio exportado en su propio frame comun local",
+ "frame_unity": "X=u, Y=cota, Z=v (aplicada UNA vez en el exportador)",
+ "junta": {
+  "id": "JD_EI_EII_10CM",
+  "ancho_m": 0.1,
+  "cara_EII_x_local": 27.85,
+  "cara_EI": "por_correlacionar (fuera del JSON EII)",
+  "ejes": "D-D' Fase 2",
+  "estado": "por_correlacionar"
+ },
+ "colocacion_global": "provisional",
+ "dato_necesario_para_resolver": "Coordenada de la cara/limite este del Edificio I en el sistema comun del Edificio II a lo largo del eje de la junta (correlacionar eje D-D' de EI con la cara x=27.85 de EII via captura/medicion conjunta de las paginas 19/20). Con ese valor se fija la traslacion relativa EI->EII y se deja de ser provisional.",
+ "edificios": {
+  "II": {
+   "posicion_unity": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_unity": [
+    0,
+    0,
+    0
+   ],
+   "nota": "oriigen en su propio frame comun (A x 1 en [0,0])"
+  },
+  "I": {
+   "posicion_unity": [
+    60.0,
+    0.0,
+    0.0
+   ],
+   "rotacion_unity": [
+    0,
+    0,
+    0
+   ],
+   "nota": "PROVISIONAL: traslacion de comparacion para que ambos edificios no se solapen hasta correlacionar la junta. NO representa el desplazamiento fisico real EI<->EII (por_correlacionar)."
+  }
+ },
+ "no_union_estructural": true
+}

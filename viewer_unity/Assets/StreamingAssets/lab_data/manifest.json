@@ -1,0 +1,56 @@
+{
+ "nombre": "paquete_visual_edificios_I_II",
+ "version": "1.0",
+ "generado_por": "tools/export_lab_data.py (lab FE, sin re-ejecutar analisis)",
+ "unidades": {
+  "longitud": "m",
+  "carga": "kN",
+  "carga_superficial": "kN/m2"
+ },
+ "cadena_transformacion": "comun(u,v,cota) -> unity(X,Y,Z)=(u,cota,v); aplicada una sola vez",
+ "ejecucion_fuente_Edificio_I": {
+  "id": "primera_ejecucion",
+  "mult": 1000.0,
+  "subdivision_vigas": 1,
+  "n_nodos": 324,
+  "nota": "Referencia de resultados del edificio I. La ejecucion subdiv4 es PROVISIONAL (V.S.I. pendiente, max_disp 12.68 m no validado) y NO se usa como dato definitivo."
+ },
+ "Edificio_II": {
+  "stado": "geometria_adaptada_sin_solucion_FE",
+  "nota": "Solo geometria/adaptaciones respaldadas; sin tributaria real ni resultados estructurales. Se visualiza igual aunque el analisis este pendiente. El ensayo CP2 1 kPa es unitario y NO se usa como dato."
+ },
+ "estados_validacion": {
+  "I": "completo_para_ensayo / solucion laboratorio no utilizable para diseno",
+  "II": "geometria revisada / solucion FE PENDIENTE"
+ },
+ "candidatas": {
+  "I/P4": {
+   "tipo": "candidata con traslacion de vigas +0.18 m en v",
+   "fuente": "2017_67-103.dxf",
+   "archivo_fuente": "edificio_I_cielo_piso_4_candidata_vigas_corregidas.json",
+   "ejes_vigas": {
+    "sur": 0.18,
+    "interior": 9.08,
+    "norte": 16.33
+   },
+   "vigas_trasladadas": 41,
+   "nota": "Las areas tributarias y resultados FE (execucion primaria) corresponden a la GEOMETRIA PREVIA de P4 (vigas en v=0/8.9/16.15) y NO estan revalidados para esta candidata."
+  }
+ },
+ "archivos": [
+  "edificios/I/geometry/CP1S.json",
+  "edificios/I/geometry/P1.json",
+  "edificios/I/geometry/P2.json",
+  "edificios/I/geometry/P3.json",
+  "edificios/I/geometry/P4.json",
+  "edificios/I/results/primera_ejecucion.json",
+  "edificios/I/tributary/por_viga.json",
+  "edificios/I/tributary/regiones_tributarias.json",
+  "edificios/II/geometry/EII_CP1.json",
+  "edificios/II/geometry/EII_CP1S.json",
+  "edificios/II/geometry/EII_CP2.json",
+  "edificios/II/geometry/EII_CP3.json",
+  "edificios/II/geometry/EII_CP4.json",
+  "placement.json"
+ ]
+}
