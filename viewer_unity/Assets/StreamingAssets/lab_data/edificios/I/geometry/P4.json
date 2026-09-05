@@ -1,0 +1,3016 @@
+{
+ "edificio": "I",
+ "nivel": "P4",
+ "cota": 11.83,
+ "unidades": "m",
+ "frame": "unity (X,Y,Z)=(u,cota,v)",
+ "columnas": [
+  {
+   "id": "COL_EI_CP4_C_E1_0.73",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    0.000281,
+    11.83,
+    0.181221
+   ],
+   "eje": "E-1",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_F1_10.74",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    10.000281,
+    11.83,
+    0.181221
+   ],
+   "eje": "F-1",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_H1_30.71",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    30.000281,
+    11.83,
+    0.181388
+   ],
+   "eje": "H-1",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_G1_20.42",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    20.000281,
+    11.83,
+    0.181388
+   ],
+   "eje": "G-1",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_I1_40.5",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    40.000281,
+    11.83,
+    0.181388
+   ],
+   "eje": "I-1",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_Ip1_44.24",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    45.000281,
+    11.83,
+    0.181388
+   ],
+   "eje": "Ip-1",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_E2_0.75",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    0.000281,
+    11.83,
+    9.081221
+   ],
+   "eje": "E-2",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_F2_10.74",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    10.000281,
+    11.83,
+    9.081221
+   ],
+   "eje": "F-2",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_G2_20.73",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    20.000281,
+    11.83,
+    9.081221
+   ],
+   "eje": "G-2",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_H2_30.76",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    30.000281,
+    11.83,
+    9.081221
+   ],
+   "eje": "H-2",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_I2_38.87",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    40.000281,
+    11.83,
+    9.081388
+   ],
+   "eje": "I-2",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_Ip2_43.95",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    45.000281,
+    11.83,
+    9.081388
+   ],
+   "eje": "Ip-2",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_E3_0.74",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    0.000281,
+    11.83,
+    16.331388
+   ],
+   "eje": "E-3",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_F3_9.24",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    10.000281,
+    11.83,
+    16.331388
+   ],
+   "eje": "F-3",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_G3_20.73",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    20.000281,
+    11.83,
+    16.331388
+   ],
+   "eje": "G-3",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_H3_29.21",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    30.000281,
+    11.83,
+    16.331388
+   ],
+   "eje": "H-3",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_I3_40.37",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    40.000281,
+    11.83,
+    16.331388
+   ],
+   "eje": "I-3",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_C_Ip3_44.52",
+   "seccion": "P. 70x70",
+   "ancho": 0.7,
+   "peralte": 0.7,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    45.000281,
+    11.83,
+    16.331388
+   ],
+   "eje": "Ip-3",
+   "nota": "Columna concreto P.70x70; RLE-TEXTO-1+RLE-PILAR.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_IpS1_45.97",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "ancho": 0.0,
+   "peralte": 0.0,
+   "estado_seccion": "por_resolver",
+   "posicion": [
+    45.97,
+    11.83,
+    1.36
+   ],
+   "eje": "Ip-S1",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=45.97 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_JS2_48.77",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "ancho": 0.0,
+   "peralte": 0.0,
+   "estado_seccion": "por_resolver",
+   "posicion": [
+    48.77,
+    11.83,
+    7.46
+   ],
+   "eje": "J-S2",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=48.77 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_JS3_51.97",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "ancho": 0.0,
+   "peralte": 0.0,
+   "estado_seccion": "por_resolver",
+   "posicion": [
+    51.97,
+    11.83,
+    8.12
+   ],
+   "eje": "J-S3",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=51.97 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_JS4_52.11",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "ancho": 0.0,
+   "peralte": 0.0,
+   "estado_seccion": "por_resolver",
+   "posicion": [
+    52.11,
+    11.83,
+    15.23
+   ],
+   "eje": "J-S4",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=52.11 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_JS5_48.73",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "ancho": 0.0,
+   "peralte": 0.0,
+   "estado_seccion": "por_resolver",
+   "posicion": [
+    48.73,
+    11.83,
+    17.3
+   ],
+   "eje": "J-S5",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=48.73 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_GS6_21.5",
+   "seccion": "P.M. 300x300x20",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    21.5,
+    11.83,
+    21.03
+   ],
+   "eje": "G-S6",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_HS7_31.55",
+   "seccion": "P.M. 300x300x20",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    31.55,
+    11.83,
+    21.03
+   ],
+   "eje": "H-S7",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_JS8_52.08",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "ancho": 0.0,
+   "peralte": 0.0,
+   "estado_seccion": "por_resolver",
+   "posicion": [
+    52.08,
+    11.83,
+    -0.87
+   ],
+   "eje": "J-S8",
+   "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=52.08 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103). Dentro_huella=False.",
+   "edificio": "I",
+   "nivel": "P4"
+  }
+ ],
+ "vigas": [
+  {
+   "id": "H_EI_CP4_y0000_0.00-10.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     0,
+     11.83,
+     0.18
+    ],
+    [
+     10,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0000_10.00-15.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     10,
+     11.83,
+     0.18
+    ],
+    [
+     15,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0000_15.00-20.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     15,
+     11.83,
+     0.18
+    ],
+    [
+     20,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0000_20.00-25.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     20,
+     11.83,
+     0.18
+    ],
+    [
+     25,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0000_25.00-30.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     25,
+     11.83,
+     0.18
+    ],
+    [
+     30,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0000_30.00-35.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     30,
+     11.83,
+     0.18
+    ],
+    [
+     35,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0000_35.00-40.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     35,
+     11.83,
+     0.18
+    ],
+    [
+     40,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0000_40.00-45.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     40,
+     11.83,
+     0.18
+    ],
+    [
+     45,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0000_45.00-47.50",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     45,
+     11.83,
+     0.18
+    ],
+    [
+     47.5,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0000_47.50-49.90",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     47.5,
+     11.83,
+     0.18
+    ],
+    [
+     49.9,
+     11.83,
+     0.18
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_0.00-10.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     0,
+     11.83,
+     9.08
+    ],
+    [
+     10,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_10.00-15.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     10,
+     11.83,
+     9.08
+    ],
+    [
+     15,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_15.00-20.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     15,
+     11.83,
+     9.08
+    ],
+    [
+     20,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_20.00-25.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     20,
+     11.83,
+     9.08
+    ],
+    [
+     25,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_25.00-30.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     25,
+     11.83,
+     9.08
+    ],
+    [
+     30,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_30.00-35.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     30,
+     11.83,
+     9.08
+    ],
+    [
+     35,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_35.00-40.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     35,
+     11.83,
+     9.08
+    ],
+    [
+     40,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_40.00-45.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     40,
+     11.83,
+     9.08
+    ],
+    [
+     45,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_45.00-47.50",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     45,
+     11.83,
+     9.08
+    ],
+    [
+     47.5,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0089_47.50-49.90",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     47.5,
+     11.83,
+     9.08
+    ],
+    [
+     49.9,
+     11.83,
+     9.08
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_0.00-10.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     0,
+     11.83,
+     16.33
+    ],
+    [
+     10,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_10.00-15.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     10,
+     11.83,
+     16.33
+    ],
+    [
+     15,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_15.00-20.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     15,
+     11.83,
+     16.33
+    ],
+    [
+     20,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_20.00-25.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     20,
+     11.83,
+     16.33
+    ],
+    [
+     25,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_25.00-30.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     25,
+     11.83,
+     16.33
+    ],
+    [
+     30,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_30.00-35.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     30,
+     11.83,
+     16.33
+    ],
+    [
+     35,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_35.00-40.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     35,
+     11.83,
+     16.33
+    ],
+    [
+     40,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_40.00-45.00",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     40,
+     11.83,
+     16.33
+    ],
+    [
+     45,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_45.00-47.50",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     45,
+     11.83,
+     16.33
+    ],
+    [
+     47.5,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "H_EI_CP4_y0162_47.50-49.90",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     47.5,
+     11.83,
+     16.33
+    ],
+    [
+     49.9,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x0.00_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     0,
+     11.83,
+     0.18
+    ],
+    [
+     0,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x10.00_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     10,
+     11.83,
+     0.18
+    ],
+    [
+     10,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x15.00_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     15,
+     11.83,
+     0.18
+    ],
+    [
+     15,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x20.00_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     20,
+     11.83,
+     0.18
+    ],
+    [
+     20,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x25.00_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     25,
+     11.83,
+     0.18
+    ],
+    [
+     25,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x30.00_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     30,
+     11.83,
+     0.18
+    ],
+    [
+     30,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x35.00_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     35,
+     11.83,
+     0.18
+    ],
+    [
+     35,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x40.00_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     40,
+     11.83,
+     0.18
+    ],
+    [
+     40,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x45.00_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     45,
+     11.83,
+     0.18
+    ],
+    [
+     45,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x47.50_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     47.5,
+     11.83,
+     0.18
+    ],
+    [
+     47.5,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "V_EI_CP4_x49.90_0-16.15",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     49.9,
+     11.83,
+     0.18
+    ],
+    [
+     49.9,
+     11.83,
+     16.33
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  }
+ ],
+ "muros": [
+  {
+   "id": "M_EI_CP4_001",
+   "espesor": 0.2,
+   "pts": [
+    [
+     -0.35,
+     11.83,
+     4.0814
+    ],
+    [
+     6.45,
+     11.83,
+     4.0814
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "M_EI_CP4_002",
+   "espesor": 0.3,
+   "pts": [
+    [
+     3.5503,
+     11.83,
+     4.1814
+    ],
+    [
+     3.5503,
+     11.83,
+     6.3314
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "M_EI_CP4_003",
+   "espesor": 0.3,
+   "pts": [
+    [
+     6.4503,
+     11.83,
+     4.1814
+    ],
+    [
+     6.4503,
+     11.83,
+     6.3314
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "M_EI_CP4_004",
+   "espesor": 0.25,
+   "pts": [
+    [
+     3.2753,
+     11.83,
+     12.4476
+    ],
+    [
+     3.2753,
+     11.83,
+     14.0264
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "M_EI_CP4_005",
+   "espesor": 0.25,
+   "pts": [
+    [
+     6.7253,
+     11.83,
+     12.4476
+    ],
+    [
+     6.7253,
+     11.83,
+     14.0264
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "M_EI_CP4_006",
+   "espesor": 0.2,
+   "pts": [
+    [
+     3.2753,
+     11.83,
+     14.0264
+    ],
+    [
+     6.7253,
+     11.83,
+     14.0264
+    ]
+   ],
+   "recibe_losa": true,
+   "edificio": "I",
+   "nivel": "P4"
+  }
+ ],
+ "losas": [
+  {
+   "id": "L_EI_CP4_407",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     10,
+     11.83,
+     0.0
+    ],
+    [
+     15,
+     11.83,
+     0.0
+    ],
+    [
+     15,
+     11.83,
+     8.9
+    ],
+    [
+     10,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      12.394,
+      11.83,
+      5.196
+     ],
+     [
+      14.077,
+      11.83,
+      5.196
+     ],
+     [
+      14.077,
+      11.83,
+      7.273
+     ],
+     [
+      12.394,
+      11.83,
+      7.273
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_10.00-15.00",
+    "H_EI_CP4_y0089_10.00-15.00",
+    "V_EI_CP4_x10.00_0-16.15",
+    "V_EI_CP4_x15.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_417",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     10,
+     11.83,
+     8.9
+    ],
+    [
+     15,
+     11.83,
+     8.9
+    ],
+    [
+     15,
+     11.83,
+     16.15
+    ],
+    [
+     10,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      12.394,
+      11.83,
+      9.381
+     ],
+     [
+      14.077,
+      11.83,
+      9.381
+     ],
+     [
+      14.077,
+      11.83,
+      11.358
+     ],
+     [
+      12.394,
+      11.83,
+      11.358
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_10.00-15.00",
+    "H_EI_CP4_y0162_10.00-15.00",
+    "V_EI_CP4_x10.00_0-16.15",
+    "V_EI_CP4_x15.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_309",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     15,
+     11.83,
+     0.0
+    ],
+    [
+     20,
+     11.83,
+     0.0
+    ],
+    [
+     20,
+     11.83,
+     8.9
+    ],
+    [
+     15,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_15.00-20.00",
+    "H_EI_CP4_y0089_15.00-20.00",
+    "V_EI_CP4_x15.00_0-16.15",
+    "V_EI_CP4_x20.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_418",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     15,
+     11.83,
+     8.9
+    ],
+    [
+     20,
+     11.83,
+     8.9
+    ],
+    [
+     20,
+     11.83,
+     16.15
+    ],
+    [
+     15,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_15.00-20.00",
+    "H_EI_CP4_y0162_15.00-20.00",
+    "V_EI_CP4_x15.00_0-16.15",
+    "V_EI_CP4_x20.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_410",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     20,
+     11.83,
+     0.0
+    ],
+    [
+     25,
+     11.83,
+     0.0
+    ],
+    [
+     25,
+     11.83,
+     8.9
+    ],
+    [
+     20,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      22.97,
+      11.83,
+      5.214
+     ],
+     [
+      24.7,
+      11.83,
+      5.214
+     ],
+     [
+      24.7,
+      11.83,
+      7.273
+     ],
+     [
+      22.97,
+      11.83,
+      7.273
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_20.00-25.00",
+    "H_EI_CP4_y0089_20.00-25.00",
+    "V_EI_CP4_x20.00_0-16.15",
+    "V_EI_CP4_x25.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_419",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     20,
+     11.83,
+     8.9
+    ],
+    [
+     25,
+     11.83,
+     8.9
+    ],
+    [
+     25,
+     11.83,
+     16.15
+    ],
+    [
+     20,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      23.008,
+      11.83,
+      9.381
+     ],
+     [
+      24.7,
+      11.83,
+      9.381
+     ],
+     [
+      24.7,
+      11.83,
+      11.358
+     ],
+     [
+      23.008,
+      11.83,
+      11.358
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_20.00-25.00",
+    "H_EI_CP4_y0162_20.00-25.00",
+    "V_EI_CP4_x20.00_0-16.15",
+    "V_EI_CP4_x25.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_411",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     25,
+     11.83,
+     0.0
+    ],
+    [
+     30,
+     11.83,
+     0.0
+    ],
+    [
+     30,
+     11.83,
+     8.9
+    ],
+    [
+     25,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      25.3,
+      11.83,
+      5.214
+     ],
+     [
+      27.077,
+      11.83,
+      5.214
+     ],
+     [
+      27.077,
+      11.83,
+      7.273
+     ],
+     [
+      25.3,
+      11.83,
+      7.273
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_25.00-30.00",
+    "H_EI_CP4_y0089_25.00-30.00",
+    "V_EI_CP4_x25.00_0-16.15",
+    "V_EI_CP4_x30.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_420",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     25,
+     11.83,
+     8.9
+    ],
+    [
+     30,
+     11.83,
+     8.9
+    ],
+    [
+     30,
+     11.83,
+     16.15
+    ],
+    [
+     25,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      25.3,
+      11.83,
+      9.381
+     ],
+     [
+      27.077,
+      11.83,
+      9.381
+     ],
+     [
+      27.077,
+      11.83,
+      11.358
+     ],
+     [
+      25.3,
+      11.83,
+      11.358
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_25.00-30.00",
+    "H_EI_CP4_y0162_25.00-30.00",
+    "V_EI_CP4_x25.00_0-16.15",
+    "V_EI_CP4_x30.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_412",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     30,
+     11.83,
+     0.0
+    ],
+    [
+     35,
+     11.83,
+     0.0
+    ],
+    [
+     35,
+     11.83,
+     8.9
+    ],
+    [
+     30,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      32.923,
+      11.83,
+      5.197
+     ],
+     [
+      34.7,
+      11.83,
+      5.197
+     ],
+     [
+      34.7,
+      11.83,
+      7.273
+     ],
+     [
+      32.923,
+      11.83,
+      7.273
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_30.00-35.00",
+    "H_EI_CP4_y0089_30.00-35.00",
+    "V_EI_CP4_x30.00_0-16.15",
+    "V_EI_CP4_x35.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_421",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     30,
+     11.83,
+     8.9
+    ],
+    [
+     35,
+     11.83,
+     8.9
+    ],
+    [
+     35,
+     11.83,
+     16.15
+    ],
+    [
+     30,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      32.923,
+      11.83,
+      9.381
+     ],
+     [
+      34.7,
+      11.83,
+      9.381
+     ],
+     [
+      34.7,
+      11.83,
+      11.358
+     ],
+     [
+      32.923,
+      11.83,
+      11.358
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_30.00-35.00",
+    "H_EI_CP4_y0162_30.00-35.00",
+    "V_EI_CP4_x30.00_0-16.15",
+    "V_EI_CP4_x35.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_413",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     35,
+     11.83,
+     0.0
+    ],
+    [
+     40,
+     11.83,
+     0.0
+    ],
+    [
+     40,
+     11.83,
+     8.9
+    ],
+    [
+     35,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      35.3,
+      11.83,
+      5.197
+     ],
+     [
+      37.078,
+      11.83,
+      5.197
+     ],
+     [
+      37.078,
+      11.83,
+      7.273
+     ],
+     [
+      35.3,
+      11.83,
+      7.273
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_35.00-40.00",
+    "H_EI_CP4_y0089_35.00-40.00",
+    "V_EI_CP4_x35.00_0-16.15",
+    "V_EI_CP4_x40.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_422",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     35,
+     11.83,
+     8.9
+    ],
+    [
+     40,
+     11.83,
+     8.9
+    ],
+    [
+     40,
+     11.83,
+     16.15
+    ],
+    [
+     35,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      35.3,
+      11.83,
+      9.381
+     ],
+     [
+      37.077,
+      11.83,
+      9.381
+     ],
+     [
+      37.077,
+      11.83,
+      11.358
+     ],
+     [
+      35.3,
+      11.83,
+      11.358
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_35.00-40.00",
+    "H_EI_CP4_y0162_35.00-40.00",
+    "V_EI_CP4_x35.00_0-16.15",
+    "V_EI_CP4_x40.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_414",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     40,
+     11.83,
+     0.0
+    ],
+    [
+     45,
+     11.83,
+     0.0
+    ],
+    [
+     45,
+     11.83,
+     8.9
+    ],
+    [
+     40,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      42.923,
+      11.83,
+      5.211
+     ],
+     [
+      44.7,
+      11.83,
+      5.211
+     ],
+     [
+      44.7,
+      11.83,
+      7.273
+     ],
+     [
+      42.923,
+      11.83,
+      7.273
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_40.00-45.00",
+    "H_EI_CP4_y0089_40.00-45.00",
+    "V_EI_CP4_x40.00_0-16.15",
+    "V_EI_CP4_x45.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_423",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     40,
+     11.83,
+     8.9
+    ],
+    [
+     45,
+     11.83,
+     8.9
+    ],
+    [
+     45,
+     11.83,
+     16.15
+    ],
+    [
+     40,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      42.923,
+      11.83,
+      9.381
+     ],
+     [
+      44.7,
+      11.83,
+      9.381
+     ],
+     [
+      44.7,
+      11.83,
+      11.364
+     ],
+     [
+      42.923,
+      11.83,
+      11.364
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_40.00-45.00",
+    "H_EI_CP4_y0162_40.00-45.00",
+    "V_EI_CP4_x40.00_0-16.15",
+    "V_EI_CP4_x45.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_415",
+   "espesor": 0.12,
+   "poligono": [
+    [
+     45,
+     11.83,
+     0.0
+    ],
+    [
+     47.5,
+     11.83,
+     0.0
+    ],
+    [
+     47.5,
+     11.83,
+     8.9
+    ],
+    [
+     45,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_45.00-47.50",
+    "H_EI_CP4_y0089_45.00-47.50",
+    "V_EI_CP4_x45.00_0-16.15",
+    "V_EI_CP4_x47.50_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_424",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     45,
+     11.83,
+     8.9
+    ],
+    [
+     47.5,
+     11.83,
+     8.9
+    ],
+    [
+     47.5,
+     11.83,
+     16.15
+    ],
+    [
+     45,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_45.00-47.50",
+    "H_EI_CP4_y0162_45.00-47.50",
+    "V_EI_CP4_x45.00_0-16.15",
+    "V_EI_CP4_x47.50_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_416",
+   "espesor": 0.12,
+   "poligono": [
+    [
+     47.5,
+     11.83,
+     0.0
+    ],
+    [
+     49.9,
+     11.83,
+     0.0
+    ],
+    [
+     49.9,
+     11.83,
+     8.9
+    ],
+    [
+     47.5,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_47.50-49.90",
+    "H_EI_CP4_y0089_47.50-49.90",
+    "V_EI_CP4_x47.50_0-16.15",
+    "V_EI_CP4_x49.90_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_425",
+   "espesor": 0.12,
+   "poligono": [
+    [
+     47.5,
+     11.83,
+     8.9
+    ],
+    [
+     49.9,
+     11.83,
+     8.9
+    ],
+    [
+     49.9,
+     11.83,
+     16.15
+    ],
+    [
+     47.5,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_47.50-49.90",
+    "H_EI_CP4_y0162_47.50-49.90",
+    "V_EI_CP4_x47.50_0-16.15",
+    "V_EI_CP4_x49.90_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_400",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     0.0,
+     11.83,
+     0.0
+    ],
+    [
+     10.0,
+     11.83,
+     0.0
+    ],
+    [
+     10.0,
+     11.83,
+     8.9
+    ],
+    [
+     0.0,
+     11.83,
+     8.9
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_0.00-10.00",
+    "H_EI_CP4_y0089_0.00-10.00",
+    "V_EI_CP4_x0.00_0-16.15",
+    "V_EI_CP4_x10.00_0-16.15",
+    "M_EI_CP4_001",
+    "M_EI_CP4_002",
+    "M_EI_CP4_003"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_404",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     0.0,
+     11.83,
+     8.9
+    ],
+    [
+     10.0,
+     11.83,
+     8.9
+    ],
+    [
+     10.0,
+     11.83,
+     16.15
+    ],
+    [
+     0.0,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [
+    [
+     [
+      0.631,
+      11.83,
+      10.66
+     ],
+     [
+      1.296,
+      11.83,
+      10.66
+     ],
+     [
+      1.296,
+      11.83,
+      11.325
+     ],
+     [
+      0.631,
+      11.83,
+      11.325
+     ]
+    ]
+   ],
+   "apoyos_validos": [
+    "H_EI_CP4_y0089_0.00-10.00",
+    "H_EI_CP4_y0162_0.00-10.00",
+    "V_EI_CP4_x0.00_0-16.15",
+    "V_EI_CP4_x10.00_0-16.15",
+    "M_EI_CP4_004",
+    "M_EI_CP4_005",
+    "M_EI_CP4_006"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_426",
+   "espesor": 0.12,
+   "poligono": [
+    [
+     20.0,
+     11.83,
+     16.63
+    ],
+    [
+     30.0,
+     11.83,
+     16.63
+    ],
+    [
+     30.0,
+     11.83,
+     20.15
+    ],
+    [
+     20.0,
+     11.83,
+     20.15
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0162_20.00-25.00",
+    "H_EI_CP4_y0162_25.00-30.00",
+    "V_EI_CP4_x20.00_0-16.15",
+    "V_EI_CP4_x30.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_D_VOLADIZO_BAJO",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     -0.35,
+     11.83,
+     -0.97
+    ],
+    [
+     51.15,
+     11.83,
+     -0.97
+    ],
+    [
+     51.15,
+     11.83,
+     0.0
+    ],
+    [
+     -0.35,
+     11.83,
+     0.0
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0000_0.00-10.00",
+    "H_EI_CP4_y0000_10.00-15.00",
+    "H_EI_CP4_y0000_15.00-20.00",
+    "H_EI_CP4_y0000_20.00-25.00",
+    "H_EI_CP4_y0000_25.00-30.00",
+    "H_EI_CP4_y0000_30.00-35.00",
+    "H_EI_CP4_y0000_35.00-40.00",
+    "H_EI_CP4_y0000_40.00-45.00",
+    "H_EI_CP4_y0000_45.00-47.50",
+    "H_EI_CP4_y0000_47.50-49.90"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_D_VOLADIZO_ALTO_OESTE",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     -0.35,
+     11.83,
+     16.15
+    ],
+    [
+     19.65,
+     11.83,
+     16.15
+    ],
+    [
+     19.65,
+     11.83,
+     16.68
+    ],
+    [
+     -0.35,
+     11.83,
+     16.68
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0162_0.00-10.00",
+    "H_EI_CP4_y0162_10.00-15.00",
+    "H_EI_CP4_y0162_15.00-20.00"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_D_VOLADIZO_ALTO_ESTE",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     30.35,
+     11.83,
+     16.15
+    ],
+    [
+     51.15,
+     11.83,
+     16.15
+    ],
+    [
+     51.15,
+     11.83,
+     17.48
+    ],
+    [
+     30.35,
+     11.83,
+     17.48
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "H_EI_CP4_y0162_30.00-35.00",
+    "H_EI_CP4_y0162_35.00-40.00",
+    "H_EI_CP4_y0162_40.00-45.00",
+    "H_EI_CP4_y0162_45.00-47.50",
+    "H_EI_CP4_y0162_47.50-49.90"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "L_EI_CP4_D_VOLADIZO_IZQ",
+   "espesor": 0.15,
+   "poligono": [
+    [
+     -0.35,
+     11.83,
+     0.0
+    ],
+    [
+     0.0,
+     11.83,
+     0.0
+    ],
+    [
+     0.0,
+     11.83,
+     16.15
+    ],
+    [
+     -0.35,
+     11.83,
+     16.15
+    ]
+   ],
+   "aberturas": [],
+   "apoyos_validos": [
+    "V_EI_CP4_x0.00_0-16.15"
+   ],
+   "tipo_transferencia": "por_definir",
+   "direccion_transferencia": null,
+   "edificio": "I",
+   "nivel": "P4"
+  }
+ ],
+ "aberturas_globales": [
+  {
+   "id": "AB_EI_CP4_01",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     12.394,
+     11.83,
+     5.196
+    ],
+    [
+     14.077,
+     11.83,
+     5.196
+    ],
+    [
+     14.077,
+     11.83,
+     7.273
+    ],
+    [
+     12.394,
+     11.83,
+     7.273
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_02",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     12.394,
+     11.83,
+     9.381
+    ],
+    [
+     14.077,
+     11.83,
+     9.381
+    ],
+    [
+     14.077,
+     11.83,
+     11.358
+    ],
+    [
+     12.394,
+     11.83,
+     11.358
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_03",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     22.97,
+     11.83,
+     5.214
+    ],
+    [
+     24.7,
+     11.83,
+     5.214
+    ],
+    [
+     24.7,
+     11.83,
+     7.273
+    ],
+    [
+     22.97,
+     11.83,
+     7.273
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_04",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     23.008,
+     11.83,
+     9.381
+    ],
+    [
+     24.7,
+     11.83,
+     9.381
+    ],
+    [
+     24.7,
+     11.83,
+     11.358
+    ],
+    [
+     23.008,
+     11.83,
+     11.358
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_05",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     25.3,
+     11.83,
+     5.214
+    ],
+    [
+     27.077,
+     11.83,
+     5.214
+    ],
+    [
+     27.077,
+     11.83,
+     7.273
+    ],
+    [
+     25.3,
+     11.83,
+     7.273
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_06",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     25.3,
+     11.83,
+     9.381
+    ],
+    [
+     27.077,
+     11.83,
+     9.381
+    ],
+    [
+     27.077,
+     11.83,
+     11.358
+    ],
+    [
+     25.3,
+     11.83,
+     11.358
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_07",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     32.923,
+     11.83,
+     5.197
+    ],
+    [
+     34.7,
+     11.83,
+     5.197
+    ],
+    [
+     34.7,
+     11.83,
+     7.273
+    ],
+    [
+     32.923,
+     11.83,
+     7.273
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_08",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     32.923,
+     11.83,
+     9.381
+    ],
+    [
+     34.7,
+     11.83,
+     9.381
+    ],
+    [
+     34.7,
+     11.83,
+     11.358
+    ],
+    [
+     32.923,
+     11.83,
+     11.358
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_09",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     35.3,
+     11.83,
+     5.197
+    ],
+    [
+     37.078,
+     11.83,
+     5.197
+    ],
+    [
+     37.078,
+     11.83,
+     7.273
+    ],
+    [
+     35.3,
+     11.83,
+     7.273
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_10",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     35.3,
+     11.83,
+     9.381
+    ],
+    [
+     37.077,
+     11.83,
+     9.381
+    ],
+    [
+     37.077,
+     11.83,
+     11.358
+    ],
+    [
+     35.3,
+     11.83,
+     11.358
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_11",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     42.923,
+     11.83,
+     5.211
+    ],
+    [
+     44.7,
+     11.83,
+     5.211
+    ],
+    [
+     44.7,
+     11.83,
+     7.273
+    ],
+    [
+     42.923,
+     11.83,
+     7.273
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_12",
+   "tipo": "pasada",
+   "poligono": [
+    [
+     42.923,
+     11.83,
+     9.381
+    ],
+    [
+     44.7,
+     11.83,
+     9.381
+    ],
+    [
+     44.7,
+     11.83,
+     11.364
+    ],
+    [
+     42.923,
+     11.83,
+     11.364
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "AB_EI_CP4_13",
+   "tipo": "nucleo_distribucion",
+   "poligono": [
+    [
+     0.631,
+     11.83,
+     10.66
+    ],
+    [
+     1.296,
+     11.83,
+     10.66
+    ],
+    [
+     1.296,
+     11.83,
+     11.325
+    ],
+    [
+     0.631,
+     11.83,
+     11.325
+    ]
+   ],
+   "edificio": "I",
+   "nivel": "P4"
+  }
+ ],
+ "candidata": {
+  "tipo": "candidata_con_traslacion_vigas",
+  "shift_v_m": 0.18,
+  "fuente": "2017_67-103.dxf",
+  "ejes_vigas": {
+   "sur": 0.18,
+   "interior": 9.08,
+   "norte": 16.33
+  },
+  "nota": "Geometria candidata: grid de vigas trasladado +0.18 m en v a los ejes de plano (alineado con columnas). Las areas tributarias y resultados FE previos corresponden a la geometria anterior y NO estan revalidados."
+ }
+}
