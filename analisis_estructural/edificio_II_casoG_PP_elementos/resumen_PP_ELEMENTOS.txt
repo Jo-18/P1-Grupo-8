@@ -1,0 +1,9 @@
+PP elementos por tipo:
+  gamma=24.5166 kN/m3
+  columnas_kN = 1522.31 kN
+  vigas_kN = 11585.48 kN
+  muros_kN = 6521.26 kN
+  TOTAL PP elementos = -19629.04 kN
+
+sec=V.30/80 ok=True analyze=0 Rz=29216.3359 Pz=29216.3359 residuo=0.0 n_reac=222 max_desp=0.00076866 n_esfuerzos=247
+sec=V.60/80 ok=True analyze=0 Rz=29306.0667 Pz=29306.0667 residuo=-0.0 n_reac=222 max_desp=0.00076866 n_esfuerzos=247
