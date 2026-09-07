@@ -1100,40 +1100,6 @@
    "nivel": "P1"
   },
   {
-   "id": "L_EI_CP1_D_SUP_OESTE_VOL",
-   "espesor": 0.15,
-   "poligono": [
-    [
-     -0.25,
-     -0.05,
-     0.0
-    ],
-    [
-     30.0,
-     -0.05,
-     0.0
-    ],
-    [
-     30.0,
-     -0.05,
-     -1.15
-    ],
-    [
-     -0.25,
-     -0.05,
-     -1.15
-    ]
-   ],
-   "aberturas": [],
-   "apoyos_validos": [
-    "GV_CP1_G1_oeste"
-   ],
-   "tipo_transferencia": "por_definir",
-   "direccion_transferencia": null,
-   "edificio": "I",
-   "nivel": "P1"
-  },
-  {
    "id": "L_EI_CP1_D_ATRIO_ESTE",
    "espesor": 0.15,
    "poligono": [

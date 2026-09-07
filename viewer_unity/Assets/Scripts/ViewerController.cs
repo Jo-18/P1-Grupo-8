@@ -45,6 +45,7 @@ namespace LabViewer
 
         private Vector2 _scroll;
         private Vector2 _inspScroll;
+        private bool _showIntegrationDiag;
 
         /// <summary>Marcador superpuesto (nodo/apoyo/eje/id/tributaria) con su
         /// contexto de filtrado para combinarlo en AND con edificio+nivel+estado.</summary>
@@ -181,6 +182,22 @@ namespace LabViewer
             RebuildOverlays();
         }
 
+        // Acciones explicitas de integracion visual I/II (solo visualizacion;
+        // no cambian la geometria ni el placement, que es placement.json).
+        private void ShowBothBuildings()
+        {
+            _bldgOn["I"] = true; _bldgOn["II"] = true;
+            ApplyFilters();
+            FrameAll();
+        }
+
+        private void ShowOnlyBuilding(string b)
+        {
+            _bldgOn["I"] = (b == "I"); _bldgOn["II"] = (b == "II");
+            ApplyFilters();
+            FrameAll();
+        }
+
         private void HideAll()
         {
             _levelOn.Clear();
@@ -253,8 +270,22 @@ namespace LabViewer
                     _markers.Add(new Marker(s, e.Building, e.Level, "nodo"));
                 }
 
-                // APOYO (cubo verde) en el nivel de base documentado
+                // APOYO (cubo verde) en el nivel de base documentado.
+                // Edificio I: ademas de las columnas reales del nivel base (CP1S),
+                // se dibuja el apoyo en las columnas P1 del sector L_EI_CP1_D_INF_I_Ip
+                // (u=40/45, v=16.15/8.9): su extremo inferior esta fijado 6DOF en
+                // z=CP1S (-4.01 m) por la hipotesis de cimentacion del modelo FE
+                // (los tramos col_*_base_P1 llevan reaccion y desplazamiento nulo).
                 bool esBase = e.Level == "CP1S" || e.Level == "EII_CP1S";
+                if (!esBase && e.Building == "I" && e.Level == "P1")
+                {
+                    // P0 = Vector3(u, baseY, v): P0.x = u, P0.z = v, P0.y = cota base.
+                    float u = e.P0.x;
+                    float v = e.P0.z;
+                    bool enSector = (Mathf.Abs(u - 40.0f) < 0.011f && (Mathf.Abs(v - 8.9f) < 0.011f || Mathf.Abs(v - 16.15f) < 0.011f)) ||
+                                    (Mathf.Abs(u - 45.0f) < 0.011f && (Mathf.Abs(v - 8.9f) < 0.011f || Mathf.Abs(v - 16.15f) < 0.011f));
+                    esBase = enSector && e.P0.y < -0.04f + 0.001f; // extremo en cota base P1 (-4.01)
+                }
                 if (ShowApoyos && esBase)
                 {
                     var s = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -634,6 +665,20 @@ namespace LabViewer
                 bool nv = GUILayout.Toggle(bOn, "Edificio " + b);
                 if (nv != bOn) { _bldgOn[b] = nv; ApplyFilters(); }
             }
+            if (GUILayout.Button("Mostrar ambos edificios")) { ShowBothBuildings(); }
+            if (GUILayout.Button("Solo Edificio I")) { ShowOnlyBuilding("I"); }
+            if (GUILayout.Button("Solo Edificio II")) { ShowOnlyBuilding("II"); }
+            GUILayout.Space(4);
+            bool di = GUILayout.Toggle(_showIntegrationDiag, "Diagnostico integracion (junta D-D'/bbox)");
+            if (di != _showIntegrationDiag) { _showIntegrationDiag = di; }
+
+            GUILayout.Space(6);
+            GUILayout.Label("Solo nivel (Edificio I)");
+            if (GUILayout.Button("Todos los niveles")) { SetLevelAll(true); ApplyFilters(); }
+            foreach (var lv in new[] { "CP1S", "P1", "P2", "P3", "P4" })
+            {
+                if (GUILayout.Button("Solo " + lv)) { SetLevelsOnly(lv); ApplyFilters(); }
+            }
 
             GUILayout.Space(6);
             GUILayout.Label("Tipos de elemento");
@@ -692,7 +737,76 @@ namespace LabViewer
             DrawP4CandidateNote();
             DrawLegend();
             if (_p4SkyMode) DrawP4InfoPanel();
+            if (_showIntegrationDiag) DrawIntegrationDiag();
         }
+
+        // ---------------------------------------------------------------- //
+        //  Diagnostico de integracion visual I/II: bbox MUNDIAL real de cada
+        //  edificio (renderers en la jerarquia, ya transformados por placement),
+        //  separacion minima entre AABBs y deteccion de superposicion indebida.
+        //  Solo lectura; no altera el modelo ni el placement.json.
+        // ---------------------------------------------------------------- //
+        private Bounds WorldBoundsOf(string building)
+        {
+            var lab = GameObject.Find("Lab");
+            if (lab == null) return new Bounds(Vector3.zero, Vector3.zero);
+            var bgo = lab.transform.Find(building);
+            if (bgo == null) return new Bounds(Vector3.zero, Vector3.zero);
+            var rs = bgo.GetComponentsInChildren<Renderer>();
+            if (rs == null || rs.Length == 0) return new Bounds(Vector3.zero, Vector3.zero);
+            var b = rs[0].bounds;
+            for (int i = 1; i < rs.Length; i++) b.Encapsulate(rs[i].bounds);
+            return b;
+        }
+
+        private static float AabbDist(Bounds a, Bounds b)
+        {
+            float dx = Mathf.Max(0f, Mathf.Max(a.min.x - b.max.x, b.min.x - a.max.x));
+            float dy = Mathf.Max(0f, Mathf.Max(a.min.y - b.max.y, b.min.y - a.max.y));
+            float dz = Mathf.Max(0f, Mathf.Max(a.min.z - b.max.z, b.min.z - a.max.z));
+            return Mathf.Sqrt(dx * dx + dy * dy + dz * dz);
+        }
+
+        private void DrawIntegrationDiag()
+        {
+            Bounds bi = WorldBoundsOf("I");
+            Bounds bii = WorldBoundsOf("II");
+            bool overlap = bi.size.sqrMagnitude > 0f && bii.size.sqrMagnitude > 0f && bi.Intersects(bii);
+            float dist = AabbDist(bi, bii);
+            // Junta D-D': caras planas x=const (paralelas). Cara D (EI, oeste) = renderer mas
+            // occidental (muro M_EI_CP1S_001, u=-0.450227; es el limite del modelo). Cara D'
+            // (EII, este) = renderer mas oriental (losas L_E1/L_EM/L_S6, x=27.85). Medida
+            // cara-a-cara, NO es la distancia AABB general.
+            float carD = bi.min.x;
+            float carDp = bii.max.x;
+            float junta = carD - carDp;
+
+            GUI.Box(new Rect(Screen.width - 340, Screen.height - 430, 330, 420), "Diagnostico integracion I/II");
+            GUILayout.BeginArea(new Rect(Screen.width - 334, Screen.height - 394, 318, 382));
+            GUILayout.Label("Junta D-D' (cara a cara): " + junta.ToString("0.###") + " m");
+            GUILayout.Label("  cara D  (EI, oeste) x=" + carD.ToString("0.###") + " (mundo)");
+            GUILayout.Label("  cara D' (EII, este) x=" + carDp.ToString("0.###") + " (mundo)");
+            GUILayout.Label("  (caras x=const paralelas; placement.json unico)");
+            GUILayout.Space(4);
+            GUILayout.Label("Separacion minima AABB: " + dist.ToString("0.###") + " m");
+            GUILayout.Label("  (referencia; NO sustituye la medicion de la junta D-D').");
+            GUILayout.Label("Superposicion indebida: " + (overlap ? "SI" : "NO"));
+            GUILayout.Space(4);
+            GUILayout.Label("Placement unico: placement.json");
+            if (Model != null)
+            {
+                GUILayout.Label("I  pos: " + Vec(Model.Placement.ContainsKey("I") ? Model.Placement["I"] : Vector3.zero));
+                GUILayout.Label("II pos: " + Vec(Model.Placement.ContainsKey("II") ? Model.Placement["II"] : Vector3.zero));
+            }
+            GUILayout.Space(4);
+            GUILayout.Label("Contornos/diafragmas en espacio local");
+            GUILayout.Label("(useWorldSpace=false); marcadores con");
+            GUILayout.Label("ToWorldModel = placement + com().");
+            GUILayout.EndArea();
+        }
+
+        private static string Vec(Vector3 v) =>
+            "(" + v.x.ToString("0.###") + ", " + v.y.ToString("0.###") + ", " + v.z.ToString("0.###") + ")";
 
         // Nota persistente: identifica P4 como candidata con traslacion de vigas +0.18 m.
         private void DrawP4CandidateNote()
@@ -774,6 +888,13 @@ namespace LabViewer
             if (r.Type != ElemType.Diafragma)
                 GUILayout.Label("Cota base: " + r.P0.y.ToString("0.###") + " m");
             GUILayout.Label("ID original: " + r.Id);
+            if (r.Type == ElemType.Losas)
+            {
+                GUILayout.Label("Limite u [" + r.UVBounds.x.ToString("0.###") + ", "
+                                + r.UVBounds.y.ToString("0.###") + "] m");
+                GUILayout.Label("Limite v [" + r.UVBounds.z.ToString("0.###") + ", "
+                                + r.UVBounds.w.ToString("0.###") + "] m");
+            }
             GUILayout.Label("elementTag: no disponible");
             // Aviso de CANDIDATA P4 (grid de vigas trasladado +0.18 m en v): los resultados y
             // areas tributarias FE previos corresponden a la geometria anterior y NO estan

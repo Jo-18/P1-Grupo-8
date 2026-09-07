@@ -108,10 +108,19 @@ namespace LabViewer
                     Model.PlacementRot[kv.Key] = Quaternion.identity;
                 }
             }
-            if (!Model.Placement.ContainsKey("II")) Model.Placement["II"] = Vector3.zero;
-            Model.PlacementRot["II"] = Quaternion.identity;
-            if (!Model.Placement.ContainsKey("I")) Model.Placement["I"] = new Vector3(60f, 0f, 0f);
-            Model.PlacementRot["I"] = Quaternion.identity;
+            // UNICA fuente de posicion relativa: placement.json. Si un edificio no tiene
+            // entrada, se coloca en el origen (id) con un warning en vez de inventar una
+            // posicion: ningun valor default hardcodeado debe sustituir el dato del archivo.
+            foreach (var b in new[] { "II", "I" })
+            {
+                if (!Model.Placement.ContainsKey(b))
+                {
+                    Debug.LogWarning("[LabLoader] placement.json no define el edificio '" + b +
+                                     "'; se coloca en el origen (0,0,0) para no inventar datos.");
+                    Model.Placement[b] = Vector3.zero;
+                }
+                Model.PlacementRot[b] = Quaternion.identity;
+            }
         }
 
         private void LoadResultsAndTributary(string path)
@@ -339,6 +348,13 @@ namespace LabViewer
                 refr.Aberturas = AberturasAsV3(aberturas);
                 refr.ApoyosValidos = StrList(L, "apoyos_validos");
                 refr.TipoTransferencia = Json.Str(L, "tipo_transferencia");
+                float umin = float.MaxValue, umax = float.MinValue, vmin = float.MaxValue, vmax = float.MinValue;
+                foreach (var p in poly)
+                {
+                    umin = Mathf.Min(umin, p.x); umax = Mathf.Max(umax, p.x);
+                    vmin = Mathf.Min(vmin, p.z); vmax = Mathf.Max(vmax, p.z);
+                }
+                refr.UVBounds = new Vector4(umin, umax, vmin, vmax);
 
                 var mesh = SlabMesh(poly, e, holes);
                 ApplyMesh(refr.gameObject, mesh, Mat(HexColor(LOSA_COLOR_HEX)), refr);

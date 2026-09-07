@@ -1474,6 +1474,138 @@
    "recibe_losa": true,
    "edificio": "I",
    "nivel": "P3"
+  },
+  {
+   "id": "H_EI_CP3_y1997_20.30-29.70",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     20.3,
+     7.87,
+     19.97
+    ],
+    [
+     29.7,
+     7.87,
+     19.97
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P3",
+   "nota": "Viga de borde NORTE de la losa torre L_EI_CP3_324, eje v=19.97 entre caras RLE-VIGA (u[20.30,29.70]); geometria de viewer desde plano 2017_67-102 (banda P3), sin FE/tributaria."
+  },
+  {
+   "id": "H_EI_CP3_y2057_19.70-30.30",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     19.7,
+     7.87,
+     20.57
+    ],
+    [
+     30.3,
+     7.87,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P3",
+   "nota": "Anillo superior de la torre (cubierta L_EI_CP3_324), eje v=20.57 (u[19.70,30.30]); geometria de viewer desde plano 2017_67-102 (banda P3), sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP3_x1970_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     19.7,
+     7.87,
+     16.45
+    ],
+    [
+     19.7,
+     7.87,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P3",
+   "nota": "Vertical OESTE cierre torre (perimetro caja G-H), eje u=19.70 entre v=16.45 y el anillo v=20.57; geometria de viewer desde plano 2017_67-102 (banda P3), sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP3_x2030_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     20.3,
+     7.87,
+     16.45
+    ],
+    [
+     20.3,
+     7.87,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P3",
+   "nota": "Vertical interior G de la torre, eje u=20.30 entre v=16.45 y el anillo v=20.57; geometria de viewer desde plano 2017_67-102 (banda P3), sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP3_x2970_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     29.7,
+     7.87,
+     16.45
+    ],
+    [
+     29.7,
+     7.87,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P3",
+   "nota": "Vertical interior H de la torre, eje u=29.70 entre v=16.45 y el anillo v=20.57; geometria de viewer desde plano 2017_67-102 (banda P3), sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP3_x3030_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     30.3,
+     7.87,
+     16.45
+    ],
+    [
+     30.3,
+     7.87,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P3",
+   "nota": "Vertical ESTE cierre torre (perimetro caja G-H), eje u=30.30 entre v=16.45 y el anillo v=20.57; geometria de viewer desde plano 2017_67-102 (banda P3), sin FE/tributaria."
   }
  ],
  "muros": [
@@ -2446,42 +2578,6 @@
    "nivel": "P3"
   },
   {
-   "id": "L_EI_CP3_315",
-   "espesor": 0.15,
-   "poligono": [
-    [
-     10.0,
-     7.87,
-     16.15
-    ],
-    [
-     12.2,
-     7.87,
-     16.15
-    ],
-    [
-     12.2,
-     7.87,
-     18.46
-    ],
-    [
-     10.0,
-     7.87,
-     18.46
-    ]
-   ],
-   "aberturas": [],
-   "apoyos_validos": [
-    "H_EI_CP3_y0162_10.00-12.20",
-    "V_EI_CP3_x10.00_0-16.15",
-    "V_EI_CP3_x12.20_890-1615"
-   ],
-   "tipo_transferencia": "por_definir",
-   "direccion_transferencia": null,
-   "edificio": "I",
-   "nivel": "P3"
-  },
-  {
    "id": "L_EI_CP3_324",
    "espesor": 0.15,
    "poligono": [
@@ -2512,49 +2608,6 @@
     "H_EI_CP3_y0162_25.00-30.00",
     "V_EI_CP3_x20.00_0-16.15",
     "V_EI_CP3_x30.00_0-16.15"
-   ],
-   "tipo_transferencia": "por_definir",
-   "direccion_transferencia": null,
-   "edificio": "I",
-   "nivel": "P3"
-  },
-  {
-   "id": "L_EI_CP3_D_VOLADIZO_BAJO",
-   "espesor": 0.15,
-   "poligono": [
-    [
-     -0.35,
-     7.87,
-     -1.15
-    ],
-    [
-     51.15,
-     7.87,
-     -1.15
-    ],
-    [
-     51.15,
-     7.87,
-     0.0
-    ],
-    [
-     -0.35,
-     7.87,
-     0.0
-    ]
-   ],
-   "aberturas": [],
-   "apoyos_validos": [
-    "H_EI_CP3_y0000_0.00-10.00",
-    "H_EI_CP3_y0000_10.00-15.00",
-    "H_EI_CP3_y0000_15.00-20.00",
-    "H_EI_CP3_y0000_20.00-25.00",
-    "H_EI_CP3_y0000_25.00-30.00",
-    "H_EI_CP3_y0000_30.00-35.00",
-    "H_EI_CP3_y0000_35.00-40.00",
-    "H_EI_CP3_y0000_40.00-45.00",
-    "H_EI_CP3_y0000_45.00-47.50",
-    "H_EI_CP3_y0000_47.50-49.90"
    ],
    "tipo_transferencia": "por_definir",
    "direccion_transferencia": null,
@@ -2660,42 +2713,6 @@
     "H_EI_CP3_y0162_30.00-35.00",
     "H_EI_CP3_y0162_35.00-40.00",
     "H_EI_CP3_y0162_40.00-45.00"
-   ],
-   "tipo_transferencia": "por_definir",
-   "direccion_transferencia": null,
-   "edificio": "I",
-   "nivel": "P3"
-  },
-  {
-   "id": "L_EI_CP3_D_VOLADIZO_ALTO_LENGUA",
-   "espesor": 0.15,
-   "poligono": [
-    [
-     44.65,
-     7.87,
-     16.15
-    ],
-    [
-     51.15,
-     7.87,
-     16.15
-    ],
-    [
-     51.15,
-     7.87,
-     17.3
-    ],
-    [
-     44.65,
-     7.87,
-     17.3
-    ]
-   ],
-   "aberturas": [],
-   "apoyos_validos": [
-    "H_EI_CP3_y0162_40.00-45.00",
-    "H_EI_CP3_y0162_45.00-47.50",
-    "H_EI_CP3_y0162_47.50-49.90"
    ],
    "tipo_transferencia": "por_definir",
    "direccion_transferencia": null,

@@ -44,6 +44,9 @@ namespace LabViewer
         // geometria util (vigas/muros: extremos; columnas: posicion)
         public Vector3 P0, P1;
 
+        // limites u/v de la losa en frame local: x=umin, y=umax, z=vmin, w=vmax
+        public Vector4 UVBounds;
+
         public override string ToString() => $"{Building}.{Level}.{Type}.{Id}";
     }
 

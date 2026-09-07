@@ -420,6 +420,102 @@
    "nota": "Columna acero P.M.300x300x20; RLE-TEXTO-1. | RECLASAFICADA (aplicacion planos): u=52.08 no cae en ninguna huella fisica de columna de acero del plano P4 (u en 44.57-45.27, 47.31-47.61, 49.64-49.94; RLE-PILAR piso4_103.dxf). Dentro_huella=False.",
    "edificio": "I",
    "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_M1_47.4558",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    47.4558,
+    11.83,
+    0.2811
+   ],
+   "eje": "M-1",
+   "nota": "Montante intermedio del marco I'-J (elev 800, entre +7.87 y +11.83). Huella fisica RLE-PILAR piso4_103 u[47.3066,47.6050] centro 47.4558, v=0.2811. Geometria de viewer respaldada por huella; sin FE/tributaria.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_M2_47.4558",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    47.4558,
+    11.83,
+    9.1348
+   ],
+   "eje": "M-2",
+   "nota": "Montante intermedio del marco I'-J (elev 800, entre +7.87 y +11.83). Huella fisica RLE-PILAR piso4_103 u[47.3066,47.6050] centro 47.4558, v=9.1348. Geometria de viewer respaldada por huella; sin FE/tributaria.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_M3_47.4558",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    47.4558,
+    11.83,
+    16.3472
+   ],
+   "eje": "M-3",
+   "nota": "Montante intermedio del marco I'-J (elev 800, entre +7.87 y +11.83). Huella fisica RLE-PILAR piso4_103 u[47.3066,47.6050] centro 47.4558, v=16.3472. Geometria de viewer respaldada por huella; sin FE/tributaria.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_J1_49.7935",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    49.7935,
+    11.83,
+    0.2811
+   ],
+   "eje": "J-1",
+   "nota": "Vertical extremo J del marco I'-J (elev 800, entre +7.87 y +11.83). Huella fisica RLE-PILAR piso4_103 u[49.6443,49.9428] centro 49.7935, v=0.2811. Geometria de viewer respaldada por huella; sin FE/tributaria.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_J2_49.7935",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    49.7935,
+    11.83,
+    9.1348
+   ],
+   "eje": "J-2",
+   "nota": "Vertical extremo J del marco I'-J (elev 800, entre +7.87 y +11.83). Huella fisica RLE-PILAR piso4_103 u[49.6443,49.9428] centro 49.7935, v=9.1348. Geometria de viewer respaldada por huella; sin FE/tributaria.",
+   "edificio": "I",
+   "nivel": "P4"
+  },
+  {
+   "id": "COL_EI_CP4_S_J3_49.7935",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "estado_seccion": "confirmado",
+   "posicion": [
+    49.7935,
+    11.83,
+    16.3472
+   ],
+   "eje": "J-3",
+   "nota": "Vertical extremo J del marco I'-J (elev 800, entre +7.87 y +11.83). Huella fisica RLE-PILAR piso4_103 u[49.6443,49.9428] centro 49.7935, v=16.3472. Geometria de viewer respaldada por huella; sin FE/tributaria.",
+   "edificio": "I",
+   "nivel": "P4"
   }
  ],
  "vigas": [
@@ -1283,6 +1379,358 @@
    "recibe_losa": true,
    "edificio": "I",
    "nivel": "P4"
+  },
+  {
+   "id": "D_EI_CP4_L800_D1_EJ1_44.919-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     44.919,
+     7.87,
+     0.2811
+    ],
+    [
+     47.4558,
+     11.83,
+     0.2811
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal D1 del marco I'-J (elev 800): nudo inferior I' (u=44.9190, +7.87) -> nudo superior intermedio M (u=47.4558, +11.83), eje v=0.2811. Geometria de viewer desde elevacion lamina 800 (sin huella en planta); sin FE/tributaria."
+  },
+  {
+   "id": "D_EI_CP4_L800_D1_EJ2_44.919-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     44.919,
+     7.87,
+     9.1348
+    ],
+    [
+     47.4558,
+     11.83,
+     9.1348
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal D1 del marco I'-J (elev 800): nudo inferior I' (u=44.9190, +7.87) -> nudo superior intermedio M (u=47.4558, +11.83), eje v=9.1348. Geometria de viewer desde elevacion lamina 800 (sin huella en planta); sin FE/tributaria."
+  },
+  {
+   "id": "D_EI_CP4_L800_D1_EJ3_44.919-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     44.919,
+     7.87,
+     16.3472
+    ],
+    [
+     47.4558,
+     11.83,
+     16.3472
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal D1 del marco I'-J (elev 800): nudo inferior I' (u=44.9190, +7.87) -> nudo superior intermedio M (u=47.4558, +11.83), eje v=16.3472. Geometria de viewer desde elevacion lamina 800 (sin huella en planta); sin FE/tributaria."
+  },
+  {
+   "id": "D_EI_CP4_L800_D2_EJ1_49.793-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     49.7935,
+     7.87,
+     0.2811
+    ],
+    [
+     47.4558,
+     11.83,
+     0.2811
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal D2 del marco I'-J (elev 800): nudo inferior J (u=49.7935, +7.87) -> nudo superior intermedio M (u=47.4558, +11.83), eje v=0.2811. Geometria de viewer desde elevacion lamina 800 (sin huella en planta); sin FE/tributaria."
+  },
+  {
+   "id": "D_EI_CP4_L800_D2_EJ2_49.793-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     49.7935,
+     7.87,
+     9.1348
+    ],
+    [
+     47.4558,
+     11.83,
+     9.1348
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal D2 del marco I'-J (elev 800): nudo inferior J (u=49.7935, +7.87) -> nudo superior intermedio M (u=47.4558, +11.83), eje v=9.1348. Geometria de viewer desde elevacion lamina 800 (sin huella en planta); sin FE/tributaria."
+  },
+  {
+   "id": "D_EI_CP4_L800_D2_EJ3_49.793-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     49.7935,
+     7.87,
+     16.3472
+    ],
+    [
+     47.4558,
+     11.83,
+     16.3472
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal D2 del marco I'-J (elev 800): nudo inferior J (u=49.7935, +7.87) -> nudo superior intermedio M (u=47.4558, +11.83), eje v=16.3472. Geometria de viewer desde elevacion lamina 800 (sin huella en planta); sin FE/tributaria."
+  },
+  {
+   "id": "H_EI_CP4_y2015_20.30-29.70",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     20.3,
+     11.83,
+     20.15
+    ],
+    [
+     29.7,
+     11.83,
+     20.15
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Viga de borde NORTE de la losa torre L_EI_CP4_426, eje v=20.15 entre caras RLE-VIGA (u[20.30,29.70]); geometria de viewer desde plano 2017_67-103, sin FE/tributaria."
+  },
+  {
+   "id": "H_EI_CP4_y2057_19.70-30.30",
+   "seccion": "V. 60/80",
+   "ancho": 0.6,
+   "peralte": 0.8,
+   "pts": [
+    [
+     19.7,
+     11.83,
+     20.57
+    ],
+    [
+     30.3,
+     11.83,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Anillo superior de la torre (cubierta L_EI_CP4_426), eje v=20.57 (u[19.70,30.30]); nivel P4 corregido al plano vertical de P3 (1946-09-07, lamina 801/802: el +0.18 m del plano no es del marco vertical), geometria de viewer, sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP4_x1970_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     19.7,
+     11.83,
+     16.45
+    ],
+    [
+     19.7,
+     11.83,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Vertical OESTE cierre torre (perimetro caja G-H), eje u=19.70 entre v=16.45 y el anillo v=20.57; nivel P4 corregido al plano vertical de P3 (lamina 801/802, sin desplazamiento +0.18 en elevacion), geometria de viewer, sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP4_x2030_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     20.3,
+     11.83,
+     16.45
+    ],
+    [
+     20.3,
+     11.83,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Vertical interior G de la torre, eje u=20.30 entre v=16.45 y el anillo v=20.57; nivel P4 corregido al plano vertical de P3 (lamina 801/802), geometria de viewer, sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP4_x2970_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     29.7,
+     11.83,
+     16.45
+    ],
+    [
+     29.7,
+     11.83,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Vertical interior H de la torre, eje u=29.70 entre v=16.45 y el anillo v=20.57; nivel P4 corregido al plano vertical de P3 (lamina 801/802), geometria de viewer, sin FE/tributaria."
+  },
+  {
+   "id": "V_EI_CP4_x3030_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     30.3,
+     11.83,
+     16.45
+    ],
+    [
+     30.3,
+     11.83,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Vertical ESTE cierre torre (perimetro caja G-H), eje u=30.30 entre v=16.45 y el anillo v=20.57; nivel P4 corregido al plano vertical de P3 (lamina 801/802), geometria de viewer, sin FE/tributaria."
+  },
+  {
+   "id": "TOWER_DIAG_P3_P4_WEST_1970_1645-2057_D1",
+   "seccion": "Diag. torre G-H (lamina 801/802)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     19.7,
+     7.87,
+     16.45
+    ],
+    [
+     19.7,
+     11.83,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal '/' del panel X de la cara lateral OESTE de la torre G-H (L801/L802): nudo P3 apoyo sur v=16.45 (+7.87, inicio V_EI_CP3_x1970) -> nudo P4 anillo v=20.57 (+11.83, final V_EI_CP4_x1970 / inicio H_EI_CP4_y2057). L=5.714 m, m=0.961 (panel RECTANGULAR 4.12x3.96 m segun laminas 801/802; marco P4 corregido al plano de P3, sin el +0.18 m del plano en elevacion; DXF m=0.961/1.040). Geometria de viewer, sin FE/tributaria."
+  },
+  {
+   "id": "TOWER_DIAG_P3_P4_WEST_1970_1645-2057_D2",
+   "seccion": "Diag. torre G-H (lamina 801/802)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     19.7,
+     11.83,
+     16.45
+    ],
+    [
+     19.7,
+     7.87,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal '\\' del panel X de la cara lateral OESTE de la torre G-H (L801/L802): nudo P4 apoyo sur v=16.45 (+11.83, inicio V_EI_CP4_x1970) -> nudo P3 anillo v=20.57 (+7.87, final V_EI_CP3_x1970 / inicio H_EI_CP3_y2057). L=5.714 m, m=-0.961 (panel RECTANGULAR 4.12x3.96 m segun laminas 801/802; marco P4 corregido al plano de P3). Geometria de viewer, sin FE/tributaria."
+  },
+  {
+   "id": "TOWER_DIAG_P3_P4_EAST_3030_1645-2057_D1",
+   "seccion": "Diag. torre G-H (lamina 801/802)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     30.3,
+     7.87,
+     16.45
+    ],
+    [
+     30.3,
+     11.83,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal '/' del panel X de la cara lateral ESTE de la torre G-H (L801/L802): nudo P3 apoyo sur v=16.45 (+7.87, inicio V_EI_CP3_x3030) -> nudo P4 anillo v=20.57 (+11.83, final V_EI_CP4_x3030 / inicio H_EI_CP4_y2057). L=5.714 m, m=0.961 (panel RECTANGULAR 4.12x3.96 m segun laminas 801/802; marco P4 corregido al plano de P3). Geometria de viewer, sin FE/tributaria."
+  },
+  {
+   "id": "TOWER_DIAG_P3_P4_EAST_3030_1645-2057_D2",
+   "seccion": "Diag. torre G-H (lamina 801/802)",
+   "ancho": 0.3,
+   "peralte": 0.3,
+   "pts": [
+    [
+     30.3,
+     11.83,
+     16.45
+    ],
+    [
+     30.3,
+     7.87,
+     20.57
+    ]
+   ],
+   "recibe_losa": false,
+   "edificio": "I",
+   "nivel": "P4",
+   "nota": "Diagonal '\\' del panel X de la cara lateral ESTE de la torre G-H (L801/L802): nudo P4 apoyo sur v=16.45 (+11.83, inicio V_EI_CP4_x3030) -> nudo P3 anillo v=20.57 (+7.87, final V_EI_CP3_x3030 / inicio H_EI_CP3_y2057). L=5.714 m, m=-0.961 (panel RECTANGULAR 4.12x3.96 m segun laminas 801/802; marco P4 corregido al plano de P3). Geometria de viewer, sin FE/tributaria."
   }
  ],
  "muros": [
@@ -2485,49 +2933,6 @@
    "nivel": "P4"
   },
   {
-   "id": "L_EI_CP4_D_VOLADIZO_BAJO",
-   "espesor": 0.15,
-   "poligono": [
-    [
-     -0.35,
-     11.83,
-     -0.97
-    ],
-    [
-     51.15,
-     11.83,
-     -0.97
-    ],
-    [
-     51.15,
-     11.83,
-     0.0
-    ],
-    [
-     -0.35,
-     11.83,
-     0.0
-    ]
-   ],
-   "aberturas": [],
-   "apoyos_validos": [
-    "H_EI_CP4_y0000_0.00-10.00",
-    "H_EI_CP4_y0000_10.00-15.00",
-    "H_EI_CP4_y0000_15.00-20.00",
-    "H_EI_CP4_y0000_20.00-25.00",
-    "H_EI_CP4_y0000_25.00-30.00",
-    "H_EI_CP4_y0000_30.00-35.00",
-    "H_EI_CP4_y0000_35.00-40.00",
-    "H_EI_CP4_y0000_40.00-45.00",
-    "H_EI_CP4_y0000_45.00-47.50",
-    "H_EI_CP4_y0000_47.50-49.90"
-   ],
-   "tipo_transferencia": "por_definir",
-   "direccion_transferencia": null,
-   "edificio": "I",
-   "nivel": "P4"
-  },
-  {
    "id": "L_EI_CP4_D_VOLADIZO_ALTO_OESTE",
    "espesor": 0.15,
    "poligono": [
@@ -2557,44 +2962,6 @@
     "H_EI_CP4_y0162_0.00-10.00",
     "H_EI_CP4_y0162_10.00-15.00",
     "H_EI_CP4_y0162_15.00-20.00"
-   ],
-   "tipo_transferencia": "por_definir",
-   "direccion_transferencia": null,
-   "edificio": "I",
-   "nivel": "P4"
-  },
-  {
-   "id": "L_EI_CP4_D_VOLADIZO_ALTO_ESTE",
-   "espesor": 0.15,
-   "poligono": [
-    [
-     30.35,
-     11.83,
-     16.15
-    ],
-    [
-     51.15,
-     11.83,
-     16.15
-    ],
-    [
-     51.15,
-     11.83,
-     17.48
-    ],
-    [
-     30.35,
-     11.83,
-     17.48
-    ]
-   ],
-   "aberturas": [],
-   "apoyos_validos": [
-    "H_EI_CP4_y0162_30.00-35.00",
-    "H_EI_CP4_y0162_35.00-40.00",
-    "H_EI_CP4_y0162_40.00-45.00",
-    "H_EI_CP4_y0162_45.00-47.50",
-    "H_EI_CP4_y0162_47.50-49.90"
    ],
    "tipo_transferencia": "por_definir",
    "direccion_transferencia": null,

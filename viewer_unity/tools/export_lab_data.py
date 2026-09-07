@@ -520,7 +520,7 @@ def main():
     p.write_text(json.dumps(structure, ensure_ascii=False, indent=1), encoding="utf-8")
     manifest_files.append(str(p.relative_to(out)).replace("\\", "/"))
 
-    # ---- placement (colocacion provisional documentada) ----
+    # ---- placement (colocacion correlacionada de la junta JD_EI_EII_10CM) ----
     placement = {
         "convencion": "unity (X,Y,Z)=(u,cota,v); metros",
         "frame_geometria_exportada": "cada edificio exportado en su propio frame comun local",
@@ -529,26 +529,30 @@ def main():
             "id": "JD_EI_EII_10CM",
             "ancho_m": 0.10,
             "cara_EII_x_local": 27.85,
-            "cara_EI": "por_correlacionar (fuera del JSON EII)",
+            "cara_EI_x_local": -0.450227,
+            "cara_EI": ("cara oeste del Edificio I en su frame comun: muro M_EI_CP1S_001 (CP1S), "
+                        "eje u=-0.350227, espesor 0.2 centrado -> cara u=-0.450227. Coincide con el "
+                        "limite oeste del modelo (nada de EI sobrepasa -0.45)."),
             "ejes": "D-D' Fase 2",
-            "estado": "por_correlacionar",
+            "estado": "correlacionada",
         },
-        "colocacion_global": "provisional",
+        "colocacion_global": "correlacionada",
         "dato_necesario_para_resolver": (
-            "Coordenada de la cara/limite este del Edificio I en el sistema comun del "
-            "Edificio II a lo largo del eje de la junta (correlacionar eje D-D' de EI "
-            "con la cara x=27.85 de EII via captura/medicion conjunta de las paginas "
-            "19/20). Con ese valor se fija la traslacion relativa EI->EII y se deja de "
-            "ser provisional."),
+            "RESUELTO geometricamente con coordenadas de modelo: cara D' de EII en x=27.85 (losas "
+            "EII_CP*_L_E1/L_EM/L_S6, todos los niveles) y cara D de EI en u=-0.450227 (muro "
+            "M_EI_CP1S_001). Traslacion EI->EII en X = 27.85 + 0.10 - (-0.450227) = 28.400227 m, "
+            "rotacion 0, Z sin desfase. Cotas por nivel identicas "
+            "(CP1S/P1/P2/P3/P4 = -4.01/-0.05/3.91/7.87/11.83)."),
         "edificios": {
             "II": {"posicion_unity": [0.0, 0.0, 0.0], "rotacion_unity": [0, 0, 0],
                    "nota": "oriigen en su propio frame comun (A x 1 en [0,0])"},
             "I": {
-                "posicion_unity": [60.0, 0.0, 0.0],  # PROVISIONAL (comparativa, sin traslacion validada)
+                "posicion_unity": [28.400227, 0.0, 0.0],  # junta JD_EI_EII_10CM correlacionada
                 "rotacion_unity": [0, 0, 0],
-                "nota": ("PROVISIONAL: traslacion de comparacion para que ambos edificios "
-                         "no se solapen hasta correlacionar la junta. NO representa el "
-                         "desplazamiento fisico real EI<->EII (por_correlacionar)."),
+                "nota": ("CORRELACIONADA (junta JD_EI_EII_10CM resuelta): Px = 27.85 + 0.10 - "
+                         "(-0.450227). Cara D de EI (muro M_EI_CP1S_001, u=-0.350227, espesor 0.2) "
+                         "queda a 0.10 m de la cara D' de EII (x=27.85). Sin rotacion; cotas "
+                         "verticales por nivel identicas."),
             },
         },
         "no_union_estructural": True,
