@@ -1,0 +1,24 @@
+RESUMEN DEMANDA/CAPACIDAD
+CLASIFICACION: EVALUACION_ALGORITMICA_CON_SECCION_DEMO
+(capacidad de DEMOSTRACION (armado 12#25 BLOQUEADO); resultado NO valido como comprobacion de diseno; NO representa aprobacion estructural de las columnas reales.)
+========================================
+
+Edificio I (DEMO_RC_EI):
+  columnas evaluadas (procedimiento) : 97
+  dentro de D/C<=1 (aritmetico)     : 97
+  fuera de D/C<=1 (aritmetico)      : 0
+  max D/C (demo)                    : 0.501
+  columna critica                   : 208
+
+Edificio II (DEMO_RC_EII):
+  columnas evaluadas (procedimiento) : 32
+  dentro de D/C<=1 (aritmetico)     : 32
+  fuera de D/C<=1 (aritmetico)      : 0
+  max D/C (demo)                    : 0.258
+  columna critica                   : 25
+
+ADVERTENCIA: secciones de DEMOSTRACION (armado 12#25). El resultado
+NO es valido como comprobacion de diseno ni aprobacion estructural.
+D/C <= 1 es una comparacion ARITMETICA M_dem/M_u(N) con capacidad demo.
+Regla de seleccion: columna critica = max(D/C) sobre todas las 
+columnas; M_dem = max(|M| extremos).

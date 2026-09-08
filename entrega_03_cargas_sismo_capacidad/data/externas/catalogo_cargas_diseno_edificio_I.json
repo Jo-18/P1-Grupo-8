@@ -1,0 +1,112 @@
+{
+  "titulo": "Catalogo de cargas de diseno - Edificio I",
+  "fuente_autoritativa": "Union PDF's Edificio I.pdf - pagina 11, lamina 'PLANTAS DE CARGAS CIELO 1° SUBTE. a 4° PISO'",
+  "nivel_de_extraccion": "OCR sobre rendern 300 dpi + control visual del usuario",
+  "reglas_unidades": {
+    "nota": "Los planos escriben kg/m2, kg/m y kg, pero por tecnica se interpretan como kgf (kilogramo-fuerza). NO se resuelve en silencio: cada registro conserva valor_original, unidad_original_plano, interpretacion_unidad, factor_conversion_adoptado y valor_SI.",
+    "factor_por_interpretacion": {
+      "1_kgf_igual_kg_masa": null,
+      "1_kgf_vs_kn": 0.00980665,
+      "1_kgf_m2_vs_kn_m2": 0.00980665,
+      "1_kgf_m_vs_kn_m": 0.00980665,
+      "aproximacion_1kg_0_01kn_permisible_solo_si_se_registra": "NO usar sin registro explicito"
+    },
+    "peso_propio_formula": "PP_LOSA = e(m) x 2500 kgf/m3",
+    "controles_aritmeticos": [
+      {"espesor_m": 0.15, "pp_kgf_m2": 375, "pp_kN_m2": 3.67749},
+      {"espesor_m": 0.12, "pp_kgf_m2": 300, "pp_kN_m2": 2.941995}
+    ]
+  },
+  "convencion_par": "en cada semaforo/cuadro el PRIMER valor es PM.ADIC. (carga muerta adicional) y el SEGUNDO es SC (sobrecarga de uso).",
+  "confirmaciones_revision_visual": {
+    "fuente": "Revision visual de la pagina 11 (lamina 'PLANTAS DE CARGAS CIELO 1° SUBTE. a 4° PISO') por el usuario. Todos los pares son PM.ADIC/SC.",
+    "nota_clave_user": "NO se usa '_USER' como clave global: cada tramo '_USER' se vincula a su region/muestra por NIVEL y VARIANTE. 'diagonales continuas' distingue la varilla de este proyecto de una metasima homonima.",
+    "por_nivel": {
+      "CP1S": [
+        {"patron": "ANGLE", "variante": null, "tipo": "superficie", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 250, "region_700_centro": [-694, 6618], "swatch_vinculada": null, "justificacion": "confirmado revision visual"},
+        {"patron": "_USER", "variante": "diagonales continuas", "tipo": "superficie", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 500, "region_700_centro": [-694, 7202], "swatch_vinculada": "Muestra _USER (cx=-1548, cy=2906)", "justificacion": "resuelve el conflicto _USER de CP1S: diagonales continuas = 260/500"},
+        {"patron": "AR-HBONE", "variante": null, "tipo": "superficie", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 300, "region_700_centro": [-651, 7509], "swatch_vinculada": "Muestra AR-HBONE (cx=116, cy=2906)", "justificacion": "AR-HBONE unificado 260/300 en CP1S/P1/P2/P3"}
+      ],
+      "P1": [
+        {"patron": "AR-HBONE", "variante": null, "tipo": "superficie", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 300, "region_700_centro": [4981, 7839], "swatch_vinculada": "Muestra AR-HBONE (cx=5358, cy=3744)", "justificacion": "AR-HBONE unificado 260/300"},
+        {"patron": "ANSI34", "variante": null, "tipo": "superficie", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 400, "region_700_centro": [5792, 6676], "swatch_vinculada": "Muestra ANSI34 (cx=3694, cy=2698)", "justificacion": "ANSI34 260/400 en P1/P2"},
+        {"patron": "BRASS", "variante": null, "tipo": "superficie_excepcional", "PM_ADIC_kgf_m2": 2800, "SC_kgf_m2": 500, "region_700_centro": [7236, 8406], "swatch_vinculada": "Muestra BRASS (cx=7022, cy=2698)", "justificacion": "zona 2800 conservada + advertencia"},
+        {"patron": "_USER", "variante": "diagonales continuas", "tipo": "superficie", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 250, "region_700_centro": null, "swatch_vinculada": "Muestra _USER (cx=3694, cy=3744)", "justificacion": "sin cambio; confirmado 260/250"}
+      ],
+      "P2": [
+        {"patron": "AR-HBONE", "variante": null, "tipo": "superficie", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 300, "region_700_centro": [11016, 8537], "swatch_vinculada": "Muestra AR-HBONE (cx=11759, cy=4880)", "justificacion": "AR-HBONE unificado 260/300"},
+        {"patron": "ANSI34", "variante": null, "tipo": "superficie", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 400, "region_700_centro": [12091, 7579], "swatch_vinculada": "Muestra ANSI34 (cx=10095, cy=3834)", "justificacion": "ANSI34 260/400 en P1/P2"}
+      ],
+      "P3": [
+        {"patron": "AR-HBONE", "variante": null, "tipo": "superficie", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 300, "region_700_centro": [11058, 1600], "swatch_vinculada": "Muestra AR-HBONE (cx=11200, cy=-1194)", "justificacion": "AR-HBONE unificado 260/300"}
+      ],
+      "P4": [
+        {"patron": "GRAVEL", "variante": null, "tipo": "superficie", "PM_ADIC_kgf_m2": 200, "SC_kgf_m2": 200, "region_700_centro": [532, 632], "swatch_vinculada": "Muestra GRAVEL (cx=577, cy=-2054)", "justificacion": "confirmado revision visual: GRAVEL dominante 200/200"},
+        {"patron": "_USER", "variante": "diagonales continuas", "tipo": "superficie", "PM_ADIC_kgf_m2": 350, "SC_kgf_m2": 100, "region_700_centro": [-390, 638], "swatch_vinculada": "Muestra _USER (cx=-1246, cy=-2054)", "justificacion": "CORRECCION: _USER de P4 es 350/100 (no 200/200)"},
+        {"patron": "BRASS", "variante": null, "tipo": "lineal", "PM_ADIC_kgf_m": 7600, "SC_kgf_m": 800, "region_700_centro": [825, 273], "swatch_vinculada": "Muestra BRASS (cx=2401, cy=-2054)", "justificacion": "BRASS de P4 es la franja de la CARGA LINEAL 7600/800, NO una superficie. Se excluye de superficie y se vincula a CL_EI_P4_001 (sin duplicar)."}
+      ]
+    }
+  },
+  "catalogo_por_nivel": {
+    "Piso 1 Subterraneo (CP1S)": {
+      "cuadros_superficiales": [
+        {"trama_id": "por_definir_trama_1", "PM_ADIC_kgf_m2": 300, "SC_kgf_m2": 500},
+        {"trama_id": "por_definir_trama_2", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 500},
+        {"trama_id": "por_definir_trama_3", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 300},
+        {"trama_id": "por_definir_trama_4", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 250}
+      ],
+      "corroboracion_ocr": "300/500 y 260/... y SC 500/300 leidos; (260/250) pendiente de corroboracion estructural por OCR."
+    },
+    "Piso 1": {
+      "cuadros_superficiales": [
+        {"trama_id": "por_definir_trama_1", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 500},
+        {"trama_id": "por_definir_trama_2", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 300},
+        {"trama_id": "por_definir_trama_3", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 250},
+        {"trama_id": "por_definir_trama_4", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 400},
+        {"trama_id": "por_definir_trama_5", "PM_ADIC_kgf_m2": 200, "SC_kgf_m2": 200}
+      ],
+      "cuadro_excepcional": {
+        "trama_id": "por_definir_trama_6",
+        "PM_ADIC_kgf_m2": 2800,
+        "SC_kgf_m2": 500,
+        "nota": "valor excepcional 2800 kg/m2 confirmado por OCR con confianza 1.0 (recorte P1_2800); NO se baja a 280 por intuicion. Se conserva literalmente.",
+        "situacion": "por_confirmar_motivo"
+      }
+    },
+    "Piso 2": {
+      "cuadros_superficiales": [
+        {"trama_id": "por_definir_trama_1", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 500},
+        {"trama_id": "por_definir_trama_2", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 300},
+        {"trama_id": "por_definir_trama_3", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 250},
+        {"trama_id": "por_definir_trama_4", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 400},
+        {"trama_id": "por_definir_trama_5", "PM_ADIC_kgf_m2": 200, "SC_kgf_m2": 200}
+      ],
+      "cargas_puntuales": "ver cargas_puntuales_edificio_I.json (PM.ADIC 13000 kg, SC 7000 kg)"
+    },
+    "Piso 3": {
+      "cuadros_superficiales": [
+        {"trama_id": "por_definir_trama_1", "PM_ADIC_kgf_m2": 200, "SC_kgf_m2": 200},
+        {"trama_id": "por_definir_trama_2", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 300},
+        {"trama_id": "por_definir_trama_3", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 500},
+        {"trama_id": "por_definir_trama_4", "PM_ADIC_kgf_m2": 260, "SC_kgf_m2": 250}
+      ],
+      "cargas_puntuales": "ver cargas_puntuales_edificio_I.json (oeste 13000/6700, este 10000/6000)"
+    },
+    "Piso 4": {
+      "cuadros_superficiales": [
+        {"trama_id": "por_definir_trama_1", "PM_ADIC_kgf_m2": 350, "SC_kgf_m2": 100},
+        {"trama_id": "por_definir_trama_2", "PM_ADIC_kgf_m2": 200, "SC_kgf_m2": 200}
+      ],
+      "evidencia_superficie_200_200": {
+        "origen": "bloque 'CARGAS DE DISEÑO' del piso 4 con PM.ADIC 200 / SC 200 (es_lineal=False), ancla en DXF700 (px,py)=(-1621.4,-1446.7)",
+        "corroboracion_ocr": "recorte P4_200_200 (guardar_evidencia_ocr.py)",
+        "trama_emparejada_por_columna": "_USER",
+        "nota": "El unico bloque superficial no lineal del piso 4 se emparejo por offset de columna con la swatch de trama _USER. NO hay evidencia de leyenda que asocie GRAVEL ni BRASS a valores superficiales del piso 4.",
+        "tramas_pendientes_por_leyenda": ["GRAVEL", "BRASS"]
+      },
+      "carga_lineal": "ver cargas_lineales_edificio_I.json (PM.ADIC 7600 kg/m, SC 800 kg/m): bloques 7600/800 de P4 se interpretan como carga LINEAL (excluida de superficie)."
+    }
+  },
+  "estado": "borrador_no_ejecutable",
+  "version_geometria_referenciada": "datos/geometria/edificio_I_cielo_piso_*_borrador.json (congelados, solo lectura)"
+}

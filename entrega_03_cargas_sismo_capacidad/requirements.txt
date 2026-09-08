@@ -1,0 +1,16 @@
+# Dependencias de ejecucion de la Entrega 3 (Cargas, sismo, superposicion,
+# capacidad RC y demanda/capacidad). Versiones fijadas = las probadas.
+#
+# Plataforma probada: Windows 11 (PowerShell), Python 3.11.9 (64-bit).
+# Instalacion:
+#   python -m pip install -r requirements.txt
+# Ejecucion (un solo comando, desde la raiz de la entrega .../entrega_03_cargas_sismo_capacidad):
+#   python -X utf8 -m unittest discover -s tests -p "test_*.py"
+#   python -X utf8 -m src.ejecutar_entrega_03
+#
+# Nota: openseespy incluye su propio motor OpenSees (no requiere OpenSees.exe aparte).
+
+openseespy==3.7.0.3
+numpy==2.4.6
+matplotlib==3.11.1
+shapely==2.1.2

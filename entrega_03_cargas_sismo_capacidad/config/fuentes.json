@@ -1,0 +1,47 @@
+{
+  "entrega": "03_cargas_sismo_capacidad",
+  "nota": "La Entrega 3 consume estas fuentes en modo LECTURA (rutas relativas a la raiz del repo P1). No se copian, no se modifican, no se incluyen en el paquete.",
+  "edificio_I": {
+    "motor_fe": "analisis_estructural/edificio_I/src/analisis/fe",
+    "geometry": [
+      "analisis_estructural/edificio_I/datos/candidatos/*.json",
+      "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json"
+    ],
+    "cargas": "analisis_estructural/edificio_I/datos/casos_analisis/correlacion_cargas_validada_5niveles.json",
+    "resultados_reutilizables": {
+      "resumen": "analisis_estructural/edificio_I/resultados/modelo_estructural/resultado_primera_ejecucion.json",
+      "solucion": "analisis_estructural/edificio_I/resultados/modelo_estructural/solucion_cruda_primera_ejecucion.json",
+      "esfuerzos_csv": "analisis_estructural/edificio_I/resultados/modelo_estructural/esfuerzos_elementos_edificio_I.csv",
+      "columnas_tramos": "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+      "trazabilidad": "analisis_estructural/edificio_I/resultados/modelo_estructural/trazabilidad_losa_receptor_fe.json",
+      "paquete_entrega": "analisis_estructural/edificio_I/resultados/modelo_estructural/paquete_entrega_edificio_I.json"
+    }
+  },
+  "edificio_II": {
+    "resultados_reutilizables": {
+      "modelo_fe": "analisis_estructural/edificio_II_casoG_PP_elementos/MODELO_FE_GEOMETRIA_NODOS.json",
+      "solucion_V60_80": "analisis_estructural/edificio_II_casoG_PP_elementos/solucion_FE_EII_completo_casoG_PP_ELEMENTOS_V.60_80.json",
+      "solucion_V30_80": "analisis_estructural/edificio_II_casoG_PP_elementos/solucion_FE_EII_completo_casoG_PP_ELEMENTOS_V.30_80.json",
+      "esfuerzos": "analisis_estructural/edificio_II_casoG_PP_elementos/eii_esfuerzos.json",
+      "viewer": "analisis_estructural/edificio_II_casoG_PP_elementos/eii_viewer.json"
+    },
+    "geometry_viewer": "viewer_unity/Assets/StreamingAssets/lab_data/edificios/II/geometry/EII_CP*.json",
+    "nota": "Pipeline generador del FE del EII es EXTERNO (laboratorio_semana2); no esta en el repo. Config EDIFICIO_II.geometria_disponible=False."
+  },
+  "cargas": {
+    "lapida_pagina_11": "laboratorio_semana2/datos/cargas/informe_extraccion_pagina_11.md",
+    "catalogo": "laboratorio_semana2/datos/cargas/catalogo_cargas_diseno_edificio_I.json",
+    "asignacion": "laboratorio_semana2/datos/cargas/asignacion_cargas_edificio_I.json",
+    "lineales": "laboratorio_semana2/datos/cargas/cargas_lineales_edificio_I.json",
+    "puntuales": "laboratorio_semana2/datos/cargas/cargas_puntuales_edificio_I.json"
+  },
+  "materiales_secciones_trazabilidad": {
+    "cuadro_EII": "laboratorio_semana2/resultados/modelo_estructural/edificio_II_geometria_adaptada/CUADRO_SECCIONES_MATERIALES_CARGAS_EII.md",
+    "informe_semana02": "reports/semana02.md",
+    "etog_normas": "ETOG LT2_CAL_E.T.O.G_25-10-24 (cita ACI 318S-08, NCh433.Of96 mod.2009, D.S.117, NCh170)"
+  },
+  "junta_interedificios": {
+    "placement": "viewer_unity/Assets/StreamingAssets/lab_data/placement.json",
+    "estado": "correlacionada (ancho 0.10 m; cara_EII_x_local=27.85, cara_EI_x_local=-0.450227) - modelos FE independientes, nunca compartir nodos"
+  }
+}

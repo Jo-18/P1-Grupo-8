@@ -1,0 +1,107 @@
+{
+  "edificio": "II",
+  "q_Q": {
+    "q_Q_kN_m2": 2.0,
+    "estado": "PARAMETRO_ADOPTADO_POR_EL_GRUPO",
+    "demostracion": false
+  },
+  "catalogo_sobrecarga_documentada": {
+    "fuente": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\analisis_estructural\\edificio_II_casoG_PP_elementos\\eii_viewer.json",
+    "unidad": "kgf/m lineal (1 kgf/m = 0.00980665 kN/m) y kPa (PP losa)",
+    "SC_lineal_kg_m": {
+      "A": 500,
+      "B": 300,
+      "C": 200,
+      "D": 100,
+      "E": 200,
+      "F": 500
+    },
+    "Q_PP_LOSA_kPa": 3.677,
+    "Q_PP_LOSA_020_kPa": 4.903,
+    "pendiente": "no hay sobrecarga uniforme (kPa) documentada para EII; solo SC lineal por zona A-F"
+  },
+  "aplicada_al_modelo_FE": true,
+  "nota_aplicacion": "Q aplicada solo sobre geometria tributaria de Semana 2; AI catalogada no se mezcla con aplicada",
+  "por_nivel": {
+    "EII_CP2": {
+      "area_tributaria_m2": 530.4439,
+      "q_Q_kN_m2": 2.0,
+      "carga_teorica_q_A_kN": 1060.8878,
+      "carga_transferida_sum_kN": 1060.8877,
+      "diferencia_abs_kN": 9.2e-05,
+      "diferencia_rel": 9e-08,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "CONFIRMADO",
+      "n_receptores": 38,
+      "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+    },
+    "EII_CP1S": {
+      "area_tributaria_m2": 0.0,
+      "q_Q_kN_m2": 2.0,
+      "carga_teorica_q_A_kN": 0.0,
+      "carga_transferida_sum_kN": 0.0,
+      "diferencia_abs_kN": 0.0,
+      "diferencia_rel": 0.0,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "PENDIENTE_SIN_GEOMETRIA_TRIBUTARIA",
+      "n_receptores": 0,
+      "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+    },
+    "EII_CP1": {
+      "area_tributaria_m2": 0.0,
+      "q_Q_kN_m2": 2.0,
+      "carga_teorica_q_A_kN": 0.0,
+      "carga_transferida_sum_kN": 0.0,
+      "diferencia_abs_kN": 0.0,
+      "diferencia_rel": 0.0,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "PENDIENTE_SIN_GEOMETRIA_TRIBUTARIA",
+      "n_receptores": 0,
+      "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+    },
+    "EII_CP3": {
+      "area_tributaria_m2": 0.0,
+      "q_Q_kN_m2": 2.0,
+      "carga_teorica_q_A_kN": 0.0,
+      "carga_transferida_sum_kN": 0.0,
+      "diferencia_abs_kN": 0.0,
+      "diferencia_rel": 0.0,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "PENDIENTE_SIN_GEOMETRIA_TRIBUTARIA",
+      "n_receptores": 0,
+      "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+    },
+    "EII_CP4": {
+      "area_tributaria_m2": 0.0,
+      "q_Q_kN_m2": 2.0,
+      "carga_teorica_q_A_kN": 0.0,
+      "carga_transferida_sum_kN": 0.0,
+      "diferencia_abs_kN": 0.0,
+      "diferencia_rel": 0.0,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "PENDIENTE_SIN_GEOMETRIA_TRIBUTARIA",
+      "n_receptores": 0,
+      "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+    }
+  },
+  "niveles_pendientes_geometria": [
+    "EII_CP1S",
+    "EII_CP1",
+    "EII_CP3",
+    "EII_CP4"
+  ],
+  "global": {
+    "area_total_m2": 530.4439,
+    "carga_teorica_q_A_kN": 1060.8878,
+    "carga_transferida_sum_kN": 1060.8877,
+    "diferencia_abs_kN": 9.2e-05,
+    "diferencia_rel": 9e-08,
+    "tolerancia_rel": 0.005,
+    "estado": "OK"
+  }
+}

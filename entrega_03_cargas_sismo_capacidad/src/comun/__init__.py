@@ -1,0 +1,1 @@
+"""Utilidades comunes: geometria tributaria canonica (Semana 2), rutas, catalogo de cargas."""

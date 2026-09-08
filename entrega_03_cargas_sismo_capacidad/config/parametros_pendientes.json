@@ -1,0 +1,180 @@
+{
+  "entrega": "03_cargas_sismo_capacidad",
+  "nota": "Parámetros bloqueantes de la Entrega 3. Todo dato NO confirmado se inicializa en null; el código futuro DEBE detenerse con un mensaje claro si intenta usar un parámetro con valor null. Ninguna hipótesis se inventa: se toma de fuente verificable o se deja en null.",
+  "decisiones_PP_EI": {
+    "D1_estado_v2": {
+      "estado": "ADOPTADA",
+      "detalle": "PP_confirmado_EI = 17179.23 kN (SOLO COTA INFERIOR); PP_pendiente_kN = null; PP_no_incluido_por_falta_de_evidencia_kN = null; PP_provisional_kN = 0.0. No se cuantifican pendientes ni se adoptan hipótesis en el total."
+    },
+    "D2_cajas_ascensor": {
+      "estado": "ADOPTADA_PARCIAL",
+      "detalle": "Confirmar panel solo con continuidad P2→P3→P4 respaldada por coincidencia plena (línea + espesor + posición + geometría + niveles consecutivos). Muros de un solo plano NO se vuelven tramo continuo automáticamente: permanecen PENDIENTE salvo que la convención de planta demuestre el entrepiso. Candidatas caja delantera (M_CP4_001/002/003) y caja trasera (M_CP4_004/005/006): mantienen PENDIENTE_TRAMO hasta verificación de coincidencia plena."
+    },
+    "D3_tramos_a_la_base": {
+      "estado": "ADOPTADA",
+      "detalle": "No se crean tramos sintéticos BASE→nivel; solo extremos reales documentados/instanciados (regla canónica FE). Las hipótesis de cimentación quedan separadas e informativas."
+    },
+    "D4_desfase_P4_0_181": {
+      "estado": "ADOPTAR_COMO_DEFECTO_DE_CORRELACION_PENDIENTE_DE_IMPLEMENTAR",
+      "detalle": "Desfase de rejilla horizontal RLE-EJES de P4 = +0.1813 m (eje vs cara), constante entre cotas congeladas. Debe corregirse (transformación propuesta +0.1813 m en Y sobre líneas de rejilla horizontales P4; elementos afectados = las 3 líneas de rejilla horizontal de P4) para restaurar la conectividad P3→P4. NO modifica el FE ni el viewer actual. Los tramos P3→P4 de hormigón permanecen PENDIENTE_TRAMO hasta implementar y verificar la corrección."
+    },
+    "D5_V_S_I_20_150": {
+      "estado": "HIPOTESIS_DE_GRUPO_PARA_ANALISIS",
+      "detalle": "V.S.I. 20/150 como viga de gran canto HA 0.20×1.50 m, rho=24.5166 kN/m3, L=21.40 m, pp≈157 kN. Estado HIPOTESIS_GRUPO (NO confirmada; require confirmación documental de materialidad). Sensibilidad: incluir/excluir su peso (±0.9%). No entra en PP_confirmado."
+    },
+    "D6_M_H_A_e30": {
+      "estado": "ADOPTADA",
+      "detalle": "V_EI_CP1S_x1010 (M.H.A. e=30) se contabiliza como parte del muro del eje F, NO como viga adicional. Verificación explícita de no-duplicación: su masa no se suma a vigas ni a muros confirmados en el total; si se adoptara como muro único, evitar doble conteo con M_EI_CP1S_003 (x≈9,65)."
+    },
+    "D7_banda_sensibilidad": {
+      "estado": "SOLO_SENSIBILIDAD",
+      "detalle": "Banda estimada 20.3–21.2 MN NO es PP adoptado. Reserva únicamente como banda de sensibilidad (18.4–23.6 % sobre la cota inferior 17.179,23 kN), no como cifra de diseño."
+    }
+  },
+  "parametros": {
+    "norma_combinaciones": {
+      "valor": null,
+      "unidad": null,
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "combinaciones de carga (superposición G+Q+EX+EY)",
+      "observacion": "Buscar en orden: 1) pauta asignatura; 2) documentos entregados; 3) ETOG; 4) memoria de cálculo; 5) norma chilena (NCh. Regístrese como 'pendientes_de_fuente' si no aparece. No mezclar normas ni inventar factores."
+    },
+    "factores_combinacion": {
+      "valor": null,
+      "unidad": null,
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "combinaciones y superposición de casos",
+      "observacion": "Factores y/o coeficientes de la combinación según la norma adoptada. Depende de 'norma_combinaciones'."
+    },
+    "zona_sismica": {
+      "valor": null,
+      "unidad": null,
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "coeficiente sísmico (corte basal) pseudoestático EX/EY",
+      "observacion": "Zona sísmica según emplazamiento del proyecto (norma chilena NCh433; regiones/provincias). No hay dato en los PDF extraídos ni en el repo."
+    },
+    "tipo_suelo": {
+      "valor": null,
+      "unidad": null,
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "coeficiente sísmico (S, T*) y espectro/coeficiente",
+      "observacion": "Tipo de suelo (I a IV en NCh433) / perfil de suelo del estudio geotécnico. No documentado en el repo."
+    },
+    "categoria_importancia": {
+      "valor": null,
+      "unidad": null,
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "categoría del edificio / factor de importancia",
+      "observacion": "Categoría de importancia (normal, especial, esencial) y factor I según norma. Requiere docente o decisión explícita del grupo documentada."
+    },
+    "amortiguamiento": {
+      "valor": null,
+      "unidad": null,
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "método sísmico pseudoestático (solo si la norma lo exige para el coeficiente)",
+      "observacion": "Pseudoestático usualmente no lo usa; mantener null salvo que la norma lo requiera en el cálculo del coeficiente."
+    },
+    "factor_reduccion_R": {
+      "valor": null,
+      "unidad": null,
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "corte basal reducido / fuerzas sísmicas de diseño",
+      "observacion": "Factor de reducción de solicitaciones sísmicas por comportamiento (R) por sistema estructural según norma. Sin fuente, no se asume."
+    },
+    "coeficiente_sismico_o_base": {
+      "valor": null,
+      "unidad": null,
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "corte basal Q0 (sismo pseudoestático)",
+      "observacion": "Coeficiente sísmico C o parámetros para calcularlo (zona, suelo, I, R). Si la norma/ETOG no lo fija, queda null."
+    },
+    "excentricidad_accidental": {
+      "valor": null,
+      "unidad": "m (fracción de dimensión en planta)",
+      "estado": "SOLO_SI_NORMA_LO_EXIGE",
+      "fuente": null,
+      "necesario_para": "torsión acccidental en EX/EY",
+      "observacion": "Se incorpora únicamente si la norma adoptada lo exige. Valor queda null hasta fijar la norma."
+    },
+    "fraccion_Q_peso_sismico": {
+      "valor": null,
+      "unidad": null,
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "peso sísmico W (fracción normativa de sobrecarga Q incluida)",
+      "observacion": "Fracción de Q/SC que la norma incluye en el peso sísmico (típicamente 25-50% según categoría). Debe venir de fuente normativa o decisión explícita del grupo. NO usar masa=Pz/g del caso G actual: el caso G del Edificio I está incompleto (sin PP de elementos)."
+    },
+    "fy": {
+      "valor": null,
+      "unidad": "MPa",
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "Fiber Sections, M-f, curva P-M",
+      "observacion": "Tensión de fluencia del acero de armadura de columnas y muros. No está en el texto de la copia de planos disponible (ETOG EII cita ACI 318S-08; lámina de acero pendiente)."
+    },
+    "recubrimiento": {
+      "valor": null,
+      "unidad": "cm",
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "Fiber Sections (posición de barras, núcleo confinado)",
+      "observacion": "Recubrimiento de armadura de columnas y muros según plano de armadura o norma. No documentado en el repo."
+    },
+    "armadura_columna": {
+      "valor": null,
+      "unidad": "número y diámetro de barras",
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "Fiber Sections de columna, curva P-M",
+      "observacion": "Distribución longitudinal de la columna (barras por cara/canto). Documentada campo ortogonal 0/90 en 201I/201S para estructuras, sin detalle de barras; pendiente de confirmación."
+    },
+    "armadura_muro": {
+      "valor": null,
+      "unidad": "número y diámetro de barras / espaciado",
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "Fiber Sections de muro, curva P-M",
+      "observacion": "Armadura longitudinal y transversal de muros según 2024_22-201I/201S.dxf (raster; sin detalle en texto). Pendiente."
+    },
+    "seccion_V031": {
+      "valor": null,
+      "unidad": "cm (b x h) o perfil",
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "modelo EDIFICIO II (5 vigas V_031 por nivel = 'por_resolver')",
+      "observacion": "Las soluciones publicadas del EII usan hipótesis V.30/80 (Pz=29216.3) y V.60/80 (Pz=29306.1); diferencia 89.7 kN (0.3%). Fijar sección definitiva antes de sismo/capacidad."
+    },
+    "material_definitivo_hormigon_EI": {
+      "valor": null,
+      "unidad": "MPa (f'c) / kg/m3",
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "Elasticidad (motor EI) y Fiber Sections (confiinado) DE AMBOS EDIFICIOS",
+      "observacion": "El motor EI usa HIPÓTESIS G40 (f'c=40 MPa, E=29725.5, gamma=24.5166). No está contrastado en la copia de planos (lámina 'calidad de hormigón' raster). No es decisión definitiva."
+    },
+    "material_definitivo_hormigon_EII": {
+      "valor": null,
+      "unidad": "MPa (f'c) / kg/m3",
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": "'G35_10 (real, fuente DXF 100)' en eii_viewer.json; config del motor EII declara G40 como hipótesis",
+      "necesario_para": "Elasticidad EII y Fiber Sections DE AMBOS EDIFICIOS",
+      "observacion": "Los artefactos EII publicados usan G35 (fc=35 MPa, E=27805.6, gamma=24.517); la config interna del motor (EDIFICIO_II.materiales) declara G40 como hipótesis académica del grupo. CONTRADICCIÓN A RESOLVER: el material definitivo de cada edificio (G35 vs G40) debe quedar fijado con fuente antes de capacidad. NO presentar G35/G40 como decisión definitiva."
+    },
+    "base_cimentacion_EII": {
+      "valor": null,
+      "unidad": "m (cota) o esquema",
+      "estado": "PENDIENTE_FUENTE",
+      "fuente": null,
+      "necesario_para": "reanálisis FE del EDIFICIO II con el motor interno (apoyos)",
+      "observacion": "ETOG menciona zapatas aisladas/corridas, sin catálogo. Config usa hipótesis académica: base en EII_CP1S (-4.01). Regla A1 (columna solo en CP4) sin prolongar."
+    }
+  }
+}

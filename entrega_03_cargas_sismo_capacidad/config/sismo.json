@@ -1,0 +1,69 @@
+{
+  "titulo": "Casos sismicos EX/EY - configuracion Entrega 3",
+  "unidades": "SI: kN, kN/m2, m, s, adimensional",
+  "nota_general": "Metodologia pseudoestatica basada en el ejemplo de la consigna del profesor. Los parametros del ejemplo (a=0.20g, fraccion_Q=0.50) se clasifican como PARAMETROS_BASADOS_EN_EJEMPLO_DE_LA_CONSIGNA porque el profesor puede entregar un patron definitivo diferente. Los parametros reales de norma (zona, suelo, importancia, R, espectro) quedan en null/PENDIENTE y no se usan en el metodo pseudoestatico; quedan listos para cuando existan.",
+
+  "metodo_pseudoestatico": {
+    "clasificacion": "PARAMETROS_BASADOS_EN_EJEMPLO_DE_LA_CONSIGNA",
+    "descripcion": "Wi = PPi + fraccion_Q * Qi; mi = Wi/g; Fi = a * mi; donde a es la aceleracion horizontal de diseno. Distribucion por nivel proporcional al peso tributario del piso, en el centro de masa calculado.",
+    "coeficiente_sismico_a": 0.20,
+    "coeficiente_sismico_nota": "a = 0.20g segun ejemplo de la consigna; pendiente patron definitivo",
+    "fraccion_Q_gravitacional": 0.50,
+    "fraccion_Q_nota": "Wi = PPi + 0.50*Qi segun consigna; pendiente confirmacion",
+    "g_gravedad_m_s2": 9.81,
+    "g_nota": "aceleracion de la gravedad"
+  },
+
+  "peso_sismico": {
+    "metodo": "PP del modelo FE (inclusion) + fraccion_Q del caso Q; PP pendiente se excluye del peso sismico pero se reporta como nota visible",
+    "PP_pendiente_visible": true,
+    "PP_pendiente_EII_nota": "diferencia de muros publicado vs reproducible (3335 kN) se muestra pero NO se suma al peso sismico",
+    "PP_pendiente_EI_nota": "SC lineal por zona no mapeado a Q uniforme (pendiente) pero ya no bloquea: q_Q adoptado por el grupo"
+  },
+
+  "centro_de_masa": {
+    "metodo": "pesos distribuidos (nodal tributario de PP + 0.5*Q); NO se usa automaticamente el centro geometrico",
+    "nota": "se calcula como Xcm = sum(w_n * x_n) / sum(w_n), Ycm analogo, usando el peso tributario por nodo de cada nivel"
+  },
+
+  "aplicacion_fuerzas": {
+    "metodo": "cada Fi se distribuye proporcionalmente al peso tributario de los nodos del piso: f_n = Fi * w_n / Wi",
+    "verificaciones": [
+      "suma_fuerzas_nodales = Fi (por nivel)",
+      "resultante en el centro de masa",
+      "momento accidental ~ 0 respecto al CM",
+      "EX exclusivamente en X, EY exclusivamente en Y",
+      "sin cargas gravitacionales en los casos sismicos"
+    ],
+    "union_EI_EII": "ninguna"
+  },
+
+  "zona_sismica": null,
+  "suelo_clasificacion": null,
+  "importancia": null,
+  "amortiguamiento": null,
+  "factor_R": null,
+  "espectro_o_coeficiente_sismico": null,
+  "distribucion_vertical": null,
+  "torsion_accidental": null,
+
+  "casos": {
+    "EX": {
+      "direccion": "X",
+      "estado": "IMPLEMENTADO_PSEUDOESTATICO_EJEMPLO_CONSIGNA",
+      "metodo": "pseudoestatico horizontal en +X",
+      "dependencias_pendientes_norma": ["zona_sismica", "suelo_clasificacion", "importancia", "amortiguamiento", "factor_R"]
+    },
+    "EY": {
+      "direccion": "Y",
+      "estado": "IMPLEMENTADO_PSEUDOESTATICO_EJEMPLO_CONSIGNA",
+      "metodo": "pseudoestatico horizontal en +Y",
+      "dependencias_pendientes_norma": ["zona_sismica", "suelo_clasificacion", "importancia", "amortiguamiento", "factor_R"]
+    }
+  },
+
+  "fuentes_norma_pendientes": [
+    "norma/lamina que fija zona, suelo, importancia, R, espectro (fuentes versionadas)",
+    "coeficiente sismico definitivo puede cambiar (hoy a=0.20g del ejemplo)"
+  ]
+}

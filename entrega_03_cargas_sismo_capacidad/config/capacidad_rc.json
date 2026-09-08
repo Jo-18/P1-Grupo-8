@@ -1,0 +1,43 @@
+{
+  "titulo": "Configuraciones de capacidad RC por edificio (Entrega 3)",
+  "unidades": "SI: m, m2, MPa, kN, kN*m",
+  "nota_general": "Geometria DOCUMENTADA de columnas reales (P. 70x70 hormigon, ambos edificios). Material: EII fc=35 MPa (G35, DOCUMENTADO, E=27805.6 MPa segun eii_viewer.json); EI fc=40 MPa (G40, HIPOTESIS del grupo, sin contraste independiente). Armadura (fy, recubrimiento, numero y diametro de barras, estribos): BLOQUEADA (parametros_pendientes.json null) -> se define un ARNADO DE DEMOSTRACION. La combinacion geometria-documentada + material (documentado o hipotesis) + armado-demostracion se clasifica HIPOTESIS_DEMOSTRACION (NO es capacidad real de diseno).",
+
+  "soporte_fuentes": {
+    "EI_seccion": {"valor": "P. 70x70 (h=b=0.70 m) hormigon", "estado": "DOCUMENTADO",
+                   "fuente": "candidatos edificio_I cielos/pisos (json 'seccion': 'P. 70x70'); 18 columnas/nivel; columnas_tramos_ei.json (97 tramos) y resolucion pendientes PP EI (D y 1.3)"},
+    "EII_seccion": {"valor": "0.70x0.70 hormigon, 8 por nivel x 5 niveles", "estado": "DOCUMENTADO",
+                    "fuente": "MODELO_FE_GEOMETRIA_NODOS.json (222 nodos, 32 columnas) y resumen MarcoEII"},
+    "EII_fc": {"valor": 35.0, "unidad": "MPa", "estado": "DOCUMENTADO",
+               "fuente": "G35 en eii_viewer.json (fc=35 MPa, Ec=27805.6 MPa, gamma=24.517 kN/m3)"},
+    "EI_fc": {"valor": 40.0, "unidad": "MPa", "estado": "HIPOTESIS_DEL_GRUPO",
+              "fuente": "no hay fuente independiente; G40 hipotesis del grupo (fc=40 MPa y Ec=26623 MPa segun ACI)"},
+    "armadura": {"fy": null, "recubrimiento": null, "armadura_columna": null,
+                 "estado": "BLOQUEADO_POR_PARAMETROS",
+                 "nota": "no existen datos en parametros_pendientes.json -> se define armado de DEMOSTRACION"}
+  },
+
+  "armado_de_demostracion": {
+    "fy_MPa": 420.0,
+    "Es_MPa": 200000.0,
+    "Ep_MPa": 2000.0,
+    "recubrimiento_m": 0.04,
+    "diametro_barras_m": 0.025,
+    "disposicion": "4 esquinas + 2 en medio de cada cara +y/-y + 2 en medio de cada cara +z/-z (12 barras simetricas)",
+    "n_barras": 12,
+    "clasificacion": "HIPOTESIS_DEMOSTRACION",
+    "nota": "el armado real esta bloqueado; este patron simetrico solo demuestra el flujo M-phi y P-M"
+  },
+
+  "analisis": {
+    "kappa_max_1_m": 0.24,
+    "n_pasos_mphi": 320,
+    "eps_su": 0.05,
+    "eps_cu": 0.004,
+    "n_puntos_PM": 21,
+    "N_min_factor_fc_Ag": -0.30,
+    "N_max_factor_fc_Ag": 1.0,
+    "N_compresion_factor_fc_Ag": 0.20,
+    "n_pasos_phi_PM": 160
+  }
+}
