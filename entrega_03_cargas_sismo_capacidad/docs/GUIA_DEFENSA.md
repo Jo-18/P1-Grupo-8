@@ -44,7 +44,7 @@ EI, ~4e-14 EII). Y la verificación **completa de 5 corridas** (G, Q, EX, EY y
 EXPLICITA = `1.0G+0.7Q+0.3EX−0.2EY`, conjunto de demostración) está
 `IMPLEMENTADO_Y_VERIFICADO` por edificio
 (`src/cargas/verificacion_superposicion_completa.py`): 8/8 magnitudes OK, errores
-máx ~1,9e-15 (EI) y ~2e-13 (EII), patrón consistente y equilibrio global.
+máx ~9,8e-16 (EI) y ~1,7e-13 (EII), patrón consistente y equilibrio global.
 
 ## 2. ¿Qué representa cada fibra de una sección por fibras?
 
@@ -119,8 +119,8 @@ toma del diagrama P–M interpolado `M_u(N)` de la sección `DEMO_RC_*` (armado 
 demostración 12#25, marcado `HIPOTESIS_DEMOSTRACION`). Resultado: **Edificio I** y
 **Edificio II**: todas las columnas evaluadas mediante el procedimiento (97 y 32)
 quedan con D/C<=1 en comparación **aritmética** con capacidad de demostración;
-columnas críticas EI col 208 (D/C=0,5014, nivel P4, extremo j) y EII col 25
-(D/C=0,2583, nivel EII_CP3, extremo j). **No es comprobación de diseño y no
+columnas críticas EI col 208 (D/C=0,5373, nivel P4, extremo j) y EII col 25
+(D/C=0,2572, nivel EII_CP3, extremo j). **No es comprobación de diseño y no
 aprueba las columnas reales** (armadura real no documentada), pero el flujo
 demanda→P–M→D/C está completo y es trazable (el JSON de cada edificio registra
 edificio, elemento, nivel/extremo, combinación, P_u, M_demanda, capacidad
@@ -141,9 +141,9 @@ fn  = F_i · w_n / W_i              (distribución nodal proporcional al peso de
 - Se aplica **una sola dirección por caso** (`+X` para EX, `+Y` para EY), fuerza
   horizontal por nivel, sin cargas gravitatorias en el caso sísmico (se combinan
   luego en la superposición), y sin unión EI–EII.
-- Resultados de las 4 corridas (retcode 0): **EI** W=29337,20 kN, F=5867,44 kN;
-  **EII** W=28600,71 kN, F=5720,14 kN. Momento accidental 0,0 kN·m, balance
-  horizontal OK (residuo ~4e-7) y dirección exclusiva verificada por caso.
+- Resultados de las 4 corridas (retcode 0): **EI** W=31.391,94 kN, F=6.278,39 kN;
+  **EII** W=29.915,57 kN, F=5.983,11 kN. Momento accidental 0,0 kN·m, balance
+  horizontal OK (residuo ~7e-8) y dirección exclusiva verificada por caso.
 - **Sentido de deformada**: se verifica `Σ f·u` por nivel (dominante correcto). En
   EII la franja D-D′ (nodos fuera del diafragma rígido, x=−0,3/−3,35) presenta
   productos locales opuestos pequeños; el desplazamiento dominante del piso es el
@@ -159,17 +159,17 @@ Estados exactos por componente (definidos en `docs/PLAN_ENTREGA_03.md`).
 | Línea | Estado | Bloqueado por |
 |---|---|---|
 | Q — verificación `ΣQ=q_Q·A` + catálogo separado | `IMPLEMENTADO_Y_VERIFICADO` | — |
-| Q — **caso FE Edificio I** (G ausente, equilibrio) | `IMPLEMENTADO_Y_VERIFICADO` | con q_Q=2,0 kN/m² adoptada por el grupo (no `null`) |
-| Q — caso FE Edificio II | `IMPLEMENTADO_Y_VERIFICADO` | modelo congelado G_EII; q_Q=2,0 adoptada |
+| Q — **caso FE Edificio I** (G ausente, equilibrio) | `IMPLEMENTADO_Y_VERIFICADO` | con q_Q=3,0 kN/m² (NCh 1537:2009 Tabla 4, mín. "Escuelas · salas de clases") |
+| Q — caso FE Edificio II | `IMPLEMENTADO_Y_VERIFICADO` | modelo congelado G_EII; q_Q=3,0 (NCh 1537:2009) |
 | EX/EY — parámetros y ejecución (4 corridas) | `IMPLEMENTADO_Y_VERIFICADO` | método de la consigna (a=0,20, 0,50·Q), no normativo; normativos `null` |
-| Superposición (verificación completa G,Q,EX,EY vs EXPLICITA, por edificio) | `IMPLEMENTADO_Y_VERIFICADO` | conjunto demo `1.0/0.7/0.3/-0.2`; 8/8 magnitudes OK (máx rel 1,9e-15 EI / 2e-13 EII) |
+| Superposición (verificación completa G,Q,EX,EY vs EXPLICITA, por edificio) | `IMPLEMENTADO_Y_VERIFICADO` | conjunto demo `1.0/0.7/0.3/-0.2`; 8/8 magnitudes OK (máx rel 9,8e-16 EI / 1,7e-13 EII) |
 | Superposición (verificación intermedia G+Q EI/EII) | `IMPLEMENTADO_Y_VERIFICADO_INTERMEDIO` | 3 corridas FE mismo modelo; 8/8 OK (máx rel 3e-15 / 4e-14) |
 | Capacidad RC — Fiber Section | `IMPLEMENTADO_Y_VERIFICADO` | — |
 | Capacidad RC — M–φ y P–M por edificio (70×70 real, 12#25 demo) | `IMPLEMENTADO_DEMO_ARBITRARIA` | armadura real no documentada → `HIPOTESIS_DEMOSTRACION`. EI f'c 40 → M_u=896,46 kN·m; EII f'c 35 → M_u=875,00 kN·m (aplastamiento hormigón eps_cu=0,004) |
-| Evaluación demanda/capacidad (D/C) por edificio | `EVALUACION_ALGORITMICA_CON_SECCION_DEMO` | demanda EXPLICITA superpuesta + P–M interpolado con capacidad de demostración; EI critica col 208 (nivel P4, D/C 0,50), EII critica col 25 (nivel EII_CP3, D/C 0,26); sin validez de diseño ni aprobación estructural |
+| Evaluación demanda/capacidad (D/C) por edificio | `EVALUACION_ALGORITMICA_CON_SECCION_DEMO` | demanda EXPLICITA superpuesta + P–M interpolado con capacidad de demostración; EI critica col 208 (nivel P4, D/C 0,54), EII critica col 25 (nivel EII_CP3, D/C 0,26); sin validez de diseño ni aprobación estructural |
 | Ejecutor único | `IMPLEMENTADO_Y_VERIFICADO` | `src/ejecutar_entrega_03.py`, estado global OK |
 | Sección real (fy, recubrimiento, armadura) | `BLOQUEADO_POR_PARAMETROS` (no bloqueante) | armadura/fy/rec reales no documentados → resuelto con `DEMO_RC_*` marcadas |
-| Peso sísmico `W` | `IMPLEMENTADO_Y_VERIFICADO` | EI 29337,20 kN; EII 28600,71 kN |
+| Peso sísmico `W` | `IMPLEMENTADO_Y_VERIFICADO` | EI 31.391,94 kN; EII 29.915,57 kN |
 | Auditoría PP EII | `IMPLEMENTADO_Y_VERIFICADO` (9/9 checks; `G_EII` NO cerrado) | origen de la definición de muros (`PENDIENTE_ORIGEN_PIPELINE`) |
 
 Regla de honestidad: **nada no documentado se presenta como real**; todo lo

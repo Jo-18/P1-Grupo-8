@@ -28,7 +28,7 @@ Salidas (con un unico comando):
 
 Uso:
   python -X utf8 -m src.cargas.verificacion_intermedia_G_Q_EI --demo
-  (--demo usa q_Q=2.0 kN/m2 marcada DEMOSTRACION_ARBITRARIA; --q_q X personaliza)
+  (--demo usa q_Q=3.0 kN/m2 marcada DEMOSTRACION_ARBITRARIA; --q_q X personaliza)
 
 Estado: la verificacion FINAL completa (G+Q+EX+EY) sigue bloqueada por
 BLOQUEADO_POR_PARAMETROS_SISMICOS; esta es la verificacion INTERMEDIA con los

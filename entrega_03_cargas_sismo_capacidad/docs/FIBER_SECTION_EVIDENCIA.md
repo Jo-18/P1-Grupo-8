@@ -1,29 +1,40 @@
-# Fibre Section — evidencia de la sección de demostración `DEMO_50x50_8#25`
+# Fibre Section — evidencia de la sección de demostración oficial `DEMO_RC_EI`
 
-> Estado: `IMPLEMENTADO_DEMO_ARBITRARIA`. La sección es **arbitraria** (la consigna la
-> permite): no corresponde a ninguna sección real del Edificio I ni II. Todos los
-> números de este informe provienen de la **ejecución numérica por fibras** (integración
-> no lineal), no de fórmulas cerradas externas.
-> Código: `src/capacidad_rc/{materiales,seccion,fibra,momento_curvatura,diagrama_pm}.py`.
+> Estado: `IMPLEMENTADO_DEMO_ARBITRARIA`. La sección es **de demostración** con
+> **geometría documentada** (columna de hormigón 0,70 × 0,70 m, real de los edificios)
+> y **armado de demostración 12Ø25** (la armadura real no está documentada →
+> `HIPOTESIS_DEMOSTRACION`). La sección **no** es capacidad real de diseño de ninguna
+> columna. Todos los números provienen de la **ejecución numérica por fibras**
+> (integración no lineal), no de fórmulas cerradas externas.
+> Código: `src/capacidad_rc/{materiales,seccion,fibra,momento_curvatura,diagrama_pm}.py`
+> y el generador por edificio `src/capacidad_rc/edificios.py`.
+> `DEMO_RC_EII` es **idéntica salvo `fc=35 MPa`** (documentado G35); esta nota describe
+> la `DEMO_RC_EI` (fc=40 MPa, hipótesis del grupo G40).
+>
+> La antigua sección genérica `DEMO_50x50_8#25` (fc=21, 8Ø25) quedó **eliminada**
+> como artefacto obsoleto; ya no existe `seccion_demo()` en el código.
 
 ## 1. Geometría y posición de las fibras
 
-- Sección **0,50 × 0,50 m**, recubrimiento 0,04 m, hormigón `fc'=21 MPa`, acero `fy=420 MPa`, **8 Ø25** (`As=0,000491 m²` cada una).
+- Sección **0,70 × 0,70 m**, recubrimiento 0,04 m, hormigón `fc'=40 MPa`, acero
+  `fy=420 MPa`, **12 Ø25** (`As=0,000491 m²` cada una; `As_total = 0,0058904 m²`).
 - **196 fibras de hormigón**: malla `14×14` (`n_celdas_y=n_celdas_z=14`) sobre el
-  perímetro completo (centros en `y∈[−0,2143..0,2143] m`, `z∈[−0,2143..0,2143] m`, paso 0,0357 m).
-  Cada fibra tiene `A_celda = (0,50/14)² = 0,0012755 m²`. El acero se **descuenta de la
+  perímetro completo (centros en `y,z∈[−0,32..0,32] m`, paso 0,05 m).
+  Cada fibra tiene `A_celda = (0,70/14)² = 0,0025 m²`. El acero se **descuenta de la
   fibra de hormigón más cercana** a cada barra (evita doble conteo; ver `seccion.py::fibra_concreto`).
-- **8 fibras de acero**: una por barra en `(y_bar, z_bar)`, en esquinas
-  `(±0,21, ±0,21) m` y puntos medios de caras `(±0,21,0)` y `(0,±0,21) m`, con `A_s` cada una.
-- **Conservación de área**: `ΣA_concreto + ΣA_acero = A_g = 0,2500 m²` (verificado, diferencia 0,0 m²).
-- Posiciones exactas verificables en `results/capacidad_rc/m_phi.csv` (por curvatura) y
-  en el gráfico `figures/capacidad_rc/seccion_fibras.png`.
+- **12 fibras de acero**: una por barra, distribución simétrica:
+  - 4 esquinas en `(±0,31, ±0,31) m`;
+  - 4 en caras `±Y` en `(±0,31, ±0,1033) m`;
+  - 4 en caras `±Z` en `(±0,1033, ±0,31) m`.
+- **Conservación de área**: `ΣA_concreto + ΣA_acero = A_g = 0,4900 m²` (verificado, diferencia 0,0 m²).
+- Posiciones exactas verificables en `results/capacidad_rc/DEMO_RC_EI_m_phi.csv` y
+  en el gráfico `figures/capacidad_rc/DEMO_RC_EI_seccion_fibras.png`.
 
 ## 2. Modelos constitutivos usados (familia OpenSees)
 
 | Material | OpenSees | Parámetros (demo) | Implementación |
 |---|---|---|---|
-| Hormigón no confinado | `Concrete01` | `fc=21 MPa`, `fcu=0,85·fc=17,85 MPa`, `eps0=0,002`, `epsu=0,004` | `materiales.py::Concrete01` (ascenso parabólico Hognestad → rama descendente lineal → residual `fcu`; **tracción nula**) |
+| Hormigón no confinado | `Concrete01` | `fc=40 MPa`, `fcu=0,85·fc=34,0 MPa`, `eps0=0,002`, `epsu=0,004` | `materiales.py::Concrete01` (ascenso parabólico Hognestad → rama descendente lineal → residual `fcu`; **tracción nula**) |
 | Acero | `Steel02` simplificado | `fy=420 MPa`, `Es=200 000 MPa`, `Ep=2000 MPa` (endurecimiento lineal) | `materiales.py::Steel02Simpl` (simétrico; `epsy=fy/Es=0,0021`) |
 
 En OpenSees se define la misma discretización con
@@ -53,27 +64,26 @@ Para cada curva y cada paso de curvatura (ver `momento_curvatura.py::curva_mphi`
    `LoadControl` equivalente de un solo paso por punto (análisis cuasiestático, sin
    integración temporal).
 
-La curva N=1050 kN (compresión, 20% de fc·Ag) usa el **mismo protocolo** con distinto `N`.
+La curva `N=3920 kN` (compresión, 20% de fc·Ag) usa el **mismo protocolo** con distinto `N`.
 
 ## 5. Carga axial constante por curva
 
-Cada curva M–φ se ejecuta con **N fijo**: `N=0` y `N=1050 kN` (compresiones positivas).
-`N` no cambia a lo largo de la curva; solo crece `κ`. El diagrama P–M evalúa `N` en 21
-puntos `N∈[−1575, +5250] kN` (de “tracción simple” a compresión), cada uno con su curva M–φ.
+Cada curva M–φ se ejecuta con **N fijo**: `N=0` y `N=3920 kN` (compresiones
+positivas). `N` no cambia a lo largo de la curva; solo crece `κ`. El diagrama P–M
+evalúa `N` en 21 puntos `N∈[−5880, +19600] kN` (de “tracción simple” a compresión),
+cada uno con su curva M–φ.
 
 ## 6. Criterio de término o falla
 
-→ **Se añadió un criterio explícito de falla** (versión vigente):
-
 - **Criterio 1 — Aplastamiento del hormigón:** la fibra extrema comprimida (+y) alcanza
   `ε_top ≥ episu = 0,004`.
-- **Criterio 2 — Fractura supuesta del acero a tracción:** la fibra extrema (−y)
-  alcanza `ε_bottom ≤ −0,05` (supuesto documentado del hormigón/acero de la demo).
+- **Criterio 2 — Fractura supuesta del acero a tracción:** una fibra de **acero**
+  alcanza `abs(ε) ≥ ε_su = 0,05` (supuesto documentado del acero de la demo).
 - **Criterio 3 — Cap de análisis:** si el barrido de κ termina sin alcanzar 1 o 2, el
   punto se marca `CAP_MALLA_SIN_FALLA` y no se reporta como capacidad última confirmada.
 
 `M_u` se define como **el momento en el primer paso que alcanza el criterio** (no el máximo
-sobre toda la malla).
+sobre toda la malla). Para `N=0` el aplastamiento del hormigón es el primer criterio.
 
 ## 7. Convergencia por incremento
 
@@ -81,14 +91,14 @@ sobre toda la malla).
 - Si el intervalo inicial `[−0,20, 0,08]` no encuadra a `N`, se amplía (hasta 80 pasos por
   lado) en cada κ.
 - El análisis es determinista (sin aleatoriedad); la malla `κ` y `n_pasos` quedan
-  registrados en `results/capacidad_rc/seccion_demo.json` → reproducibilidad exacta.
+  registrados en `results/capacidad_rc/DEMO_RC_EI.json` → reproducibilidad exacta.
 
 ## 8. Construcción de cada punto P–M
 
 `puntos_pm` recorre `N` en el rango fijo; para cada `N` calcula su curva M–φ completa y
 toma `M_u(N)` = momento del **punto de falla por criterio** de esa curva. El diagrama
 P–M es el lugar geométrico `M_max(N)` (superficie de falla). Ver
-`diagrama_pm.py` y `results/capacidad_rc/p_m.csv`.
+`diagrama_pm.py` y `results/capacidad_rc/DEMO_RC_EI_p_m.csv`.
 
 ## 9. Convención (compresión, momento, curvatura)
 
@@ -98,25 +108,19 @@ P–M es el lugar geométrico `M_max(N)` (superficie de falla). Ver
 
 ## 10. ¿De dónde sale `M_u`? (confirmación no lineal)
 
-- **`M_u(N=0) = 378,99 kN·m`** (versión vigente tras auditar el criterio) y
-  **`κ_u = 0,05718 1/m`** con criterio
+- **`M_u(N=0) = 896,46 kN·m`** y **`κ_u = 0,06395 1/m`** con criterio
   `APLASTAMIENTO_HORMIGON_eps_ext_fibra>=eps_cu` (`eps_cu = epsu_hormigón = 0,004`).
-  Proviene íntegramente de la **integración por
-  fibras y la búsqueda de `ε_ct` por bisección** dentro de `curva_mphi` (bucle número
-  sobre deformaciones/tensiones): no es una fórmula cerrada (`0.85·fc`, Whitney u otra).
-- **Auditoría del criterio (iteración actual):** se comprobó que el chequeo previo de
-  "fractura del acero" usaba la fibra extrema de **hormigón** (`y=±h/2`) y no las
-  fibras de acero reales (barras en `y≈±0,21`; `h/2=0,25`). Corrección aplicada:
-  fractura del acero se dispara por **la deformación real de las fibras de acero**,
-  `abs(ε) >= eps_su` (`eps_su=0,05`, supuesto documentado), y el aplastamiento por
-  `eps_cu` en la fibra extrema de hormigón comprimida. **El `M_u(N=0)` no cambia**
-  (el aplastamiento sigue gobernando, la fibra de acero más exigida alcanza ~0,022).
-  Etiquetas: `APLASTAMIENTO_HORMIGON_eps_ext_fibra>=eps_cu` /
-  `FRACTURA_ACERO_FIBRA_abs_eps>=eps_su`.
-- El valor **`403,66 kN·m`** citado en iteraciones previas corresponde al momento en el
-  **tope de la malla de curvaturas** (`κ=0,10`) con el material de demo **sin criterio de
-  falla**; con el criterio añadido, la curva sigue pero `M_u` se corta antes
-  (aplastamiento). Ambos provienen de la misma ejecución no lineal; el primero NO es
-  capacidad última, el segundo es el reportado ahora.
-- Las curvas completas (más allá del punto de falla) se conservan en `results/capacidad_rc/m_phi.csv`
-  y `figures/capacidad_rc/m_phi.png` para trazabilidad.
+  Origina íntegramente de la **integración por fibras y la búsqueda de `ε_ct` por
+  bisección** dentro de `curva_mphi` (bucle numérico sobre deformaciones/tensiones):
+  no es una fórmula cerrada (`0.85·fc`, Whitney u otra).
+- Curva de compresión `N=3920 kN`: `M_u = 1.715,06 kN·m` (mismo protocolo y criterio).
+- **Auditoría del criterio aplicada (documentada):** el chequeo de fractura del acero
+  se dispara por **la deformación real de las fibras de acero**, `abs(ε) >= eps_su`
+  (`eps_su=0,05`, supuesto documentado), y el aplastamiento por `eps_cu` en la fibra
+  extrema de hormigón comprimida. Etiquetas: `APLASTAMIENTO_HORMIGON_eps_ext_fibra>=eps_cu`
+  / `FRACTURA_ACERO_FIBRA_abs_eps>=eps_su`.
+- La sección `DEMO_RC_EII` (mismo armado, `fc=35 MPa`) da `M_u(N=0) = 875,00 kN·m`
+  (las figuras y JSON por edificio están bajo `DEMO_RC_{EI,EII}_*`).
+- Las curvas completas (más allá del punto de falla) se conservan en
+  `results/capacidad_rc/DEMO_RC_EI_m_phi.csv` y `figures/capacidad_rc/DEMO_RC_EI_m_phi.png`
+  para trazabilidad.

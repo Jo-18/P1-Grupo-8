@@ -1,8 +1,10 @@
-"""Runner independiente de capacidad RC (demo DEMOSTRACION_ARBITRARIA).
+"""Runner independiente de capacidad RC.
 
 Uso:  python -m src.capacidad_rc   (desde entrega_03_cargas_sismo_capacidad/)
 Salidas en results/capacidad_rc/ y figures/capacidad_rc/.
-La seccion de la demo NO es de ningun edificio real.
+La seccion usada es la oficial de demostracion `DEMO_RC_EI` (0.70x0.70 m con
+armado demostrativo 12#25); la seccion generica `DEMO_50x50_8#25` quedo
+ELIMINADA como artefacto obsoleto. No es capacidad real de diseno.
 """
 
 from __future__ import annotations
@@ -18,8 +20,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 
 from src.capacidad_rc import fibra as fibra_mod
 from src.capacidad_rc.diagrama_pm import puntos_pm
+from src.capacidad_rc.edificios import seccion_edificio
 from src.capacidad_rc.momento_curvatura import curva_mphi
-from src.capacidad_rc.seccion import seccion_demo
 
 REPO = Path(__file__).resolve().parents[3]
 RES = REPO / "entrega_03_cargas_sismo_capacidad" / "results" / "capacidad_rc"
@@ -65,7 +67,7 @@ def main(argv=None) -> int:
     RES.mkdir(parents=True, exist_ok=True)
     FIG.mkdir(parents=True, exist_ok=True)
 
-    seccion = seccion_demo()
+    seccion = seccion_edificio("I")
     resumen = seccion.resumen()
     area_fibras = fibra_mod.area_total_fibras(seccion)
 
@@ -111,7 +113,9 @@ def main(argv=None) -> int:
     }
     resultados = {
         "DEMOSTRACION_ARBITRARIA": True,
-        "nota": "Ejemplo arbitrario; no es una seccion real de los edificios.",
+        "nota": ("Seccion oficial de demostracion DEMO_RC_EI (0.70x0.70 m, armado "
+                 "demostrativo 12#25); no es capacidad real de diseno. La seccion "
+                 "generica DEMO_50x50_8#25 quedo eliminada (artefacto obsoleto)."),
         "seccion": resumen,
         "protocolo_analisis": protocolo,
         "M_u_N0_kN_m": round(Mu0, 2),

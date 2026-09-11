@@ -1,7 +1,7 @@
 """Ejecutor unico de la Entrega 3: cargas, sismo, superposicion y capacidad RC.
 
 Orden de ejecucion (cada paso = un modulo verificado de la entrega):
-  1. casos Q  : caso_Q_EI  y  caso_Q_EII         (q_Q=2.0 kN/m2 ADOPTADA)
+  1. casos Q  : caso_Q_EI  y  caso_Q_EII         (q_Q=3.0 kN/m2 NCh1537 Tabla 4)
   2. sismo    : EX/EY para EI y EII              (pseudoestatico de la consigna)
   3. verificacion INTERMEDIA G+Q de ambos edificios (regresion)
   4. superposicion COMPLETA (G,Q,EX,EY,EXPLICITA) por edificio

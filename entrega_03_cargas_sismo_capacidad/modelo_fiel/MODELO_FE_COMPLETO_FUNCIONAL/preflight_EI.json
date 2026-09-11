@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "check": "nodos_sin_elemento_ni_base",
+      "ok": true,
+      "detalle": "nodos aislados: 0 []"
+    },
+    {
+      "check": "sin_elementos_duplicados",
+      "ok": true,
+      "detalle": "duplicados: 0"
+    },
+    {
+      "check": "caminos_de_carga_a_base",
+      "ok": true,
+      "detalle": "nodos sin camino de carga: 0 (a Diafragma 10)"
+    },
+    {
+      "check": "diafragmas_por_nivel",
+      "ok": true,
+      "detalle": "[{\"nivel\": \"P1\", \"maestro\": 2, \"n_esclavos\": 28}, {\"nivel\": \"P2\", \"maestro\": 5, \"n_esclavos\": 44}, {\"nivel\": \"P3\", \"maestro\": 7, \"n_esclavos\": 46}, {\"nivel\": \"P4\", \"maestro\": 128, \"n_esclavos\": 94}]"
+    },
+    {
+      "check": "dof_6_por_nodo",
+      "ok": true,
+      "detalle": "model 3D ndf=6"
+    },
+    {
+      "check": "excentricidades_documentadas",
+      "ok": true,
+      "detalle": "18 de 18 con excentricidad registrada"
+    },
+    {
+      "check": "sin_elementos_sobre_p4_no_declarados",
+      "ok": true,
+      "detalle": "sobre P4: 8 (todos torre_/poste_ hipoteticos)"
+    },
+    {
+      "check": "sin_mecanismos_(verificacion_en_corridas)",
+      "ok": null,
+      "detalle": "se verifica en G/Q/EX/EY"
+    }
+  ],
+  "ok": true
+}

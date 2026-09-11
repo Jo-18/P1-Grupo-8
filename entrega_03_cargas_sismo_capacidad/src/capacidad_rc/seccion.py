@@ -89,23 +89,6 @@ class SeccionRC:
                        for b in self.barras]}
 
 
-def seccion_demo() -> SeccionRC:
-    """Seccion de demostracion ARBITRARIA (0.50 x 0.50 m, fc'=21, fy=420, 8#25)."""
-    fc = 21.0
-    horm = Concrete01(fc=fc, fcu=0.85 * fc, eps0=0.002, epsu=0.004)
-    acero = Steel02Simpl(fy=420.0, Es=200000.0, Ep=2000.0)
-    h = b = 0.50
-    rec = 0.04
-    As25 = 3.141592653589793 * 0.0125 ** 2  # 0.000491 m2
-    yp = h / 2 - rec
-    zp = b / 2 - rec
-    barras = [
-        Barra(yp, zp, As25), Barra(yp, -zp, As25), Barra(-yp, zp, As25), Barra(-yp, -zp, As25),
-        Barra(yp, 0.0, As25), Barra(-yp, 0.0, As25), Barra(0.0, zp, As25), Barra(0.0, -zp, As25),
-    ]
-    return SeccionRC(h, b, rec, barras, horm, acero, etiqueta="DEMO_50x50_8#25")
-
-
 def seccion_con_armado(h, b, rec, diam_m, n_cn, n_en_medio_cn_Y, n_en_medio_cn_Z,
                        fc_mpa, fy_mpa) -> SeccionRC:
     """Constructor generico con distribucion simetrica de barras:

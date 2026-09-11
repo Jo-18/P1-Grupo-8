@@ -1,0 +1,62 @@
+{
+  "iteracion": "MODELO_FIEL_4",
+  "tarea": "4_conservar_G_EII_peso_sismico",
+  "decision": "NO_REGENERAR",
+  "motivo": "sin mapeo documental del PM.ADIC EII (plano 700 no versionado en el repo; ver BLOQUEO_PMADIC_EII_plano700)",
+  "clasificacion_pendiente": "G_EII y peso sismico conservados como pendientes documentadas (PM.ADIC EII cobertura 0)",
+  "verificados_v3": {
+    "G_EI_P_z_kN": {
+      "referencia_v3": 42406.9577,
+      "verificado": 42406.9577,
+      "ok": true,
+      "diferencia": 0.0
+    },
+    "G_EII_P_z_kN": {
+      "referencia_v3": 25970.9994,
+      "verificado": 25970.9994,
+      "ok": true,
+      "diferencia": 0.0
+    },
+    "peso_EI_W_A_kN": {
+      "referencia_v3": 36272.2911,
+      "verificado": 36272.2911,
+      "ok": true,
+      "diferencia": 0.0
+    },
+    "peso_EI_W_B_kN": {
+      "referencia_v3": 46516.4301,
+      "verificado": 46516.4301,
+      "ok": true,
+      "diferencia": 0.0
+    },
+    "peso_EII_W_A_kN": {
+      "referencia_v3": 28600.7138,
+      "verificado": 28600.7138,
+      "ok": true,
+      "diferencia": 0.0
+    },
+    "peso_EII_W_B_kN": {
+      "referencia_v3": 28600.7138,
+      "verificado": 28600.7138,
+      "ok": true,
+      "diferencia": 0.0
+    }
+  },
+  "controles": {
+    "todo_ok": true,
+    "G_EI_equilibrio_vertical": "OK",
+    "G_EII_equilibrio_vertical": "OK",
+    "pmadic_EII_aplicada_kN": 0.0,
+    "pmadic_EII_cobertura": 0.0,
+    "pmadic_EII_ok": true,
+    "peso_EII_A_eq_B": true
+  },
+  "sin_regenerar": [
+    "G_EI",
+    "G_EII",
+    "peso_sismico",
+    "EX/EY",
+    "superposicion",
+    "D/C"
+  ]
+}

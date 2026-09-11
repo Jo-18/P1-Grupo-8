@@ -1,0 +1,199 @@
+{
+  "caso": "comparacion_perfiles",
+  "iteracion": "MODELO_FIEL_1",
+  "EI": {
+    "edificio": "EI",
+    "por_nivel": [
+      {
+        "nivel": "sotano nucleo (z -7.01)",
+        "z_m": -7.01,
+        "checkpoint_kN": 172.7773,
+        "pp_fiel_kN": 0.0,
+        "fiel_kN": 172.7773
+      },
+      {
+        "nivel": "CP1S",
+        "z_m": -4.01,
+        "checkpoint_kN": 2324.3751,
+        "pp_fiel_kN": 1049.6912,
+        "fiel_kN": 3374.0663
+      },
+      {
+        "nivel": "P1",
+        "z_m": -0.05,
+        "checkpoint_kN": 6513.3433,
+        "pp_fiel_kN": 3340.7096,
+        "fiel_kN": 9854.0528
+      },
+      {
+        "nivel": "P2",
+        "z_m": 3.91,
+        "checkpoint_kN": 5266.698,
+        "pp_fiel_kN": 4405.815,
+        "fiel_kN": 9672.513
+      },
+      {
+        "nivel": "P3",
+        "z_m": 7.87,
+        "checkpoint_kN": 5715.7725,
+        "pp_fiel_kN": 4530.7615,
+        "fiel_kN": 10246.534
+      },
+      {
+        "nivel": "P4",
+        "z_m": 11.83,
+        "checkpoint_kN": 5234.7655,
+        "pp_fiel_kN": 3852.2488,
+        "fiel_kN": 9087.0143
+      }
+    ],
+    "totales_kN": {
+      "checkpoint": 25227.7316,
+      "pp_fiel": 17179.2261,
+      "fiel": 42406.9577
+    },
+    "publicado_componentes_kN": {
+      "vigas": 14803.534,
+      "columnas": 2045.6003,
+      "muros": 330.0918,
+      "total_publicado": 42406.9577
+    },
+    "pendientes_no_cuantificados_kN": {
+      "tramos_base_col+col_adic": 4223.8204,
+      "tramos_base_muros": 3675.1844,
+      "contencion_sotano": 554.544,
+      "v_s_i_200": "sin cuantificar (PENDIENTE_SECCION)",
+      "metalicos": "sin cuantificar"
+    }
+  },
+  "EII": {
+    "edificio": "EII",
+    "por_nivel": [
+      {
+        "nivel": "EII_CP1S",
+        "z_m": -4.01,
+        "checkpoint_kN": 4893.8546,
+        "fiel_kN": 4893.8546
+      },
+      {
+        "nivel": "EII_CP1",
+        "z_m": -0.05,
+        "checkpoint_kN": 5483.2985,
+        "fiel_kN": 5483.2985
+      },
+      {
+        "nivel": "EII_CP2",
+        "z_m": 3.91,
+        "checkpoint_kN": 5438.4876,
+        "fiel_kN": 5438.4876
+      },
+      {
+        "nivel": "EII_CP3",
+        "z_m": 7.87,
+        "checkpoint_kN": 5410.0473,
+        "fiel_kN": 5410.0473
+      },
+      {
+        "nivel": "EII_CP4",
+        "z_m": 11.83,
+        "checkpoint_kN": 4745.3114,
+        "fiel_kN": 4745.3114
+      }
+    ],
+    "totales_kN": {
+      "checkpoint": 25970.999352,
+      "pp_fiel": 25970.999352,
+      "fiel": 25970.999352
+    },
+    "publicado_componentes_kN": {
+      "losas": 9677.0267,
+      "vigas": 11585.48,
+      "columnas": 1522.31,
+      "muros": 6521.26,
+      "total_publicado": 29306.0667
+    },
+    "componentes_comparacion": [
+      {
+        "componente": "losas (aplicada via mallado)",
+        "publicado_kN": 9677.0267,
+        "reproducible_kN": 9670.758325,
+        "diferencia_pub_repro_kN": 6.26837455
+      },
+      {
+        "componente": "losas (directa geometria publicada)",
+        "publicado_kN": null,
+        "reproducible_kN": 9670.748464,
+        "diferencia_pub_repro_kN": null
+      },
+      {
+        "componente": "vigas (incluye V_031)",
+        "publicado_kN": 11585.48,
+        "reproducible_kN": 11585.46643,
+        "diferencia_pub_repro_kN": 0.0135704
+      },
+      {
+        "componente": "V_031 (subconjunto de vigas)",
+        "publicado_kN": "incluido en vigas",
+        "reproducible_kN": 179.461512,
+        "diferencia_pub_repro_kN": "no publicado por separado"
+      },
+      {
+        "componente": "columnas",
+        "publicado_kN": 1522.31,
+        "reproducible_kN": 1522.30434,
+        "diferencia_pub_repro_kN": 0.00565952
+      },
+      {
+        "componente": "muros (pipeline A=t*(L/2) por montante)",
+        "publicado_kN": 6521.26,
+        "reproducible_kN": 3192.470257,
+        "diferencia_pub_repro_kN": 3328.78974311
+      }
+    ],
+    "pendientes_cuantificados_kN": {
+      "muros_kN": 3328.7897,
+      "muros_explicacion": "publicado 6521.26 vs pipeline 3192.47: A=t*(L/2) por montante (3.192,47); la identidad A=t*L por panel daria 4.330,02; deficit = 2.191,24 + 1.137,55 = 3.328,79",
+      "losas_kN": 6.2684,
+      "ruteo_no_transferido_kN": 417.8508,
+      "n_ruteos_sin_camino": 14,
+      "ruteo_explicacion": "14 cargas SIN camino estructural confirmado (cruce de vano o salida por junta); se dejan en su nodo original (no transferidas)",
+      "v_031_seccion_alternativa": {
+        "escenario": "V.30/80",
+        "estado": "HIPOTESIS_MODELO (sin eleccion)",
+        "V60_80_kN": 11585.4664
+      },
+      "rigidLinks_franja_DD": {
+        "n": 32,
+        "estado": "HIPOTESIS (documentada, no resorte publicado)",
+        "nota": "16 rigidLink('beam'); 8 a 0.15 m sobre M_003_B/M_004_B (defensible) y 8 a 1.61-4.14 m (HIPOTESIS_ESTRUCTURAL)"
+      }
+    }
+  },
+  "verificaciones": [
+    {
+      "check": "ck_ei",
+      "estado": "OK",
+      "detalle": "checkpoint EI 25227.7316"
+    },
+    {
+      "check": "fiel_ei",
+      "estado": "OK",
+      "detalle": "fiel EI 42406.9577"
+    },
+    {
+      "check": "suma_pp_por_nivel",
+      "estado": "OK",
+      "detalle": "PP EI tributario por nivel 17179.2261"
+    },
+    {
+      "check": "paridad_por_nivel",
+      "estado": "OK",
+      "detalle": "checkpoint+PP = fiel en todos los pisos (tributario)"
+    },
+    {
+      "check": "eii_publicado_vs_fiel",
+      "estado": "OK",
+      "detalle": "ambos totales EII cuantificados"
+    }
+  ]
+}

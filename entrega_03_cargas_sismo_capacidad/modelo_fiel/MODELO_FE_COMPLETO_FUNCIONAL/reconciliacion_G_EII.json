@@ -1,0 +1,485 @@
+{
+  "perfil": "MODELO_FE_COMPLETO_FUNCIONAL",
+  "edificio": "II",
+  "g_total_kN": 25735.0541,
+  "pp_losas_kN": 9670.7592,
+  "pp_vigas_kN": 11047.0932,
+  "pp_columnas_kN": 1522.3059,
+  "pp_muros_kN": 3494.8959,
+  "area_neta_m2": 2550.18,
+  "densidad_concreto_kN_m3": 24.516625,
+  "pendientes": {
+    "columnas_sin_descenso": [
+      {
+        "eje": [
+          0.0,
+          0.0
+        ],
+        "niveles": [
+          "EII_CP4"
+        ],
+        "nivel_minimo": "EII_CP4",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "columna documentada solo en niveles superiores (A1 EII_CP4 no desciende); sin tramo base->nivel inventado, sin apoyo simulado y SIN nodo FE (evita rigidez nula en el solucionador)"
+      }
+    ],
+    "vigas_por_resolver": [
+      {
+        "id": "EII_CP1S_V_031",
+        "nivel": "EII_CP1S",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      },
+      {
+        "id": "EII_CP1_V_031",
+        "nivel": "EII_CP1",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      },
+      {
+        "id": "EII_CP2_V_031",
+        "nivel": "EII_CP2",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      },
+      {
+        "id": "EII_CP3_V_031",
+        "nivel": "EII_CP3",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      },
+      {
+        "id": "EII_CP4_V_031",
+        "nivel": "EII_CP4",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      }
+    ],
+    "vigas_sin_soporte": [
+      {
+        "nivel": "EII_CP1S",
+        "ids": [
+          "EII_CP1S_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            -4.01
+          ],
+          [
+            -0.3,
+            4.265,
+            -4.01
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1S",
+        "ids": [
+          "EII_CP1S_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            -4.01
+          ],
+          [
+            -0.3,
+            11.885,
+            -4.01
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1S",
+        "ids": [
+          "EII_CP1S_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            -4.01
+          ],
+          [
+            -0.3,
+            16.15,
+            -4.01
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1",
+        "ids": [
+          "EII_CP1_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            -0.05
+          ],
+          [
+            -0.3,
+            4.265,
+            -0.05
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1",
+        "ids": [
+          "EII_CP1_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            -0.05
+          ],
+          [
+            -0.3,
+            11.885,
+            -0.05
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1",
+        "ids": [
+          "EII_CP1_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            -0.05
+          ],
+          [
+            -0.3,
+            16.15,
+            -0.05
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP2",
+        "ids": [
+          "EII_CP2_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            3.91
+          ],
+          [
+            -0.3,
+            4.265,
+            3.91
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP2",
+        "ids": [
+          "EII_CP2_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            3.91
+          ],
+          [
+            -0.3,
+            11.885,
+            3.91
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP2",
+        "ids": [
+          "EII_CP2_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            3.91
+          ],
+          [
+            -0.3,
+            16.15,
+            3.91
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP3",
+        "ids": [
+          "EII_CP3_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            7.87
+          ],
+          [
+            -0.3,
+            4.265,
+            7.87
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP3",
+        "ids": [
+          "EII_CP3_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            7.87
+          ],
+          [
+            -0.3,
+            11.885,
+            7.87
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP3",
+        "ids": [
+          "EII_CP3_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            7.87
+          ],
+          [
+            -0.3,
+            16.15,
+            7.87
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP4",
+        "ids": [
+          "EII_CP4_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            11.83
+          ],
+          [
+            -0.3,
+            4.265,
+            11.83
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP4",
+        "ids": [
+          "EII_CP4_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            11.83
+          ],
+          [
+            -0.3,
+            11.885,
+            11.83
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP4",
+        "ids": [
+          "EII_CP4_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            11.83
+          ],
+          [
+            -0.3,
+            16.15,
+            11.83
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      }
+    ],
+    "apoyos_losa_sin_fe": []
+  },
+  "familias": [
+    {
+      "familia": "Losas (PP estructural, espesor 0.15 x gamma)",
+      "cantidad": 140,
+      "unidad_m": "losas",
+      "dimension": 2550.18,
+      "unidad_dim": "m2 netas",
+      "peso_unit": "e x 24.5166",
+      "total_kN": 9670.7592,
+      "entra_al_caso_G": "TB.calcular_cargas_nodales: PP sobre area neta"
+    },
+    {
+      "familia": "Vigas (seccion documento, 34/nivel)",
+      "cantidad": 156,
+      "unidad_m": "elementos FE",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "A*L*24.516625",
+      "total_kN": 11047.0932,
+      "entra_al_caso_G": "mitad del PP en cada extremo del tramo FE"
+    },
+    {
+      "familia": "Columnas (0.70x0.70, 8 ejes/nivel)",
+      "cantidad": 32,
+      "unidad_m": "tramos",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "A*L*24.516625",
+      "total_kN": 1522.3059,
+      "entra_al_caso_G": "idem; A1 (solo CP4) PENDIENTE_DE_FUENTE sin tramo"
+    },
+    {
+      "familia": "Muros (montantes t x L/2)",
+      "cantidad": 64,
+      "unidad_m": "montantes",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "A*L*24.516625",
+      "total_kN": 3494.8959,
+      "entra_al_caso_G": "idem; cada eje lleva t x L/2 (area total sin duplicar)"
+    },
+    {
+      "familia": "PM.ADIC superficial",
+      "cantidad": 0,
+      "unidad_m": "lineal kg/m sin mapeo",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 0.0,
+      "entra_al_caso_G": "PENDIENTE_DE_FUENTE: SC/PM.ADIC del EII son lineales (kg/m) sin mapeo al panio de losa; no se aplican"
+    },
+    {
+      "familia": "Columna A1 (EII_CP4, no desciende)",
+      "cantidad": 1,
+      "unidad_m": "eje",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 0.0,
+      "entra_al_caso_G": "PENDIENTE_DE_FUENTE: sin tramo ni apoyo documentado (no se inventa descenso)"
+    },
+    {
+      "familia": "Vigas por_resolver (V_031)",
+      "cantidad": 5,
+      "unidad_m": "vigas",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 0.0,
+      "entra_al_caso_G": "PENDIENTE_DE_FUENTE: seccion V_031 sin respaldo; la carga asignada a ellas se reporta aparte"
+    },
+    {
+      "familia": "Vigas sin soporte vertical documentado",
+      "cantidad": 15,
+      "unidad_m": "segmentos",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 0.0,
+      "entra_al_caso_G": "PENDIENTE_DE_FUENTE: extremos sin columna/muro en el nivel (portico perimetral izq., junta/acceso); no se inventa conexion"
+    },
+    {
+      "familia": "apoyos de losa sin FE (receptores ausentes)",
+      "cantidad": 35,
+      "unidad_m": "receptores",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 0.0,
+      "entra_al_caso_G": "PENDIENTE_DE_FUENTE: area tributaria asignada a receptores sin nodos FE (p.ej. viga por_resolver); no se inventa receptor"
+    },
+    {
+      "familia": "TOTAL G MODELO_FE_COMPLETO_FUNCIONAL",
+      "cantidad": "-",
+      "unidad_m": "-",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 25735.0541,
+      "entra_al_caso_G": "PP losas + PP elementos FE (auto-consistente; sin referencia externa de G para el II)"
+    }
+  ],
+  "nota_omision_duplicacion": "El PP de elementos (vigas+columnas+muros FE) se aplica una vez por tramo/montante real; las losas aportan solo su PP estructural (e x gamma) por area neta. PM.ADIC/SC lineales, columna A1 y vigas por_resolver quedan PENDIENTE_DE_FUENTE y NO entran al G ni se inventan. Ningun peso se ajusta artificialmente para cuadrar."
+}

@@ -1,0 +1,3256 @@
+{
+  "iteracion": "MODELO_FIEL_3",
+  "tarea": "2_inventario_PP_pendiente_EI",
+  "fuente": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\results\\peso_propio_teorico_EDIFICIO_I_v2.json",
+  "densidades": {
+    "concreto_kN_m3": 24.5166,
+    "acero_a36_hipotesis_kN_m3": 76.9822
+  },
+  "alcance_PP_confirmado": "COTA INFERIOR (lower bound), NO es el PP total: los 63 pendientes y la 1 no-incluida permanecen sin cuantificar (pp_kN null). El PP total real sera mayor o igual a 17,179.23 kN.",
+  "PP_confirmado_kN": 17179.2261,
+  "PP_provisional_kN": 0.0,
+  "PP_pendiente_kN": null,
+  "PP_no_incluido_por_falta_de_evidencia_kN": null,
+  "conteo": {
+    "pendientes": 63,
+    "no_incluidas": 1,
+    "confirmadas_viga": 137,
+    "confirmadas_columna": 43,
+    "confirmadas_muro": 4
+  },
+  "revision_extra": {
+    "hipotesis_tramos_base_kN": {
+      "columnas": 4223.8204,
+      "muros": 3675.1844,
+      "detalle_columnas": [
+        {
+          "id": "col_20.0_16.15_base_P1",
+          "nivel": "P1",
+          "tramo": "col_20.0_16.15_base_P1",
+          "p_inicio": [
+            20.0,
+            16.15,
+            -4.01
+          ],
+          "p_final": [
+            20.0,
+            16.15,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 20.0,
+          "v": 16.15,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_20.0_8.9_base_P1",
+          "nivel": "P1",
+          "tramo": "col_20.0_8.9_base_P1",
+          "p_inicio": [
+            20.0,
+            8.9,
+            -4.01
+          ],
+          "p_final": [
+            20.0,
+            8.9,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 20.0,
+          "v": 8.9,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_30.0_16.15_base_P1",
+          "nivel": "P1",
+          "tramo": "col_30.0_16.15_base_P1",
+          "p_inicio": [
+            30.0,
+            16.15,
+            -4.01
+          ],
+          "p_final": [
+            30.0,
+            16.15,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 30.0,
+          "v": 16.15,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_30.0_8.9_base_P1",
+          "nivel": "P1",
+          "tramo": "col_30.0_8.9_base_P1",
+          "p_inicio": [
+            30.0,
+            8.9,
+            -4.01
+          ],
+          "p_final": [
+            30.0,
+            8.9,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 30.0,
+          "v": 8.9,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_30.0_0.0_base_P1",
+          "nivel": "P1",
+          "tramo": "col_30.0_0.0_base_P1",
+          "p_inicio": [
+            30.0,
+            0.0,
+            -4.01
+          ],
+          "p_final": [
+            30.0,
+            0.0,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 30.0,
+          "v": 0.0,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_40.0_16.15_base_P1",
+          "nivel": "P1",
+          "tramo": "col_40.0_16.15_base_P1",
+          "p_inicio": [
+            40.0,
+            16.15,
+            -4.01
+          ],
+          "p_final": [
+            40.0,
+            16.15,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 40.0,
+          "v": 16.15,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_40.0_8.9_base_P1",
+          "nivel": "P1",
+          "tramo": "col_40.0_8.9_base_P1",
+          "p_inicio": [
+            40.0,
+            8.9,
+            -4.01
+          ],
+          "p_final": [
+            40.0,
+            8.9,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 40.0,
+          "v": 8.9,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_40.0_0.0_base_P1",
+          "nivel": "P1",
+          "tramo": "col_40.0_0.0_base_P1",
+          "p_inicio": [
+            40.0,
+            0.0,
+            -4.01
+          ],
+          "p_final": [
+            40.0,
+            0.0,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 40.0,
+          "v": 0.0,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_45.0_16.15_base_P1",
+          "nivel": "P1",
+          "tramo": "col_45.0_16.15_base_P1",
+          "p_inicio": [
+            45.0,
+            16.15,
+            -4.01
+          ],
+          "p_final": [
+            45.0,
+            16.15,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 45.0,
+          "v": 16.15,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_45.0_8.9_base_P1",
+          "nivel": "P1",
+          "tramo": "col_45.0_8.9_base_P1",
+          "p_inicio": [
+            45.0,
+            8.9,
+            -4.01
+          ],
+          "p_final": [
+            45.0,
+            8.9,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 45.0,
+          "v": 8.9,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_45.0_0.0_base_P1",
+          "nivel": "P1",
+          "tramo": "col_45.0_0.0_base_P1",
+          "p_inicio": [
+            45.0,
+            0.0,
+            -4.01
+          ],
+          "p_final": [
+            45.0,
+            0.0,
+            -0.05
+          ],
+          "h_m": 3.96,
+          "u": 45.0,
+          "v": 0.0,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 47.5721,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_18.96_14.79_base_P2",
+          "nivel": "P2",
+          "tramo": "col_18.96_14.79_base_P2",
+          "p_inicio": [
+            18.96,
+            14.79,
+            -4.01
+          ],
+          "p_final": [
+            18.96,
+            14.79,
+            3.91
+          ],
+          "h_m": 7.92,
+          "u": 18.96,
+          "v": 14.79,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M. 300x300x20",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 13.6573,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_46.35_0.55_base_P3",
+          "nivel": "P3",
+          "tramo": "col_46.35_0.55_base_P3",
+          "p_inicio": [
+            46.35,
+            0.55,
+            -4.01
+          ],
+          "p_final": [
+            46.35,
+            0.55,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 46.35,
+          "v": 0.55,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "V.M. 300x300x5",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 5.3958,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_46.36_9.32_base_P3",
+          "nivel": "P3",
+          "tramo": "col_46.36_9.32_base_P3",
+          "p_inicio": [
+            46.36,
+            9.32,
+            -4.01
+          ],
+          "p_final": [
+            46.36,
+            9.32,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 46.36,
+          "v": 9.32,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "V.M. 300x300x5",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 5.3958,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_46.34_16.61_base_P3",
+          "nivel": "P3",
+          "tramo": "col_46.34_16.61_base_P3",
+          "p_inicio": [
+            46.34,
+            16.61,
+            -4.01
+          ],
+          "p_final": [
+            46.34,
+            16.61,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 46.34,
+          "v": 16.61,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "V.M. 300x300x5",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 5.3958,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_48.68_0.55_base_P3",
+          "nivel": "P3",
+          "tramo": "col_48.68_0.55_base_P3",
+          "p_inicio": [
+            48.68,
+            0.55,
+            -4.01
+          ],
+          "p_final": [
+            48.68,
+            0.55,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 48.68,
+          "v": 0.55,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "V.M. 300x300x5",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 5.3958,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_48.7_9.32_base_P3",
+          "nivel": "P3",
+          "tramo": "col_48.7_9.32_base_P3",
+          "p_inicio": [
+            48.7,
+            9.32,
+            -4.01
+          ],
+          "p_final": [
+            48.7,
+            9.32,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 48.7,
+          "v": 9.32,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "V.M. 300x300x5",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 5.3958,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_48.9_16.61_base_P3",
+          "nivel": "P3",
+          "tramo": "col_48.9_16.61_base_P3",
+          "p_inicio": [
+            48.9,
+            16.61,
+            -4.01
+          ],
+          "p_final": [
+            48.9,
+            16.61,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 48.9,
+          "v": 16.61,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "V.M. 300x300x5",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 5.3958,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_20.38_18.28_base_P3",
+          "nivel": "P3",
+          "tramo": "col_20.38_18.28_base_P3",
+          "p_inicio": [
+            20.38,
+            18.28,
+            -4.01
+          ],
+          "p_final": [
+            20.38,
+            18.28,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 20.38,
+          "v": 18.28,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "V.M. 300x300x5",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 5.3958,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_30.4_18.37_base_P3",
+          "nivel": "P3",
+          "tramo": "col_30.4_18.37_base_P3",
+          "p_inicio": [
+            30.4,
+            18.37,
+            -4.01
+          ],
+          "p_final": [
+            30.4,
+            18.37,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 30.4,
+          "v": 18.37,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "V.M. 300x300x5",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 5.3958,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_47.78_-0.6_base_P3",
+          "nivel": "P3",
+          "tramo": "col_47.78_-0.6_base_P3",
+          "p_inicio": [
+            47.78,
+            -0.6,
+            -4.01
+          ],
+          "p_final": [
+            47.78,
+            -0.6,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 47.78,
+          "v": -0.6,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M.I.",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": null,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_47.89_8.3_base_P3",
+          "nivel": "P3",
+          "tramo": "col_47.89_8.3_base_P3",
+          "p_inicio": [
+            47.89,
+            8.3,
+            -4.01
+          ],
+          "p_final": [
+            47.89,
+            8.3,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 47.89,
+          "v": 8.3,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M.I.",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": null,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_47.82_15.51_base_P3",
+          "nivel": "P3",
+          "tramo": "col_47.82_15.51_base_P3",
+          "p_inicio": [
+            47.82,
+            15.51,
+            -4.01
+          ],
+          "p_final": [
+            47.82,
+            15.51,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 47.82,
+          "v": 15.51,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M.I.",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": null,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_50.58_-0.6_base_P3",
+          "nivel": "P3",
+          "tramo": "col_50.58_-0.6_base_P3",
+          "p_inicio": [
+            50.58,
+            -0.6,
+            -4.01
+          ],
+          "p_final": [
+            50.58,
+            -0.6,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 50.58,
+          "v": -0.6,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M.I.",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": null,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_50.82_8.61_base_P3",
+          "nivel": "P3",
+          "tramo": "col_50.82_8.61_base_P3",
+          "p_inicio": [
+            50.82,
+            8.61,
+            -4.01
+          ],
+          "p_final": [
+            50.82,
+            8.61,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 50.82,
+          "v": 8.61,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M.I.",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": null,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_50.71_15.85_base_P3",
+          "nivel": "P3",
+          "tramo": "col_50.71_15.85_base_P3",
+          "p_inicio": [
+            50.71,
+            15.85,
+            -4.01
+          ],
+          "p_final": [
+            50.71,
+            15.85,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 50.71,
+          "v": 15.85,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M.I.",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": null,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_20.5_20.72_base_P3",
+          "nivel": "P3",
+          "tramo": "col_20.5_20.72_base_P3",
+          "p_inicio": [
+            20.5,
+            20.72,
+            -4.01
+          ],
+          "p_final": [
+            20.5,
+            20.72,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 20.5,
+          "v": 20.72,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M.I.",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": null,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_30.51_20.66_base_P3",
+          "nivel": "P3",
+          "tramo": "col_30.51_20.66_base_P3",
+          "p_inicio": [
+            30.51,
+            20.66,
+            -4.01
+          ],
+          "p_final": [
+            30.51,
+            20.66,
+            7.87
+          ],
+          "h_m": 11.88,
+          "u": 30.51,
+          "v": 20.66,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M.I.",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": null,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_0.0_0.181_base_P4",
+          "nivel": "P4",
+          "tramo": "col_0.0_0.181_base_P4",
+          "p_inicio": [
+            0.0,
+            0.181,
+            -4.01
+          ],
+          "p_final": [
+            0.0,
+            0.181,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 0.0,
+          "v": 0.181,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_10.0_0.181_base_P4",
+          "nivel": "P4",
+          "tramo": "col_10.0_0.181_base_P4",
+          "p_inicio": [
+            10.0,
+            0.181,
+            -4.01
+          ],
+          "p_final": [
+            10.0,
+            0.181,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 10.0,
+          "v": 0.181,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_30.0_0.181_base_P4",
+          "nivel": "P4",
+          "tramo": "col_30.0_0.181_base_P4",
+          "p_inicio": [
+            30.0,
+            0.181,
+            -4.01
+          ],
+          "p_final": [
+            30.0,
+            0.181,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 30.0,
+          "v": 0.181,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_20.0_0.181_base_P4",
+          "nivel": "P4",
+          "tramo": "col_20.0_0.181_base_P4",
+          "p_inicio": [
+            20.0,
+            0.181,
+            -4.01
+          ],
+          "p_final": [
+            20.0,
+            0.181,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 20.0,
+          "v": 0.181,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_40.0_0.181_base_P4",
+          "nivel": "P4",
+          "tramo": "col_40.0_0.181_base_P4",
+          "p_inicio": [
+            40.0,
+            0.181,
+            -4.01
+          ],
+          "p_final": [
+            40.0,
+            0.181,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 40.0,
+          "v": 0.181,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_45.0_0.181_base_P4",
+          "nivel": "P4",
+          "tramo": "col_45.0_0.181_base_P4",
+          "p_inicio": [
+            45.0,
+            0.181,
+            -4.01
+          ],
+          "p_final": [
+            45.0,
+            0.181,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 45.0,
+          "v": 0.181,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_0.0_9.081_base_P4",
+          "nivel": "P4",
+          "tramo": "col_0.0_9.081_base_P4",
+          "p_inicio": [
+            0.0,
+            9.081,
+            -4.01
+          ],
+          "p_final": [
+            0.0,
+            9.081,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 0.0,
+          "v": 9.081,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_10.0_9.081_base_P4",
+          "nivel": "P4",
+          "tramo": "col_10.0_9.081_base_P4",
+          "p_inicio": [
+            10.0,
+            9.081,
+            -4.01
+          ],
+          "p_final": [
+            10.0,
+            9.081,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 10.0,
+          "v": 9.081,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_20.0_9.081_base_P4",
+          "nivel": "P4",
+          "tramo": "col_20.0_9.081_base_P4",
+          "p_inicio": [
+            20.0,
+            9.081,
+            -4.01
+          ],
+          "p_final": [
+            20.0,
+            9.081,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 20.0,
+          "v": 9.081,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_30.0_9.081_base_P4",
+          "nivel": "P4",
+          "tramo": "col_30.0_9.081_base_P4",
+          "p_inicio": [
+            30.0,
+            9.081,
+            -4.01
+          ],
+          "p_final": [
+            30.0,
+            9.081,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 30.0,
+          "v": 9.081,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_40.0_9.081_base_P4",
+          "nivel": "P4",
+          "tramo": "col_40.0_9.081_base_P4",
+          "p_inicio": [
+            40.0,
+            9.081,
+            -4.01
+          ],
+          "p_final": [
+            40.0,
+            9.081,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 40.0,
+          "v": 9.081,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_45.0_9.081_base_P4",
+          "nivel": "P4",
+          "tramo": "col_45.0_9.081_base_P4",
+          "p_inicio": [
+            45.0,
+            9.081,
+            -4.01
+          ],
+          "p_final": [
+            45.0,
+            9.081,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 45.0,
+          "v": 9.081,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_0.0_16.331_base_P4",
+          "nivel": "P4",
+          "tramo": "col_0.0_16.331_base_P4",
+          "p_inicio": [
+            0.0,
+            16.331,
+            -4.01
+          ],
+          "p_final": [
+            0.0,
+            16.331,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 0.0,
+          "v": 16.331,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_10.0_16.331_base_P4",
+          "nivel": "P4",
+          "tramo": "col_10.0_16.331_base_P4",
+          "p_inicio": [
+            10.0,
+            16.331,
+            -4.01
+          ],
+          "p_final": [
+            10.0,
+            16.331,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 10.0,
+          "v": 16.331,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_20.0_16.331_base_P4",
+          "nivel": "P4",
+          "tramo": "col_20.0_16.331_base_P4",
+          "p_inicio": [
+            20.0,
+            16.331,
+            -4.01
+          ],
+          "p_final": [
+            20.0,
+            16.331,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 20.0,
+          "v": 16.331,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_30.0_16.331_base_P4",
+          "nivel": "P4",
+          "tramo": "col_30.0_16.331_base_P4",
+          "p_inicio": [
+            30.0,
+            16.331,
+            -4.01
+          ],
+          "p_final": [
+            30.0,
+            16.331,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 30.0,
+          "v": 16.331,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_40.0_16.331_base_P4",
+          "nivel": "P4",
+          "tramo": "col_40.0_16.331_base_P4",
+          "p_inicio": [
+            40.0,
+            16.331,
+            -4.01
+          ],
+          "p_final": [
+            40.0,
+            16.331,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 40.0,
+          "v": 16.331,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_45.0_16.331_base_P4",
+          "nivel": "P4",
+          "tramo": "col_45.0_16.331_base_P4",
+          "p_inicio": [
+            45.0,
+            16.331,
+            -4.01
+          ],
+          "p_final": [
+            45.0,
+            16.331,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 45.0,
+          "v": 16.331,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P. 70x70",
+          "hipotesis": true,
+          "material": "hormigon",
+          "pp_kN_hipotesis": 190.2882,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_45.97_1.36_base_P4",
+          "nivel": "P4",
+          "tramo": "col_45.97_1.36_base_P4",
+          "p_inicio": [
+            45.97,
+            1.36,
+            -4.01
+          ],
+          "p_final": [
+            45.97,
+            1.36,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 45.97,
+          "v": 1.36,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M. 300x300x20",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 27.3145,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_48.77_7.46_base_P4",
+          "nivel": "P4",
+          "tramo": "col_48.77_7.46_base_P4",
+          "p_inicio": [
+            48.77,
+            7.46,
+            -4.01
+          ],
+          "p_final": [
+            48.77,
+            7.46,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 48.77,
+          "v": 7.46,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M. 300x300x20",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 27.3145,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_51.97_8.12_base_P4",
+          "nivel": "P4",
+          "tramo": "col_51.97_8.12_base_P4",
+          "p_inicio": [
+            51.97,
+            8.12,
+            -4.01
+          ],
+          "p_final": [
+            51.97,
+            8.12,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 51.97,
+          "v": 8.12,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M. 300x300x20",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 27.3145,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_52.11_15.23_base_P4",
+          "nivel": "P4",
+          "tramo": "col_52.11_15.23_base_P4",
+          "p_inicio": [
+            52.11,
+            15.23,
+            -4.01
+          ],
+          "p_final": [
+            52.11,
+            15.23,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 52.11,
+          "v": 15.23,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M. 300x300x20",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 27.3145,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_48.73_17.3_base_P4",
+          "nivel": "P4",
+          "tramo": "col_48.73_17.3_base_P4",
+          "p_inicio": [
+            48.73,
+            17.3,
+            -4.01
+          ],
+          "p_final": [
+            48.73,
+            17.3,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 48.73,
+          "v": 17.3,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M. 300x300x20",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 27.3145,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_21.5_21.03_base_P4",
+          "nivel": "P4",
+          "tramo": "col_21.5_21.03_base_P4",
+          "p_inicio": [
+            21.5,
+            21.03,
+            -4.01
+          ],
+          "p_final": [
+            21.5,
+            21.03,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 21.5,
+          "v": 21.03,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M. 300x300x20",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 27.3145,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_31.55_21.03_base_P4",
+          "nivel": "P4",
+          "tramo": "col_31.55_21.03_base_P4",
+          "p_inicio": [
+            31.55,
+            21.03,
+            -4.01
+          ],
+          "p_final": [
+            31.55,
+            21.03,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 31.55,
+          "v": 21.03,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M. 300x300x20",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 27.3145,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        },
+        {
+          "id": "col_52.08_-0.87_base_P4",
+          "nivel": "P4",
+          "tramo": "col_52.08_-0.87_base_P4",
+          "p_inicio": [
+            52.08,
+            -0.87,
+            -4.01
+          ],
+          "p_final": [
+            52.08,
+            -0.87,
+            11.83
+          ],
+          "h_m": 15.84,
+          "u": 52.08,
+          "v": -0.87,
+          "fuente": "columnas_tramos_ei.json",
+          "seccion": "P.M. 300x300x20",
+          "hipotesis": true,
+          "material": "acero",
+          "pp_kN_hipotesis": 27.3145,
+          "nota": "hipotesis FE base->nivel (cimentacion no documentada); fuera del total confirmado"
+        }
+      ],
+      "detalle_muros": [
+        {
+          "linea": [
+            [
+              -0.25,
+              16.15
+            ],
+            [
+              -0.25,
+              0.0
+            ]
+          ],
+          "tramo": "BASE->P1",
+          "e_m": 0.2,
+          "L_m": 16.15,
+          "h_m": 3.96,
+          "pp_kN_hipotesis": 313.5872,
+          "nota": "hipotesis FE base->P1; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              40.15,
+              26.33
+            ],
+            [
+              40.15,
+              9.25
+            ]
+          ],
+          "tramo": "BASE->P1",
+          "e_m": 0.3,
+          "L_m": 17.08,
+          "h_m": 3.96,
+          "pp_kN_hipotesis": 497.4678,
+          "nota": "hipotesis FE base->P1; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              45.4,
+              -0.2
+            ],
+            [
+              45.4,
+              -6.3
+            ]
+          ],
+          "tramo": "BASE->P1",
+          "e_m": 0.3,
+          "L_m": 6.1,
+          "h_m": 3.96,
+          "pp_kN_hipotesis": 177.6671,
+          "nota": "hipotesis FE base->P1; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              38.83,
+              -0.6
+            ],
+            [
+              38.83,
+              -3.65
+            ]
+          ],
+          "tramo": "BASE->P1",
+          "e_m": 0.15,
+          "L_m": 3.05,
+          "h_m": 3.96,
+          "pp_kN_hipotesis": 44.4168,
+          "nota": "hipotesis FE base->P1; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              3.55,
+              4.0
+            ],
+            [
+              3.55,
+              6.15
+            ]
+          ],
+          "tramo": "BASE->P2",
+          "e_m": 0.3,
+          "L_m": 2.15,
+          "h_m": 7.92,
+          "pp_kN_hipotesis": 125.2407,
+          "nota": "hipotesis FE base->P2; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              6.45,
+              3.9
+            ],
+            [
+              6.45,
+              6.15
+            ]
+          ],
+          "tramo": "BASE->P2",
+          "e_m": 0.3,
+          "L_m": 2.25,
+          "h_m": 7.92,
+          "pp_kN_hipotesis": 131.0659,
+          "nota": "hipotesis FE base->P2; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              -0.35,
+              3.9
+            ],
+            [
+              6.6,
+              3.9
+            ]
+          ],
+          "tramo": "BASE->P2",
+          "e_m": 0.2,
+          "L_m": 6.95,
+          "h_m": 7.92,
+          "pp_kN_hipotesis": 269.8986,
+          "nota": "hipotesis FE base->P2; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              3.275,
+              12.266
+            ],
+            [
+              3.275,
+              13.945
+            ]
+          ],
+          "tramo": "BASE->P2",
+          "e_m": 0.25,
+          "L_m": 1.679,
+          "h_m": 7.92,
+          "pp_kN_hipotesis": 81.5036,
+          "nota": "hipotesis FE base->P2; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              6.725,
+              12.266
+            ],
+            [
+              6.725,
+              13.945
+            ]
+          ],
+          "tramo": "BASE->P2",
+          "e_m": 0.25,
+          "L_m": 1.679,
+          "h_m": 7.92,
+          "pp_kN_hipotesis": 81.5036,
+          "nota": "hipotesis FE base->P2; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              3.275,
+              13.845
+            ],
+            [
+              6.725,
+              13.845
+            ]
+          ],
+          "tramo": "BASE->P2",
+          "e_m": 0.2,
+          "L_m": 3.45,
+          "h_m": 7.92,
+          "pp_kN_hipotesis": 133.9785,
+          "nota": "hipotesis FE base->P2; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              3.275,
+              12.266
+            ],
+            [
+              3.275,
+              13.745
+            ]
+          ],
+          "tramo": "BASE->P3",
+          "e_m": 0.25,
+          "L_m": 1.479,
+          "h_m": 11.88,
+          "pp_kN_hipotesis": 107.6925,
+          "nota": "hipotesis FE base->P3; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              6.725,
+              12.266
+            ],
+            [
+              6.725,
+              13.745
+            ]
+          ],
+          "tramo": "BASE->P3",
+          "e_m": 0.25,
+          "L_m": 1.479,
+          "h_m": 11.88,
+          "pp_kN_hipotesis": 107.6925,
+          "nota": "hipotesis FE base->P3; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              -0.35,
+              4.081
+            ],
+            [
+              6.45,
+              4.081
+            ]
+          ],
+          "tramo": "BASE->P4",
+          "e_m": 0.2,
+          "L_m": 6.8,
+          "h_m": 15.84,
+          "pp_kN_hipotesis": 528.1469,
+          "nota": "hipotesis FE base->P4; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              3.55,
+              4.181
+            ],
+            [
+              3.55,
+              6.331
+            ]
+          ],
+          "tramo": "BASE->P4",
+          "e_m": 0.3,
+          "L_m": 2.15,
+          "h_m": 15.84,
+          "pp_kN_hipotesis": 250.4815,
+          "nota": "hipotesis FE base->P4; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              6.45,
+              4.181
+            ],
+            [
+              6.45,
+              6.331
+            ]
+          ],
+          "tramo": "BASE->P4",
+          "e_m": 0.3,
+          "L_m": 2.15,
+          "h_m": 15.84,
+          "pp_kN_hipotesis": 250.4815,
+          "nota": "hipotesis FE base->P4; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              3.275,
+              12.448
+            ],
+            [
+              3.275,
+              14.026
+            ]
+          ],
+          "tramo": "BASE->P4",
+          "e_m": 0.25,
+          "L_m": 1.578,
+          "h_m": 15.84,
+          "pp_kN_hipotesis": 153.2014,
+          "nota": "hipotesis FE base->P4; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              6.725,
+              12.448
+            ],
+            [
+              6.725,
+              14.026
+            ]
+          ],
+          "tramo": "BASE->P4",
+          "e_m": 0.25,
+          "L_m": 1.578,
+          "h_m": 15.84,
+          "pp_kN_hipotesis": 153.2014,
+          "nota": "hipotesis FE base->P4; fuera del total confirmado"
+        },
+        {
+          "linea": [
+            [
+              3.275,
+              14.026
+            ],
+            [
+              6.725,
+              14.026
+            ]
+          ],
+          "tramo": "BASE->P4",
+          "e_m": 0.2,
+          "L_m": 3.45,
+          "h_m": 15.84,
+          "pp_kN_hipotesis": 267.9569,
+          "nota": "hipotesis FE base->P4; fuera del total confirmado"
+        }
+      ],
+      "nota": "informativo; NO suma al total confirmado"
+    },
+    "muros_contencion_sotano": {
+      "M_EI_CP1S_001": {
+        "e_m": 0.2,
+        "panel_m": 25.25,
+        "h_hipotesis_m": 3.0,
+        "pp_kN": 371.4269,
+        "estado": "HIPOTESIS_CIMENTACION",
+        "nota": "desciende a cimentacion por hipotesis h_sotano=3.0 m; fuera del total confirmado"
+      },
+      "M_EI_CP1S_002": {
+        "e_m": 0.3,
+        "panel_m": 8.299,
+        "h_hipotesis_m": 3.0,
+        "pp_kN": 183.1171,
+        "estado": "HIPOTESIS_CIMENTACION",
+        "nota": "desciende a cimentacion por hipotesis h_sotano=3.0 m; fuera del total confirmado"
+      }
+    },
+    "total_hipotesis_cuantificado_kN": 8453.5488,
+    "nota": "rango superior SOLO si se confirmaran tramos reales y cimentacion; NO se aplica (D3/D7)"
+  },
+  "pp_por_metro_por_familia_kN_m": [
+    {
+      "seccion": "P.M. 300x300x20",
+      "pp_m_unit_kN_m": 1.7244
+    },
+    {
+      "seccion": "V.M. 300x300x5",
+      "pp_m_unit_kN_m": 0.4542
+    },
+    {
+      "seccion": "P. 70x70",
+      "pp_m_unit_kN_m": 12.0131
+    }
+  ],
+  "total_filas_principal": 64,
+  "total_filas_con_extra": 68,
+  "aplicado_al_FE_kN": 0.0,
+  "observacion": "no se convierte ninguna hipotesis en elemento confirmado; ningun pendiente se aplica en v3",
+  "filas": [
+    {
+      "id": "H_EI_CP1S_y2732_0.200-21.600",
+      "nivel": "CP1S",
+      "tipo": "viga",
+      "seccion": "V.S.I. 20/150",
+      "area_m2": null,
+      "L_m": 21.4,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "pendiente (V.S.I. no fija hormigon/acero)",
+      "material_pendiente": "tipo+seccion",
+      "motivo": "material/tipo no confirmado (el FE la asume metalica provisional 30x60; el plano 'V.S.I.' no fija hormigon/acero)",
+      "estado": "PENDIENTE_SECCION",
+      "decision": "PENDIENTE_SECCION",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_18.96_14.79_base_P2",
+      "nivel": "P2",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "P.M. 300x300x20",
+      "area_m2": 0.0224,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 1.7244,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_46.35_0.55_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "V.M. 300x300x5",
+      "area_m2": 0.0059,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 0.4542,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_46.36_9.32_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "V.M. 300x300x5",
+      "area_m2": 0.0059,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 0.4542,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_46.34_16.61_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "V.M. 300x300x5",
+      "area_m2": 0.0059,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 0.4542,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_48.68_0.55_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "V.M. 300x300x5",
+      "area_m2": 0.0059,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 0.4542,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_48.7_9.32_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "V.M. 300x300x5",
+      "area_m2": 0.0059,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 0.4542,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_48.9_16.61_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "V.M. 300x300x5",
+      "area_m2": 0.0059,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 0.4542,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_20.38_18.28_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "V.M. 300x300x5",
+      "area_m2": 0.0059,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 0.4542,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_30.4_18.37_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "V.M. 300x300x5",
+      "area_m2": 0.0059,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 0.4542,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_47.78_-0.6_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (P.M.I.)",
+      "seccion": "P.M.I.",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (perfil metalico)",
+      "material_pendiente": "dimensiones BxHxt",
+      "motivo": "perfil metalico sin dimensiones BxHxt documentadas (P.M.I.: ancho=0.0/peralte=0.0 en el QA)",
+      "estado": "PENDIENTE_SECCION",
+      "decision": "estado PENDIENTE_SECCION (no exiten BxHxt documentadas)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_47.89_8.3_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (P.M.I.)",
+      "seccion": "P.M.I.",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (perfil metalico)",
+      "material_pendiente": "dimensiones BxHxt",
+      "motivo": "perfil metalico sin dimensiones BxHxt documentadas (P.M.I.: ancho=0.0/peralte=0.0 en el QA)",
+      "estado": "PENDIENTE_SECCION",
+      "decision": "estado PENDIENTE_SECCION (no exiten BxHxt documentadas)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_47.82_15.51_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (P.M.I.)",
+      "seccion": "P.M.I.",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (perfil metalico)",
+      "material_pendiente": "dimensiones BxHxt",
+      "motivo": "perfil metalico sin dimensiones BxHxt documentadas (P.M.I.: ancho=0.0/peralte=0.0 en el QA)",
+      "estado": "PENDIENTE_SECCION",
+      "decision": "estado PENDIENTE_SECCION (no exiten BxHxt documentadas)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_50.58_-0.6_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (P.M.I.)",
+      "seccion": "P.M.I.",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (perfil metalico)",
+      "material_pendiente": "dimensiones BxHxt",
+      "motivo": "perfil metalico sin dimensiones BxHxt documentadas (P.M.I.: ancho=0.0/peralte=0.0 en el QA)",
+      "estado": "PENDIENTE_SECCION",
+      "decision": "estado PENDIENTE_SECCION (no exiten BxHxt documentadas)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_50.82_8.61_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (P.M.I.)",
+      "seccion": "P.M.I.",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (perfil metalico)",
+      "material_pendiente": "dimensiones BxHxt",
+      "motivo": "perfil metalico sin dimensiones BxHxt documentadas (P.M.I.: ancho=0.0/peralte=0.0 en el QA)",
+      "estado": "PENDIENTE_SECCION",
+      "decision": "estado PENDIENTE_SECCION (no exiten BxHxt documentadas)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_50.71_15.85_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (P.M.I.)",
+      "seccion": "P.M.I.",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (perfil metalico)",
+      "material_pendiente": "dimensiones BxHxt",
+      "motivo": "perfil metalico sin dimensiones BxHxt documentadas (P.M.I.: ancho=0.0/peralte=0.0 en el QA)",
+      "estado": "PENDIENTE_SECCION",
+      "decision": "estado PENDIENTE_SECCION (no exiten BxHxt documentadas)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_20.5_20.72_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (P.M.I.)",
+      "seccion": "P.M.I.",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (perfil metalico)",
+      "material_pendiente": "dimensiones BxHxt",
+      "motivo": "perfil metalico sin dimensiones BxHxt documentadas (P.M.I.: ancho=0.0/peralte=0.0 en el QA)",
+      "estado": "PENDIENTE_SECCION",
+      "decision": "estado PENDIENTE_SECCION (no exiten BxHxt documentadas)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_30.51_20.66_base_P3",
+      "nivel": "P3",
+      "tipo": "columna metalica (P.M.I.)",
+      "seccion": "P.M.I.",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (perfil metalico)",
+      "material_pendiente": "dimensiones BxHxt",
+      "motivo": "perfil metalico sin dimensiones BxHxt documentadas (P.M.I.: ancho=0.0/peralte=0.0 en el QA)",
+      "estado": "PENDIENTE_SECCION",
+      "decision": "estado PENDIENTE_SECCION (no exiten BxHxt documentadas)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_45.97_1.36_base_P4",
+      "nivel": "P4",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "P.M. 300x300x20",
+      "area_m2": 0.0224,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 1.7244,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_48.77_7.46_base_P4",
+      "nivel": "P4",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "P.M. 300x300x20",
+      "area_m2": 0.0224,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 1.7244,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_51.97_8.12_base_P4",
+      "nivel": "P4",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "P.M. 300x300x20",
+      "area_m2": 0.0224,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 1.7244,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_52.11_15.23_base_P4",
+      "nivel": "P4",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "P.M. 300x300x20",
+      "area_m2": 0.0224,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 1.7244,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_48.73_17.3_base_P4",
+      "nivel": "P4",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "P.M. 300x300x20",
+      "area_m2": 0.0224,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 1.7244,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_21.5_21.03_base_P4",
+      "nivel": "P4",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "P.M. 300x300x20",
+      "area_m2": 0.0224,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 1.7244,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_31.55_21.03_base_P4",
+      "nivel": "P4",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "P.M. 300x300x20",
+      "area_m2": 0.0224,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 1.7244,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "col_52.08_-0.87_base_P4",
+      "nivel": "P4",
+      "tipo": "columna metalica (tubular)",
+      "seccion": "P.M. 300x300x20",
+      "area_m2": 0.0224,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 1.7244,
+      "pp_potencial_kN": null,
+      "material_conocido": "acero (seccion tubular confirmada)",
+      "material_pendiente": "tramo real documentado (base->nivel real, no hipotesis)",
+      "motivo": "seccion tubular confirmada (V.M./P.M. BxHxt); solo falta documentar el tramo real entrepisos (lamina 800). No se extiende a la base.",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "pp null + PENDIENTE_TRAMO cuando la seccion tubular esta confirmada (solo falta el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_E1_0.73",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_F1_10.74",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_H1_30.71",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_G1_20.42",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_I1_40.5",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_Ip1_44.24",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_E2_0.75",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_F2_10.74",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_G2_20.73",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_H2_30.76",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_I2_38.87",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_Ip2_43.95",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_E3_0.74",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_F3_9.24",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_G3_20.73",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_H3_29.21",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_I3_40.37",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "COL_EI_CP4_C_Ip3_44.52",
+      "nivel": "P4",
+      "tipo": "columna de hormigon",
+      "seccion": "P. 70x70",
+      "area_m2": 0.48999999999999994,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": 12.0131,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon armado",
+      "material_pendiente": "tramo P3->P4 (desfase por implementar)",
+      "motivo": "el FE no instancia tramos hormigon P3->P4: P4 esta desplazado +0.181 m (matrices_transformacion_unity.json, desfase fisico documentado, no compensado); alineacion por confirmar",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "PENDIENTE_TRAMO (desfase +0.181 m documentado; FE no instancia el tramo)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "CP1S",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 16.951,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "CP1S",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 4.479,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "CP1S",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 4.479,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "CP1S",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 2.35,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "CP1S",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 2.35,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P1",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 16.15,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P1",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 17.08,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P1",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 6.1,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P1",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 3.05,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P2",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 1.679,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P2",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 1.679,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P3",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 1.479,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P3",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 1.479,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P4",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 6.8,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P4",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 2.15,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P4",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 2.15,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P4",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 1.578,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P4",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 1.578,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": null,
+      "nivel": "P4",
+      "tipo": "muro (1 sola planta documentada)",
+      "seccion": "sin seccion/espesor/cotas confirmados",
+      "area_m2": null,
+      "L_m": 3.45,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "presumible concreto (M.H.A.)",
+      "material_pendiente": "espesor + cotas + niveles reales",
+      "motivo": "muro documentado en UN solo nivel (o solo CP1S); extent of vertical real entrepisos no documentado o coordenadas no coinciden entre niveles consecutivos",
+      "estado": "PENDIENTE_TRAMO",
+      "decision": "ADOPTADA_PARCIAL: confirmar panel solo si coincidencia plena (linea+espesor+posicion+geometria+niveles consecutivos) P2->P3->P4; muro de un solo plano NO se vuelve tramo continuo automaticamente; cajas P4 M_CP4_001..006 mantienen PENDIENTE_TRAMO",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "V_EI_CP1S_x1010_0.700-16.150",
+      "nivel": "CP1S",
+      "tipo": "no viga (muro e=30 eje F)",
+      "seccion": "M.H.A. e=30",
+      "area_m2": null,
+      "L_m": 15.4502,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "muro M.H.A. e=30",
+      "material_pendiente": "-",
+      "motivo": "seccion de muro (M.H.A. e=30) en lista de vigas: no es viga",
+      "estado": "NO_INCLUIDA",
+      "decision": "ADOPTADA: V_EI_CP1S_x1010 = muro eje F (no viga adicional); no-duplicacion con M_EI_CP1S_003 verificada (masa no sumada dos veces)",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "hyp_base_columnas",
+      "nivel": "P1..base",
+      "tipo": "hipotesis FE base->nivel (columnas)",
+      "seccion": "P. 70x70 (FE)",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "hormigon",
+      "material_pendiente": "cimentacion no documentada",
+      "motivo": "hipotesis FE base->nivel (z=-4.01); cimentacion no documentada",
+      "estado": "PENDIENTE_HIPOTESIS_FE",
+      "decision": "ADOPTADA: sin tramos sinteticos BASE->nivel; solo extremos reales",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "hyp_base_muros",
+      "nivel": "CP1S..base",
+      "tipo": "hipotesis FE base->nivel (muros)",
+      "seccion": "segun FE",
+      "area_m2": null,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "concreto",
+      "material_pendiente": "cimentacion no documentada",
+      "motivo": "hipotesis FE base->nivel; fuera del total confirmado",
+      "estado": "PENDIENTE_HIPOTESIS_FE",
+      "decision": "ADOPTADA: sin tramos sinteticos BASE->nivel; solo extremos reales",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "M_EI_CP1S_001",
+      "nivel": "sotano (-7.01)",
+      "tipo": "muro de contencion del sotano",
+      "seccion": "e=0.2 m (panel 25.25 m)",
+      "area_m2": 5.050000000000001,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "concreto",
+      "material_pendiente": "h real del sotano (hipotesis h=3.0 m)",
+      "motivo": "desciende a cimentacion por hipotesis h_sotano=3.0 m; fuera del total confirmado",
+      "estado": "HIPOTESIS_CIMENTACION",
+      "decision": "HIPOTESIS_CIMENTACION",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    },
+    {
+      "id": "M_EI_CP1S_002",
+      "nivel": "sotano (-7.01)",
+      "tipo": "muro de contencion del sotano",
+      "seccion": "e=0.3 m (panel 8.30 m)",
+      "area_m2": 2.4896999999999996,
+      "L_m": null,
+      "volumen_m3": null,
+      "pp_m_unit_kN_m": null,
+      "pp_potencial_kN": null,
+      "material_conocido": "concreto",
+      "material_pendiente": "h real del sotano (hipotesis h=3.0 m)",
+      "motivo": "desciende a cimentacion por hipotesis h_sotano=3.0 m; fuera del total confirmado",
+      "estado": "HIPOTESIS_CIMENTACION",
+      "decision": "HIPOTESIS_CIMENTACION",
+      "documentos_revisados": [
+        "analisis_estructural/edificio_I/datos/candidatos/*.json",
+        "analisis_estructural/edificio_I/datos/candidatos/matrices_transformacion_unity.json",
+        "analisis_estructural/edificio_I/resultados/modelo_estructural/columnas_tramos_ei.json",
+        "viewer_unity/REPORTE_QA_GEOMETRIA_UNITY.md (secciones metalicas)",
+        "results/peso_propio_teorico_EDIFICIO_I_v2.json (objeto)"
+      ]
+    }
+  ]
+}

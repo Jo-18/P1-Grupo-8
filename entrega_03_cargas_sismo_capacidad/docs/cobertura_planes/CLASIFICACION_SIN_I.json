@@ -1,0 +1,564 @@
+{
+ "edificio": "I",
+ "fecha": "2026-09-11T23:22:09+00:00",
+ "fuente": "candidatos EI (planos DXF 101/102/103) para plan; EII sin DXF: la referencia de plano es la geometria recibida del viewer.",
+ "resumen": {
+  "AUX_SEGMENTO_VERTICAL": 32,
+  "PENDIENTE_DE_FUENTE": 2,
+  "AUX_STUB": 44
+ },
+ "detalle": {
+  "AUX_SEGMENTO_VERTICAL": [
+   {
+    "tag": 57,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 64,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 71,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 78,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 85,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 92,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 99,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 106,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 113,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 120,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 127,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 130,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 133,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 136,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 139,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 142,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 145,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 148,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 151,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 154,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 157,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 160,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 163,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 166,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 169,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 172,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 175,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 178,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 181,
+    "tipo": "columna",
+    "nivel": "CP1S",
+    "seccion": "P. 70x70",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 429,
+    "tipo": "viga",
+    "nivel": "P2",
+    "seccion": "V. 60/80",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 430,
+    "tipo": "viga",
+    "nivel": "P2",
+    "seccion": "V. 60/80",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   },
+   {
+    "tag": 433,
+    "tipo": "viga",
+    "nivel": "P2",
+    "seccion": "V. 60/80",
+    "evidencia": "comparte nodo con FE ya mapeado; huella del mismo objeto vertical."
+   }
+  ],
+  "PENDIENTE_DE_FUENTE": [
+   {
+    "tag": 212,
+    "tipo": "muro",
+    "nivel": "CP1S",
+    "seccion": "M 0.15x1.52x2",
+    "evidencia": "sin objeto equivalente en viewer ni en candidato; se requiere verificacion de lamina."
+   },
+   {
+    "tag": 215,
+    "tipo": "muro",
+    "nivel": "CP1S",
+    "seccion": "M 0.15x1.52x2",
+    "evidencia": "sin objeto equivalente en viewer ni en candidato; se requiere verificacion de lamina."
+   }
+  ],
+  "AUX_STUB": [
+   {
+    "tag": 593,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P1",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 594,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P1",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 602,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 605,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 608,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 611,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 614,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 617,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 620,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 623,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 626,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 629,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 632,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 635,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 638,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 641,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 644,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 647,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 650,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 653,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 657,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 661,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 665,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 669,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 673,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 677,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 681,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 685,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 689,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 693,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 697,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 701,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 705,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 709,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 713,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 717,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P3",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 721,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 725,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 729,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 733,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 737,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 741,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 745,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   },
+   {
+    "tag": 749,
+    "tipo": "stub_elastico_rigidez_elevada",
+    "nivel": "P4",
+    "seccion": "RIGIDA",
+    "evidencia": "dispositivo analitico (conector rigido); excluido de cobertura fisica."
+   }
+  ]
+ }
+}

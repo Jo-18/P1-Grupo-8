@@ -1,0 +1,62 @@
+{
+  "iteracion": "MODELO_FIEL_3",
+  "gravedad_m_s2": 9.80665,
+  "reglas_rebeldia": [
+    "no git ops hasta revision",
+    "laboratorio_semana2 solo lectura",
+    "results/ y checkpoint sin regenerar"
+  ],
+  "EI": {
+    "PP_confirmado_kN": 17179.2261,
+    "PP_pendientes": {
+      "pendientes": 63,
+      "no_incluidas": 1,
+      "confirmadas_viga": 137,
+      "confirmadas_columna": 43,
+      "confirmadas_muro": 4
+    },
+    "pendientes_cuantificados_INO_aplicado_kN": 8453.5488,
+    "PM_ADIC_aplicada_kN": 10244.139,
+    "G_fiel_kN": 42406.9577,
+    "equilibrio_vertical": "OK",
+    "comparacion": {
+      "checkpoint_ku": 25227.7316,
+      "vs_checkpoint_kN": 17179.2261,
+      "vs_v2_kN": 0.0,
+      "v2_permanente_kN": 42406.9577,
+      "estado": "IDENTICO_AL_v2"
+    },
+    "export": {
+      "reacciones_csv": "EI/G_EI_MODELO_FIEL_v3_reacciones.csv",
+      "desplazamientos_csv": "EI/G_EI_MODELO_FIEL_v3_desplazamientos.csv",
+      "fuerzas_csv": "EI/G_EI_MODELO_FIEL_v3_fuerzas.csv",
+      "n_reacciones": 254,
+      "n_desplazamientos": 324
+    }
+  },
+  "EII": {
+    "PP_confirmado_kN": 25970.9993,
+    "PM_ADIC_catalogo": 6,
+    "PM_ADIC_aplicada_kN": 0.0,
+    "PM_ADIC_cobertura": 0.0,
+    "mapeo_pendientes": 6,
+    "G_fiel_kN": 25970.9994,
+    "equilibrio_vertical": "OK"
+  },
+  "peso_sismico": {
+    "EI_scB_PRINCIPAL_kN": 46516.4301,
+    "EI_scA_sensibilidad_kN": 36272.2911,
+    "EII_scB_kN": 28600.7138,
+    "EII_scA_kN": 28600.7138,
+    "rango_EI_kN": 8453.55
+  },
+  "regresiones": {
+    "ok": 42,
+    "total": 42,
+    "estado": "OK"
+  },
+  "clasificacion": {
+    "EI": "REPRODUCIBLE_FULL_EXPORT_SIN_PP_PENDIENTES_NUEVOS",
+    "EII": "REPRODUCIBLE_FULL_EXPORT_PMADIC_PENDIENTE"
+  }
+}

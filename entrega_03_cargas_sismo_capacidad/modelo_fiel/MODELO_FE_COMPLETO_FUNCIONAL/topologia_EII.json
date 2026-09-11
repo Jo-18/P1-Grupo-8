@@ -1,0 +1,646 @@
+{
+  "perfil": "MODELO_FE_COMPLETO_FUNCIONAL",
+  "edificio": "II",
+  "sistema": "comun_interno_EII (A1=[0,0]; CP4 ya normalizado, sin ROW_MAP)",
+  "cotas_nivel_m": {
+    "EII_CP1S": -4.01,
+    "EII_CP1": -0.05,
+    "EII_CP2": 3.91,
+    "EII_CP3": 7.87,
+    "EII_CP4": 11.83
+  },
+  "viewer_por_nivel": {
+    "EII_CP1S": {
+      "columnas": 8,
+      "vigas": 35,
+      "vigas_por_resolver": 1,
+      "muros": 8,
+      "losas": 28,
+      "cota": -4.01
+    },
+    "EII_CP1": {
+      "columnas": 8,
+      "vigas": 35,
+      "vigas_por_resolver": 1,
+      "muros": 8,
+      "losas": 28,
+      "cota": -0.05
+    },
+    "EII_CP2": {
+      "columnas": 8,
+      "vigas": 35,
+      "vigas_por_resolver": 1,
+      "muros": 8,
+      "losas": 28,
+      "cota": 3.91
+    },
+    "EII_CP3": {
+      "columnas": 8,
+      "vigas": 35,
+      "vigas_por_resolver": 1,
+      "muros": 8,
+      "losas": 28,
+      "cota": 7.87
+    },
+    "EII_CP4": {
+      "columnas": 9,
+      "vigas": 35,
+      "vigas_por_resolver": 1,
+      "muros": 8,
+      "losas": 28,
+      "cota": 11.83
+    }
+  },
+  "ejes_muros": [
+    {
+      "eje": [
+        27.725,
+        8.55,
+        27.725,
+        16.5
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "espesores": {
+        "EII_CP1S": 0.25,
+        "EII_CP1": 0.25,
+        "EII_CP2": 0.25,
+        "EII_CP3": 0.25,
+        "EII_CP4": 0.25
+      }
+    },
+    {
+      "eje": [
+        25.08,
+        3.18,
+        25.08,
+        6.15
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "espesores": {
+        "EII_CP1S": 0.25,
+        "EII_CP1": 0.25,
+        "EII_CP2": 0.25,
+        "EII_CP3": 0.25,
+        "EII_CP4": 0.25
+      }
+    },
+    {
+      "eje": [
+        27.725,
+        0.35,
+        27.725,
+        6.15
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1"
+      ],
+      "espesores": {
+        "EII_CP1S": 0.25,
+        "EII_CP1": 0.25
+      }
+    },
+    {
+      "eje": [
+        25.08,
+        3.18,
+        27.725,
+        3.18
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "espesores": {
+        "EII_CP1S": 0.3,
+        "EII_CP1": 0.3,
+        "EII_CP2": 0.3,
+        "EII_CP3": 0.3,
+        "EII_CP4": 0.3
+      }
+    },
+    {
+      "eje": [
+        -3.65,
+        14.325,
+        -3.65,
+        17.24
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "espesores": {
+        "EII_CP1S": 0.6,
+        "EII_CP1": 0.6,
+        "EII_CP2": 0.6,
+        "EII_CP3": 0.6,
+        "EII_CP4": 0.6
+      }
+    },
+    {
+      "eje": [
+        -3.35,
+        16.3,
+        -1.9,
+        16.3
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "espesores": {
+        "EII_CP1S": 0.3,
+        "EII_CP1": 0.3,
+        "EII_CP2": 0.3,
+        "EII_CP3": 0.3,
+        "EII_CP4": 0.3
+      }
+    },
+    {
+      "eje": [
+        -3.65,
+        -1.095,
+        -3.65,
+        1.825
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "espesores": {
+        "EII_CP1S": 0.6,
+        "EII_CP1": 0.6,
+        "EII_CP2": 0.6,
+        "EII_CP3": 0.6,
+        "EII_CP4": 0.6
+      }
+    },
+    {
+      "eje": [
+        -3.35,
+        -0.15,
+        -1.9,
+        -0.15
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "espesores": {
+        "EII_CP1S": 0.3,
+        "EII_CP1": 0.3,
+        "EII_CP2": 0.3,
+        "EII_CP3": 0.3,
+        "EII_CP4": 0.3
+      }
+    },
+    {
+      "eje": [
+        27.725,
+        3.18,
+        27.725,
+        6.15
+      ],
+      "niveles": [
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "espesores": {
+        "EII_CP2": 0.25,
+        "EII_CP3": 0.25,
+        "EII_CP4": 0.25
+      }
+    }
+  ],
+  "pendientes": {
+    "columnas_sin_descenso": [
+      {
+        "eje": [
+          0.0,
+          0.0
+        ],
+        "niveles": [
+          "EII_CP4"
+        ],
+        "nivel_minimo": "EII_CP4",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "columna documentada solo en niveles superiores (A1 EII_CP4 no desciende); sin tramo base->nivel inventado, sin apoyo simulado y SIN nodo FE (evita rigidez nula en el solucionador)"
+      }
+    ],
+    "vigas_por_resolver": [
+      {
+        "id": "EII_CP1S_V_031",
+        "nivel": "EII_CP1S",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      },
+      {
+        "id": "EII_CP1_V_031",
+        "nivel": "EII_CP1",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      },
+      {
+        "id": "EII_CP2_V_031",
+        "nivel": "EII_CP2",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      },
+      {
+        "id": "EII_CP3_V_031",
+        "nivel": "EII_CP3",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      },
+      {
+        "id": "EII_CP4_V_031",
+        "nivel": "EII_CP4",
+        "seccion": "por_resolver",
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "seccion V_031 sin respaldo; sin elemento FE ni seccion inventada"
+      }
+    ],
+    "vigas_sin_soporte": [
+      {
+        "nivel": "EII_CP1S",
+        "ids": [
+          "EII_CP1S_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            -4.01
+          ],
+          [
+            -0.3,
+            4.265,
+            -4.01
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1S",
+        "ids": [
+          "EII_CP1S_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            -4.01
+          ],
+          [
+            -0.3,
+            11.885,
+            -4.01
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1S",
+        "ids": [
+          "EII_CP1S_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            -4.01
+          ],
+          [
+            -0.3,
+            16.15,
+            -4.01
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1",
+        "ids": [
+          "EII_CP1_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            -0.05
+          ],
+          [
+            -0.3,
+            4.265,
+            -0.05
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1",
+        "ids": [
+          "EII_CP1_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            -0.05
+          ],
+          [
+            -0.3,
+            11.885,
+            -0.05
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP1",
+        "ids": [
+          "EII_CP1_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            -0.05
+          ],
+          [
+            -0.3,
+            16.15,
+            -0.05
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP2",
+        "ids": [
+          "EII_CP2_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            3.91
+          ],
+          [
+            -0.3,
+            4.265,
+            3.91
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP2",
+        "ids": [
+          "EII_CP2_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            3.91
+          ],
+          [
+            -0.3,
+            11.885,
+            3.91
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP2",
+        "ids": [
+          "EII_CP2_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            3.91
+          ],
+          [
+            -0.3,
+            16.15,
+            3.91
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP3",
+        "ids": [
+          "EII_CP3_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            7.87
+          ],
+          [
+            -0.3,
+            4.265,
+            7.87
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP3",
+        "ids": [
+          "EII_CP3_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            7.87
+          ],
+          [
+            -0.3,
+            11.885,
+            7.87
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP3",
+        "ids": [
+          "EII_CP3_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            7.87
+          ],
+          [
+            -0.3,
+            16.15,
+            7.87
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP4",
+        "ids": [
+          "EII_CP4_V_029"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            4.265,
+            11.83
+          ],
+          [
+            -0.3,
+            4.265,
+            11.83
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP4",
+        "ids": [
+          "EII_CP4_V_030"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            11.885,
+            11.83
+          ],
+          [
+            -0.3,
+            11.885,
+            11.83
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      },
+      {
+        "nivel": "EII_CP4",
+        "ids": [
+          "EII_CP4_V_032"
+        ],
+        "n_nodos": 2,
+        "nodos": [
+          [
+            -3.35,
+            16.15,
+            11.83
+          ],
+          [
+            -0.3,
+            16.15,
+            11.83
+          ]
+        ],
+        "estado": "PENDIENTE_DE_FUENTE",
+        "nota": "componente de vigas sin columna/muro de apoyo en el nivel (junta/acceso sin respaldo); elementos retirados del FE y cargas reportadas aparte"
+      }
+    ],
+    "muros": [],
+    "apoyos_losa_sin_fe": []
+  },
+  "diafragmas": {
+    "EII_CP1": {
+      "maestro": 2,
+      "n_esclavos": 36
+    },
+    "EII_CP2": {
+      "maestro": 5,
+      "n_esclavos": 35
+    },
+    "EII_CP3": {
+      "maestro": 7,
+      "n_esclavos": 35
+    },
+    "EII_CP4": {
+      "maestro": 9,
+      "n_esclavos": 35
+    }
+  },
+  "resumen": {
+    "n_nodos": 182,
+    "n_columnas": 32,
+    "n_vigas": 156,
+    "n_muros": 64,
+    "master_por_nivel": {
+      "EII_CP1": 2,
+      "EII_CP2": 5,
+      "EII_CP3": 7,
+      "EII_CP4": 9
+    }
+  }
+}

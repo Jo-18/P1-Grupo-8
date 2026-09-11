@@ -1,0 +1,143 @@
+{
+  "caso": "regresiones_MODELO_FIEL_2",
+  "checks": [
+    {
+      "check": "artefacto_PM_ADIC_checks",
+      "estado": "OK",
+      "detalle": "5/5"
+    },
+    {
+      "check": "artefacto_LEDGER_checks",
+      "estado": "OK",
+      "detalle": "9/9"
+    },
+    {
+      "check": "artefacto_PESO_v2_checks",
+      "estado": "OK",
+      "detalle": "7/7"
+    },
+    {
+      "check": "artefacto_G_EI_v2_checks",
+      "estado": "OK",
+      "detalle": "7/7"
+    },
+    {
+      "check": "artefacto_G_EII_v2_checks",
+      "estado": "OK",
+      "detalle": "6/6"
+    },
+    {
+      "check": "conservacion_EI_PP_losas",
+      "estado": "OK",
+      "detalle": "ledger 14983.5927 / audit 14983.5920"
+    },
+    {
+      "check": "conservacion_EI_PM_ADIC",
+      "estado": "OK",
+      "detalle": "ledger 10244.1389 / audit 10244.1390"
+    },
+    {
+      "check": "conservacion_EI_ledger_vs_casoG_v2",
+      "estado": "OK",
+      "detalle": "PM.ADIC 10244.1389/10244.1389 ; PP_losas 14983.5927/14983.5927"
+    },
+    {
+      "check": "conservacion_EII_PM_ADIC_0",
+      "estado": "OK",
+      "detalle": "ledger EII PM.ADIC 0.000000"
+    },
+    {
+      "check": "catalogo_EII_6_familias_aplicada0",
+      "estado": "OK",
+      "detalle": "{\"tipo\": \"lineal (Kg/m), por metro lineal de vigas/escaleras\", \"familias\": [{\"familia\": \"A\", \"intensidad_original_kg_m\": 260, \"unidad_original\": \"Kg/m (lineal)\", \"naturaleza\": \"lineal (vigas/escaleras/elementos lineales)\", \"SC_lineal_kg_m\": 500, \"conversion_a_kn_m\": 2.549729, \"conversion_nota\": \"masa lineal * g (9.80665 m/s2); el mismo valor numerico si la unidad se leyera kgf/m (1 kgf = 9.80665 N). No se asume kN/m automaticamente.\", \"longitud_confirmada_m\": null, \"viga_receptor\": null, \"carga_total_kn\": null, \"fuente\": \"eii_viewer cargas.caso_G.PM_ADIC_lineal_kg_m; plano 2024_22-700.dxf bloque A (x\\u22481140, y\\u22482399/2546)\", \"nivel_aplicabilidad\": \"CP1S..CP3 (leyenda PLANTA DE CARGAS 'CIELO 1\\u00baSUBTERRANEO a CIELO PISO 3\\u00ba'); CP4 sin cubrir por la leyenda\", \"estado\": \"PM_ADIC_PENDIENTE\", \"motivo\": \"sin correspondencia familia->viga/eje disponible en los datos recibidos: la leyenda del plano no fija sobre que elemento lineal actua cada bloque y el DXF 2024_22-700 no esta incluido en la copia (solo se leyeron los bloques de leyenda). Longitud y receptor sin confirmar -> no se aplica.\"}, {\"familia\": \"B\", \"intensidad_original_kg_m\": 260, \"unidad_original\": \"Kg/m (lineal)\", \"naturaleza\": \"lineal (vigas/escaleras/elementos lineales)\", \"SC_lineal_kg_m\": 300, \"conversion_a_kn_m\": 2.549729, \"conversion_nota\": \"masa lineal * g (9.80665 m/s2); el mismo valor numerico si la unidad se leyera kgf/m (1 kgf = 9.80665 N). No se asume kN/m automaticamente.\", \"longitud_confirmada_m\": null, \"viga_receptor\": null, \"carga_total_kn\": null, \"fuente\": \"eii_viewer cargas.caso_G.PM_ADIC_lineal_kg_m; plano 2024_22-700.dxf bloque B (x\\u22482251, y\\u22482399)\", \"nivel_aplicabilidad\": \"CP1S..CP3 (leyenda PLANTA DE CARGAS 'CIELO 1\\u00baSUBTERRANEO a CIELO PISO 3\\u00ba'); CP4 sin cubrir por la leyenda\", \"estado\": \"PM_ADIC_PENDIENTE\", \"motivo\": \"sin correspondencia familia->viga/eje disponible en los datos recibidos: la leyenda del plano no fija sobre que elemento lineal actua cada bloque y el DXF 2024_22-700 no esta incluido en la copia (solo se leyeron los bloques de leyenda). Longitud y receptor sin confirmar -> no se aplica.\"}, {\"familia\": \"C\", \"intensidad_original_kg_m\": 200, \"unidad_original\": \"Kg/m (lineal)\", \"naturaleza\": \"lineal (vigas/escaleras/elementos lineales)\", \"SC_lineal_kg_m\": 200, \"conversion_a_kn_m\": 1.96133, \"conversion_nota\": \"masa lineal * g (9.80665 m/s2); el mismo valor numerico si la unidad se leyera kgf/m (1 kgf = 9.80665 N). No se asume kN/m automaticamente.\", \"longitud_confirmada_m\": null, \"viga_receptor\": null, \"carga_total_kn\": null, \"fuente\": \"eii_viewer cargas.caso_G.PM_ADIC_lineal_kg_m; plano 2024_22-700.dxf bloque C (x\\u22486083, y\\u22482399/2546)\", \"nivel_aplicabilidad\": \"CP1S..CP3 (leyenda PLANTA DE CARGAS 'CIELO 1\\u00baSUBTERRANEO a CIELO PISO 3\\u00ba'); CP4 sin cubrir por la leyenda\", \"estado\": \"PM_ADIC_PENDIENTE\", \"motivo\": \"sin correspondencia familia->viga/eje disponible en los datos recibidos: la leyenda del plano no fija sobre que elemento lineal actua cada bloque y el DXF 2024_22-700 no esta incluido en la copia (solo se leyeron los bloques de leyenda). Longitud y receptor sin confirmar -> no se aplica.\"}, {\"familia\": \"D\", \"intensidad_original_kg_m\": 1500, \"unidad_original\": \"Kg/m (lineal)\", \"naturaleza\": \"lineal (vigas/escaleras/elementos lineales)\", \"SC_lineal_kg_m\": 100, \"conversion_a_kn_m\": 14.709975, \"conversion_nota\": \"masa lineal * g (9.80665 m/s2); el mismo valor numerico si la unidad se leyera kgf/m (1 kgf = 9.80665 N). No se asume kN/m automaticamente.\", \"longitud_confirmada_m\": null, \"viga_receptor\": null, \"carga_total_kn\": null, \"fuente\": \"eii_viewer cargas.caso_G.PM_ADIC_lineal_kg_m; plano 2024_22-700.dxf bloque D (x\\u22487193, y\\u22482399/2546, CARGA LINEAL)\", \"nivel_aplicabilidad\": \"CP1S..CP3 (leyenda PLANTA DE CARGAS 'CIELO 1\\u00baSUBTERRANEO a CIELO PISO 3\\u00ba'); CP4 sin cubrir por la leyenda\", \"estado\": \"PM_ADIC_PENDIENTE\", \"motivo\": \"sin correspondencia familia->viga/eje disponible en los datos recibidos: la leyenda del plano no fija sobre que elemento lineal actua cada bloque y el DXF 2024_22-700 no esta incluido en la copia (solo se leyeron los bloques de leyenda). Longitud y receptor sin confirmar -> no se aplica.\"}, {\"familia\": \"E\", \"intensidad_original_kg_m\": 260, \"unidad_original\": \"Kg/m (lineal)\", \"naturaleza\": \"lineal (vigas/escaleras/elementos lineales)\", \"SC_lineal_kg_m\": 200, \"conversion_a_kn_m\": 2.549729, \"conversion_nota\": \"masa lineal * g (9.80665 m/s2); el mismo valor numerico si la unidad se leyera kgf/m (1 kgf = 9.80665 N). No se asume kN/m automaticamente.\", \"longitud_confirmada_m\": null, \"viga_receptor\": null, \"carga_total_kn\": null, \"fuente\": \"eii_viewer cargas.caso_G.PM_ADIC_lineal_kg_m; plano 2024_22-700.dxf bloque E (x\\u22481141, y\\u22481702/1849)\", \"nivel_aplicabilidad\": \"CP1S..CP3 (leyenda PLANTA DE CARGAS 'CIELO 1\\u00baSUBTERRANEO a CIELO PISO 3\\u00ba'); CP4 sin cubrir por la leyenda\", \"estado\": \"PM_ADIC_PENDIENTE\", \"motivo\": \"sin correspondencia familia->viga/eje disponible en los datos recibidos: la leyenda del plano no fija sobre que elemento lineal actua cada bloque y el DXF 2024_22-700 no esta incluido en la copia (solo se leyeron los bloques de leyenda). Longitud y receptor sin confirmar -> no se aplica.\"}, {\"familia\": \"F\", \"intensidad_original_kg_m\": 260, \"unidad_original\": \"Kg/m (lineal)\", \"naturaleza\": \"lineal (vigas/escaleras/elementos lineales)\", \"SC_lineal_kg_m\": 500, \"conversion_a_kn_m\": 2.549729, \"conversion_nota\": \"masa lineal * g (9.80665 m/s2); el mismo valor numerico si la unidad se leyera kgf/m (1 kgf = 9.80665 N). No se asume kN/m automaticamente.\", \"longitud_confirmada_m\": null, \"viga_receptor\": null, \"carga_total_kn\": null, \"fuente\": \"eii_viewer cargas.caso_G.PM_ADIC_lineal_kg_m; plano 2024_22-700.dxf bloque F (x\\u22482251, y\\u22481702/1849)\", \"nivel_aplicabilidad\": \"CP1S..CP3 (leyenda PLANTA DE CARGAS 'CIELO 1\\u00baSUBTERRANEO a CIELO PISO 3\\u00ba'); CP4 sin cubrir por la leyenda\", \"estado\": \"PM_ADIC_PENDIENTE\", \"motivo\": \"sin correspondencia familia->viga/eje disponible en los datos recibidos: la leyenda del plano no fija sobre que elemento lineal actua cada bloque y el DXF 2024_22-700 no esta incluido en la copia (solo se leyeron los bloques de leyenda). Longitud y receptor sin confirmar -> no se aplica.\"}], \"total_intensidad_referencia_kn_m\": 26.870221, \"aplicada_al_FE_kN\": 0.0, \"pendiente_motivo\": \"legenda del plano 2024_22-700 sin mapeo familia->viga; DXF no incluido en la copia\"}"
+    },
+    {
+      "check": "no_doble_conteo_EI_banda_minus701",
+      "estado": "OK",
+      "detalle": "sum 5 pisos 46516.4301 vs bandas 46516.4301"
+    },
+    {
+      "check": "no_doble_conteo_EII_pisos_vs_bandas",
+      "estado": "OK",
+      "detalle": "sum 5 pisos 28600.7138 vs bandas 28600.7138"
+    },
+    {
+      "check": "peso_v2_EI_WB==ledger",
+      "estado": "OK",
+      "detalle": "46516.4301 vs 46516.4301"
+    },
+    {
+      "check": "peso_v2_EI_WA==ledger",
+      "estado": "OK",
+      "detalle": "36272.2911 vs 36272.2911"
+    },
+    {
+      "check": "peso_v2_EII_W==ledger",
+      "estado": "OK",
+      "detalle": "28600.7138"
+    },
+    {
+      "check": "unidades_masa_EI_B",
+      "estado": "OK",
+      "detalle": "4743.3558 Mg"
+    },
+    {
+      "check": "equilibrio_EI_v2",
+      "estado": "OK",
+      "detalle": "OK residuo=0.000000"
+    },
+    {
+      "check": "equilibrio_EII_v2",
+      "estado": "OK",
+      "detalle": "OK residuo=0.000000"
+    },
+    {
+      "check": "G_checkpoint_EI_reproducido",
+      "estado": "OK",
+      "detalle": "PP_losas+PM.ADIC = 25227.7316 vs 25227.73"
+    },
+    {
+      "check": "G_checkpoint_EII_reproducido",
+      "estado": "OK",
+      "detalle": "25970.9994"
+    },
+    {
+      "check": "origen_46516_43_WB",
+      "estado": "OK",
+      "detalle": {
+        "PP_losas": 14983.58,
+        "PM_ADIC": 10244.1389,
+        "PP_elementos": 17179.23,
+        "G_checkpoint": 25227.73,
+        "G_fiel": 42406.96,
+        "0_5_Q": 4109.4723,
+        "W_B_igual_46516_43": 46516.4301
+      }
+    },
+    {
+      "check": "caso_v1_EI_G_antes",
+      "estado": "OK",
+      "detalle": "25227.7316"
+    },
+    {
+      "check": "caso_v1_EI_G_despues",
+      "estado": "OK",
+      "detalle": "42406.9577"
+    },
+    {
+      "check": "caso_v1_EII_G",
+      "estado": "OK",
+      "detalle": "25970.9994"
+    },
+    {
+      "check": "manifest_checkpoint",
+      "estado": "OK",
+      "detalle": "}"
+    },
+    {
+      "check": "unittest_tests",
+      "estado": "OK",
+      "detalle": "OK"
+    }
+  ]
+}

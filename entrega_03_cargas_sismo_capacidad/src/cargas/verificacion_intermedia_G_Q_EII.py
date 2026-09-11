@@ -23,7 +23,7 @@ Salidas:
 
 Uso:
   python -X utf8 -m src.cargas.verificacion_intermedia_G_Q_EII --demo
-  (--demo usa q_Q=2.0 kN/m2 marcada DEMOSTRACION_ARBITRARIA; --q_q X personaliza;
+  (--demo usa q_Q=3.0 kN/m2 marcada DEMOSTRACION_ARBITRARIA; --q_q X personaliza;
    lambda_Q del conjunto demostracion config/superposicion.json = 0.7)
 
 Estado: verificacion INTERMEDIA de los dos casos base disponibles (G y Q);

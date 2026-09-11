@@ -1,12 +1,12 @@
 {
   "edificio": "II",
   "q_Q": {
-    "q_Q_kN_m2": 2.0,
-    "estado": "PARAMETRO_ADOPTADO_POR_EL_GRUPO",
+    "q_Q_kN_m2": 3.0,
+    "estado": "PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4",
     "demostracion": false
   },
   "catalogo_sobrecarga_documentada": {
-    "fuente": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\analisis_estructural\\edificio_II_casoG_PP_elementos\\eii_viewer.json",
+    "fuente": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\data\\externas\\eii_viewer.json",
     "unidad": "kgf/m lineal (1 kgf/m = 0.00980665 kN/m) y kPa (PP losa)",
     "SC_lineal_kg_m": {
       "A": 500,
@@ -25,10 +25,10 @@
   "por_nivel": {
     "EII_CP2": {
       "area_tributaria_m2": 530.4439,
-      "q_Q_kN_m2": 2.0,
-      "carga_teorica_q_A_kN": 1060.8878,
-      "carga_transferida_sum_kN": 1060.8877,
-      "diferencia_abs_kN": 9.2e-05,
+      "q_Q_kN_m2": 3.0,
+      "carga_teorica_q_A_kN": 1591.3317,
+      "carga_transferida_sum_kN": 1591.3316,
+      "diferencia_abs_kN": 0.000138,
       "diferencia_rel": 9e-08,
       "tolerancia_rel": 0.005,
       "estado": "OK",
@@ -38,7 +38,7 @@
     },
     "EII_CP1S": {
       "area_tributaria_m2": 0.0,
-      "q_Q_kN_m2": 2.0,
+      "q_Q_kN_m2": 3.0,
       "carga_teorica_q_A_kN": 0.0,
       "carga_transferida_sum_kN": 0.0,
       "diferencia_abs_kN": 0.0,
@@ -51,7 +51,7 @@
     },
     "EII_CP1": {
       "area_tributaria_m2": 0.0,
-      "q_Q_kN_m2": 2.0,
+      "q_Q_kN_m2": 3.0,
       "carga_teorica_q_A_kN": 0.0,
       "carga_transferida_sum_kN": 0.0,
       "diferencia_abs_kN": 0.0,
@@ -64,7 +64,7 @@
     },
     "EII_CP3": {
       "area_tributaria_m2": 0.0,
-      "q_Q_kN_m2": 2.0,
+      "q_Q_kN_m2": 3.0,
       "carga_teorica_q_A_kN": 0.0,
       "carga_transferida_sum_kN": 0.0,
       "diferencia_abs_kN": 0.0,
@@ -77,7 +77,7 @@
     },
     "EII_CP4": {
       "area_tributaria_m2": 0.0,
-      "q_Q_kN_m2": 2.0,
+      "q_Q_kN_m2": 3.0,
       "carga_teorica_q_A_kN": 0.0,
       "carga_transferida_sum_kN": 0.0,
       "diferencia_abs_kN": 0.0,
@@ -97,9 +97,9 @@
   ],
   "global": {
     "area_total_m2": 530.4439,
-    "carga_teorica_q_A_kN": 1060.8878,
-    "carga_transferida_sum_kN": 1060.8877,
-    "diferencia_abs_kN": 9.2e-05,
+    "carga_teorica_q_A_kN": 1591.3317,
+    "carga_transferida_sum_kN": 1591.3316,
+    "diferencia_abs_kN": 0.000138,
     "diferencia_rel": 9e-08,
     "tolerancia_rel": 0.005,
     "estado": "OK"

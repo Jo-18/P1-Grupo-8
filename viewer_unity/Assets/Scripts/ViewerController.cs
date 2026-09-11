@@ -42,6 +42,7 @@ namespace LabViewer
         private ElementRef _selected;
         private readonly List<Marker> _markers = new List<Marker>();
         private bool _draggingUi;
+        private EsfuerzosController _esf;
 
         private Vector2 _scroll;
         private Vector2 _inspScroll;
@@ -59,10 +60,11 @@ namespace LabViewer
             { Go = go; Building = building; Level = level; Kind = kind; }
         }
 
-        void Awake() { _loader = GetComponent<LabLoader>(); }
+        void Awake() { _loader = GetComponent<LabLoader>(); _esf = GetComponent<EsfuerzosController>(); }
 
         void Start()
         {
+            _esf = GetComponent<EsfuerzosController>();
             foreach (ElemType t in System.Enum.GetValues(typeof(ElemType)))
                 _typeOn[t.ToString()] = t != ElemType.Nodos; // nodos off por defecto
 
@@ -138,7 +140,11 @@ namespace LabViewer
                 }
             }
             ApplyMarkerVisibility();
+            if (_esf != null) _esf.OnVisualFiltersChanged();
         }
+
+        public bool BuildingVisible(string b) => BuildingOn(b);
+        public bool LevelVisible(string l) => LevelOn(l);
 
         private void ApplyMarkerVisibility()
         {
@@ -639,6 +645,19 @@ namespace LabViewer
             if (GUILayout.Button("Encuadrar todo")) FrameAll();
             if (GUILayout.Button("Vista superior")) ViewTop();
             if (GUILayout.Button("Vista isometrica")) ViewIso();
+
+            GUILayout.Space(6);
+            GUILayout.Label("Resultados estructurales");
+            if (_esf != null)
+            {
+                bool esfOn = _esf.OverlayOn;
+                bool nv = GUILayout.Toggle(esfOn, "Esfuerzos FE (overlay por elemento)");
+                if (nv != esfOn) _esf.SetOverlay(nv);
+            }
+            else
+            {
+                GUILayout.Label("Esfuerzos FE: componente no disponible");
+            }
 
             GUILayout.Space(6);
             if (!_p4SkyMode)

@@ -1,0 +1,4059 @@
+{
+ "edificio": "I",
+ "clases": [
+  "ESTRUCTURAL_CONFIRMADO",
+  "REFERENCIA_O_HIPOTESIS",
+  "NO_ESTRUCTURAL",
+  "PENDIENTE_DE_FUENTE"
+ ],
+ "totales_clases": {
+  "ESTRUCTURAL_CONFIRMADO": 279,
+  "REFERENCIA_O_HIPOTESIS": 0,
+  "NO_ESTRUCTURAL": 2,
+  "PENDIENTE_DE_FUENTE": 23
+ },
+ "totales_estructural_confirmado": {
+  "total": 279,
+  "por_estado": {
+   "analizado_1a1": 108,
+   "contenido": 46,
+   "sin_resultado": 125,
+   "sin_auditoria": 0
+  },
+  "cobertura_actual_porcentaje": 55.2
+ },
+ "totales_auditoria_previa": {
+  "viewer": {
+   "total": 304,
+   "1A1": 109,
+   "CONTENIDO": 46,
+   "MULTIPLE": 0,
+   "SIN_RESULTADO": 149
+  },
+  "FE": {
+   "total": 349,
+   "1A1": 109,
+   "CONTENIDO": 104,
+   "MULTIPLE": 0,
+   "SIN_RESULTADO": 136
+  }
+ },
+ "objetos": [
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "columna",
+   "id": "COL_EI_CP1S_C_E_0.71_16.16",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    3
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "columna",
+   "id": "COL_EI_CP1S_C_E_0.72_7.14",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    11
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "columna",
+   "id": "COL_EI_CP1S_C_E_0.73_1.35",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    18
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "columna",
+   "id": "COL_EI_CP1S_C_F_8.95_8.64",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    25
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "columna",
+   "id": "COL_EI_CP1S_C_F_9.00_1.35",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    32
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "columna",
+   "id": "COL_EI_CP1S_C_F_9.20_16.16",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    39
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "columna",
+   "id": "COL_EI_CP1S_C_H_20.81_16.21",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    46
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "viga",
+   "id": "H_EI_CP1S_y0000_0.200-10.000",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    386
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "viga",
+   "id": "H_EI_CP1S_y0760_0.200-10.000",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    389,
+    391
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "viga",
+   "id": "H_EI_CP1S_y1695_0.200-21.600",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    393,
+    395
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "viga",
+   "id": "H_EI_CP1S_y2732_0.200-21.600",
+   "seccion": "V.S.I. 20/150",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion V.S.I. 20/150 pendiente de fuente (peralte/armadura sin confirmar).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    398
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "viga",
+   "id": "H_EI_CP1S_y0601_0.700-10.000",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    401
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "viga",
+   "id": "H_EI_CP1S_y1625_0.700-10.000",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    404
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "viga",
+   "id": "V_EI_CP1S_x0060_0.700-16.150",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    407
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "viga",
+   "id": "V_EI_CP1S_x1010_0.700-16.150",
+   "seccion": "M.H.A. e=30",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Panel muro-placa M.H.A. e=30 (no viga); tratar como muro en el modelo FE.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "muro",
+   "id": "M_EI_CP1S_001",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    315,
+    355
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "muro",
+   "id": "M_EI_CP1S_002",
+   "seccion": "e=0.3",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "muro",
+   "id": "M_EI_CP1S_003",
+   "seccion": "e=0.7",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "muro",
+   "id": "M_EI_CP1S_004",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "muro",
+   "id": "M_EI_CP1S_005",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "muro",
+   "id": "M_EI_CP1S_006",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "CP1S",
+   "tipo": "muro",
+   "id": "M_EI_CP1S_007",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_E_3",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    20
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_E_2",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    13
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_E_1",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    6
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_F_3",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    34
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_F_2",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    27
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_F_1",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    41
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_G_3",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    53
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_G_2",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    60
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_G_1",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    48
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_H_3",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    67
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_H_2",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    74
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_H_1",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    81
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_I_3",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    88
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_I_2",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    95
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_I_1",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    102
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_Ip_3",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    109
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_Ip_2",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    116
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "columna",
+   "id": "COL_EI_CP1_Ip_1",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    123
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "GV_CP1_G3",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    408,
+    409,
+    410,
+    411,
+    412,
+    413,
+    415
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "GV_CP1_G2",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    417,
+    418,
+    419,
+    420,
+    421,
+    422,
+    424
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "GV_CP1_G1_oeste",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    425,
+    426,
+    427,
+    428
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "GV_CP1_GE_este",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    431
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "V_COL_CP1_E",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    432,
+    433
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "V_COL_CP1_F",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    434,
+    435
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "V_COL_CP1_G",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    436,
+    437
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "V_COL_CP1_H",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    438,
+    439
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "V_COL_CP1_I",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    440,
+    441
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "viga",
+   "id": "V_COL_CP1_Ip",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    442,
+    443
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "muro",
+   "id": "M_EI_CP1_001",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "muro",
+   "id": "M_EI_CP1_002",
+   "seccion": "e=0.3",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "muro",
+   "id": "M_EI_CP1_003",
+   "seccion": "e=0.3",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P1",
+   "tipo": "muro",
+   "id": "M_EI_CP1_004",
+   "seccion": "e=0.15",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_E1_0.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    8
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_F1_10.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    43
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_G1_20.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    50
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_H1_30.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    83
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_I1_40.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    104
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_Ip1_45.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    125
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_E2_0.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    15
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_F2_10.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    29
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_G2_20.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    62
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_H2_30.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    76
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_I2_40.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    97
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_Ip2_45.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    118
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_E3_0.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    22
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_F3_10.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    36
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_G3_20.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    55
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_H3_30.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    69
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_I3_40.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    90
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_C_Ip3_45.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    111
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_S_G3S1_18.96",
+   "seccion": "P.M. 300x300x20",
+   "clase": "NO_ESTRUCTURAL",
+   "evidencia": "P.M. 300x300x20 sin huella en planta (RLE-TEXTO-1); excluida del modelo.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "columna",
+   "id": "COL_EI_CP2_RLE_PILAR_10.00_20.27",
+   "seccion": "0.30 x 0.30 (huella RLE-PILAR 2017_67-102)",
+   "clase": "NO_ESTRUCTURAL",
+   "evidencia": "Huella RLE-PILAR (0.30x0.30) sin elemento resistente; excluida del modelo.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0000_0.00-10.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    444
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0000_10.00-15.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    446
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0000_15.00-20.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    447
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0000_20.00-25.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    449
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0000_25.00-30.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    450
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0000_30.00-35.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    452
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0000_35.00-40.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    453
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0000_40.00-45.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    454
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0089_0.00-10.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    455
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0089_10.00-15.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    457
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0089_15.00-17.20",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    459
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0089_17.20-20.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    460
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0089_20.00-25.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    462
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0089_25.00-30.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    463
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0089_30.00-35.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    465
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0089_35.00-40.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    466
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0089_40.00-45.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    467
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0162_0.00-10.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    468
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0162_10.00-15.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    470
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0162_15.00-17.20",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    472
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0162_17.20-20.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    473
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0162_20.00-25.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    475
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0162_25.00-30.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    476
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0162_30.00-35.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    478
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0162_35.00-40.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    479
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y0162_40.00-45.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    480
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x0.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    481,
+    482
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x10.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    483,
+    484
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x15.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    485,
+    486
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x20.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    487,
+    488
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x25.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    489,
+    490
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x30.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    491,
+    492
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x35.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    493,
+    494
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x40.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    495,
+    496
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x45.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    497,
+    498
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x17.20_890-1615",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    499
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "H_EI_CP2_y2027_10.30-17.79_PLA2017-102",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x1000_16.50-20.57_PLA2017-102",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "viga",
+   "id": "V_EI_CP2_x1749_16.45-19.97_PLA2017-102",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "muro",
+   "id": "M_EI_CP2_001",
+   "seccion": "e=0.3",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    293,
+    298
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "muro",
+   "id": "M_EI_CP2_002",
+   "seccion": "e=0.3",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    308
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "muro",
+   "id": "M_EI_CP2_003",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    313,
+    318
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "muro",
+   "id": "M_EI_CP2_004",
+   "seccion": "e=0.25",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "muro",
+   "id": "M_EI_CP2_005",
+   "seccion": "e=0.25",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P2",
+   "tipo": "muro",
+   "id": "M_EI_CP2_006",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_E1_0.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_F1_10.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_G1_20.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_H1_30.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_I1_40.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_Ip1_45.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_E2_0.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_F2_10.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_G2_20.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_H2_30.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_I2_40.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_Ip2_45.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_E3_0.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_F3_10.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_G3_20.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_H3_30.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_I3_40.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_C_Ip3_45.0",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_IpJ1_46.35",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_IpJ2_46.36",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_IpJ3_46.34",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_J1_48.68",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_J2_48.7",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_J3_48.9",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_FS1_20.38",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_GS2_30.4",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_JP1_47.78",
+   "seccion": "P.M.I.",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_JP2_47.89",
+   "seccion": "P.M.I.",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_JP3_47.82",
+   "seccion": "P.M.I.",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_JP4_50.58",
+   "seccion": "P.M.I.",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_JP5_50.82",
+   "seccion": "P.M.I.",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_JP6_50.71",
+   "seccion": "P.M.I.",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_FS3_20.5",
+   "seccion": "P.M.I.",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "columna",
+   "id": "COL_EI_CP3_S_GS4_30.51",
+   "seccion": "P.M.I.",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_0.00-10.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    500
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_10.00-15.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    502
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_15.00-20.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    503
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_20.00-25.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    505
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_25.00-30.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    506
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_30.00-35.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    508
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_35.00-40.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    509
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_40.00-45.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    510
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_45.00-47.50",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    512
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0000_47.50-49.90",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    514
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_0.00-10.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    515
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_10.00-12.20",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    517
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_12.20-15.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    519
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_15.00-20.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    520
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_20.00-25.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    522
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_25.00-30.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    523
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_30.00-35.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    525
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_35.00-40.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    526
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_40.00-45.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    527
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_45.00-47.50",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    529
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0089_47.50-49.90",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    531
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_0.00-10.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    532
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_10.00-12.20",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    534
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_12.20-15.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    536
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_15.00-20.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    537
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_20.00-25.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    539
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_25.00-30.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    540
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_30.00-35.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    542
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_35.00-40.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    543
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_40.00-45.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    544
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_45.00-47.50",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    546
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y0162_47.50-49.90",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    548
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x0.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    549,
+    550
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x10.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    551,
+    552
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x15.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    553,
+    554
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x20.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    555,
+    556
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x25.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    557,
+    558
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x30.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    559,
+    560
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x35.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    561,
+    562
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x40.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    563,
+    564
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x45.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    565,
+    566
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x47.50_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    567,
+    568
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x49.90_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    569,
+    570
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x12.20_890-1615",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "1A1",
+   "fe_tags": [
+    571
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y1997_20.30-29.70",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "H_EI_CP3_y2057_19.70-30.30",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x1970_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x2030_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x2970_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "viga",
+   "id": "V_EI_CP3_x3030_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "muro",
+   "id": "M_EI_CP3_001",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "muro",
+   "id": "M_EI_CP3_002",
+   "seccion": "e=0.3",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "muro",
+   "id": "M_EI_CP3_003",
+   "seccion": "e=0.3",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "muro",
+   "id": "M_EI_CP3_004",
+   "seccion": "e=0.25",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "muro",
+   "id": "M_EI_CP3_005",
+   "seccion": "e=0.25",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P3",
+   "tipo": "muro",
+   "id": "M_EI_CP3_006",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_E1_0.73",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_F1_10.74",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_H1_30.71",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_G1_20.42",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_I1_40.5",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_Ip1_44.24",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_E2_0.75",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_F2_10.74",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_G2_20.73",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_H2_30.76",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_I2_38.87",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_Ip2_43.95",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_E3_0.74",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_F3_9.24",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_G3_20.73",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_H3_29.21",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_I3_40.37",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_C_Ip3_44.52",
+   "seccion": "P. 70x70",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna concreto P.70x70 (RLE-PILAR/RLE-SOLID).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_IpS1_45.97",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_JS2_48.77",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_JS3_51.97",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_JS4_52.11",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_JS5_48.73",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_GS6_21.5",
+   "seccion": "P.M. 300x300x20",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna acero P.M.300x300x20 (RLE-TEXTO-1); tramo/extremo superior a fijar por elevacion.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_HS7_31.55",
+   "seccion": "P.M. 300x300x20",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna acero P.M.300x300x20 (RLE-TEXTO-1); tramo/extremo superior a fijar por elevacion.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_JS8_52.08",
+   "seccion": "P.M.I. (RLE-TEXTO-1, sin huella en planta)",
+   "clase": "PENDIENTE_DE_FUENTE",
+   "evidencia": "Seccion P.M.I. por resolver (RLE-TEXTO-1, sin huella en planta); sin dimension de perfil.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_M1_47.4558",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna acero P.M.300x300x20 (huella piso4_103 confirmada); tramo/extremo superior a fijar por elevacion.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_M2_47.4558",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna acero P.M.300x300x20 (huella piso4_103 confirmada); tramo/extremo superior a fijar por elevacion.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_M3_47.4558",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna acero P.M.300x300x20 (huella piso4_103 confirmada); tramo/extremo superior a fijar por elevacion.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_J1_49.7935",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna acero P.M.300x300x20 (huella piso4_103 confirmada); tramo/extremo superior a fijar por elevacion.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_J2_49.7935",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna acero P.M.300x300x20 (huella piso4_103 confirmada); tramo/extremo superior a fijar por elevacion.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "columna",
+   "id": "COL_EI_CP4_S_J3_49.7935",
+   "seccion": "P.M. 300x300x20 (huella piso4_103)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Columna acero P.M.300x300x20 (huella piso4_103 confirmada); tramo/extremo superior a fijar por elevacion.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_0.00-10.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_10.00-15.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_15.00-20.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_20.00-25.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_25.00-30.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_30.00-35.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_35.00-40.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_40.00-45.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_45.00-47.50",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0000_47.50-49.90",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_0.00-10.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_10.00-15.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_15.00-20.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_20.00-25.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_25.00-30.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_30.00-35.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_35.00-40.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_40.00-45.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_45.00-47.50",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0089_47.50-49.90",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_0.00-10.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_10.00-15.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_15.00-20.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_20.00-25.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_25.00-30.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_30.00-35.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_35.00-40.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_40.00-45.00",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_45.00-47.50",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y0162_47.50-49.90",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x0.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    636,
+    637,
+    638
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x10.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    640,
+    641,
+    642
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x15.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    644
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x20.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    646,
+    647,
+    648
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x25.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    650
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x30.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    652,
+    653,
+    654
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x35.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    656
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x40.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    658,
+    659,
+    660
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x45.00_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    662,
+    663,
+    664
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x47.50_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    666
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x49.90_0-16.15",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "CONTENIDO",
+   "fe_tags": [
+    668
+   ]
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "D_EI_CP4_L800_D1_EJ1_44.919-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "D_EI_CP4_L800_D1_EJ2_44.919-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "D_EI_CP4_L800_D1_EJ3_44.919-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "D_EI_CP4_L800_D2_EJ1_49.793-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "D_EI_CP4_L800_D2_EJ2_49.793-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "D_EI_CP4_L800_D2_EJ3_49.793-47.456",
+   "seccion": "Diag. marco I'-J (elev 800)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y2015_20.30-29.70",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "H_EI_CP4_y2057_19.70-30.30",
+   "seccion": "V. 60/80",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x1970_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x2030_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x2970_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "V_EI_CP4_x3030_16.45-20.57",
+   "seccion": "V.M. 300x300x5",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Viga con seccion confirmada.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "TOWER_DIAG_P3_P4_WEST_1970_1645-2057_D1",
+   "seccion": "Diag. torre G-H (lamina 801/802)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "TOWER_DIAG_P3_P4_WEST_1970_1645-2057_D2",
+   "seccion": "Diag. torre G-H (lamina 801/802)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "TOWER_DIAG_P3_P4_EAST_3030_1645-2057_D1",
+   "seccion": "Diag. torre G-H (lamina 801/802)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "viga",
+   "id": "TOWER_DIAG_P3_P4_EAST_3030_1645-2057_D2",
+   "seccion": "Diag. torre G-H (lamina 801/802)",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Diagonal de arriostramiento real (lamina de elevacion respaldada).",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "muro",
+   "id": "M_EI_CP4_001",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "muro",
+   "id": "M_EI_CP4_002",
+   "seccion": "e=0.3",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "muro",
+   "id": "M_EI_CP4_003",
+   "seccion": "e=0.3",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "muro",
+   "id": "M_EI_CP4_004",
+   "seccion": "e=0.25",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "muro",
+   "id": "M_EI_CP4_005",
+   "seccion": "e=0.25",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  },
+  {
+   "edificio": "I",
+   "nivel": "P4",
+   "tipo": "muro",
+   "id": "M_EI_CP4_006",
+   "seccion": "e=0.2",
+   "clase": "ESTRUCTURAL_CONFIRMADO",
+   "evidencia": "Muro H.A. espesor None (capa RLE-LOSA/RLE-MURO); continuidad vertical/segmentacion a verificar.",
+   "lamina": null,
+   "fe_estado": "SIN_RESULTADO_FE",
+   "fe_tags": []
+  }
+ ]
+}

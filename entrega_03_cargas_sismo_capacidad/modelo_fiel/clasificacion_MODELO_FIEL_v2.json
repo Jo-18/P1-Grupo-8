@@ -1,0 +1,33 @@
+{
+  "criterio_rango": {
+    "0_BLOQUEADO": "datos incompletos o con conflicto sin resolver",
+    "1_REPRODUCIBLE_CON_COMPONENTES_PP_PENDIENTES": "el caso se reproduce y esta en equilibrio; el recorte de componentes de PP (losas entrega, metalicos, V.S.I., muros de contencion, tramos base) puede subir el peso, manteniendo identidad de cargas",
+    "2_REPRODUCIBLE_CON_HIPOTESIS_Y_CARGAS_PENDIENTES": "el caso se reproduce con hipotesis de modelo documentadas (secciones, rigidLinks, convencion de muros) y con cargas pendientes (PM.ADIC catalogada sin mapeo, losas/ruteo) que pueden cambiar el peso",
+    "3_FIEL": "no usar hasta resolver PP y PM.ADIC y cerrar las hipotesis; los artefactos 'MODELO_FIEL_1' NO son fieles"
+  },
+  "edificios": {
+    "EI": {
+      "clasificacion_v2": "REPRODUCIBLE_CON_COMPONENTES_PP_PENDIENTES",
+      "clasificacion_v1": "MODELO_FIEL_1 (se llamo 'fiel' en v1; denominacion RETIRADA en v2)",
+      "por_que_no_es_fiel": [
+        "PM.ADIC separada del PP solo en v2 (interpretacion de 'peso propio' pendiente de confirmacion)",
+        "tramos virtuales BASE->nivel (4.223,82 col + 3.675,18 muro)",
+        "muros de contencion del sotano (554,54 kN, hipotesis)",
+        "V.S.I. 20/150 y metalicos: PP no cuantificado"
+      ],
+      "referencia": "ledger_PP_PMADIC_Q + G_EI_MODELO_FIEL_v2"
+    },
+    "EII": {
+      "clasificacion_v2": "REPRODUCIBLE_CON_HIPOTESIS_Y_CARGAS_PENDIENTES",
+      "clasificacion_v1": "MODELO_FIEL_1 (se llamo 'fiel' en v1; denominacion RETIRADA en v2)",
+      "por_que_no_es_fiel": [
+        "PM.ADIC catálogo A-F (lineal Kg/m) sin mapeo familia->viga (aplicada = 0)",
+        "muros: identidad A=t*(L/2) vs publicado (3.328,79 kN)",
+        "losas publicadas vs aplicadas (+6,27 kN)",
+        "ruteo sin camino estructural (417,85 kN, 14 cargas)",
+        "V_031 (seccion alternativa) y rigidLinks franja D-D' (hipotesis documentadas)"
+      ],
+      "referencia": "ledger_PP_PMADIC_Q + G_EII_MODELO_FIEL_v2"
+    }
+  }
+}

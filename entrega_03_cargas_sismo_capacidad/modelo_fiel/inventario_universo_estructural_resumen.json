@@ -1,0 +1,38 @@
+{
+ "I": {
+  "totales_clases": {
+   "ESTRUCTURAL_CONFIRMADO": 279,
+   "REFERENCIA_O_HIPOTESIS": 0,
+   "NO_ESTRUCTURAL": 2,
+   "PENDIENTE_DE_FUENTE": 23
+  },
+  "estructural": {
+   "total": 279,
+   "por_estado": {
+    "analizado_1a1": 108,
+    "contenido": 46,
+    "sin_resultado": 125,
+    "sin_auditoria": 0
+   },
+   "cobertura_actual_porcentaje": 55.2
+  }
+ },
+ "II": {
+  "totales_clases": {
+   "ESTRUCTURAL_CONFIRMADO": 251,
+   "REFERENCIA_O_HIPOTESIS": 0,
+   "NO_ESTRUCTURAL": 0,
+   "PENDIENTE_DE_FUENTE": 5
+  },
+  "estructural": {
+   "total": 251,
+   "por_estado": {
+    "analizado_1a1": 202,
+    "contenido": 28,
+    "sin_resultado": 21,
+    "sin_auditoria": 0
+   },
+   "cobertura_actual_porcentaje": 91.6
+  }
+ }
+}

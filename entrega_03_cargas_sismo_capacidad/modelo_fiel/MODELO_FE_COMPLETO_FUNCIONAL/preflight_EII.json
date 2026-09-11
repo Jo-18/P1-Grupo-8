@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "check": "nodos_sin_elemento_ni_base",
+      "ok": true,
+      "detalle": "nodos aislados: 0 []"
+    },
+    {
+      "check": "sin_elementos_duplicados",
+      "ok": true,
+      "detalle": "duplicados: 0"
+    },
+    {
+      "check": "caminos_de_carga_a_base",
+      "ok": true,
+      "detalle": "nodos sin camino de carga: 0 (a Diafragma 0)"
+    },
+    {
+      "check": "diafragmas_por_nivel",
+      "ok": true,
+      "detalle": "[{\"nivel\": \"EII_CP1\", \"maestro\": 2, \"n_esclavos\": 36}, {\"nivel\": \"EII_CP2\", \"maestro\": 5, \"n_esclavos\": 35}, {\"nivel\": \"EII_CP3\", \"maestro\": 7, \"n_esclavos\": 35}, {\"nivel\": \"EII_CP4\", \"maestro\": 9, \"n_esclavos\": 35}]"
+    },
+    {
+      "check": "dof_6_por_nodo",
+      "ok": true,
+      "detalle": "model 3D ndf=6"
+    },
+    {
+      "check": "pendientes_declaras_visibles",
+      "ok": true,
+      "detalle": "{\"columnas_sin_descenso\": 1, \"vigas_por_resolver\": 5, \"vigas_sin_soporte\": 15}"
+    },
+    {
+      "check": "cobertura_viewer_fe",
+      "ok": true,
+      "detalle": "{\"EII_CP1S\": {\"col_tipos\": 8, \"col_ejes_con_fe\": 8, \"viga_ids_viewer\": 35, \"viga_ids_con_fe\": 31, \"muro_ids_viewer\": 8, \"muro_ejes_con_fe\": 8}, \"EII_CP1\": {\"col_tipos\": 8, \"col_ejes_con_fe\": 8, \"viga_ids_viewer\": 35, \"viga_ids_con_fe\": 31, \"muro_ids_viewer\": 8, \"muro_ejes_con_fe\": 8}, \"EII_CP2\": {\"col_tipos\": 8, \"col_ejes_con_fe\": 8, \"viga_ids_viewer\": 35, \"viga_ids_con_fe\": 31, \"muro_ids_viewer\": 8, \"muro_ejes_con_fe\": 8}, \"EII_CP3\": {\"col_tipos\": 8, \"col_ejes_con_fe\": 8, \"viga_ids_viewer\": 35, \"viga_ids_con_fe\": 31, \"muro_ids_viewer\": 8, \"muro_ejes_con_fe\": 8}, \"EII_CP4\": {\"col_tipos\": 9, \"col_ejes_con_fe\": 8, \"viga_ids_viewer\": 35, \"viga_ids_con_fe\": 31, \"muro_ids_viewer\": 8, \"muro_ejes_con_fe\": 8}}"
+    },
+    {
+      "check": "sin_elementos_sobre_cp4_evidencia",
+      "ok": true,
+      "detalle": "sobre EII_CP4: 0"
+    },
+    {
+      "check": "sin_mecanismos_(verificacion_en_corridas)",
+      "ok": null,
+      "detalle": "se verifica en G/Q/EX/EY"
+    }
+  ],
+  "ok": true
+}

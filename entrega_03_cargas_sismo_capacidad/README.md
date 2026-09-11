@@ -60,7 +60,7 @@ carga viva / sismo, superposición, y capacidad RC por fibras.
 entrega_03_cargas_sismo_capacidad/
 ├── README.md                        ← este archivo (alcance único integral)
 ├── config/
-│   ├── cargas.json                  ← q_Q = 2,0 kN/m² ADOPTADA por el grupo (antes null)
+│   ├── cargas.json                  ← q_Q = 3,0 kN/m² (mín. NCh 1537:2009 Tabla 4; PARAMETRO_BASADO_EN_NORMA_...)
 │   ├── sismo.json                   ← pseudoestático de la consigna (a=0,20, 0,50·Q); normativos null
 │   ├── superposicion.json           ← coeficientes (conjunto demo) + verificación completa
 │   ├── capacidad_rc.json            ← DEMO_RC_EI (f'c 40) / DEMO_RC_EII (f'c 35), 12#25
@@ -69,7 +69,7 @@ entrega_03_cargas_sismo_capacidad/
 ├── src/
 │   ├── comun/
 │   │   ├── __init__.py
-│   │   └── geometria_tributaria.py  ← loaders Semana 2 (EI por_viga.json / EII CSV)
+│   │   └── geometria_tributaria.py  ← loaders de copias internas (data/externas: EI por_viga.json / EII CSV)
 │   ├── cargas/
 │   │   ├── __init__.py
 │   │   ├── carga_viva_Q.py          ← Q por nivel y global, catálogo separado
@@ -174,10 +174,10 @@ claramente marcadas.
 | Componente | Estado |
 |---|---|
 | `Q` — verificación `ΣQ=q_Q·A` + catálogo separado | `IMPLEMENTADO_Y_VERIFICADO` |
-| `Q` — **caso FE completo Edificio I** (G ausente, equilibrio) | `IMPLEMENTADO_Y_VERIFICADO` (q_Q=2,0 adoptada) |
-| `Q` — **caso FE completo Edificio II** (G ausente, equilibrio) | `IMPLEMENTADO_Y_VERIFICADO` (q_Q=2,0 adoptada) |
+| `Q` — **caso FE completo Edificio I** (G ausente, equilibrio) | `IMPLEMENTADO_Y_VERIFICADO` (q_Q=3,0 → ΣQ=12.328,42 kN) |
+| `Q` — **caso FE completo Edificio II** (G ausente, equilibrio) | `IMPLEMENTADO_Y_VERIFICADO` (q_Q=3,0 → ΣQ=7.889,14 kN) |
 | `EX`/`EY` — parámetros (pseudoestático de la consigna) y ejecución | `IMPLEMENTADO_Y_VERIFICADO` (`PARAMETROS_BASADOS_EN_EJEMPLO_DE_LA_CONSIGNA`: a=0,20; 0,50·Q en W) |
-| Peso sísmico `W` y distribución nodal `F_i` | `IMPLEMENTADO_Y_VERIFICADO` (EI W=29337,20 kN, F=5867,44 kN; EII W=28600,71 kN, F=5720,14 kN) |
+| Peso sísmico `W` y distribución nodal `F_i` | `IMPLEMENTADO_Y_VERIFICADO` (EI W=31.391,94 kN, F=6.278,39 kN; EII W=29.915,57 kN, F=5.983,11 kN) |
 | Superposición (combinación + verificación **completa** G+Q+EX+EY) | `IMPLEMENTADO_Y_VERIFICADO` (`verificacion_final=IMPLEMENTADO_Y_VERIFICADO_COMPLETO`) |
 | Superposición (verificación **intermedia G+Q Edificio I**) | `IMPLEMENTADO_Y_VERIFICADO_INTERMEDIO` |
 | Superposición (verificación **intermedia G+Q Edificio II**) | `IMPLEMENTADO_Y_VERIFICADO_INTERMEDIO_II` |
@@ -191,8 +191,10 @@ claramente marcadas.
 Detalles clave:
 
 - **Q caso FE EI/EII**: `src/cargas/caso_Q_EI.py` y `caso_Q_EII.py` corren con
-  **q_Q=2,0 kN/m² adoptada** (decisión del grupo registrada en `config/cargas.json`);
-  ya no requieren `--demo`. `ΣQ=q_Q·A=8.218,9 kN` (EI, Δ0,0) y `5.259,43 kN` (EII,
+  **q_Q=3,0 kN/m²** (mínimo de la categoría "Escuelas · salas de clases" de la
+  **Tabla 4 de la NCh 1537:2009**, clasificación
+  `PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4` en `config/cargas.json`);
+  ya no requieren `--demo`. `ΣQ=q_Q·A=12.328,42 kN` (EI, Δ0,0) y `7.889,14 kN` (EII,
   rel 5,7e-09); equilibrio `Rz=Pz`; `G_ausente`. Resultados:
   `results/cargas/caso_Q_EI_FE.json` y `case_Q_{EI,EII}_FE_reacciones.csv`.
 - **EX/EY**: método pseudoestático de la consigna en `src/cargas/caso_sismico.py`
@@ -205,7 +207,7 @@ Detalles clave:
 - **Superposición completa**: `src/cargas/verificacion_superposicion_completa.py`
   ejecuta 5 corridas FE por edificio (G, Q, EX, EY y la combinación EXPLICITA
   `1.0G+0.7Q+0.3EX−0.2EY` del conjunto de demostración) y compara la superpuesta vs
-  la explícita en 8 magnitudes con errores máximos ~1,9e-15 (EI) y ~2e-13 (EII);
+  la explícita en 8 magnitudes con errores máximos ~9,8e-16 (EI) y ~1,7e-13 (EII);
   8/8 OK y equilibrio global por edificio. `config/superposicion.json`:
   `verificacion_final=IMPLEMENTADO_Y_VERIFICADO_COMPLETO`. La combinación usada no
   es la normativa (coeficientes reales pendientes).
@@ -263,9 +265,10 @@ Preguntas para destrabar antes de la defensa:
    necesitara más insumos, se copian de forma mínima con nota de procedencia.
 4. Los edificios I y II conservan modelos FE **independientes** (nunca nodos
    compartidos en la junta D–D′).
-5. **No inventar parámetros no documentados**: q_Q (2,0 kN/m²), el coeficiente
+5. **No inventar parámetros no documentados**: q_Q (3,0 kN/m², mínimo de la
+   **NCh 1537:2009 Tabla 4** — clasificado normativo), el coeficiente
    sísmico (método de la consigna, a=0,20) y el armado de columnas (12#25, demo) son
-   **decisiones del grupo, explícitamente marcadas** en `config/` como
+   **decisiones explícitamente marcadas** en `config/` como
    adoptadas/demostración; el resto de datos pendientes queda en `null` en
    `config/parametros_pendientes.json` y el código debe detenerse si intenta usarlo.
 6. La superposición conserva los casos elementales y sus signos: `G`, `Q`, `EX`,

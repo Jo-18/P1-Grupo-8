@@ -15,10 +15,22 @@
   "n_nodos": 324,
   "nota": "Referencia de resultados del edificio I. La ejecucion subdiv4 es PROVISIONAL (V.S.I. pendiente, max_disp 12.68 m no validado) y NO se usa como dato definitivo."
  },
- "Edificio_II": {
-  "stado": "geometria_adaptada_sin_solucion_FE",
-  "nota": "Solo geometria/adaptaciones respaldadas; sin tributaria real ni resultados estructurales. Se visualiza igual aunque el analisis este pendiente. El ensayo CP2 1 kPa es unitario y NO se usa como dato."
- },
+"Edificio_II": {
+   "stado": "geometria_adaptada_sin_solucion_FE",
+   "nota": "Solo geometria/adaptaciones respaldadas; sin tributaria real ni resultados estructurales. Se visualiza igual aunque el analisis este pendiente. El ensayo CP2 1 kPa es unitario y NO se usa como dato."
+  },
+"esfuerzos_FE": {
+    "formato": "esfuerzos_FE_edificio_v1",
+    "fuente": "entrega_03_cargas_sismo_capacidad/modelo_fiel/corridas_MODELO_FE_COMPLETO_FUNCIONAL (4 bases + 9 combinaciones NCh3171 EXPLICITAS) + envolvente_NCh3171 por componente",
+    "metadata_I": "analisis_estructural/edificio_I/resultados/modelo_estructural/esfuerzos_elementos_edificio_I.csv",
+    "metadata_II": "entrega_03_cargas_sismo_capacidad/results/cargas/caso_G_EII_reproducible.json",
+    "casos": ["G", "Q", "EX", "EY", "U1_GQ", "U2_EX_POS", "U2_EX_NEG", "U3_EY_POS", "U3_EY_NEG", "U4_EX_POS", "U4_EX_NEG", "U4_EY_POS", "U4_EY_NEG"],
+    "combinaciones_normativas_NCh3171": "9 combinaciones (perfil MODELO_FE_COMPLETO_FUNCIONAL); en las sismicas Q=1.0 es la combinacion basica adoptada (sin reduccion opcional a 0.5)",
+    "envolvente_NCh3171": "por elemento y componente (12): caso con mayor |valor| entre las 9 combinaciones; conserva caso y signo. Independiente (no es una corrida).",
+    "unidades": {"carga": "kN", "momento": "kN*m"},
+    "convencion_localForce": "[N_i, Vy_i, Vz_i, T_i, My_i, Mz_i, N_j, Vy_j, Vz_j, T_j, My_j, Mz_j] (+N = compresion en el extremo)",
+    "nota": "Los json esfuerzos_FE_EDIFICIO_{I,II}.json se generan con src/unity_esfuerzos/exportar_esfuerzos_funcional_para_viewer.py. La correspondencia con objetos del viewer es SOLO referencia (1A1/CONTENIDO) y nunca recolorea la geometria; el overlay FE se dibuja en las coordenadas FE. Los elementos SIN_CORRESPONDENCIA_VIEWER no se muestran en el modo normal."
+   },
  "estados_validacion": {
   "I": "completo_para_ensayo / solucion laboratorio no utilizable para diseno",
   "II": "geometria revisada / solucion FE PENDIENTE"
@@ -43,14 +55,16 @@
   "edificios/I/geometry/P2.json",
   "edificios/I/geometry/P3.json",
   "edificios/I/geometry/P4.json",
-  "edificios/I/results/primera_ejecucion.json",
-  "edificios/I/tributary/por_viga.json",
-  "edificios/I/tributary/regiones_tributarias.json",
+"edificios/I/results/primera_ejecucion.json",
+   "edificios/I/results/esfuerzos_FE_EDIFICIO_I.json",
+   "edificios/I/tributary/por_viga.json",
+   "edificios/I/tributary/regiones_tributarias.json",
   "edificios/II/geometry/EII_CP1.json",
   "edificios/II/geometry/EII_CP1S.json",
   "edificios/II/geometry/EII_CP2.json",
   "edificios/II/geometry/EII_CP3.json",
-  "edificios/II/geometry/EII_CP4.json",
-  "placement.json"
+"edificios/II/geometry/EII_CP4.json",
+   "edificios/II/results/esfuerzos_FE_EDIFICIO_II.json",
+   "placement.json"
  ]
 }

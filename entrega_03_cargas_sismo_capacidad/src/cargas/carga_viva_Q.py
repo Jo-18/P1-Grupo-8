@@ -51,7 +51,8 @@ def leer_catalogo_sobrecarga(edificio: str) -> dict:
                             "(no se aplica Q por zona todavia)")
         return cat
     if edificio == "II":
-        p = REPO / "analisis_estructural" / "edificio_II_casoG_PP_elementos" / "eii_viewer.json"
+        p = (REPO / "entrega_03_cargas_sismo_capacidad" / "data" / "externas"
+             / "eii_viewer.json")
         d = json.loads(p.read_text(encoding="utf-8"))
         cg = d["cargas"]["caso_G"]
         return {"fuente": str(p),

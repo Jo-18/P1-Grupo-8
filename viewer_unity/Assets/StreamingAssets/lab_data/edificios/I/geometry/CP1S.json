@@ -289,44 +289,56 @@
   }
  ],
  "muros": [
-  {
-   "id": "M_EI_CP1S_001",
-   "espesor": 0.2,
-   "pts": [
-    [
-     -0.350227,
-     -4.01,
-     16.500535
+{
+    "id": "M_EI_CP1S_001",
+    "espesor": 0.2,
+    "pts": [
+     [
+      -0.350227,
+      -4.01,
+      16.500535
+     ],
+     [
+      -0.350227,
+      -4.01,
+      -8.749465
+     ],
+     [
+      -0.350227,
+      -4.01,
+      -10.819465
+     ]
     ],
-    [
-     -0.350227,
-     -4.01,
-     -8.749465
-    ]
-   ],
-   "recibe_losa": true,
-   "edificio": "I",
-   "nivel": "CP1S"
-  },
-  {
-   "id": "M_EI_CP1S_002",
-   "espesor": 0.3,
-   "pts": [
-    [
-     21.249773,
-     -4.01,
-     -0.450465
+    "recibe_losa": true,
+    "nota": "Extendido a v=-10.819 (borde sur de losa CP1S y FE tag 588).",
+    "edificio": "I",
+    "nivel": "CP1S"
+   },
+   {
+    "id": "M_EI_CP1S_002",
+    "espesor": 0.3,
+    "pts": [
+     [
+      21.249773,
+      -4.01,
+      -0.450465
+     ],
+     [
+      21.249773,
+      -4.01,
+      -8.749465
+     ],
+     [
+      21.249773,
+      -4.01,
+      -10.819465
+     ]
     ],
-    [
-     21.249773,
-     -4.01,
-     -8.749465
-    ]
-   ],
-   "recibe_losa": true,
-   "edificio": "I",
-   "nivel": "CP1S"
-  },
+    "recibe_losa": true,
+    "nota": "Extendido a v=-10.819 (borde sur de losa CP1S y FE tag 590).",
+    "edificio": "I",
+    "nivel": "CP1S"
+   },
   {
    "id": "M_EI_CP1S_003",
    "espesor": 0.7,
@@ -404,26 +416,66 @@
    "nivel": "CP1S"
   },
   {
-   "id": "M_EI_CP1S_007",
-   "espesor": 0.2,
-   "pts": [
-    [
-     6.299773,
-     -4.01,
-     6.150535
+"id": "M_EI_CP1S_007",
+    "espesor": 0.2,
+    "pts": [
+     [
+      6.299773,
+      -4.01,
+      6.150535
+     ],
+     [
+      6.299773,
+      -4.01,
+      3.800535
+     ]
     ],
-    [
-     6.299773,
-     -4.01,
-     3.800535
-    ]
-   ],
-   "recibe_losa": true,
-   "edificio": "I",
-   "nivel": "CP1S"
-  }
- ],
- "losas": [
+    "recibe_losa": true,
+    "edificio": "I",
+    "nivel": "CP1S"
+   },
+   {
+    "id": "M_EI_CP1S_008",
+    "espesor": 0.3,
+    "pts": [
+     [
+      40.15,
+      -4.01,
+      26.33
+     ],
+     [
+      40.15,
+      -4.01,
+      9.25
+     ]
+    ],
+    "recibe_losa": true,
+    "nota": "Muro torre eje I'-J (elev. 801/802); replica de M_EI_CP1_002 a cota CP1S. FE tags 200/203 (M 0.3x8.54x2).",
+    "edificio": "I",
+    "nivel": "CP1S"
+   },
+   {
+    "id": "M_EI_CP1S_009",
+    "espesor": 0.3,
+    "pts": [
+     [
+      45.4,
+      -4.01,
+      -0.2
+     ],
+     [
+      45.4,
+      -4.01,
+      -6.3
+     ]
+    ],
+    "recibe_losa": true,
+    "nota": "Muro torre eje J (elev. 801/802); replica de M_EI_CP1_003 a cota CP1S. FE tags 206/209 (M 0.3x3.05x2).",
+    "edificio": "I",
+    "nivel": "CP1S"
+   }
+  ],
+  "losas": [
   {
    "id": "L_EI_CP1S_D_INFERIOR_A",
    "espesor": 0.15,

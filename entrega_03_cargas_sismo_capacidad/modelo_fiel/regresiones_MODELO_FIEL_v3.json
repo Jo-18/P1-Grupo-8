@@ -1,0 +1,217 @@
+{
+  "iteracion": "MODELO_FIEL_3",
+  "gravedad_m_s2": 9.80665,
+  "n_checks_v3": 39,
+  "checks": [
+    {
+      "check": "inventario_n_pendientes",
+      "estado": "OK",
+      "detalle": "pendientes=63 (vigas 1 + columnas 43 + muros 19)"
+    },
+    {
+      "check": "inventario_rango_cuantificado",
+      "estado": "OK",
+      "detalle": "8453.5488 kN (tramos base col+muro + contencion)"
+    },
+    {
+      "check": "inventario_pp_m_tubular_20",
+      "estado": "OK",
+      "detalle": "1.7244 kN/m"
+    },
+    {
+      "check": "inventario_pp_m_tubular_5",
+      "estado": "OK",
+      "detalle": "0.4542 kN/m"
+    },
+    {
+      "check": "inventario_pp_m_hormigon_70",
+      "estado": "OK",
+      "detalle": "12.0131 kN/m"
+    },
+    {
+      "check": "inventario_aplicado_0",
+      "estado": "OK",
+      "detalle": "ningun pendiente confirmado"
+    },
+    {
+      "check": "mapeo_6_familias",
+      "estado": "OK",
+      "detalle": "A..F catalogadas"
+    },
+    {
+      "check": "mapeo_aplicada_0",
+      "estado": "OK",
+      "detalle": "cobertura 0"
+    },
+    {
+      "check": "mapeo_todo_ambiguo",
+      "estado": "OK",
+      "detalle": "sin DXF en el arbol"
+    },
+    {
+      "check": "mapeo_conversion_A",
+      "estado": "OK",
+      "detalle": "260 Kg/m -> 2.549729 kN/m"
+    },
+    {
+      "check": "mapeo_conversion_D",
+      "estado": "OK",
+      "detalle": "1500 Kg/m -> 14.709975 kN/m"
+    },
+    {
+      "check": "pm_ei_99_losas",
+      "estado": "OK",
+      "detalle": "99 losas"
+    },
+    {
+      "check": "pm_ei_total_ledger",
+      "estado": "OK",
+      "detalle": "10244.1390 vs ledger 10244.1389"
+    },
+    {
+      "check": "pm_ei_delta_referencia",
+      "estado": "OK",
+      "detalle": "delta -0.0110 vs referencia 10.244,15"
+    },
+    {
+      "check": "pm_ei_suma_por_nivel",
+      "estado": "OK",
+      "detalle": "sum por_nivel == total"
+    },
+    {
+      "check": "gei_v3_equilibrio",
+      "estado": "OK",
+      "detalle": "residuo=0.000000"
+    },
+    {
+      "check": "gei_v3_identidad_pp_pm",
+      "estado": "OK",
+      "detalle": "P_z 42406.96 == PP_losas+PM.ADIC+PP_el 42406.96"
+    },
+    {
+      "check": "gei_v3_vs_v2_0",
+      "estado": "OK",
+      "detalle": "identico al v2"
+    },
+    {
+      "check": "gei_v3_vs_checkpoint_pp_el",
+      "estado": "OK",
+      "detalle": "+17179.2261 kN (PP elementos)"
+    },
+    {
+      "check": "gei_v3_checks_v1",
+      "estado": "OK",
+      "detalle": "7/7"
+    },
+    {
+      "check": "geii_v3_equilibrio",
+      "estado": "OK",
+      "detalle": "residuo=0.000000"
+    },
+    {
+      "check": "geii_v3_identidad",
+      "estado": "OK",
+      "detalle": "P_z 25970.9994 == reproducible"
+    },
+    {
+      "check": "geii_v3_vs_v2_0",
+      "estado": "OK",
+      "detalle": "identico al v2"
+    },
+    {
+      "check": "geii_v3_artefacto_ok",
+      "estado": "OK",
+      "detalle": "verificaciones del artefacto OK"
+    },
+    {
+      "check": "peso3_EI_WB_v1",
+      "estado": "OK",
+      "detalle": "46516.4301 == v1 46.516,43"
+    },
+    {
+      "check": "peso3_EI_WA_sensibilidad",
+      "estado": "OK",
+      "detalle": "36272.2911 == v2 36.272,29"
+    },
+    {
+      "check": "peso3_EII_AB_v1",
+      "estado": "OK",
+      "detalle": "28600.7138 == v1 28.600,71"
+    },
+    {
+      "check": "peso3_rango_EI_inventario",
+      "estado": "OK",
+      "detalle": "rango 8453.55 == inventario"
+    },
+    {
+      "check": "unidades_masa_EI_B",
+      "estado": "OK",
+      "detalle": "4743.3558 Mg"
+    },
+    {
+      "check": "no_doble_conteo_EII_PMADIC",
+      "estado": "OK",
+      "detalle": "PM.ADIC EII aplicada=0 en ledger y caso G v3"
+    },
+    {
+      "check": "pm_ei_ledger_vs_tabla",
+      "estado": "OK",
+      "detalle": "ledger 10244.1389 == tabla 10244.1390"
+    },
+    {
+      "check": "conservacion_PP_confirmado",
+      "estado": "OK",
+      "detalle": "PP elementos 17179.2261 == confirmado 17179.2261 (PM.ADIC separado)"
+    },
+    {
+      "check": "export_presente",
+      "estado": "OK",
+      "detalle": "G_EI_MODELO_FIEL_v3_reacciones.csv"
+    },
+    {
+      "check": "export_presente",
+      "estado": "OK",
+      "detalle": "G_EI_MODELO_FIEL_v3_desplazamientos.csv"
+    },
+    {
+      "check": "export_presente",
+      "estado": "OK",
+      "detalle": "G_EI_MODELO_FIEL_v3_fuerzas.csv"
+    },
+    {
+      "check": "export_presente",
+      "estado": "OK",
+      "detalle": "G_EII_MODELO_FIEL_v3_reacciones.csv"
+    },
+    {
+      "check": "export_presente",
+      "estado": "OK",
+      "detalle": "G_EII_MODELO_FIEL_v3_desplazamientos.csv"
+    },
+    {
+      "check": "export_presente",
+      "estado": "OK",
+      "detalle": "G_EII_MODELO_FIEL_v3_fuerzas.csv"
+    },
+    {
+      "check": "figuras_plano700_5_niveles",
+      "estado": "OK",
+      "detalle": "PNG por nivel: 5"
+    },
+    {
+      "check": "regresiones_v1",
+      "estado": "OK",
+      "detalle": "17 checks, 17 OK (rc=0)"
+    },
+    {
+      "check": "regresiones_v2",
+      "estado": "OK",
+      "detalle": "26 checks, 26 OK (rc=0)"
+    },
+    {
+      "check": "unittest_tests",
+      "estado": "OK",
+      "detalle": "discover tests/: OK"
+    }
+  ]
+}

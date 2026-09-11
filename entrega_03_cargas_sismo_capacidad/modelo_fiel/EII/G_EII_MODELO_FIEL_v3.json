@@ -1,0 +1,86 @@
+{
+  "caso": "G",
+  "edificio": "II",
+  "iteracion": "MODELO_FIEL_3",
+  "motor": "OpenSeesPy (artefacto reproducible del checkpoint, resuelto; no regenerado en results/ por restriccion de usuario)",
+  "clasificacion_fidelidad": {
+    "etiq": "REPRODUCIBLE_FULL_EXPORT_PMADIC_PENDIENTE",
+    "razon": "export completo con verificaciones del artefacto; PM.ADIC A-F mapeado=0 (cobertura 0) por ausencia de DXF; sin nuevos PP aplicados"
+  },
+  "componentes": {
+    "PP_losas_kN": 9670.7583,
+    "PP_total_kN": 25970.9993,
+    "PM_ADIC_kN": 0.0,
+    "permanente_aplicada_kN": 25970.9994,
+    "Q_sobrecarga_kN": 5259.4288
+  },
+  "PM_ADIC": {
+    "aplicada_kN": 0.0,
+    "cobertura": 0.0,
+    "n_familias_catalogadas": 6,
+    "pendientes": {
+      "n_pendiente": 6,
+      "motivo": "sin correspondencia familia->viga",
+      "requiere": [
+        "DXF 2024_22-700 en el arbol",
+        "coordenadas de estilo con unidad",
+        "trazado de polilneas de la leyenda"
+      ]
+    },
+    "ruta_mapeo": "mapeo_PMADIC_EII_plano700.json"
+  },
+  "solucion": {
+    "P_z_kN": 25970.9994,
+    "R_z_kN": 25970.9994,
+    "residuo_kN": 0.0,
+    "equilibrio_vertical": "OK",
+    "analyze_retcode": 0,
+    "n_reacciones": 147,
+    "n_desplazamientos": 222,
+    "max_abs_desplazamiento": 0.01866325,
+    "n_fuerzas_local": 264,
+    "n_fuerzas_global": 264,
+    "max_abs_fuerza": 2420.6503
+  },
+  "comparacion": {
+    "checkpoint_kN": 25970.9994,
+    "vs_v2_kN": 0.0,
+    "estado": "IDENTICO_AL_v2"
+  },
+  "verificaciones_artefacto": {
+    "suma_componentes_pp": {
+      "columnas_kN": 1522.3043,
+      "vigas_V60_80_kN": 11585.4664,
+      "muros_directo_kN": 3192.4703,
+      "losas_directo_kN": 9670.7485,
+      "total_elementos_kN": 16300.241,
+      "total_con_losas_kN": 25970.9895
+    },
+    "identidad_cargas_vs_geometria": {
+      "P_z_aplicada_kN": 25970.9994,
+      "P_z_geometria_kN": 25970.9895,
+      "diferencia_kN": 0.0099,
+      "ok": true
+    },
+    "equilibrio_vertical": {
+      "R_z_kN": 25970.9994,
+      "P_z_kN": 25970.9994,
+      "residuo_kN": 0.0,
+      "ok": true
+    },
+    "receptores_sin_fe": {
+      "EII_CP1S": [],
+      "EII_CP1": [],
+      "EII_CP2": [],
+      "EII_CP3": [],
+      "EII_CP4": []
+    },
+    "area_no_asignada_total_m2": 0.0
+  },
+  "verificaciones_artefacto_ok": true,
+  "export": {
+    "reacciones_csv": "EII/G_EII_MODELO_FIEL_v3_reacciones.csv",
+    "desplazamientos_csv": "EII/G_EII_MODELO_FIEL_v3_desplazamientos.csv",
+    "fuerzas_csv": "EII/G_EII_MODELO_FIEL_v3_fuerzas.csv"
+  }
+}

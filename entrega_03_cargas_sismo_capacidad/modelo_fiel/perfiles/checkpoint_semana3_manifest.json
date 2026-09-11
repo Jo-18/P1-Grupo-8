@@ -1,0 +1,398 @@
+{
+  "perfil": "checkpoint_semana3",
+  "creado": null,
+  "commit_referencia": "9413871ef1a7fe577cca43f8ce40cc1852bcd8fe",
+  "head_working": "9413871ef1a7fe577cca43f8ce40cc1852bcd8fe",
+  "n_archivos": 79,
+  "archivos": {
+    "docs/tables/capacidad_rc/demanda_capacidad_I.json": "7017cc111b114abd803e60a44641740503adf430f67d16a8df7823729efd274e",
+    "docs/tables/capacidad_rc/demanda_capacidad_II.json": "de7991e85a4fec4f0f612a8d5fe70bd154f95c463801846b35b5069fc91d09fe",
+    "docs/tables/capacidad_rc/DEMO_RC_EI.json": "e33d6a0ad7f70984c952c7261c7f13e5bdd8738d89749cb8f7f4e135f4c147e5",
+    "docs/tables/capacidad_rc/DEMO_RC_EII.json": "8311e6ad8cc4f3a9802ef6bb71a02187479d3215972917815a2308eab0d7ec31",
+    "docs/tables/capacidad_rc/resumen_demanda_capacidad.txt": "ef69d01cacdc993c66f4e1d44d9ca4b78a39365ecd725dc92d7e7eaa9cedc9a8",
+    "docs/tables/capacidad_rc/resumen_DEMO_RC_EI_EII.json": "1ae11f9dac621c5c4497d2f55633097093dd01d35078ec1197df8ca38f322ec4",
+    "docs/tables/cargas/carga_viva_Q_I.json": "f6b9f4df53ae4236bdfead1930c6daefeb08223ce441d45fe9c511c7c305aa1f",
+    "docs/tables/cargas/carga_viva_Q_II.json": "682889bd2314ff1b3b8d078e1ff1b3d2509bcd38a7398c98173b110e092a8f94",
+    "docs/tables/cargas/caso_sismico_EX_I.json": "ad2466f29f62c88f5c6a93a9f3932260bc0e9baef8a6f69498c6362133661121",
+    "docs/tables/cargas/caso_sismico_EX_II.json": "607d33da99caab220d2d78bf44e0d5147e701967c5f351d11309d7162480cf60",
+    "docs/tables/cargas/caso_sismico_EY_I.json": "c3285c4444534e26e581be8c5b6c6c41c7fda3a7900e3581ed4dceda6871680d",
+    "docs/tables/cargas/caso_sismico_EY_II.json": "f5a69b2c4da144ae230782ae1edc49abc895e4a57fa203360b85928908145ba5",
+    "docs/tables/superposicion/verificacion_superposicion_completa_I.json": "736d7aba002138a61d2343a6daedc8af7bf32c2aeb2390f263272c4bfb45dce7",
+    "docs/tables/superposicion/verificacion_superposicion_completa_II.json": "94aa31650b8456c5d4fac43ac360bb953b898353bf8f85a8c7b5ab16085b10dc",
+    "docs/assets/capacidad_rc/DEMO_RC_EI_diagrama_pm.png": "d651709c79c35f742daf6c6c0225f99534de687f8b152a75b9d477c7c9702d0e",
+    "docs/assets/capacidad_rc/DEMO_RC_EI_m_phi.png": "b48bc7c384fe5c9ae7db1d66488d7a7dfd47a393e900006533d07236e9f3db9f",
+    "docs/assets/capacidad_rc/DEMO_RC_EI_seccion_fibras.png": "51f49cb0a580387aff73f213a4ae198d81db47ffb6e0902603d5958f7ca78145",
+    "docs/assets/capacidad_rc/DEMO_RC_EII_diagrama_pm.png": "d08363dd27ce184e6f6a6651ce68226823a052283590a47306d3118f3494753b",
+    "docs/assets/capacidad_rc/DEMO_RC_EII_m_phi.png": "25576c9bf598913ae2e462bb530a5d179e5699227697bc512f0582e3115a9f7e",
+    "docs/assets/capacidad_rc/DEMO_RC_EII_seccion_fibras.png": "276b2c6e56dbecf0316c83957c02af6f5451c3c9df6f4f9d0ca751725b5af10f",
+    "docs/assets/superposicion/verificacion_superposicion_completa_I.png": "4984652a2ed114c5329c88be72d080779dcb0909c61bce6ed559dbcdba5bfab9",
+    "docs/assets/superposicion/verificacion_superposicion_completa_II.png": "5f92602ecb2a1bc260c5faf0592cec00d0a94a5e7b1547f96f8c55c49cf6090d",
+    "results/cargas/AUDITORIA_G_EII_v1.json": "6429a897c3f824120a6a3b131c9b2c3567496dc9a68ee803f723bae6a154be78",
+    "results/cargas/AUDITORIA_G_EII_v1.md": "96c786ba7a2fe0e24f43b59f4c03ea9925fb653190f34126dc13d618f9cac335",
+    "results/cargas/carga_viva_Q_I.json": "f6b9f4df53ae4236bdfead1930c6daefeb08223ce441d45fe9c511c7c305aa1f",
+    "results/cargas/carga_viva_Q_I_por_receptor.csv": "83a1f4a266b2c123027bcfc2176fda882f90bd834ac66e58974a83a5b3d2e72a",
+    "results/cargas/carga_viva_Q_II.json": "682889bd2314ff1b3b8d078e1ff1b3d2509bcd38a7398c98173b110e092a8f94",
+    "results/cargas/carga_viva_Q_II_por_receptor.csv": "5fe055fb1c4028d41cf61338481896c259b85fa7e0ffba9409e906b737288f02",
+    "results/cargas/carga_viva_Q_resumen.json": "6dc449f1c557d16ba362e458c14ff35cd1c10dfd7380ebf1854b9def6e75b9be",
+    "results/cargas/caso_G_EII_comparacion.json": "9384519c2f183ae5e89f18c58c8c4e7e6de5fef4e22e997062ac65836df04642",
+    "results/cargas/caso_G_EII_comparacion.md": "2ef12e340f5d50554aac9b8131ef50a8cd34e92bc1ce3a0b639d0a4c32159f01",
+    "results/cargas/caso_G_EII_reproducible.json": "bfafc49318545677743c35fea9cf3dd2b571af3817efefa9681cba693fb3956a",
+    "results/cargas/caso_G_EII_reproducible_reacciones.csv": "f3cd8b221cb38611b35817cfd57bc08212b85611c584f4a67f7a5abe52935d0b",
+    "results/cargas/caso_Q_EI_FE.json": "a08d885a5f59a7e447e69c6e9de05023d6c2dcf50d1ab80a97fbc3b4a9029777",
+    "results/cargas/caso_Q_EI_FE_reacciones.csv": "347b34859151b81f46b011a7c12cb856bdefcb090e7d386f0861cd9c9dc5b7fa",
+    "results/cargas/caso_Q_EII_FE.json": "63c94ab8385f9b073003d671bd00449585b1904e757f940f2fe89c49430d3935",
+    "results/cargas/caso_Q_EII_FE_reacciones.csv": "470a203a8c964454cfdbd02b6d1b4d9f4e86e4dfb3fdea8c72d0e383fcb68c02",
+    "results/cargas/caso_sismico_EX_I.json": "ad2466f29f62c88f5c6a93a9f3932260bc0e9baef8a6f69498c6362133661121",
+    "results/cargas/caso_sismico_EX_I_reacciones.csv": "c7f15aafd286b0f759a267e780eaa0c8a9145191aced639604f8f636dbeef641",
+    "results/cargas/caso_sismico_EX_II.json": "607d33da99caab220d2d78bf44e0d5147e701967c5f351d11309d7162480cf60",
+    "results/cargas/caso_sismico_EX_II_reacciones.csv": "e675334b720587f6be8bb6754f44b189fa55be59f024dd8a13cc18c463bd4ef3",
+    "results/cargas/caso_sismico_EY_I.json": "c3285c4444534e26e581be8c5b6c6c41c7fda3a7900e3581ed4dceda6871680d",
+    "results/cargas/caso_sismico_EY_I_reacciones.csv": "0db669704947280b2c3f40ef98fc50fadc2ec71a9788c71986067bb0d41f0901",
+    "results/cargas/caso_sismico_EY_II.json": "f5a69b2c4da144ae230782ae1edc49abc895e4a57fa203360b85928908145ba5",
+    "results/cargas/caso_sismico_EY_II_reacciones.csv": "6e033e49ed55917f8ae72cdb1af0380b46b51f68101dcb5f4d976a37a462e307",
+    "results/cargas/ruteo_G_EII_auditoria.json": "5ddfeba9fc98fe36c6d2e09a94bd18304e7a243a3fa4927347ea0ea4b9b00131",
+    "results/superposicion/comando_verificacion.json": "ed92692fac246931ab5a37e9a6e637b284e76da0121fc517a88b524b8133dd5c",
+    "results/superposicion/verificacion_intermedia_G_Q_EI.csv": "d653d0ab730b42afa1d54cb0d3c335088d49eb203809e2df29c563e1fe6f3944",
+    "results/superposicion/verificacion_intermedia_G_Q_EI.json": "bf47b4e9af2d47bd3cdacc54c4f0d899756b4f8ca019049c9f3c62f376f6e55b",
+    "results/superposicion/verificacion_intermedia_G_Q_EI.md": "05b199b5c90238599eb7beb3fa8a1a9f188664860235840e22512215aa2161c8",
+    "results/superposicion/verificacion_intermedia_G_Q_EII.csv": "46ef24940366ee4cd69feae6ae4c1f4cb418934d8b212cf048622124c994412f",
+    "results/superposicion/verificacion_intermedia_G_Q_EII.json": "fd5ae07f26b6f12052ed0ba4ea66b2b409ad8811ded8c6c371598cb2fd7bf27b",
+    "results/superposicion/verificacion_intermedia_G_Q_EII.md": "ee92601296038fc85e127de2a4c404359df5792d4c47bc3f0ab41ed418c084f2",
+    "results/superposicion/verificacion_superposicion_completa_I.csv": "f5c26f38fff1ea50765961edf4b0329923f223e9d8d769fe7a290c98a1fd4f25",
+    "results/superposicion/verificacion_superposicion_completa_I.json": "736d7aba002138a61d2343a6daedc8af7bf32c2aeb2390f263272c4bfb45dce7",
+    "results/superposicion/verificacion_superposicion_completa_I.md": "40399f553ddb2d6cd3c76a4b7e2973dff03262883c7bbed62839a173d670bd50",
+    "results/superposicion/verificacion_superposicion_completa_II.csv": "ae34295323acdd731908dbb3468be5752ab783e18c1dc3bd3c2f0b65d9e4a2c6",
+    "results/superposicion/verificacion_superposicion_completa_II.json": "94aa31650b8456c5d4fac43ac360bb953b898353bf8f85a8c7b5ab16085b10dc",
+    "results/superposicion/verificacion_superposicion_completa_II.md": "3ee780c1ba0a588d09fcf5e517f926b7d9ae555ab828f91fa439fe562de15ffd",
+    "results/ejecutor_entrega_03/estado.json": "8710419f5d70fd453772b862645cf00618838b53ed6a1e175b794a36e351159c",
+    "results/ejecutor_entrega_03/estado.md": "193e3adcde88f3465ffa1b66aaf3be1b388eab41e61b647d3441c146cabfa3b1",
+    "results/capacidad_rc/demanda_capacidad_I.csv": "96689eb45bc85be5307fcc33d0bc10ee0e46c16ac571e15085806ebcf6675eb8",
+    "results/capacidad_rc/demanda_capacidad_I.json": "7017cc111b114abd803e60a44641740503adf430f67d16a8df7823729efd274e",
+    "results/capacidad_rc/demanda_capacidad_II.csv": "bdfa9fd634b0cfdb41d0b4998d89e8ea7b7faa5d915b5cfd4968622d2b73b5fa",
+    "results/capacidad_rc/demanda_capacidad_II.json": "de7991e85a4fec4f0f612a8d5fe70bd154f95c463801846b35b5069fc91d09fe",
+    "results/capacidad_rc/DEMO_RC_EI.json": "e33d6a0ad7f70984c952c7261c7f13e5bdd8738d89749cb8f7f4e135f4c147e5",
+    "results/capacidad_rc/DEMO_RC_EI_m_phi.csv": "9347332f30fb5266d67c22c5e1d06d7d51895d441a8c45e332d845f604428db4",
+    "results/capacidad_rc/DEMO_RC_EI_p_m.csv": "7018abcbbf3edfb9e800db8d6805866c5ac0fb44a91248904c01ed7288944281",
+    "results/capacidad_rc/DEMO_RC_EII.json": "8311e6ad8cc4f3a9802ef6bb71a02187479d3215972917815a2308eab0d7ec31",
+    "results/capacidad_rc/DEMO_RC_EII_m_phi.csv": "d57bddbd611d1e466273d95100d753ebdfb7d2e9bd9b0a92a7d531db10efdd66",
+    "results/capacidad_rc/DEMO_RC_EII_p_m.csv": "5512a8719b313c32ba52e1cd07662a42f624bd80f4e121759e5bc9051f3093bf",
+    "results/capacidad_rc/m_phi.csv": "79f54d0ec53ee166e5d2e1026ee3c01bcf1c525f5b718a294c0154e2315e373f",
+    "results/capacidad_rc/p_m.csv": "f0ed62485e2863526fb3d2215dc22a96e3c5b15d005126b8fc3beea9bccfb387",
+    "results/capacidad_rc/resumen_demanda_capacidad.txt": "ef69d01cacdc993c66f4e1d44d9ca4b78a39365ecd725dc92d7e7eaa9cedc9a8",
+    "results/capacidad_rc/resumen_DEMO_RC_EI_EII.json": "1ae11f9dac621c5c4497d2f55633097093dd01d35078ec1197df8ca38f322ec4",
+    "results/capacidad_rc/seccion_demo.json": "5ff2475e2420e231b2af8bb78597002caedb88913f8d865f7eac6f543afd880d",
+    "results/peso_propio_teorico_EDIFICIO_I.json": "79be01e24f9f1cf1c61302956d2ff245f778a30e69913739271611c2946fc573",
+    "results/peso_propio_teorico_EDIFICIO_I_v2.json": "a158fcb32147998dcbf83c0270bcd171ac394a82532e90bb63fb890e91e7a515",
+    "results/peso_propio_teorico_EDIFICIO_II_v1.json": "df7fa34f71096a6169f0e41d8a9ac701ad23e511429e9a479d26efc7f8ce6246"
+  },
+  "valores_referencia": {
+    "commit_checkpoint": "9413871ef1a7fe577cca43f8ce40cc1852bcd8fe",
+    "tag": "entrega-03-checkpoint-verificado",
+    "tolerancias": {
+      "equilibrio_vertical_abs_kN": 0.0001
+    },
+    "cargas": {
+      "carga_viva_Q_resumen.json": {
+        "globales": {
+          "I": {
+            "edificio": "I",
+            "q_Q": {
+              "q_Q_kN_m2": 3.0,
+              "estado": "PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4",
+              "demostracion": false
+            },
+            "catalogo_sobrecarga_documentada": {
+              "fuente": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\data\\externas\\catalogo_cargas_diseno_edificio_I.json",
+              "unidad": "kgf/m2 (1 kgf/m2 = 0.00980665 kN/m2)",
+              "SC_por_nivel_kgf_m2": {
+                "Piso 1 Subterraneo (CP1S)": [
+                  500,
+                  500,
+                  300,
+                  250
+                ],
+                "Piso 1": [
+                  500,
+                  300,
+                  250,
+                  400,
+                  200
+                ],
+                "Piso 2": [
+                  500,
+                  300,
+                  250,
+                  400,
+                  200
+                ],
+                "Piso 3": [
+                  200,
+                  300,
+                  500,
+                  250
+                ],
+                "Piso 4": [
+                  100,
+                  200
+                ]
+              },
+              "PM_ADIC_referencia": {
+                "Piso 1 Subterraneo (CP1S)": [
+                  300,
+                  260,
+                  260,
+                  260
+                ],
+                "Piso 1": [
+                  260,
+                  260,
+                  260,
+                  260,
+                  200
+                ],
+                "Piso 2": [
+                  260,
+                  260,
+                  260,
+                  260,
+                  200
+                ],
+                "Piso 3": [
+                  200,
+                  260,
+                  260,
+                  260
+                ],
+                "Piso 4": [
+                  350,
+                  200
+                ]
+              },
+              "pendiente": "trama_id 'por_definir_trama_*' sin mapeo a regiones geometricas (no se aplica Q por zona todavia)"
+            },
+            "aplicada_al_modelo_FE": true,
+            "nota_aplicacion": "Q aplicada solo sobre geometria tributaria de Semana 2; AI catalogada no se mezcla con aplicada",
+            "por_nivel": {
+              "CP1S": {
+                "area_tributaria_m2": 387.031,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 1161.093,
+                "carga_transferida_sum_kN": 1161.093,
+                "diferencia_abs_kN": 0.0,
+                "diferencia_rel": 0.0,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "CONFIRMADO",
+                "n_receptores": 14,
+                "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+              },
+              "P1": {
+                "area_tributaria_m2": 1005.73,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 3017.19,
+                "carga_transferida_sum_kN": 3017.19,
+                "diferencia_abs_kN": 0.0,
+                "diferencia_rel": 0.0,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "CONFIRMADO",
+                "n_receptores": 13,
+                "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+              },
+              "P2": {
+                "area_tributaria_m2": 849.227,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 2547.681,
+                "carga_transferida_sum_kN": 2547.681,
+                "diferencia_abs_kN": 0.0,
+                "diferencia_rel": 0.0,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "CONFIRMADO",
+                "n_receptores": 42,
+                "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+              },
+              "P3": {
+                "area_tributaria_m2": 932.523,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 2797.569,
+                "carga_transferida_sum_kN": 2797.569,
+                "diferencia_abs_kN": 0.0,
+                "diferencia_rel": 0.0,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "CONFIRMADO",
+                "n_receptores": 50,
+                "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+              },
+              "P4": {
+                "area_tributaria_m2": 934.949,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 2804.847,
+                "carga_transferida_sum_kN": 2804.847,
+                "diferencia_abs_kN": 0.0,
+                "diferencia_rel": 0.0,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "CONFIRMADO",
+                "n_receptores": 47,
+                "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+              }
+            },
+            "niveles_pendientes_geometria": [],
+            "global": {
+              "area_total_m2": 4109.46,
+              "carga_teorica_q_A_kN": 12328.38,
+              "carga_transferida_sum_kN": 12328.38,
+              "diferencia_abs_kN": 0.0,
+              "diferencia_rel": 0.0,
+              "tolerancia_rel": 0.005,
+              "estado": "OK"
+            }
+          },
+          "II": {
+            "edificio": "II",
+            "q_Q": {
+              "q_Q_kN_m2": 3.0,
+              "estado": "PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4",
+              "demostracion": false
+            },
+            "catalogo_sobrecarga_documentada": {
+              "fuente": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\data\\externas\\eii_viewer.json",
+              "unidad": "kgf/m lineal (1 kgf/m = 0.00980665 kN/m) y kPa (PP losa)",
+              "SC_lineal_kg_m": {
+                "A": 500,
+                "B": 300,
+                "C": 200,
+                "D": 100,
+                "E": 200,
+                "F": 500
+              },
+              "Q_PP_LOSA_kPa": 3.677,
+              "Q_PP_LOSA_020_kPa": 4.903,
+              "pendiente": "no hay sobrecarga uniforme (kPa) documentada para EII; solo SC lineal por zona A-F"
+            },
+            "aplicada_al_modelo_FE": true,
+            "nota_aplicacion": "Q aplicada solo sobre geometria tributaria de Semana 2; AI catalogada no se mezcla con aplicada",
+            "por_nivel": {
+              "EII_CP2": {
+                "area_tributaria_m2": 530.4439,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 1591.3317,
+                "carga_transferida_sum_kN": 1591.3316,
+                "diferencia_abs_kN": 0.000138,
+                "diferencia_rel": 9e-08,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "CONFIRMADO",
+                "n_receptores": 38,
+                "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+              },
+              "EII_CP1S": {
+                "area_tributaria_m2": 0.0,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 0.0,
+                "carga_transferida_sum_kN": 0.0,
+                "diferencia_abs_kN": 0.0,
+                "diferencia_rel": 0.0,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "PENDIENTE_SIN_GEOMETRIA_TRIBUTARIA",
+                "n_receptores": 0,
+                "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+              },
+              "EII_CP1": {
+                "area_tributaria_m2": 0.0,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 0.0,
+                "carga_transferida_sum_kN": 0.0,
+                "diferencia_abs_kN": 0.0,
+                "diferencia_rel": 0.0,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "PENDIENTE_SIN_GEOMETRIA_TRIBUTARIA",
+                "n_receptores": 0,
+                "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+              },
+              "EII_CP3": {
+                "area_tributaria_m2": 0.0,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 0.0,
+                "carga_transferida_sum_kN": 0.0,
+                "diferencia_abs_kN": 0.0,
+                "diferencia_rel": 0.0,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "PENDIENTE_SIN_GEOMETRIA_TRIBUTARIA",
+                "n_receptores": 0,
+                "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+              },
+              "EII_CP4": {
+                "area_tributaria_m2": 0.0,
+                "q_Q_kN_m2": 3.0,
+                "carga_teorica_q_A_kN": 0.0,
+                "carga_transferida_sum_kN": 0.0,
+                "diferencia_abs_kN": 0.0,
+                "diferencia_rel": 0.0,
+                "tolerancia_rel": 0.005,
+                "estado": "OK",
+                "estado_geometria": "PENDIENTE_SIN_GEOMETRIA_TRIBUTARIA",
+                "n_receptores": 0,
+                "metodo_transferencia": "paneles -> soportes (vigas/columnas) por areas tributarias (ensayo CP2 FASE4B, 1 kPa; nivel EII_CP2)"
+              }
+            },
+            "niveles_pendientes_geometria": [
+              "EII_CP1S",
+              "EII_CP1",
+              "EII_CP3",
+              "EII_CP4"
+            ],
+            "global": {
+              "area_total_m2": 530.4439,
+              "carga_teorica_q_A_kN": 1591.3317,
+              "carga_transferida_sum_kN": 1591.3316,
+              "diferencia_abs_kN": 0.000138,
+              "diferencia_rel": 9e-08,
+              "tolerancia_rel": 0.005,
+              "estado": "OK"
+            }
+          }
+        }
+      },
+      "G_EII_reproducible": {
+        "P_z_aplicada_kN": -25970.999352,
+        "R_z_kN": 25970.999357
+      },
+      "caso_Q_EI_FE.json": {
+        "F_total_aplicado_kN": null
+      },
+      "caso_Q_EII_FE.json": {
+        "F_total_aplicado_kN": null
+      },
+      "caso_sismico_EX_I.json": {
+        "corte_basal_kN": 0
+      },
+      "caso_sismico_EX_II.json": {
+        "corte_basal_kN": 0
+      },
+      "caso_sismico_EY_I.json": {
+        "corte_basal_kN": 0
+      },
+      "caso_sismico_EY_II.json": {
+        "corte_basal_kN": 0
+      }
+    },
+    "superposicion": {
+      "verificacion_superposicion_completa_I.json": {
+        "estado": null,
+        "mensaje": null,
+        "max_error_rel": null
+      },
+      "verificacion_superposicion_completa_II.json": {
+        "estado": null,
+        "mensaje": null,
+        "max_error_rel": null
+      }
+    }
+  }
+}

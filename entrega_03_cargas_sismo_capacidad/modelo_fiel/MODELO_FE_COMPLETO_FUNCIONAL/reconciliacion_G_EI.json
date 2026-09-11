@@ -1,0 +1,139 @@
+{
+  "perfil": "MODELO_FE_COMPLETO_FUNCIONAL",
+  "edificio": "I",
+  "g_total_kN": 42406.9577,
+  "g_fiel_referencia_kN": 42406.9577,
+  "delta_kN": 0.0,
+  "ok_contra_fiel": true,
+  "checkpoint_g_kN": 25227.7316,
+  "pp_elementos_confirmado_kN": 17179.2261,
+  "pp_vigas_kN": 14803.534,
+  "pp_columnas_kN": 2045.6003,
+  "pp_muros_kN": 330.0918,
+  "pp_losas_kN": 14983.5927,
+  "pm_adic_kN": 10244.1389,
+  "match_elementos_ok": true,
+  "n_ids_aplicados": 184,
+  "densidad_concreto_kN_m3": 24.5166,
+  "densidad_acero_hipotesis_kN_m3": 76.9822,
+  "postes_torre": {
+    "n_ejes": 25,
+    "L_total_m": 99.0
+  },
+  "stubs": 44,
+  "conectores_p4": 18,
+  "pendientes_torre": 4,
+  "familias": [
+    {
+      "familia": "Losas (PP estructural, espesor x gamma)",
+      "cantidad": 99,
+      "unidad_m": "losas",
+      "dimension": 4109.47,
+      "unidad_dim": "m2 netas",
+      "peso_unit": "-",
+      "total_kN": 14983.5927,
+      "entra_al_caso_G": "TB.calcular_cargas_nodales distribuye el PP estructural de cada losa (neta x h x gamma) en nodos receptores"
+    },
+    {
+      "familia": "PM.ADIC (superficial correlacionada)",
+      "cantidad": 99,
+      "unidad_m": "losas",
+      "dimension": 4109.47,
+      "unidad_dim": "m2 netas",
+      "peso_unit": "-",
+      "total_kN": 10244.1389,
+      "entra_al_caso_G": "idem losas con pm_kn_m2 correlacionado (el PP superficial de PM.ADIC esta dentro de la carga superficial; el PP estructural de losa es aparte)"
+    },
+    {
+      "familia": "Vigas (CONFIRMADO auditoria v2)",
+      "cantidad": 137,
+      "unidad_m": "vigas",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "A*L*24.5166",
+      "total_kN": 14803.534,
+      "entra_al_caso_G": "aplicar_pp_nodal: mitad del PP en cada extremo, proporcional a longitud FE (nunca el nodo mas cercano); ids = detalle.vigas_confirmadas"
+    },
+    {
+      "familia": "Columnas (CONFIRMADO auditoria v2)",
+      "cantidad": 43,
+      "unidad_m": "tramos nl/S",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "A*L*24.5166",
+      "total_kN": 2045.6003,
+      "entra_al_caso_G": "idem aplicar_pp_nodal; ids = detalle.columnas_confirmadas (P1/P2/P3; las columnas P4 son PENDIENTE_TRAMO, fuera de la auditoria)"
+    },
+    {
+      "familia": "Muros (CONFIRMADO auditoria v2)",
+      "cantidad": 4,
+      "unidad_m": "paneles",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "A*L*24.5166",
+      "total_kN": 330.0918,
+      "entra_al_caso_G": "idem (los montantes del FE llevan el panel t*L/2 cada uno)"
+    },
+    {
+      "familia": "CHECKPOINT G (losas + PM.ADIC)",
+      "cantidad": "-",
+      "unidad_m": "-",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 25227.7316,
+      "entra_al_caso_G": "subtotal con el que corria el modelo antes de la reconciliacion + cargas de G_EI_MODELO_FIEL v1"
+    },
+    {
+      "familia": "Postes de acero torre (HIPOTESIS, NO aplicado)",
+      "cantidad": 25,
+      "unidad_m": "ejes",
+      "dimension": 99.0,
+      "unidad_dim": "m L total",
+      "peso_unit": "pendiente seccion real (hoy perfil metalico provisorio)",
+      "total_kN": 0.0,
+      "entra_al_caso_G": "0 kN al G: seccion provisional HIPOTESIS y PP no confirmado (criterio identico al MODELO_FIEL v1)"
+    },
+    {
+      "familia": "Stubs rigid A->B (arranques/excentricidad)",
+      "cantidad": 44,
+      "unidad_m": "stubs",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "E*mult rigida",
+      "total_kN": 0.0,
+      "entra_al_caso_G": "0 kN: dispositivo rigido sin masa propia; el peso del tramo real le corresponde a la columna/paño que conecta"
+    },
+    {
+      "familia": "Conectores rigidos P4 (A grilla -> B fisico)",
+      "cantidad": 18,
+      "unidad_m": "conectores",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "rigido",
+      "total_kN": 0.0,
+      "entra_al_caso_G": "0 kN: excentricidad documentada; las columnas P4 que crean siguen PENDIENTE_TRAMO sin PP confirmado"
+    },
+    {
+      "familia": "TOTAL G MODELO_FE_COMPLETO_FUNCIONAL",
+      "cantidad": "-",
+      "unidad_m": "-",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 42406.9577,
+      "entra_al_caso_G": "checkpoint + PP_el confirmado; objetivo igual al G_EI_MODELO_FIEL v3/v4 (42406.9577 kN)"
+    },
+    {
+      "familia": "Pendientes fuera del G (NO omitidos del reporte)",
+      "cantidad": 4,
+      "unidad_m": "diag torre",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 0.0,
+      "entra_al_caso_G": "TOWER_DIAG PENDIENTE_TORRE, V.S.I. provisional, contencion sotano, tramos base ficticios (por diseño no existen aqui); se reportan, no se suman al G"
+    }
+  ],
+  "nota_omision_duplicacion": "El PP_el (184 ids: 137+43+4) se aplica una vez (matchers por id unico); losas y PM.ADIC son cargas superficiales sobre la misma losa, sin solaparse con el PP de elementos. Ningun peso se ajusta artificialmente para cuadrar el total."
+}

@@ -350,7 +350,7 @@ def run_caso(edificio: str, direccion: str) -> int:
     cfg_sismo = leer_config_sismo()
     q_Q = float(cfg_cargas["q_Q"][edificio]["q_Q_kN_m2"])
     etiq_q = cfg_cargas["q_Q"][edificio].get("etiqueta_corrida",
-                                             "Q_%s_ADOPTADA_2.0_kN_m2" % edificio)
+                                             "Q_%s_NCH1537_2009_3.0_kN_m2" % edificio)
 
     # Construir modelo una vez para ensamblar cargas y pesos
     marco, G_flat, Q_flat, cotas = _marcos_y_cargas(edificio, q_Q)

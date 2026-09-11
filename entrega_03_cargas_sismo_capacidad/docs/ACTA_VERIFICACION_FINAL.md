@@ -19,7 +19,8 @@
 
 | Parámetro | Valor | Clasificación |
 |---|---|---|
-| Sobrecarga de uso `q_Q` | **2,0 kN/m²** (EI y EII) | `PARAMETRO_ADOPTADO_POR_EL_GRUPO` (`Q_EI/EII_ADOPTADA_2.0_kN_m2`) |
+| Sobrecarga de uso `q_Q` | **3,0 kN/m²** (EI y EII) | `PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4` (`Q_EI/EII_NCH1537_2009_3.0_kN_m2`) |
+| Fuente de `q_Q` | **NCh 1537:2009 (Of. 2009), Tabla 4 — "Escuelas · salas de clases"** (mínimo 3,0 kN/m²) | idem |
 | Fracción de `Q` en peso sísmico | **0,50** | `PARAMETROS_BASADOS_EN_EJEMPLO_DE_LA_CONSIGNA` |
 | Coeficiente sísmico `a` | **0,20·g** | idem |
 | Peso sísmico por nivel | `W_i = PP_i + 0,50·Q_i` | idem |
@@ -39,28 +40,28 @@ resultante por nivel es `F_i = m_i·a = (W_i/g)·(0,20·g) = 0,20·W_i`.
 Fuente: `results/cargas/caso_sismico_{EX,EY}_I.json` → `peso_sismico/ledger_por_nivel`.
 
 | z del nivel (m) | #nodos | `PP_i` (kN) | `Q_i` (kN) | `W_i` (kN) | `m_i` (kN·s²/m) | Centro de masa (X, Y, m) | `F_i` (kN) |
-|---|---:|---:|---:|---:|---:|---|---:|
-| −7,00 | 2 | 172,78 | 52,21 | 198,88 | 20,2734 | (10,899; −10,819) | 39,776 |
-| −4,00 | 117 | 2.324,38 | 721,85 | 2.685,30 | 273,7309 | (8,050; 0,082) | 537,060 |
-| −0,05 | 31 | 6.513,34 | 2.011,46 | 7.519,07 | 766,4702 | (27,311; 7,878) | 1.503,815 |
-| 3,90 | 42 | 5.266,70 | 1.698,46 | 6.115,93 | 623,4380 | (22,278; 8,275) | 1.223,185 |
-| 7,85 | 63 | 5.715,77 | 1.865,05 | 6.648,30 | 677,7064 | (24,693; 8,236) | 1.329,660 |
-| 11,85 | 69 | 5.234,77 | 1.869,91 | 6.169,72 | 628,9217 | (24,719; 8,278) | 1.233,944 |
-| **Σ** | **324** | **25.227,74** | **8.218,94** | **29.337,204** | — | — | **5.867,440792** |
+|---|---|---:|---:|---:|---:|---|---:|
+| −7,00 | 2 | 172,78 | 78,32 | 211,93 | 21,6040 | (10,899; −10,819) | 42,387 |
+| −4,00 | 117 | 2.324,38 | 1.082,78 | 2.865,76 | 292,1267 | (8,045; 0,094) | 573,153 |
+| −0,05 | 31 | 6.513,34 | 3.017,19 | 8.021,94 | 817,7306 | (27,280; 7,919) | 1.604,387 |
+| 3,90 | 42 | 5.266,70 | 2.547,69 | 6.540,54 | 666,7219 | (22,278; 8,273) | 1.308,108 |
+| 7,85 | 63 | 5.715,77 | 2.797,58 | 7.114,56 | 725,2358 | (24,707; 8,234) | 1.422,913 |
+| 11,85 | 69 | 5.234,77 | 2.804,87 | 6.637,20 | 676,5749 | (24,746; 8,283) | 1.327,440 |
+| **Σ** | **324** | **25.227,74** | **12.328,42** | **31.391,9401** | — | — | **6.278,388022** |
 
 Verificaciones del modelo (del JSON `verificaciones`):
 
 | Magnitud | EX_I | EY_I |
 |---|---|---|
-| Carga lateral total aplicada | 5.867,440792 kN (= Σ`F_i`) | 5.867,440792 kN |
-| Corte basal (verificador) | 5.867,440792 kN · `ok` | 5.867,440792 kN · `ok` |
-| Σ reacciones del FE | R_x = −5.867,4408 kN; R_y ≈ 0 | R_x ≈ 0; R_y = −5.867,4408 kN |
-| Residuo horizontal (abs) | 4,3e−07 kN | 4,3e−07 kN |
-| Residuo horizontal (rel a F) | 7,3e−11 | 7,3e−11 |
-| Desplazamiento máximo | 0,05874 m (nivel P4, nodo 248) | 0,06703 m (nivel P4, nodo 242) |
-| Deriva máxima de piso | 0,012604 (P4) | 0,015626 (P4) |
+| Carga lateral total aplicada | 6.278,388022 kN (= Σ`F_i`) | 6.278,388022 kN |
+| Corte basal (verificador) | 6.278,388022 kN · `ok` | 6.278,388022 kN · `ok` |
+| Σ reacciones del FE | R_x = −6.278,3880 kN; R_y ≈ 0 | R_x ≈ 0; R_y = −6.278,3880 kN |
+| Residuo horizontal (abs) | 7e−08 kN | 7e−08 kN |
+| Residuo horizontal (rel a F) | 1,1e−11 | 1,1e−11 |
+| Desplazamiento máximo | 0,06320 m (nivel P4, nodo 248) | 0,07221 m (nivel P4, nodo 242) |
+| Deriva máxima de piso | 0,013575 (P4) | 0,016842 (P4) |
 | Sentido de deformada | OK · dominio +X · 0 nodos opuestos | OK · dominio +Y · 0 nodos opuestos |
-| Rotación máxima de respuesta | 5,56e−3 rad (R_y) | 6,35e−3 rad (R_x) |
+| Rotación máxima de respuesta | 5,99e−3 rad (R_y) | 6,84e−3 rad (R_x) |
 | Momento accidental aplicado | 0 | 0 |
 | retcode FE / `sol_ok` | 0 / true | 0 / true |
 
@@ -69,27 +70,27 @@ Verificaciones del modelo (del JSON `verificaciones`):
 Fuente: `results/cargas/caso_sismico_{EX,EY}_II.json` → `peso_sismico/ledger_por_nivel`.
 
 | z del nivel (m) | #nodos | `PP_i` (kN) | `Q_i` (kN) | `W_i` (kN) | `m_i` (kN·s²/m) | Centro de masa (X, Y, m) | `F_i` (kN) |
-|---|---:|---:|---:|---:|---:|---|---:|
-| −4,00 | 45 | 4.893,85 | 1.062,04 | 5.424,88 | 553,02 | (10,504; 7,851) | 1.084,975 |
-| −0,05 | 45 | 5.483,30 | 1.062,04 | 6.014,32 | 613,08 | (10,516; 7,938) | 1.202,864 |
-| 3,90 | 44 | 5.438,49 | 1.062,22 | 5.969,60 | 608,52 | (10,414; 7,999) | 1.193,919 |
-| 7,85 | 44 | 5.410,05 | 1.062,04 | 5.941,07 | 605,61 | (10,335; 8,011) | 1.188,214 |
-| 11,85 | 44 | 4.745,31 | 1.011,08 | 5.250,85 | 535,26 | (10,272; 7,938) | 1.050,171 |
-| **Σ** | **222** | **25.971,00** | **5.259,42** | **28.600,7138** | — | — | **5.720,142753** |
+|---|---|---:|---:|---:|---:|---|---:|
+| −4,00 | 45 | 4.893,85 | 1.593,06 | 5.690,39 | 580,0598 | (10,505; 7,840) | 1.138,077 |
+| −0,05 | 45 | 5.483,30 | 1.593,06 | 6.279,83 | 640,1458 | (10,502; 7,930) | 1.255,966 |
+| 3,90 | 44 | 5.438,49 | 1.593,33 | 6.235,15 | 635,5913 | (10,408; 7,990) | 1.247,030 |
+| 7,85 | 44 | 5.410,05 | 1.593,06 | 6.206,58 | 632,6788 | (10,332; 8,001) | 1.241,316 |
+| 11,85 | 44 | 4.745,31 | 1.516,62 | 5.503,62 | 561,0218 | (10,280; 7,917) | 1.100,725 |
+| **Σ** | **222** | **25.971,00** | **7.889,13** | **29.915,5708** | — | — | **5.983,114195** |
 
 Verificaciones del modelo:
 
 | Magnitud | EX_II | EY_II |
 |---|---|---|
-| Carga lateral total aplicada | 5.720,142753 kN | 5.720,142753 kN |
-| Corte basal (verificador) | 5.720,142753 kN · `ok` | 5.720,142753 kN · `ok` |
-| Σ reacciones del FE | R_x = −5.720,1428 kN; R_y ≈ 0 | R_x ≈ 0; R_y = −5.720,1428 kN |
-| Residuo horizontal (abs) | 4,8e−07 kN | 4,8e−07 kN |
-| Residuo horizontal (rel a F) | 8,4e−11 | 8,4e−11 |
-| Desplazamiento máximo | 0,00451 m (nivel EII_CP4, nodo 604003) | 0,00924 m (nivel EII_CP4, nodo 604040) |
-| Deriva máxima de piso | 0,000329 (EII_CP2) | 0,000777 (EII_CP4) |
+| Carga lateral total aplicada | 5.983,114195 kN | 5.983,114195 kN |
+| Corte basal (verificador) | 5.983,114195 kN · `ok` | 5.983,114195 kN · `ok` |
+| Σ reacciones del FE | R_x = −5.983,1142 kN; R_y ≈ 0 | R_x ≈ 0; R_y = −5.983,1142 kN |
+| Residuo horizontal (abs) | 2e−08 kN | 2e−08 kN |
+| Residuo horizontal (rel a F) | 3,3e−12 | 3,3e−12 |
+| Desplazamiento máximo | 0,00471 m (nivel EII_CP4, nodo 604003) | 0,00967 m (nivel EII_CP4, nodo 604040) |
+| Deriva máxima de piso | 0,000343 (EII_CP2) | 0,000814 (EII_CP4) |
 | Sentido de deformada | OK · dominio +X · **7 nodos opuestos** (fracción 0,0004) | OK · dominio +Y · **18 nodos opuestos** (fracción 0,0012) |
-| Rotación máxima de respuesta | 1,68e−3 rad (R_x) | 0,97e−3 rad (R_y) |
+| Rotación máxima de respuesta | 1,75e−3 rad (R_x) | 0,92e−3 rad (R_y) |
 | Momento accidental aplicado | 0 | 0 |
 | retcode FE / `sol_ok` | 0 / true | 0 / true |
 
@@ -112,8 +113,8 @@ Verificaciones del modelo:
   ver `results/cargas/ruteo_G_EII_auditoria.json`).
 - **Indicador `sum_por_nivel` del EI en z=−4 m**: la herramienta de atribución
   por nivel muestra `ok=false` (aplicada=0) porque la cota z=−4 no coincide con las
-  cotas de nivel del FE; **las cargas sí están aplicadas** (corte basal 5.867,44 kN
-  y equilibrio global con residuo 4,3e−07 kN lo confirman). Es una limitación de la
+  cotas de nivel del FE; **las cargas sí están aplicadas** (corte basal 6.278,39 kN
+  y equilibrio global con residuo 7e−08 kN lo confirman). Es una limitación de la
   herramienta de atribución, no un desequilibrio del modelo.
 - **EII, franja D-D′**: 7/18 nodos con producto local `f·u` opuesto (fracción
   0,0004–0,0012); dominio global de deformada correcto (se reporta como nota, no
@@ -141,37 +142,39 @@ comparan desplazamientos, reacciones, fuerzas axiales y momentos de extremo
 ### 2.2 Edificio I
 
 | Familia | # filas | error abs máx | error rel máx | estado |
-|---|---:|---:|---:|:--:|
-| Desplazamiento (1 vertical, 1 horizontal) | 2 | 3,8e−17 | 1,9e−15 | OK |
-| Reacción (2 reacciones verticales de base) | 2 | 2,5e−12 | 1,4e−15 | OK |
-| Axial (extremos i/j del elemento 64) | 2 | 2,5e−12 | 1,4e−15 | OK |
-| Momento (columna 208 y viga 395) | 2 | 8,0e−13 | 1,3e−15 | OK |
-| **Total** | **8** | **2,5e−12** | **1,9e−15** | **8/8** |
+|---|---|---:|---:|---:|:--:|
+| Desplazamiento (1 vertical, 1 horizontal) | 2 | 2,8e−17 | 9,8e−16 | OK |
+| Reacción (2 reacciones verticales de base) | 2 | 4,5e−13 | 2,3e−16 | OK |
+| Axial (extremos i/j del elemento 64) | 2 | 4,5e−13 | 2,3e−16 | OK |
+| Momento (columna 208 y viga 395) | 2 | 1,1e−13 | 1,7e−16 | OK |
+| **Total** | **8** | **4,5e−13** | **9,8e−16** | **8/8** |
 
 - Tolerancia relativa usada: `1e−4` (todas las filas cumplen con margen > 10 órdenes).
 - Compatibilidad de modelos: matrices 324×324 con firmas idénticas (0 discrepancias);
   claves de resultados consistentes (324 desplazamientos, 318 reacciones, 349
   fuerzas locales; longitudes 6/12 correctas); patrón explícito consistente
   (`max_diferencia = 0,0 kN`).
-- Equilibrio explícito: `R_z = P_z = 30.980,99 kN`, residuo vertical −0,0 · `ok`;
-  horizontal `Fx=−1.760,23 / Fy=1.173,49` vs cargas `P` · `ok`; momentos `ok`.
+- Equilibrio explícito: `R_z = P_z = 33.857,62 kN`, residuo vertical −0,0 · `ok`;
+  horizontal `Fx=−1.883,52 / Fy=1.255,68` vs cargas `P` (1.883,52 / −1.255,68) · `ok`;
+  residual de momentos [−4.552,00; 7.336,89] · `ok`.
 - Estado: **`IMPLEMENTADO_Y_VERIFICADO_COMPLETO`**.
 
 ### 2.3 Edificio II
 
 | Familia | # filas | error abs máx | error rel máx | estado |
-|---|---:|---:|---:|:--:|
-| Desplazamiento (1 vertical, 1 horizontal) | 2 | 4,3e−15 | 1,9e−13 | OK |
-| Reacción (2 reacciones verticales de base) | 2 | 8,6e−12 | 2,4e−15 | OK |
-| Axial (extremos i/j del elemento 6) | 2 | 8,6e−12 | 3,0e−15 | OK |
-| Momento (columna 25 y viga 188) | 2 | 1,2e−12 | 4,4e−15 | OK |
-| **Total** | **8** | **8,6e−12** | **1,9e−13** | **8/8** |
+|---|---|---:|---:|---:|:--:|
+| Desplazamiento (1 vertical, 1 horizontal) | 2 | 4,2e−15 | 1,7e−13 | OK |
+| Reacción (2 reacciones verticales de base) | 2 | 8,2e−12 | 2,2e−15 | OK |
+| Axial (extremos i/j del elemento 6) | 2 | 9,1e−13 | 3,0e−16 | OK |
+| Momento (columna 25 y viga 188) | 2 | 2,2e−12 | 8,1e−15 | OK |
+| **Total** | **8** | **8,2e−12** | **1,7e−13** | **8/8** |
 
 - Tolerancia relativa usada: `1e−4` (cumplida en todas las filas).
 - Compatibilidad de modelos: matrices 222×222 idénticas; 222 desplazamientos,
   147–151 reacciones, 264 fuerzas locales; `max_diferencia = 0,0 kN`.
-- Equilibrio explícito: `R_z = P_z = 29.652,60 kN`, residuo vertical 0,0 · `ok`;
-  horizontal `Fx=−1.716,04 / Fy=1.144,03` vs `P` · `ok`; momentos `ok`.
+- Equilibrio explícito: `R_z = P_z = 31.493,40 kN`, residuo vertical 0,0 · `ok`;
+  horizontal `Fx=−1.794,93 / Fy=1.196,62` vs `P` (1.794,93 / −1.196,62) · `ok`;
+  residual de momentos [−949,72; −663,17] · `ok`.
 - Estado: **`IMPLEMENTADO_Y_VERIFICADO_COMPLETO`**.
 
 ### 2.4 Nota honesta de la acta de superposición
@@ -201,7 +204,7 @@ de cuota** (`comparacion_cuota_aritmetica: "D/C <= 1" | "D/C > 1"`) sobre la
 | Fuera de la cuota aritmética | 0 | 0 |
 | Dentro del rango de interpolación N del P–M (modo `interpolado`) | **97 (100 %)** | **32 (100 %)** |
 | Fuera de rango de interpolación / no evaluables | **0** | **0** |
-| **D/C máx (demostración)** | **0,5014** | **0,2583** |
+| **D/C máx (demostración)** | **0,5373** | **0,2572** |
 | Columna crítica | **208 · nivel P4 · extremo j** | **25 · nivel EII_CP3 · extremo j** |
 
 ### 3.1 Detalle trazable de la columna crítica
@@ -209,10 +212,10 @@ de cuota** (`comparacion_cuota_aritmetica: "D/C <= 1" | "D/C > 1"`) sobre la
 **Edificio I, columna 208**
 - Elemento: `col_30.0_9.081_base_P4` (tag 208), nodos 207 (z=−4,01 m) / 206 (z=11,83 m), nivel P4.
 - Combinación: `1,0·G + 0,7·Q + 0,3·EX − 0,2·EY` (conjunto de demostración, NO normativa).
-- Demanda: `P_u = 1.228,533 kN`; `M_demanda = 596,5435 kN·m` (extremo j, componente dominante `Mz_j`).
-- Capacidad interpolada: `M_u(N=P_u) = 1.189,8027 kN·m`; modo `interpolado`;
+- Demanda: `P_u = 1.354,751 kN`; `M_demanda = 655,5926 kN·m` (extremo j, componente dominante `Mz_j`).
+- Capacidad interpolada: `M_u(N=P_u) = 1.220,1434 kN·m`; modo `interpolado`;
   límites de interpolación `N ∈ [−5.880, 19.600] kN` (21 puntos).
-- **D/C = 0,5014** (≤ 1 aritmético, con capacidad demo).
+- **D/C = 0,5373** (≤ 1 aritmético, con capacidad demo).
 - Procedencia de parámetros: geometría `P. 70x70` **DOCUMENTADA** (candidatos EI
   cielos/pisos; `columnas_tramos_ei.json`, 97 tramos); `fc = 40 MPa` **HIPOTESIS_DEL_GRUPO**
   (sin fuente independiente); armadura **BLOQUEADO_POR_PARAMETROS** → armado de demostración.
@@ -222,10 +225,10 @@ de cuota** (`comparacion_cuota_aritmetica: "D/C <= 1" | "D/C > 1"`) sobre la
 **Edificio II, columna 25**
 - Elemento: `EII_CP4_COL_007` (tag 25), nodos 603029 (z=7,87 m) / 604029 (z=11,83 m), nivel EII_CP3.
 - Combinación: idéntica (conjunto de demostración).
-- Demanda: `P_u = 721,585 kN`; `M_demanda = 272,1219 kN·m` (extremo j, componente dominante `My_j`).
-- Capacidad interpolada: `M_u(N=P_u) = 1.053,5791 kN·m`; modo `interpolado`;
+- Demanda: `P_u = 777,607 kN`; `M_demanda = 274,3842 kN·m` (extremo j, componente dominante `My_j`).
+- Capacidad interpolada: `M_u(N=P_u) = 1.066,6417 kN·m`; modo `interpolado`;
   límites `N ∈ [−5.880, 19.600] kN` (21 puntos).
-- **D/C = 0,2583** (≤ 1 aritmético, con capacidad demo).
+- **D/C = 0,2572** (≤ 1 aritmético, con capacidad demo).
 - Procedencia de parámetros: geometría **DOCUMENTADA** 0,70×0,70 (`MODELO_FE_GEOMETRIA_NODOS.json`,
   222 nodos/32 columnas); `fc = 35 MPa` **DOCUMENTADO** G35 (`eii_viewer.json`, Ec=27.805,6 MPa,
   γ=24,517); armadura **BLOQUEADO_POR_PARAMETROS** → armado de demostración.
