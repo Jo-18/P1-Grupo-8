@@ -1,17 +1,16 @@
-# Semana 4 — Cobertura física, cierre de topología y demo Unity (estado de trabajo)
+# Semana 4 — Cobertura física, cierre de topología y demo Unity
 
-**Reporte de avance interno** (no informe final de entrega). Objetivo Semana 4:
-demo en vivo en Unity el **miércoles 16/09 antes de las 10:30**; ensayo el martes;
-comprobación/publicación el miércoles. Trabajo por hitos pequeños; los cambios de
-esta entrega quedaron consolidados en el commit Semana 4 de esta rama.
+**Informe de entrega del laboratorio Semana 4.** El viewer Unity y sus datos de
+resultados están publicados en la rama `modelo-fiel-cobertura-completa` para la
+demostración en vivo del 16/09/2026. Las limitaciones del modelo se declaran abajo.
 
-## 1. Estado del modelo (2026-09-15)
+## 1. Estado del modelo (2026-09-16)
 
 | Aspecto | Estado |
 |---|---|
 | Apoyos artificiales (islas 206/209/212/457) | **0** tras el hito de cierre (Ver Sección 0.8 de `INFORME_COBERTURA_FISICA.md`) |
 | Denominación del estado | **MODELO_PARCIAL_DIAGNOSTICO** (la reconciliación G contable NO valida por sí el análisis ni los caminos de carga) |
-| `COMB_*.json` (18) | **OBSOLETOS_POR_CAMBIO_DE_TOPOLOGIA**; el exporter los bloquea al escribir y no mezcla topologías (en memoria: solo G/Q/EX/EY) |
+| `COMB_*.json` (18) | **CALCULADAS**: 9 combinaciones NCh3171 por edificio, regeneradas sobre la topología congelada; equilibrio 9/9 en EI y EII. El exporter publica 13 casos por edificio (G/Q/EX/EY + 9 combinaciones). |
 | Núcleo P2 | **excluido** del FE (brecha declarada, ver §4) |
 | Pesos de postes/diagonales torre y altura C.H. | PENDIENTE_DE_FUENTE |
 | Pruebas de cierre de islas | `tests/islas/test_cierre_islas.py` → 5 OK + 4 subtests OK |
@@ -25,7 +24,7 @@ Pipeline vigente regenerado: `python -X utf8 -m src.modelo_fiel.modelo_fe_comple
 Base: `_cobertura` del exporter sobre la geometría del viewer (objetos físicos;
 `con_fuente` = objeto con elementos FE con resultados válidos en los casos
 activos; `sin` = SIN_RESULTADO/PENDIENTE, nunca valores de vecinos ni ocultos).
-Casos activos hoy: **G/Q/EX/EY** (combos pendientes de regenerar).
+Casos activos: **G/Q/EX/EY y las 9 combinaciones NCh3171** regeneradas para EI y EII.
 
 ### 2.1 Edificio I (306 objetos de columnas/vigas/muros) — medición exporter (2026-09-15)
 
@@ -150,10 +149,10 @@ Evidencia de que el resto no es mapeo: los FE cercanos no coinciden en eje
 | Requisito | Detalle requerido | Estado |
 |---|---|---|
 | Ficha de selección | viewer_id, elementTag FE, nodos i/j, sección, material, ejes locales, condiciones/restricciones, N, Vy, Vz, T, My, Mz, unidades, caso/combo activo | **Listo en Unity** (`EsfuerzosController.DrawFicha`): + material (fc/ref/nota), reacción G base, desplazamientos nodo i/j del caso, y bloque P–M |
-| Deformada | desplazamientos nodales del solver (G/Q/EX/EY ya publicados) | **Listo en Unity**: toggle + slider amplificación (1–300), caso activo o envolvente (max\|u\| por componente sobre U1..U4), valores reales no escalados en ficha |
+| Deformada | desplazamientos nodales del solver para los casos publicados | **Listo en Unity**: toggle + slider amplificación (1–300), caso activo o envolvente (max\|u\| por componente sobre U1..U4), valores reales no escalados en ficha |
 | Diagramas | ≥1 momento validado; ≥1 axial/corte validado | **Validación independiente** (`validar_diagramas_hitob.py`): recomposición U1..U4 desde G/Q/EX/EY, EI 378/378 OK, EII 253/253 OK, peor Δ=6e-6 kN |
-| Tributarias | regiones por losa→soporte (`por_viga.json`) | Existe `exportar_regiones_tributarias.py`; verificar hacia viewer |
-| Cargas y apoyos | mostrar G/Q nodos y apoyos reales (48 base + vínculos) | Reacción G base (Rx,Ry,Rz,Mx,My,Mz) leída de `apoyos.reacciones_G` en la ficha de columnas |
+| Tributarias | regiones por losa→soporte (`por_viga.json`) | Visualización e inspección disponibles en el viewer; evidencia `capturas/aceptacion7_T6_cargas_apoyos_trib.png` |
+| Cargas y apoyos | mostrar G/Q nodos y apoyos reales (48 base + vínculos) | Capas visibles en el viewer; reacción G base (Rx,Ry,Rz,Mx,My,Mz) leída de `apoyos.reacciones_G` en la ficha de columnas; evidencia `capturas/aceptacion7_T6_cargas_apoyos_trib.png` |
 | **P–M + D/C** | una columna Y un muro; P y M concurrentes; caso activo; rebar explícito si falta el armado | **Columna y Muro con P–M y demanda concurrente** (§7, `pm_capacidad_demanda_hitob.py`): col. crítica + muro EII tag 76 con armadura **HIPÓTESIS declarada** (no vale como comprobación) |
 | Trazabilidad elementTag | OpenSees ↔ Unity ↔ results ↔ sección/capacidad | `correspondencia` mapea viewer_id; ficha unifica tag FE + viewer_id + sección + curva P–M |
 | Objetos sin resultados | quedan `SIN_RESULTADO`/`PENDIENTE` (nunca vecinos ni ocultos) | Cumplido en el exporter |
@@ -181,7 +180,7 @@ incluida `envolvente_NCh3171`).
    sha256 de topología/preflight registrados): no se modifican nodos, elementos,
    restricciones ni cargas del perfil hasta después de la demo.
 
-## 7. Próximos hitos
+## 7. Trabajo completado y pendientes
 
 - [x] **Hito A1**: clasificar todas las vigas/columnas `SIN_CORRESPONDENCIA_FE`
       (categorías 1–4) y resolver el mapeo demostrable (`V_EI_CP2_x1749` ↔ 317).
@@ -193,7 +192,7 @@ incluida `envolvente_NCh3171`).
       con **P y M del mismo caso**; columna crítica EI `COL_EI_CP1S_C_E_0.73_1.35`
       (tag 18, U4_EY_NEG, P=27,4 kN, M=1359,8 kN·m, Mu=895,4, **D/C=1,5187**) y
       EII tag 10 `EII_CP3` (U2_EX_POS, P=622,4, M=2105,1, Mu=1030,4, **D/C=2,0429**);
-      muro EI y EII tag 76 (`EII_CP1S_M_001`, U3_EY_NEG, P=550,4, M=8661,2, Mu=7412,9,
+      muro EII tag 76 (`EII_CP1S_M_001`, U3_EY_NEG, P=550,4, M=8661,2, Mu=7412,9,
       **D/C=1,1684**) con armadura HIPÓTESIS (`EVALUACION_HIPOTESIS_BLOQUEADA_ARMADURA`).
       Tests `tests/unity_esfuerzos/test_pm_capacidad_demanda_hitob.py` 5 OK.
 - [x] **Hito B — validación independiente** (`validar_diagramas_hitob.py`): sin
@@ -213,8 +212,7 @@ incluida `envolvente_NCh3171`).
       (N[U1]=0). Tests 5 OK.
 - [x] **`guia_demo_semana04.md`** actualizada al Hito B (flows A–D + checks).
 - [ ] **Hito A2**: repre de muros EI P1–P4 o declararlos pendientes (23 objetos).
-- [ ] Ensayo interactivo en Unity (martes) y selección distribuida ≥2 objetos/nivel.
-- [ ] Actualización de informes finales con evidencia regenerable (ver §8).
+- [ ] Selección distribuida ≥2 objetos/nivel durante la demostración en vivo.
 
 Evidencia numérica regenerable (Hito B, una línea por cadena):
 `python -X utf8 -m tests.unity_esfuerzos.test_exportar_esfuerzos_funcional_viewer`
