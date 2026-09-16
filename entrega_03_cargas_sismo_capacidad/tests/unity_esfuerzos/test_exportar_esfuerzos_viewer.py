@@ -10,7 +10,8 @@ from src.unity_esfuerzos.exportar_esfuerzos_para_viewer import (
     leer_metadata_II, leer_superposicion,
 )
 
-ESTADOS_VALIDOS = {"1A1", "CONTENIDO", "SIN_CORRESPONDENCIA_VIEWER"}
+ESTADOS_VALIDOS = {"1A1", "CONTENIDO", "SIN_CORRESPONDENCIA_VIEWER",
+                   "SIN_GEOMETRIA_FISICA_3D"}
 
 
 class TestExportacionEstructura(unittest.TestCase):
@@ -134,7 +135,8 @@ class TestCorrespondencia(unittest.TestCase):
             for e in d["elementos"]:
                 c = e["correspondencia"]
                 self.assertIn(c["estado"], ESTADOS_VALIDOS)
-                if c["estado"] == "SIN_CORRESPONDENCIA_VIEWER":
+                if c["estado"] in ("SIN_CORRESPONDENCIA_VIEWER",
+                                   "SIN_GEOMETRIA_FISICA_3D"):
                     self.assertIsNone(c["viewer_id"])
                     self.assertIsNone(c["viewer_nivel"])
                 else:

@@ -232,57 +232,137 @@ class MarcoFECompletoEII(Marco):
             self._fix_base(self._get_node(u, v, base_z))
 
     def _add_muros(self, cotas, orden, base_z):
-        muro_lines = {}
+        """Ensamblaje por FAMILIA fisica de muro (misma linea y rango con
+        solape), no por id ni por (ua,va,ub,vb) completos: el mismo muro puede
+        cambiar de extremos entre niveles (p.ej. M_002DER en CP1S/CP1 con rango
+        y[0.35,6.15] y M_002B en CP2..CP4 con y[3.18,6.15]). Se crean montantes
+        en las cotas de DEMARCACION (union de extremos de la familia) con nodo
+        en CADA nivel en que la familia cubre esa cota, y un elemento vertical
+        entre niveles consecutivos cubiertos (nunca un puente que salte un
+        piso sin conexion). Cada montante lleva la tributaria de longitud del
+        muro en ese nivel (t x L_local/2 por particion de rango), conservando
+        el area total t x L una sola vez (sin duplicar rigidez ni peso propio).
+        Extensiones del muro cuya fuente solo las documenta hasta un nivel
+        (p.ej. el dado y[0.35,3.18] de M_002B solo en CP1S/CP1) se modelan como
+        montante corto que termina en ese nivel y se apoyan en el diafragma/
+        portico ahi; NO se prolongan hacia arriba sin evidencia."""
+        E = 1e-3
+        lineas = {}
         for cod in orden:
             for m in self.niveles[cod].muros:
-                key = (round(m["ua"], 3), round(m["va"], 3),
-                       round(m["ub"], 3), round(m["vb"], 3))
-                d = muro_lines.setdefault(
-                    key, {"espesor_por_nivel": {}, "niveles": []})
-                d["espesor_por_nivel"][cod] = m["espesor"]
-                if cod not in d["niveles"]:
-                    d["niveles"].append(cod)
-        ejes = []
-        for key, info in muro_lines.items():
-            ua, va, ub, vb = key
-            L = math.hypot(ub - ua, vb - va)
-            if L < 1e-6:
-                continue
-            nive = sorted(info["niveles"], key=cotas.__getitem__)
-            ejes.append({
-                "eje": [ua, va, ub, vb], "niveles": nive,
-                "espesores": {c: info["espesor_por_nivel"][c] for c in nive}})
-            top = nive[-1]
-            z_top = cotas[top]
-            for (ex, ey) in ((ua, va), (ub, vb)):
+                ua, va, ub, vb = m["ua"], m["va"], m["ub"], m["vb"]
+                if abs(ua - ub) < E:
+                    linea = ("V", round(ua, 3))
+                    a, b = round(min(va, vb), 3), round(max(va, vb), 3)
+                elif abs(va - vb) < E:
+                    linea = ("H", round(va, 3))
+                    a, b = round(min(ua, ub), 3), round(max(ua, ub), 3)
+                else:
+                    self.pendientes["muros"].append({
+                        "id": m["id"], "nivel": cod,
+                        "estado": "PENDIENTE_DE_FUENTE",
+                        "nota": "muro no axis-alineado (no agrupable por linea)"})
+                    continue
+                lineas.setdefault(linea, []).append({
+                    "cod": cod, "id": m["id"], "espesor": m["espesor"],
+                    "a": a, "b": b})
+        familias = []
+        for linea, ints in lineas.items():
+            n = len(ints)
+            padre = list(range(n))
+
+            def find(x):
+                while padre[x] != x:
+                    padre[x] = padre[padre[x]]
+                    x = padre[x]
+                return x
+
+            def union(x, y):
+                rx, ry = find(x), find(y)
+                if rx != ry:
+                    padre[ry] = rx
+            for i in range(n):
+                for j in range(i + 1, n):
+                    if min(ints[i]["b"], ints[j]["b"]) \
+                       - max(ints[i]["a"], ints[j]["a"]) > E:
+                        union(i, j)
+            grupos = {}
+            for i in range(n):
+                grupos.setdefault(find(i), []).append(ints[i])
+            for members in grupos.values():
+                demark = sorted({m["a"] for m in members}
+                                | {m["b"] for m in members})
+                familias.append({
+                    "linea": linea, "demarcacion": demark,
+                    "por_nivel": {m["cod"]: m for m in members}})
+        def _tributaria(a, b, demark, E1):
+            """Reparto de longitud del muro a cada montante (cota de
+            demarcacion presente en el rango [a,b] del nivel): la mitad de cada
+            tramo adyacente. Conserva el area total t x (b-a) por nivel."""
+            pts = [q for q in demark if a - E1 <= q <= b + E1]
+            if not pts:
+                return {}
+            out = {}
+            for k, q in enumerate(pts):
+                previo = pts[k - 1] if k > 0 else None
+                nxt = pts[k + 1] if k < len(pts) - 1 else None
+                izq = (q - previo) / 2.0 if previo is not None else 0.0
+                der = (nxt - q) / 2.0 if nxt is not None else 0.0
+                out[q] = izq + der
+            return out
+
+        self.ejes_muros = []
+        for fam in familias:
+            linea, demark = fam["linea"], fam["demarcacion"]
+            por_nivel = fam["por_nivel"]
+            nive = sorted(por_nivel, key=cotas.__getitem__)
+            self.ejes_muros.append({
+                "linea": {"tipo": linea[0], "coordenada": linea[1]},
+                "demarcacion": demark, "niveles": nive,
+                "por_nivel": {c: {"espesor": por_nivel[c]["espesor"],
+                                  "rango": [por_nivel[c]["a"],
+                                            por_nivel[c]["b"]],
+                                  "id": por_nivel[c]["id"]}
+                              for c in nive}})
+            for p in demark:
+                cubre = [c for c in nive
+                         if por_nivel[c]["a"] - E <= p <= por_nivel[c]["b"] + E]
+                if not cubre:
+                    continue
+
+                def coords(q):
+                    if linea[0] == "V":
+                        return linea[1], q
+                    return q, linea[1]
+
+                ex, ey = coords(p)
                 last = None
-                last_level = None
-                for cod in nive:
-                    zc = cotas[cod]
+                for c in cubre:
+                    zc = cotas[c]
                     tag = self._snap_node_scaffold(ex, ey, zc)
                     if last is not None:
-                        Lt = L / 2.0
-                        sec = info["espesor_por_nivel"][cod]
+                        sec = por_nivel[c]["espesor"]
+                        trib_reparto = _tributaria(
+                            por_nivel[c]["a"], por_nivel[c]["b"],
+                            demark, E)
+                        Lt = trib_reparto.get(p)
+                        if Lt is None or Lt <= 0:
+                            Lt = (por_nivel[c]["b"] - por_nivel[c]["a"]) / 2.0
                         sec_info = SEC.seccion_muro(sec, Lt)
                         self._add_vertical(
                             "muro", "M %sx%.2fx2" % (sec, Lt),
-                            "muro_%s_%s_%s" % (ex, ey, cod), cod,
+                            "muro_%s_%s_%s" % (ex, ey, c), c,
                             last, tag, sec_info)
                     last = tag
-                btag = self._snap_node_scaffold(ex, ey, base_z)
-                low = nive[0]
-                if low == BASE:
-                    self._fix_base(btag)
-                    continue
-                sec_fix = info["espesor_por_nivel"][low]
-                sec_fix_info = SEC.seccion_muro(sec_fix, L / 2.0)
-                self._fix_base(btag)
-                top_tag = self._snap_node_scaffold(ex, ey, cotas[low])
-                self._add_vertical(
-                    "muro", "M %sx%.2fx2" % (sec_fix, L / 2.0),
-                    "muro_%s_%s_base_%s" % (ex, ey, low), low,
-                    btag, top_tag, sec_fix_info)
-        self.ejes_muros = ejes
+                if cubre[0] == BASE:
+                    self._fix_base(self._snap_node_scaffold(ex, ey, cotas[BASE]))
+                else:
+                    self.pendientes["muros"].append({
+                        "linea": linea, "cota_demarcacion": p,
+                        "niveles": cubre,
+                        "estado": "PENDIENTE_DE_FUENTE",
+                        "nota": ("montante sin cobertura en EII_CP1S; sin tramo "
+                                 "base->nivel inventado")})
         # receptores por id original de muro (los ids cambian por nivel)
         for cod in orden:
             zc = cotas[cod]
@@ -991,7 +1071,8 @@ def correr_combinadas(marco, guardar=True) -> dict:
     de sus payloads (cargas nodales sismicas); G y Q se recomputan del modelo."""
     from src.cargas import caso_sismico as CS
     from src.modelo_fiel.combinaciones_nch3171 import (
-        COMBINACIONES_NCH3171, ensamblar_plano, resultantes)
+        COMBINACIONES_NCH3171, ESTADO_COMBINACION_CALCULADA,
+        ensamblar_plano, resultantes)
     cargas, _ = _cargas_losas_G(marco)
     pp = _pp_elementos(marco)
     for t, f in pp.items():
@@ -1040,6 +1121,7 @@ def correr_combinadas(marco, guardar=True) -> dict:
             "direccion": combo["direccion"],
             "expresion": combo["expresion"],
             "factores": combo["factores"],
+            "estado": ESTADO_COMBINACION_CALCULADA,
             "norma": "NCh3171.Of2008 (ed. 2021)",
             "metodo": ("corrida EXPLICITA de OpenSees con el patron de cargas "
                        "nodales combinado (no superposicion post-proceso)"),

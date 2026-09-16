@@ -15,7 +15,7 @@ namespace LabViewer
         public string Seccion;
         public string NodoI, NodoJ;
         public Vector3 Pi, Pj;    // locales (u, cota, v)
-        public string EstadoCorr; // 1A1 | CONTENIDO | SIN_CORRESPONDENCIA_VIEWER
+        public string EstadoCorr; // 1A1 | CONTENIDO | SIN_CORRESPONDENCIA_VIEWER | SIN_GEOMETRIA_FISICA_3D
         public string ViewerId;
         public string ViewerNivel;
         public Dictionary<string, float[]> Fuerzas = new Dictionary<string, float[]>(); // caso -> 12
@@ -27,6 +27,26 @@ namespace LabViewer
         public float[] EnvValores = new float[12];
         public string[] EnvCasos = new string[12];
         public bool EnvOk;
+
+        // material (Hito B), desde el bloque `material` del elemento
+        public bool TieneMaterial;
+        public float HcFcMpa;
+        public string MatRef;
+        public string MatNota;
+
+        // ejes locales (bloque `ejes_locales` del elemento): Z_barra en frame Unity
+        // y vector de referencia del geomTransf del FE (verificacion de la convencion
+        // viewer<->FE de la ficha).
+        public bool TieneEjes;
+        public float[] EjeZBarra = new float[3];
+        public float[] EjeRefGeomTransf = new float[3];
+
+        // restricciones (bloque `restricciones` del elemento): estado por nodo
+        // (BASE_FIJA_6DOF | LIBRE) + nota de la convencion de apoyo FE.
+        public bool TieneRestricciones;
+        public bool RestriccionesFlag;
+        public string RestrNodoI, RestrNodoJ;
+        public string RestrNota;
 
         public float[] De(string caso) => Fuerzas.TryGetValue(caso, out var v) ? v : null;
         public bool Tiene(string caso)
@@ -81,6 +101,49 @@ namespace LabViewer
         public Vector3 LocalA, LocalB;
         /// <summary>Material original del tubo (para restaurar al quitar el resaltado).</summary>
         public Material OriginalMaterial;
+    }
+
+    /// <summary>Curva P-M cargada desde pm_capacidad_demanda_{I,II}.json (Hito B):
+    /// M_u(N) con N compresion positiva (kN) y M en kN*m.</summary>
+    public class PMCurva
+    {
+        public readonly List<float> N = new List<float>();
+        public readonly List<float> M = new List<float>();
+        public string Seccion;
+        public float FcMpa;
+        public float MuN0;
+        public string Clasif;
+        public string EstadoArmadura;
+        public string Nota;
+        public bool MaxMQueda;
+        public float PlotScaleM = 1f;
+        public float PlotScaleN = 1f;
+        public Texture2D PlotTex;
+    }
+
+    /// <summary>Fila de demanda concurrente (P, M del MISMO caso) de un elemento FE.</summary>
+    public class PMFila
+    {
+        public int Tag;
+        public string ViewerId;
+        public string Nivel;
+        public string Caso;
+        public string Expresion;
+        public float P;
+        public float M;
+        public float Mu;
+        public float DC;
+        public bool EsMuro;
+        public string Nota;
+    }
+
+    /// <summary>Paquete P-M de un edificio: curva de capacidad + demanda por elemento.</summary>
+    public class PMCapacidad
+    {
+        public PMCurva Columna;
+        public readonly Dictionary<int, PMFila> PorElemento = new Dictionary<int, PMFila>();
+        public PMFila Muro;
+        public PMCurva MuroCurva;
     }
 
     /// <summary>
@@ -189,6 +252,32 @@ namespace LabViewer
 
         private Vector2 _scrollUI;
 
+        /// <summary>Panel fijo compacto para la presentacion: oculta el bloque de
+        /// diagnostico (filtros, envolvente, colorbar, contadores y ficha) y solo
+        /// deja edificio, caso/combinacion, magnitud, representacion, escala y los
+        /// toggles de overlay/diagrama/deformada.</summary>
+        public bool ModoPresentacion;
+        /// <summary>Bloque de diagnostico plegable del panel normal (filtros,
+        /// envolvente, colorbar, contadores y ficha detallada).</summary>
+        public bool DiagnosticoVisible = true;
+
+        // --- Hito B: deformada amplificada + ficha material/reactivos + panel P-M ---
+        public bool MostrarDeformada;
+        public float Amplificacion = 60f;
+        private readonly Dictionary<string, Dictionary<string, Vector3>> _defNodos =
+            new Dictionary<string, Dictionary<string, Vector3>>();
+        // _despCaso[b][caso][tagNodo] = [du, dcota, dv, rx, ry, rz]
+        private readonly Dictionary<string, Dictionary<string, Dictionary<string, float[]>>>
+            _despCaso = new Dictionary<string, Dictionary<string, Dictionary<string, float[]>>>();
+        // reacciones_G[b][tagNodo] = [Rx, Ry, Rz, Mx, My, Mz]
+        private readonly Dictionary<string, Dictionary<string, float[]>> _reaccionesG =
+            new Dictionary<string, Dictionary<string, float[]>>();
+        private readonly Dictionary<string, object> _materialesTop = new Dictionary<string, object>();
+        private readonly Dictionary<string, PMCapacidad> _pm = new Dictionary<string, PMCapacidad>();
+        private readonly List<GameObject> _deformadaGo = new List<GameObject>();
+        private string _defUltimoCaso = "";
+        private string _defUltimaB = "";
+
         public int TotalElementos(string b)
         {
             int n = 0;
@@ -252,18 +341,69 @@ namespace LabViewer
             return true;
         }
 
+        /// <summary>Lista blanca de correspondencia para el modo normal: solo
+        /// 1A1/CONTENIDO. Todo lo demas (SIN_CORRESPONDENCIA_VIEWER,
+        /// SIN_GEOMETRIA_FISICA_3D para barras analiticas sin tramo fisico en el
+        /// viewer, stubs...) queda SOLO en el modo de diagnostico "Todos los FE".</summary>
+        private static bool EsCorrespondenciaNormal(EFElemento e)
+        {
+            return e != null && (e.EstadoCorr == "1A1" || e.EstadoCorr == "CONTENIDO");
+        }
+
         private static bool EsSinCorrespondencia(EFElemento e)
         {
-            return string.IsNullOrEmpty(e.EstadoCorr) || e.EstadoCorr == "SIN_CORRESPONDENCIA_VIEWER";
+            return !EsCorrespondenciaNormal(e);
         }
 
         /// <summary>Fija la seleccion FE + su viewer vinculado (si existe) y re-aplica
         /// el resaltado del tubo. No toca la lista de segmentos CONTENIDO.</summary>
+        /// <remarks>SINCRONIZA el edificio activo con la seleccion (EI&harr;EII): si el FE
+        /// elegido pertenece a un edificio distinto del activo, cambia Edificio y
+        /// reconstruye overlay+deformada ANTES de volver (la cabecera "Edificio I/II"
+        /// queda coherente con la ficha sin usar el toggle manual).</remarks>
         private void SetSeleccion(EFElemento e, ElementRef viewer)
         {
             SelectedFE = e;
             ViewerSel = viewer;
+            // La ficha "Inspeccion" del ViewerController se alimenta de su _selected
+            // (ElementRef de la geometria original). Se sincroniza aqui para que
+            // cambien JUNTOS al seleccionar FE por script/tool/panel (el clic normal
+            // tambien pasa por aqui via ProcesarClic). Sin geometria (SIN_CORRESPONDENCIA)
+            // se limpia: el panel no debe quedarse con un elemento anterior.
+            if (_viewer != null) _viewer.SincronizarSeleccion(viewer);
+            // Si el elemento elegido tiene bloque P-M (muro demo o columna por tag), el
+            // bloque es el ULTIMO del scroll de diagnostico: auto-scroll ahi para que la
+            // curva, el punto de demanda, D/C y el caso quedan visibles al seleccionar.
+            _scrollUI.y = TienePmVisible(e) ? float.MaxValue : 0f;
+            if (e != null && !string.IsNullOrEmpty(e.Building) && e.Building != Edificio)
+            {
+                Edificio = e.Building;
+                if (OverlayOn) RebuildOverlay();      // recrea tuberias/escala/resaltado/diagrama
+                else ReaplicarResaltado();
+                MarcarDiagramaSucio();
+                return;
+            }
             ReaplicarResaltado();
+            MarcarDiagramaSucio();   // seleccion: el diagrama local pertenece a este FE
+        }
+
+        /// <summary>Sincroniza el panel "Inspeccion" del ViewerController con el
+        /// ElementRef de geometria original (null limpia). Sin geometria (null)
+        /// la Inspeccion no debe quedarse con un elemento anterior.</summary>
+        private void SincronizarInspeccion(ElementRef r)
+        {
+            if (_viewer != null) _viewer.SincronizarSeleccion(r);
+        }
+
+        /// <summary>Fija _diagramaSucia para que DrawFicha redibuje el diagrama
+        /// local SOLO cuando cambio algo relevante (nunca por frame). Todo trigger
+        /// (seleccion/segmento/edificio/caso/comb/envolvente/magnitud/repre/escala/
+        /// toggle) debe llamar esta.</summary>
+        private void MarcarDiagramaSucio()
+        {
+            _diagramaSucia = true;
+            if (SelectedFE == null) return;
+            DrawDiagrams(SelectedFE);   // valores ya disponibles: dibujo INMEDIATO
         }
 
         /// <summary>Todos los elementos FE de un edificio (para pruebas y paneles).</summary>
@@ -272,6 +412,17 @@ namespace LabViewer
             var l = new List<EFElemento>();
             foreach (var e in _elementos) if (e.Building == b) l.Add(e);
             return l;
+        }
+
+        /// <summary>Info resumida del muro P-M demostrado (viewer_id/tag/D/C), para
+        /// diagnostico y pruebas de aceptacion. Vacio si no hay muro demo.</summary>
+        public string PmMuroInfo(string b)
+        {
+            if (!_pm.TryGetValue(b, out var cap) || cap.Muro == null) return "";
+            return b + ":" + cap.Muro.ViewerId + ":tag" + cap.Muro.Tag
+                   + ":D_C=" + cap.Muro.DC.ToString("0.00")
+                   + ":P=" + cap.Muro.P.ToString("0.0")
+                   + ":M=" + cap.Muro.M.ToString("0.0");
         }
 
         /// <summary>Convierte una posicion en el frame local (u, cota, v) al mundo.</summary>
@@ -303,6 +454,7 @@ namespace LabViewer
             if (!Physics.Raycast(ray, out hit, 3000f))
             {
                 SelectedFE = null; ViewerSel = null; Segmentos.Clear(); SegmentoIdx = -1;
+                SincronizarInspeccion(null);
                 SetResaltado(null);
                 return null;
             }
@@ -327,6 +479,7 @@ namespace LabViewer
                 if (FiltroCorr != "Todos los FE")
                 {
                     SelectedFE = null; ViewerSel = null; Segmentos.Clear(); SegmentoIdx = -1;
+                    SincronizarInspeccion(null);
                     SetResaltado(null);
                     return null;
                 }
@@ -335,6 +488,7 @@ namespace LabViewer
                 return null;
             }
             SelectedFE = null; ViewerSel = null; Segmentos.Clear(); SegmentoIdx = -1;
+            SincronizarInspeccion(null);
             SetResaltado(null);
             return null;
         }
@@ -359,6 +513,7 @@ namespace LabViewer
             {
                 // Sin correspondencia en este edificio: NO seleccionar ninguna otra barra.
                 SelectedFE = null; Segmentos.Clear(); SegmentoIdx = -1;
+                SincronizarInspeccion(null);
                 SetResaltado(null);
                 return null;
             }
@@ -648,7 +803,10 @@ namespace LabViewer
                 }
                 try
                 {
-                    CargarEdificio(b, System.IO.File.ReadAllText(path));
+                    string texto = System.IO.File.ReadAllText(path);
+                    CargarEdificio(b, texto);
+                    var raiz = Json.AsObj(Json.Parse(texto));
+                    if (raiz != null) CargarAuxiliares(b, raiz);
                     _cargadoPorEdificio[b] = true;
                 }
                 catch (System.Exception ex)
@@ -656,6 +814,178 @@ namespace LabViewer
                     Debug.LogError("[EsfuerzosFE] Error cargando " + path + ": " + ex.Message);
                 }
             }
+        }
+
+        private void CargarAuxiliares(string b, Dictionary<string, object> raiz)
+        {
+            _reaccionesG[b] = new Dictionary<string, float[]>();
+            if (raiz.TryGetValue("apoyos", out var apoRaw) && Json.AsObj(apoRaw) != null)
+            {
+                var apo = Json.AsObj(apoRaw);
+                var rg = apo.TryGetValue("reacciones_G", out var rgRaw) ? Json.AsObj(rgRaw) : null;
+                if (rg != null)
+                    foreach (var kv in rg)
+                        _reaccionesG[b][kv.Key] = Floats6(kv.Value);
+            }
+
+            _materialesTop[b] = raiz.TryGetValue("materiales", out var mt) ? mt : null;
+
+            _defNodos[b] = new Dictionary<string, Vector3>();
+            _despCaso[b] = new Dictionary<string, Dictionary<string, float[]>>();
+            if (raiz.TryGetValue("deformada", out var defRaw) && Json.AsObj(defRaw) != null)
+            {
+                var def = Json.AsObj(defRaw);
+                var nodos = def.TryGetValue("nodos", out var noRaw) ? Json.AsObj(noRaw) : null;
+                if (nodos != null)
+                    foreach (var kv in nodos)
+                    {
+                        var arr = Json.AsArr(kv.Value);
+                        if (arr == null || arr.Count < 3) continue;
+                        _defNodos[b][kv.Key] = new Vector3(
+                            (float)Json.ToNum(arr[0]), (float)Json.ToNum(arr[1]),
+                            (float)Json.ToNum(arr[2]));
+                    }
+                var desp = def.TryGetValue("desplazamientos_por_caso", out var dpRaw)
+                    ? Json.AsObj(dpRaw) : null;
+                if (desp != null)
+                    foreach (var kv in desp)
+                    {
+                        var porNodo = Json.AsObj(kv.Value);
+                        if (porNodo == null) continue;
+                        var d = new Dictionary<string, float[]>();
+                        foreach (var nd in porNodo)
+                            d[nd.Key] = Floats6(nd.Value);
+                        _despCaso[b][kv.Key] = d;
+                    }
+            }
+
+            CargarPMCapacidad(b);
+        }
+
+        private void CargarPMCapacidad(string b)
+        {
+            var cap = new PMCapacidad();
+            string path = System.IO.Path.Combine(
+                Application.streamingAssetsPath, "lab_data", "edificios", b,
+                "results", "pm_capacidad_demanda_" + b + ".json");
+            if (System.IO.File.Exists(path))
+            {
+                try
+                {
+                    var raiz = Json.AsObj(Json.Parse(System.IO.File.ReadAllText(path)));
+                    if (raiz != null)
+                    {
+                        var capRaw = raiz.TryGetValue("capacidad", out var c) ? Json.AsObj(c) : null;
+                        if (capRaw != null)
+                        {
+                            cap.Columna = ParseCurva(capRaw, "curva_columna");
+                            cap.Columna.Seccion = SeccionEtiqueta(capRaw, "seccion");
+                            cap.Columna.FcMpa = (float)Json.Num(capRaw, "fc_MPa");
+                            cap.Columna.MuN0 = (float)Json.Num(capRaw, "M_u_N0_kN_m");
+                            cap.Columna.Clasif = Json.Str(capRaw, "clasificacion") ?? "";
+                            cap.Columna.EstadoArmadura = Json.Str(capRaw, "estado_armadura") ?? "";
+                        }
+                        var pe = raiz.TryGetValue("por_elemento", out var peRaw)
+                            ? Json.AsObj(peRaw) : null;
+                        if (pe != null)
+                            foreach (var kv in pe)
+                            {
+                                var f = ParseFila(kv.Value, false);
+                                if (f != null) cap.PorElemento[f.Tag] = f;
+                            }
+                        if (raiz.TryGetValue("muro_demostrado", out var mRaw)
+                            && Json.AsObj(mRaw) != null)
+                        {
+                            var m = Json.AsObj(mRaw);
+                            var dem = m.TryGetValue("demanda", out var dd) ? Json.AsObj(dd) : null;
+                            if (dem != null)
+                            {
+                                var el = dem.TryGetValue("elemento_demostrado", out var ee)
+                                    ? Json.AsObj(ee) : null;
+                                var conc = dem.TryGetValue("demanda_concurrente", out var cc)
+                                    ? Json.AsObj(cc) : null;
+                                var fila = new PMFila
+                                {
+                                    EsMuro = true,
+                                    Tag = el != null ? (int)Json.Num(el, "tag") : -1,
+                                    ViewerId = el != null ? (Json.Str(el, "viewer_id") ?? "") : "",
+                                    Nivel = el != null ? (Json.Str(el, "nivel") ?? "") : "",
+                                    Caso = conc != null ? (Json.Str(conc, "caso") ?? "") : "",
+                                    Expresion = conc != null ? (Json.Str(conc, "expresion") ?? "") : "",
+                                    P = conc != null ? (float)Json.Num(conc, "P_u_kN") : 0f,
+                                    M = conc != null ? (float)Json.Num(conc, "M_demanda_kN_m") : 0f,
+                                    Mu = (float)Json.Num(dem, "M_u_N_kN_m"),
+                                    DC = (float)Json.Num(dem, "D_C"),
+                                };
+                                fila.Nota = Json.Str(m, "nota_armadura") ?? "";
+                                cap.Muro = fila;
+                                var capPm = m.TryGetValue("capacidad_pm", out var cp)
+                                    ? Json.AsObj(cp) : null;
+                                if (capPm != null)
+                                {
+                                    cap.MuroCurva = ParseCurva(capPm, "curva_muro");
+                                    cap.MuroCurva.Clasif = Json.Str(capPm, "clasificacion") ?? "";
+                                    cap.MuroCurva.FcMpa = (float)Json.Num(capPm, "fc_MPa");
+                                    var sec2 = capPm.TryGetValue("seccion", out var s2)
+                                        ? Json.AsObj(s2) : null;
+                                    if (sec2 != null) cap.MuroCurva.Seccion = Json.Str(sec2, "etiqueta") ?? "";
+                                    cap.MuroCurva.EstadoArmadura = Json.Str(capPm, "armadura_hipotesis") ?? "";
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogWarning("[EsfuerzosFE] P-M " + path + " no cargado: " + ex.Message);
+                }
+            }
+            _pm[b] = cap;
+        }
+
+        private PMCurva ParseCurva(Dictionary<string, object> cap, string pref)
+        {
+            var c = new PMCurva();
+            var n = Json.Arr(cap, "N_kN");
+            var m = Json.Arr(cap, "M_kN_m");
+            if (n != null) foreach (var x in n) c.N.Add((float)Json.ToNum(x));
+            if (m != null) foreach (var x in m) c.M.Add((float)Json.ToNum(x));
+            return c;
+        }
+
+        private PMFila ParseFila(object obj, bool esMuro)
+        {
+            var d = Json.AsObj(obj);
+            if (d == null) return null;
+            var f = new PMFila
+            {
+                EsMuro = esMuro,
+                Tag = (int)Json.Num(d, "tag"),
+                ViewerId = Json.Str(d, "viewer_id") ?? "",
+                Nivel = Json.Str(d, "nivel") ?? "",
+                Caso = Json.Str(d, "caso") ?? "",
+                Expresion = Json.Str(d, "expresion") ?? "",
+                P = (float)Json.Num(d, "P_u_kN"),
+                M = (float)Json.Num(d, "M_demanda_kN_m"),
+                Mu = (float)Json.Num(d, "M_u_N_kN_m"),
+                DC = (float)Json.Num(d, "D_C"),
+            };
+            return f;
+        }
+
+        private static string SeccionEtiqueta(Dictionary<string, object> cap, string key)
+        {
+            var s = cap.TryGetValue(key, out var sv) ? Json.AsObj(sv) : null;
+            return s != null ? (Json.Str(s, "etiqueta") ?? "") : "";
+        }
+
+        private static float[] Floats6(object o)
+        {
+            var arr = Json.AsArr(o);
+            var r = new float[6];
+            if (arr == null) return r;
+            for (int i = 0; i < 6 && i < arr.Count; i++) r[i] = (float)Json.ToNum(arr[i]);
+            return r;
         }
 
         private void CargarEdificio(string b, string texto)
@@ -715,6 +1045,42 @@ namespace LabViewer
                         e.EnvOk = true;
                     }
                 }
+                var matRaw = d.TryGetValue("material", out var mR) ? Json.AsObj(mR) : null;
+                if (matRaw != null)
+                {
+                    e.TieneMaterial = true;
+                    e.HcFcMpa = (float)Json.Num(matRaw, "hormigon_fc_MPa");
+                    e.MatRef = Json.Str(matRaw, "referencia") ?? "";
+                    e.MatNota = Json.Str(matRaw, "nota") ?? "";
+                }
+
+                // ejes locales (bloque `ejes_locales` del elemento) + restricciones por
+                // nodo (bloque `restricciones`): fertilidad cruzada con el modelo FE
+                // (BASE_FIJA_6DOF base cimentacion / LIBRE) y verificacion viewer<->FE.
+                var ejesRaw = d.TryGetValue("ejes_locales", out var ejRaw) ? Json.AsObj(ejRaw) : null;
+                if (ejesRaw != null)
+                {
+                    var zb = Json.Arr(ejesRaw, "Z_barra_unity");
+                    if (zb != null && zb.Count >= 3)
+                    {
+                        e.TieneEjes = true;
+                        for (int k = 0; k < 3; k++) e.EjeZBarra[k] = (float)Json.ToNum(zb[k]);
+                        var rf = Json.Arr(ejesRaw, "referencia_geomTransf");
+                        if (rf != null)
+                        {
+                            for (int k = 0; k < 3 && k < rf.Count; k++)
+                                e.EjeRefGeomTransf[k] = (float)Json.ToNum(rf[k]);
+                        }
+                    }
+                }
+                var restRaw = d.TryGetValue("restricciones", out var rsRaw) ? Json.AsObj(rsRaw) : null;
+                if (restRaw != null)
+                {
+                    e.TieneRestricciones = true;
+                    e.RestrNodoI = Json.Str(restRaw, "nodo_i") ?? "";
+                    e.RestrNodoJ = Json.Str(restRaw, "nodo_j") ?? "";
+                    e.RestriccionesFlag = true;
+                }
                 _elementos.Add(e);
             }
         }
@@ -731,6 +1097,8 @@ namespace LabViewer
         // ------------------------------------------------------------------ //
         void Update()
         {
+            // clic sobre un panel IMGUI => no seleccionar FE detras de la UI.
+            if (InteraccionUI.PointerSobreUI()) return;
             if (!OverlayOn || !Input.GetMouseButtonDown(0)) return;
             if (Camera.main == null) return;
             // Seleccion por correspondencia viewer <-> FE: el ElementRef de la geometria
@@ -752,8 +1120,16 @@ namespace LabViewer
             return _raiz;
         }
 
+        /// <summary>Reconstruye el overlay FE sobre el edificio activo. Este es el
+        /// PUNTO CANONICO por el que pasan TODOS los cambios de filtro/estado del
+        /// panel (seleccion, edificio, caso base, combinacion, envolvente, caso
+        /// FE, magnitud, representacion, escala y toggles de overlay); por eso
+        /// tambien invalida el diagrama local del elemento: cualquier evento que
+        /// reconstruya el overlay cambia las fuerzas mostradas, y el diagrama
+        /// pertenece a ese FE.</summary>
         public void RebuildOverlay()
         {
+            MarcarDiagramaSucio();  // disparadores: reconstruir overlay == datos cambiaron
             ClearOverlay();
             if (!_overlayOnChanged) ClearAttenuation();
             _overlayOnChanged = false;
@@ -761,6 +1137,7 @@ namespace LabViewer
             if (!OverlayOn)
             {
                 SelectedFE = null;
+                SincronizarInspeccion(null);
                 SetResaltado(null);
                 return;
             }
@@ -958,7 +1335,7 @@ namespace LabViewer
                 bool bOn = p.Elem.Building == "I" ? bI : bII;
                 bool nivelOn = _viewer == null || _viewer.LevelVisible(p.Elem.Nivel);
                 bool tipoOn = FiltroTipo(p.Elem.Tipo);
-                bool corrOn = todos || p.Elem.EstadoCorr != "SIN_CORRESPONDENCIA_VIEWER";
+                bool corrOn = todos || EsCorrespondenciaNormal(p.Elem);
                 go.SetActive(bOn && nivelOn && tipoOn && corrOn);
             }
         }
@@ -985,6 +1362,253 @@ namespace LabViewer
         }
 
         // ------------------------------------------------------------------ //
+        //  Hito B: deformada amplificada (desplazamientos FE del caso activo)
+        // ------------------------------------------------------------------ //
+        private void DestroyDeformada()
+        {
+            foreach (var go in _deformadaGo)
+            {
+                if (go == null) continue;
+                if (Application.isPlaying) Destroy(go);
+                else DestroyImmediate(go);
+            }
+            _deformadaGo.Clear();
+        }
+
+        /// <summary>Desplazamiento local por nodo del caso activo. Para la envolvente
+        /// se toma max|u| por componente entre las 9 combinaciones explicitas (criterio
+        /// independiente, igual que la envolvente de esfuerzos).</summary>
+        private Dictionary<string, Vector3> DespActivo(string b, string caso)
+        {
+            var outD = new Dictionary<string, Vector3>();
+            var porCaso = _despCaso.TryGetValue(b, out var pc) ? pc : null;
+            if (porCaso == null) return outD;
+            if (porCaso.TryGetValue(caso, out var d1))
+            {
+                foreach (var kv in d1)
+                {
+                    float[] v = kv.Value;
+                    outD[kv.Key] = new Vector3(v[0], v[1], v[2]);
+                }
+                return outD;
+            }
+            if (caso == ENVOLVENTE)
+            {
+                for (int i = 0; i < COMBINACIONES.Length; i++)
+                {
+                    if (!porCaso.TryGetValue(COMBINACIONES[i], out var di)) continue;
+                    foreach (var kv in di)
+                    {
+                        float[] v = kv.Value;
+                        if (!outD.TryGetValue(kv.Key, out var cur))
+                        {
+                            outD[kv.Key] = new Vector3(v[0], v[1], v[2]);
+                            continue;
+                        }
+                        if (Mathf.Abs(v[0]) > Mathf.Abs(cur.x)) cur.x = v[0];
+                        if (Mathf.Abs(v[1]) > Mathf.Abs(cur.y)) cur.y = v[1];
+                        if (Mathf.Abs(v[2]) > Mathf.Abs(cur.z)) cur.z = v[2];
+                        outD[kv.Key] = cur;
+                    }
+                }
+            }
+            return outD;
+        }
+
+        public void RebuildDeformada()
+        {
+            DestroyDeformada();
+            if (!MostrarDeformada || _loader == null) return;
+            if (!_despCaso.TryGetValue(Edificio, out var porCaso) || porCaso.Count == 0) return;
+            if (!_defNodos.TryGetValue(Edificio, out var nodos) || nodos.Count == 0) return;
+            var desp = DespActivo(Edificio, Caso);
+            if (desp.Count == 0) return;
+            var raiz = Raiz();
+            if (raiz == null) return;
+            float A = Amplificacion;
+            foreach (var e in _elementos)
+            {
+                if (e.Building != Edificio) continue;
+                if (e.NodoI == null || e.NodoJ == null) continue;
+                if (!desp.TryGetValue(e.NodoI, out var di)) continue;
+                if (!desp.TryGetValue(e.NodoJ, out var dj)) continue;
+                if (!nodos.TryGetValue(e.NodoI, out var ni)) continue;
+                if (!nodos.TryGetValue(e.NodoJ, out var nj)) continue;
+                Vector3 w0 = _loader.ToWorldModel(e.Building,
+                    ni.x + di.x * A, ni.y + di.y * A, ni.z + di.z * A);
+                Vector3 w1 = _loader.ToWorldModel(e.Building,
+                    nj.x + dj.x * A, nj.y + dj.y * A, nj.z + dj.z * A);
+                DrawDeformadaLine(w0, w1, new Color(0.95f, 0.16f, 0.2f),
+                                 "DEF_EFE_" + e.Building + "_" + e.Tag, 0.15f);
+            }
+        }
+
+        private void DrawDeformadaLine(Vector3 a, Vector3 b, Color c, string nombre, float grosor)
+        {
+            var lab = Raiz();
+            if (lab == null) return;
+            var go = new GameObject(nombre);
+            go.transform.SetParent(lab.transform, false);
+            var lr = go.AddComponent<LineRenderer>();
+            lr.positionCount = 2;
+            lr.SetPosition(0, a);
+            lr.SetPosition(1, b);
+            lr.startWidth = lr.endWidth = grosor;
+            lr.material = new Material(Shader.Find("Standard")) { color = c };
+            _deformadaGo.Add(go);
+        }
+
+        /// <summary>Desplazamiento (local, sin amplificar) del nodo i/j del elemento en el
+        /// caso activo. False si no hay dato.</summary>
+        public bool DespNodoElemento(EFElemento e, string cual, out Vector3 local)
+        {
+            local = Vector3.zero;
+            string tag = cual == "i" ? e.NodoI : e.NodoJ;
+            if (tag == null) return false;
+            var desp = DespActivo(e.Building, Caso);
+            return desp.TryGetValue(tag, out local);
+        }
+
+        // ------------------------------------------------------------------ //
+        //  Hito B: panel P-M (capacidad DEMO / demanda concurrente NCh3171)
+        // ------------------------------------------------------------------ //
+        private static void PreparePlot(PMCurva c)
+        {
+            if (c.PlotTex != null) return;
+            const int W = 190, H = 150;
+            float mm = 1f, nm = 1f;
+            for (int i = 0; i < c.M.Count; i++)
+            {
+                if (c.M[i] > mm) mm = c.M[i];
+                if (c.N[i] > nm) nm = c.N[i];
+            }
+            c.PlotScaleM = mm;
+            c.PlotScaleN = nm;
+            var t = new Texture2D(W, H, TextureFormat.RGBA32, false);
+            Color bg = new Color(0.96f, 0.96f, 0.96f);
+            for (int y = 0; y < H; y++)
+                for (int x = 0; x < W; x++)
+                    t.SetPixel(x, y, bg);
+            Color borde = new Color(0.25f, 0.25f, 0.25f);
+            for (int x = 0; x < W; x++) { t.SetPixel(x, 0, borde); t.SetPixel(x, H - 1, borde); }
+            for (int y = 0; y < H; y++) { t.SetPixel(0, y, borde); t.SetPixel(W - 1, y, borde); }
+            if (c.N.Count > 0)
+            {
+                int pxPrev = 0, pyPrev = 0;
+                for (int i = 0; i < c.N.Count; i++)
+                {
+                    int px = (int)(4 + (c.M[i] / c.PlotScaleM) * (W - 8));
+                    int py = (int)(H - 4 - (c.N[i] / c.PlotScaleN) * (H - 8));
+                    px = Mathf.Clamp(px, 1, W - 2);
+                    py = Mathf.Clamp(py, 1, H - 2);
+                    if (i > 0) PlotLinea(t, pxPrev, pyPrev, px, py, new Color(0.05f, 0.25f, 0.7f));
+                    t.SetPixel(px, py, new Color(0.05f, 0.25f, 0.7f));
+                    pxPrev = px; pyPrev = py;
+                }
+            }
+            t.Apply();
+            c.PlotTex = t;
+        }
+
+        private static void PlotLinea(Texture2D t, int x0, int y0, int x1, int y1, Color c)
+        {
+            int dx = Mathf.Abs(x1 - x0), dy = -Mathf.Abs(y1 - y0);
+            int sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+            int err = dx + dy;
+            while (true)
+            {
+                if (x0 >= 0 && x0 < t.width && y0 >= 0 && y0 < t.height)
+                    t.SetPixel(x0, y0, c);
+                if (x0 == x1 && y0 == y1) break;
+                int e2 = 2 * err;
+                if (e2 >= dy) { err += dy; x0 += sx; }
+                if (e2 <= dx) { err += dx; y0 += sy; }
+            }
+        }
+
+        /// <summary>True si el elemento tiene bloque P-M visible en el panel (muro demo
+        /// por viewer_id/tag o columna por tag). Se usa para auto-scroll a ese bloque.</summary>
+        private bool TienePmVisible(EFElemento e)
+        {
+            if (e == null || !_pm.TryGetValue(e.Building, out var cap)) return false;
+            bool esMuro = e.Tipo != null && e.Tipo.Contains("muro");
+            if (esMuro)
+            {
+                if (cap.Muro == null) return false;
+                bool coincide = !string.IsNullOrEmpty(cap.Muro.ViewerId) && !string.IsNullOrEmpty(e.ViewerId)
+                    ? cap.Muro.ViewerId == e.ViewerId
+                    : cap.Muro.Tag == e.Tag;
+                return coincide;
+            }
+            return cap.PorElemento.ContainsKey(e.Tag);
+        }
+
+        private void DibujarPmBloque(EFElemento e)
+        {
+            if (!_pm.TryGetValue(e.Building, out var cap)) return;
+            PMFila fila = null;
+            PMCurva curva = cap.Columna;
+            bool esMuro = e.Tipo != null && e.Tipo.Contains("muro");
+            if (esMuro && cap.Muro != null)
+            {
+                // Identidad del muro por viewer_id (EII_CP1S_M_001): los dos segmentos FE
+                // del contenido (tags 76/85) comparten el MISMO viewer; comparar solo por
+                // tag dejaba sin P-M al segundo segmento. Fallback al tag si no hay viewer.
+                bool coincide = !string.IsNullOrEmpty(cap.Muro.ViewerId) && !string.IsNullOrEmpty(e.ViewerId)
+                    ? cap.Muro.ViewerId == e.ViewerId
+                    : cap.Muro.Tag == e.Tag;
+                if (coincide)
+                {
+                    fila = cap.Muro;
+                    if (cap.MuroCurva != null) curva = cap.MuroCurva;
+                }
+            }
+            if (fila == null) cap.PorElemento.TryGetValue(e.Tag, out fila);
+            if (fila == null) return;
+
+            GUILayout.Space(4);
+            GUILayout.Box("P-M: capacidad DEMO + demanda concurrente");
+            GUILayout.Label("Caso gobernante: " + fila.Caso
+                            + (string.IsNullOrEmpty(fila.Expresion) ? "" : "  [" + fila.Expresion + "]")
+                            + (fila.EsMuro ? "  (MURO EII)" : "  (columna)"));
+            GUILayout.Label("P_u = " + fila.P.ToString("0.0") + " kN (comp. +)   "
+                            + "M_demanda = " + fila.M.ToString("0.0") + " kN*m");
+            GUILayout.Label("M_u(P) = " + fila.Mu.ToString("0.0") + " kN*m   ->   "
+                            + "D/C = " + fila.DC.ToString("0.00"));
+            if (curva != null)
+            {
+                GUILayout.Label("Capacidad: " + curva.Seccion + "  |  fc=" + curva.FcMpa
+                                + " MPa  |  " + curva.Clasif);
+            }
+            if (curva != null && curva.N.Count > 1 && curva.M.Count > 1)
+            {
+                PreparePlot(curva);
+                if (curva.PlotTex != null)
+                {
+                    Rect r = GUILayoutUtility.GetRect(190f, 150f);
+                    GUI.DrawTexture(r, curva.PlotTex);
+                    float px = r.x + 4 + (fila.M / curva.PlotScaleM) * (r.width - 8);
+                    float py = r.y + (r.height - 4) - (fila.P / curva.PlotScaleN) * (r.height - 8);
+                    GUI.color = new Color(0.85f, 0.1f, 0.05f);
+                    GUI.DrawTexture(new Rect(px - 3f, py - 3f, 6f, 6f), Texture2D.whiteTexture);
+                    GUI.color = Color.white;
+                    GUILayout.Label("eje N compr. vertical arriba; M (kN*m) horizontal.");
+                    GUILayout.Label("(demanda P-M = caso actual, D/C aritmético sin validez de diseño)");
+                }
+            }
+            if (curva != null && !string.IsNullOrEmpty(curva.EstadoArmadura))
+            {
+                GUILayout.Label("Hipótesis de armadura: " + curva.EstadoArmadura);
+            }
+            if (fila.EsMuro && !string.IsNullOrEmpty(fila.Nota))
+            {
+                GUI.color = new Color(0.72f, 0.55f, 0.05f);
+                GUILayout.Label("ADVERTENCIA: " + fila.Nota);
+                GUI.color = Color.white;
+            }
+        }
+
+        // ------------------------------------------------------------------ //
         //  UI (OnGUI propio; no modifica el panel del ViewerController)
         // ------------------------------------------------------------------ //
         void OnGUI()
@@ -995,71 +1619,106 @@ namespace LabViewer
             DrawPanel();
         }
 
+        /// <summary>El bloque de diagnostico se muestra solo cuando el plegable esta
+        /// abierto y no estamos en el modo de presentacion compacta.</summary>
+        private bool _diagnosticoEnPanel() => DiagnosticoVisible && !ModoPresentacion;
+
         private void DrawPanel()
         {
-            float pw = 348f, ph = 470f;
+            if (MostrarDeformada && (_defUltimoCaso != Caso || _defUltimaB != Edificio))
+            {
+                _defUltimoCaso = Caso;
+                _defUltimaB = Edificio;
+                RebuildDeformada();
+            }
+            // Cabecera FIJA (siempre visible, nunca la oculta el scroll): modo de
+            // pantalla, seleccion, edificio, modo de correspondencia, caso, magnitud y
+            // toggles de vista. En presentacion el panel es SOLO esa cabecera; el detalle
+            // tecnico baja dentro del bloque plegable de diagnostico con scroll propio.
+            float pw = 348f, ph = ModoPresentacion ? 368f : 640f;
             float left = Screen.width - pw - 356f;
             if (left < 240f) left = 240f;
+
+            // region del panel IMGUI: excluye del control de camara y de la
+            // seleccion FE cualquier clic/scroll dentro de esta zona.
+            Rect panelRect = new Rect(left, 10, pw + 120, ph);
+            InteraccionUI.Registrar(panelRect);
             GUI.Box(new Rect(left, 10, pw, ph), "Resultados estructurales — Esfuerzos FE");
             GUILayout.BeginArea(new Rect(left + 4, 34, pw - 12, ph - 44));
 
-            // === CABECERA FIJA (siempre visible, sin scroll): elemento seleccionado + valores ===
-            DibujarCabeceraSeleccion();
-            GUILayout.Space(3);
-
-            _scrollUI = GUILayout.BeginScrollView(_scrollUI, GUIStyle.none, GUI.skin.verticalScrollbar);
-
-            // edificio
-            GUILayout.BeginHorizontal();
-            GUILayout.Label("Edificio:");
-            bool bI = GUILayout.Toggle(Edificio == "I", "I", "button");
-            bool bII = GUILayout.Toggle(Edificio == "II", "II", "button");
-            if (bI && Edificio != "I") { Edificio = "I"; SelectedFE = null; SetResaltado(null); RebuildOverlay(); }
-            if (bII && Edificio != "II") { Edificio = "II"; SelectedFE = null; SetResaltado(null); RebuildOverlay(); }
-            GUILayout.EndHorizontal();
+            DibujarCabeceraFija();
 
             if (!EstaCargado(Edificio))
             {
                 GUI.color = new Color(0.8f, 0.4f, 0.1f);
                 GUILayout.Label("NO_DISPONIBLE: sin paquete de esfuerzos del edificio " + Edificio + ".");
                 GUI.color = Color.white;
-                GUILayout.EndScrollView();
                 GUILayout.EndArea();
                 return;
             }
 
-            // filtros de overlay (por tipo y por correspondencia)
-            GUILayout.Label("Filtros overlay — tipología:");
-            GUILayout.BeginHorizontal();
-            bool fv = GUILayout.Toggle(FiltroVigas, "Vigas", "button");
-            bool fc = GUILayout.Toggle(FiltroColumnas, "Columnas", "button");
-            bool fm = GUILayout.Toggle(FiltroMuros, "Muros", "button");
-            GUILayout.EndHorizontal();
-            GUILayout.Label("Filtros overlay — correspondencia viewer↔FE:");
-            GUILayout.BeginHorizontal();
-            bool fMape = GUILayout.Toggle(FiltroCorr == "Mapeados", "Mapeados", "button");
-            bool fTodos = GUILayout.Toggle(FiltroCorr == "Todos los FE", "Todos los FE (diag.)", "button");
-            GUILayout.EndHorizontal();
-            if (fv != FiltroVigas || fc != FiltroColumnas || fm != FiltroMuros
-                || (fMape && FiltroCorr != "Mapeados") || (fTodos && FiltroCorr != "Todos los FE"))
+            if (!_diagnosticoEnPanel())
             {
-                FiltroVigas = fv;
-                FiltroColumnas = fc;
-                FiltroMuros = fm;
+                GUI.color = new Color(0.55f, 0.55f, 0.55f);
+                if (SelectedFE != null)
+                    GUILayout.Label("Elemento activo: tag " + SelectedFE.Tag + " [" + SelectedFE.Building
+                                    + "] — el detalle queda en el modo diagnóstico.");
+                else
+                    GUILayout.Label("Seleccione un elemento FE (clic sobre el overlay).");
+                GUI.color = Color.white;
+                GUILayout.EndArea();
+                return;
+            }
+
+            _scrollUI = GUILayout.BeginScrollView(_scrollUI, GUIStyle.none, GUI.skin.verticalScrollbar);
+            DibujarBloqueDiagnostico();
+            GUILayout.EndScrollView();
+            GUILayout.EndArea();
+        }
+
+        /// <summary>Cabecera fija del panel: controles que nunca deben desaparecer con el
+        /// scroll (modo de pantalla, seleccion, edificio, modo de correspondencia, caso,
+        /// magnitud y toggles de vista) con los rótulos de estado VISIBLE/OCULTO del
+        /// diagrama y de la deformada.</summary>
+        private void DibujarCabeceraFija()
+        {
+            // modo de pantalla: presentacion compacta fija / diagnostico plegable
+            GUILayout.BeginHorizontal();
+            bool mPres = GUILayout.Toggle(ModoPresentacion, "Presentación (compacto)", "button");
+            if (mPres != ModoPresentacion) ModoPresentacion = mPres;
+            bool mDiag = GUILayout.Toggle(DiagnosticoVisible, "Diagnóstico", "button");
+            if (mDiag != DiagnosticoVisible) DiagnosticoVisible = mDiag;
+            GUILayout.EndHorizontal();
+
+            // elemento seleccionado + valores (siempre visibles)
+            DibujarCabeceraSeleccion();
+            GUILayout.Space(3);
+
+            // edificio (toggle estado inequivoco: verde=ACTIVADO, gris=INACTIVO)
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Edificio:");
+            bool bI = InteraccionUI.ToggleEstado(Edificio == "I", "I", "button");
+            bool bII = InteraccionUI.ToggleEstado(Edificio == "II", "II", "button");
+            if (bI && Edificio != "I") { Edificio = "I"; SelectedFE = null; SincronizarInspeccion(null); SetResaltado(null); RebuildOverlay(); }
+            if (bII && Edificio != "II") { Edificio = "II"; SelectedFE = null; SincronizarInspeccion(null); SetResaltado(null); RebuildOverlay(); }
+            GUILayout.EndHorizontal();
+
+            // modo de correspondencia (lista blanca normal / diagnostico completo)
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Modo:");
+            bool fMape = InteraccionUI.ToggleEstado(FiltroCorr == "Mapeados", "Mapeados", "button");
+            bool fTodos = InteraccionUI.ToggleEstado(FiltroCorr == "Todos los FE", "Todos los FE (diag.)", "button");
+            GUILayout.EndHorizontal();
+            if ((fMape && FiltroCorr != "Mapeados") || (fTodos && FiltroCorr != "Todos los FE"))
+            {
                 if (fMape) FiltroCorr = "Mapeados";
                 if (fTodos) FiltroCorr = "Todos los FE";
                 ApplyOverlayVisibility();
             }
-            if (FiltroCorr == "Todos los FE")
-            {
-                GUI.color = new Color(0.8f, 0.55f, 0.1f);
-                GUILayout.Label("Modo de diagnóstico: incluye SIN_CORRESPONDENCIA_VIEWER y stubs analíticos.");
-                GUI.color = Color.white;
-            }
 
             // caso base (G, Q, EX, EY)
-            GUILayout.Label("Caso base (G, Q, EX, EY):");
             GUILayout.BeginHorizontal();
+            GUILayout.Label("Caso:", GUILayout.Width(42));
             foreach (var c in CASOS_BASE)
             {
                 bool onC = GUILayout.Toggle(Caso == c, c, "button");
@@ -1067,14 +1726,104 @@ namespace LabViewer
             }
             GUILayout.EndHorizontal();
 
-            // combinaciones normativas NCh3171: paginado ◀/▶ (nombre + fórmula completa)
-            GUILayout.Label("Combinaciones NCh3171:");
+            // combinaciones normativas NCh3171: paginado ◀/▶ (nombre + fórmula)
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("◀", GUILayout.Width(34))) CiclarCombinacion(-1);
             if (GUILayout.Button("▶", GUILayout.Width(34))) CiclarCombinacion(1);
             string comboNom = CombinacionIdx >= 0 ? COMBINACIONES[CombinacionIdx] : "—";
             GUILayout.Label("  " + comboNom, GUILayout.ExpandWidth(true));
             GUILayout.EndHorizontal();
+
+            // envolvente NCh3171: visualización INDEPENDIENTE (no una corrida)
+            bool envOn = GUILayout.Toggle(Caso == ENVOLVENTE, "Envolvente NCh3171 (independiente)", "button");
+            if (envOn && Caso != ENVOLVENTE) SeleccionarEnvolvente();
+            else if (!envOn && Caso == ENVOLVENTE) { Caso = CASOS_BASE[0]; CombinacionIdx = -1; RebuildOverlay(); }
+
+            // magnitud
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Mag:", GUILayout.Width(42));
+            for (int i = 0; i < MAGNITUDES.Length; i++)
+            {
+                int sel = i;
+                if (GUILayout.Toggle(MagnitudIdx == i, MAGNITUDES[i], "button"))
+                    if (MagnitudIdx != sel) { MagnitudIdx = sel; RebuildOverlay(); }
+            }
+            GUILayout.EndHorizontal();
+
+            // toggles de vista: overlay FE + diagrama local (con estado explícito)
+            GUILayout.BeginHorizontal();
+            bool ov = InteraccionUI.ToggleEstado(OverlayOn, "Overlay FE", "button");
+            if (ov != OverlayOn) SetOverlay(ov);
+            bool dia = InteraccionUI.ToggleEstado(MostrarDiagrama, "Diagrama " + MAGNITUDES[MagnitudIdx], "button");
+            if (dia != MostrarDiagrama) { MostrarDiagrama = dia; if (SelectedFE != null) DrawDiagrams(SelectedFE); }
+            // Estado EXPLICITO: OCULTO / VISIBLE / SIN AMPLITUD (el componente del
+            // elemento es 0 real, p.ej. Vy=Vz en celosias/grillage EII: es el numero
+            // del JSON, no un fallo de mapeo ni un valor a inventar).
+            string estadoDia;
+            if (!MostrarDiagrama)
+            {
+                estadoDia = "OCULTO";
+                GUI.color = Color.white;
+            }
+            else if (SelectedFE == null || !TieneAmplitud(SelectedFE))
+            {
+                estadoDia = "SIN AMPLITUD";
+                GUI.color = new Color(1f, 0.65f, 0.2f);
+            }
+            else
+            {
+                estadoDia = "VISIBLE";
+                GUI.color = new Color(0.35f, 1f, 0.45f);
+            }
+            GUILayout.Label("Diagrama " + MAGNITUDES[MagnitudIdx] + ": " + estadoDia);
+            GUI.color = Color.white;
+            GUILayout.EndHorizontal();
+
+            // deformada
+            GUILayout.BeginHorizontal();
+            bool deh = InteraccionUI.ToggleEstado(MostrarDeformada, "Deformada", "button");
+            if (deh != MostrarDeformada) { MostrarDeformada = deh; RebuildDeformada(); }
+            if (MostrarDeformada) GUI.color = new Color(0.35f, 1f, 0.45f);
+            GUILayout.Label(MostrarDeformada ? "Deformada: VISIBLE" : "Deformada: OCULTO");
+            GUI.color = Color.white;
+            GUILayout.EndHorizontal();
+        }
+
+        /// <summary>Bloque de diagnostico: filtros, representacion, escala, advertencias,
+        /// conteos, ficha del elemento y botones. Solo se dibuja dentro de la zona con
+        /// scroll cuando el plegable de diagnostico está abierto y no hay presentacion.</summary>
+        private void DibujarBloqueDiagnostico()
+        {
+            // filtros de overlay (por tipo)
+            GUILayout.Label("Filtros overlay — tipología:");
+            GUILayout.BeginHorizontal();
+            bool fv = InteraccionUI.ToggleEstado(FiltroVigas, "Vigas", "button");
+            bool fc = InteraccionUI.ToggleEstado(FiltroColumnas, "Columnas", "button");
+            bool fm = InteraccionUI.ToggleEstado(FiltroMuros, "Muros", "button");
+            GUILayout.EndHorizontal();
+            if (fv != FiltroVigas || fc != FiltroColumnas || fm != FiltroMuros)
+            {
+                FiltroVigas = fv;
+                FiltroColumnas = fc;
+                FiltroMuros = fm;
+                ApplyOverlayVisibility();
+            }
+            if (FiltroCorr == "Todos los FE")
+            {
+                GUI.color = new Color(0.8f, 0.55f, 0.1f);
+                GUILayout.Label("Modo de diagnóstico: incluye SIN_CORRESPONDENCIA_VIEWER,");
+                GUILayout.Label("SIN_GEOMETRIA_FISICA_3D y stubs analíticos del modelo FE.");
+                GUI.color = Color.white;
+            }
+            else
+            {
+                GUI.color = new Color(0.5f, 0.5f, 0.5f);
+                GUILayout.Label("Modo normal (lista blanca): solo 1A1 y CONTENIDO; los");
+                GUILayout.Label("estados SIN_* (incl. SIN_GEOMETRIA_FISICA_3D) y stubs se");
+                GUILayout.Label("muestran únicamente en el modo de diagnóstico.");
+                GUI.color = Color.white;
+            }
+
             if (CombinacionIdx >= 0)
             {
                 string sel = COMBINACIONES[CombinacionIdx];
@@ -1086,10 +1835,6 @@ namespace LabViewer
                 GUILayout.Label("◀/▶ para elegir una combinación, o active la envolvente abajo.");
             }
 
-            // envolvente NCh3171: visualización INDEPENDIENTE (no una corrida)
-            bool envOn = GUILayout.Toggle(Caso == ENVOLVENTE, "Envolvente NCh3171 (independiente)", "button");
-            if (envOn && Caso != ENVOLVENTE) SeleccionarEnvolvente();
-            else if (!envOn && Caso == ENVOLVENTE) { Caso = CASOS_BASE[0]; CombinacionIdx = -1; RebuildOverlay(); }
             if (Caso == ENVOLVENTE)
             {
                 GUILayout.Label("Máx |valor| por componente entre las 9 combinaciones;");
@@ -1100,19 +1845,8 @@ namespace LabViewer
             GUILayout.Label("básica adoptada (sin la reducción opcional a 0.5).");
             GUI.color = Color.white;
 
-            // magnitud
-            GUILayout.Label("Magnitud:");
-            GUILayout.BeginHorizontal();
-            for (int i = 0; i < MAGNITUDES.Length; i++)
-            {
-                int sel = i;
-                if (GUILayout.Toggle(MagnitudIdx == i, MAGNITUDES[i], "button"))
-                    if (MagnitudIdx != sel) { MagnitudIdx = sel; RebuildOverlay(); }
-            }
-            GUILayout.EndHorizontal();
-
             // representacion
-            GUILayout.Label("Representacion:");
+            GUILayout.Label("Representación:");
             GUILayout.BeginHorizontal();
             if (GUILayout.Toggle(Repre == Representacion.ExtremoI, "Extremo i", "button"))
                 if (Repre != Representacion.ExtremoI) { Repre = Representacion.ExtremoI; RebuildOverlay(); }
@@ -1133,18 +1867,27 @@ namespace LabViewer
 
             DrawColorBar();
 
-            GUILayout.Space(4);
-            bool on = GUILayout.Toggle(OverlayOn, "Overlay FE activo (atenuando geometria)");
-            if (on != OverlayOn) SetOverlay(on);
-            bool dia = GUILayout.Toggle(MostrarDiagrama, "Diagrama local (interpolado)");
-            if (dia != MostrarDiagrama) { MostrarDiagrama = dia; if (SelectedFE != null) DrawDiagrams(SelectedFE); }
+            // advertencia de interpolacion: una sola linea
             if (MostrarDiagrama)
             {
                 GUI.color = new Color(0.72f, 0.55f, 0.05f);
-                GUILayout.Label("ADVERTENCIA: diagrama interpolado desde fuerzas de");
-                GUILayout.Label("extremo; NO representa la distribucion continua exacta");
-                GUILayout.Label("bajo carga distribuida.");
+                GUILayout.Label("Diagrama interpolado desde fuerzas de extremo; no refleja la");
+                GUILayout.Label("distribución continua exacta bajo carga distribuida.");
                 GUI.color = Color.white;
+            }
+
+            if (MostrarDeformada)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("Amplif. x", GUILayout.Width(58));
+                float nv = GUILayout.HorizontalSlider(Amplificacion, 1f, 300f);
+                GUILayout.Label(Amplificacion.ToString("0"), GUILayout.Width(30));
+                GUILayout.EndHorizontal();
+                if (Mathf.Abs(nv - Amplificacion) > 0.01f)
+                {
+                    Amplificacion = nv;
+                    RebuildDeformada();
+                }
             }
 
             GUILayout.Space(6);
@@ -1160,12 +1903,14 @@ namespace LabViewer
             float pct = baseCobertura > 0 ? 100f * mapFE / baseCobertura : 0f;
             GUILayout.Label(string.Format("FE_TOTAL: {0}   OVERLAY_NORMAL_MAPEADO (1A1+CONTENIDO): {1}", totFE, mapFE));
             GUILayout.Label(string.Format("SIN_CORRESPONDENCIA_VIEWER: {0} (stubs analiticos: {1})", sinFE, stubsFE));
-            GUILayout.Label(string.Format("Cobertura viewer\u2194FE (excluye stubs): {0}/{1} ({2:0.0}%)   ", mapFE, baseCobertura, pct));
+            int nSinGeo = 0;
+            foreach (var ee in _elementos)
+                if (ee.Building == Edificio && ee.EstadoCorr == "SIN_GEOMETRIA_FISICA_3D") nSinGeo++;
+            GUILayout.Label(string.Format("SIN_GEOMETRIA_FISICA_3D (solo diagnóstico): {0}", nSinGeo));
+            GUILayout.Label(string.Format("Cobertura viewer\u2194FE (excluye stubs): {0}/{1} ({2:0.0}%)   ",
+                                          mapFE, baseCobertura, pct));
             if (SelectedFE != null) DrawFicha(SelectedFE);
             else GUILayout.Label("Seleccione un elemento FE (clic sobre el overlay).");
-
-            GUILayout.EndScrollView();
-            GUILayout.EndArea();
         }
 
         private void DibujarCabeceraSeleccion()
@@ -1262,6 +2007,7 @@ namespace LabViewer
             {
                 case "1A1": return "1A1";
                 case "CONTENIDO": return "CONTENIDO";
+                case "SIN_GEOMETRIA_FISICA_3D": return "SIN_GEOMETRIA_FISICA_3D";
                 default: return "SIN_CORRESPONDENCIA_VIEWER";
             }
         }
@@ -1295,6 +2041,8 @@ namespace LabViewer
             }
             GUI.color = Color.white;
             GUILayout.Label("min " + (-_escala).ToString("0.##") + "   cero    max " + _escala.ToString("0.##"));
+            GUILayout.Label("Nota: escala GLOBAL del edificio (una sola barra para todo el");
+            GUILayout.Label("overlay); el diagrama del elemento usa su escala LOCAL propia.");
             GUILayout.Label("Escala actual: " + _escala.ToString("0.##") + "   Max real: " + _maxReal.ToString("0.##"));
         }
 
@@ -1320,6 +2068,54 @@ namespace LabViewer
                             + ", " + e.Pi.z.ToString("0.##") + ") m");
             GUILayout.Label("Local j: (" + e.Pj.x.ToString("0.##") + ", " + e.Pj.y.ToString("0.##")
                             + ", " + e.Pj.z.ToString("0.##") + ") m");
+
+            // Ejes locales (bloque `ejes_locales` del elemento): Z_barra en frame Unity
+            // (u, cota, v) y vector de referencia usado por el geomTransf del motor FE.
+            if (e.TieneEjes)
+            {
+                GUILayout.Label("Ejes locales (Z_barra en frame Unity u,cota,v):");
+                GUILayout.Label("  Z_barra   = (" + e.EjeZBarra[0].ToString("0.###") + ", "
+                              + e.EjeZBarra[1].ToString("0.###") + ", "
+                              + e.EjeZBarra[2].ToString("0.###") + ")");
+                GUILayout.Label("  ref geom  = (" + e.EjeRefGeomTransf[0].ToString("0.###") + ", "
+                              + e.EjeRefGeomTransf[1].ToString("0.###") + ", "
+                              + e.EjeRefGeomTransf[2].ToString("0.###") + ")");
+            }
+
+            // Restricciones de apoyo por nodo (BASE_FIJA_6DOF = base de cimentacion fija
+            // del FE; LIBRE = nodo sin fijacion). Bloque `restricciones` del elemento.
+            if (e.TieneRestricciones)
+            {
+                GUILayout.Label("Restricciones de apoyo:");
+                GUILayout.Label("  nodo i: " + e.RestrNodoI);
+                GUILayout.Label("  nodo j: " + e.RestrNodoJ);
+                if (!string.IsNullOrEmpty(e.RestrNota))
+                    GUILayout.Label("  nota: " + e.RestrNota);
+            }
+
+            // Ejes locales (bloque `ejes_locales`): Z_barra en frame Unity (u, cota, v)
+            // y vector de referencia usado por el geomTransf del motor FE.
+            if (e.TieneEjes)
+            {
+                GUILayout.Label("Ejes locales (Z_barra en frame Unity u,cota,v):");
+                GUILayout.Label("  Z_barra = (" + e.EjeZBarra[0].ToString("0.###") + ", "
+                              + e.EjeZBarra[1].ToString("0.###") + ", "
+                              + e.EjeZBarra[2].ToString("0.###") + ")");
+                GUILayout.Label("  ref geomTransf = (" + e.EjeRefGeomTransf[0].ToString("0.###") + ", "
+                              + e.EjeRefGeomTransf[1].ToString("0.###") + ", "
+                              + e.EjeRefGeomTransf[2].ToString("0.###") + ")");
+            }
+
+            // Restricciones de apoyo por nodo (bloque `restricciones`):
+            // BASE_FIJA_6DOF = base de cimentacion fija del FE | LIBRE = sin fijacion.
+            if (e.TieneRestricciones)
+            {
+                GUILayout.Label("Restricciones de apoyo:");
+                GUILayout.Label("  nodo " + e.RestrNodoI);
+                GUILayout.Label("  nodo " + e.RestrNodoJ);
+                if (!string.IsNullOrEmpty(e.RestrNota))
+                    GUILayout.Label("  nota: " + e.RestrNota);
+            }
             switch (e.EstadoCorr)
             {
                 case "1A1":
@@ -1329,9 +2125,49 @@ namespace LabViewer
                     GUILayout.Label("Correspondencia viewer: CONTENIDO -> " + e.ViewerId + " [" + e.ViewerNivel + "]");
                     break;
                 default:
-                    GUILayout.Label("SIN_CORRESPONDENCIA_VIEWER");
+                    GUILayout.Label("Sin correspondencia: " + (e.EstadoCorr ?? "SIN_CORRESPONDENCIA_VIEWER"));
                     break;
             }
+
+            // Hito B: material de la ficha (desde el perfil)
+            if (e.TieneMaterial)
+            {
+                GUILayout.Label("Material: hormigón fc = " + e.HcFcMpa.ToString("0.#") + " MPa"
+                                + (string.IsNullOrEmpty(e.MatRef) ? "" : "  |  " + e.MatRef));
+                if (!string.IsNullOrEmpty(e.MatNota))
+                {
+                    GUI.color = new Color(0.7f, 0.55f, 0.05f);
+                    GUILayout.Label(e.MatNota);
+                    GUI.color = Color.white;
+                }
+            }
+            else GUILayout.Label("Material: no disponible en el perfil");
+
+            // Hito B: reaccion de base (G) si el nodo i es apoyo con reaccion > 0
+            if (e.Tipo != null && e.Tipo.Contains("columna")
+                && _reaccionesG.TryGetValue(e.Building, out var rG)
+                && rG.TryGetValue(e.NodoI ?? "", out var rr))
+            {
+                GUILayout.Label("Reacción G base (nodo " + e.NodoI + "):");
+                GUILayout.Label(string.Format("  R=({0:0.0}, {1:0.0}, {2:0.0}) kN",
+                                 rr[0], rr[1], rr[2]));
+                GUILayout.Label(string.Format("  M=({0:0.0}, {1:0.0}, {2:0.0}) kN*m",
+                                 rr[3], rr[4], rr[5]));
+            }
+
+            // Hito B: desplazamiento de los nodos i/j en el caso activo
+            bool dI = DespNodoElemento(e, "i", out var udI);
+            bool dJ = DespNodoElemento(e, "j", out var udJ);
+            if (dI || dJ)
+            {
+                GUILayout.Label("Desplazamientos (caso " + Caso + ", sin amplificar):");
+                if (dI) GUILayout.Label(string.Format("  nodo {0}: u=({1:0.###}, {2:0.###}, {3:0.###}) m",
+                                                      e.NodoI, udI.x, udI.y, udI.z));
+                if (dJ) GUILayout.Label(string.Format("  nodo {0}: u=({1:0.###}, {2:0.###}, {3:0.###}) m",
+                                                      e.NodoJ, udJ.x, udJ.y, udJ.z));
+            }
+
+            DibujarPmBloque(e);
 
             GUILayout.Space(4);
             if (Caso == ENVOLVENTE)
@@ -1366,7 +2202,20 @@ namespace LabViewer
             }
             else GUILayout.Label("Valor: SIN_RESULTADO");
 
-            if (MostrarDiagrama) DrawDiagrams(e);
+            // ------------------------------------------------------------------ //
+            //  Diagrama = SOLO al cambiar estado, NUNCA por frame (OnGUI/DrawFicha
+            //  corre cada frame; dibujar aqui destruiria/recrearia continuamente).
+            //  Los eventos de cambio (seleccion/segmento/edificio/caso/combinacion/
+            //  magnitud/representacion/escala/toggle) fijan _diagramaSucia; aqui
+            //  SOLO se redibuja una vez por cambio real.
+            //  La escala del diagrama es LOCAL del elemento (visible aun con valores
+            //  pequenos p.ej. My 24,38 en un edificio con pico global ±800,26).
+            // ------------------------------------------------------------------ //
+            if (MostrarDiagrama && _diagramaSucia)
+            {
+                _diagramaSucia = false;
+                DrawDiagrams(e);
+            }
         }
 
         private static string Fila(string[] nom, float[] f, int baseIdx, int magnitud)
@@ -1408,7 +2257,107 @@ namespace LabViewer
         // ------------------------------------------------------------------ //
         //  Diagrama local interpolado (solo del elemento seleccionado)
         // ------------------------------------------------------------------ //
+        private bool _diagramaSucia;                  // evento: seleccion/segmento/edificio/caso/
+        //  combinacion/magnitud/representacion/escala/toggle fijan esta bandera;
+        //  DrawFicha SOLO redibuja el diagrama cuando esta sucia (nunca por frame).
+        private readonly Color[] _colorMagnitud = new Color[6]
+        {
+            Color.cyan,                       // N
+            new Color(0.30f, 1f, 0.50f),      // Vy
+            Color.magenta,                    // Vz
+            new Color(1f, 0.70f, 0.20f),      // T
+            Color.yellow,                     // My
+            new Color(1f, 0.50f, 0f)          // Mz
+        };
+
         private readonly List<GameObject> _diagramas = new List<GameObject>();
+
+        /// <summary>True si la magnitud ACTIVA del elemento tiene amplitud no nula:
+        /// max(|extremo i|, |extremo j|) &gt; ~1e-4 en el caso/envolvente actual.
+        /// Con ceros REALES (p.ej. Vy=Vz en celosias/grillage del EII, cuyo JSON trae
+        /// los 12 valores a 0) el diagrama no se dibuja y la cabecera indica
+        /// "SIN AMPLITUD": es el resultado del modelo, no un fallo de mapeo.</summary>
+        public bool TieneAmplitud(EFElemento e)
+        {
+            if (e == null) return false;
+            int m = MagnitudIdx;
+            float vi, vj;
+            if (Caso == ENVOLVENTE && e.EnvValores != null)
+            {
+                vi = float.IsNaN(e.EnvValores[m]) ? 0f : e.EnvValores[m];
+                vj = float.IsNaN(e.EnvValores[m + 6]) ? 0f : e.EnvValores[m + 6];
+            }
+            else
+            {
+                var f = e.De(Caso);
+                if (f == null) return false;
+                vi = float.IsNaN(f[m]) ? 0f : f[m];
+                vj = float.IsNaN(f[m + 6]) ? 0f : f[m + 6];
+            }
+            return Mathf.Max(Mathf.Abs(vi), Mathf.Abs(vj)) > 1e-4f;
+        }
+
+        /// <summary>ElementRef del viewer que representa a este FE (muro/viga) para
+        /// obtener el espesor real y el plano del panel (normal al muro).</summary>
+        private bool NormalPanelMuro(EFElemento e, out Vector3 n, out float espesor)
+        {
+            n = Vector3.zero;
+            espesor = 0f;
+            if (_loader == null || _loader.Model == null || string.IsNullOrEmpty(e.ViewerId))
+                return false;
+            foreach (var r in _loader.Model.Elements)
+            {
+                if (r == null || r.Building != e.Building || r.Id != e.ViewerId) continue;
+                if (r.Type != ElemType.Muros) continue;
+                // r.P0/r.P1 = extremos del panel en frame local (u, cota, v);
+                // tangente del plano = direccion del panel, barra = eje vertical del FE.
+                Vector3 a = _loader.ToWorldModel(e.Building, r.P0.x, r.P0.y, r.P0.z);
+                Vector3 b = _loader.ToWorldModel(e.Building, r.P1.x, r.P1.y, r.P1.z);
+                Vector3 tang = (b - a).normalized;
+                Vector3 w0 = _loader.ToWorldModel(e.Building, e.Pi.x, e.Pi.y, e.Pi.z);
+                Vector3 w1 = _loader.ToWorldModel(e.Building, e.Pj.x, e.Pj.y, e.Pj.z);
+                Vector3 dir = (w1 - w0).normalized;
+                if (tang.sqrMagnitude < 1e-6f || dir.sqrMagnitude < 1e-6f) continue;
+                Vector3 c = Vector3.Cross(dir, tang);
+                if (c.sqrMagnitude < 1e-6f) continue;
+                n = c.normalized;
+                espesor = r.Espesor;
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>Centro (mundo) aproximado del edificio: media de los extremos de su
+        /// geometria viewer. Se usa para despejar el diagrama del muro hacia el lado
+        /// EXTERIOR del panel (alejado del interior del edificio).</summary>
+        private Vector3 CentroEdificio(string b)
+        {
+            if (_loader == null || _loader.Model == null) return Vector3.zero;
+            Vector3 s = Vector3.zero;
+            int n = 0;
+            foreach (var r in _loader.Model.Elements)
+            {
+                if (r == null || r.Building != b) continue;
+                s += _loader.ToWorldModel(b, r.P0.x, r.P0.y, r.P0.z);
+                s += _loader.ToWorldModel(b, r.P1.x, r.P1.y, r.P1.z);
+                n += 2;
+            }
+            return n > 0 ? s / n : Vector3.zero;
+        }
+
+        /// <summary>Seccion textual FE del viewer vinculado (ficha del inspector viewer).
+        /// Con CONTENIDO (varios FE por viewer) usa el primero que tenga seccion.</summary>
+        public string SeccionDe(ElementRef r)
+        {
+            if (r == null) return null;
+            foreach (var e in _elementos)
+            {
+                if (e.Building != r.Building) continue;
+                if (string.Equals(e.ViewerId, r.Id) && !string.IsNullOrEmpty(e.Seccion))
+                    return e.Seccion;
+            }
+            return null;
+        }
 
         private void DrawDiagrams(EFElemento e)
         {
@@ -1419,20 +2368,117 @@ namespace LabViewer
                 else DestroyImmediate(go);
             }
             _diagramas.Clear();
-            if (!MostrarDiagrama || _loader == null) return;
-            var f = e.De(Caso);
-            if (f == null) return;
+            if (!MostrarDiagrama || _loader == null || e == null) return;
+
+            // ------------------------------------------------------------------ //
+            //  Magnitud ACTIVA del panel (MagnitudIdx 0..5 = N, Vy, Vz, T, My, Mz).
+            //  Extremo i en el indice m y extremo j en m+6 del vector local FE
+            //  (f[0..5] = i; f[6..11] = j). Con la envolvente NCh3171 los valores
+            //  i/j provienen de EnvValores/EnvCasos (caso y signo gobernantes).
+            // ------------------------------------------------------------------ //
+            int m = MagnitudIdx;
+            float vi, vj;
+            if (Caso == ENVOLVENTE && e.EnvValores != null)
+            {
+                vi = float.IsNaN(e.EnvValores[m]) ? 0f : e.EnvValores[m];
+                vj = float.IsNaN(e.EnvValores[m + 6]) ? 0f : e.EnvValores[m + 6];
+            }
+            else
+            {
+                var f = e.De(Caso);
+                if (f == null) return;
+                vi = float.IsNaN(f[m]) ? 0f : f[m];
+                vj = float.IsNaN(f[m + 6]) ? 0f : f[m + 6];
+            }
+            // SIN AMPLITUD: el componente es 0 real (p.ej. Vy/Vz de celosias/grillage).
+            // No se inventa nada ni se sustituye valor; simplemente no hay curva.
+            if (Mathf.Max(Mathf.Abs(vi), Mathf.Abs(vj)) <= 1e-4f) return;
+
             Vector3 w0 = _loader.ToWorldModel(e.Building, e.Pi.x, e.Pi.y, e.Pi.z);
             Vector3 w1 = _loader.ToWorldModel(e.Building, e.Pj.x, e.Pj.y, e.Pj.z);
             Vector3 dir = (w1 - w0).normalized;
-            Vector3 up = Mathf.Abs(Vector3.Dot(dir, Vector3.up)) < 0.9f ? Vector3.up : Vector3.forward;
-            Vector3 n = Vector3.Cross(dir, up).normalized;
-            float esc = Mathf.Max(_escala, 1e-6f);
+            if (dir.sqrMagnitude < 1e-9f) return;
 
-            // N (axial) i[0]/j[6]; Vz i[2]/j[8]; Mz i[5]/j[11]
-            DrawLine(w0 + n * ((f[0] / esc) * 0.8f), w1 + n * ((f[6] / esc) * 0.8f), Color.cyan, "DIAG_N");
-            DrawLine(w0 + n * ((f[2] / esc) * 0.8f), w1 + n * ((f[8] / esc) * 0.8f), Color.magenta, "DIAG_Vz");
-            DrawLine(w0 + n * ((f[5] / esc) * 0.8f), w1 + n * ((f[11] / esc) * 0.8f), new Color(1f, 0.8f, 0f), "DIAG_Mz");
+            // ------------------------------------------------------------------ //
+            //  Ejes locales REALES del FE (bloque `ejes_locales` del JSON / frame
+            //  Unity u,cota,v). Z_barra = eje local z del geomTransf del motor;
+            //  Y_barra = completacion ortogonal con el eje de la barra.
+            //  Plano de dibujo del diagrama (convencion documentada):
+            //    N  (0) y T (3): sin desplazamiento transversal (se dibuja a lo largo
+            //        de la barra; montante vertical minimo para no quedar si se usa
+            //        Representacion diferente de i/j).
+            //    Vy (1) y Mz (5): flexion/corte en el plano local X-Y  -> eje Z_barra.
+            //    Vz (2) y My (4): flexion/corte en el plano local X-Z  -> eje Y_barra.
+            // ------------------------------------------------------------------ //
+            Vector3 zLocal = (e.TieneEjes && e.EjeZBarra != null)
+                ? new Vector3(e.EjeZBarra[0], e.EjeZBarra[1], e.EjeZBarra[2]).normalized
+                : Vector3.zero;
+            if (zLocal.sqrMagnitude < 1e-4f)
+            {
+                Vector3 up0 = Mathf.Abs(Vector3.Dot(dir, Vector3.up)) < 0.9f ? Vector3.up : Vector3.forward;
+                zLocal = Vector3.Cross(dir, up0).normalized;
+            }
+            // `Z_barra` (casi) PARALELO al eje de la barra: el dato exportado no sirve
+            // como perpendicular (viga horizontal con Z_barra_unity=[1,0,0]=eje X).
+            // Se regenera un eje transversal ortogonal al eje de la barra.
+            if (Mathf.Abs(Vector3.Dot(dir, zLocal)) > 0.9f)
+            {
+                Vector3 up1 = Mathf.Abs(Vector3.Dot(dir, Vector3.up)) < 0.9f ? Vector3.up : Vector3.forward;
+                zLocal = Vector3.Cross(dir, up1).normalized;
+            }
+            Vector3 yLocal = Vector3.Cross(dir, zLocal).normalized;
+            if (yLocal.sqrMagnitude < 1e-4f)
+                yLocal = Vector3.Cross(dir, Vector3.up).normalized;
+            bool usarY = m == 2 || m == 4;   // Vz, My  -> plano X-Z local (eje Y_barra)
+            Vector3 eje = usarY ? yLocal : zLocal;
+
+            // ------------------------------------------------------------------ //
+            //  Escala LOCAL automatica del diagrama del elemento, SEPARADA de la
+            //  escala global del edificio (P95/maximo, inmutable al cambiar viga).
+            //  El pico local ocupa ~35% de la altura de referencia de cota 0.8;
+            //  valores pequenos (p.ej. My=24,38 en un edificio con ±800,26) quedan
+            //  SIEMPRE visibles sin depender de la escala global.
+            // ------------------------------------------------------------------ //
+            // ------------------------------------------------------------------ //
+            //  Amplitud visual PROPORCIONAL a la longitud del FE (no fija 0,12 m):
+            //  el pico ocupa ~22% de la longitud del elemento, recortado a un
+            //  rango [0,65 m .. 3,5 m] para que la curva SIEMPRE salga del tubo
+            //  (peralte tipico 0,30-0,50 m en vigas) sin volverse gigante en
+            //  elementos largos. Valores pequenos (p.ej. My=24,38 sobre picos
+            //  de ±800,26) siguen visibles por ser escala LOCAL del elemento.
+            // ------------------------------------------------------------------ //
+            float lenFE = Mathf.Max(e.Longitud, 1e-3f);
+            // Amplitud visual REAL: pico = 25 % de la longitud del FE, recortado al
+            // rango [0,8 m .. 5,0 m] para salir SIEMPRE del tubo (peralte tipico
+            // 0,30-0,50 m, y 0,60x0,80 en columnas grandes) sin volverse gigante.
+            bool esMuro = e.Tipo != null && e.Tipo.Contains("muro");
+            float ampVisual = Mathf.Clamp(lenFE * 0.25f, 0.8f, 5f);
+            if (esMuro) ampVisual = Mathf.Clamp(lenFE * 0.35f, 1.2f, 6f);
+            float rama = Mathf.Max(Mathf.Abs(vi), Mathf.Abs(vj), 1e-6f);
+            float factor = ampVisual / rama;   // pico local REAL = ampVisual
+
+            // Muros: la barra FE vive EN el plano del panel (borde de la losa-muro), el
+            // diagrama quedaria dentro del espesor. Se desplaza la LINEA BASE fuera del
+            // panel (normal x (espesor/2 + margen 0.4), hacia el exterior del edificio).
+            Vector3 offset = Vector3.zero;
+            if (esMuro && NormalPanelMuro(e, out var nPanel, out var espesorMuro))
+            {
+                Vector3 mid = (w0 + w1) * 0.5f;
+                if (Vector3.Dot(nPanel, mid - CentroEdificio(e.Building)) < 0f) nPanel = -nPanel;
+                offset = nPanel * (espesorMuro * 0.5f + 0.4f);
+            }
+            Vector3 b0 = w0 + offset;
+            Vector3 b1 = w1 + offset;
+
+            // montantes i/j desde el eje de la barra (desplazado en muros) hasta el valor
+            Vector3 pi = b0 + eje * (vi * factor);
+            Vector3 pj = b1 + eje * (vj * factor);
+            DrawLine(b0, pi, _colorMagnitud[MagnitudIdx], "DIAG_MONT_i");
+            DrawLine(b1, pj, _colorMagnitud[MagnitudIdx], "DIAG_MONT_j");
+
+            // curva interpolada i->j (lineal entre extremos; distribucion continua
+            // real NO disponible en el JSON: se documenta como interpolacion FE)
+            DrawLine(pi, pj, _colorMagnitud[MagnitudIdx], "DIAG_MAG_" + m);
         }
 
         private void DrawLine(Vector3 a, Vector3 b, Color c, string nombre)
@@ -1445,8 +2491,17 @@ namespace LabViewer
             lr.positionCount = 2;
             lr.SetPosition(0, a);
             lr.SetPosition(1, b);
-            lr.startWidth = lr.endWidth = 0.04f;
-            lr.material = new Material(Shader.Find("Standard")) { color = c };
+            lr.startWidth = lr.endWidth = 0.09f;
+            lr.startColor = lr.endColor = c;
+            // Shader UNLIT plano (NO Standard): Standard ignora los vertex colors del
+            // LineRenderer y las lineas salian blancas/invisibles sobre la geometria.
+            // Unlit/Color pinta SIEMPRE el color plano a plena luminosidad y sin luz.
+            Shader sh = Shader.Find("Unlit/Color");
+            if (sh == null) sh = Shader.Find("Sprites/Default");
+            if (sh == null) sh = Shader.Find("Standard");
+            var mat = new Material(sh);
+            mat.color = c;
+            lr.material = mat;
             _diagramas.Add(go);
         }
     }

@@ -23,6 +23,16 @@ namespace LabViewer
 
         void Update()
         {
+            // Interaccion UI: si el puntero esta sobre algun panel IMGUI (rects que
+            // registran los controllers en OnGUI), la camara NO orbita/panea/hace
+            // zoom; la rueda queda para el ScrollView del panel. Esto se evalua con
+            // los rects del frame anterior (OnGUI se dibuja despues de Update), un
+            // frame de desfase imperceptible para click/scroll.
+            if (InteraccionUI.PointerSobreUI())
+            {
+                return;
+            }
+
             if (Target != null) LookAt = Target.position + _panOffset;
 
             // orbitar

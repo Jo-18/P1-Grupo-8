@@ -6,7 +6,7 @@
       "u": 0.0,
       "tipo": "row_map",
       "v_grid": 0.0,
-      "A_tag": 600,
+      "A_tag": 484,
       "B_tag": 128,
       "A": [
         0.0,
@@ -25,7 +25,7 @@
       "u": 10.0,
       "tipo": "row_map",
       "v_grid": 0.0,
-      "A_tag": 603,
+      "A_tag": 487,
       "B_tag": 131,
       "A": [
         10.0,
@@ -44,7 +44,7 @@
       "u": 30.0,
       "tipo": "row_map",
       "v_grid": 0.0,
-      "A_tag": 606,
+      "A_tag": 490,
       "B_tag": 134,
       "A": [
         30.0,
@@ -63,7 +63,7 @@
       "u": 20.0,
       "tipo": "row_map",
       "v_grid": 0.0,
-      "A_tag": 609,
+      "A_tag": 493,
       "B_tag": 137,
       "A": [
         20.0,
@@ -82,7 +82,7 @@
       "u": 40.0,
       "tipo": "row_map",
       "v_grid": 0.0,
-      "A_tag": 612,
+      "A_tag": 496,
       "B_tag": 140,
       "A": [
         40.0,
@@ -101,7 +101,7 @@
       "u": 45.0,
       "tipo": "row_map",
       "v_grid": 0.0,
-      "A_tag": 615,
+      "A_tag": 499,
       "B_tag": 143,
       "A": [
         45.0,
@@ -120,7 +120,7 @@
       "u": 0.0,
       "tipo": "row_map",
       "v_grid": 8.9,
-      "A_tag": 618,
+      "A_tag": 502,
       "B_tag": 146,
       "A": [
         0.0,
@@ -139,7 +139,7 @@
       "u": 10.0,
       "tipo": "row_map",
       "v_grid": 8.9,
-      "A_tag": 621,
+      "A_tag": 505,
       "B_tag": 149,
       "A": [
         10.0,
@@ -158,7 +158,7 @@
       "u": 20.0,
       "tipo": "row_map",
       "v_grid": 8.9,
-      "A_tag": 624,
+      "A_tag": 508,
       "B_tag": 152,
       "A": [
         20.0,
@@ -177,7 +177,7 @@
       "u": 30.0,
       "tipo": "row_map",
       "v_grid": 8.9,
-      "A_tag": 627,
+      "A_tag": 511,
       "B_tag": 155,
       "A": [
         30.0,
@@ -196,7 +196,7 @@
       "u": 40.0,
       "tipo": "row_map",
       "v_grid": 8.9,
-      "A_tag": 630,
+      "A_tag": 514,
       "B_tag": 158,
       "A": [
         40.0,
@@ -215,7 +215,7 @@
       "u": 45.0,
       "tipo": "row_map",
       "v_grid": 8.9,
-      "A_tag": 633,
+      "A_tag": 517,
       "B_tag": 161,
       "A": [
         45.0,
@@ -234,7 +234,7 @@
       "u": 0.0,
       "tipo": "row_map",
       "v_grid": 16.15,
-      "A_tag": 636,
+      "A_tag": 520,
       "B_tag": 164,
       "A": [
         0.0,
@@ -253,7 +253,7 @@
       "u": 10.0,
       "tipo": "row_map",
       "v_grid": 16.15,
-      "A_tag": 639,
+      "A_tag": 523,
       "B_tag": 167,
       "A": [
         10.0,
@@ -272,7 +272,7 @@
       "u": 20.0,
       "tipo": "row_map",
       "v_grid": 16.15,
-      "A_tag": 642,
+      "A_tag": 526,
       "B_tag": 170,
       "A": [
         20.0,
@@ -291,7 +291,7 @@
       "u": 30.0,
       "tipo": "row_map",
       "v_grid": 16.15,
-      "A_tag": 645,
+      "A_tag": 529,
       "B_tag": 173,
       "A": [
         30.0,
@@ -310,7 +310,7 @@
       "u": 40.0,
       "tipo": "row_map",
       "v_grid": 16.15,
-      "A_tag": 648,
+      "A_tag": 532,
       "B_tag": 176,
       "A": [
         40.0,
@@ -329,7 +329,7 @@
       "u": 45.0,
       "tipo": "row_map",
       "v_grid": 16.15,
-      "A_tag": 651,
+      "A_tag": 535,
       "B_tag": 179,
       "A": [
         45.0,
@@ -865,10 +865,10 @@
   "n_conectores_p4": 18,
   "n_conectores_arranque": 25,
   "resumen": {
-    "n_nodos": 337,
+    "n_nodos": 265,
     "n_columnas": 115,
-    "n_vigas": 251,
-    "n_muros": 46,
+    "n_vigas": 261,
+    "n_muros": 2,
     "master_por_nivel": {
       "P1": 2,
       "P2": 5,

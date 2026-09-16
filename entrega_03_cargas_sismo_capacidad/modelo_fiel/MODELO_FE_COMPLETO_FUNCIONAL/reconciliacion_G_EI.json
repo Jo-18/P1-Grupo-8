@@ -1,26 +1,242 @@
 {
   "perfil": "MODELO_FE_COMPLETO_FUNCIONAL",
   "edificio": "I",
-  "g_total_kN": 42406.9577,
+  "g_total_kN": 39128.1197,
   "g_fiel_referencia_kN": 42406.9577,
-  "delta_kN": 0.0,
+  "delta_kN": 0.0001,
+  "peso_pendiente_no_aplicado_kN": 3278.8381,
+  "n_receptores_sin_fe": 27,
+  "receptores_sin_fe": [
+    {
+      "receptor": "M_EI_CP1_002",
+      "losa": "L_EI_CP1_D_INF_I_Ip",
+      "area_m2": 11.115,
+      "carga_kN": 69.2156,
+      "nivel": "P1"
+    },
+    {
+      "receptor": "M_EI_CP1_002",
+      "losa": "L_EI_CP1_D_VOL_ESTE_OE",
+      "area_m2": 79.2228,
+      "carga_kN": 448.0648,
+      "nivel": "P1"
+    },
+    {
+      "receptor": "M_EI_CP1_002",
+      "losa": "L_EI_CP1_D_VOL_ESTE_ES",
+      "area_m2": 64.168,
+      "carga_kN": 336.3355,
+      "nivel": "P1"
+    },
+    {
+      "receptor": "M_EI_CP1_003",
+      "losa": "L_EI_CP1_D_ATRIO_ESTE",
+      "area_m2": 19.5859,
+      "carga_kN": 204.9911,
+      "nivel": "P1"
+    },
+    {
+      "receptor": "M_EI_CP1_004",
+      "losa": "L_EI_CP1_D_ATRIO_ESTE",
+      "area_m2": 68.4551,
+      "carga_kN": 716.4673,
+      "nivel": "P1"
+    },
+    {
+      "receptor": "M_EI_CP2_001",
+      "losa": "L_EI_CP2_200",
+      "area_m2": 8.3914,
+      "carga_kN": 52.255,
+      "nivel": "P2"
+    },
+    {
+      "receptor": "M_EI_CP2_002",
+      "losa": "L_EI_CP2_200",
+      "area_m2": 9.2179,
+      "carga_kN": 57.4013,
+      "nivel": "P2"
+    },
+    {
+      "receptor": "M_EI_CP2_003",
+      "losa": "L_EI_CP2_200",
+      "area_m2": 19.8979,
+      "carga_kN": 123.9077,
+      "nivel": "P2"
+    },
+    {
+      "receptor": "M_EI_CP2_004",
+      "losa": "L_EI_CP2_202",
+      "area_m2": 10.6161,
+      "carga_kN": 66.1003,
+      "nivel": "P2"
+    },
+    {
+      "receptor": "M_EI_CP2_005",
+      "losa": "L_EI_CP2_202",
+      "area_m2": 10.6161,
+      "carga_kN": 66.1003,
+      "nivel": "P2"
+    },
+    {
+      "receptor": "M_EI_CP2_006",
+      "losa": "L_EI_CP2_202",
+      "area_m2": 6.3438,
+      "carga_kN": 39.499,
+      "nivel": "P2"
+    },
+    {
+      "receptor": "M_EI_CP3_001",
+      "losa": "L_EI_CP3_300",
+      "area_m2": 19.8979,
+      "carga_kN": 123.5439,
+      "nivel": "P3"
+    },
+    {
+      "receptor": "M_EI_CP3_002",
+      "losa": "L_EI_CP3_300",
+      "area_m2": 8.455,
+      "carga_kN": 52.4963,
+      "nivel": "P3"
+    },
+    {
+      "receptor": "M_EI_CP3_003",
+      "losa": "L_EI_CP3_300",
+      "area_m2": 9.1543,
+      "carga_kN": 56.8381,
+      "nivel": "P3"
+    },
+    {
+      "receptor": "M_EI_CP3_004",
+      "losa": "L_EI_CP3_302",
+      "area_m2": 8.5446,
+      "carga_kN": 52.9643,
+      "nivel": "P3"
+    },
+    {
+      "receptor": "M_EI_CP3_005",
+      "losa": "L_EI_CP3_302",
+      "area_m2": 8.5446,
+      "carga_kN": 52.9643,
+      "nivel": "P3"
+    },
+    {
+      "receptor": "M_EI_CP3_006",
+      "losa": "L_EI_CP3_302",
+      "area_m2": 10.2277,
+      "carga_kN": 63.3967,
+      "nivel": "P3"
+    },
+    {
+      "receptor": "M_EI_CP4_001",
+      "losa": "L_EI_CP4_400",
+      "area_m2": 19.0714,
+      "carga_kN": 107.5404,
+      "nivel": "P4"
+    },
+    {
+      "receptor": "M_EI_CP4_002",
+      "losa": "L_EI_CP4_400",
+      "area_m2": 8.455,
+      "carga_kN": 47.6763,
+      "nivel": "P4"
+    },
+    {
+      "receptor": "M_EI_CP4_003",
+      "losa": "L_EI_CP4_400",
+      "area_m2": 10.235,
+      "carga_kN": 57.7134,
+      "nivel": "P4"
+    },
+    {
+      "receptor": "M_EI_CP4_004",
+      "losa": "L_EI_CP4_404",
+      "area_m2": 10.2277,
+      "carga_kN": 57.6605,
+      "nivel": "P4"
+    },
+    {
+      "receptor": "M_EI_CP4_005",
+      "losa": "L_EI_CP4_404",
+      "area_m2": 10.2277,
+      "carga_kN": 57.6605,
+      "nivel": "P4"
+    },
+    {
+      "receptor": "M_EI_CP4_006",
+      "losa": "L_EI_CP4_404",
+      "area_m2": 6.7321,
+      "carga_kN": 37.9537,
+      "nivel": "P4"
+    },
+    {
+      "nivel": "P2->P3",
+      "receptor": "P2->P3#0",
+      "tipo": "muro_excluido_sin_apoyo_fisico",
+      "carga_kN": 62.6204
+    },
+    {
+      "nivel": "P2->P3",
+      "receptor": "P2->P3#1",
+      "tipo": "muro_excluido_sin_apoyo_fisico",
+      "carga_kN": 65.5329
+    },
+    {
+      "nivel": "P2->P3",
+      "receptor": "P2->P3#2",
+      "tipo": "muro_excluido_sin_apoyo_fisico",
+      "carga_kN": 134.9493
+    },
+    {
+      "nivel": "P2->P3",
+      "receptor": "P2->P3#3",
+      "tipo": "muro_excluido_sin_apoyo_fisico",
+      "carga_kN": 66.9892
+    }
+  ],
   "ok_contra_fiel": true,
-  "checkpoint_g_kN": 25227.7316,
-  "pp_elementos_confirmado_kN": 17179.2261,
+  "checkpoint_g_kN": 22278.9854,
+  "pp_elementos_confirmado_kN": 16849.1343,
   "pp_vigas_kN": 14803.534,
   "pp_columnas_kN": 2045.6003,
-  "pp_muros_kN": 330.0918,
-  "pp_losas_kN": 14983.5927,
-  "pm_adic_kN": 10244.1389,
+  "pp_muros_kN": 0,
+  "pp_muros_sin_FE_kN": 330.0918,
+  "pp_muros_sin_FE": [
+    {
+      "key": "P2->P3#0",
+      "tramo": "P2->P3",
+      "pp_kN": 62.6204,
+      "n_elements_fe": 0
+    },
+    {
+      "key": "P2->P3#1",
+      "tramo": "P2->P3",
+      "pp_kN": 65.5329,
+      "n_elements_fe": 0
+    },
+    {
+      "key": "P2->P3#2",
+      "tramo": "P2->P3",
+      "pp_kN": 134.9493,
+      "n_elements_fe": 0
+    },
+    {
+      "key": "P2->P3#3",
+      "tramo": "P2->P3",
+      "pp_kN": 66.9892,
+      "n_elements_fe": 0
+    }
+  ],
+  "pp_losas_kN": 13375.0464,
+  "pm_adic_kN": 8903.939,
   "match_elementos_ok": true,
-  "n_ids_aplicados": 184,
+  "n_ids_aplicados": 180,
   "densidad_concreto_kN_m3": 24.5166,
   "densidad_acero_hipotesis_kN_m3": 76.9822,
   "postes_torre": {
     "n_ejes": 25,
     "L_total_m": 99.0
   },
-  "stubs": 44,
+  "stubs": 54,
   "conectores_p4": 18,
   "pendientes_torre": 4,
   "familias": [
@@ -31,7 +247,7 @@
       "dimension": 4109.47,
       "unidad_dim": "m2 netas",
       "peso_unit": "-",
-      "total_kN": 14983.5927,
+      "total_kN": 13375.0464,
       "entra_al_caso_G": "TB.calcular_cargas_nodales distribuye el PP estructural de cada losa (neta x h x gamma) en nodos receptores"
     },
     {
@@ -41,7 +257,7 @@
       "dimension": 4109.47,
       "unidad_dim": "m2 netas",
       "peso_unit": "-",
-      "total_kN": 10244.1389,
+      "total_kN": 8903.939,
       "entra_al_caso_G": "idem losas con pm_kn_m2 correlacionado (el PP superficial de PM.ADIC esta dentro de la carga superficial; el PP estructural de losa es aparte)"
     },
     {
@@ -71,8 +287,8 @@
       "dimension": null,
       "unidad_dim": "-",
       "peso_unit": "A*L*24.5166",
-      "total_kN": 330.0918,
-      "entra_al_caso_G": "idem (los montantes del FE llevan el panel t*L/2 cada uno)"
+      "total_kN": 0,
+      "entra_al_caso_G": "solo los paneles con montante FE aplican su PP; los 4 paneles del nucleo (P2->P3) quedaron EXCLUIDOS del modelo definitivo (sin apoyo fisico documentado) y su PP (330.0918 kN) se reporta como pendiente NO aplicado"
     },
     {
       "familia": "CHECKPOINT G (losas + PM.ADIC)",
@@ -81,7 +297,7 @@
       "dimension": null,
       "unidad_dim": "-",
       "peso_unit": "-",
-      "total_kN": 25227.7316,
+      "total_kN": 22278.9854,
       "entra_al_caso_G": "subtotal con el que corria el modelo antes de la reconciliacion + cargas de G_EI_MODELO_FIEL v1"
     },
     {
@@ -96,7 +312,7 @@
     },
     {
       "familia": "Stubs rigid A->B (arranques/excentricidad)",
-      "cantidad": 44,
+      "cantidad": 54,
       "unidad_m": "stubs",
       "dimension": null,
       "unidad_dim": "-",
@@ -121,8 +337,28 @@
       "dimension": null,
       "unidad_dim": "-",
       "peso_unit": "-",
-      "total_kN": 42406.9577,
+      "total_kN": 39128.1197,
       "entra_al_caso_G": "checkpoint + PP_el confirmado; objetivo igual al G_EI_MODELO_FIEL v3/v4 (42406.9577 kN)"
+    },
+    {
+      "familia": "Pendientes por falta de fuente (NO aplicado, regla usuario)",
+      "cantidad": 27,
+      "unidad_m": "receptores",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 3278.8381,
+      "entra_al_caso_G": "0 kN aplicados: (1) tributaria de losas sobre receptores de muros PENDIENTE_DE_FUENTE sin nodo FE (2948.7463 kN) + (2) PP de paneles de muro del nucleo EXCLUIDOS (330.0918 kN). No se traslada a montantes vecinos (regla): se reporta y se suma al G fiel solo para reconciliar"
+    },
+    {
+      "familia": "TOTAL G fiel (aplicado + pendientes no aplicadas)",
+      "cantidad": "-",
+      "unidad_m": "-",
+      "dimension": null,
+      "unidad_dim": "-",
+      "peso_unit": "-",
+      "total_kN": 42406.9578,
+      "entra_al_caso_G": "reconciliacion con el G_EI_MODELO_FIEL v3/v4 (42406.9577 kN): lo aplicado mas lo pendiente por falta de fuente, sin ajustes artificiales"
     },
     {
       "familia": "Pendientes fuera del G (NO omitidos del reporte)",
@@ -135,5 +371,5 @@
       "entra_al_caso_G": "TOWER_DIAG PENDIENTE_TORRE, V.S.I. provisional, contencion sotano, tramos base ficticios (por diseño no existen aqui); se reportan, no se suman al G"
     }
   ],
-  "nota_omision_duplicacion": "El PP_el (184 ids: 137+43+4) se aplica una vez (matchers por id unico); losas y PM.ADIC son cargas superficiales sobre la misma losa, sin solaparse con el PP de elementos. Ningun peso se ajusta artificialmente para cuadrar el total."
+  "nota_omision_duplicacion": "El PP_el confirmado se aplica una vez (matchers por id unico); losas y PM.ADIC son cargas superficiales sobre la misma losa, sin solaparse con el PP de elementos. Los 4 paneles de muro del nucleo P2->P3 quedaron EXCLUIDOS del modelo definitivo (sin apoyo fisico documentado) y su PP se reporta como pendiente NO aplicado. Ningun peso se ajusta artificialmente para cuadrar el total."
 }

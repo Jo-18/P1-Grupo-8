@@ -53,10 +53,12 @@
   },
   "ejes_muros": [
     {
-      "eje": [
-        27.725,
+      "linea": {
+        "tipo": "V",
+        "coordenada": 27.725
+      },
+      "demarcacion": [
         8.55,
-        27.725,
         16.5
       ],
       "niveles": [
@@ -66,58 +68,58 @@
         "EII_CP3",
         "EII_CP4"
       ],
-      "espesores": {
-        "EII_CP1S": 0.25,
-        "EII_CP1": 0.25,
-        "EII_CP2": 0.25,
-        "EII_CP3": 0.25,
-        "EII_CP4": 0.25
+      "por_nivel": {
+        "EII_CP1S": {
+          "espesor": 0.25,
+          "rango": [
+            8.55,
+            16.5
+          ],
+          "id": "EII_CP1S_M_001"
+        },
+        "EII_CP1": {
+          "espesor": 0.25,
+          "rango": [
+            8.55,
+            16.5
+          ],
+          "id": "EII_CP1_M_001"
+        },
+        "EII_CP2": {
+          "espesor": 0.25,
+          "rango": [
+            8.55,
+            16.5
+          ],
+          "id": "EII_CP2_M_001"
+        },
+        "EII_CP3": {
+          "espesor": 0.25,
+          "rango": [
+            8.55,
+            16.5
+          ],
+          "id": "EII_CP3_M_001"
+        },
+        "EII_CP4": {
+          "espesor": 0.25,
+          "rango": [
+            8.55,
+            16.5
+          ],
+          "id": "EII_CP4_M_001"
+        }
       }
     },
     {
-      "eje": [
-        25.08,
-        3.18,
-        25.08,
-        6.15
-      ],
-      "niveles": [
-        "EII_CP1S",
-        "EII_CP1",
-        "EII_CP2",
-        "EII_CP3",
-        "EII_CP4"
-      ],
-      "espesores": {
-        "EII_CP1S": 0.25,
-        "EII_CP1": 0.25,
-        "EII_CP2": 0.25,
-        "EII_CP3": 0.25,
-        "EII_CP4": 0.25
-      }
-    },
-    {
-      "eje": [
-        27.725,
+      "linea": {
+        "tipo": "V",
+        "coordenada": 27.725
+      },
+      "demarcacion": [
         0.35,
-        27.725,
-        6.15
-      ],
-      "niveles": [
-        "EII_CP1S",
-        "EII_CP1"
-      ],
-      "espesores": {
-        "EII_CP1S": 0.25,
-        "EII_CP1": 0.25
-      }
-    },
-    {
-      "eje": [
-        25.08,
         3.18,
-        27.725,
-        3.18
+        6.15
       ],
       "niveles": [
         "EII_CP1S",
@@ -126,19 +128,174 @@
         "EII_CP3",
         "EII_CP4"
       ],
-      "espesores": {
-        "EII_CP1S": 0.3,
-        "EII_CP1": 0.3,
-        "EII_CP2": 0.3,
-        "EII_CP3": 0.3,
-        "EII_CP4": 0.3
+      "por_nivel": {
+        "EII_CP1S": {
+          "espesor": 0.25,
+          "rango": [
+            0.35,
+            6.15
+          ],
+          "id": "EII_CP1S_M_002DER"
+        },
+        "EII_CP1": {
+          "espesor": 0.25,
+          "rango": [
+            0.35,
+            6.15
+          ],
+          "id": "EII_CP1_M_002B"
+        },
+        "EII_CP2": {
+          "espesor": 0.25,
+          "rango": [
+            3.18,
+            6.15
+          ],
+          "id": "EII_CP2_M_002B"
+        },
+        "EII_CP3": {
+          "espesor": 0.25,
+          "rango": [
+            3.18,
+            6.15
+          ],
+          "id": "EII_CP3_M_002B"
+        },
+        "EII_CP4": {
+          "espesor": 0.25,
+          "rango": [
+            3.18,
+            6.15
+          ],
+          "id": "EII_CP4_M_002B"
+        }
       }
     },
     {
-      "eje": [
-        -3.65,
+      "linea": {
+        "tipo": "V",
+        "coordenada": 25.08
+      },
+      "demarcacion": [
+        3.18,
+        6.15
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "por_nivel": {
+        "EII_CP1S": {
+          "espesor": 0.25,
+          "rango": [
+            3.18,
+            6.15
+          ],
+          "id": "EII_CP1S_M_002IZQ"
+        },
+        "EII_CP1": {
+          "espesor": 0.25,
+          "rango": [
+            3.18,
+            6.15
+          ],
+          "id": "EII_CP1_M_002A"
+        },
+        "EII_CP2": {
+          "espesor": 0.25,
+          "rango": [
+            3.18,
+            6.15
+          ],
+          "id": "EII_CP2_M_002A"
+        },
+        "EII_CP3": {
+          "espesor": 0.25,
+          "rango": [
+            3.18,
+            6.15
+          ],
+          "id": "EII_CP3_M_002A"
+        },
+        "EII_CP4": {
+          "espesor": 0.25,
+          "rango": [
+            3.18,
+            6.15
+          ],
+          "id": "EII_CP4_M_002A"
+        }
+      }
+    },
+    {
+      "linea": {
+        "tipo": "H",
+        "coordenada": 3.18
+      },
+      "demarcacion": [
+        25.08,
+        27.725
+      ],
+      "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
+        "EII_CP2",
+        "EII_CP3",
+        "EII_CP4"
+      ],
+      "por_nivel": {
+        "EII_CP1S": {
+          "espesor": 0.3,
+          "rango": [
+            25.08,
+            27.725
+          ],
+          "id": "EII_CP1S_M_002INF"
+        },
+        "EII_CP1": {
+          "espesor": 0.3,
+          "rango": [
+            25.08,
+            27.725
+          ],
+          "id": "EII_CP1_M_002C"
+        },
+        "EII_CP2": {
+          "espesor": 0.3,
+          "rango": [
+            25.08,
+            27.725
+          ],
+          "id": "EII_CP2_M_002C"
+        },
+        "EII_CP3": {
+          "espesor": 0.3,
+          "rango": [
+            25.08,
+            27.725
+          ],
+          "id": "EII_CP3_M_002C"
+        },
+        "EII_CP4": {
+          "espesor": 0.3,
+          "rango": [
+            25.08,
+            27.725
+          ],
+          "id": "EII_CP4_M_002C"
+        }
+      }
+    },
+    {
+      "linea": {
+        "tipo": "V",
+        "coordenada": -3.65
+      },
+      "demarcacion": [
         14.325,
-        -3.65,
         17.24
       ],
       "niveles": [
@@ -148,41 +305,56 @@
         "EII_CP3",
         "EII_CP4"
       ],
-      "espesores": {
-        "EII_CP1S": 0.6,
-        "EII_CP1": 0.6,
-        "EII_CP2": 0.6,
-        "EII_CP3": 0.6,
-        "EII_CP4": 0.6
+      "por_nivel": {
+        "EII_CP1S": {
+          "espesor": 0.6,
+          "rango": [
+            14.325,
+            17.24
+          ],
+          "id": "EII_CP1S_M_003"
+        },
+        "EII_CP1": {
+          "espesor": 0.6,
+          "rango": [
+            14.325,
+            17.24
+          ],
+          "id": "EII_CP1_M_003"
+        },
+        "EII_CP2": {
+          "espesor": 0.6,
+          "rango": [
+            14.325,
+            17.24
+          ],
+          "id": "EII_CP2_M_003"
+        },
+        "EII_CP3": {
+          "espesor": 0.6,
+          "rango": [
+            14.325,
+            17.24
+          ],
+          "id": "EII_CP3_M_003"
+        },
+        "EII_CP4": {
+          "espesor": 0.6,
+          "rango": [
+            14.325,
+            17.24
+          ],
+          "id": "EII_CP4_M_003"
+        }
       }
     },
     {
-      "eje": [
-        -3.35,
-        16.3,
-        -1.9,
-        16.3
-      ],
-      "niveles": [
-        "EII_CP1S",
-        "EII_CP1",
-        "EII_CP2",
-        "EII_CP3",
-        "EII_CP4"
-      ],
-      "espesores": {
-        "EII_CP1S": 0.3,
-        "EII_CP1": 0.3,
-        "EII_CP2": 0.3,
-        "EII_CP3": 0.3,
-        "EII_CP4": 0.3
-      }
-    },
-    {
-      "eje": [
-        -3.65,
+      "linea": {
+        "tipo": "V",
+        "coordenada": -3.65
+      },
+      "demarcacion": [
         -1.095,
-        -3.65,
         1.825
       ],
       "niveles": [
@@ -192,20 +364,57 @@
         "EII_CP3",
         "EII_CP4"
       ],
-      "espesores": {
-        "EII_CP1S": 0.6,
-        "EII_CP1": 0.6,
-        "EII_CP2": 0.6,
-        "EII_CP3": 0.6,
-        "EII_CP4": 0.6
+      "por_nivel": {
+        "EII_CP1S": {
+          "espesor": 0.6,
+          "rango": [
+            -1.095,
+            1.825
+          ],
+          "id": "EII_CP1S_M_004"
+        },
+        "EII_CP1": {
+          "espesor": 0.6,
+          "rango": [
+            -1.095,
+            1.825
+          ],
+          "id": "EII_CP1_M_004"
+        },
+        "EII_CP2": {
+          "espesor": 0.6,
+          "rango": [
+            -1.095,
+            1.825
+          ],
+          "id": "EII_CP2_M_004"
+        },
+        "EII_CP3": {
+          "espesor": 0.6,
+          "rango": [
+            -1.095,
+            1.825
+          ],
+          "id": "EII_CP3_M_004"
+        },
+        "EII_CP4": {
+          "espesor": 0.6,
+          "rango": [
+            -1.095,
+            1.825
+          ],
+          "id": "EII_CP4_M_004"
+        }
       }
     },
     {
-      "eje": [
+      "linea": {
+        "tipo": "H",
+        "coordenada": 16.3
+      },
+      "demarcacion": [
         -3.35,
-        -0.15,
-        -1.9,
-        -0.15
+        -1.9
       ],
       "niveles": [
         "EII_CP1S",
@@ -214,30 +423,106 @@
         "EII_CP3",
         "EII_CP4"
       ],
-      "espesores": {
-        "EII_CP1S": 0.3,
-        "EII_CP1": 0.3,
-        "EII_CP2": 0.3,
-        "EII_CP3": 0.3,
-        "EII_CP4": 0.3
+      "por_nivel": {
+        "EII_CP1S": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP1S_M_003_B"
+        },
+        "EII_CP1": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP1_M_003_B"
+        },
+        "EII_CP2": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP2_M_003_B"
+        },
+        "EII_CP3": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP3_M_003_B"
+        },
+        "EII_CP4": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP4_M_003_B"
+        }
       }
     },
     {
-      "eje": [
-        27.725,
-        3.18,
-        27.725,
-        6.15
+      "linea": {
+        "tipo": "H",
+        "coordenada": -0.15
+      },
+      "demarcacion": [
+        -3.35,
+        -1.9
       ],
       "niveles": [
+        "EII_CP1S",
+        "EII_CP1",
         "EII_CP2",
         "EII_CP3",
         "EII_CP4"
       ],
-      "espesores": {
-        "EII_CP2": 0.25,
-        "EII_CP3": 0.25,
-        "EII_CP4": 0.25
+      "por_nivel": {
+        "EII_CP1S": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP1S_M_004_B"
+        },
+        "EII_CP1": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP1_M_004_B"
+        },
+        "EII_CP2": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP2_M_004_B"
+        },
+        "EII_CP3": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP3_M_004_B"
+        },
+        "EII_CP4": {
+          "espesor": 0.3,
+          "rango": [
+            -3.35,
+            -1.9
+          ],
+          "id": "EII_CP4_M_004_B"
+        }
       }
     }
   ],
@@ -635,7 +920,7 @@
     "n_nodos": 182,
     "n_columnas": 32,
     "n_vigas": 156,
-    "n_muros": 64,
+    "n_muros": 65,
     "master_por_nivel": {
       "EII_CP1": 2,
       "EII_CP2": 5,

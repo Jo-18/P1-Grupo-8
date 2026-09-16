@@ -1,11 +1,11 @@
 {
   "perfil": "MODELO_FE_COMPLETO_FUNCIONAL",
   "edificio": "II",
-  "g_total_kN": 25735.0541,
+  "g_total_kN": 25662.9679,
   "pp_losas_kN": 9670.7592,
   "pp_vigas_kN": 11047.0932,
   "pp_columnas_kN": 1522.3059,
-  "pp_muros_kN": 3494.8959,
+  "pp_muros_kN": 3422.8097,
   "area_neta_m2": 2550.18,
   "densidad_concreto_kN_m3": 24.516625,
   "pendientes": {
@@ -412,12 +412,12 @@
     },
     {
       "familia": "Muros (montantes t x L/2)",
-      "cantidad": 64,
+      "cantidad": 65,
       "unidad_m": "montantes",
       "dimension": null,
       "unidad_dim": "-",
       "peso_unit": "A*L*24.516625",
-      "total_kN": 3494.8959,
+      "total_kN": 3422.8097,
       "entra_al_caso_G": "idem; cada eje lleva t x L/2 (area total sin duplicar)"
     },
     {
@@ -477,7 +477,7 @@
       "dimension": null,
       "unidad_dim": "-",
       "peso_unit": "-",
-      "total_kN": 25735.0541,
+      "total_kN": 25662.9679,
       "entra_al_caso_G": "PP losas + PP elementos FE (auto-consistente; sin referencia externa de G para el II)"
     }
   ],

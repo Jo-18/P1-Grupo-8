@@ -80,9 +80,22 @@ def seg2d(e) -> tuple:
     return ((e["p_i_unity"][0], e["p_i_unity"][2]), (e["p_j_unity"][0], e["p_j_unity"][2]))
 
 
-def fe_cubre_elemento(fe, elemento, viewer, nivel) -> bool:
-    """Coincidencia geometrica FE<->elemento viewer del mismo tipo."""
+def _tipo_del_elemento(elemento) -> str | None:
     tipo = elemento.get("tipo")
+    if tipo:
+        return tipo
+    if "posicion" in elemento:
+        return "columna"
+    if "espesor" in elemento:
+        return "muro"
+    if "pts" in elemento:
+        return "viga"
+    return None
+
+
+def fe_cubre_elemento(fe, elemento, viewer, nivel, tipo=None) -> bool:
+    """Coincidencia geometrica FE<->elemento viewer del mismo tipo."""
+    tipo = tipo or _tipo_del_elemento(elemento)
     if fe["tipo"] != tipo:
         return False
     pi, pj = fe["p_i_unity"], fe["p_j_unity"]
@@ -91,10 +104,19 @@ def fe_cubre_elemento(fe, elemento, viewer, nivel) -> bool:
         pos = elemento["posicion"]
         if not (cerca(pos[0], fe["p_i_unity"][0], 0.02) and cerca(pos[2], fe["p_i_unity"][2], 0.02)):
             return False
-        base = float(pos[1])
-        # la columna del viewer sube desde su base hacia el techo del edificio
-        seg = zi <= base <= zj or (zj >= base and (zj - max(zi, base)) > 0.05)
-        return seg and zj > base - TOL_Z * 0.25
+        # La columna del viewer se dibuja como el tramo fisico completo
+        # [cota del forjado anterior, posicion.y]. Un elemento FE la cubre solo
+        # si coincide con ese intervalo completo (cota anterior y cota del
+        # objeto, cualquier orden dentro de tolerancia); la regla antigua de
+        # "base en el plano de la losa" hacia flotar a los postes P4-EI
+        # (607..635: [11,83;15,79] vs [7,87;11,83]) sobre la cubierta.
+        cz = float(pos[1])
+        cotas = sorted({float(piso["cota"]) for piso in viewer.pisos.values()})
+        prevs = [c for c in cotas if c < cz - TOL_Z]
+        z_prev = max(prevs) if prevs else cz
+        zi, zj = min(pi[1], pj[1]), max(pi[1], pj[1])
+        return (abs(zi - z_prev) <= 2e-3 and abs(zj - cz) <= 2e-3) \
+            or (abs(zi - cz) <= 2e-3 and abs(zj - z_prev) <= 2e-3)
     if tipo == "viga":
         pts = elemento["pts"]
         z = float(pts[0][1])
@@ -106,9 +128,14 @@ def fe_cubre_elemento(fe, elemento, viewer, nivel) -> bool:
     if tipo == "muro":
         pts = elemento["pts"]
         z = float(pts[0][1])
-        if abs(z - pi[1]) > TOL_Z:
+        # el muro viewer se dibuja en el plano de la losa del nivel; lo cubre
+        # CUALQUIER elemento muro cuyo tramo vertical (u,v) contiene ese plano
+        # (parte desde el nivel, o llega desde el nivel inferior), igual
+        # criterio geométrico que las columnas.
+        if abs(z - zi) > TOL_Z and abs(z - zj) > TOL_Z:
             return False
-        d = dist_punto_polilinea((pi[0], pi[2]), pts)
+        d = min(dist_punto_polilinea((pi[0], pi[2]), pts),
+                dist_punto_polilinea((pj[0], pj[2]), pts))
         return d <= TOL_PLANAR
     return False
 
@@ -159,8 +186,14 @@ def audit(edificio: str) -> dict:
 
     for e in fe:
         est = e["correspondencia"]["estado"]
-        if est == "SIN_CORRESPONDENCIA_VIEWER":
-            # ? existe un objeto viewer cubriendo su geometria?
+        if est in ("1A1", "CONTENIDO"):
+            # Estados con enlace viewer_id resuelto por el exporter.
+            estado = est
+        else:
+            # Estados SIN enlace (SIN_CORRESPONDENCIA_VIEWER, elementos
+            # analiticos SIN_GEOMETRIA_FISICA_3D, pendientes): solo pueden
+            # recuperar cobertura si existe un objeto viewer que los cubra
+            # geometricamente por TRAMO COMPLETO (si no, SIN_RESULTADO_FE).
             vista = None
             for nivel, piso in vw.pisos.items():
                 for tipo in TIPOS:
@@ -173,8 +206,6 @@ def audit(edificio: str) -> dict:
                 if vista:
                     break
             estado = "MULTIPLE" if vista else "SIN_RESULTADO_FE"
-        else:
-            estado = est
         fe_res[e["tag"]] = estado
         fe_det.setdefault(estado, []).append({
             "edificio": edificio, "tag": e["tag"], "tipo": e["tipo"], "nivel": e["nivel"],

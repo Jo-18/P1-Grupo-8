@@ -8,12 +8,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from src.unity_esfuerzos.exportar_esfuerzos_funcional_para_viewer import (
     CASOS, CASOS_BASE, COMBINACIONES_NCH3171, GEOMETRIA_VIEWER,
     IDS_COMBINACIONES, INDICES_NOMBRES, MAX_STUB_LONG_M, NIVELES,
-    RAZON_SIN_REGISTRO, STUB_TIPO, generar,
+    RAZON_SIN_REGISTRO, STUB_TIPO, _ESTADO_COMBO_CALCULADA,
+    bloquear_combos_para_topologia, casos_vigentes, combos_obsoletos, generar,
 )
 
-ESTADOS_VALIDOS = {"1A1", "CONTENIDO", "SIN_CORRESPONDENCIA_VIEWER"}
+ESTADOS_VALIDOS = {"1A1", "CONTENIDO", "SIN_CORRESPONDENCIA_VIEWER",
+                   "SIN_GEOMETRIA_FISICA_3D"}
 CAUSAS = {"PENDIENTE_DE_FUENTE", "SIN_CORRESPONDENCIA_FE"}
 PREFIJO = {"I": "EI", "II": "EII"}
+# COMB_*.json de la topologia previa (nucleo/islas): obsoletos hasta regenerar.
+COMBOS_OBSOLETOS = combos_obsoletos()
 
 
 def _payload(edificio, caso):
@@ -49,18 +53,18 @@ class TestEstructuraContratoV1(unittest.TestCase):
         self.assertEqual(d["formato"], "esfuerzos_FE_edificio_v1")
         return d
 
-    def test_edificio_I_412(self):
+    def test_edificio_I_elementos_actuales(self):
         d = self._datos("I")
         self.assertEqual(d["edificio"], "I")
-        self.assertEqual(d["n_elementos"], 412)
+        self.assertEqual(d["n_elementos"], len(_fuerzas_fuente("I", "G")))
         tags = [e["tag"] for e in d["elementos"]]
         self.assertEqual(len(tags), len(set(tags)))
         self.assertEqual(tags, sorted(tags))
         self.assertEqual(set(tags), set(_fuerzas_fuente("I", "G")))
 
-    def test_edificio_II_252(self):
+    def test_edificio_II_elementos_actuales(self):
         d = self._datos("II")
-        self.assertEqual(d["n_elementos"], 252)
+        self.assertEqual(d["n_elementos"], 253)
         tags = [e["tag"] for e in d["elementos"]]
         self.assertEqual(len(tags), len(set(tags)))
         self.assertEqual(set(tags), set(_fuerzas_fuente("II", "G")))
@@ -68,30 +72,45 @@ class TestEstructuraContratoV1(unittest.TestCase):
     def test_casos_base_sin_COMBINADA_y_combinaciones_calculadas(self):
         for edificio in ("I", "II"):
             d = generar(edificio, escribir=False)[0]
+            casos_vig = casos_vigentes(edificio)
             self.assertEqual(d["casos_base"], list(CASOS_BASE))
-            self.assertEqual(d["casos"], list(CASOS))
+            self.assertEqual(d["casos"], casos_vig)
             self.assertNotIn("COMBINADA", d["casos"])
             for e in d["elementos"]:
-                self.assertEqual(set(e["fuerzas"]), set(CASOS))
-                self.assertEqual(list(e["fuerzas"]), list(CASOS))
+                self.assertEqual(set(e["fuerzas"]), set(casos_vig))
+                self.assertEqual(list(e["fuerzas"]), list(casos_vig))
                 self.assertNotIn("COMBINADA", e["fuerzas"])
-                for caso in CASOS:
+                for caso in casos_vig:
                     self.assertEqual(len(e["fuerzas"][caso]), 12)
-                self.assertEqual(len(e["envolvente_NCh3171"]), 12)
+                if COMBOS_OBSOLETOS:
+                    self.assertEqual(e["envolvente_NCh3171"], [])
+                else:
+                    self.assertEqual(len(e["envolvente_NCh3171"]), 12)
             esquema = d["combinaciones_normativas_NCh3171"]
             self.assertEqual(esquema["norma"], "NCh3171.Of2008 (ed. 2021)")
-            self.assertTrue(esquema["estado"].startswith("CALCULADA"))
-            self.assertEqual([c["id"] for c in esquema["combinaciones"]],
-                             IDS_COMBINACIONES)
-            by_id = {c["id"]: c for c in esquema["combinaciones"]}
-            for c in COMBINACIONES_NCH3171:
-                self.assertEqual(by_id[c["id"]]["expresion"], c["expresion"])
-                self.assertEqual(by_id[c["id"]]["factores"], c["factores"])
-            self.assertEqual(esquema["combinaciones_100_30"]["estado"],
-                             "NO_NORMATIVA_PARA_ESTA_ENTREGA")
-            self.assertEqual(esquema["envolvente"]["sobre"],
-                             IDS_COMBINACIONES)
+            self.assertTrue(esquema["estado"].startswith(
+                ("CALCULADA", "OBSOLETOS_POR_CAMBIO_DE_TOPOLOGIA")))
+            self.assertEqual(esquema["estado"].startswith("CALCULADA"),
+                             esquema["utilizables"])
+            self.assertEqual(d["combos_estado"], esquema["estado"])
+            if COMBOS_OBSOLETOS:
+                self.assertFalse(esquema["utilizables"])
+                self.assertEqual(esquema["pendientes"], list(IDS_COMBINACIONES))
+            else:
+                self.assertTrue(esquema["utilizables"])
+                self.assertEqual([c["id"] for c in esquema["combinaciones"]],
+                                 IDS_COMBINACIONES)
+                by_id = {c["id"]: c for c in esquema["combinaciones"]}
+                for c in COMBINACIONES_NCH3171:
+                    self.assertEqual(by_id[c["id"]]["expresion"], c["expresion"])
+                    self.assertEqual(by_id[c["id"]]["factores"], c["factores"])
+                self.assertEqual(esquema["combinaciones_100_30"]["estado"],
+                                 "NO_NORMATIVA_PARA_ESTA_ENTREGA")
+                self.assertEqual(esquema["envolvente"]["sobre"],
+                                 IDS_COMBINACIONES)
 
+    @unittest.skipIf(bool(COMBOS_OBSOLETOS),
+                     "envolvente NCh3171 pendiente de regenerar (COMB obsoletas)")
     def test_envolvente_respeta_maximo_abs_entre_combinaciones(self):
         for edificio in ("I", "II"):
             d = generar(edificio, escribir=False)[0]
@@ -124,7 +143,7 @@ class TestFidelidadFuente(unittest.TestCase):
     def test_valores_iguales_a_payload(self):
         for edificio in ("I", "II"):
             d = generar(edificio, escribir=False)[0]
-            for caso in CASOS:
+            for caso in d["casos"]:
                 fuente = _fuerzas_fuente(edificio, caso)
                 for e in d["elementos"]:
                     self.assertEqual(
@@ -140,7 +159,8 @@ class TestCorrespondenciaYCobertura(unittest.TestCase):
             for e in d["elementos"]:
                 c = e["correspondencia"]
                 self.assertIn(c["estado"], ESTADOS_VALIDOS)
-                if c["estado"] == "SIN_CORRESPONDENCIA_VIEWER":
+                if c["estado"] in ("SIN_CORRESPONDENCIA_VIEWER",
+                                   "SIN_GEOMETRIA_FISICA_3D"):
                     self.assertIsNone(c["viewer_id"])
                     self.assertIsNone(c["viewer_nivel"])
                 else:
@@ -159,6 +179,42 @@ class TestCorrespondenciaYCobertura(unittest.TestCase):
                     for s in info["sin_resultado"]:
                         self.assertIn(s["causa"], CAUSAS)
                         self.assertTrue(s["viewer_id"])
+
+    def test_viga_extendida_se_recupera_por_cobertura_geometrica(self):
+        # FE tag 317 (V, 16.15->20.27) contiene el tramo fisico viewer
+        # V_EI_CP2_x1749 (16.45->19.97): mismo eje a la cota del nivel. Antes del
+        # hito el objeto quedaba SIN_CORRESPONDENCIA_FE por no haber enlace
+        # directo (emparejar exige extremos 1A1 o FE dentro de viewer).
+        d, _, cobertura = generar("I", escribir=False)
+        viga = None
+        for c in cobertura["P2"]["vigas"]["con_detalle"]:
+            if c["viewer_id"] == "V_EI_CP2_x1749_16.45-19.97_PLA2017-102":
+                viga = c
+                break
+        self.assertIsNotNone(viga)
+        self.assertEqual(viga["cobertura"], "geometrica_sin_enlace")
+        self.assertIn(317, viga["tags"])
+        self.assertNotIn("V_EI_CP2_x1749_16.45-19.97_PLA2017-102",
+                         [s["viewer_id"] for s in cobertura["P2"]["vigas"]["sin_resultado"]])
+
+    def test_pendientes_permanecen_pendientes_con_cobertura_geometrica(self):
+        # TOWER_DIAG_*_D2 (P4) esta geometricamente contenido en FE 468/476 pero
+        # su propiedad queda PENDIENTE_DE_FUENTE: no se auto-cubre ni se oculta.
+        d, _, cobertura = generar("I", escribir=False)
+        pendientes = [s for s in cobertura["P4"]["vigas"]["sin_resultado"]]
+        d2 = [s for s in pendientes
+              if s["viewer_id"].endswith("_D2") and s["causa"] == "PENDIENTE_DE_FUENTE"]
+        self.assertEqual(len(d2), 2)
+
+    def test_muros_cp4_eii_pendientes_precedencia(self):
+        # EII_CP4_M_* estan en pend_ids (topologia): PENDIENTE_DE_FUENTE tomada
+        # con precedencia sobre cualquier cobertura geometrica, para no
+        # adelantar resultados de objetos pendientes de fuente.
+        d, _, cobertura = generar("II", escribir=False)
+        i = cobertura["EII_CP4"]["muros"]
+        self.assertEqual(len(i["con_detalle"]), 0)
+        self.assertEqual([s["causa"] for s in i["sin_resultado"]],
+                         ["PENDIENTE_DE_FUENTE"] * i["total"])
 
     def test_resumen_suma(self):
         for edificio in ("I", "II"):
@@ -206,7 +262,7 @@ class TestElementosAuxiliares(unittest.TestCase):
     def test_stubs_en_elementos_documentados_y_sin_barra(self):
         d, _, _ = generar("I", escribir=False)
         stubs = [e for e in d["elementos"] if e.get("es_auxiliar_analitico")]
-        self.assertEqual(len(stubs), 44)
+        self.assertEqual(len(stubs), 54)
         tags = set()
         for e in stubs:
             tags.add(e["tag"])
@@ -223,7 +279,7 @@ class TestElementosAuxiliares(unittest.TestCase):
                              "SIN_CORRESPONDENCIA_VIEWER")
             self.assertIsNone(e["correspondencia"]["viewer_id"])
             self.assertIsNone(e["correspondencia"]["viewer_nivel"])
-        self.assertEqual(len(tags), 44)
+        self.assertEqual(len(tags), 54)
 
     def test_II_sin_stubs(self):
         d, _, _ = generar("II", escribir=False)
@@ -308,7 +364,82 @@ class TestSeleccionUnityPorNivel(unittest.TestCase):
     def test_fuerzas_orden_casos(self):
         d = generar("II", escribir=False)[0]
         keys = list(next(iter(d["elementos"]))["fuerzas"].keys())
-        self.assertEqual(keys, list(CASOS))
+        self.assertEqual(keys, list(d["casos"]))
+
+
+class TestBloqueoCombinacionesObsoletas(unittest.TestCase):
+    """Hito congelacion topologia Semana 4 (2026-09-15): las COMB_*.json se
+    regeneraron sobre la topologia cerrada (4 islas + grillaje torre P4) y
+    quedan CALCULADA. El bloqueo por obsolescencia ya no aplica; las corridas
+    ofrecen 13 casos y la escritura de paquetes queda habilitada."""
+
+    def test_combos_calculadas(self):
+        self.assertFalse(combos_obsoletos(),
+                         "esperaba COMB CALCULADA tras regenerar sobre la "
+                         "topologia congelada Semana 4")
+
+    def test_generar_memoria_ofrece_combos_y_escribir_no_bloquea(self):
+        for edificio in ("I", "II"):
+            d = generar(edificio, escribir=False)[0]
+            self.assertEqual(d["casos"], list(CASOS_BASE) + list(IDS_COMBINACIONES))
+            self.assertEqual(d["combos_estado"], _ESTADO_COMBO_CALCULADA)
+            self.assertEqual(d["combinaciones_normativas_NCh3171"]
+                             ["utilizables"], True)
+            ids_combos = d["combinaciones_normativas_NCh3171"]["combinaciones"]
+            self.assertEqual([c["id"] for c in ids_combos], IDS_COMBINACIONES)
+        # escritura de paquete: ya no bloquea sobre topologia congelada
+        bloquear_combos_para_topologia(exigir=False)  # sin exigir: no bloquea
+
+
+class TestDeformadaApoyosMateriales(unittest.TestCase):
+    """Extenson Hito B: desplazamientos nodales reales, apoyos (G), nodos y
+    material de la seccion DEMO_RC para ficha/deformada/diagramas en Unity."""
+
+    def test_nodos_coherentes_con_extremos(self):
+        for edificio in ("I", "II"):
+            d = generar(edificio, escribir=False)[0]
+            nodos = d["deformada"]["nodos"]
+            for e in d["elementos"]:
+                self.assertIn(e["nodo_i"], nodos)
+                self.assertIn(e["nodo_j"], nodos)
+                self.assertEqual(nodos[e["nodo_i"]], e["p_i_unity"])
+                self.assertEqual(nodos[e["nodo_j"]], e["p_j_unity"])
+
+    def test_desplazamientos_por_caso(self):
+        for edificio in ("I", "II"):
+            d = generar(edificio, escribir=False)[0]
+            desp = d["deformada"]["desplazamientos_por_caso"]
+            self.assertEqual(set(desp), set(d["casos"]))
+            n = d["deformada"]["n_nodos"]
+            for caso in d["casos"]:
+                self.assertEqual(len(desp[caso]), n)
+                for v in desp[caso].values():
+                    self.assertEqual(len(v), 6)
+
+    def test_apoyos_G_equilibrio(self):
+        for edificio in ("I", "II"):
+            d = generar(edificio, escribir=False)[0]
+            apoyos = d["apoyos"]["reacciones_G"]
+            self.assertTrue(apoyos, f"{edificio}: sin apoyos")
+            for tag in apoyos:
+                self.assertIn(tag, d["deformada"]["nodos"])
+            pz = sum(r[2] for r in apoyos.values())
+            self.assertAlmostEqual(pz, d["apoyos"]["Rz_payload_kN"], delta=0.5,
+                                   msg=f"{edificio}: Rz apoyos (G) no reconcilia "
+                                       "contra Rz del payload")
+            self.assertAlmostEqual(d["apoyos"]["Rz_payload_kN"],
+                                   d["apoyos"]["Pz_aplicada_kN"], delta=0.5)
+
+    def test_material_demo_por_edificio(self):
+        fc = {"I": 40.0, "II": 35.0}
+        clasif = "HIPOTESIS_DEMOSTRACION"
+        for edificio in ("I", "II"):
+            d = generar(edificio, escribir=False)[0]
+            self.assertEqual(d["materiales"]["hormigon"]["fc_MPa"], fc[edificio])
+            self.assertEqual(d["materiales"]["clasificacion"], clasif)
+            for e in d["elementos"]:
+                self.assertEqual(e["material"]["hormigon_fc_MPa"], fc[edificio])
+                self.assertIn("DEMO_RC", e["material"]["referencia"])
 
 
 if __name__ == "__main__":

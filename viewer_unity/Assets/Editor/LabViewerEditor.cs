@@ -398,10 +398,10 @@ namespace LabViewer.EditorTools
         /// Verificacion de aceptacion del OVERLAY DE ESFUERZOS FE en MODO EDITOR
         /// (deterministica, sin play ni raycast): ejercita el mismo codigo runtime
         /// EsfuerzosController sobre un LabLoader real. Comprueba: carga de ambos
-        /// paquetes (FE_TOTAL I 409, II 252), los 13 casos V1 presentes sin casos
+        /// paquetes (FE_TOTAL I 378, II 253), los 13 casos V1 presentes sin casos
         /// heredados, valores identicos a la fuente (anclas de combinaciones
         /// NCh3171 + envolvente con caso/signo gobernante), construccion del overlay
-        /// en MODO NORMAL (OVERLAY_NORMAL_MAPEADO I 292, II 237: solo 1A1+CONTENIDO;
+        /// en MODO NORMAL (OVERLAY_NORMAL_MAPEADO I 284, II 253: solo 1A1+CONTENIDO;
         /// SIN_CORRESPONDENCIA_VIEWER y stubs ocultos) y en modo diagnostico
         /// ("Todos los FE" = FE_TOTAL completo), seleccion de dos columnas y dos
         /// vigas con valores reales distintos, cambio real de valores entre casos,
@@ -428,9 +428,9 @@ namespace LabViewer.EditorTools
 // 1) carga de paquetes y FE_TOTAL (elementos completos del paquete)
                 bool loadPass = esf.EstaCargado("I") && esf.EstaCargado("II");
                 int nI = esf.TotalElementos("I"), nII = esf.TotalElementos("II");
-                bool countPass = nI == 409 && nII == 252;
+                bool countPass = nI == 378 && nII == 253;
                 Log(string.Format("[Esf] [Carga] I={0} II={1} -> {2}", esf.EstaCargado("I"), esf.EstaCargado("II"), loadPass ? "OK" : "FALLO"));
-                Log(string.Format("[Esf] [FE_TOTAL] I={0} II={1} (esperados 409/252) -> {2}", nI, nII, countPass ? "OK" : "FALLO"));
+                Log(string.Format("[Esf] [FE_TOTAL] I={0} II={1} (esperados 378/253) -> {2}", nI, nII, countPass ? "OK" : "FALLO"));
                 ok &= loadPass && countPass;
 
                 // 1.5) 13 casos V1 disponibles (perfil MODELO_FE_COMPLETO_FUNCIONAL),
@@ -454,13 +454,13 @@ namespace LabViewer.EditorTools
                 //    EXPLICITAS) + envolvente (caso y signo gobernante por componente).
                 var anclas = new[]
                 {
-                    new { b = "I", tag = 3, caso = "G", comp = 0, val = 285.246214 },
-                    new { b = "I", tag = 3, caso = "U1_GQ", comp = 0, val = 453.661065 },
-                    new { b = "I", tag = 3, caso = "U2_EX_POS", comp = 0, val = 1889.601113 },
-                    new { b = "I", tag = 3, caso = "U2_EX_NEG", comp = 5, val = 1461.801234 },
-                    new { b = "II", tag = 3, caso = "U2_EX_POS", comp = 0, val = 2568.793090 },
-                    new { b = "II", tag = 3, caso = "U2_EX_NEG", comp = 0, val = 3768.523550 },
-                    new { b = "II", tag = 3, caso = "U2_EX_POS", comp = 5, val = -2177.963531 },
+                    new { b = "I", tag = 3, caso = "G", comp = 0, val = 771.972227 },
+                    new { b = "I", tag = 3, caso = "U1_GQ", comp = 0, val = 1227.274967 },
+                    new { b = "I", tag = 3, caso = "U2_EX_POS", comp = 0, val = 730.722866 },
+                    new { b = "I", tag = 3, caso = "U2_EX_NEG", comp = 5, val = 1403.022925 },
+                    new { b = "II", tag = 3, caso = "U2_EX_POS", comp = 0, val = 2568.126709 },
+                    new { b = "II", tag = 3, caso = "U2_EX_NEG", comp = 0, val = 3769.393339 },
+                    new { b = "II", tag = 3, caso = "U2_EX_POS", comp = 5, val = -2187.446694 },
                 };
                 foreach (var a in anclas)
                 {
@@ -472,10 +472,10 @@ namespace LabViewer.EditorTools
                 }
                 var envAnclas = new[]
                 {
-                    new { b = "I", tag = 3, comp = 0, caso = "U2_EX_POS", val = 1889.601113 },
-                    new { b = "I", tag = 3, comp = 5, caso = "U2_EX_NEG", val = 1461.801234 },
-                    new { b = "II", tag = 3, comp = 0, caso = "U2_EX_NEG", val = 3768.523550 },
-                    new { b = "II", tag = 3, comp = 11, caso = "U2_EX_POS", val = -1320.086813 },
+                    new { b = "I", tag = 3, comp = 0, caso = "U3_EY_NEG", val = 1639.55061 },
+                    new { b = "I", tag = 3, comp = 5, caso = "U2_EX_POS", val = -1411.084461 },
+                    new { b = "II", tag = 3, comp = 0, caso = "U2_EX_NEG", val = 3769.393339 },
+                    new { b = "II", tag = 3, comp = 11, caso = "U2_EX_POS", val = -1326.036634 },
                 };
                 foreach (var a in envAnclas)
                 {
@@ -494,43 +494,44 @@ namespace LabViewer.EditorTools
                     var e = esf.Buscar(a.b, a.tag);
                     if (e == null) { LogError("[Esf] No existe tag " + a.b + " " + a.tag); ok = false; continue; }
                     bool estado = e.EstadoCorr == "1A1" || e.EstadoCorr == "CONTENIDO"
-                                  || e.EstadoCorr == "SIN_CORRESPONDENCIA_VIEWER";
+                                  || e.EstadoCorr == "SIN_CORRESPONDENCIA_VIEWER"
+                                  || e.EstadoCorr == "SIN_GEOMETRIA_FISICA_3D";
                     if (!estado) { LogError("[Esf] Estado invalido " + a.b + " tag" + a.tag + ": " + e.EstadoCorr); ok = false; }
                 }
 
 // 4) overlay por edificio en MODO NORMAL (solo 1A1+CONTENIDO): combinacion sismica
 //    NCh3171 (I), envolvente independiente (I y II) y caso base (II G/Mz).
-//    En modo normal los SIN_CORRESPONDENCIA_VIEWER (incluidos los 45 stubs EI)
-//    NO se renderizan => OVERLAY_NORMAL_MAPEADO EI 292, EII 237.
+//    En modo normal los SIN_CORRESPONDENCIA_VIEWER (incluidos los 54 stubs EI)
+//    NO se renderizan => OVERLAY_NORMAL_MAPEADO EI 284, EII 253.
 esf.SetFiltros(true, true, true, "Mapeados");
 esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
 int dibI = esf.CountOverlayRenderers("I");
-bool ovIPass = dibI == 292;
-Log(string.Format("[Esf] [Overlay I U2_EX_POS/N (MODO_NORMAL)] tubos={0} esperados=292 escala={1} maxReal={2} -> {3}",
+bool ovIPass = dibI == 284;
+Log(string.Format("[Esf] [Overlay I U2_EX_POS/N (MODO_NORMAL)] tubos={0} esperados=284 escala={1} maxReal={2} -> {3}",
     dibI, esf.EscalaActual, esf.MaxRealActual, ovIPass ? "OK" : "FALLO"));
 ok &= ovIPass;
 CapturarEditor("capturas/esfuerzos_I_U2_EX_POS_N.png");
 
 esf.SeleccionarEnvolvente();
 int dibIEnv = esf.CountOverlayRenderers("I");
-bool ovIEnvPass = dibIEnv == 292 && esf.EscalaActual > 0f;
-Log(string.Format("[Esf] [Overlay I Envolvente N (MODO_NORMAL)] tubos={0} esperados=292 escala={1} maxReal={2} -> {3}",
+bool ovIEnvPass = dibIEnv == 284 && esf.EscalaActual > 0f;
+Log(string.Format("[Esf] [Overlay I Envolvente N (MODO_NORMAL)] tubos={0} esperados=284 escala={1} maxReal={2} -> {3}",
     dibIEnv, esf.EscalaActual, esf.MaxRealActual, ovIEnvPass ? "OK" : "FALLO"));
 ok &= ovIEnvPass;
 CapturarEditor("capturas/esfuerzos_I_envolvente_N.png");
 
 esf.SetUI("II", "ENVOLVENTE_NCh3171", 5, 1, 1, true);
 int dibIIEnv = esf.CountOverlayRenderers("II");
-bool ovIIEnvPass = dibIIEnv == 237;
-Log(string.Format("[Esf] [Overlay II Envolvente Mz/extremo j (MODO_NORMAL)] tubos={0} esperados=237 escala={1} -> {2}",
+bool ovIIEnvPass = dibIIEnv == 253;
+Log(string.Format("[Esf] [Overlay II Envolvente Mz/extremo j (MODO_NORMAL)] tubos={0} esperados=253 escala={1} -> {2}",
     dibIIEnv, esf.EscalaActual, ovIIEnvPass ? "OK" : "FALLO"));
 ok &= ovIIEnvPass;
 CapturarEditor("capturas/esfuerzos_II_envolvente_Mz.png");
 
 esf.SetUI("II", "G", 5, 0, 1, true);
 int dibII = esf.CountOverlayRenderers("II");
-bool ovIIPass = dibII == 237;
-Log(string.Format("[Esf] [Overlay II G/Mz (MODO_NORMAL)] tubos={0} esperados=237 escala={1} maxReal={2} -> {3}",
+bool ovIIPass = dibII == 253;
+Log(string.Format("[Esf] [Overlay II G/Mz (MODO_NORMAL)] tubos={0} esperados=253 escala={1} maxReal={2} -> {3}",
     dibII, esf.EscalaActual, esf.MaxRealActual, ovIIPass ? "OK" : "FALLO"));
 ok &= ovIIPass;
 CapturarEditor("capturas/esfuerzos_II_G_Mz.png");
@@ -574,9 +575,9 @@ esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
                 {
                     var escenarios = new[]
                     {
-                        new { b = "I",  t0 = 25, t1 = 616, tipo = "columna" },
+                        new { b = "I",  t0 = 25, t1 = 46, tipo = "columna" },
                         new { b = "II", t0 = 49, t1 = 28,  tipo = "columna" },
-                        new { b = "I",  t0 = 318, t1 = 320, tipo = "viga" },
+                        new { b = "I",  t0 = 205, t1 = 193, tipo = "viga" },
                         new { b = "II", t0 = 244, t1 = 230, tipo = "viga" },
                     };
                     foreach (var s in escenarios)
@@ -1135,10 +1136,10 @@ esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
 
     /// <summary>
     /// Verificacion de aceptacion del OVERLAY DE ESFUERZOS FE (independiente por
-    /// elemento). En modo Play: carga (FE_TOTAL I: 409, II: 252), los 13 casos V1
+    /// elemento). En modo Play: carga (FE_TOTAL I: 378, II: 253), los 13 casos V1
     /// presentes sin casos heredados, valores identicos a la fuente (anclas de
     /// combinaciones NCh3171 + envolvente con caso/signo gobernante), construccion
-    /// del overlay en MODO NORMAL (OVERLAY_NORMAL_MAPEADO I 292, II 237: solo
+    /// del overlay en MODO NORMAL (OVERLAY_NORMAL_MAPEADO I 284, II 253: solo
     /// 1A1+CONTENIDO) y en modo diagnostico (Todos los FE = FE_TOTAL completo),
     /// seleccion por correspondencia con clics reales (2 columnas y 2 vigas), por
     /// tag y restauracion. Toma capturas: combinacion sismica y envolvente en modo
@@ -1156,21 +1157,21 @@ esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
         private static readonly Ancla[] ANCLAS = new Ancla[]
         {
             // edificio, tag, caso/comp, valor esperado (combos NCh3171 EXPLICITOS + base)
-            new Ancla { B = "I", Tag = 3, Caso = "G", Comp = 0, Val = 285.246214 },
-            new Ancla { B = "I", Tag = 3, Caso = "U1_GQ", Comp = 0, Val = 453.661065 },
-            new Ancla { B = "I", Tag = 3, Caso = "U2_EX_POS", Comp = 0, Val = 1889.601113 },
-            new Ancla { B = "I", Tag = 3, Caso = "U2_EX_NEG", Comp = 5, Val = 1461.801234 },
-            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_POS", Comp = 0, Val = 2568.793090 },
-            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_NEG", Comp = 0, Val = 3768.523550 },
-            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_POS", Comp = 5, Val = -2177.963531 },
+            new Ancla { B = "I", Tag = 3, Caso = "G", Comp = 0, Val = 771.972227 },
+            new Ancla { B = "I", Tag = 3, Caso = "U1_GQ", Comp = 0, Val = 1227.274967 },
+            new Ancla { B = "I", Tag = 3, Caso = "U2_EX_POS", Comp = 0, Val = 730.722866 },
+            new Ancla { B = "I", Tag = 3, Caso = "U2_EX_NEG", Comp = 5, Val = 1403.022925 },
+            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_POS", Comp = 0, Val = 2568.126709 },
+            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_NEG", Comp = 0, Val = 3769.393339 },
+            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_POS", Comp = 5, Val = -2187.446694 },
         };
         private static readonly Ancla[] ENV_ANCLAS = new Ancla[]
         {
             // envolvente NCh3171: componente y caso gobernante esperado (signo conservado)
-            new Ancla { B = "I", Tag = 3, Caso = "U2_EX_POS", Comp = 0, Val = 1889.601113 },
-            new Ancla { B = "I", Tag = 3, Caso = "U2_EX_NEG", Comp = 5, Val = 1461.801234 },
-            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_NEG", Comp = 0, Val = 3768.523550 },
-            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_POS", Comp = 11, Val = -1320.086813 },
+            new Ancla { B = "I", Tag = 3, Caso = "U3_EY_NEG", Comp = 0, Val = 1639.55061 },
+            new Ancla { B = "I", Tag = 3, Caso = "U2_EX_POS", Comp = 5, Val = -1411.084461 },
+            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_NEG", Comp = 0, Val = 3769.393339 },
+            new Ancla { B = "II", Tag = 3, Caso = "U2_EX_POS", Comp = 11, Val = -1326.036634 },
         };
         private static readonly string[] CASOS = {
             "G", "Q", "EX", "EY",
@@ -1224,8 +1225,8 @@ esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
 
             // 2) FE_TOTAL por edificio (elementos completos del paquete)
             int nI = esf.TotalElementos("I"), nII = esf.TotalElementos("II");
-            bool countPass = nI == 409 && nII == 252;
-            Debug.Log(string.Format("[LabViewer] [FE_TOTAL] I={0} II={1} (esperados 409/252) -> {2}", nI, nII, countPass ? "OK" : "FALLO"));
+            bool countPass = nI == 378 && nII == 253;
+            Debug.Log(string.Format("[LabViewer] [FE_TOTAL] I={0} II={1} (esperados 378/253) -> {2}", nI, nII, countPass ? "OK" : "FALLO"));
             if (!countPass) ok = false;
 
             // 2.5) los 13 casos V1 presentes (columna probe 1A1) sin casos heredados
@@ -1265,17 +1266,17 @@ esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
             }
 
             // 4) OVERLAY_NORMAL_MAPEADO en MODO NORMAL (solo 1A1+CONTENIDO): los
-//    SIN_CORRESPONDENCIA_VIEWER (incluidos los 45 stubs EI) quedan ocultos
+//    SIN_CORRESPONDENCIA_VIEWER (incluidos los 54 stubs EI) quedan ocultos
 //    en el render y no cuentan en la cobertura del viewer.
 esf.SetFiltros(true, true, true, "Mapeados");
 esf.ConteosCorrespondencia("I", out int totI, out int mapI, out int sinI, out int stubsI);
-bool convI = totI == 409 && mapI == 292 && sinI == 117 && stubsI == 45;
+bool convI = totI == 378 && mapI == 284 && sinI == 94 && stubsI == 54;
 Debug.Log(string.Format("[LabViewer] [Conteos I (MODO_NORMAL)] FE_TOTAL={0} OVERLAY_NORMAL_MAPEADO={1} "
     + "SIN_CORRESPONDENCIA={2} stubs_analiticos={3} -> {4}",
     totI, mapI, sinI, stubsI, convI ? "OK" : "FALLO"));
 if (!convI) ok = false;
 esf.ConteosCorrespondencia("II", out int totII, out int mapII, out int sinII, out int stubsII);
-bool convII = totII == 252 && mapII == 237 && sinII == 15 && stubsII == 0;
+bool convII = totII == 253 && mapII == 253 && sinII == 0 && stubsII == 0;
 Debug.Log(string.Format("[LabViewer] [Conteos II (MODO_NORMAL)] FE_TOTAL={0} OVERLAY_NORMAL_MAPEADO={1} "
     + "SIN_CORRESPONDENCIA={2} stubs_analiticos={3} -> {4}",
     totII, mapII, sinII, stubsII, convII ? "OK" : "FALLO"));

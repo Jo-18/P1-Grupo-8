@@ -56,12 +56,19 @@ E3 = RAIZ / "entrega_03_cargas_sismo_capacidad"
 OUT = E3 / "modelo_fiel" / "MODELO_FE_COMPLETO_FUNCIONAL"
 GEOMETRIA_VIEWER = RAIZ / "viewer_unity" / "Assets" / "StreamingAssets" / "lab_data" / "edificios"
 EI_SRC = RAIZ / "analisis_estructural" / "edificio_I" / "src"
+RES_CAPACIDAD = E3 / "results" / "capacidad_rc"
 
 sys.path.insert(0, str(EI_SRC))
 
 from src.unity_esfuerzos.exportar_esfuerzos_para_viewer import (  # noqa: E402
     emparejar,
     leer_geometria_viewer,
+    punto_en_segmento,
+)
+from src.unity_esfuerzos.auditar_cobertura_viewer_fe import (  # noqa: E402
+    TOL_PLANAR,
+    TOL_Z,
+    dist_punto_polilinea,
 )
 
 FORMATO = "esfuerzos_FE_edificio_v1"
@@ -98,7 +105,7 @@ PREFIJO = {"I": "EI", "II": "EII"}
 # viewer: quedan SIN_CORRESPONDENCIA_VIEWER, excluidos de la cobertura viewer<->FE
 # y visibles solo en el modo de diagnostico del modelo (no en el modo normal).
 STUB_TIPO = "stub_elastico_rigidez_elevada"
-N_STUBS_EI = 44
+N_STUBS_EI = 54  # 44 previos + 10 conectores del grillaje de la torre P4 (islas)
 # Longitud maxima documentada: radio maximo de arranque del poste de acero
 # (R_STUB_MAX_M = 2.5 m, vease modelo_fe_completo) + holgura 0.5 m.
 R_STUB_ARRANQUE_M = 2.5
@@ -107,6 +114,7 @@ LONG_MIN_STUB_M = 0.005  # un stub por debajo seria un "tramo fantasma" de longi
 RAZON_P4 = "puente_rigido_a_columna_fisica_P4"
 RAZON_ARRANQUE = "conector_arranque_poste_acero_sin_eje_base"
 RAZON_P1 = "conector_excentrico_viga_P1"
+RAZON_GRILLAJE = "conector_grillaje_torre_P4"
 RAZON_SIN_REGISTRO = "SIN_REGISTRO_DOCUMENTADO"
 
 
@@ -158,6 +166,35 @@ def _leer_secciones_viewer(edificio: str) -> dict:
                       for m in data.get("muros", [])},
         }
     return out
+
+
+def _ejes_locales(rec: dict) -> dict:
+    """Ejes locales de la barra (frame Unity [u, cota, v]) y vector de referencia
+    del transform FE. Replica la regla determinista del motor
+    (pipeline_FE_EII._elem): si la barra tiene componente vertical (cota),
+    referencia (0,1,0); en caso contrario (0,0,1). Z_barra = eje de la barra
+    normalizado (direccion del axial N de la convencion localForce)."""
+    pi, pj = rec["p_i_unity"], rec["p_j_unity"]
+    d = [pj[0] - pi[0], pj[1] - pi[1], pj[2] - pi[2]]
+    L = (d[0] ** 2 + d[1] ** 2 + d[2] ** 2) ** 0.5
+    z = [d[k] / L for k in range(3)] if L > 1e-12 else [0.0, 0.0, 0.0]
+    ref = ([0.0, 1.0, 0.0] if abs(d[1]) > 1e-3 else [0.0, 0.0, 1.0])
+    return {
+        "Z_barra_unity": [round(x, 6) for x in z],
+        "referencia_geomTransf": ref,
+        "convencion": "motor FE: cota != 0 -> referencia (0,1,0); barra "
+                      "horizontal -> (0,0,1); X/Y ortogonales a Z (geomTransf)",
+    }
+
+
+def _restricciones_nodo(marco, nodo: str) -> str:
+    """Condicion nodal reportable: base fija del FE (6 DOF) o libre. Los nodos
+    esclavos de diafragma no se distinguen (se reportan como LIBRE con nota)."""
+    base = getattr(marco, "_base_fixed", ()) or ()
+    try:
+        return "BASE_FIJA_6DOF" if int(nodo) in set(base) else "LIBRE"
+    except (TypeError, ValueError):
+        return "LIBRE"
 
 
 def _metadata(edificio: str):
@@ -237,6 +274,11 @@ def _auxiliar_stubs(marco, recs: dict) -> None:
     enlaces_p1 = [{"col": coord3(c["col_tag"]), "beam": coord3(c["beam_tag"])}
                   for c in getattr(marco, "rigid_links_info", ())
                   if c.get("tipo") == STUB_TIPO]
+    grillaje = [{"iso": [round(x, 4) for x in marco.key_of_tag[c["nodo"]]],
+                 "soporte": [round(c["soporte"][0], 4),
+                             round(c["soporte"][1], 4), iso[2]]}
+                for c in getattr(marco, "p4_grillaje_links", ())
+                for iso in [[round(x, 4) for x in marco.key_of_tag[c["nodo"]]]]]
 
     for tag, rec in recs.items():
         if rec["tipo"] != STUB_TIPO:
@@ -245,6 +287,13 @@ def _auxiliar_stubs(marco, recs: dict) -> None:
         pj = [rec["u_j"], rec["v_j"], rec["z_j"]]
         L = (sum((pi[k] - pj[k]) ** 2 for k in range(3))) ** 0.5
         origen, destino, razon = list(pi), list(pj), None
+        for c in grillaje:
+            if (near(pi, c["iso"]) or near(pj, c["iso"])) \
+                    and (near(pi, c["soporte"]) or near(pj, c["soporte"])):
+                razon = RAZON_GRILLAJE
+                if near(pi, c["iso"]):
+                    origen, destino = c["soporte"], c["iso"]
+                break
         for c in p4:
             if (near(pi, c["A"]) or near(pj, c["A"])) \
                     and (near(pi, c["B"]) or near(pj, c["B"])):
@@ -291,6 +340,10 @@ _EXPLICACION_STUB = {
     RAZON_P1: ("Enlace excentrico de la viga excéntrica del eje P1 (columnas "
                "H/Ip): conecta la cabeza de columna del grid con el extremo de la "
                "viga en la fachada, conservando el desfase fisico."),
+    RAZON_GRILLAJE: ("Nodo del grillaje/anillo de la torre sobre la losa P4 sin "
+                     "losa FE fuera del plano: el conector corto une el anillo al "
+                     "montante mas cercano que baja a cimentacion (pata de torre "
+                     "o columna P4), restaurando la union pie-a-pie documentada."),
     RAZON_SIN_REGISTRO: "Stub sin correspondencia en los registros del modelo (la auditoria lo rechaza).",
 }
 
@@ -309,6 +362,54 @@ def _leer_payload_combo(edificio: str, combo_id: str) -> dict:
         .read_text(encoding="utf-8"))
 
 
+_ESTADO_COMBO_CALCULADA = (
+    "CALCULADA (9 corridas explicitas de OpenSees por combinacion; "
+    "los casos U1..U4 viajan como casos propios por elemento en 'fuerzas' y "
+    "alimentan la 'envolvente_NCh3171')")
+_MARCA_OBSOLETA = "OBSOLETOS_POR_CAMBIO_DE_TOPOLOGIA"
+
+
+def _estado_combos(edificio: str) -> str:
+    """Estado real de las 9 combinaciones del edificio desde sus payloads."""
+    if not IDS_COMBINACIONES:
+        return "SIN_PAYLOADS"
+    for cid in IDS_COMBINACIONES:
+        p = _leer_payload_combo(edificio, cid)
+        if _MARCA_OBSOLETA in str(p.get("estado", "")):
+            return _MARCA_OBSOLETA
+    return _ESTADO_COMBO_CALCULADA
+
+
+def combos_obsoletos() -> list[str]:
+    """Edificios cuyas combinaciones NCh3171 estan obsoletas por cambio de
+    topologia (esfuerzos calculados sobre un modelo con apoyos artificiales de
+    islas o nucleo). No mezclar con la topologia cerrada actual."""
+    return [PREFIJO[e] for e in ("I", "II") if _estado_combos(e) == _MARCA_OBSOLETA]
+
+
+def casos_vigentes(edificio: str) -> list[str]:
+    """Casos coherentes con la topologia actual: G/Q/EX/EY + combinaciones
+    NCh3171 SOLO si no estan obsoletas (no mezclar topologias)."""
+    if _estado_combos(edificio) == _MARCA_OBSOLETA:
+        return list(CASOS_BASE)
+    return list(CASOS)
+
+
+def bloquear_combos_para_topologia(exigir: bool) -> None:
+    """Regla del usuario (hito islas 2026-09-15): NO regenerar/consumir esfuerzos
+    de combinaciones hasta cerrar la topologia; un paquete de esfuerzos que
+    dependa de COMB_*.json vetustos queda Sin Resultados."""
+    obs = combos_obsoletos()
+    if not exigir or not obs:
+        return
+    raise ValueError(
+        "COMB_*.json OBSOLETOS_POR_CAMBIO_DE_TOPOLOGIA en " + ", ".join(obs) +
+        ": calculados sobre la topologia previa (antes del cierre de las 4 "
+        "islas). NO escribir paquetes de esfuerzos con estas combinaciones. "
+        "Regenerar G/Q/EX/EY + 9 combinaciones NCh3171 al cerrar la topologia. "
+        "Ver INFORME_COBERTURA_FISICA.md Seccion 0.8.")
+
+
 def _fuerzas_de(payload: dict) -> dict:
     fl = payload.get("fuerzas_local_por_elemento")
     if fl is None:
@@ -323,11 +424,12 @@ def _fuerzas_de_global(payload: dict) -> dict:
     return {int(k): [float(x) for x in v] for k, v in fg.items()}
 
 
-def _leer_fuerzas(edificio: str):
+def _leer_fuerzas(edificio: str, casos=None):
     """-> (local, global): {caso: {tag: [12 floats]}} desde los payloads."""
+    casos = list(casos if casos is not None else CASOS)
     local = {}
     global_ = {}
-    for caso in CASOS:
+    for caso in casos:
         if caso in CASOS_BASE:
             p = _leer_payload(edificio, caso)
         else:
@@ -335,6 +437,84 @@ def _leer_fuerzas(edificio: str):
         local[caso] = _fuerzas_de(p)
         global_[caso] = _fuerzas_de_global(p)
     return local, global_
+
+
+# --------------------------------------------------------------------------- #
+# Deformada, apoyos y materiales (datos del solver, sin recalcular)
+# --------------------------------------------------------------------------- #
+def _desplazamientos_de(payload: dict) -> dict:
+    """Desplazamientos nodales del solver (6 dof, orden [u,v,cota])."""
+    desp = payload.get("desplazamientos")
+    if desp is None:
+        desp = (payload.get("solucion") or {}).get("desplazamientos") or {}
+    return {str(int(k)): [round(float(x), 9) for x in v]
+            for k, v in desp.items()}
+
+
+def _leer_desplazamientos(edificio: str, casos) -> dict:
+    """-> {caso: {str tag: [6 dof]}} para todos los casos vigentes."""
+    out = {}
+    for caso in casos:
+        p = (_leer_payload(edificio, caso) if caso in CASOS_BASE
+             else _leer_payload_combo(edificio, caso))
+        out[caso] = _desplazamientos_de(p)
+    return out
+
+
+def _leer_apoyos_G(edificio: str) -> dict:
+    """-> {"nodos": {str tag: [6 reacciones]}, "Rz_payload_kN": float} del caso G."""
+    p = _leer_payload(edificio, "G")
+    reac = p.get("reacciones") or {}
+    return {
+        "nodos": {str(int(k)): [round(float(x), 6) for x in v]
+                  for k, v in reac.items()
+                  if max(abs(x) for x in v) > 1e-3},
+        "Rz_payload_kN": round(float(p.get("Rz_kN", 0.0)), 4),
+        "Pz_aplicada_kN": round(float(p.get("Pz_kN", 0.0)), 4),
+    }
+
+
+def _nodos_de(marco, recs: dict) -> dict:
+    """-> {str tag: [u, cota, v]} (coordenadas Unity locales) de TODOS los nodos
+    del modelo FE (265 EI / 182 EII). Los nodos que son extremos de elementos
+    conservan la precision de sus coordenadas de elemento (p_unity); el resto
+    se completa desde `key_of_tag` ([u, v, cota])."""
+    nod: dict = {}
+    for r in recs.values():
+        nod.setdefault(str(r["nodo_i"]),
+                       [round(float(x), 9) for x in r["p_i_unity"]])
+        nod.setdefault(str(r["nodo_j"]),
+                       [round(float(x), 9) for x in r["p_j_unity"]])
+    for tag, coords in marco.key_of_tag.items():
+        u, v, cota = coords[0], coords[1], coords[2]
+        nod.setdefault(str(int(tag)),
+                       [round(float(u), 9), round(float(cota), 9),
+                        round(float(v), 9)])
+    return {k: nod[k] for k in sorted(nod, key=int)}
+
+
+def _materiales_demo(edificio: str) -> dict:
+    """Materiales de la seccion DEMO_RC (capacidad de DEMOSTRACION)."""
+    key = "EII" if edificio == "II" else "EI"
+    d = json.loads((RES_CAPACIDAD / ("DEMO_RC_%s.json" % key))
+                   .read_text(encoding="utf-8"))
+    sec = d["seccion"]
+    clasif = d.get("clasificacion")
+    if isinstance(clasif, dict):
+        clasif = clasif.get("clasificacion", "")
+    return {
+        "referencia": d["etiqueta"] if "etiqueta" in d else "DEMO_RC_%s" % key,
+        "seccion": sec["etiqueta"],
+        "hormigon": sec["materiales"]["hormigon"],
+        "acero": sec["materiales"]["acero"],
+        "dimensiones_m": {"h": sec.get("h_m"), "b": sec.get("b_m")},
+        "armadura": sec.get("armadura_columna"),
+        "n_barras": sec.get("n_barras"),
+        "As_total_m2": sec.get("As_total_m2"),
+        "clasificacion": clasif,
+        "estado_armadura": (sec.get("armadura") or {}).get("estado")
+        if isinstance(sec.get("armadura"), dict) else None,
+        "nota": sec.get("nota", "")}
 
 
 # --------------------------------------------------------------------------- #
@@ -391,17 +571,17 @@ def _auditar(edificio: str, cotas: dict, recs: dict, fuerzas: dict,
         nodos_stub.add(extremos[t][0])
         nodos_stub.add(extremos[t][1])
     # 1) cantidad e identidad de tags entre casos y modelo
-    sets_casos = {c: set(fuerzas[c]) for c in CASOS}
+    sets_casos = {c: set(fuerzas[c]) for c in fuerzas}
     ok_id = all(s == tags_modelo for s in sets_casos.values())
     check("identidad_tags_casos_modelo", ok_id,
           f"modelo={len(tags_modelo)}; " + "; ".join(
-              f"{c}={len(sets_casos[c])}" for c in CASOS)
+              f"{c}={len(sets_casos[c])}" for c in fuerzas)
           + f"; coalescen={ok_id}")
 
     # 2) integridad de vectores (12 finitos por tag)
-    mal = [(caso, tag) for caso in CASOS for tag, v in fuerzas[caso].items()
+    mal = [(caso, tag) for caso in fuerzas for tag, v in fuerzas[caso].items()
            if len(v) != 12 or not all(np.isfinite(x) for x in v)]
-    mal_g = [(caso, tag) for caso in CASOS if caso in fuerzas_global
+    mal_g = [(caso, tag) for caso in fuerzas_global
              for tag, v in fuerzas_global[caso].items()
              if len(v) != 12 or not all(np.isfinite(x) for x in v)]
     ok_int = (not mal) and (not mal_g) and ok_id
@@ -423,7 +603,10 @@ def _auditar(edificio: str, cotas: dict, recs: dict, fuerzas: dict,
 
     # 3b) combinaciones NCh3171: corridas EXPLICITAS de OpenSees -> cada payload
     #     trae su propio equilibrio vertical y horizontal verificado al correr.
+    #     Solo se auditan cuando estan presentes en `fuerzas` (topologia vigente).
     for cid in IDS_COMBINACIONES:
+        if cid not in fuerzas:
+            continue
         p = _leer_payload_combo(edificio, cid)
         Pz, Rz = float(p["Pz_kN"]), float(p["Rz_kN"])
         residuo = abs(Pz - Rz)
@@ -543,7 +726,7 @@ def _auditar(edificio: str, cotas: dict, recs: dict, fuerzas: dict,
     #     N, Vy, Vz, T del extremo i + extreme j ~ 0 en cada caso
     bil = 0.0
     for t in stubs:
-        for caso in CASOS:
+        for caso in fuerzas:
             v = np.array(fuerzas[caso][t])
             bil = max(bil, float(np.max(np.abs(v[:4] + v[6:10])))
                       / max(float(np.max(np.abs(v))), 1.0))
@@ -585,6 +768,76 @@ def _pendientes_ids(edificio: str) -> set:
     return ids
 
 
+def _cubre_geometricamente(recs: dict, nivel: str, vid: str, tipo: str,
+                          geo: dict) -> list[str]:
+    """Elementos FE cuyo tramo vertical contiene el plano de la losa del nivel
+    donde el viewer dibuja el objeto, sin depender del enlace viewer_id (permite
+    que objetos del piso tope sean cubiertos por el elemento que llega desde el
+    nivel inferior, igual criterio geometrico que las columnas)."""
+    g = geo[nivel]
+    out: list[str] = []
+    if tipo == "muros":
+        pts = g["muros"].get(vid)
+        if not pts:
+            return out
+        z = float(pts[0][1])
+        for tag, r in recs.items():
+            if r["tipo"] != "muro":
+                continue
+            pi, pj = [float(x) for x in r["p_i_unity"]], \
+                [float(x) for x in r["p_j_unity"]]
+            zi, zj = min(pi[1], pj[1]), max(pi[1], pj[1])
+            if abs(z - zi) > TOL_Z and abs(z - zj) > TOL_Z:
+                continue
+            d = min(dist_punto_polilinea((pi[0], pi[2]), pts),
+                    dist_punto_polilinea((pj[0], pj[2]), pts))
+            if d <= TOL_PLANAR:
+                out.append(tag)
+    elif tipo == "columnas":
+        pos = g["columnas"].get(vid)
+        if not pos:
+            return out
+        # La columna del viewer se DIBUJA como el tramo fisico completo del
+        # entrepiso [cota del forjado anterior, posicion.y]. Un elemento FE la
+        # cubre geometricamente si coincide con ese intervalo completo (u,v y
+        # ambas cotas, extremos en cualquier orden) y NO solo si su base cae en
+        # el plano de la losa (regla antigua que hacía "flotar" a los postes
+        # P4-EI 607..635 sobre la cubierta: [11,83;15,79] contra [7,87;11,83]).
+        cotas = sorted({float(gr["cota"]) for gr in geo.values()})
+        cz = float(pos[1])
+        prevs = [c for c in cotas if c < cz - TOL_Z]
+        z_prev = max(prevs) if prevs else cz
+        for tag, r in recs.items():
+            if r["tipo"] != "columna":
+                continue
+            pi, pj = [float(x) for x in r["p_i_unity"]], \
+                [float(x) for x in r["p_j_unity"]]
+            if abs(pos[0] - pi[0]) > 2e-3 or abs(pos[2] - pi[2]) > 2e-3:
+                continue
+            zi, zj = min(pi[1], pj[1]), max(pi[1], pj[1])
+            if (abs(zi - z_prev) <= 2e-3 and abs(zj - cz) <= 2e-3) \
+                    or (abs(zi - cz) <= 2e-3 and abs(zj - z_prev) <= 2e-3):
+                out.append(tag)
+    elif tipo == "vigas":
+        pts = g["vigas"].get(vid)
+        if not pts:
+            return out
+        a, b = pts[0], pts[-1]
+        z = float(pts[0][1])
+        for tag, r in recs.items():
+            if r["tipo"] != "viga":
+                continue
+            pi, pj = [float(x) for x in r["p_i_unity"]], \
+                [float(x) for x in r["p_j_unity"]]
+            if not (abs(z - pi[1]) <= TOL_Z or abs(z - pj[1]) <= TOL_Z):
+                continue
+            seg = ((pi[0], pi[2]), (pj[0], pj[2]))
+            if (punto_en_segmento((a[0], a[2]), *seg)
+                    and punto_en_segmento((b[0], b[2]), *seg)):
+                out.append(tag)
+    return out
+
+
 def _cobertura(recs: dict, emparejado: dict, geo: dict,
                secciones_viewer: dict, pend_ids: set) -> dict:
     """-> {nivel: {tipo: {total, con_fuente, con_detalle, sin_resultado:[{viewer_id,causa}]}}}"""
@@ -600,10 +853,17 @@ def _cobertura(recs: dict, emparejado: dict, geo: dict,
                               and info["viewer_id"] == vid and info["viewer_nivel"] == nivel)
                 if tags:
                     con.append({"viewer_id": vid, "tags": tags})
+                elif vid in pend_ids:
+                    sin.append({"viewer_id": vid,
+                                "causa": "PENDIENTE_DE_FUENTE"})
                 else:
-                    causa = "PENDIENTE_DE_FUENTE" if vid in pend_ids \
-                        else "SIN_CORRESPONDENCIA_FE"
-                    sin.append({"viewer_id": vid, "causa": causa})
+                    geom_tags = _cubre_geometricamente(recs, nivel, vid, tipo, geo)
+                    if geom_tags:
+                        con.append({"viewer_id": vid, "tags": geom_tags,
+                                    "cobertura": "geometrica_sin_enlace"})
+                    else:
+                        sin.append({"viewer_id": vid,
+                                    "causa": "SIN_CORRESPONDENCIA_FE"})
             out[nivel][tipo] = {
                 "total": len(g[tipo]),
                 "con_fuente": len(con),
@@ -622,11 +882,11 @@ def _esquema_nch3171(edificio: str) -> dict:
     componentes por elemento). Cada fuerza por elemento de estos casos proviene
     de la solucion del patron combinado, no de superposicion post-proceso."""
     prefijo = PREFIJO[edificio]
-    return {
+    estado_combos = _estado_combos(edificio)
+    esquema = {
         "norma": NOMBRE_NORMA,
-        "estado": "CALCULADA (9 corridas explicitas de OpenSees por combinacion; "
-                  "los casos U1..U4 viajan como casos propios por elemento en "
-                  "'fuerzas' y alimentan la 'envolvente_NCh3171')",
+        "estado": estado_combos,
+        "utilizables": estado_combos == _ESTADO_COMBO_CALCULADA,
         "combinaciones": [
             {"id": c["id"], "expresion": c["expresion"],
              "factores": c["factores"], "grupo": c["grupo"],
@@ -651,6 +911,14 @@ def _esquema_nch3171(edificio: str) -> dict:
             + [f"COMB_{cid}_{prefijo}_MODELO_FE_COMPLETO_FUNCIONAL.json"
                for cid in IDS_COMBINACIONES]),
     }
+    if estado_combos == _MARCA_OBSOLETA:
+        esquema["nota_obsolescencia"] = (
+            "calculado sobre la topologia previa (apoyos artificiales de las 4 "
+            "islas); no consumir hasta regenerar con la topologia cerrada.")
+        esquema["pendientes"] = list(IDS_COMBINACIONES)
+        esquema["envolvente"]["regla"] = (
+            "no calculada: combinaciones obsoletas por cambio de topologia")
+    return esquema
 
 
 def _envolvente(fuerzas: dict, tag: int) -> list:
@@ -714,13 +982,22 @@ def _documentacion_stubs(elementos: list) -> dict:
 
 
 def generar(edificio: str, escribir: bool = True, destino: Path | None = None):
+    if escribir:
+        bloquear_combos_para_topologia(exigir=True)
+    casos = casos_vigentes(edificio)
+    combos_vigentes = [c for c in casos if c not in CASOS_BASE]
     cotas, recs, geo, marco = _metadata(edificio)
-    fuerzas, fuerzas_global = _leer_fuerzas(edificio)
+    fuerzas, fuerzas_global = _leer_fuerzas(edificio, casos)
 
     if set(fuerzas["G"]) != set(recs):
         raise AssertionError(
             f"{edificio}: tags difieren entre modelo ({len(recs)}) y esfuerzos "
             f"({len(fuerzas['G'])})")
+
+    desplazamientos = _leer_desplazamientos(edificio, casos)
+    apoyos_G = _leer_apoyos_G(edificio)
+    nodos_deformada = _nodos_de(marco, recs)
+    materiales = _materiales_demo(edificio)
 
     auditoria = _auditar(edificio, cotas, recs, fuerzas, fuerzas_global)
     emparejado = emparejar(recs, geo)
@@ -739,18 +1016,30 @@ def generar(edificio: str, escribir: bool = True, destino: Path | None = None):
             "tipo": rec["tipo"],
             "nivel": rec["nivel"],
             "seccion": rec["seccion"],
+            "material": {
+                "hormigon_fc_MPa": materiales["hormigon"]["fc_MPa"],
+                "referencia": materiales["referencia"],
+                "nota": materiales["nota"],
+            },
             "nodo_i": rec["nodo_i"],
             "nodo_j": rec["nodo_j"],
             "p_i_unity": [round(v, 9) for v in rec["p_i_unity"]],
             "p_j_unity": [round(v, 9) for v in rec["p_j_unity"]],
+            "ejes_locales": _ejes_locales(rec),
+            "restricciones": {
+                "nodo_i": _restricciones_nodo(marco, rec["nodo_i"]),
+                "nodo_j": _restricciones_nodo(marco, rec["nodo_j"]),
+                "nota": "BASE_FIJA_6DOF = base de cimentacion fija del FE; "
+                        "LIBRE = nodo sin fijacion (los esclavos de diafragma "
+                        "no se distinguen aqui)"},
             "correspondencia": {
                 "estado": info["estado"],
                 "viewer_id": info["viewer_id"] if con_estado else None,
                 "viewer_nivel": info["viewer_nivel"] if con_estado else None,
             },
             "fuerzas": {caso: [round(float(v), 6) for v in fuerzas[caso][tag]]
-                        for caso in CASOS},
-            "envolvente_NCh3171": _envolvente(fuerzas, tag),
+                        for caso in casos},
+            "envolvente_NCh3171": _envolvente(fuerzas, tag) if combos_vigentes else [],
         }
         if es_stub:
             el["es_auxiliar_analitico"] = True
@@ -783,8 +1072,28 @@ def generar(edificio: str, escribir: bool = True, destino: Path | None = None):
                   "api": "agregar Position del edificio para posicionar en el mundo"},
         "convencion_localForce": CONVENCION,
         "indices_componentes": dict(INDICES),
-        "casos": list(CASOS),
+        "deformada": {
+            "nodos": nodos_deformada,
+            "n_nodos": len(nodos_deformada),
+            "desplazamientos_por_caso": desplazamientos,
+            "unidades_desplazamientos": "m, orden [u, v, cota] del solver",
+            "mapeo_unity": {"X = u": "desplazamiento_u",
+                            "Y = cota": "desplazamiento_cota (=z)",
+                            "Z = v": "desplazamiento_v",
+                            "rotaciones": "theta_x, theta_y, theta_z (rad) sin dibujar"},
+            "nota": "deformada = geometria original + amplificacion * "
+                    "desplazamiento (los vectores son tal cual del solver)"},
+        "apoyos": {
+            "reacciones_G": apoyos_G["nodos"],
+            "n_apoyos_con_reaccion": len(apoyos_G["nodos"]),
+            "Rz_payload_kN": apoyos_G["Rz_payload_kN"],
+            "Pz_aplicada_kN": apoyos_G["Pz_aplicada_kN"],
+            "nota": "nodos con |reaccion| > 1e-3 kN en el caso G "
+                    "(base de cimentacion + vinculaciones laterales)"},
+        "materiales": {k: v for k, v in materiales.items()},
+        "casos": list(casos),
         "casos_base": list(CASOS_BASE),
+        "combos_estado": _estado_combos(edificio),
         "combinaciones_normativas_NCh3171": _esquema_nch3171(edificio),
         "redondeo": {"fuerzas": 6, "coordenadas": 9,
                      "nota": "valores copiados tal cual de la fuente; no se recalculan"},

@@ -265,9 +265,18 @@ class MarcoFECompleto(Marco):
         # que la asignacion de tags nodales sea identica entre marcos.
         self.niveles = GF.cargar_todos()
         self._patch_niveles()
+        # La torre de acero se ensambla despues de super().construir(); el cierre de
+        # apoyos en losa debe correr al final (tras _add_acero_torre) para que las
+        # cadenas soportadas por los montantes reales P4 no reciban apoyo artificial.
+        self.defer_anclar_apoyos = True
         super().construir()
         self._add_p4_bridge()
         self._add_acero_torre()
+        # Grillaje de la torre sobre la losa P4: se enlaza DESPUES del acero (sus patas
+        # y columnas P4 son el apoyo real documentado dentro del pie del elemento;
+        # desfases <= 0.45 m registrados en p4_grillaje_links).
+        self._add_p4_grillaje_links(self.nivel_cota)
+        self._anclar_apoyos_losa()
         self._registrar_topologia()
         return self
 
@@ -544,7 +553,14 @@ class MarcoFECompleto(Marco):
             en_elem.add(a); en_elem.add(b)
         todos = set(int(t) for t in self.nodes.values())
         base_fijos = set(self._base_fixed)
-        aislados = sorted(t for t in todos - en_elem if t not in base_fijos)
+        # los nodos en los planos de losa son esclavos (o maestro) del diafragma
+        # rigido por nivel: NO estan aislados aunque no incida un elemento FE
+        # directo (conectan al piso por la restriccion del diafragma).
+        en_diaf = set(int(t) for t in (self.master_por_nivel or {}).values())
+        for tags in (self.diafragma_esclavos_por_nivel or {}).values():
+            en_diaf.update(int(t) for t in tags)
+        aislados = sorted(t for t in todos - en_elem
+                          if t not in base_fijos and t not in en_diaf)
         checks.append({"check": "nodos_sin_elemento_ni_base",
                        "ok": not aislados,
                        "detalle": "nodos aislados: %d %s"
@@ -673,16 +689,33 @@ def pp_elementos_confirmados(marco) -> dict:
     if len(c["chequeos"]) != 43 or any(not q["ok"] for q in c["chequeos"]):
         miss = [q["id"] for q in c["chequeos"] if not q["ok"]][:20]
         raise RuntimeError("columnas confirmadas sin elemento FE: %s" % miss)
-    if len(m["chequeos"]) != 4 or any(not q["ok"] for q in m["chequeos"]):
+    # Paneles de muro confirmados (auditoria v2, nucleo P2->P3): desde el modelo
+    # definitivo quedan EXCLUIDOS por no tener apoyo fisico documentado (ver
+    # marco._componentes_excluidos_apoyo y sus pendientes). Su PP NO se aplica:
+    # pasa a la conciliacion como pendiente separado NO aplicado. El chequeo
+    # exige coherencia (todos presentes o todos excluidos), no forzar 4.
+    m = _match_muros(marco, audit["detalle"]["muros_confirmados"])
+    m_ok = all(q["ok"] for q in m["chequeos"])
+    m_missing = [it for it in m["items"] if not m["match"].get(it["key"])]
+    m_aplic = [it for it in m["items"] if m["match"].get(it["key"])]
+    if not (m_ok or len(m_missing) == len(m["chequeos"])):
         miss = [q["key"] for q in m["chequeos"] if not q["ok"]][:6]
-        raise RuntimeError("muros confirmados sin montante FE: %s" % miss)
-    apl = aplicar_pp_nodal(marco, v, c, m)
+        raise RuntimeError("muros confirmados sin montante FE "
+                           "(estado mixto inesperado): %s" % miss)
+    muros_kN = round(sum(it["pp_kN"] for it in m_aplic), 4)
+    muros_sin_FE = [{"key": it["key"], "tramo": it["tramo"],
+                     "pp_kN": it["pp_kN"], "n_elements_fe": it["n_elements_fe"]}
+                    for it in m_missing]
+    apl = aplicar_pp_nodal(marco, v, c, {"match": m["match"],
+                                         "items": m_aplic})
     return {"cargas": apl["cargas"], "total_kN": apl["total_kN"],
             "n_ids": apl["n_ids_contados"],
             "vigas_kN": round(v["total_kN"], 4),
             "columnas_kN": round(c["total_kN"], 4),
-            "muros_kN": round(m["total_kN"], 4),
-            "n_vigas": 137, "n_columnas": 43, "n_muros": 4}
+            "muros_kN": muros_kN,
+            "muros_sin_FE": muros_sin_FE,
+            "muros_sin_FE_kN": round(sum(it["pp_kN"] for it in m_missing), 4),
+            "n_vigas": 137, "n_columnas": 43, "n_muros": len(m_aplic)}
 
 
 def _cargas_G(marco) -> dict:
@@ -779,12 +812,42 @@ def reconciliacion_por_familia(marco) -> dict:
                 tot += max(area, 0.0)
         return tot
 
-    # 1) losas: G completo (PP estructural + PM.ADIC) y SOLO PP estructural
-    g_full = _cargas_losas(marco, pm_kn=None)
-    g_pp = _cargas_losas(marco, pm_kn=0.0)
+    # 1) losas: G completo (PP estructural + PM.ADIC) y SOLO PP estructural.
+    #    La descarga nodal reporta los receptores que reciben carga de losa pero
+    #    NO tienen nodo FE (muros PENDIENTE_DE_FUENTE sin montante): esa carga NO
+    #    se aplica (regla del usuario: no se traslada a montantes vecinos) y se
+    #    reconcilia como peso separado NO aplicado.
+    cargas_losas = {}
+    sin_fe = []
+    por_nivel = CC.cargas_por_losa_por_nivel()
+    for cod in niveles_ordenados():
+        nivelFE = marco.niveles[cod]
+        cargas_por_losa = {}
+        for lo in nivelFE.losas:
+            info = por_nivel.get(cod, {}).get(lo["id"], {})
+            pm = info.get("pm_kn_m2", 0.0)
+            cargas_por_losa[lo["id"]] = (pm, info.get("sc_kn_m2", 0.0))
+        cn, rp = TB.calcular_cargas_nodales(nivelFE, marco.receptor_nodos,
+                                            cargas_por_losa, marco.key_of_tag,
+                                            incluir_sc=False)
+        cargas_losas[cod] = cn
+        for s in rp["receptores_sin_fe"]:
+            sin_fe.append(dict(s, nivel=cod))
+    g_full = cargas_losas
+    g_pp = {}
+    for cod, cn in cargas_losas.items():
+        nivelFE = marco.niveles[cod]
+        cargas_por_losa = {}
+        for lo in nivelFE.losas:
+            cargas_por_losa[lo["id"]] = (0.0, 0.0)
+        cnpp, _ = TB.calcular_cargas_nodales(nivelFE, marco.receptor_nodos,
+                                             cargas_por_losa, marco.key_of_tag,
+                                             incluir_sc=False)
+        g_pp[cod] = cnpp
     pp_losas = _suma_fz(g_pp)
     pm_adic = _suma_fz(g_full) - pp_losas
     checkpoint = _suma_fz(g_full)
+    pendiente_no_aplicado = sum(s["carga_kN"] for s in sin_fe)
 
     # 2) PP de elementos CONFIRMADO (auditoria v2) sobre esta topologia
     v = _match_vigas(marco, audit["detalle"]["vigas_confirmadas"])
@@ -793,8 +856,10 @@ def reconciliacion_por_familia(marco) -> dict:
     pp = pp_elementos_confirmados(marco)
     ok_match = (len(v["chequeos"]) == 137 and len(c["chequeos"]) == 43
                 and len(m["chequeos"]) == 4
-                and all(q["ok"] for q in v["chequeos"] + c["chequeos"] + m["chequeos"]))
-    total_pp_elementos = v["total_kN"] + c["total_kN"] + m["total_kN"]
+                and all(q["ok"] for q in v["chequeos"] + c["chequeos"])
+                and len(pp["muros_sin_FE"]) in (0, 4))
+    total_pp_elementos = (v["total_kN"] + c["total_kN"]
+                          + pp["muros_kN"])
     total_g = checkpoint + total_pp_elementos
 
     # 3) postes de acero de la torre (seccion provisional HIPOTESIS)
@@ -839,9 +904,12 @@ def reconciliacion_por_familia(marco) -> dict:
         {"familia": "Muros (CONFIRMADO auditoria v2)",
          "cantidad": 4, "unidad_m": "paneles", "dimension": None,
          "unidad_dim": "-", "peso_unit": "A*L*%s" % dens["concreto_kN_m3"],
-         "total_kN": round(m["total_kN"], 4),
-         "entra_al_caso_G": "idem (los montantes del FE llevan el panel "
-                            "t*L/2 cada uno)"},
+         "total_kN": round(pp["muros_kN"], 4),
+         "entra_al_caso_G": "solo los paneles con montante FE aplican su PP; los "
+                            "%d paneles del nucleo (P2->P3) quedaron EXCLUIDOS del "
+                            "modelo definitivo (sin apoyo fisico documentado) y su "
+                            "PP (%.4f kN) se reporta como pendiente NO aplicado"
+                            % (len(pp["muros_sin_FE"]), pp["muros_sin_FE_kN"])},
         {"familia": "CHECKPOINT G (losas + PM.ADIC)",
          "cantidad": "-", "unidad_m": "-", "dimension": None,
          "unidad_dim": "-", "peso_unit": "-", "total_kN": round(checkpoint, 4),
@@ -870,6 +938,25 @@ def reconciliacion_por_familia(marco) -> dict:
          "unidad_dim": "-", "peso_unit": "-", "total_kN": round(total_g, 4),
          "entra_al_caso_G": "checkpoint + PP_el confirmado; objetivo igual al "
                             "G_EI_MODELO_FIEL v3/v4 (42406.9577 kN)"},
+        {"familia": "Pendientes por falta de fuente (NO aplicado, regla usuario)",
+         "cantidad": len(sin_fe) + len(pp["muros_sin_FE"]), "unidad_m": "receptores",
+         "dimension": None, "unidad_dim": "-", "peso_unit": "-",
+         "total_kN": round(pendiente_no_aplicado + pp["muros_sin_FE_kN"], 4),
+         "entra_al_caso_G": "0 kN aplicados: (1) tributaria de losas sobre "
+                            "receptores de muros PENDIENTE_DE_FUENTE sin nodo FE "
+                            "(%.4f kN) + (2) PP de paneles de muro del nucleo "
+                            "EXCLUIDOS (%.4f kN). No se traslada a montantes "
+                            "vecinos (regla): se reporta y se suma al G fiel solo "
+                            "para reconciliar"
+                            % (pendiente_no_aplicado, pp["muros_sin_FE_kN"])},
+        {"familia": "TOTAL G fiel (aplicado + pendientes no aplicadas)",
+         "cantidad": "-", "unidad_m": "-", "dimension": None,
+         "unidad_dim": "-", "peso_unit": "-",
+         "total_kN": round(total_g + pendiente_no_aplicado
+                           + pp["muros_sin_FE_kN"], 4),
+         "entra_al_caso_G": "reconciliacion con el G_EI_MODELO_FIEL v3/v4 "
+                            "(42406.9577 kN): lo aplicado mas lo pendiente "
+                            "por falta de fuente, sin ajustes artificiales"},
         {"familia": "Pendientes fuera del G (NO omitidos del reporte)",
          "cantidad": len(marco.pendientes_torre), "unidad_m": "diag torre",
          "dimension": None, "unidad_dim": "-", "peso_unit": "-",
@@ -880,17 +967,30 @@ def reconciliacion_por_familia(marco) -> dict:
                             "suman al G"},
     ]
 
+    pendiente_total = pendiente_no_aplicado + pp["muros_sin_FE_kN"]
+    receptores_sin_fe = sorted(
+        sin_fe, key=lambda s: (s["nivel"], s["receptor"]))
+    receptores_sin_fe += [{"nivel": it["tramo"], "receptor": it["key"],
+                           "tipo": "muro_excluido_sin_apoyo_fisico",
+                           "carga_kN": it["pp_kN"]}
+                          for it in pp["muros_sin_FE"]]
     reconciliacion = {
         "perfil": "MODELO_FE_COMPLETO_FUNCIONAL", "edificio": "I",
         "g_total_kN": round(total_g, 4),
         "g_fiel_referencia_kN": 42406.9577,
-        "delta_kN": round(total_g - 42406.9577, 4),
-        "ok_contra_fiel": abs(total_g - 42406.9577) < 0.2,
+        "delta_kN": round(total_g + pendiente_total - 42406.9577, 4),
+        "peso_pendiente_no_aplicado_kN": round(pendiente_total, 4),
+        "n_receptores_sin_fe": len(receptores_sin_fe),
+        "receptores_sin_fe": receptores_sin_fe,
+        "ok_contra_fiel": abs(total_g + pendiente_total
+                             - 42406.9577) < 0.2,
         "checkpoint_g_kN": round(checkpoint, 4),
         "pp_elementos_confirmado_kN": round(total_pp_elementos, 4),
         "pp_vigas_kN": round(v["total_kN"], 4),
         "pp_columnas_kN": round(c["total_kN"], 4),
-        "pp_muros_kN": round(m["total_kN"], 4),
+        "pp_muros_kN": round(pp["muros_kN"], 4),
+        "pp_muros_sin_FE_kN": round(pp["muros_sin_FE_kN"], 4),
+        "pp_muros_sin_FE": pp["muros_sin_FE"],
         "pp_losas_kN": round(pp_losas, 4),
         "pm_adic_kN": round(pm_adic, 4),
         "match_elementos_ok": ok_match,
@@ -901,12 +1001,15 @@ def reconciliacion_por_familia(marco) -> dict:
         "stubs": n_stubs, "conectores_p4": n_conectores,
         "pendientes_torre": len(marco.pendientes_torre),
         "familias": familias,
-        "nota_omision_duplicacion": "El PP_el (184 ids: 137+43+4) se aplica una "
-                                    "vez (matchers por id unico); losas y PM.ADIC "
-                                    "son cargas superficiales sobre la misma losa, "
-                                    "sin solaparse con el PP de elementos. Ningun "
-                                    "peso se ajusta artificialmente para cuadrar "
-                                    "el total.",
+        "nota_omision_duplicacion": "El PP_el confirmado se aplica una vez (matchers "
+                                    "por id unico); losas y PM.ADIC son cargas "
+                                    "superficiales sobre la misma losa, sin "
+                                    "solaparse con el PP de elementos. Los 4 "
+                                    "paneles de muro del nucleo P2->P3 quedaron "
+                                    "EXCLUIDOS del modelo definitivo (sin apoyo "
+                                    "fisico documentado) y su PP se reporta como "
+                                    "pendiente NO aplicado. Ningun peso se ajusta "
+                                    "artificialmente para cuadrar el total.",
     }
     return reconciliacion
 
@@ -979,11 +1082,7 @@ def correr_sismo(marco, direccion: str, guardar=True) -> dict:
             cur = Q_flat.setdefault(int(t), [0.0] * 6)
             for i in range(6):
                 cur[i] += f[i]
-    cotas = {}
-    for cod, car in G.items():
-        if not car:
-            continue
-        cotas[cod] = min(marco.key_of_tag[int(t)][2] for t in car)
+    cotas = {cod: nivel.cota for cod, nivel in marco.niveles.items()}
     sismo_res = CS.generar_cargas_sismicas_directas(
         G_flat, Q_flat, marco.key_of_tag, direccion, cfg_sismo)
     marco2 = MarcoFECompleto(marco.niveles, h_torre_m=marco.h_torre_m)
@@ -1042,7 +1141,8 @@ def correr_combinadas(marco, guardar=True) -> dict:
     de sus payloads (cargas nodales sismicas); G y Q se recomputan del modelo."""
     from src.cargas import caso_sismico as CS
     from src.modelo_fiel.combinaciones_nch3171 import (
-        COMBINACIONES_NCH3171, ensamblar_plano, resultantes)
+        COMBINACIONES_NCH3171, ESTADO_COMBINACION_CALCULADA,
+        ensamblar_plano, resultantes)
     cfg_cargas = json.loads((E3 / "config" / "cargas.json").read_text(
         encoding="utf-8"))
     q_Q = float(cfg_cargas["q_Q"]["I"]["q_Q_kN_m2"])
@@ -1097,6 +1197,7 @@ def correr_combinadas(marco, guardar=True) -> dict:
             "direccion": combo["direccion"],
             "expresion": combo["expresion"],
             "factores": combo["factores"],
+            "estado": ESTADO_COMBINACION_CALCULADA,
             "norma": "NCh3171.Of2008 (ed. 2021)",
             "metodo": ("corrida EXPLICITA de OpenSees con el patron de cargas "
                        "nodales combinado (no superposicion post-proceso)"),
@@ -1163,12 +1264,15 @@ def _renders_md_reconciliacion(rec) -> str:
             f["familia"], f["cantidad"], f["unidad_m"], dim,
             f["peso_unit"], f["total_kN"], f["entra_al_caso_G"]))
     tabla = "\n".join(filas)
+    n_muros_fe = 4 if rec["pp_muros_kN"] > 1e-6 else 0
     return """# Reconciliacion del caso G - MODELO_FE_COMPLETO_FUNCIONAL (Edificio I)
 
 La tabla siguiente lista las familias del peso propio y cargas permanentes del
 caso G, verificadas contra el G_EI_MODELO_FIEL v3/v4. El G del modelo completo
 debe coincidir con 42406.9577 kN; el checkpoint previo (losas + PM.ADIC) era
-25227.73 kN.
+25227.73 kN. Desde el cierre 2026-09-14 (hito nucleo P2) los 4 paneles de muro
+del nucleo (P2->P3) quedaron EXCLUIDOS del modelo definitivo por no tener apoyo
+fisico documentado; su PP (%.4f kN) se reporta como pendiente NO aplicado.
 
 | Familia | Cantidad | Dimension | Peso unit. | Carga total (kN) | Como entra al caso G |
 |---|---|---|---|---|---|
@@ -1176,14 +1280,19 @@ debe coincidir con 42406.9577 kN; el checkpoint previo (losas + PM.ADIC) era
 
 ## Totales
 
-- G MODELO_FE_COMPLETO_FUNCIONAL: **%.4f kN**
+- G MODELO_FE_COMPLETO_FUNCIONAL (aplicado): **%.4f kN**
+- Peso PENDIENTE por falta de fuente (NO aplicado, regla del usuario): %.4f kN
+  (%d receptores sin nodo FE: losas sobre muros PENDIENTE_DE_FUENTE + PP de
+  paneles de nucleo excluidos; no se traslada a vecinos)
+- TOTAL G reconciliado (aplicado + pendiente): %.4f kN
 - G_EI_MODELO_FIEL v3/v4 (referencia): 42406.9577 kN
-- Delta: %.4f kN  (ok si |delta| < 0.2 kN)
+- Delta: %.4f kN  (ok si |aplicado + pendiente - 42406.9577| < 0.2 kN)
 - Checkpoint previo (losas + PM.ADIC): %.4f kN
 - PP de elementos CONFIRMADO (auditoria v2) aplicado: %.4f kN
-  - vigas: %.4f (137) | columnas: %.4f (43) | muros: %.4f (4)
+  - vigas: %.4f (137) | columnas: %.4f (43) | muros: %.4f (%d paneles en FE)
+  - PP paneles de nucleo EXCLUIDOS -> pendiente: %.4f kN
 - Match de ids de la auditoria contra la topologia FE: %s
-- n ids aplicados como carga nodal: %d (137 + 43 + 4)
+- n ids aplicados como carga nodal: %d (137 + 43 + %d muros)
 
 ## Postes de acero de la torre y dispositivos rigidos
 
@@ -1202,13 +1311,18 @@ debe coincidir con 42406.9577 kN; el checkpoint previo (losas + PM.ADIC) era
 
 Densidades usadas por la auditoria v2: concreto %.4f kN/m3;
 acero A36 (hipotesis) %.4f kN/m3.
-""" % (tabla, rec["g_total_kN"], rec["delta_kN"], rec["checkpoint_g_kN"],
+""" % (rec["pp_muros_sin_FE_kN"], tabla, rec["g_total_kN"],
+       rec["peso_pendiente_no_aplicado_kN"], rec["n_receptores_sin_fe"],
+       rec["g_total_kN"] + rec["peso_pendiente_no_aplicado_kN"],
+       rec["delta_kN"], rec["checkpoint_g_kN"],
        rec["pp_elementos_confirmado_kN"], rec["pp_vigas_kN"],
-       rec["pp_columnas_kN"], rec["pp_muros_kN"],
-       "TRUE (137/43/4)" if rec["match_elementos_ok"] else "FALSE",
-       rec["n_ids_aplicados"], rec["postes_torre"]["n_ejes"],
-       rec["postes_torre"]["L_total_m"], rec["stubs"],
-       rec["conectores_p4"], rec["pendientes_torre"],
+       rec["pp_columnas_kN"], rec["pp_muros_kN"], n_muros_fe,
+       rec["pp_muros_sin_FE_kN"],
+       "TRUE (137/43/muros coherentes)" if rec["match_elementos_ok"]
+       else "FALSE",
+       rec["n_ids_aplicados"], n_muros_fe,
+       rec["postes_torre"]["n_ejes"], rec["postes_torre"]["L_total_m"],
+       rec["stubs"], rec["conectores_p4"], rec["pendientes_torre"],
        rec["nota_omision_duplicacion"],
        rec["densidad_concreto_kN_m3"],
        rec["densidad_acero_hipotesis_kN_m3"])
@@ -1243,6 +1357,7 @@ def main(argv=None) -> int:
         "g_total_kN": reconciliacion["g_total_kN"],
         "g_fiel_referencia_kN": reconciliacion["g_fiel_referencia_kN"],
         "delta_kN": reconciliacion["delta_kN"],
+        "peso_pendiente_no_aplicado_kN": reconciliacion["peso_pendiente_no_aplicado_kN"],
         "ok_contra_fiel": reconciliacion["ok_contra_fiel"],
         "match_elementos_ok": reconciliacion["match_elementos_ok"]}
     if do_sismo:

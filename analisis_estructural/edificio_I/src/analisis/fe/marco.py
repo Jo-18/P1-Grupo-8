@@ -58,6 +58,8 @@ class Marco:
         self.columnas = []              # {id, nivel, key_i, key_j, sec, u,v}
         self.vigas_elem = []            # {id, nivel, key_i, key_j, sec}
         self.muros_elem = []            # {id, nivel, key_i, key_j, sec}
+        self.ejes_muros = []            # ejes fisicos (familia) para diagnostico
+        self.pendientes = {"muros": [], "columnas": [], "vigas": []}
         self.master_por_nivel = {}      # nivel -> tag maestro
         self.diafragma_esclavos_por_nivel = {}  # nivel -> [tags esclavos del diafragma]
         self.diafragma_excluidos_rigidlink = {} # nivel -> [tags excluidos por rigidLink]
@@ -65,12 +67,19 @@ class Marco:
         self.nivel_cota = COTAS_NIVEL_M
         self._next = 1
         self._base_fixed = set()
+        self._apoyos_losa_fixed = set()
         self.merges = []                 # registro fusiones por misma posicion fisica
         self.casi_encuentros = []        # casi-encuentros (no fusionados) para revisar
+        self._componentes_excluidos_apoyo = []  # cuerdas excluidas sin apoyo fisico
         self.p1_eccentric_links = []     # enlaces rigidos de la viga excentrica P1
         self.rigid_links_info = []       # pares (col_tag, beam_tag) de enlaces rigidos
         self.stub_elem = []              # conectores cortos rigidos (reemplazan rigidLink)
         self.cp1s_eccentric_links = []   # enlaces rigidos del portico del cielo del subterraneo
+        self.p4_grillaje_links = []      # grillaje torre P4 -> montantes reales (conector corto)
+        self._p4_links_seen = []         # pares ya enlazados del grillaje (evita duplicados)
+        self.enlaces_rigidos_reales = [] # pares rigidLink (col,extremo) registrados (constraints)
+        self.defer_anclar_apoyos = False # subclases con geometria posterior (torre) difieren
+                                         # _anclar_apoyos_losa hasta completar el ensamble
 
     # ---------------- nodos ----------------
     def _get_node(self, u, v, z):
@@ -144,78 +153,9 @@ class Marco:
 
         # 2) muros equivalentes por niveles con evidencia (SE CREAN ANTES QUE LAS
         #    VIGAS para que los extremos de viga encuentren nodos de muro/columna
-        #    y puedan fusionarse por misma posicion fisica).
-        #    Cada panel se modela como DOS montantes verticales (uno por extremo del
-        #    eje), cada uno con la MITAD del ancho del muro (t x L/2), de modo que el
-        #    AREA TOTAL = t x L se conserva una sola vez (sin duplicar rigidez) y ambos
-        #    extremos quedan disponibles como soporte de las vigas.
-        muro_lines = {}   # (linea canonea) -> {"espesor", "niveles":{cod:espesor}}
-        for cod in orden:
-            for m in self.niveles[cod].muros:
-                # los muros de contencion del sotano M_001/M_002 se modelan aparte
-                # (descienden a la cimentacion sobre el cielo del subterraneo); se
-                # excluyen del tratamiento generico para no fijarlos en CP1S.
-                if m.get("id") in cfg.muros_contencion_sotano:
-                    continue
-                key = (round(m["ua"], 3), round(m["va"], 3),
-                       round(m["ub"], 3), round(m["vb"], 3))
-                d = muro_lines.setdefault(key, {"espesor": m["espesor"], "niveles": []})
-                d["espesor"] = m["espesor"]
-                if cod not in d["niveles"]:
-                    d["niveles"].append(cod)
-        for key, info in muro_lines.items():
-            ua, va, ub, vb = key
-            L = math.hypot(ub - ua, vb - va)
-            if L < 1e-6:
-                continue
-            nive = sorted(info["niveles"], key=cotas.__getitem__)
-            top = nive[-1]
-            z_top = cotas[top]
-            # dos montantes en cada extremo del eje, cada uno con medio muro (t x L/2)
-            for (ex, ey) in ((ua, va), (ub, vb)):
-                last = None
-                for cod in nive:
-                    zc = cotas[cod]
-                    tag = self._snap_node_scaffold(ex, ey, zc)
-                    if last is not None:
-                        sec_info = SEC.seccion_muro(info["espesor"], L / 2.0)
-                        self._add_vertical("muro", f"M {info['espesor']}x{L/2:.2f}x2",
-                                           f"muro_{ex}_{ey}_{cod}", cod, last, tag,
-                                           sec_info)
-                    last = tag
-                # HIPOTESIS (senalada): el muro llega a la cimentacion en base; tramo
-                # base -> nivel mas bajo con evidencia (o dominio directo si es CP1S).
-                btag = self._snap_node_scaffold(ex, ey, base_z)
-                low = nive[0]
-                if low == cfg.nivel_base:
-                    self._fix_base(btag)
-                else:
-                    sec_info = SEC.seccion_muro(info["espesor"], L / 2.0)
-                    self._fix_base(btag)
-                    top_tag = self._snap_node_scaffold(ex, ey, cotas[low])
-                    self._add_vertical("muro", f"M {info['espesor']}x{L/2:.2f}x2",
-                                       f"muro_{ex}_{ey}_base_{low}", low, btag,
-                                       top_tag, sec_info)
-
-        # 2b) Vinculo de los IDENTIFICADORES originales de muro a sus DOS montantes FE
-        #     reales por nivel. Los elementos FE de los muros se registran en
-        #     `receptor_nodos` con eid interno (`muro_{ex}_{ey}_{cod}`), pero el reparto
-        #     tributario trabaja con el ID original del plano (`M_EI_CPr_0xx`).
-        #     Sin este paso, el muro recibe carga tributaria y queda reportado como
-        #     "receptor sin nodos FE" (3459 kN omitidos). Se conserva el ID original y
-        #     se vincula a los DOS nodos de montante reales (uno por extremo) del nivel,
-        #     SIN asignar al nodo mas cercano ni duplicar muros.
-        for cod in orden:
-            zc = cotas[cod]
-            for m in self.niveles[cod].muros:
-                if m.get("id") in cfg.muros_contencion_sotano:
-                    continue
-                ta = self._snap_node_scaffold(m["ua"], m["va"], zc)
-                tb = self._snap_node_scaffold(m["ub"], m["vb"], zc)
-                reg = self.receptor_nodos.setdefault(m["id"], [])
-                for t in (ta, tb):
-                    if t not in reg:
-                        reg.append(t)
+        #    y puedan fusionarse por misma posicion fisica). Ensamblaje por FAMILIA
+        #    fisica de muro: nunca un puente que salte un piso sin conexion.
+        self._add_muros(cotas, orden, base_z)
 
         # 3) vigas por nivel: divididas en las uniones/columnas/muros ortopogo.
         #    Cada tramo se engancha a los nodos existentes (columna/muro) por misma
@@ -278,10 +218,324 @@ class Marco:
         #    rotacion y distancias al maestro (rigidDiaphragm en el plano x-y).
         self._apply_diafragmas(cotas, orden)
 
+        # 5b) apoyo en losa de las cadenas sin camino vertical a cimentacion:
+        #     rodillo vertical (w fijo) en el nodo mas bajo de la cadena.
+        if not self.defer_anclar_apoyos:
+            self._anclar_apoyos_losa()
+
+    def _add_muros(self, cotas, orden, base_z):
+        """Ensamblaje por FAMILIA fisica de muro (misma linea y rango con
+        solape), no por id ni por (ua,va,ub,vb) completos: el mismo muro puede
+        cambiar de extremos entre niveles. Se crean montantes en las cotas de
+        DEMARCACION (union de extremos de la familia) con nodo en CADA nivel en
+        que la familia cubre esa cota, y un elemento vertical solo entre niveles
+        consecutivos cubiertos de la MISMA serie contigua (nunca un puente que
+        salte un piso ausente: si el muro falta en un nivel intermedio se
+        desconecta en series independientes, segun evidencia fisica). Cada
+        montante lleva la tributaria de longitud del muro en ese nivel
+        (t x L_local/2 por particion de rango), conservando el area total t x L
+        una sola vez. No se inventan tramos hacia cimentacion para cuerdas que
+        arrancan sobre el nivel base (se apoyan en el diafragma del nivel);
+        solo se fijan en base los montantes cuya serie comienza en el nivel
+        base."""
+        cfg = CFG.activa()
+        E = 1e-3
+        excluidos = set(cfg.muros_contencion_sotano)
+        lineas = {}
+        for cod in orden:
+            for m in self.niveles[cod].muros:
+                if m.get("id") in excluidos:
+                    continue
+                ua, va, ub, vb = m["ua"], m["va"], m["ub"], m["vb"]
+                if abs(ua - ub) < E:
+                    linea = ("V", round(ua, 3))
+                    a, b = round(min(va, vb), 3), round(max(va, vb), 3)
+                elif abs(va - vb) < E:
+                    linea = ("H", round(va, 3))
+                    a, b = round(min(ua, ub), 3), round(max(ua, ub), 3)
+                else:
+                    self.pendientes["muros"].append({
+                        "id": m["id"], "nivel": cod,
+                        "estado": "PENDIENTE_DE_FUENTE",
+                        "nota": "muro no axis-alineado (no agrupable por linea)"})
+                    continue
+                lineas.setdefault(linea, []).append({
+                    "cod": cod, "id": m["id"], "espesor": m["espesor"],
+                    "a": a, "b": b})
+        familias = []
+        for linea, ints in lineas.items():
+            n = len(ints)
+            padre = list(range(n))
+
+            def find(x):
+                while padre[x] != x:
+                    padre[x] = padre[padre[x]]
+                    x = padre[x]
+                return x
+
+            def union(x, y):
+                rx, ry = find(x), find(y)
+                if rx != ry:
+                    padre[ry] = rx
+
+            for i in range(n):
+                for j in range(i + 1, n):
+                    if min(ints[i]["b"], ints[j]["b"]) \
+                       - max(ints[i]["a"], ints[j]["a"]) > E:
+                        union(i, j)
+            grupos = {}
+            for i in range(n):
+                grupos.setdefault(find(i), []).append(ints[i])
+            for members in grupos.values():
+                demark = sorted({m["a"] for m in members}
+                                | {m["b"] for m in members})
+                familias.append({
+                    "linea": linea, "demarcacion": demark,
+                    "por_nivel": {m["cod"]: m for m in members}})
+
+        def _tributaria(a, b, demark, E1):
+            """Reparto de longitud del muro a cada montante (cota de
+            demarcacion presente en el rango [a,b] del nivel): la mitad de cada
+            tramo adyacente. Conserva el area total t x (b-a) por nivel."""
+            pts = [q for q in demark if a - E1 <= q <= b + E1]
+            if not pts:
+                return {}
+            out = {}
+            for k, q in enumerate(pts):
+                previo = pts[k - 1] if k > 0 else None
+                nxt = pts[k + 1] if k < len(pts) - 1 else None
+                izq = (q - previo) / 2.0 if previo is not None else 0.0
+                der = (nxt - q) / 2.0 if nxt is not None else 0.0
+                out[q] = izq + der
+            return out
+
+        def _tramos_contiguos(nive_cubre):
+            """Divide los niveles cubiertos en series consecutivas (sin saltos)."""
+            ind = {c: i for i, c in enumerate(orden)}
+            runs = []
+            cur = [nive_cubre[0]]
+            for c in nive_cubre[1:]:
+                if ind[c] == ind[cur[-1]] + 1:
+                    cur.append(c)
+                else:
+                    runs.append(cur)
+                    cur = [c]
+            runs.append(cur)
+            return runs
+
+        self.ejes_muros = []
+        for fam in familias:
+            linea, demark = fam["linea"], fam["demarcacion"]
+            por_nivel = fam["por_nivel"]
+            nive = sorted(por_nivel, key=cotas.__getitem__)
+            self.ejes_muros.append({
+                "linea": {"tipo": linea[0], "coordenada": linea[1]},
+                "demarcacion": demark, "niveles": nive,
+                "por_nivel": {c: {"espesor": por_nivel[c]["espesor"],
+                                  "rango": [por_nivel[c]["a"],
+                                            por_nivel[c]["b"]],
+                                  "id": por_nivel[c]["id"]}
+                              for c in nive}})
+            for p in demark:
+                cubre = [c for c in nive
+                         if por_nivel[c]["a"] - E <= p <= por_nivel[c]["b"] + E]
+                if not cubre:
+                    continue
+
+                def coords(q):
+                    if linea[0] == "V":
+                        return linea[1], q
+                    return q, linea[1]
+
+                ex, ey = coords(p)
+                for run in _tramos_contiguos(cubre):
+                    if len(run) < 2:
+                        if run[0] == cfg.nivel_base:
+                            # muro SOLO en el nivel base (p.ej. sotano): nodo fijo
+                            # de apoyo SIN elemento (la cuerda no sube).
+                            self._fix_base(
+                                self._snap_node_scaffold(ex, ey, cotas[run[0]]))
+                        else:
+                            # muro de UN solo nivel fuera del nivel base: NO se
+                            # crea nodo ni tramo (evita DOF vertical libre en un
+                            # nodo sin elemento incidente ni fijacion). Queda
+                            # PENDIENTE_DE_FUENTE: el dato faltante es la cota
+                            # superior (altura no confirmada en fuentes). El
+                            # receptor 2b tampoco lo vincula: sin nodo no se
+                            # registra (TB reporta la consiguiente tributaria
+                            # como sin FE en vez de trasladarla a un vecino).
+                            ids_que_cubren = sorted({
+                                mm["id"] for mm in por_nivel.values()
+                                if mm["cod"] == run[0]
+                                and mm["a"] - E <= p <= mm["b"] + E})
+                            self.pendientes["muros"].append({
+                                "linea": linea, "cota_demarcacion": p,
+                                "nivel": run[0],
+                                "espesor": por_nivel[run[0]]["espesor"],
+                                "ids": ids_que_cubren,
+                                "estado": "PENDIENTE_DE_FUENTE",
+                                "dato_faltante": "cota_superior",
+                                "nota": ("muro de un solo nivel documentado "
+                                         "fuera del nivel base: sin elemento FE, "
+                                         "sin nodo ni tramo inventado hacia el "
+                                         "siguiente nivel; la altura no tiene "
+                                         "fuente")})
+                        continue
+                    if run[0] != cfg.nivel_base:
+                        # Exclusion documentada del modelo definitivo: la cuerda
+                        # multi-nivel ARRANCA sobre el nivel base sin camino fisico
+                        # de apoyo hacia cimentacion. Clasificada por planos y
+                        # topologia como apoyo sobre LOSA DE TRANSFERENCIA del nivel
+                        # de arranque: no hay viga ni columna de apoyo directo ni
+                        # continuidad de muro alineada en los niveles inferiores
+                        # (P1 no dibuja el nucleo; CP1S lo dibuja en ejes
+                        # desplazados). La rigidez fuera del plano de la losa NO esta
+                        # modelada (diafragma rigido solo en plano), asi que NO se
+                        # puede cerrar el camino vertical con un elemento FE real.
+                        # Por tanto el componente queda FUERA del modelo definitivo:
+                        # sin nodo, sin elemento vertical, sin restriccion artificial
+                        # (no se fuerza estabilidad). La tributaria del receptor se
+                        # reporta como sin FE (TB) y su peso pasa a G pendiente.
+                        ids_que_cubren = sorted({
+                            mm["id"] for mm in por_nivel.values()
+                            if mm["cod"] in run
+                            and mm["a"] - E <= p <= mm["b"] + E})
+                        self.pendientes["muros"].append({
+                            "linea": linea, "cota_demarcacion": p,
+                            "nivel": run[0],
+                            "espesor": por_nivel[run[0]]["espesor"],
+                            "ids": ids_que_cubren,
+                            "estado": "PENDIENTE_DE_FUENTE",
+                            "dato_faltante": "apoyo_fisico_inferior",
+                            "nota": ("cuerda de muro multi-nivel que arranca sobre "
+                                     "el nivel base SIN apoyo fisico documentado: sin "
+                                     "viga, columna ni muro alineado en niveles "
+                                     "inferiores (planos); apoyo por losa de "
+                                     "transferencia cuya rigidez fuera del plano NO "
+                                     "esta modelada. Componente EXCLUIDO del modelo "
+                                     "definitivo y limitacion declarada; no se fuerza "
+                                     "estabilidad con restriccion artificial")})
+                        self._componentes_excluidos_apoyo.append({
+                            "linea": linea, "cota_demarcacion": p,
+                            "nivel_arranque": run[0],
+                            "ids": ids_que_cubren})
+                        continue
+                    last = None
+                    for c in run:
+                        zc = cotas[c]
+                        tag = self._snap_node_scaffold(ex, ey, zc)
+                        if last is not None:
+                            sec = por_nivel[c]["espesor"]
+                            trib_reparto = _tributaria(
+                                por_nivel[c]["a"], por_nivel[c]["b"],
+                                demark, E)
+                            Lt = trib_reparto.get(p)
+                            if Lt is None or Lt <= 0:
+                                Lt = (por_nivel[c]["b"]
+                                      - por_nivel[c]["a"]) / 2.0
+                            sec_info = SEC.seccion_muro(sec, Lt)
+                            self._add_vertical(
+                                "muro", "M %sx%.2fx2" % (sec, Lt),
+                                "muro_%s_%s_%s" % (ex, ey, c), c,
+                                last, tag, sec_info)
+                        last = tag
+        # 2b) vinculo de los IDENTIFICADORES originales de muro a sus nodos
+        #     montante reales por nivel (para el reparto tributario por id).
+        for cod in orden:
+            zc = cotas[cod]
+            for m in self.niveles[cod].muros:
+                if m.get("id") in excluidos:
+                    continue
+                ta = self._nodo_existente(m["ua"], m["va"], zc)
+                tb = self._nodo_existente(m["ub"], m["vb"], zc)
+                reg = self.receptor_nodos.setdefault(m["id"], [])
+                for t in (ta, tb):
+                    if t is not None and t not in reg:
+                        reg.append(t)
+
+    def _nodo_existente(self, u, v, z):
+        """Devuelve el tag de un nodo existente en (u,v,z) dentro de MERGE_TOL
+        (reuso por misma posicion fisica), SIN CREAR ningun nodo. None si la
+        posicion no tiene nodo: se usa en el vinculo 2b de muros para NO
+        materializar nodos de muros pendientes sin elemento (si el extremo no
+        coincide con un montante real ya creado, el receptor queda sin nodos y
+        TB reporta su tributaria como sin FE en vez de trasladarla a un
+        vecino)."""
+        target = _key(u, v, z)
+        if target in self.nodes:
+            return self.nodes[target]
+        best_tag, best_d = None, None
+        for (k, tag) in self.nodes.items():
+            if abs(k[2] - z) > 1e-6:
+                continue
+            d = math.hypot(k[0] - u, k[1] - v)
+            if d <= MERGE_TOL and (best_tag is None or d < best_d):
+                best_tag, best_d = tag, d
+        return best_tag
+
     def _fix_base(self, tag):
         if tag not in self._base_fixed:
             ops.fix(tag, 1, 1, 1, 1, 1, 1)
             self._base_fixed.add(tag)
+
+    def _anclar_apoyos_losa(self):
+        """Idealizacion documentada (NO inventa estructura): los montantes cuya
+        cadena vertical NO tiene camino a la cimentacion (sin nodo con apoyo de
+        base ni columna continua por debajo, p.ej. nucleos que arrancan en P2 con
+        evidencia pero sin columna en esa posicion) se apoyan en la LOSA del
+        nivel: se fija el desplazamiento vertical (w) del nodo mas bajo de cada
+        cadena (rodillo vertical). No se traslada carga a montantes vecinos ni se
+        crean tramos: solo se cierra el camino vertical que en obra aporta la
+        losa. Las cadenas con nodo fijo en base, o conectadas por columnas/vigas
+        a una de ellas, se consideran ancladas y no se tocan."""
+        ap = []
+        base = set(self._base_fixed)
+        adj = {int(t): set() for t in self.nodes.values()}
+        for r in list(self.muros_elem) + list(self.columnas) + list(self.vigas_elem):
+            i, j = int(r["nodo_i"]), int(r["nodo_j"])
+            adj.setdefault(i, set()).add(j)
+            adj.setdefault(j, set()).add(i)
+        # Enlaces rigidos REALES ya aplicados al modelo (rigidLink ['beam'] del portico
+        # del cielo CP1S y restricciones contencion): el nodo esclavo sigue al maestro,
+        # que es una columna/muro con camino a cimentacion. Se incluyen como aristas de
+        # la componente para NO forzar un apoyo artificial sobre elementos ya soportados
+        # por conexion real documentada (las cadenas se consideran ancladas). Los
+        # conectores elasticos cortos (stub) ya estan en vigas_elem (adyacencia real).
+        constr = []
+        for r in getattr(self, "rigid_links_info", []):
+            if r.get("tipo") == "stub_elastico_rigidez_elevada":
+                continue
+            a, b = int(r.get("col_tag")), int(r.get("beam_tag"))
+            if a in adj and b in adj:
+                adj[a].add(b)
+                adj[b].add(a)
+                constr.append({"master": a, "esclavo": b})
+        self.enlaces_rigidos_reales = constr
+        vistos_g = set()
+        for t in adj:
+            if t in vistos_g or (t in base and adj[t]):
+                continue
+            visto = set([t])
+            pila = [t]
+            while pila:
+                x = pila.pop()
+                for y in adj.get(x, ()):
+                    if y not in visto:
+                        visto.add(y)
+                        pila.append(y)
+            vistos_g |= visto
+            if base & visto:
+                continue
+            lower = min(visto, key=lambda x: (self.key_of_tag[x][2], x))
+            if lower not in self._apoyos_losa_fixed:
+                ops.fix(lower, 0, 0, 1, 0, 0, 0)
+                self._apoyos_losa_fixed.add(lower)
+            ap.append({
+                "tag": lower, "u": self.key_of_tag[lower][0],
+                "v": self.key_of_tag[lower][1], "z": self.key_of_tag[lower][2],
+                "n_nodos_cadena": len(visto),
+                "nodos": sorted(visto)})
+        self.apoyos_losa = ap
 
     def _snap_node_scaffold(self, u, v, z):
         """Crea (o reusa) nodo en (u,v,z). Fusiona por misma posicion fisica con una
@@ -473,6 +727,63 @@ class Marco:
         self.cp1s_eccentric_links = applied
         self.rigid_links_info.extend(p for p in rlinks
                                      if p not in self.rigid_links_info)
+
+    def _add_p4_grillaje_links(self, cotas):
+        """Grillaje de la torre sobre la losa P4 (anillo de vigas V.E.I. de la candidata
+        de la torre, 10 nodos en z=CP4). Apoyo fisico real DOCUMENTADO: los nodos del
+        anillo caen dentro del pie (<0.45 m) de los montantes que bajan a cimentacion
+        (patas de la torre V.E.I. y columnas de la reticula P4 G3/H3/GS6/HS7). La losa
+        fuera del plano no esta modelada, asi que cada nodo del anillo se conecta a su
+        montante mas cercano con el MISMO conector corto elastico de rigidez elevada que
+        P1 y la reticula P4 (nunca rigidLink anidado bajo el diafragma de P4). NO se
+        traslada el anillo, NO se crea viga ni columna, NO se inventa apoyo: se restaura
+        la union real pie-a-pie que el plano documenta. Registro en p4_grillaje_links."""
+        p4 = cotas.get("P4", cotas.get("CP4"))
+        if p4 is None:
+            self.p4_grillaje_links = []
+            return
+        # Centroides del grillaje de la torre documentados en el plano del nivel P4
+        # (anillo de vigas V.E.I.): solo estas coordenadas son del anillo; las columnas
+        # P4 (v fisica 16.331) y las patas de la torre SON soporte, no parte del anillo.
+        RING = [(19.7, 16.45), (20.3, 16.45), (29.7, 16.45), (30.3, 16.45),
+                (19.7, 20.57), (20.3, 20.57), (29.7, 20.57), (30.3, 20.57),
+                (20.3, 20.15), (29.7, 20.15)]
+        ring_seen = {}
+        for t in self.nodes.values():
+            u, v, z = self.key_of_tag[t]
+            if abs(z - p4) > 1e-6:
+                continue
+            for (ru, rv) in RING:
+                if abs(u - ru) <= 0.011 and abs(v - rv) <= 0.011:
+                    if (ru, rv) not in ring_seen:
+                        ring_seen[(ru, rv)] = t
+                    break
+        ring = list(ring_seen.values())
+        pool = sorted(t for t in self.nodes.values()
+                      if t not in ring
+                      and abs(self.key_of_tag[t][2] - p4) < 1e-6
+                      and 17.5 <= self.key_of_tag[t][0] <= 31.5)
+        applied = []
+        for bn in sorted(ring):
+            bx, by, _ = self.key_of_tag[bn]
+            best = None
+            for ct in pool:
+                ck = self.key_of_tag[ct]
+                d = math.hypot(ck[0] - bx, ck[1] - by)
+                if 1e-6 < d <= 0.45 and (best is None or d < best[0]):
+                    best = (d, ct, ck)
+            if best is None:
+                continue
+            d, ct, ck = best
+            if any(rl.get("beam_tag") == bn for rl in self._p4_links_seen):
+                continue
+            self._add_stub_rigid(ct, bn)
+            self._p4_links_seen.append({"col_tag": int(ct), "beam_tag": int(bn)})
+            applied.append({"nodo": int(bn),
+                            "viga_nodo": [round(x, 3) for x in (bx, by)],
+                            "soporte": [round(x, 3) for x in ck[:2]],
+                            "desfase_m": round(d, 3)})
+        self.p4_grillaje_links = applied
 
     def _registrar_hipotesis_muros_contencion(self):
         """Registra la hipotesis de laboratorio de los muros de contencion del sotano:

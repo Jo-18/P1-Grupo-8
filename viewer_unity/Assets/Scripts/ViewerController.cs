@@ -30,7 +30,7 @@ namespace LabViewer
         private readonly Dictionary<string, bool> _levelOn = new Dictionary<string, bool>();
 
         // superpuestos
-        public bool ShowNodos, ShowApoyos, ShowIds, ShowAxes, ShowTributary;
+        public bool ShowNodos, ShowApoyos, ShowIds, ShowAxes, ShowTributary, ShowCargas;
         public bool GlobalIds, GlobalAxes;   // mostrar IDs/ejes en TODOS los elementos
 
         // --- cielo P4 ---
@@ -157,6 +157,7 @@ namespace LabViewer
                 else if (m.Kind == "axis") show = ShowAxes || GlobalAxes;
                 else if (m.Kind == "id") show = ShowIds || GlobalIds;
                 else if (m.Kind == "trib") show = ShowTributary;
+                else if (m.Kind == "carga") show = ShowCargas;
                 if (show) show = BuildingOn(m.Building) && LevelOn(m.Level);
                 m.Go.SetActive(show);
             }
@@ -209,7 +210,7 @@ namespace LabViewer
             _levelOn.Clear();
             foreach (ElemType t in System.Enum.GetValues(typeof(ElemType)))
                 _typeOn[t.ToString()] = false;
-            ShowNodos = ShowApoyos = ShowIds = ShowAxes = ShowTributary = false;
+            ShowNodos = ShowApoyos = ShowIds = ShowAxes = ShowTributary = ShowCargas = false;
             GlobalIds = GlobalAxes = false;
             _selected = null;
             RebuildOverlays();
@@ -222,7 +223,7 @@ namespace LabViewer
             _levelOn.Clear();
             foreach (ElemType t in System.Enum.GetValues(typeof(ElemType)))
                 _typeOn[t.ToString()] = t != ElemType.Nodos;
-            ShowNodos = ShowApoyos = ShowIds = ShowAxes = ShowTributary = false;
+            ShowNodos = ShowApoyos = ShowIds = ShowAxes = ShowTributary = ShowCargas = false;
             GlobalIds = GlobalAxes = false;
             _selected = null;
             ClearSelectionHighlights();
@@ -240,7 +241,7 @@ namespace LabViewer
             _levelOn[_selected.Level] = true;
             foreach (ElemType t in System.Enum.GetValues(typeof(ElemType)))
                 _typeOn[t.ToString()] = t == _selected.Type;
-            ShowNodos = ShowApoyos = ShowIds = ShowAxes = ShowTributary = false;
+            ShowNodos = ShowApoyos = ShowIds = ShowAxes = ShowTributary = ShowCargas = false;
             RebuildOverlays();
             FrameAll();
         }
@@ -332,6 +333,18 @@ namespace LabViewer
                 (_selected.Type == ElemType.Vigas || _selected.Type == ElemType.Muros))
             {
                 BuildTributaryMarker(lab, _selected);
+            }
+
+            // Cargas G tributarias reales sobre SUS receptores (todas las vigas/muros
+            // con reparto geometrico cargado del lab, no solo el seleccionado).
+            if (ShowCargas)
+            {
+                foreach (var e in Model.Elements)
+                {
+                    if (e.Type != ElemType.Vigas && e.Type != ElemType.Muros) continue;
+                    if (!e.HasTributary || e.TribCargaKN <= 0) continue;
+                    BuildCargaMarker(lab, e);
+                }
             }
         }
 
@@ -446,11 +459,46 @@ namespace LabViewer
             }
         }
 
+        /// <summary>Flecha vertical descendente + etiqueta de la carga G tributaria junto
+        /// a su receptor (viga/muro). Solo lectura del reparto real (TribCargaKN); no
+        /// modifica el modelo ni los datos.</summary>
+        private void BuildCargaMarker(GameObject lab, ElementRef e)
+        {
+            Vector3 mid = WorldPoint(e.Building, (e.P0 + e.P1) * 0.5f);
+            float esc = e.TribCargaKN > 1000 ? 0.55f : 0.4f;
+            var mat = new Material(Shader.Find("Standard")) { color = new Color(0.2f, 0.45f, 0.95f) };
+            var go = new GameObject("CARGA_" + e.Id);
+            go.transform.SetParent(lab.transform, false);
+            var lr = go.AddComponent<LineRenderer>();
+            lr.positionCount = 2;
+            lr.SetPosition(0, mid + Vector3.up * 0.10f);
+            lr.SetPosition(1, mid + Vector3.down * esc);
+            lr.startWidth = lr.endWidth = 0.08f;
+            lr.material = mat;
+            var cone = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            cone.name = "CARGA_TIP_" + e.Id;
+            cone.transform.localScale = new Vector3(esc * 0.10f, esc * 0.18f, esc * 0.10f);
+            cone.transform.position = mid + Vector3.down * (esc + esc * 0.09f);
+            cone.transform.SetParent(go.transform, true);
+            var cr = cone.GetComponent<Renderer>();
+            if (cr != null) cr.sharedMaterial = mat;
+            var tm = go.AddComponent<TextMesh>();
+            tm.text = e.TribCargaKN.ToString("0") + " kN";
+            tm.characterSize = 0.09f;
+            tm.fontSize = 26;
+            tm.color = new Color(0.25f, 0.5f, 0.95f);
+            tm.transform.position = mid + Vector3.up * 0.30f;
+            _markers.Add(new Marker(go, e.Building, e.Level, "carga"));
+        }
+
         // ---------------------------------------------------------------- //
         //  Seleccion
         // ---------------------------------------------------------------- //
         void Update()
         {
+            // clic sobre un panel IMGUI => no seleccionar elementos detras (y el
+            // panel recibe el clic para sus toggles/botones).
+            if (InteraccionUI.PointerSobreUI()) return;
             if (Input.GetMouseButtonDown(0) && !_draggingUi)
             {
                 ElementRef hit = RaycastPick();
@@ -636,10 +684,27 @@ namespace LabViewer
         // ---------------------------------------------------------------- //
         void OnGUI()
         {
+            // -- interaccion panel<->escena: registrar TODOS los paneles como
+            //    regiones excluidas del control de camara (orbit/pan/zoom via
+            //    CameraController.Update) y de la seleccion por raycast
+            //    (ViewerController.Update / EsfuerzosController.Update). Cada
+            //    OnGUI rellenara la lista; PointerSobreUI() la consulta con un
+            //    frame de desfase (Update corre antes que OnGUI).
+            InteraccionUI.Limpiar();
+            InteraccionUI.Registrar(new Rect(10, 10, 230, 12 + 4));     // cabecera panel izq
+            InteraccionUI.Registrar(new Rect(10, 30, 230, 616));        // area panel izq completo
+            InteraccionUI.Registrar(new Rect(Screen.width - 340, Screen.height - 430, 330, 420)); // diag
+            InteraccionUI.Registrar(new Rect(Screen.width - 340, Screen.height - 210, 330, 200)); // leyenda
+            InteraccionUI.Registrar(new Rect(Screen.width - 340, 10, 330, 300));                 // inspeccion
             GUI.Box(new Rect(10, 10, 230, 12 + 4), "Lab FE viewer");
             int y = 30;
             GUILayout.BeginArea(new Rect(10, y, 230, 700));
             _scroll = GUILayout.BeginScrollView(_scroll, GUI.skin.box, GUILayout.Width(230), GUILayout.Height(560));
+
+            // scroll dentro del panel: consumir la rueda para que no escape al zoom
+            // de la camara mientras el cursor esta sobre este rect (los ScrollViews
+            // IMGUI ya consumen la rueda local; esto evita el doble disparo).
+            InteraccionUI.UsarScrollSobrePanel();
 
             GUILayout.Label("Camara");
             if (GUILayout.Button("Encuadrar todo")) FrameAll();
@@ -681,7 +746,7 @@ namespace LabViewer
             foreach (var b in new[] { "I", "II" })
             {
                 bool bOn = BuildingOn(b);
-                bool nv = GUILayout.Toggle(bOn, "Edificio " + b);
+                bool nv = InteraccionUI.ToggleEstado(bOn, "Edificio " + b, "button");
                 if (nv != bOn) { _bldgOn[b] = nv; ApplyFilters(); }
             }
             if (GUILayout.Button("Mostrar ambos edificios")) { ShowBothBuildings(); }
@@ -725,6 +790,8 @@ namespace LabViewer
             if (gax != GlobalAxes) { GlobalAxes = gax; RebuildOverlays(); }
             bool tr = GUILayout.Toggle(ShowTributary, "Area tributaria (seleccionado)");
             if (tr != ShowTributary) { ShowTributary = tr; RebuildOverlays(); }
+            bool cr = GUILayout.Toggle(ShowCargas, "Cargas G (receptores tributarios)");
+            if (cr != ShowCargas) { ShowCargas = cr; RebuildOverlays(); }
 
             GUILayout.Space(6);
             if (GUILayout.Button("Aplicar filtros / redes")) RebuildOverlays();
@@ -894,6 +961,28 @@ namespace LabViewer
             GUI.Label(rect, e.Id);
         }
 
+        /// <summary>Tags FE (del paquete de esfuerzos) cuya correspondencia
+        /// viewer&lt;-&gt;FE enlaza a este elemento de la geometria original
+        /// (1A1 directo o CONTENIDO por segmentos). Solo lectura del overlay FE.</summary>
+        private void DibujarTagsFEVinculados(ElementRef r)
+        {
+            if (_esf == null) return;
+            var tags = new List<string>();
+            foreach (var e in _esf.ElementosDe(r.Building))
+            {
+                if (string.IsNullOrEmpty(e.ViewerId)) continue;
+                if (e.ViewerId != r.Id) continue;
+                tags.Add(e.Tag + "[" + (string.IsNullOrEmpty(e.EstadoCorr) ? "?" : e.EstadoCorr) + "]");
+            }
+            if (tags.Count == 0)
+            {
+                GUILayout.Label("tags FE: sin mapeo (SIN_CORRESPONDENCIA_VIEWER)");
+                return;
+            }
+            GUILayout.Label("tags FE vinculados (" + tags.Count + "):");
+            GUILayout.Label(string.Join("  ", tags));
+        }
+
         private void DrawInspectionPanel()
         {
             if (_selected == null) return;
@@ -914,7 +1003,7 @@ namespace LabViewer
                 GUILayout.Label("Limite v [" + r.UVBounds.z.ToString("0.###") + ", "
                                 + r.UVBounds.w.ToString("0.###") + "] m");
             }
-            GUILayout.Label("elementTag: no disponible");
+            DibujarTagsFEVinculados(r);
             // Aviso de CANDIDATA P4 (grid de vigas trasladado +0.18 m en v): los resultados y
             // areas tributarias FE previos corresponden a la geometria anterior y NO estan
             // revalidados para esta candidata. Se muestra para toda viga P4 (el grid corregido).
@@ -928,8 +1017,19 @@ namespace LabViewer
                 GUILayout.Label("estan revalidados para esta viga trasladada.");
                 GUI.color = Color.white;
             }
-            if (!string.IsNullOrEmpty(r.Seccion)) GUILayout.Label("Seccion: " + r.Seccion);
-            if (r.SectionW > 0) GUILayout.Label("Seccion: " + r.SectionW + " x " + r.SectionH + " m");
+            // Seccion: si la del viewer esta incompleta (p.ej. muros con SectionH=0
+            // porque el loader solo setea el espesor), se muestra la seccion REAL del FE
+            // correspondiente (correspondencia viewer<->FE) para que la ficha sea
+            // coherente con la del overlay de esfuerzos.
+            var esfNow = Esf();
+            string secFE = esfNow != null ? esfNow.SeccionDe(r) : null;
+            bool secIncompleta = (r.SectionW > 0 && r.SectionH <= 0) || string.IsNullOrEmpty(r.Seccion);
+            if (secIncompleta && !string.IsNullOrEmpty(secFE)) GUILayout.Label("Seccion: " + secFE);
+            else
+            {
+                if (!string.IsNullOrEmpty(r.Seccion)) GUILayout.Label("Seccion: " + r.Seccion);
+                if (r.SectionW > 0) GUILayout.Label("Seccion: " + r.SectionW + " x " + r.SectionH + " m");
+            }
             if (r.Type == ElemType.Columnas) GUILayout.Label("Grid: " + (r.Grid ?? "-"));
             if (r.Type == ElemType.Losas)
             {
@@ -1082,6 +1182,15 @@ namespace LabViewer
             return n;
         }
 
+        /// <summary>Acceso (perezoso) al controlador de esfuerzos FE del mismo objeto.
+        /// En play lo adjunta EsfuerzosController.AutoAdjuntar DESPUES del Awake del
+        /// viewer, por lo que se re-resuelve al usarlo (ficha/seccion vinculada).</summary>
+        private EsfuerzosController Esf()
+        {
+            if (_esf == null) _esf = GetComponent<EsfuerzosController>();
+            return _esf;
+        }
+
         public void SetBuilding(string b, bool on) { _bldgOn[b] = on; ApplyFilters(); }
         public void SetType(string t, bool on) { _typeOn[t] = on; ApplyFilters(); }
         public void SetLevelAll(bool on)
@@ -1102,6 +1211,7 @@ namespace LabViewer
             else if (kind == "id") ShowIds = on;
             else if (kind == "axis") ShowAxes = on;
             else if (kind == "trib") ShowTributary = on;
+            else if (kind == "carga") ShowCargas = on;
             RebuildOverlays();
         }
         public void ShowAllTypes()
@@ -1128,6 +1238,17 @@ namespace LabViewer
             return false;
         }
         public ElementRef Selected => _selected;
+
+        /// <summary>Alinea el panel "Inspeccion" con la seleccion de esfuerzos FE: recibe
+        /// el ElementRef de la geometria original (o null para limpiar). El clic normal
+        /// ya lo hace via Select; las selecciones por script/tool/panel overlay lo
+        /// confirman aqui para que la ficha y los resultados cambien SIEMPRE juntos.</summary>
+        public void SincronizarSeleccion(ElementRef r)
+        {
+            if (r == _selected) return;
+            Select(r);
+        }
+
         public bool IsP4Mode => _p4SkyMode;
     }
 }

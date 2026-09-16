@@ -63,6 +63,16 @@ TOL = 2e-3  # m (mismo criterio que la auditoria de emparejamiento)
 # posicion de columna con tolerancia 2 cm; se replica aqui (queda muy por debajo
 # de la separacion entre ejes del grid, evita emparejes cruzados).
 TOL_COLUMNA = 0.02  # m (u, v)
+# Tolerancia 3D de emparejamiento de barras (m): misma que TOL (2 mm). Se aplica a
+# la comparacion de extremos (directa o invertida), centro, longitud y orientacion
+# de la barra FE contra el tramo fisico del viewer en el eje de la barra.
+TOL_3D = TOL
+# Estado de correspondencia de una barra FE analitica (postes, conectores) que
+# SOLO coincide en planta con una columna del viewer pero NO en el tramo fisico
+# completo del entrepiso (extremos/centro/longitud/orientacion 3D fuera de
+# tolerancia, o sin tramo fisico por encima del ultimo forjado). Conserva sus
+# resultados, sigue en el JSON y solo se muestra en modo de diagnostico.
+SIN_GEOMETRIA_FISICA_3D = "SIN_GEOMETRIA_FISICA_3D"
 # Muros: el eje FE de la franja de muro puede quedar descentrado respecto a la
 # polilinea central del panel del viewer hasta ~0.31 m (observado en planos EI:
 # 0.125-0.31 m, excentricidad de la franja respecto al eje del panel), por lo que
@@ -276,6 +286,70 @@ def _resolver_esquina(el, cands):
     return ordenados[0]["id"]
 
 
+def tramo_fisico_columna(nivel, geo):
+    """Tramo vertical fisico al que debe corresponder una columna del viewer del
+    nivel `nivel`: [cota(nivel), cota(nivel siguiente)]. Devuelve None si el nivel
+    no tiene cota superior documentada (ultimo forjado: no existe columna física
+    dibujada por encima, p. ej. torre EI sobre P4)."""
+    if nivel not in geo:
+        return None
+    cz = float(geo[nivel]["cota"])
+    cotas = sorted({float(gr["cota"]) for gr in geo.values()})
+    ups = [c for c in cotas if c > cz + TOL]
+    if not ups:
+        return None
+    return (cz, ups[0])
+
+
+def barra_vertical(pi, pj, tol):
+    """La barra es vertical (eje cota/Unity-Y): u y v constantes en sus extremos."""
+    return abs(pi[0] - pj[0]) <= tol and abs(pi[2] - pj[2]) <= tol
+
+
+def comparar_intervalo_3d(pi, pj, zA, zB, tol):
+    """Compara la barra 3D pi->pj contra el tramo vertical fisico [zA,zB].
+    Devuelve dict con 'ok' (coincidencia de extremos directa O invertida, lo que
+    implica coincidencia de centro, longitud y orientacion vertical) y las
+    metricas solicitadas por la auditoria 3D:
+      d_extremo   = maxima desviacion de cada extremo a la cota del tramo
+                    (elegida por el orden que minimiza extremo a extremo)
+      d_centro    = (c_barra - c_tramo)
+      d_longitud  = (L_barra - L_tramo)
+      d_orientacion = 1 - |dot(n_unitario_barra, (0,+-1,0))| (0 = colineal vertical)
+      orientacion = 'directa' | 'invertida' | 'no_coincide'
+    """
+    L_tramo = abs(zB - zA)
+    z_i, z_j = pi[1], pj[1]
+    L_barra = abs(z_j - z_i)
+    d_extr_dir = max(abs(z_i - zA), abs(z_j - zB))
+    d_extr_inv = max(abs(z_i - zB), abs(z_j - zA))
+    dir_ok = barra_vertical(pi, pj, tol) and d_extr_dir <= tol
+    inv_ok = barra_vertical(pi, pj, tol) and d_extr_inv <= tol
+    d_centro = (z_i + z_j) / 2.0 - (zA + zB) / 2.0
+    d_longitud = L_barra - L_tramo
+    # desviacion de la direccion de la barra respecto a la vertical (asignada por
+    # el orden de extremos: signo de (z_j - z_i) vs signo de (zB - zA))
+    if L_barra > 1e-12:
+        nz = (z_j - z_i) / L_barra
+        d_orientacion = 1.0 - abs(nz)
+    else:
+        d_orientacion = 1.0
+    if dir_ok:
+        orientacion = "directa"
+    elif inv_ok:
+        orientacion = "invertida"
+    else:
+        orientacion = "no_coincide"
+    return {
+        "ok": dir_ok or inv_ok,
+        "d_extremo_m": min(d_extr_dir, d_extr_inv),
+        "d_centro_m": d_centro,
+        "d_longitud_m": d_longitud,
+        "d_orientacion": d_orientacion if dir_ok or inv_ok else 1.0,
+        "orientacion": orientacion,
+    }
+
+
 def emparejar(meta: dict, geo: dict) -> dict:
     """-> {tag: {"estado": ..., "viewer_id": str|None, "viewer_nivel": str|None}}
     Reglas (una sola para I y II):
@@ -320,11 +394,47 @@ def emparejar(meta: dict, geo: dict) -> dict:
         x_j, z_j, y_j = el["p_j_unity"]
 
         if tipo == "columna":
-            cands = [cid for cid, pos in g["columnas"].items()
-                     if cercano(pos[0], x_i, TOL_COLUMNA) and cercano(pos[2], y_i, TOL_COLUMNA)
-                     and cercano(pos[1], z_i)]
-            if len(cands) == 1:
-                estado, vid, vnivel = "1A1", cands[0], nivel
+            # 1A1 3D-COMPLETO (columna): ademas de la coincidencia en planta
+            # (u,v), la barra FE debe coincidir con el TRAMO FISICO COMPLETO del
+            # entrepiso: extremo inferior en la cota del nivel y extremo superior
+            # en la cota del nivel siguiente (comparacion directa o invertida de
+            # extremos -> centro, longitud y orientacion vertical dentro de
+            # TOL_3D). NO basta coincidencia en planta ni que solo un extremo caiga
+            # en la cota del nivel. EJEMPLO persistido (P4-EI, tags 607-635): la
+            # barra FE corre z=11,83->15,79 (L=3,96 m) y la columna fisica del
+            # viewer P4 es 7,87->11,83 (L=3,96 m): NO comparten extremos; la FE
+            # queda FLOTANTE un entrepiso hacia arriba y no tiene tramo fisico
+            # por encima del forjado P4 -> SIN_GEOMETRIA_FISICA_3D (analitica,
+            # conserva sus resultados, no se asigna a la columna fisica P4).
+            p_i = (x_i, z_i, y_i)
+            p_j = (x_j, z_j, y_j)
+            z_inf = min(z_i, z_j)
+            # nivel = forjado del extremo inferior (tolerante a orientacion
+            # invertida de la barra); respeta la misma cota que posicion.y.
+            nivel_col = nivel
+            for n_col_, gr_col in geo.items():
+                if cercano(z_inf, float(gr_col["cota"])):
+                    nivel_col = n_col_
+                    break
+            tramo = tramo_fisico_columna(nivel_col, geo)
+            g_col = geo[nivel_col]
+            cands = [cid for cid, pos in g_col["columnas"].items()
+                     if cercano(pos[0], x_i, TOL_COLUMNA)
+                     and cercano(pos[2], y_i, TOL_COLUMNA)
+                     and cercano(pos[1], z_inf)]
+            if len(cands) == 0:
+                # sin objeto columna coincidente ni siquiera en planta -> se
+                # conserva el estado previo SIN_CORRESPONDENCIA_VIEWER
+                pass
+            elif tramo is None or len(cands) > 1:
+                estado, vid, vnivel = SIN_GEOMETRIA_FISICA_3D, None, None
+            else:
+                comparacion = comparar_intervalo_3d(
+                    p_i, p_j, tramo[0], tramo[1], TOL_3D)
+                if comparacion["ok"]:
+                    estado, vid, vnivel = "1A1", cands[0], nivel_col
+                else:
+                    estado, vid, vnivel = SIN_GEOMETRIA_FISICA_3D, None, None
 
         elif tipo == "viga":
             p_i = (x_i, z_i, y_i)

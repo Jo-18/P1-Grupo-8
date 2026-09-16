@@ -70,6 +70,11 @@ NOTA_100_30 = (
     "rotularian NO_NORMATIVA_PARA_ESTA_ENTREGA, sin mezclarlas con las normativas "
     "ni con la envolvente.")
 
+ESTADO_COMBINACION_CALCULADA = (
+    "CALCULADA (9 corridas explicitas de OpenSees sobre la topologia congelada "
+    "Semana 4: cierre de las 4 islas + grillaje torre P4, 2026-09-15; patron de "
+    "cargas nodales combinado, sin superposicion post-proceso)")
+
 
 def ensamblar_plano(combo: dict, G: dict, Q: dict, EX: dict,
                     EY: dict) -> dict:
