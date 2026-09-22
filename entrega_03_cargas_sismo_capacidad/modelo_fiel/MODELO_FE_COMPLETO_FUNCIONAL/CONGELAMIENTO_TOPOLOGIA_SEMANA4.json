@@ -1,0 +1,27 @@
+{
+  "hito": "CONGELAMIENTO_TOPOLOGIA_SEMANA4",
+  "fecha_utc": "2026-09-14T19:46:33+00:00",
+  "topologia_EI_sha256": "8b0dd83b1fcd",
+  "topologia_EII_sha256": "8e5e1c522f26",
+  "preflight_EI_sha256": "cbd70cbbf914",
+  "preflight_EII_sha256": "aefc2342c03b",
+  "combos_recalculados_ids": [
+    "U1_GQ",
+    "U2_EX_POS",
+    "U2_EX_NEG",
+    "U3_EY_POS",
+    "U3_EY_NEG",
+    "U4_EX_POS",
+    "U4_EX_NEG",
+    "U4_EY_POS",
+    "U4_EY_NEG"
+  ],
+  "combos_estado": "CALCULADA",
+  "combos_equilibrio_ok": {
+    "EI": 9,
+    "EII": 9
+  },
+  "regla": "Desde este archivo NO se modifican mas nodos, elementos, restricciones ni cargas del perfil MODELO_FE_COMPLETO_FUNCIONAL hasta despues de la demo Semana 4.",
+  "brechas_documentadas_en": "reports/semana04.md secciones 2 y 3",
+  "respaldo_combos_previos_en": null
+}

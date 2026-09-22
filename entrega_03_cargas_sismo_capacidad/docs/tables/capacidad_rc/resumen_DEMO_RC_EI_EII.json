@@ -1,0 +1,63 @@
+{
+  "titulo": "Resumen comparativo DEMO_RC_EI vs DEMO_RC_EII",
+  "nota": "Ambas secciones comparten geometria documentada 0.70x0.70 hormigon y el MISMO armado de demostracion; se diferencian solo en fc (EI=40 MPa hipotesis del grupo; EII=35 MPa documentado). HIPOTESIS_DEMOSTRACION, NO capacidad real de diseno.",
+  "secciones": {
+    "EI": {
+      "edificio": "I",
+      "fc_MPa": 40.0,
+      "n_barras": 12,
+      "As_total_m2": 0.00589,
+      "area_bruta_m2": 0.49,
+      "n_fibras_concreto": 196,
+      "n_fibras_acero": 12,
+      "verificacion_area_fibras": {
+        "area_bruta_m2": 0.49,
+        "area_fibras_m2": 0.49,
+        "diferencia_m2": 0.0
+      },
+      "M_u_N0_kN_m": 896.4595,
+      "kappa_u_N0_1_m": 0.06395,
+      "criterio_falla_N0": "APLASTAMIENTO_HORMIGON_eps_ext_fibra>=eps_cu",
+      "M_u_Ncomp_kN_m": 1715.0591,
+      "N_compresion_kN": 3920.0,
+      "clasificacion": "HIPOTESIS_DEMOSTRACION"
+    },
+    "EII": {
+      "edificio": "II",
+      "fc_MPa": 35.0,
+      "n_barras": 12,
+      "As_total_m2": 0.00589,
+      "area_bruta_m2": 0.49,
+      "n_fibras_concreto": 196,
+      "n_fibras_acero": 12,
+      "verificacion_area_fibras": {
+        "area_bruta_m2": 0.49,
+        "area_fibras_m2": 0.49,
+        "diferencia_m2": 0.0
+      },
+      "M_u_N0_kN_m": 875.0047,
+      "kappa_u_N0_1_m": 0.054922,
+      "criterio_falla_N0": "APLASTAMIENTO_HORMIGON_eps_ext_fibra>=eps_cu",
+      "M_u_Ncomp_kN_m": 1581.2245,
+      "N_compresion_kN": 3430.0,
+      "clasificacion": "HIPOTESIS_DEMOSTRACION"
+    }
+  },
+  "diferencia_Mu_N0_pct": 2.45,
+  "escrito_en": {
+    "EI": [
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\results\\capacidad_rc\\DEMO_RC_EI.json",
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\results\\capacidad_rc\\DEMO_RC_EI",
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\figures\\capacidad_rc\\DEMO_RC_EI_seccion_fibras.png",
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\figures\\capacidad_rc\\DEMO_RC_EI_m_phi.png",
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\figures\\capacidad_rc\\DEMO_RC_EI_diagrama_pm.png"
+    ],
+    "EII": [
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\results\\capacidad_rc\\DEMO_RC_EII.json",
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\results\\capacidad_rc\\DEMO_RC_EII",
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\figures\\capacidad_rc\\DEMO_RC_EII_seccion_fibras.png",
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\figures\\capacidad_rc\\DEMO_RC_EII_m_phi.png",
+      "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\figures\\capacidad_rc\\DEMO_RC_EII_diagrama_pm.png"
+    ]
+  }
+}

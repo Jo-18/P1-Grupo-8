@@ -1,0 +1,27 @@
+{
+  "solucion_antes": {
+    "ok": true,
+    "R_z_kN": 25227.7316,
+    "max_desp_z_m": 0.10771983,
+    "n_reacciones": 254,
+    "nodo_max_desp": {
+      "tag": 394,
+      "dz_m": -0.10771983
+    }
+  },
+  "solucion_despues": {
+    "ok": true,
+    "R_z_kN": 42406.9577,
+    "max_desp_z_m": 0.1543837,
+    "n_reacciones": 254,
+    "nodo_max_desp": {
+      "tag": 394,
+      "dz_m": -0.1543837
+    }
+  },
+  "delta": {
+    "R_z_kN": 17179.2261,
+    "max_desp_z_m": 0.04666388
+  },
+  "muestra_axiles_momentos": []
+}

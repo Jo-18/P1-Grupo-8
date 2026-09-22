@@ -1,0 +1,82 @@
+{
+  "perfil": "G_EI_MODELO_FIEL",
+  "G_antes_kN": 25227.7316,
+  "G_antes_por_nivel": {
+    "CP1S": 2497.1523,
+    "P1": 6513.3433,
+    "P2": 5266.698,
+    "P3": 5715.7725,
+    "P4": 5234.7655
+  },
+  "PP_confirmado_kN": 17179.2261,
+  "PP_por_nivel": {
+    "vigas": {
+      "CP1S": 883.1889,
+      "P1": 2746.0583,
+      "P2": 3384.4713,
+      "P3": 3937.5667,
+      "P4": 3852.2488
+    },
+    "columnas": {
+      "P1": 333.0047,
+      "P2": 856.2978,
+      "P3": 856.2978
+    },
+    "muros": {
+      "P2": 330.0918,
+      "P3": 330.0918
+    }
+  },
+  "G_despues_kN": 42406.9577,
+  "G_despues_por_nivel": {
+    "CP1S": 3380.3412,
+    "P1": 9592.4063,
+    "P2": 9507.4671,
+    "P3": 10839.7288,
+    "P4": 9087.0143
+  },
+  "pendientes_explicitos": {
+    "n_pendientes": 63,
+    "n_no_incluidas": 1,
+    "columnas_base_kN": 4223.8204,
+    "muros_base_kN": 3675.1844,
+    "contencion_kN": 554.544
+  },
+  "verificaciones": [
+    {
+      "check": "suma_pp_igual_audit",
+      "estado": "OK",
+      "detalle": "aplicado 17179.2261 vs audit 17179.2261"
+    },
+    {
+      "check": "identidad_AxLxG_vs_audit",
+      "estado": "OK",
+      "detalle": "{\"viga_AxLxG_kN\": 14803.52, \"viga_audit_kN\": 14803.534, \"columna_AxLxG_kN\": 2045.5965, \"columna_audit_kN\": 2045.6003, \"muro_AxLxG_kN\": 330.0915, \"muro_audit_kN\": 330.0918}"
+    },
+    {
+      "check": "longitud_fe_vs_audit",
+      "estado": "OK",
+      "detalle": "137 vigas + 43 col + 4 muros"
+    },
+    {
+      "check": "cada_id_una_vez",
+      "estado": "OK",
+      "detalle": "184 de 184 ids contados una sola vez"
+    },
+    {
+      "check": "equilibrio_vertical_antes",
+      "estado": "OK",
+      "detalle": "Pz=25227.7316, Rz=25227.7316"
+    },
+    {
+      "check": "equilibrio_vertical_despues",
+      "estado": "OK",
+      "detalle": "Pz=42406.9577, Rz=42406.9577"
+    },
+    {
+      "check": "losas_y_pm_adic_intactas",
+      "estado": "OK",
+      "detalle": "delta esperado = 17179.2261, delta observado = 17179.2261"
+    }
+  ]
+}

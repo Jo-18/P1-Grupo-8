@@ -1,0 +1,55 @@
+{
+  "titulo": "Coeficientes de combinacion para superposicion (Entrega 3)",
+  "unidades": "adimensional",
+  "nota_general": "R = lambda_G*G + lambda_Q*Q + lambda_EX*EX + lambda_EY*EY. Los coeficientes reales dependen de la norma de combinaciones (PENDIENTE, no se eligen a ciegas). Para demostrar el flujo se define un CONJUNTO DE DEMOSTRACION claramente identificado (marcado DEMOSTRACION_ARBITRARIA) que NO es la combinacion definitiva.",
+  "conjunto_demostracion": {
+    "etiqueta": "DEMOSTRACION_ARBITRARIA_1.0_0.7_0.3_-0.2",
+    "nota": "Solo para demostrar el mecanismo de superposicion y su verificacion; NO es la combinacion de diseno.",
+    "lambda_G": 1.0,
+    "lambda_Q": 0.7,
+    "lambda_EX": 0.3,
+    "lambda_EY": -0.2
+  },
+  "coeficientes": {
+    "G": {"lambda": null, "estado": "PENDIENTE", "demostracion_arbitraria": 1.0},
+    "Q": {"lambda": null, "estado": "PENDIENTE", "demostracion_arbitraria": 0.7},
+    "EX": {"lambda": null, "estado": "PENDIENTE", "demostracion_arbitraria": 0.3},
+    "EY": {"lambda": null, "estado": "PENDIENTE", "demostracion_arbitraria": -0.2}
+  },
+  "familias_preparadas": {
+    "desplazamiento": {"unidades": "m"},
+    "reaccion": {"unidades": "kN"},
+    "fuerza_interna": {"unidades": "kN / kN*m"}
+  },
+  "verificacion_intermedia_G_Q_EI": {
+    "metodo": "R_sup = lambda_G*G + lambda_Q*Q comparado contra corrida EXPLICITA G + lambda_Q*Q sobre el mismo modelo lineal (desplazamiento, reaccion, axial, momento de extremo); tolerancia rel 1e-4.",
+    "estado": "IMPLEMENTADO_Y_VERIFICADO_INTERMEDIO",
+    "comando": "python -X utf8 -m src.cargas.verificacion_intermedia_G_Q_EI --demo",
+    "resultados": [
+      "results/superposicion/verificacion_intermedia_G_Q_EI.json",
+      "results/superposicion/verificacion_intermedia_G_Q_EI.csv",
+      "results/superposicion/verificacion_intermedia_G_Q_EI.md",
+      "figures/superposicion/verificacion_intermedia_G_Q_EI.png"
+    ],
+    "errores_maximos": {"error_abs": "2.3e-12", "error_rel": "3.1e-15", "n_magnitudes": 8}
+  },
+  "verificacion_intermedia_G_Q_EII": {
+    "metodo": "R_sup = lambda_G*G + lambda_Q*Q (lambda_Q=0.7 del conjunto demostracion) comparado contra corrida EXPLICITA G + lambda_Q*Q sobre EXACTAMENTE el mismo modelo congelado EII (G_EII_REPRODUCIBLE_CON_DISCREPANCIAS_DOCUMENTADAS): desplazamiento, reaccion, axial, momento de extremo; tolerancia rel 1e-4; firmas nodos/elementos/restricciones identicas + patron Q consistente.",
+    "estado": "IMPLEMENTADO_Y_VERIFICADO_INTERMEDIO_II",
+    "comando": "python -X utf8 -m src.cargas.verificacion_intermedia_G_Q_EII --demo",
+    "resultados": [
+      "results/superposicion/verificacion_intermedia_G_Q_EII.json",
+      "results/superposicion/verificacion_intermedia_G_Q_EII.csv",
+      "results/superposicion/verificacion_intermedia_G_Q_EII.md",
+      "figures/superposicion/verificacion_intermedia_G_Q_EII.png"
+    ],
+    "errores_maximos": {"error_abs": "4.5e-12", "error_rel": "4.0e-14", "n_magnitudes": 8},
+    "F_total_kN": {"G": -25970.9994, "Q": -5259.42883, "EXPLICITA": -29652.5995}
+  },
+  "verificacion_final": {
+    "metodo": "comparar R combinado (G+Q+EX+EY) con una corrida explicita equivalente de OpenSees (desplazamiento, reaccion, axial, momento de extremo; tolerancia rel 1e-4; firmas nodos/elementos/restricciones identicas entre las 5 corridas + patron explicito consistente con la suma ponderada).",
+    "estado": "IMPLEMENTADO_Y_VERIFICADO_COMPLETO",
+    "requiere": ["caso G compatible", "caso Q compatible", "caso EX compatible", "caso EY compatible"],
+    "nota": "EX/EY pseudoestaticos de la consigna (Wi=PP+0.5Q; Fi=0.20Wi) implementados en src/cargas/caso_sismico.py; superposicion completa verificada para EI y EII en results/superposicion/verificacion_superposicion_completa_{I,II}.json (max error rel ~2e-15). Reemplaza al bloqueo previo por parametros sismicos."
+  }
+}

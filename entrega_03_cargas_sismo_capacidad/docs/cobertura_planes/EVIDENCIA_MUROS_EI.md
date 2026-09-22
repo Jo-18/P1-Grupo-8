@@ -1,0 +1,206 @@
+# Evidencia de cobertura de muros — EDIFICIO I
+
+_Generado automaticamente desde esfuerzos_FE_EDIFICIO_I.json y geometry/*.json (solo para decidir el tratamiento de Tarea 2)._
+
+Criterio: la tolerancia de 0.35 m solo propone candidatos; la aceptacion exige eje, orientacion, extension, rango de cotas y continuidad fisica (nodos por piso).
+
+Resumen de la evidencia:
+- Muros con solo segmentos por piso conectados: 6
+- Muros sin cobertura FE: 1
+- Muros con strips multi-nivel (un elemento cruza >1 piso sin nodo intermedio): 24
+- Strips que cruzan cotas de piso sin nodo: 24
+- Conjunto con elementos solapados en la misma huella (posible doble conteo rigidez/peso): 0
+
+## Tabla
+
+- **CP1S M_EI_CP1S_001** e=0.20 z=-4.01 — MULTI-NIVEL tags=240,280, CRUZA_PISOS_SIN_NODO tags=240,280
+    - tag=240 sec=M 0.2x3.47x2 cota=-4.01..3.91 nodo_i=239 nodo_j=236 d=0.000
+    - tag=280 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=279 nodo_j=278 d=0.000
+    - tag=597 sec=M 0.2x12.62x2 cota=-7.01..-4.01 nodo_i=595 nodo_j=596 d=0.000
+    - tag=194 sec=M 0.2x8.07x2 cota=-4.01..-0.05 nodo_i=193 nodo_j=192 d=0.100
+    - tag=197 sec=M 0.2x8.07x2 cota=-4.01..-0.05 nodo_i=196 nodo_j=195 d=0.100
+- **CP1S M_EI_CP1S_002** e=0.30 z=-4.01 — OK
+    - tag=599 sec=M 0.3x4.15x2 cota=-7.01..-4.01 nodo_i=598 nodo_j=322 d=0.000
+- **CP1S M_EI_CP1S_003** e=0.70 z=-4.01 — SIN_FE
+- **CP1S M_EI_CP1S_004** e=0.20 z=-4.01 — MULTI-NIVEL tags=248,269,272,298,262,251,301,308, CRUZA_PISOS_SIN_NODO tags=248,269,272,298,262,251,301,308
+    - tag=248 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=247 nodo_j=246 d=0.125
+    - tag=269 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=247 nodo_j=268 d=0.125
+    - tag=272 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=271 nodo_j=270 d=0.125
+    - tag=298 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=297 nodo_j=296 d=0.125
+    - tag=262 sec=M 0.2x1.72x2 cota=-4.01..3.91 nodo_i=261 nodo_j=258 d=0.160
+    - tag=251 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=250 nodo_j=249 d=0.235
+    - tag=301 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.307
+    - tag=308 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.307
+- **CP1S M_EI_CP1S_005** e=0.20 z=-4.01 — MULTI-NIVEL tags=254,274,277,304,267,257,307,309, CRUZA_PISOS_SIN_NODO tags=254,274,277,304,267,257,307,309
+    - tag=254 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=253 nodo_j=252 d=0.125
+    - tag=274 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=253 nodo_j=273 d=0.125
+    - tag=277 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=276 nodo_j=275 d=0.125
+    - tag=304 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=303 nodo_j=302 d=0.125
+    - tag=267 sec=M 0.2x1.72x2 cota=-4.01..3.91 nodo_i=266 nodo_j=263 d=0.160
+    - tag=257 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=256 nodo_j=255 d=0.236
+    - tag=307 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.307
+    - tag=309 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.307
+- **CP1S M_EI_CP1S_006** e=0.20 z=-4.01 — MULTI-NIVEL tags=220,225,286,289, CRUZA_PISOS_SIN_NODO tags=220,225,286,289
+    - tag=220 sec=M 0.3x1.08x2 cota=-4.01..3.91 nodo_i=219 nodo_j=216 d=0.150
+    - tag=225 sec=M 0.3x1.08x2 cota=-4.01..3.91 nodo_i=224 nodo_j=221 d=0.150
+    - tag=286 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=285 nodo_j=284 d=0.150
+    - tag=289 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=288 nodo_j=287 d=0.235
+- **CP1S M_EI_CP1S_007** e=0.20 z=-4.01 — MULTI-NIVEL tags=230,235,283,292,295,245, CRUZA_PISOS_SIN_NODO tags=230,235,283,292,295,245
+    - tag=230 sec=M 0.3x1.13x2 cota=-4.01..3.91 nodo_i=229 nodo_j=226 d=0.150
+    - tag=235 sec=M 0.3x1.13x2 cota=-4.01..3.91 nodo_i=234 nodo_j=231 d=0.150
+    - tag=283 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=282 nodo_j=281 d=0.150
+    - tag=292 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=291 nodo_j=290 d=0.150
+    - tag=295 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=294 nodo_j=293 d=0.235
+    - tag=245 sec=M 0.2x3.47x2 cota=-4.01..3.91 nodo_i=244 nodo_j=241 d=0.300
+- **CP1S M_EI_CP1S_008** e=0.30 z=-4.01 — OK
+    - tag=200 sec=M 0.3x8.54x2 cota=-4.01..-0.05 nodo_i=199 nodo_j=198 d=0.000
+    - tag=203 sec=M 0.3x8.54x2 cota=-4.01..-0.05 nodo_i=202 nodo_j=201 d=0.000
+- **CP1S M_EI_CP1S_009** e=0.30 z=-4.01 — OK
+    - tag=206 sec=M 0.3x3.05x2 cota=-4.01..-0.05 nodo_i=205 nodo_j=204 d=0.000
+    - tag=209 sec=M 0.3x3.05x2 cota=-4.01..-0.05 nodo_i=208 nodo_j=207 d=0.000
+- **P1 M_EI_CP1_001** e=0.20 z=-0.05 — MULTI-NIVEL tags=240,280, CRUZA_PISOS_SIN_NODO tags=240,280
+    - tag=194 sec=M 0.2x8.07x2 cota=-4.01..-0.05 nodo_i=193 nodo_j=192 d=0.000
+    - tag=197 sec=M 0.2x8.07x2 cota=-4.01..-0.05 nodo_i=196 nodo_j=195 d=0.000
+    - tag=240 sec=M 0.2x3.47x2 cota=-4.01..3.91 nodo_i=239 nodo_j=236 d=0.100
+    - tag=280 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=279 nodo_j=278 d=0.100
+- **P1 M_EI_CP1_002** e=0.30 z=-0.05 — OK
+    - tag=200 sec=M 0.3x8.54x2 cota=-4.01..-0.05 nodo_i=199 nodo_j=198 d=0.000
+    - tag=203 sec=M 0.3x8.54x2 cota=-4.01..-0.05 nodo_i=202 nodo_j=201 d=0.000
+- **P1 M_EI_CP1_003** e=0.30 z=-0.05 — OK
+    - tag=206 sec=M 0.3x3.05x2 cota=-4.01..-0.05 nodo_i=205 nodo_j=204 d=0.000
+    - tag=209 sec=M 0.3x3.05x2 cota=-4.01..-0.05 nodo_i=208 nodo_j=207 d=0.000
+- **P1 M_EI_CP1_004** e=0.15 z=-0.05 — OK
+    - tag=212 sec=M 0.15x1.52x2 cota=-4.01..-0.05 nodo_i=211 nodo_j=210 d=0.000
+    - tag=215 sec=M 0.15x1.52x2 cota=-4.01..-0.05 nodo_i=214 nodo_j=213 d=0.000
+- **P2 M_EI_CP2_001** e=0.30 z=3.91 — MULTI-NIVEL tags=220,225,286,289, CRUZA_PISOS_SIN_NODO tags=220,225,286,289
+    - tag=218 sec=M 0.3x1.08x2 cota=3.91..7.87 nodo_i=216 nodo_j=217 d=0.000
+    - tag=220 sec=M 0.3x1.08x2 cota=-4.01..3.91 nodo_i=219 nodo_j=216 d=0.000
+    - tag=223 sec=M 0.3x1.08x2 cota=3.91..7.87 nodo_i=221 nodo_j=222 d=0.000
+    - tag=225 sec=M 0.3x1.08x2 cota=-4.01..3.91 nodo_i=224 nodo_j=221 d=0.000
+    - tag=286 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=285 nodo_j=284 d=0.000
+    - tag=289 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=288 nodo_j=287 d=0.181
+- **P2 M_EI_CP2_002** e=0.30 z=3.91 — MULTI-NIVEL tags=230,235,283,292,245,295, CRUZA_PISOS_SIN_NODO tags=230,235,283,292,245,295
+    - tag=228 sec=M 0.3x1.13x2 cota=3.91..7.87 nodo_i=226 nodo_j=227 d=0.000
+    - tag=230 sec=M 0.3x1.13x2 cota=-4.01..3.91 nodo_i=229 nodo_j=226 d=0.000
+    - tag=233 sec=M 0.3x1.13x2 cota=3.91..7.87 nodo_i=231 nodo_j=232 d=0.000
+    - tag=235 sec=M 0.3x1.13x2 cota=-4.01..3.91 nodo_i=234 nodo_j=231 d=0.000
+    - tag=283 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=282 nodo_j=281 d=0.000
+    - tag=292 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=291 nodo_j=290 d=0.000
+    - tag=243 sec=M 0.2x3.47x2 cota=3.91..7.87 nodo_i=241 nodo_j=242 d=0.150
+    - tag=245 sec=M 0.2x3.47x2 cota=-4.01..3.91 nodo_i=244 nodo_j=241 d=0.150
+    - tag=295 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=294 nodo_j=293 d=0.181
+- **P2 M_EI_CP2_003** e=0.20 z=3.91 — MULTI-NIVEL tags=230,240,245,220,280,283,286,292, CRUZA_PISOS_SIN_NODO tags=230,240,245,220,280,283,286,292
+    - tag=228 sec=M 0.3x1.13x2 cota=3.91..7.87 nodo_i=226 nodo_j=227 d=0.000
+    - tag=230 sec=M 0.3x1.13x2 cota=-4.01..3.91 nodo_i=229 nodo_j=226 d=0.000
+    - tag=238 sec=M 0.2x3.47x2 cota=3.91..7.87 nodo_i=236 nodo_j=237 d=0.000
+    - tag=240 sec=M 0.2x3.47x2 cota=-4.01..3.91 nodo_i=239 nodo_j=236 d=0.000
+    - tag=243 sec=M 0.2x3.47x2 cota=3.91..7.87 nodo_i=241 nodo_j=242 d=0.000
+    - tag=245 sec=M 0.2x3.47x2 cota=-4.01..3.91 nodo_i=244 nodo_j=241 d=0.000
+    - tag=218 sec=M 0.3x1.08x2 cota=3.91..7.87 nodo_i=216 nodo_j=217 d=0.100
+    - tag=220 sec=M 0.3x1.08x2 cota=-4.01..3.91 nodo_i=219 nodo_j=216 d=0.100
+    - tag=280 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=279 nodo_j=278 d=0.181
+    - tag=283 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=282 nodo_j=281 d=0.181
+    - tag=286 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=285 nodo_j=284 d=0.281
+    - tag=292 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=291 nodo_j=290 d=0.281
+- **P2 M_EI_CP2_004** e=0.25 z=3.91 — MULTI-NIVEL tags=248,251,262,269,272,298,301,308, CRUZA_PISOS_SIN_NODO tags=248,251,262,269,272,298,301,308
+    - tag=248 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=247 nodo_j=246 d=0.000
+    - tag=251 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=250 nodo_j=249 d=0.000
+    - tag=260 sec=M 0.2x1.72x2 cota=3.91..7.87 nodo_i=258 nodo_j=259 d=0.000
+    - tag=262 sec=M 0.2x1.72x2 cota=-4.01..3.91 nodo_i=261 nodo_j=258 d=0.000
+    - tag=269 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=247 nodo_j=268 d=0.000
+    - tag=272 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=271 nodo_j=270 d=0.000
+    - tag=298 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=297 nodo_j=296 d=0.000
+    - tag=301 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.081
+    - tag=308 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.081
+- **P2 M_EI_CP2_005** e=0.25 z=3.91 — MULTI-NIVEL tags=254,257,267,274,277,304,307,309, CRUZA_PISOS_SIN_NODO tags=254,257,267,274,277,304,307,309
+    - tag=254 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=253 nodo_j=252 d=0.000
+    - tag=257 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=256 nodo_j=255 d=0.000
+    - tag=265 sec=M 0.2x1.72x2 cota=3.91..7.87 nodo_i=263 nodo_j=264 d=0.000
+    - tag=267 sec=M 0.2x1.72x2 cota=-4.01..3.91 nodo_i=266 nodo_j=263 d=0.000
+    - tag=274 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=253 nodo_j=273 d=0.000
+    - tag=277 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=276 nodo_j=275 d=0.000
+    - tag=304 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=303 nodo_j=302 d=0.000
+    - tag=307 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.081
+    - tag=309 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.081
+- **P2 M_EI_CP2_006** e=0.20 z=3.91 — MULTI-NIVEL tags=262,267,251,257,272,277,301,307,308,309, CRUZA_PISOS_SIN_NODO tags=262,267,251,257,272,277,301,307,308,309
+    - tag=260 sec=M 0.2x1.72x2 cota=3.91..7.87 nodo_i=258 nodo_j=259 d=0.000
+    - tag=262 sec=M 0.2x1.72x2 cota=-4.01..3.91 nodo_i=261 nodo_j=258 d=0.000
+    - tag=265 sec=M 0.2x1.72x2 cota=3.91..7.87 nodo_i=263 nodo_j=264 d=0.000
+    - tag=267 sec=M 0.2x1.72x2 cota=-4.01..3.91 nodo_i=266 nodo_j=263 d=0.000
+    - tag=251 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=250 nodo_j=249 d=0.100
+    - tag=257 sec=M 0.25x0.84x2 cota=-4.01..3.91 nodo_i=256 nodo_j=255 d=0.100
+    - tag=272 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=271 nodo_j=270 d=0.100
+    - tag=277 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=276 nodo_j=275 d=0.100
+    - tag=301 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.181
+    - tag=307 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.181
+    - tag=308 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.181
+    - tag=309 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.181
+- **P3 M_EI_CP3_001** e=0.20 z=7.87 — MULTI-NIVEL tags=280,283,286,292, CRUZA_PISOS_SIN_NODO tags=280,283,286,292
+    - tag=228 sec=M 0.3x1.13x2 cota=3.91..7.87 nodo_i=226 nodo_j=227 d=0.000
+    - tag=238 sec=M 0.2x3.47x2 cota=3.91..7.87 nodo_i=236 nodo_j=237 d=0.000
+    - tag=243 sec=M 0.2x3.47x2 cota=3.91..7.87 nodo_i=241 nodo_j=242 d=0.000
+    - tag=218 sec=M 0.3x1.08x2 cota=3.91..7.87 nodo_i=216 nodo_j=217 d=0.100
+    - tag=280 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=279 nodo_j=278 d=0.181
+    - tag=283 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=282 nodo_j=281 d=0.181
+    - tag=286 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=285 nodo_j=284 d=0.281
+    - tag=292 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=291 nodo_j=290 d=0.281
+- **P3 M_EI_CP3_002** e=0.30 z=7.87 — MULTI-NIVEL tags=286,289, CRUZA_PISOS_SIN_NODO tags=286,289
+    - tag=218 sec=M 0.3x1.08x2 cota=3.91..7.87 nodo_i=216 nodo_j=217 d=0.000
+    - tag=223 sec=M 0.3x1.08x2 cota=3.91..7.87 nodo_i=221 nodo_j=222 d=0.000
+    - tag=286 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=285 nodo_j=284 d=0.000
+    - tag=289 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=288 nodo_j=287 d=0.181
+- **P3 M_EI_CP3_003** e=0.30 z=7.87 — MULTI-NIVEL tags=283,292,295, CRUZA_PISOS_SIN_NODO tags=283,292,295
+    - tag=228 sec=M 0.3x1.13x2 cota=3.91..7.87 nodo_i=226 nodo_j=227 d=0.000
+    - tag=233 sec=M 0.3x1.13x2 cota=3.91..7.87 nodo_i=231 nodo_j=232 d=0.000
+    - tag=283 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=282 nodo_j=281 d=0.000
+    - tag=292 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=291 nodo_j=290 d=0.000
+    - tag=243 sec=M 0.2x3.47x2 cota=3.91..7.87 nodo_i=241 nodo_j=242 d=0.150
+    - tag=295 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=294 nodo_j=293 d=0.181
+- **P3 M_EI_CP3_004** e=0.25 z=7.87 — MULTI-NIVEL tags=272,298,269,301,308, CRUZA_PISOS_SIN_NODO tags=272,298,269,301,308
+    - tag=272 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=271 nodo_j=270 d=0.000
+    - tag=298 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=297 nodo_j=296 d=0.000
+    - tag=269 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=247 nodo_j=268 d=0.001
+    - tag=260 sec=M 0.2x1.72x2 cota=3.91..7.87 nodo_i=258 nodo_j=259 d=0.100
+    - tag=301 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.281
+    - tag=308 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.281
+- **P3 M_EI_CP3_005** e=0.25 z=7.87 — MULTI-NIVEL tags=277,304,274,307,309, CRUZA_PISOS_SIN_NODO tags=277,304,274,307,309
+    - tag=277 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=276 nodo_j=275 d=0.000
+    - tag=304 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=303 nodo_j=302 d=0.000
+    - tag=274 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=253 nodo_j=273 d=0.001
+    - tag=265 sec=M 0.2x1.72x2 cota=3.91..7.87 nodo_i=263 nodo_j=264 d=0.100
+    - tag=307 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.281
+    - tag=309 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.281
+- **P3 M_EI_CP3_006** e=0.20 z=7.87 — MULTI-NIVEL tags=272,277,301,307,308,309, CRUZA_PISOS_SIN_NODO tags=272,277,301,307,308,309
+    - tag=260 sec=M 0.2x1.72x2 cota=3.91..7.87 nodo_i=258 nodo_j=259 d=0.000
+    - tag=265 sec=M 0.2x1.72x2 cota=3.91..7.87 nodo_i=263 nodo_j=264 d=0.000
+    - tag=272 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=271 nodo_j=270 d=0.100
+    - tag=277 sec=M 0.25x0.74x2 cota=-4.01..7.87 nodo_i=276 nodo_j=275 d=0.100
+    - tag=301 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.181
+    - tag=307 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.181
+    - tag=308 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.181
+    - tag=309 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.181
+- **P4 M_EI_CP4_001** e=0.20 z=11.83 — MULTI-NIVEL tags=280,283,286,292, CRUZA_PISOS_SIN_NODO tags=280,283,286,292
+    - tag=280 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=279 nodo_j=278 d=0.000
+    - tag=283 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=282 nodo_j=281 d=0.000
+    - tag=286 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=285 nodo_j=284 d=0.100
+    - tag=292 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=291 nodo_j=290 d=0.100
+- **P4 M_EI_CP4_002** e=0.30 z=11.83 — MULTI-NIVEL tags=289,286, CRUZA_PISOS_SIN_NODO tags=289,286
+    - tag=289 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=288 nodo_j=287 d=0.000
+    - tag=286 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=285 nodo_j=284 d=0.001
+- **P4 M_EI_CP4_003** e=0.30 z=11.83 — MULTI-NIVEL tags=295,292,283, CRUZA_PISOS_SIN_NODO tags=295,292,283
+    - tag=295 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=294 nodo_j=293 d=0.000
+    - tag=292 sec=M 0.3x1.08x2 cota=-4.01..11.83 nodo_i=291 nodo_j=290 d=0.001
+    - tag=283 sec=M 0.2x3.40x2 cota=-4.01..11.83 nodo_i=282 nodo_j=281 d=0.100
+- **P4 M_EI_CP4_004** e=0.25 z=11.83 — MULTI-NIVEL tags=298,301,308, CRUZA_PISOS_SIN_NODO tags=298,301,308
+    - tag=298 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=297 nodo_j=296 d=0.000
+    - tag=301 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.000
+    - tag=308 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.000
+- **P4 M_EI_CP4_005** e=0.25 z=11.83 — MULTI-NIVEL tags=304,307,309, CRUZA_PISOS_SIN_NODO tags=304,307,309
+    - tag=304 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=303 nodo_j=302 d=0.000
+    - tag=307 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.000
+    - tag=309 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.000
+- **P4 M_EI_CP4_006** e=0.20 z=11.83 — MULTI-NIVEL tags=307,309,301,308, CRUZA_PISOS_SIN_NODO tags=307,309,301,308
+    - tag=307 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.000
+    - tag=309 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=306 nodo_j=305 d=0.000
+    - tag=301 sec=M 0.25x0.79x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.001
+    - tag=308 sec=M 0.2x1.72x2 cota=-4.01..11.83 nodo_i=300 nodo_j=299 d=0.001

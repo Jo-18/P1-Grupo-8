@@ -1,0 +1,16 @@
+{
+  "iteracion": "MODELO_FIEL_4",
+  "fecha": "2026-09-08",
+  "dir": "C:\\Users\\josef\\AppData\\Local\\Temp\\opencode\\p1_aislado_v4\\entrega_03_cargas_sismo_capacidad",
+  "solo_entrega_03": true,
+  "unittest_ok": 28,
+  "unittest_total": 28,
+  "v3_ok": 42,
+  "v3_total": 42,
+  "v4_ok": 31,
+  "v4_total": 31,
+  "reconciliacion_estado": "OK",
+  "bloqueo_estado": "BLOQUEADO_FALTA_EVIDENCIA_POSICIONAL",
+  "conservacion_decision": "NO_REGENERAR",
+  "estado": "OK"
+}

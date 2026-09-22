@@ -1,0 +1,132 @@
+{
+ "referencia": {
+  "ensayo": "EII_CP2_transferencia_mixta_FASE4B (laboratorio)",
+  "archivo_ref": "areas_tributarias.csv",
+  "archivo_generado": "areas_tributarias_EII_todos_niveles.json"
+ },
+ "tolerancias_documentadas": {
+  "metodo": "rel |v5-ref|/ref x 100",
+  "suma_nivel_pct": 0.5,
+  "por_fila_pct": 5.0,
+  "nota": "Tolerancias declaradas v5; se reportan valores logrados."
+ },
+ "resultado": {
+  "n_filas_ref": 78,
+  "n_dentro_tol_fila": 66,
+  "frac_dentro_tol_fila_pct": 84.62,
+  "suma_ref_m2": 530.443854,
+  "suma_v5_m2": 530.83135,
+  "dif_suma_rel_pct": 0.0731,
+  "dentro_tol_suma": true,
+  "n_filas_fuera_tol": 12,
+  "peor_fila": 25.189
+ },
+ "fuera_de_tolerancia": [
+  {
+   "panel": "EII_CP2_L_W2",
+   "borde": "EII_CP2_V_028",
+   "area_ref_m2": 2.20632,
+   "area_v5_m2": 2.762059,
+   "dif_rel_pct": 25.189,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_S6",
+   "borde": "EII_CP2_V_033",
+   "area_ref_m2": 5.0025,
+   "area_v5_m2": 5.715,
+   "dif_rel_pct": 14.243,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_S0",
+   "borde": "EII_CP2_V_031",
+   "area_ref_m2": 1.84,
+   "area_v5_m2": 2.0125,
+   "dif_rel_pct": 9.375,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_W2",
+   "borde": "EII_CP2_V_019",
+   "area_ref_m2": 4.01934,
+   "area_v5_m2": 3.727536,
+   "dif_rel_pct": 7.26,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_009",
+   "borde": "EII_CP2_V_026",
+   "area_ref_m2": 3.400793,
+   "area_v5_m2": 3.61,
+   "dif_rel_pct": 6.152,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_010",
+   "borde": "EII_CP2_V_027",
+   "area_ref_m2": 3.400793,
+   "area_v5_m2": 3.61,
+   "dif_rel_pct": 6.152,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_006",
+   "borde": "EII_CP2_V_014",
+   "area_ref_m2": 6.493111,
+   "area_v5_m2": 6.125,
+   "dif_rel_pct": 5.669,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_W3",
+   "borde": "EII_CP2_M_003",
+   "area_ref_m2": 1.778316,
+   "area_v5_m2": 1.680912,
+   "dif_rel_pct": 5.477,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_N6",
+   "borde": "EII_CP2_V_035",
+   "area_ref_m2": 1.68,
+   "area_v5_m2": 1.7675,
+   "dif_rel_pct": 5.208,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_S0",
+   "borde": "EII_CP2_V_022",
+   "area_ref_m2": 0.345,
+   "area_v5_m2": null,
+   "dif_rel_pct": null,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_S6",
+   "borde": "EII_CP2_V_011",
+   "area_ref_m2": 0.345,
+   "area_v5_m2": null,
+   "dif_rel_pct": null,
+   "dentro_tol_fila": false
+  },
+  {
+   "panel": "EII_CP2_L_N6",
+   "borde": "EII_CP2_V_017",
+   "area_ref_m2": 0.105,
+   "area_v5_m2": null,
+   "dif_rel_pct": null,
+   "dentro_tol_fila": false
+  }
+ ],
+ "limitaciones_documentadas": [
+  "El ensayo FASE4B usa columnas como receptores nodales (COL_002/COL_003) no",
+  "reproducidas en v5 (eii_viewer las declara referencia_no_receptor_losa).",
+  "Los paneles corredor S0/S6/N6 en FASE4B reparten franjas secundarias",
+  "(V_011/V_017/V_022, 0.105-0.345 m2) con logica mixta unidireccional+nodal",
+  "no codificada en eii_viewer; en v5 ese area queda en la viga principal.",
+  "Las zonas W2/W3 y paños L_006/L_009/L_010 muestran difs 5.5-6% por",
+  "alineacion de malla y conjunto de apoyos; se preserva conservacion 28/28.",
+  "ancho_max_m no se reproduce en v5 (solo area y ancho_promedio)."
+ ]
+}

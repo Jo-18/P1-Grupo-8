@@ -1,0 +1,80 @@
+{
+  "version_formato": "1.0",
+  "edificio": "I",
+  "unidad_longitud": "m",
+  "esquema": "datos/geometria/esquema_entrada_areas_tributarias_v1.json",
+  "junta_global": {
+    "id_interfaz_global": "JD_EI_EII_10CM",
+    "ancho_total_m": 0.1,
+    "ancho_por_lado_m": null,
+    "geometria_ensamblada": false,
+    "caras_correlacionadas": false,
+    "estado_correlacion_geometrica": "pendiente_json_edificio_II",
+    "contabilizacion": "una_sola_vez_en_modelo_conjunto",
+    "transferencia_entre_edificios": false
+  },
+  "modelos": [
+    {
+      "nivel": "Cielo_Piso_1_Subterraneo",
+      "ruta": "datos/geometria/edificio_I_cielo_piso_1_subterraneo_borrador.json",
+      "sha256": "bdfbbe777bffc80f625a0c799b5467c0a8cef924c16f72c6fec28bb8ded7d78e",
+      "version_formato": "1.0",
+      "estado": "borrador_no_ejecutable",
+      "completitud_geometrica": "completo_para_ensayo",
+      "unidad_longitud": "m",
+      "cota": -4.01,
+      "permitido_visualizacion": true,
+      "permitido_calculo_estructural": false
+    },
+    {
+      "nivel": "Cielo_Piso_1",
+      "ruta": "datos/geometria/edificio_I_cielo_piso_1_borrador.json",
+      "sha256": "ea9005e101326f2f0c83f817649038f925939c47bf6d274c7f39dcfcfa0e022f",
+      "sha256_fuente_pre_normalizacion": "7fa2c1c31aec0a30ff6191b7433aca88a804b62fbaa4da697b64c38d207aa715",
+      "normalizacion_publicacion": "solo_metadatos_contrato_v1",
+      "version_formato": "1.0",
+      "estado": "borrador_no_ejecutable",
+      "completitud_geometrica": "completo_para_ensayo",
+      "unidad_longitud": "m",
+      "cota": -0.05,
+      "permitido_visualizacion": true,
+      "permitido_calculo_estructural": false
+    },
+    {
+      "nivel": "Cielo_Piso_2",
+      "ruta": "datos/geometria/edificio_I_cielo_piso_2_borrador.json",
+      "sha256": "1a6792d55cdfb98554345cdc732eb029c2eb372880b382cf963be0de6ae80395",
+      "version_formato": "1.0",
+      "estado": "borrador_no_ejecutable",
+      "completitud_geometrica": "completo_para_ensayo",
+      "unidad_longitud": "m",
+      "cota": 3.91,
+      "permitido_visualizacion": true,
+      "permitido_calculo_estructural": false
+    },
+    {
+      "nivel": "Cielo_Piso_3",
+      "ruta": "datos/geometria/edificio_I_cielo_piso_3_borrador.json",
+      "sha256": "032a961ce14c928ea10ad80ce9bf239915a0763210a1d6ee61af56b5dde48a47",
+      "version_formato": "1.0",
+      "estado": "borrador_no_ejecutable",
+      "completitud_geometrica": "completo_para_ensayo",
+      "unidad_longitud": "m",
+      "cota": 7.87,
+      "permitido_visualizacion": true,
+      "permitido_calculo_estructural": false
+    },
+    {
+      "nivel": "Cielo_Piso_4",
+      "ruta": "datos/geometria/edificio_I_cielo_piso_4_borrador.json",
+      "sha256": "1fc6838b6207dc8699c9d7e7947cc4b29e42e488ea408122cae65f72b0b1e3df",
+      "version_formato": "1.0",
+      "estado": "borrador_no_ejecutable",
+      "completitud_geometrica": "completo_para_ensayo",
+      "unidad_longitud": "m",
+      "cota": 11.83,
+      "permitido_visualizacion": true,
+      "permitido_calculo_estructural": false
+    }
+  ]
+}

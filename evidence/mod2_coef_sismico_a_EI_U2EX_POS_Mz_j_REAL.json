@@ -1,0 +1,46 @@
+{
+  "modificacion": "MOD2_coeficiente_sismico_a_EI",
+  "edificio": "I",
+  "tag": 6,
+  "caso": "U2_EX_POS",
+  "componente": "Mz_j",
+  "indice_componente": 11,
+  "unidades": "kN*m",
+  "parametro": "config/sismo.json metodo_pseudoestatico.coeficiente_sismico_a",
+  "parametro_estado": "PARAMETROS_BASADOS_EN_EJEMPLO_DE_LA_CONSIGNA",
+  "por_que_afecta": "a = aceleracion horizontal de diseno del metodo pseudoestatico: Fi = a * mi, con Wi = PPi + 0.50*Qi. Cambia las cargas nodales sismicas EX/EY y por tanto las corridas explicitas U2_EX_POS/U4_EX_* (U2_EX_POS = 1.2*G + Q + 1.4*EX). No cambia U1_GQ (sin sismo).",
+  "valor_antes": 0.20,
+  "valor_despues": 0.18,
+  "cambio_pct": -10.0,
+  "ANTES_kN_m": -650.923736,
+  "DESPUES_kN_m": -585.0912,
+  "diferencia_kN_m": 65.832536,
+  "diferencia_rel_pct": 10.1137,
+  "fuente_ANTES": "viewer_unity/Assets/StreamingAssets/lab_data/edificios/I/results/esfuerzos_FE_EDIFICIO_I.json tag=6 caso=U2_EX_POS indice=11 leido antes de modificar config (estado base a=0.20)",
+  "fuente_DESPUES": "mismo JSON del viewer releido despues de la corrida FE REAL (--sismo --combinadas) y del exportador",
+  "runner_FE": "python -X utf8 -m src.modelo_fiel.modelo_fe_completo --sismo --combinadas",
+  "runner_detalle": "--sismo regenera EX/EY_EL_MODELO_FE_COMPLETO_FUNCIONAL.json via correr_sismo (lee config/sismo.json -> CS.leer_config_sismo() y genera Fi=a*mi); --combinadas vuelve a resolver las 9 combinaciones NCh3171 en correr_combinadas reutilizando las cargas nodales sismicas de esos payloads. El viewer tag6 U2_EX_POS Mz_j[11] proviene de COMB_U2_EX_POS_EI_MODELO_FE_COMPLETO_FUNCIONAL.json.",
+  "corrida_FE": {
+    "ok": true,
+    "rc": 0,
+    "duracion_seg": 28.4,
+    "a_usado": 0.18,
+    "EX_F_total_kN": 8034.520301,
+    "EX_W_total_sismico_kN": 44636.2239,
+    "equilibrios_COMB_ok": true
+  },
+  "exportador": {
+    "ok": true,
+    "comando": "python -X utf8 -m src.unity_esfuerzos.exportar_esfuerzos_funcional_para_viewer I",
+    "checks": "22/22",
+    "elementos": 378
+  },
+  "restaurado_y_verificado": {
+    "ok": true,
+    "metodo": "config/sismo.json restaurado desde EV/sismo_EI_ANTES_MOD2_bkp.json (a=0.20); re-corrida FE --sismo --combinadas (rc=0, 26.9 s) y re-exportado; viewer releido",
+    "EX_payload_a_tras_restauracion": 0.2,
+    "viewer_U2_EX_POS_Mz_j_indice11_tras_restauracion_kN_m": -650.923736,
+    "igual_al_ANTES": true,
+    "delta_kN_m": 0.0
+  }
+}

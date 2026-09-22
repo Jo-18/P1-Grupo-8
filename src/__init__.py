@@ -1,0 +1,1 @@
+"""Paquete fuente del proyecto Edificio de Ingenieria (layout src)."""

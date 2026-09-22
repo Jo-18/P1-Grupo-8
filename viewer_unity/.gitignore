@@ -1,0 +1,20 @@
+# Unity generated / no source
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]serSettings/
+[Cc]ommonTemp/
+[Cc]ache/
+[Cc]aches/
+
+# IDE / editor
+.vs/
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

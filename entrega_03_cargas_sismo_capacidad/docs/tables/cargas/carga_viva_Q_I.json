@@ -1,0 +1,156 @@
+{
+  "edificio": "I",
+  "q_Q": {
+    "q_Q_kN_m2": 3.0,
+    "estado": "PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4",
+    "demostracion": false
+  },
+  "catalogo_sobrecarga_documentada": {
+    "fuente": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\data\\externas\\catalogo_cargas_diseno_edificio_I.json",
+    "unidad": "kgf/m2 (1 kgf/m2 = 0.00980665 kN/m2)",
+    "SC_por_nivel_kgf_m2": {
+      "Piso 1 Subterraneo (CP1S)": [
+        500,
+        500,
+        300,
+        250
+      ],
+      "Piso 1": [
+        500,
+        300,
+        250,
+        400,
+        200
+      ],
+      "Piso 2": [
+        500,
+        300,
+        250,
+        400,
+        200
+      ],
+      "Piso 3": [
+        200,
+        300,
+        500,
+        250
+      ],
+      "Piso 4": [
+        100,
+        200
+      ]
+    },
+    "PM_ADIC_referencia": {
+      "Piso 1 Subterraneo (CP1S)": [
+        300,
+        260,
+        260,
+        260
+      ],
+      "Piso 1": [
+        260,
+        260,
+        260,
+        260,
+        200
+      ],
+      "Piso 2": [
+        260,
+        260,
+        260,
+        260,
+        200
+      ],
+      "Piso 3": [
+        200,
+        260,
+        260,
+        260
+      ],
+      "Piso 4": [
+        350,
+        200
+      ]
+    },
+    "pendiente": "trama_id 'por_definir_trama_*' sin mapeo a regiones geometricas (no se aplica Q por zona todavia)"
+  },
+  "aplicada_al_modelo_FE": true,
+  "nota_aplicacion": "Q aplicada solo sobre geometria tributaria de Semana 2; AI catalogada no se mezcla con aplicada",
+  "por_nivel": {
+    "CP1S": {
+      "area_tributaria_m2": 387.031,
+      "q_Q_kN_m2": 3.0,
+      "carga_teorica_q_A_kN": 1161.093,
+      "carga_transferida_sum_kN": 1161.093,
+      "diferencia_abs_kN": 0.0,
+      "diferencia_rel": 0.0,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "CONFIRMADO",
+      "n_receptores": 14,
+      "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+    },
+    "P1": {
+      "area_tributaria_m2": 1005.73,
+      "q_Q_kN_m2": 3.0,
+      "carga_teorica_q_A_kN": 3017.19,
+      "carga_transferida_sum_kN": 3017.19,
+      "diferencia_abs_kN": 0.0,
+      "diferencia_rel": 0.0,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "CONFIRMADO",
+      "n_receptores": 13,
+      "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+    },
+    "P2": {
+      "area_tributaria_m2": 849.227,
+      "q_Q_kN_m2": 3.0,
+      "carga_teorica_q_A_kN": 2547.681,
+      "carga_transferida_sum_kN": 2547.681,
+      "diferencia_abs_kN": 0.0,
+      "diferencia_rel": 0.0,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "CONFIRMADO",
+      "n_receptores": 42,
+      "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+    },
+    "P3": {
+      "area_tributaria_m2": 932.523,
+      "q_Q_kN_m2": 3.0,
+      "carga_teorica_q_A_kN": 2797.569,
+      "carga_transferida_sum_kN": 2797.569,
+      "diferencia_abs_kN": 0.0,
+      "diferencia_rel": 0.0,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "CONFIRMADO",
+      "n_receptores": 50,
+      "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+    },
+    "P4": {
+      "area_tributaria_m2": 934.949,
+      "q_Q_kN_m2": 3.0,
+      "carga_teorica_q_A_kN": 2804.847,
+      "carga_transferida_sum_kN": 2804.847,
+      "diferencia_abs_kN": 0.0,
+      "diferencia_rel": 0.0,
+      "tolerancia_rel": 0.005,
+      "estado": "OK",
+      "estado_geometria": "CONFIRMADO",
+      "n_receptores": 47,
+      "metodo_transferencia": "linea a receptores (vigas/muros) con pesos nodales por longitud de segmento (Semana 2: tributacion.py)"
+    }
+  },
+  "niveles_pendientes_geometria": [],
+  "global": {
+    "area_total_m2": 4109.46,
+    "carga_teorica_q_A_kN": 12328.38,
+    "carga_transferida_sum_kN": 12328.38,
+    "diferencia_abs_kN": 0.0,
+    "diferencia_rel": 0.0,
+    "tolerancia_rel": 0.005,
+    "estado": "OK"
+  }
+}

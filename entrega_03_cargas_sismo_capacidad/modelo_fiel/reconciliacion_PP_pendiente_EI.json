@@ -1,0 +1,108 @@
+{
+  "iteracion": "MODELO_FIEL_4",
+  "tarea": "2_reconciliacion_PP_pendiente_EI",
+  "fuente": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\results\\peso_propio_teorico_EDIFICIO_I_v2.json",
+  "referencia_v3": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\P1\\entrega_03_cargas_sismo_capacidad\\modelo_fiel\\inventario_PP_pendiente_EI.json",
+  "margen": {
+    "PP_confirmado_kN": 17179.2261,
+    "PP_confirmado_redondeado_kN": 17179.23,
+    "pendientes_cuantificados_kN": 0.0,
+    "hipotesis_rango_superiorinformativo_kN": 8453.5488,
+    "PP_rango_inferior_real_posible_kN": 17179.2261,
+    "PP_rango_superior_posible_kN": 25632.7749,
+    "nota": "17 179,23 kN = COTA INFERIOR confirmada; las hipotesis base->nivel suman adicional 8 453,55 kN SOLO si se confirmaran tramos reales y cimentacion; no convertidas en carga aplicada"
+  },
+  "por_categoria": [
+    {
+      "categoria": "C1_real_FE_seccion_pendiente",
+      "nombre": "elemento real con unidad FE pero seccion/material pendiente",
+      "conteo": 9,
+      "pp_cuantificado_kN": 0.0
+    },
+    {
+      "categoria": "C2_seccion_confirmada_tramo_pendiente",
+      "nombre": "seccion confirmada pero tramo continuado pendiente",
+      "conteo": 18,
+      "pp_cuantificado_kN": 0.0
+    },
+    {
+      "categoria": "C3_hipotesis_base_nivel",
+      "nombre": "hipotesis FE base->nivel / contencion (informativo, no aplica)",
+      "conteo": 4,
+      "pp_cuantificado_kN": 8453.5488
+    },
+    {
+      "categoria": "C4_metalico_tubular_confirmado",
+      "nombre": "metalico tubular con seccion confirmada (tramo real pendiente)",
+      "conteo": 17,
+      "pp_cuantificado_kN": 0.0
+    },
+    {
+      "categoria": "C5_muro_una_sola_planta",
+      "nombre": "muro con una sola planta documentada",
+      "conteo": 19,
+      "pp_cuantificado_kN": 0.0
+    },
+    {
+      "categoria": "C6_no_incluida",
+      "nombre": "no incluida por falta de evidencia",
+      "conteo": 1,
+      "pp_cuantificado_kN": 0.0
+    }
+  ],
+  "aplicado_al_FE_kN": 0.0,
+  "chequeos": {
+    "1_conteo_pendientes_63": {
+      "ok": true,
+      "detalle": "columnas 43 + vigas 1 + muros 19"
+    },
+    "2_conteo_no_incluidas_1": {
+      "ok": true,
+      "detalle": "1"
+    },
+    "3_total_filas_68": {
+      "ok": true,
+      "detalle": "68 filas (63 pendientes + 1 no incl + 2 hipotesis + 2 contencion)"
+    },
+    "4_sin_id_repetido_confirmado_pendiente": {
+      "ok": true,
+      "detalle": {
+        "conf_col": [],
+        "conf_viga": [],
+        "conf_muro": []
+      }
+    },
+    "5_P70_P4_continuacion_de_hormigon_confirmado": {
+      "ok": true,
+      "detalle": "18/18 continuaciones en P1..P3 confirmadas"
+    },
+    "6_P70_no_tiene_doble_conteo_interno": {
+      "ok": true,
+      "detalle": "cada P. 70x70 pendiente P4 tiene un unico id"
+    },
+    "7_conciliacion_numerica": {
+      "ok": true,
+      "detalle": {
+        "PP_confirmado": 17179.2261,
+        "vigas": 14803.534,
+        "columnas": 2045.6003,
+        "muros": 330.0918
+      }
+    },
+    "8_hipotesis_solo_informativo_no_aplica": {
+      "ok": true,
+      "detalle": {
+        "columnas": 4223.8204,
+        "muros": 3675.1844,
+        "contencion": 554.544,
+        "total_rango": 8453.5488
+      }
+    },
+    "9_determinismo_hash_v2": {
+      "ok": true,
+      "detalle": "sha256 v2 coincide con el seed"
+    }
+  },
+  "total_chequeos_ok": true,
+  "estado": "OK"
+}

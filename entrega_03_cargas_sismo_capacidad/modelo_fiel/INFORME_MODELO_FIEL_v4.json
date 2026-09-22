@@ -1,0 +1,70 @@
+{
+  "iteracion": "MODELO_FIEL_4",
+  "gravedad_m_s2": 9.80665,
+  "reglas_rebeldia": [
+    "no git ops hasta revision",
+    "laboratorio_semana2 solo lectura",
+    "results/ y checkpoint sin regenerar"
+  ],
+  "EI": {
+    "PP_confirmado_kN": 17179.2261,
+    "PP_pendientes": 63,
+    "hipotesis_informativas_kN": 8453.5488,
+    "PM_ADIC_aplicada_kN": 10244.139,
+    "G_fiel_kN": 42406.9577,
+    "equilibrio_vertical": "OK"
+  },
+  "EII": {
+    "PM_ADIC_catalogo": 6,
+    "PM_ADIC_aplicada_kN": 0.0,
+    "PM_ADIC_cobertura": 0.0,
+    "estado_bloqueo": "BLOQUEADO_FALTA_EVIDENCIA_POSICIONAL",
+    "archivo_a_solicitar": "2017_67-700.dxf",
+    "G_fiel_kN": 25970.9994,
+    "equilibrio_vertical": "OK"
+  },
+  "conservacion_v4": {
+    "decision": "NO_REGENERAR",
+    "motivo": "sin mapeo documental del PM.ADIC EII (plano 700 no versionado en el repo; ver BLOQUEO_PMADIC_EII_plano700)",
+    "verificaciones_ok": true,
+    "clasificacion": "G_EII y peso sismico conservados como pendientes documentadas (PM.ADIC EII cobertura 0)"
+  },
+  "peso_sismico": {
+    "EI_scB_PRINCIPAL_kN": 46516.4301,
+    "EI_scA_sensibilidad_kN": 36272.2911,
+    "EII_scB_kN": 28600.7138,
+    "EII_scA_kN": 28600.7138,
+    "nota": "conservados v3 (sin regenerar)"
+  },
+  "portabilidad": {
+    "copias_internas_4": true,
+    "config_data_externas": true,
+    "nota": "catalogo EI + areas II + por_viga (viewer_unity) + eii_viewer (analisis_estructural) versionadas en data/externas con SHA procedencia"
+  },
+  "regresiones": {
+    "ok": 31,
+    "total": 31,
+    "estado": "OK",
+    "base_v3": "42/42",
+    "prueba_aislada": {
+      "iteracion": "MODELO_FIEL_4",
+      "fecha": "2026-09-08",
+      "dir": "C:\\Users\\josef\\AppData\\Local\\Temp\\opencode\\p1_aislado_v4\\entrega_03_cargas_sismo_capacidad",
+      "solo_entrega_03": true,
+      "unittest_ok": 28,
+      "unittest_total": 28,
+      "v3_ok": 42,
+      "v3_total": 42,
+      "v4_ok": 31,
+      "v4_total": 31,
+      "reconciliacion_estado": "OK",
+      "bloqueo_estado": "BLOQUEADO_FALTA_EVIDENCIA_POSICIONAL",
+      "conservacion_decision": "NO_REGENERAR",
+      "estado": "OK"
+    }
+  },
+  "clasificacion": {
+    "EI": "REPRODUCIBLE_FULL_EXPORT_SIN_PP_PENDIENTES_NUEVOS",
+    "EII": "REPRODUCIBLE_FULL_EXPORT_PMADIC_PENDIENTE"
+  }
+}

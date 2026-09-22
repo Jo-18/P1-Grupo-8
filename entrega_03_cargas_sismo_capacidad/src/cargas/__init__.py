@@ -1,0 +1,1 @@
+"""Cargas vivas (Q)."""

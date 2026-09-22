@@ -1,0 +1,90 @@
+{
+  "caso": "regresiones_MODELO_FIEL_1",
+  "checks": [
+    {
+      "check": "peso_EI_W=PP+05Q",
+      "estado": "OK",
+      "detalle": 46516.4301
+    },
+    {
+      "check": "peso_EI_PP==G_despues",
+      "estado": "OK",
+      "detalle": "PR fiel 42406.9577 vs G_despues 42406.9577"
+    },
+    {
+      "check": "peso_EI_Q_total",
+      "estado": "OK",
+      "detalle": "Q EI por piso"
+    },
+    {
+      "check": "peso_EII_ck==fiel_EII_CP1S",
+      "estado": "OK",
+      "detalle": "4893.8546"
+    },
+    {
+      "check": "peso_EII_ck==fiel_EII_CP1",
+      "estado": "OK",
+      "detalle": "5483.2985"
+    },
+    {
+      "check": "peso_EII_ck==fiel_EII_CP2",
+      "estado": "OK",
+      "detalle": "5438.4876"
+    },
+    {
+      "check": "peso_EII_ck==fiel_EII_CP3",
+      "estado": "OK",
+      "detalle": "5410.0473"
+    },
+    {
+      "check": "peso_EII_ck==fiel_EII_CP4",
+      "estado": "OK",
+      "detalle": "4745.3114"
+    },
+    {
+      "check": "comparacion_EI_fiel==ledger",
+      "estado": "OK",
+      "detalle": 42406.9577
+    },
+    {
+      "check": "comparacion_EII_fiel==ledger",
+      "estado": "OK",
+      "detalle": 25970.999352
+    },
+    {
+      "check": "artefacto_G_EI",
+      "estado": "OK",
+      "detalle": "verificaciones 7/7"
+    },
+    {
+      "check": "artefacto_LEDGER_EI",
+      "estado": "OK",
+      "detalle": "verificaciones 7/7"
+    },
+    {
+      "check": "artefacto_G_EII",
+      "estado": "OK",
+      "detalle": "verificaciones 6/6"
+    },
+    {
+      "check": "artefacto_PESO",
+      "estado": "OK",
+      "detalle": "verificaciones 6/6"
+    },
+    {
+      "check": "artefacto_COMP",
+      "estado": "OK",
+      "detalle": "verificaciones 5/5"
+    },
+    {
+      "check": "manifest_checkpoint",
+      "estado": "OK",
+      "detalle": "}"
+    },
+    {
+      "check": "unittest_tests_cargas",
+      "estado": "OK",
+      "detalle": "OK"
+    }
+  ]
+}

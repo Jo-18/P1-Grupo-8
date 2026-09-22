@@ -1,0 +1,2884 @@
+{
+  "version_formato": "1.0",
+  "estado": "borrador_no_ejecutable",
+  "completitud_geometrica": "completo_para_ensayo",
+  "proyecto": {
+    "nombre": "Edificio de Ingenieria - Planta Cielo Piso 3",
+    "edificio": "I",
+    "unidades": {
+      "longitud": "m",
+      "area": "m2",
+      "carga_superficial": "kN/m2",
+      "carga_lineal": "kN/m"
+    }
+  },
+  "sistema_coordenadas": {
+    "origen": [
+      0.0,
+      0.0
+    ],
+    "eje_x_positivo": "de E hacia F,G,H,I,Ip y J (E=0,F=10,G=20,H=30,I=40,Ip=45,J=50 m). x_m=(DXF_X-535.00)/100",
+    "eje_y_positivo": "de 1 hacia 2 y 3 (1=0,2=8.9,3=16.15 m). y_m=(4260.35-DXF_Y)/100"
+  },
+  "nivel": {
+    "id": "Cielo_Piso_3",
+    "cota": 7.87,
+    "espesor_losa": null
+  },
+  "configuracion_calculo": {
+    "representacion_inicial": "deduccion",
+    "tamano_celda_inicial": 0.1,
+    "tolerancia_geometrica": 0.0001,
+    "tolerancia_relativa_area": 1e-06,
+    "tolerancia_relativa_carga": 1e-06,
+    "generar_trazabilidad_celdas": false
+  },
+  "notas": [
+    "LAMINA: 2017_67-102. Archivo DXF limpio 2017_67-102.dxf. Piso 3 = banda inferior del archivo (2 bandas: piso 2 y piso 3). Conversion x_m=(DXF_X-535.00)/100, y_m=(4260.35-DXF_Y)/100. Escala 100 DWG-units/m. Origen E-1 en [0,0].",
+    "ESTADO: BORRADOR NO EJECUTABLE. Modelo por DOMINIOS COMPUTACIONALES. 25 rotulos de paño (300-324) resueltos: 2 dominios de nucleo (300/301 bajo y 302/303 alto) con muros como receptores interiores, 19 crujias regulares (9 B2 + 10 B3) y 2 dominios elevados de franja superior (315 y 324) + 6 voladizos de borde libre. TODAS las transferencias por_definir.",
+    "J (sector Ip-J): eje de viga real x=49.9 (caras 49.6/50.2). Los paños J son 311/312 (B2) y 322/323 (B3), divididos por la viga V.40/60 real en x=47.5. espesor 12cm en los cuatro (marcadores RLA-LOSAS '12'), resto 15cm. La lengua J (x44.65-51.15, y16.15-17.3) es un voladizo con borde libre superior y17.3 y derecho x51.15 (RLE-LOSA).",
+    "Nucleo E-F (x0-10): dos dominios continuos (bajo x0-10/y0-8.9 con [300,301]; alto x0-10/y8.9-16.15 con [302,303]). No hay viga vertical plena interior; los muros M.H.A. e=20/25/30 son RECEPTORES INTERIORES (recibe_losa=true) en los tramos donde existen. Aberturas: AB_001 (pasada 3.70-6.30 x 4.00-6.00) en nucleo bajo; AB_002 (3.40-6.60 x 9.266-13.745) y AB_003 (3.345-6.655 x 13.945-14.345) en nucleo alto.",
+    "Ejes verticales reales x={0,10,15,20,25,30,35,40,45,47.5,49.9}; x=12.2 SOLO en B3 (8.9-16.15) dividiendo 313/314. Bandas horizontales y=[0,8.9] (B2) y [8.9,16.15] (B3). Franja superior: 315 (x10-12.2, y16.15-18.46, viga superior y18.46) y 324 (x20-30, y16.15-19.97, viga superior y19.97/20.57).",
+    "Voladizos exteriores (sin rotulo): franja inferior y[-1.15,0]; franja izquierda x[-0.35,0]; franja superior y[16.15,16.5] en tramos oeste x[-0.35,9.65], centro x[12.5,19.65], este x[30.35,44.65]; lengua J x[44.65,51.15] y[16.15,17.3]. Sus bordes libres NO son apoyos; apoyan solo sobre la viga/eje de borde adyacente (H_y16.15, V_x0, H_y0).",
+    "Muros: 6 muros M.H.A. (e=20/25/30 cm) con caras fisicas exactas del DXF y eje analitico = promedio de caras. Nucleo bajo: M_001 (horizontal y3.8002/4.0002), M_002 (vertical x3.3997/3.6997), M_003 (vertical x6.2997/6.5997). Nucleo alto: M_004 (x3.1497/3.3997), M_005 (x6.5997/6.8497), M_006 (horizontal y13.7452/13.9452).",
+    "Columnas: 18 concreto P.70x70 en ejes E,F,G,H,I,Ip x niveles 1-3 (RLE-PILAR) + columnas de acero V.M. 300x300x5 y P.M.I. en el sector J y franja superior (RLE-TEXTO-1).",
+    "Bordes libres: 7 segmentos del contorno exterior de los voladizos (inferior y=-1.15, izquierdo x=-0.35, 3 tramos superiores y=16.5, lengua superior y17.3 y derecho x51.15). Un borde libre NO es receptor ni apoyo.",
+    "COMPLETITUD GEOMETRICA = completo_para_ensayo: la geometria por dominios quedo cerrada (dominios de losa, ejes analiticos de muros = promedio de caras, sectores elevados 315/324 con espesor, lengua J, voladizos vinculados a apoyos de borde y bordes_libres). Este estado DOCUMENTA que la geometria basta para preparar una copia de ensayo, pero NO autoriza calculo definitivo. El archivo base conserva estado=borrador_no_ejecutable, TODAS las transferencias por_definir y NO se ejecuto areas tributarias ni se modifico el algoritmo.",
+    "Tipo de transferencia: TODAS las losas quedan como por_definir. La hipotesis bidireccional NO se confirma en el borrador; se incorporara en COPIA DE ENSAYO separada.",
+    "AUDITORIA DE JUNTAS: no se encontro evidencia escrita ni geometrica inequívoca en la region DXF aislada; no se copian juntas de otros niveles.",
+    "AUDITORIA DE JUNTAS: no se encontro evidencia escrita ni geometrica inequívoca en la region DXF aislada; no se copian juntas de otros niveles.",
+    "AUDITORIA DE JUNTAS: no se encontro evidencia escrita ni geometrica inequívoca en la region DXF aislada; no se copian juntas de otros niveles.",
+    "AUDITORIA DE JUNTAS: no se encontro evidencia escrita ni geometrica inequívoca en la region DXF aislada; no se copian juntas de otros niveles.",
+    "AUDITORIA DE JUNTAS: no se encontro evidencia escrita ni geometrica inequívoca en la region DXF aislada; no se copian juntas de otros niveles.",
+    "AUDITORIA DE JUNTAS: no se encontro evidencia escrita ni geometrica inequívoca en la region DXF aislada; no se copian juntas de otros niveles.",
+    "AUDITORIA DE JUNTAS: no se encontro evidencia escrita ni geometrica inequívoca en la region DXF aislada; no se copian juntas de otros niveles.",
+    "JUNTA EI-EII NORMALIZADA: paginas 19 del PDF del Edificio II documentan 10 (JUNTA DE DILATACION) junto a D-D'. Se registra una sola interfaz global de 0.10 m; no se suma una segunda junta ni se copian coordenadas del Edificio II. La cara propia del Edificio I queda por correlacionar."
+  ],
+  "_trazabilidad": {
+    "dxf_fuente": "2017_67-102.dxf (DXF limpio; banda inferior = Piso 3)",
+    "esquema": "esquema_entrada_areas_tributarias_v1.json",
+    "template": "edificio_I_cielo_piso_3_borrador.json",
+    "paso_1": "Establecer sistema de coordenadas (escala 100, origen E-1=[535.00,4260.35,0])",
+    "paso_2": "Confirmar espesores por marcadores RLA-LOSAS: 311/312/322/323=12cm, resto=15cm (incl. 315/324)",
+    "paso_3": "Confirmar eje J real x=49.9 (RLE-VIGA caras 49.6/50.2) y viga V.40/60 x=47.5 -> 311/312/322/323 resueltos",
+    "paso_4": "Extraer muros RLE-MURO (cajas nucleo bajo y superior) y aberturas RLE-VANOS (AB_001/002/003)",
+    "paso_5": "Extraer columnas RLE-PILAR (18 concreto) + acero V.M./P.M.I. (RLE-TEXTO-1)",
+    "paso_6": "Extraer losa RLE-LOSA y vigas RLE-VIGA del sector J y eje 3 (segmentos y16.15)",
+    "paso_7": "Construir DOMINIOS por lineas de apoyo reales; nucleo como 2 dominios con muros interiores; franja superior 315/324 elevados; voladizos de borde libre",
+    "paso_8": "Asignar aberturas por contencion en dominio de losa (vacios interiores, no divisores)",
+    "paso_9": "Generar JSON validado (0 solapes, apoyos reales) + figura de verificacion",
+    "juntas_dilatacion": "2017_67-102.dxf: region auditada; no_verificada_en_fuente.",
+    "junta_EI_EII": "JD_EI_EII_10CM / JD_EI_EII_CP3; Edificio II PDF pagina 19; cara Edificio I por_correlacionar."
+  },
+  "losas": [
+    {
+      "id": "L_EI_CP3_304",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          10,
+          0.0
+        ],
+        [
+          15,
+          0.0
+        ],
+        [
+          15,
+          8.9
+        ],
+        [
+          10,
+          8.9
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_10.00-15.00",
+        "H_EI_CP3_y0089_10.00-12.20",
+        "H_EI_CP3_y0089_12.20-15.00",
+        "V_EI_CP3_x10.00_0-16.15",
+        "V_EI_CP3_x15.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        304
+      ],
+      "_rotulo_plano": 304
+    },
+    {
+      "id": "L_EI_CP3_305",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          15,
+          0.0
+        ],
+        [
+          20,
+          0.0
+        ],
+        [
+          20,
+          8.9
+        ],
+        [
+          15,
+          8.9
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_15.00-20.00",
+        "H_EI_CP3_y0089_15.00-20.00",
+        "V_EI_CP3_x15.00_0-16.15",
+        "V_EI_CP3_x20.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        305
+      ],
+      "_rotulo_plano": 305
+    },
+    {
+      "id": "L_EI_CP3_306",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          20,
+          0.0
+        ],
+        [
+          25,
+          0.0
+        ],
+        [
+          25,
+          8.9
+        ],
+        [
+          20,
+          8.9
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_20.00-25.00",
+        "H_EI_CP3_y0089_20.00-25.00",
+        "V_EI_CP3_x20.00_0-16.15",
+        "V_EI_CP3_x25.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        306
+      ],
+      "_rotulo_plano": 306
+    },
+    {
+      "id": "L_EI_CP3_307",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          25,
+          0.0
+        ],
+        [
+          30,
+          0.0
+        ],
+        [
+          30,
+          8.9
+        ],
+        [
+          25,
+          8.9
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_25.00-30.00",
+        "H_EI_CP3_y0089_25.00-30.00",
+        "V_EI_CP3_x25.00_0-16.15",
+        "V_EI_CP3_x30.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        307
+      ],
+      "_rotulo_plano": 307
+    },
+    {
+      "id": "L_EI_CP3_308",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          30,
+          0.0
+        ],
+        [
+          35,
+          0.0
+        ],
+        [
+          35,
+          8.9
+        ],
+        [
+          30,
+          8.9
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_30.00-35.00",
+        "H_EI_CP3_y0089_30.00-35.00",
+        "V_EI_CP3_x30.00_0-16.15",
+        "V_EI_CP3_x35.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        308
+      ],
+      "_rotulo_plano": 308
+    },
+    {
+      "id": "L_EI_CP3_309",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          35,
+          0.0
+        ],
+        [
+          40,
+          0.0
+        ],
+        [
+          40,
+          8.9
+        ],
+        [
+          35,
+          8.9
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_35.00-40.00",
+        "H_EI_CP3_y0089_35.00-40.00",
+        "V_EI_CP3_x35.00_0-16.15",
+        "V_EI_CP3_x40.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        309
+      ],
+      "_rotulo_plano": 309
+    },
+    {
+      "id": "L_EI_CP3_310",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          40,
+          0.0
+        ],
+        [
+          45,
+          0.0
+        ],
+        [
+          45,
+          8.9
+        ],
+        [
+          40,
+          8.9
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_40.00-45.00",
+        "H_EI_CP3_y0089_40.00-45.00",
+        "V_EI_CP3_x40.00_0-16.15",
+        "V_EI_CP3_x45.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        310
+      ],
+      "_rotulo_plano": 310
+    },
+    {
+      "id": "L_EI_CP3_311",
+      "espesor": 0.12,
+      "poligono_exterior": [
+        [
+          45,
+          0.0
+        ],
+        [
+          47.5,
+          0.0
+        ],
+        [
+          47.5,
+          8.9
+        ],
+        [
+          45,
+          8.9
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_45.00-47.50",
+        "H_EI_CP3_y0089_45.00-47.50",
+        "V_EI_CP3_x45.00_0-16.15",
+        "V_EI_CP3_x47.50_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano_12cm",
+      "_rotulos": [
+        311
+      ],
+      "_rotulo_plano": 311
+    },
+    {
+      "id": "L_EI_CP3_312",
+      "espesor": 0.12,
+      "poligono_exterior": [
+        [
+          47.5,
+          0.0
+        ],
+        [
+          49.9,
+          0.0
+        ],
+        [
+          49.9,
+          8.9
+        ],
+        [
+          47.5,
+          8.9
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_47.50-49.90",
+        "H_EI_CP3_y0089_47.50-49.90",
+        "V_EI_CP3_x47.50_0-16.15",
+        "V_EI_CP3_x49.90_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano_12cm",
+      "_rotulos": [
+        312
+      ],
+      "_rotulo_plano": 312
+    },
+    {
+      "id": "L_EI_CP3_313",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          10,
+          8.9
+        ],
+        [
+          12.2,
+          8.9
+        ],
+        [
+          12.2,
+          16.15
+        ],
+        [
+          10,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_10.00-12.20",
+        "H_EI_CP3_y0162_10.00-12.20",
+        "V_EI_CP3_x10.00_0-16.15",
+        "V_EI_CP3_x12.20_890-1615"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        313
+      ],
+      "_rotulo_plano": 313
+    },
+    {
+      "id": "L_EI_CP3_314",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          12.2,
+          8.9
+        ],
+        [
+          15,
+          8.9
+        ],
+        [
+          15,
+          16.15
+        ],
+        [
+          12.2,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_12.20-15.00",
+        "H_EI_CP3_y0162_12.20-15.00",
+        "V_EI_CP3_x12.20_890-1615",
+        "V_EI_CP3_x15.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        314
+      ],
+      "_rotulo_plano": 314
+    },
+    {
+      "id": "L_EI_CP3_316",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          15,
+          8.9
+        ],
+        [
+          20,
+          8.9
+        ],
+        [
+          20,
+          16.15
+        ],
+        [
+          15,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_15.00-20.00",
+        "H_EI_CP3_y0162_15.00-20.00",
+        "V_EI_CP3_x15.00_0-16.15",
+        "V_EI_CP3_x20.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        316
+      ],
+      "_rotulo_plano": 316
+    },
+    {
+      "id": "L_EI_CP3_317",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          20,
+          8.9
+        ],
+        [
+          25,
+          8.9
+        ],
+        [
+          25,
+          16.15
+        ],
+        [
+          20,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_20.00-25.00",
+        "H_EI_CP3_y0162_20.00-25.00",
+        "V_EI_CP3_x20.00_0-16.15",
+        "V_EI_CP3_x25.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        317
+      ],
+      "_rotulo_plano": 317
+    },
+    {
+      "id": "L_EI_CP3_318",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          25,
+          8.9
+        ],
+        [
+          30,
+          8.9
+        ],
+        [
+          30,
+          16.15
+        ],
+        [
+          25,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_25.00-30.00",
+        "H_EI_CP3_y0162_25.00-30.00",
+        "V_EI_CP3_x25.00_0-16.15",
+        "V_EI_CP3_x30.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        318
+      ],
+      "_rotulo_plano": 318
+    },
+    {
+      "id": "L_EI_CP3_319",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          30,
+          8.9
+        ],
+        [
+          35,
+          8.9
+        ],
+        [
+          35,
+          16.15
+        ],
+        [
+          30,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_30.00-35.00",
+        "H_EI_CP3_y0162_30.00-35.00",
+        "V_EI_CP3_x30.00_0-16.15",
+        "V_EI_CP3_x35.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        319
+      ],
+      "_rotulo_plano": 319
+    },
+    {
+      "id": "L_EI_CP3_320",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          35,
+          8.9
+        ],
+        [
+          40,
+          8.9
+        ],
+        [
+          40,
+          16.15
+        ],
+        [
+          35,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_35.00-40.00",
+        "H_EI_CP3_y0162_35.00-40.00",
+        "V_EI_CP3_x35.00_0-16.15",
+        "V_EI_CP3_x40.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        320
+      ],
+      "_rotulo_plano": 320
+    },
+    {
+      "id": "L_EI_CP3_321",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          40,
+          8.9
+        ],
+        [
+          45,
+          8.9
+        ],
+        [
+          45,
+          16.15
+        ],
+        [
+          40,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_40.00-45.00",
+        "H_EI_CP3_y0162_40.00-45.00",
+        "V_EI_CP3_x40.00_0-16.15",
+        "V_EI_CP3_x45.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        321
+      ],
+      "_rotulo_plano": 321
+    },
+    {
+      "id": "L_EI_CP3_322",
+      "espesor": 0.12,
+      "poligono_exterior": [
+        [
+          45,
+          8.9
+        ],
+        [
+          47.5,
+          8.9
+        ],
+        [
+          47.5,
+          16.15
+        ],
+        [
+          45,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_45.00-47.50",
+        "H_EI_CP3_y0162_45.00-47.50",
+        "V_EI_CP3_x45.00_0-16.15",
+        "V_EI_CP3_x47.50_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano_12cm",
+      "_rotulos": [
+        322
+      ],
+      "_rotulo_plano": 322
+    },
+    {
+      "id": "L_EI_CP3_323",
+      "espesor": 0.12,
+      "poligono_exterior": [
+        [
+          47.5,
+          8.9
+        ],
+        [
+          49.9,
+          8.9
+        ],
+        [
+          49.9,
+          16.15
+        ],
+        [
+          47.5,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_47.50-49.90",
+        "H_EI_CP3_y0162_47.50-49.90",
+        "V_EI_CP3_x47.50_0-16.15",
+        "V_EI_CP3_x49.90_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "calculo_derivado",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano_12cm",
+      "_rotulos": [
+        323
+      ],
+      "_rotulo_plano": 323
+    },
+    {
+      "id": "L_EI_CP3_300",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          10.0,
+          0.0
+        ],
+        [
+          10.0,
+          8.9
+        ],
+        [
+          0.0,
+          8.9
+        ]
+      ],
+      "aberturas": [
+        "AB_EI_CP3_001"
+      ],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_0.00-10.00",
+        "H_EI_CP3_y0089_0.00-10.00",
+        "V_EI_CP3_x0.00_0-16.15",
+        "V_EI_CP3_x10.00_0-16.15",
+        "M_EI_CP3_001",
+        "M_EI_CP3_002",
+        "M_EI_CP3_003"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "nucleo_convencion_bandas_muros_interiores",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        300,
+        301
+      ],
+      "_rotulo_plano": 300,
+      "_nota_estructural": "Nucleo inferior (x0..10, y0..8.9): dominio continuo [300,301]. Apoyos: ejes 1 y 2, E (x0), F (x10) + muros interiores M_001/002/003 (receptores)."
+    },
+    {
+      "id": "L_EI_CP3_302",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          0.0,
+          8.9
+        ],
+        [
+          10.0,
+          8.9
+        ],
+        [
+          10.0,
+          16.15
+        ],
+        [
+          0.0,
+          16.15
+        ]
+      ],
+      "aberturas": [
+        "AB_EI_CP3_002",
+        "AB_EI_CP3_003"
+      ],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0089_0.00-10.00",
+        "H_EI_CP3_y0162_0.00-10.00",
+        "V_EI_CP3_x0.00_0-16.15",
+        "V_EI_CP3_x10.00_0-16.15",
+        "M_EI_CP3_004",
+        "M_EI_CP3_005",
+        "M_EI_CP3_006"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "nucleo_convencion_bandas_muros_interiores",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        302,
+        303
+      ],
+      "_rotulo_plano": 302,
+      "_nota_estructural": "Nucleo superior (x0..10, y8.9..16.15): dominio continuo [302,303]. Apoyos: ejes 2 y 3, E (x0), F (x10) + muros interiores M_004/005/006 (receptores)."
+    },
+    {
+      "id": "L_EI_CP3_315",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          10.0,
+          16.15
+        ],
+        [
+          12.2,
+          16.15
+        ],
+        [
+          12.2,
+          18.46
+        ],
+        [
+          10.0,
+          18.46
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0162_10.00-12.20",
+        "V_EI_CP3_x10.00_0-16.15",
+        "V_EI_CP3_x12.20_890-1615"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "sector_elevado_franja_superior",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        315
+      ],
+      "_rotulo_plano": 315,
+      "_nota_estructural": "Sector elevado de franja superior. Apoyos por vigas/eje de borde; material/sistema por_definir."
+    },
+    {
+      "id": "L_EI_CP3_324",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          20.0,
+          16.15
+        ],
+        [
+          30.0,
+          16.15
+        ],
+        [
+          30.0,
+          19.97
+        ],
+        [
+          20.0,
+          19.97
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0162_20.00-25.00",
+        "H_EI_CP3_y0162_25.00-30.00",
+        "V_EI_CP3_x20.00_0-16.15",
+        "V_EI_CP3_x30.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "sector_elevado_franja_superior",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [
+        324
+      ],
+      "_rotulo_plano": 324,
+      "_nota_estructural": "Sector elevado 324 (marco ARR). Apoyos: viga inferior y16.15 + verticales G/H; interior con columnas acero V.M./P.M.I. Material/sistema por_definir."
+    },
+    {
+      "id": "L_EI_CP3_D_VOLADIZO_BAJO",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          -0.35,
+          -1.15
+        ],
+        [
+          51.15,
+          -1.15
+        ],
+        [
+          51.15,
+          0.0
+        ],
+        [
+          -0.35,
+          0.0
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0000_0.00-10.00",
+        "H_EI_CP3_y0000_10.00-15.00",
+        "H_EI_CP3_y0000_15.00-20.00",
+        "H_EI_CP3_y0000_20.00-25.00",
+        "H_EI_CP3_y0000_25.00-30.00",
+        "H_EI_CP3_y0000_30.00-35.00",
+        "H_EI_CP3_y0000_35.00-40.00",
+        "H_EI_CP3_y0000_40.00-45.00",
+        "H_EI_CP3_y0000_45.00-47.50",
+        "H_EI_CP3_y0000_47.50-49.90"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "voladizo_borde_libre",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [],
+      "_rotulo_plano": "D_VOLADIZO_BAJO",
+      "_nota_estructural": "Voladizo exterior con borde libre (sin rotulo de paño asociado). Borde libre NO es apoyo; apoya solo sobre la viga/eje de borde adyacente."
+    },
+    {
+      "id": "L_EI_CP3_D_VOLADIZO_ALTO_OESTE",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          -0.35,
+          16.15
+        ],
+        [
+          9.65,
+          16.15
+        ],
+        [
+          9.65,
+          16.5
+        ],
+        [
+          -0.35,
+          16.5
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0162_0.00-10.00"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "voladizo_borde_libre",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [],
+      "_rotulo_plano": "D_VOLADIZO_ALTO_OESTE",
+      "_nota_estructural": "Voladizo exterior con borde libre (sin rotulo de paño asociado). Borde libre NO es apoyo; apoya solo sobre la viga/eje de borde adyacente."
+    },
+    {
+      "id": "L_EI_CP3_D_VOLADIZO_ALTO_CENTRO",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          12.5,
+          16.15
+        ],
+        [
+          19.65,
+          16.15
+        ],
+        [
+          19.65,
+          16.5
+        ],
+        [
+          12.5,
+          16.5
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0162_12.20-15.00",
+        "H_EI_CP3_y0162_15.00-20.00"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "voladizo_borde_libre",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [],
+      "_rotulo_plano": "D_VOLADIZO_ALTO_CENTRO",
+      "_nota_estructural": "Voladizo exterior con borde libre (sin rotulo de paño asociado). Borde libre NO es apoyo; apoya solo sobre la viga/eje de borde adyacente."
+    },
+    {
+      "id": "L_EI_CP3_D_VOLADIZO_ALTO_ESTE",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          30.35,
+          16.15
+        ],
+        [
+          44.65,
+          16.15
+        ],
+        [
+          44.65,
+          16.5
+        ],
+        [
+          30.35,
+          16.5
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0162_30.00-35.00",
+        "H_EI_CP3_y0162_35.00-40.00",
+        "H_EI_CP3_y0162_40.00-45.00"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "voladizo_borde_libre",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [],
+      "_rotulo_plano": "D_VOLADIZO_ALTO_ESTE",
+      "_nota_estructural": "Voladizo exterior con borde libre (sin rotulo de paño asociado). Borde libre NO es apoyo; apoya solo sobre la viga/eje de borde adyacente."
+    },
+    {
+      "id": "L_EI_CP3_D_VOLADIZO_ALTO_LENGUA",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          44.65,
+          16.15
+        ],
+        [
+          51.15,
+          16.15
+        ],
+        [
+          51.15,
+          17.3
+        ],
+        [
+          44.65,
+          17.3
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "H_EI_CP3_y0162_40.00-45.00",
+        "H_EI_CP3_y0162_45.00-47.50",
+        "H_EI_CP3_y0162_47.50-49.90"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "voladizo_borde_libre",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [],
+      "_rotulo_plano": "D_VOLADIZO_ALTO_LENGUA",
+      "_nota_estructural": "Voladizo exterior con borde libre (sin rotulo de paño asociado). Borde libre NO es apoyo; apoya solo sobre la viga/eje de borde adyacente."
+    },
+    {
+      "id": "L_EI_CP3_D_VOLADIZO_IZQ",
+      "espesor": 0.15,
+      "poligono_exterior": [
+        [
+          -0.35,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          16.15
+        ],
+        [
+          -0.35,
+          16.15
+        ]
+      ],
+      "aberturas": [],
+      "tipo_transferencia": "por_definir",
+      "direccion_transferencia": null,
+      "apoyos_validos": [
+        "V_EI_CP3_x0.00_0-16.15"
+      ],
+      "carga_superficial": "G_prueba_tributacion_1kpa",
+      "_origen": "voladizo_borde_libre",
+      "_limite_a_ejes": "lineas_de_apoyo_reales",
+      "_espesor_origen": "texto_plano",
+      "_rotulos": [],
+      "_rotulo_plano": "D_VOLADIZO_IZQ",
+      "_nota_estructural": "Voladizo exterior con borde libre (sin rotulo de paño asociado). Borde libre NO es apoyo; apoya solo sobre la viga/eje de borde adyacente."
+    }
+  ],
+  "vigas": [
+    {
+      "inicio": [
+        0,
+        0.0
+      ],
+      "fin": [
+        10,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_0.00-10.00"
+    },
+    {
+      "inicio": [
+        10,
+        0.0
+      ],
+      "fin": [
+        15,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_10.00-15.00"
+    },
+    {
+      "inicio": [
+        15,
+        0.0
+      ],
+      "fin": [
+        20,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_15.00-20.00"
+    },
+    {
+      "inicio": [
+        20,
+        0.0
+      ],
+      "fin": [
+        25,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_20.00-25.00"
+    },
+    {
+      "inicio": [
+        25,
+        0.0
+      ],
+      "fin": [
+        30,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_25.00-30.00"
+    },
+    {
+      "inicio": [
+        30,
+        0.0
+      ],
+      "fin": [
+        35,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_30.00-35.00"
+    },
+    {
+      "inicio": [
+        35,
+        0.0
+      ],
+      "fin": [
+        40,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_35.00-40.00"
+    },
+    {
+      "inicio": [
+        40,
+        0.0
+      ],
+      "fin": [
+        45,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_40.00-45.00"
+    },
+    {
+      "inicio": [
+        45,
+        0.0
+      ],
+      "fin": [
+        47.5,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_45.00-47.50"
+    },
+    {
+      "inicio": [
+        47.5,
+        0.0
+      ],
+      "fin": [
+        49.9,
+        0.0
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0000_47.50-49.90"
+    },
+    {
+      "inicio": [
+        0,
+        8.9
+      ],
+      "fin": [
+        10,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_0.00-10.00"
+    },
+    {
+      "inicio": [
+        10,
+        8.9
+      ],
+      "fin": [
+        12.2,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_10.00-12.20"
+    },
+    {
+      "inicio": [
+        12.2,
+        8.9
+      ],
+      "fin": [
+        15,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_12.20-15.00"
+    },
+    {
+      "inicio": [
+        15,
+        8.9
+      ],
+      "fin": [
+        20,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_15.00-20.00"
+    },
+    {
+      "inicio": [
+        20,
+        8.9
+      ],
+      "fin": [
+        25,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_20.00-25.00"
+    },
+    {
+      "inicio": [
+        25,
+        8.9
+      ],
+      "fin": [
+        30,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_25.00-30.00"
+    },
+    {
+      "inicio": [
+        30,
+        8.9
+      ],
+      "fin": [
+        35,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_30.00-35.00"
+    },
+    {
+      "inicio": [
+        35,
+        8.9
+      ],
+      "fin": [
+        40,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_35.00-40.00"
+    },
+    {
+      "inicio": [
+        40,
+        8.9
+      ],
+      "fin": [
+        45,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_40.00-45.00"
+    },
+    {
+      "inicio": [
+        45,
+        8.9
+      ],
+      "fin": [
+        47.5,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_45.00-47.50"
+    },
+    {
+      "inicio": [
+        47.5,
+        8.9
+      ],
+      "fin": [
+        49.9,
+        8.9
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0089_47.50-49.90"
+    },
+    {
+      "inicio": [
+        0,
+        16.15
+      ],
+      "fin": [
+        10,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_0.00-10.00"
+    },
+    {
+      "inicio": [
+        10,
+        16.15
+      ],
+      "fin": [
+        12.2,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_10.00-12.20"
+    },
+    {
+      "inicio": [
+        12.2,
+        16.15
+      ],
+      "fin": [
+        15,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_12.20-15.00"
+    },
+    {
+      "inicio": [
+        15,
+        16.15
+      ],
+      "fin": [
+        20,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_15.00-20.00"
+    },
+    {
+      "inicio": [
+        20,
+        16.15
+      ],
+      "fin": [
+        25,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_20.00-25.00"
+    },
+    {
+      "inicio": [
+        25,
+        16.15
+      ],
+      "fin": [
+        30,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_25.00-30.00"
+    },
+    {
+      "inicio": [
+        30,
+        16.15
+      ],
+      "fin": [
+        35,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_30.00-35.00"
+    },
+    {
+      "inicio": [
+        35,
+        16.15
+      ],
+      "fin": [
+        40,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_35.00-40.00"
+    },
+    {
+      "inicio": [
+        40,
+        16.15
+      ],
+      "fin": [
+        45,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_40.00-45.00"
+    },
+    {
+      "inicio": [
+        45,
+        16.15
+      ],
+      "fin": [
+        47.5,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_45.00-47.50"
+    },
+    {
+      "inicio": [
+        47.5,
+        16.15
+      ],
+      "fin": [
+        49.9,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "H_EI_CP3_y0162_47.50-49.90"
+    },
+    {
+      "inicio": [
+        0,
+        0.0
+      ],
+      "fin": [
+        0,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x0.00_0-16.15"
+    },
+    {
+      "inicio": [
+        10,
+        0.0
+      ],
+      "fin": [
+        10,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x10.00_0-16.15"
+    },
+    {
+      "inicio": [
+        15,
+        0.0
+      ],
+      "fin": [
+        15,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x15.00_0-16.15"
+    },
+    {
+      "inicio": [
+        20,
+        0.0
+      ],
+      "fin": [
+        20,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x20.00_0-16.15"
+    },
+    {
+      "inicio": [
+        25,
+        0.0
+      ],
+      "fin": [
+        25,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x25.00_0-16.15"
+    },
+    {
+      "inicio": [
+        30,
+        0.0
+      ],
+      "fin": [
+        30,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x30.00_0-16.15"
+    },
+    {
+      "inicio": [
+        35,
+        0.0
+      ],
+      "fin": [
+        35,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x35.00_0-16.15"
+    },
+    {
+      "inicio": [
+        40,
+        0.0
+      ],
+      "fin": [
+        40,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x40.00_0-16.15"
+    },
+    {
+      "inicio": [
+        45,
+        0.0
+      ],
+      "fin": [
+        45,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x45.00_0-16.15"
+    },
+    {
+      "inicio": [
+        47.5,
+        0.0
+      ],
+      "fin": [
+        47.5,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x47.50_0-16.15"
+    },
+    {
+      "inicio": [
+        49.9,
+        0.0
+      ],
+      "fin": [
+        49.9,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x49.90_0-16.15"
+    },
+    {
+      "inicio": [
+        12.2,
+        8.9
+      ],
+      "fin": [
+        12.2,
+        16.15
+      ],
+      "seccion": {
+        "nombre": "V. 60/80"
+      },
+      "recibe_losa": true,
+      "_origen": "coordenada_dxf_modelo",
+      "id": "V_EI_CP3_x12.20_890-1615"
+    }
+  ],
+  "muros": [
+    {
+      "id": "M_EI_CP3_001",
+      "eje": {
+        "inicio": [
+          -0.3503,
+          3.9002
+        ],
+        "fin": [
+          6.5997,
+          3.9002
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            -0.3503,
+            3.8002
+          ],
+          "fin": [
+            6.5997,
+            3.8002
+          ]
+        },
+        {
+          "inicio": [
+            -0.3503,
+            4.0002
+          ],
+          "fin": [
+            6.5997,
+            4.0002
+          ]
+        }
+      ],
+      "espesor": 0.2,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF; receptor interior del dominio del nucleo, no borde de dominio.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=20; muro horizontal inferior del nucleo (caras y3.8002/y4.0002)."
+    },
+    {
+      "id": "M_EI_CP3_002",
+      "eje": {
+        "inicio": [
+          3.5497,
+          4.0002
+        ],
+        "fin": [
+          3.5497,
+          6.1502
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            3.3997,
+            4.0002
+          ],
+          "fin": [
+            3.3997,
+            6.1502
+          ]
+        },
+        {
+          "inicio": [
+            3.6997,
+            4.0002
+          ],
+          "fin": [
+            3.6997,
+            6.1502
+          ]
+        }
+      ],
+      "espesor": 0.3,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF; receptor interior del dominio del nucleo, no borde de dominio.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=30; muro vertical izquierdo inferior (caras x3.3997/x3.6997)."
+    },
+    {
+      "id": "M_EI_CP3_003",
+      "eje": {
+        "inicio": [
+          6.4497,
+          3.9002
+        ],
+        "fin": [
+          6.4497,
+          6.1502
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            6.2997,
+            4.0002
+          ],
+          "fin": [
+            6.2997,
+            6.1502
+          ]
+        },
+        {
+          "inicio": [
+            6.5997,
+            3.8002
+          ],
+          "fin": [
+            6.5997,
+            6.1502
+          ]
+        }
+      ],
+      "espesor": 0.3,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF; receptor interior del dominio del nucleo, no borde de dominio.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=30; muro vertical derecho inferior (caras x6.2997/x6.5997)."
+    },
+    {
+      "id": "M_EI_CP3_004",
+      "eje": {
+        "inicio": [
+          3.2747,
+          12.2664
+        ],
+        "fin": [
+          3.2747,
+          13.7452
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            3.1497,
+            12.2664
+          ],
+          "fin": [
+            3.1497,
+            13.7452
+          ]
+        },
+        {
+          "inicio": [
+            3.3997,
+            12.2664
+          ],
+          "fin": [
+            3.3997,
+            13.7452
+          ]
+        }
+      ],
+      "espesor": 0.25,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF; receptor interior del dominio del nucleo, no borde de dominio.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=25; muro vertical izquierdo superior (caras x3.1497/x3.3997)."
+    },
+    {
+      "id": "M_EI_CP3_005",
+      "eje": {
+        "inicio": [
+          6.7247,
+          12.2664
+        ],
+        "fin": [
+          6.7247,
+          13.7452
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            6.5997,
+            12.2664
+          ],
+          "fin": [
+            6.5997,
+            13.7452
+          ]
+        },
+        {
+          "inicio": [
+            6.8497,
+            12.2664
+          ],
+          "fin": [
+            6.8497,
+            13.7452
+          ]
+        }
+      ],
+      "espesor": 0.25,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF; receptor interior del dominio del nucleo, no borde de dominio.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=25; muro vertical derecho superior (caras x6.5997/x6.8497)."
+    },
+    {
+      "id": "M_EI_CP3_006",
+      "eje": {
+        "inicio": [
+          3.2747,
+          13.8452
+        ],
+        "fin": [
+          6.7247,
+          13.8452
+        ]
+      },
+      "caras": [
+        {
+          "inicio": [
+            3.3997,
+            13.7452
+          ],
+          "fin": [
+            6.5997,
+            13.7452
+          ]
+        },
+        {
+          "inicio": [
+            3.1497,
+            13.9452
+          ],
+          "fin": [
+            6.8497,
+            13.9452
+          ]
+        }
+      ],
+      "espesor": 0.2,
+      "recibe_losa": true,
+      "nota_modelo_opensees": "Eje analitico = promedio exacto de las dos caras fisicas del DXF; receptor interior del dominio del nucleo, no borde de dominio.",
+      "_origen": "coordenada_dxf_modelo",
+      "_espesor_origen": "distancia_entre_caras",
+      "_nota": "M.H.A. e=20; muro horizontal superior (caras y13.7452/y13.9452)."
+    }
+  ],
+  "aberturas_globales": [
+    {
+      "id": "AB_EI_CP3_001",
+      "tipo": "vacio_nucleo",
+      "poligono": [
+        [
+          3.7,
+          4.0
+        ],
+        [
+          6.3,
+          4.0
+        ],
+        [
+          6.3,
+          6.0
+        ],
+        [
+          3.7,
+          6.0
+        ]
+      ]
+    },
+    {
+      "id": "AB_EI_CP3_002",
+      "tipo": "hueco_losa",
+      "poligono": [
+        [
+          3.4,
+          9.266
+        ],
+        [
+          6.6,
+          9.266
+        ],
+        [
+          6.6,
+          13.745
+        ],
+        [
+          3.4,
+          13.745
+        ]
+      ]
+    },
+    {
+      "id": "AB_EI_CP3_003",
+      "tipo": "hueco_nucleo_pequeno",
+      "poligono": [
+        [
+          3.345,
+          13.945
+        ],
+        [
+          6.655,
+          13.945
+        ],
+        [
+          6.655,
+          14.345
+        ],
+        [
+          3.345,
+          14.345
+        ]
+      ]
+    }
+  ],
+  "columnas_referencia": [
+    {
+      "id": "COL_EI_CP3_C_E1_0.0",
+      "posicion": [
+        0.0,
+        0.0
+      ],
+      "seccion": "P. 70x70",
+      "eje": "E-1",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_F1_10.0",
+      "posicion": [
+        10.0,
+        0.0
+      ],
+      "seccion": "P. 70x70",
+      "eje": "F-1",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_G1_20.0",
+      "posicion": [
+        20.0,
+        0.0
+      ],
+      "seccion": "P. 70x70",
+      "eje": "G-1",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_H1_30.0",
+      "posicion": [
+        30.0,
+        0.0
+      ],
+      "seccion": "P. 70x70",
+      "eje": "H-1",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_I1_40.0",
+      "posicion": [
+        40.0,
+        0.0
+      ],
+      "seccion": "P. 70x70",
+      "eje": "I-1",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_Ip1_45.0",
+      "posicion": [
+        45.0,
+        0.0
+      ],
+      "seccion": "P. 70x70",
+      "eje": "Ip-1",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_E2_0.0",
+      "posicion": [
+        0.0,
+        8.9
+      ],
+      "seccion": "P. 70x70",
+      "eje": "E-2",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_F2_10.0",
+      "posicion": [
+        10.0,
+        8.9
+      ],
+      "seccion": "P. 70x70",
+      "eje": "F-2",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_G2_20.0",
+      "posicion": [
+        20.0,
+        8.9
+      ],
+      "seccion": "P. 70x70",
+      "eje": "G-2",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_H2_30.0",
+      "posicion": [
+        30.0,
+        8.9
+      ],
+      "seccion": "P. 70x70",
+      "eje": "H-2",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_I2_40.0",
+      "posicion": [
+        40.0,
+        8.9
+      ],
+      "seccion": "P. 70x70",
+      "eje": "I-2",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_Ip2_45.0",
+      "posicion": [
+        45.0,
+        8.9
+      ],
+      "seccion": "P. 70x70",
+      "eje": "Ip-2",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_E3_0.0",
+      "posicion": [
+        0.0,
+        16.15
+      ],
+      "seccion": "P. 70x70",
+      "eje": "E-3",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_F3_10.0",
+      "posicion": [
+        10.0,
+        16.15
+      ],
+      "seccion": "P. 70x70",
+      "eje": "F-3",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_G3_20.0",
+      "posicion": [
+        20.0,
+        16.15
+      ],
+      "seccion": "P. 70x70",
+      "eje": "G-3",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_H3_30.0",
+      "posicion": [
+        30.0,
+        16.15
+      ],
+      "seccion": "P. 70x70",
+      "eje": "H-3",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_I3_40.0",
+      "posicion": [
+        40.0,
+        16.15
+      ],
+      "seccion": "P. 70x70",
+      "eje": "I-3",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_C_Ip3_45.0",
+      "posicion": [
+        45.0,
+        16.15
+      ],
+      "seccion": "P. 70x70",
+      "eje": "Ip-3",
+      "nota": "Columna concreto P.70x70; RLE-PILAR."
+    },
+    {
+      "id": "COL_EI_CP3_S_IpJ1_46.35",
+      "posicion": [
+        46.35,
+        0.55
+      ],
+      "seccion": "V.M. 300x300x5",
+      "eje": "Ip-J-1",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_IpJ2_46.36",
+      "posicion": [
+        46.36,
+        9.32
+      ],
+      "seccion": "V.M. 300x300x5",
+      "eje": "Ip-J-2",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_IpJ3_46.34",
+      "posicion": [
+        46.34,
+        16.61
+      ],
+      "seccion": "V.M. 300x300x5",
+      "eje": "Ip-J-3",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_J1_48.68",
+      "posicion": [
+        48.68,
+        0.55
+      ],
+      "seccion": "V.M. 300x300x5",
+      "eje": "J-1",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_J2_48.7",
+      "posicion": [
+        48.7,
+        9.32
+      ],
+      "seccion": "V.M. 300x300x5",
+      "eje": "J-2",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_J3_48.9",
+      "posicion": [
+        48.9,
+        16.61
+      ],
+      "seccion": "V.M. 300x300x5",
+      "eje": "J-3",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_FS1_20.38",
+      "posicion": [
+        20.38,
+        18.28
+      ],
+      "seccion": "V.M. 300x300x5",
+      "eje": "F-S1",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_GS2_30.4",
+      "posicion": [
+        30.4,
+        18.37
+      ],
+      "seccion": "V.M. 300x300x5",
+      "eje": "G-S2",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_JP1_47.78",
+      "posicion": [
+        47.78,
+        -0.6
+      ],
+      "seccion": "P.M.I.",
+      "eje": "J-P1",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_JP2_47.89",
+      "posicion": [
+        47.89,
+        8.3
+      ],
+      "seccion": "P.M.I.",
+      "eje": "J-P2",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_JP3_47.82",
+      "posicion": [
+        47.82,
+        15.51
+      ],
+      "seccion": "P.M.I.",
+      "eje": "J-P3",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_JP4_50.58",
+      "posicion": [
+        50.58,
+        -0.6
+      ],
+      "seccion": "P.M.I.",
+      "eje": "J-P4",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_JP5_50.82",
+      "posicion": [
+        50.82,
+        8.61
+      ],
+      "seccion": "P.M.I.",
+      "eje": "J-P5",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_JP6_50.71",
+      "posicion": [
+        50.71,
+        15.85
+      ],
+      "seccion": "P.M.I.",
+      "eje": "J-P6",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_FS3_20.5",
+      "posicion": [
+        20.5,
+        20.72
+      ],
+      "seccion": "P.M.I.",
+      "eje": "F-S3",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    },
+    {
+      "id": "COL_EI_CP3_S_GS4_30.51",
+      "posicion": [
+        30.51,
+        20.66
+      ],
+      "seccion": "P.M.I.",
+      "eje": "G-S4",
+      "nota": "Columna acero; RLE-TEXTO-1."
+    }
+  ],
+  "bordes_libres": [
+    {
+      "id": "BL_EI_CP3_bottom",
+      "inicio": [
+        -0.35,
+        -1.15
+      ],
+      "fin": [
+        51.15,
+        -1.15
+      ],
+      "_voladizo": "D_VOLADIZO_BAJO"
+    },
+    {
+      "id": "BL_EI_CP3_left",
+      "inicio": [
+        -0.35,
+        0.0
+      ],
+      "fin": [
+        -0.35,
+        16.15
+      ],
+      "_voladizo": "D_VOLADIZO_IZQ"
+    },
+    {
+      "id": "BL_EI_CP3_top_oeste",
+      "inicio": [
+        -0.35,
+        16.5
+      ],
+      "fin": [
+        9.65,
+        16.5
+      ],
+      "_voladizo": "D_VOLADIZO_ALTO_OESTE"
+    },
+    {
+      "id": "BL_EI_CP3_top_centro",
+      "inicio": [
+        12.5,
+        16.5
+      ],
+      "fin": [
+        19.65,
+        16.5
+      ],
+      "_voladizo": "D_VOLADIZO_ALTO_CENTRO"
+    },
+    {
+      "id": "BL_EI_CP3_top_este",
+      "inicio": [
+        30.35,
+        16.5
+      ],
+      "fin": [
+        44.65,
+        16.5
+      ],
+      "_voladizo": "D_VOLADIZO_ALTO_ESTE"
+    },
+    {
+      "id": "BL_EI_CP3_top_lengua",
+      "inicio": [
+        44.65,
+        17.3
+      ],
+      "fin": [
+        51.15,
+        17.3
+      ],
+      "_voladizo": "D_VOLADIZO_ALTO_LENGUA"
+    },
+    {
+      "id": "BL_EI_CP3_right_lengua",
+      "inicio": [
+        51.15,
+        16.15
+      ],
+      "fin": [
+        51.15,
+        17.3
+      ],
+      "_voladizo": "D_VOLADIZO_ALTO_LENGUA"
+    }
+  ],
+  "cargas_superficiales": {
+    "G_prueba_tributacion_1kpa": {
+      "valor": 1.0,
+      "unidad": "kN/m2",
+      "notas": "CARGA DE ENSAYO uniforme de 1 kN/m2 para prueba exclusivamente numerica. SEPARADA de las cargas reales del edificio. Hipotesis bidireccional queda por_definir en el borrador."
+    }
+  },
+  "juntas_dilatacion": [
+    {
+      "id": "JD_EI_EII_CP3",
+      "junta_id": "JD_EI_EII_CP3",
+      "id_tramo_nivel": "JD_EI_EII_CP3",
+      "id_interfaz_global": "JD_EI_EII_10CM",
+      "tipo": "junta_entre_edificios_real_documentada",
+      "origen_ancho": "cota_plano_edificio_II",
+      "ancho_total_m": 0.1,
+      "ancho_por_lado_m": null,
+      "ancho_nominal_m": 0.1,
+      "estado_ancho": "confirmado",
+      "contabilizacion": "una_sola_vez_en_modelo_conjunto",
+      "lado": "Edificio I",
+      "cara_propia": {
+        "estado": "por_correlacionar",
+        "sistema_coordenadas": "propio_del_nivel",
+        "geometria": null
+      },
+      "edificios_separados": [
+        "Edificio I",
+        "Edificio II"
+      ],
+      "fuentes": [
+        {
+          "edificio": "Edificio II",
+          "archivo": "Union PDF's Edificio II.pdf",
+          "paginas": [
+            19
+          ],
+          "texto": "10 (JUNTA DE DILATACION)",
+          "ejes": "D-D' Fase 2"
+        },
+        {
+          "edificio": "Edificio I",
+          "archivo": "fuente DXF/JSON propia del nivel",
+          "paginas": [],
+          "texto": null,
+          "ejes": null
+        }
+      ],
+      "estado_correlacion": "por_correlacionar",
+      "trazado_edificio_I": "por_correlacionar",
+      "eje_interfaz": null,
+      "caras_fisicas": [],
+      "impide_continuidad_losa": true,
+      "separa_dominios": true,
+      "apoyos_por_separado": true,
+      "no_borde_libre": true,
+      "receptores_edificio_II": [],
+      "transferencia_entre_edificios": false,
+      "_nota": "Una misma junta documentada en ambos edificios se contabiliza una sola vez. Los anchos informados desde cada lado no se suman. La página del Edificio II confirma la interfaz global, pero la cara propia del Edificio I queda por correlacionar sin copiar coordenadas."
+    }
+  ],
+  "interfaces_junta": [
+    {
+      "id": "JD_EI_EII_CP3",
+      "junta_id": "JD_EI_EII_CP3",
+      "id_tramo_nivel": "JD_EI_EII_CP3",
+      "id_interfaz_global": "JD_EI_EII_10CM",
+      "tipo": "junta_entre_edificios_real_documentada",
+      "origen_ancho": "cota_plano_edificio_II",
+      "ancho_total_m": 0.1,
+      "ancho_por_lado_m": null,
+      "ancho_nominal_m": 0.1,
+      "estado_ancho": "confirmado",
+      "contabilizacion": "una_sola_vez_en_modelo_conjunto",
+      "lado": "Edificio I",
+      "cara_propia": {
+        "estado": "por_correlacionar",
+        "sistema_coordenadas": "propio_del_nivel",
+        "geometria": null
+      },
+      "edificios_separados": [
+        "Edificio I",
+        "Edificio II"
+      ],
+      "fuentes": [
+        {
+          "edificio": "Edificio II",
+          "archivo": "Union PDF's Edificio II.pdf",
+          "paginas": [
+            19
+          ],
+          "texto": "10 (JUNTA DE DILATACION)",
+          "ejes": "D-D' Fase 2"
+        },
+        {
+          "edificio": "Edificio I",
+          "archivo": "fuente DXF/JSON propia del nivel",
+          "paginas": [],
+          "texto": null,
+          "ejes": null
+        }
+      ],
+      "estado_correlacion": "por_correlacionar",
+      "trazado_edificio_I": "por_correlacionar",
+      "eje_interfaz": null,
+      "caras_fisicas": [],
+      "impide_continuidad_losa": true,
+      "separa_dominios": true,
+      "apoyos_por_separado": true,
+      "no_borde_libre": true,
+      "receptores_edificio_II": [],
+      "transferencia_entre_edificios": false,
+      "_nota": "Una misma junta documentada en ambos edificios se contabiliza una sola vez. Los anchos informados desde cada lado no se suman. La página del Edificio II confirma la interfaz global, pero la cara propia del Edificio I queda por correlacionar sin copiar coordenadas."
+    }
+  ],
+  "junta_dilatacion": {
+    "id_interfaz_global": "JD_EI_EII_10CM",
+    "id_tramo_nivel": "JD_EI_EII_CP3",
+    "estado": "verificada_en_planos_edificio_II",
+    "tipo": "junta_entre_edificios_real_documentada",
+    "origen_ancho": "cota_plano_edificio_II",
+    "ancho_total_m": 0.1,
+    "ancho_por_lado_m": null,
+    "contabilizacion": "una_sola_vez_en_modelo_conjunto",
+    "lado": "Edificio I",
+    "edificios_separados": [
+      "Edificio I",
+      "Edificio II"
+    ],
+    "impide_continuidad_losa": true,
+    "apoyos_por_separado": true,
+    "no_borde_libre": true,
+    "fuentes": [
+      {
+        "edificio": "Edificio II",
+        "archivo": "Union PDF's Edificio II.pdf",
+        "paginas": [
+          19
+        ],
+        "texto": "10 (JUNTA DE DILATACION)",
+        "ejes": "D-D' Fase 2"
+      },
+      {
+        "edificio": "Edificio I",
+        "archivo": "fuente DXF/JSON propia del nivel",
+        "paginas": [],
+        "texto": null,
+        "ejes": null
+      }
+    ],
+    "estado_correlacion": "por_correlacionar",
+    "trazado_edificio_I": "por_correlacionar",
+    "junta_id": "JD_EI_EII_CP3",
+    "nota_contabilizacion": "Una misma junta documentada en ambos edificios se contabiliza una sola vez. Los anchos informados desde cada lado no se suman. La página del Edificio II confirma la interfaz global, pero la cara propia del Edificio I queda por correlacionar sin copiar coordenadas."
+  },
+  "auditoria_juntas_dilatacion": {
+    "fuente": "2017_67-102.dxf",
+    "region": "banda inferior / Cielo Piso 3",
+    "textos_relevantes": [],
+    "resultado": "no_verificada_en_fuente",
+    "interfaces_activas": 0,
+    "capas_revisadas": [
+      "RLE-LOSA",
+      "RLE-VIGA",
+      "RLE-MURO",
+      "RLE-PILAR",
+      "RLE-PROYECCION",
+      "RLA-MURO DILATADO",
+      "RLA-MURO INV DILATADO"
+    ],
+    "observacion": "Las capas con nombre DILATADO, cuando existen, contienen elementos locales de muro/contorno; sin texto o trazado continuo inequívoco no se clasifican como junta.",
+    "pendiente": "Si el plano impreso muestra una junta no codificada en el DXF, aportar captura AutoCAD/PDF con texto, leader y extremos físicos."
+  },
+  "congelado": true,
+  "auditoria_geometrica_juntas": {
+    "dominios": 29,
+    "suma_areas_dominios_m2": 932.527,
+    "union_areas_dominios_m2": 932.527,
+    "solape_max_dominios_m2": 0.0,
+    "huecos_y_excesos": "no_recalculables_sin_huella_canonica_en_este_json",
+    "aberturas_fuera_de_dominio": [],
+    "receptores_no_referenciados": [],
+    "interfaces_activas_que_atraviesan_dominio": [],
+    "transferencias": "por_definir"
+  },
+  "normalizacion_junta_edificio_II": {
+    "id_interfaz_global": "JD_EI_EII_10CM",
+    "id_tramo_nivel": "JD_EI_EII_CP3",
+    "ancho_total_m": 0.1,
+    "ancho_por_lado_m": null,
+    "contabilizacion": "una_sola_vez_en_modelo_conjunto",
+    "lado": "Edificio I",
+    "edificios_separados": [
+      "Edificio I",
+      "Edificio II"
+    ],
+    "impide_continuidad_losa": true,
+    "apoyos_por_separado": true,
+    "no_borde_libre": true,
+    "estado_correlacion": "por_correlacionar",
+    "trazado_edificio_I": "por_correlacionar",
+    "fuentes": [
+      {
+        "edificio": "Edificio II",
+        "archivo": "Union PDF's Edificio II.pdf",
+        "paginas": [
+          19
+        ],
+        "texto": "10 (JUNTA DE DILATACION)",
+        "ejes": "D-D' Fase 2"
+      },
+      {
+        "edificio": "Edificio I",
+        "archivo": "fuente DXF/JSON propia del nivel",
+        "paginas": [],
+        "texto": null,
+        "ejes": null
+      }
+    ],
+    "nota": "Una misma junta documentada en ambos edificios se contabiliza una sola vez. Los anchos informados desde cada lado no se suman."
+  }
+}

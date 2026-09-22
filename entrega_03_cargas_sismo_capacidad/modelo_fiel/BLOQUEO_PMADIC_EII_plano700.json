@@ -1,0 +1,120 @@
+{
+  "iteracion": "MODELO_FIEL_4",
+  "tarea": "3_bloqueo_PMADIC_EII_plano700",
+  "estado": "BLOQUEADO_FALTA_EVIDENCIA_POSICIONAL",
+  "resumen": {
+    "n_familias_catalogadas": 6,
+    "familias_estado": "AMBIGUO_NO_APLICADO",
+    "aplicada_al_FE_kN": 0.0,
+    "cobertura": 0.0,
+    "motivo": "no hay correspondencia familia->viga/nivel sin la lamina 700 con posiciones"
+  },
+  "catalogo_intensidades_kg_m": {
+    "A": 260,
+    "B": 260,
+    "C": 200,
+    "D": 1500,
+    "E": 260,
+    "F": 260
+  },
+  "conversion_g_kn_m": {
+    "A": 2.549729,
+    "B": 2.549729,
+    "C": 1.96133,
+    "D": 14.709975,
+    "E": 2.549729,
+    "F": 2.549729
+  },
+  "unidad_interpretacion": "Kg/m leido como masa lineal * g, o como kgf/m esa misma unidad (1 kgf = 9.80665 N); ambos dan el mismo q_kN/m. NO se asume kN/m directo.",
+  "conversion_ejemplo": {
+    "A": "260 Kg/m x 0.00980665 = 2.549729 kN/m",
+    "D": "1500 Kg/m x 0.00980665 = 14.709975 kN/m",
+    "nota": "no se suma longitud de tramo (desconocida hasta obtener la lamina)"
+  },
+  "fuentes_buscadas": [
+    {
+      "ubicacion": "tree completo (glob) DXF/DWG/PDF/PNG/JPG/TIFF/SVG *",
+      "resultado": "0 DXF/DWG/PDF en el arbol"
+    },
+    {
+      "ubicacion": "datos/geometria/*.json",
+      "resultado": "referencias a DXF estructurales del EI 2017_67-101/102/103; nada del 700"
+    },
+    {
+      "ubicacion": "analisis_estructural/edificio_II_casoG_PP_elementos/eii_viewer.json",
+      "resultado": "catalogo A-F de intensidades (PM_ADIC_lineal_kg_m y SC_lineal_kg_m); nota: 'plano 700 (DXF), catalogo por zona'; SIN posiciones por viga/nivel"
+    },
+    {
+      "ubicacion": "analisis_estructural/edificio_II_casoG_PP_elementos/eii_esfuerzos.json",
+      "resultado": "caso G estructural; sin catalogo posicional"
+    },
+    {
+      "ubicacion": "laboratorio_semana2/src/analisis/auditoria_xref_700.py",
+      "resultado": "auditoria CAD de metadatos del DXF 700 (XREF/bloques/INSERT/viewports); DXF referenciado en ruta EXTERNA; salidas: transformacion por nivel, SIN posiciones A-F"
+    },
+    {
+      "ubicacion": "laboratorio_semana2/datos/cargas/*",
+      "resultado": "solo catalogo del edificio I (SC/PM.ADIC kgf/m2); nada del EII"
+    },
+    {
+      "ubicacion": "laboratorio_semana2/datos/entradas_recibidas/edificio_II/2026-09-03/EII_2024_22/*",
+      "resultado": "figuras por nivel y ensayos CP2; sin catalogo del plano 700 con posiciones"
+    },
+    {
+      "ubicacion": "viewer_unity/Assets/StreamingAssets/lab_data/edificios/II/*",
+      "resultado": "solo geometria EII_CP1..CP4; tributary y regiones_tributarias SOLO del edificio I"
+    },
+    {
+      "ubicacion": "config/fuentes.json, README, docs/PLAN_*",
+      "resultado": "referencias documentales del plano 700; ninguna aporta posiciones"
+    }
+  ],
+  "hallazgo_fisico_fuera_del_repo": {
+    "dxf_700": {
+      "ruta": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\Datos Estructurales\\2017_67-700.dxf",
+      "tamano_bytes": 18207984,
+      "sha256": "F86BB87FDC16FB4780DD17DCF8C456C6581FE10D089CD234FE09E85594C2B5CF",
+      "modificado": "02/09/2026 10:53",
+      "nota": "existe pero NO esta versionado dentro del repo; no es evidencia reproducible de la entrega"
+    },
+    "pdf_edificio_II": {
+      "ruta": "C:\\Users\\josef\\OneDrive\\Universidad\\10mo Semestre\\MCOC\\Proyecto 1\\Datos Estructurales\\Union PDF's Edificio II.pdf",
+      "tamano_bytes": 14692764,
+      "sha256": "4899A8B0033141FEB7F630F3AB8392ACBAEC364DE647BF7607C168B10D0CBB28",
+      "modificado": "26/08/2026 06:21",
+      "nota": "contendria la lamina 700 vectorial (pagina correspondiente); no versionado en el repo"
+    }
+  },
+  "archivo_a_solicitar": {
+    "primario": {
+      "nombre": "2017_67-700.dxf",
+      "ruta_de_entrega_sugerida": "laboratorio_semana2/datos/entradas_recibidas/edificio_II/2026-09-03/EII_2024_22/00_planos/2017_67-700.dxf",
+      "sha256": "F86BB87FDC16FB4780DD17DCF8C456C6581FE10D089CD234FE09E85594C2B5CF",
+      "tamano_bytes": 18207984,
+      "requisitos": [
+        "trazado del texto/leader 'A'..'F' de PM.ADIC (y su rango Kg/m)",
+        "posicion de las polilines de trama/hatch por zona con unidad",
+        "la planta estructural embebida (bloques 2017_67-101/102/103) para la transformacion por nivel"
+      ]
+    },
+    "alternativo": {
+      "nombre": "paginas vectoriales de 'Union PDF's Edificio II.pdf' correspondientes a la lamina 700 con las zonas A-F",
+      "sha256": "4899A8B0033141FEB7F630F3AB8392ACBAEC364DE647BF7607C168B10D0CBB28"
+    },
+    "nota": "una vez en el repositorio se podra ejecutar el mapeo con controles: rotulo A-F, intensidad original, conversion g, tramo/longitud, IDs receptores por nivel, carga total por familia/nivel, conservacion y doble conteo. Si no llega, se mantiene cobertura 0 % y G_EII/peso sismico sin cambios."
+  },
+  "decision": {
+    "mantener": "mapeo_PMADIC_EII_plano700 (v3) AMBIGUO_NO_APLICADO 3/6 familias y cobertura 0",
+    "no_por_proximidad": true,
+    "no_regenerar": [
+      "G_EII (25970.9994 kN v3)",
+      "peso_sismico EII (28600.7138 kN v3)",
+      "EX/EY, superposicion, D/C"
+    ]
+  },
+  "consistencia_con_v3": {
+    "aplicada_al_FE_kN": 0.0,
+    "cobertura": 0.0,
+    "n_mapeada": 0
+  }
+}

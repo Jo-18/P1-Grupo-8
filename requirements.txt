@@ -1,0 +1,5 @@
+# Lectura de geometria (ModeloGeometria.from_dict)
+shapely>=2.0,<3
+
+# Validacion formal del formato contra el esquema
+jsonschema>=4.18,<5

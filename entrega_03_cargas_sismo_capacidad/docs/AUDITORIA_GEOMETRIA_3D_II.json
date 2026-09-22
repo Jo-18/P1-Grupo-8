@@ -1,0 +1,3425 @@
+{
+ "edificio": "II",
+ "fecha": "2026-09-16T02:18:29+00:00",
+ "tolerancia_m": 0.002,
+ "nota": "comparacion de extremos (directa o invertida), centro, longitud y orientacion de la barra FE contra el tramo fisico del objeto viewer (columna: [cota(nivel), cota(nivel+1)]; viga: polilinea del objeto). Fuera de tolerancia solo afecta a elementos 1A1.",
+ "n_elementos_1A1_CONTENIDO": 188,
+ "n_fuera_tolerancia": 0,
+ "metricas_agregadas": {
+  "d_extremo_m": {
+   "n": 186,
+   "max": 0.0,
+   "rms": 0.0,
+   "media": 0.0,
+   "fuera_tolerancia": 0
+  },
+  "d_centro_m": {
+   "n": 186,
+   "max": 0.0,
+   "rms": 0.0,
+   "media": 0.0,
+   "fuera_tolerancia": 0
+  },
+  "d_longitud_m": {
+   "n": 186,
+   "max": 0.0,
+   "rms": 0.0,
+   "media": 0.0,
+   "fuera_tolerancia": 0
+  },
+  "d_orientacion": {
+   "n": 186,
+   "max": 0.0,
+   "rms": 0.0,
+   "media": 0.0,
+   "fuera_tolerancia": 0
+  }
+ },
+ "fuera_tolerancia": [],
+ "items": [
+  {
+   "edificio": "II",
+   "tag": 6,
+   "tipo": "columna",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_COL_001",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 15,
+   "tipo": "columna",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_COL_002",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 24,
+   "tipo": "columna",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_COL_003",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 33,
+   "tipo": "columna",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_COL_004",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 42,
+   "tipo": "columna",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_COL_005",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 51,
+   "tipo": "columna",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_COL_006",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 60,
+   "tipo": "columna",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_COL_007",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 69,
+   "tipo": "columna",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_COL_008",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 3,
+   "tipo": "columna",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_COL_001",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 13,
+   "tipo": "columna",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_COL_002",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 22,
+   "tipo": "columna",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_COL_003",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 31,
+   "tipo": "columna",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_COL_004",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 40,
+   "tipo": "columna",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_COL_005",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 49,
+   "tipo": "columna",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_COL_006",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 58,
+   "tipo": "columna",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_COL_007",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 67,
+   "tipo": "columna",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_COL_008",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 8,
+   "tipo": "columna",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_COL_001",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 17,
+   "tipo": "columna",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_COL_002",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 26,
+   "tipo": "columna",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_COL_003",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 35,
+   "tipo": "columna",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_COL_004",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 44,
+   "tipo": "columna",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_COL_005",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 53,
+   "tipo": "columna",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_COL_006",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 62,
+   "tipo": "columna",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_COL_007",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 71,
+   "tipo": "columna",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_COL_008",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 10,
+   "tipo": "columna",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_COL_001",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 19,
+   "tipo": "columna",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_COL_002",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 28,
+   "tipo": "columna",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_COL_003",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 37,
+   "tipo": "columna",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_COL_004",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 46,
+   "tipo": "columna",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_COL_005",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 55,
+   "tipo": "columna",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_COL_006",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 64,
+   "tipo": "columna",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_COL_007",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 73,
+   "tipo": "columna",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_COL_008",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.96,
+    "L_tramo_m": 3.96
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 266,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_001",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 267,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_002",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 270,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_003",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 272,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_004",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 273,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_005",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 274,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_006",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 277,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_007",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 279,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_008",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 280,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_009",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 281,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_010",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 282,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_011",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 283,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_012",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 284,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_013",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 285,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_014",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 286,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_015",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 287,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_016",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 288,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_017",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 290,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_018",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 292,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_019",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 295,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_020",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 297,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_021",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 298,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_022",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 299,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_023",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 300,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_024",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 301,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_025",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 302,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_026",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 303,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_027",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 304,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_028",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 12.5,
+    "L_tramo_m": 12.5
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 315,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_033",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 4.65,
+    "L_tramo_m": 4.65
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 317,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_034",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.1,
+    "L_tramo_m": 5.1
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 319,
+   "tipo": "viga",
+   "nivel": "EII_CP1",
+   "viewer_id": "EII_CP1_V_035",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.1,
+    "L_tramo_m": 5.1
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 211,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_001",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 213,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_002",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 216,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_003",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 218,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_004",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 219,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_005",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 220,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_006",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 223,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_007",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 225,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_008",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 226,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_009",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 227,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_010",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 228,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_011",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 229,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_012",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 230,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_013",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 231,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_014",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 232,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_015",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 233,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_016",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 234,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_017",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 236,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_018",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 238,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_019",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 241,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_020",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 243,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_021",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 244,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_022",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 245,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_023",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 246,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_024",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 247,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_025",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 248,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_026",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 249,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_027",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 250,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_028",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 12.5,
+    "L_tramo_m": 12.5
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 261,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_033",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 4.65,
+    "L_tramo_m": 4.65
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 263,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_034",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.1,
+    "L_tramo_m": 5.1
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 265,
+   "tipo": "viga",
+   "nivel": "EII_CP1S",
+   "viewer_id": "EII_CP1S_V_035",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.1,
+    "L_tramo_m": 5.1
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 320,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_001",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 321,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_002",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 324,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_003",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 326,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_004",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 327,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_005",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 328,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_006",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 331,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_007",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 333,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_008",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 334,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_009",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 335,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_010",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 336,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_011",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 337,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_012",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 338,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_013",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 339,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_014",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 340,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_015",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 341,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_016",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 342,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_017",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 344,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_018",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 346,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_019",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 349,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_020",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 351,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_021",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 352,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_022",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 353,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_023",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 354,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_024",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 355,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_025",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 356,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_026",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 357,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_027",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 358,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_028",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 12.5,
+    "L_tramo_m": 12.5
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 368,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_033",
+   "estado": "CONTENIDO",
+   "medidas": {
+    "ok": false,
+    "d_extremo_m": 0.225,
+    "d_centro_m": 0.1125,
+    "d_longitud_m": 0.225,
+    "d_orientacion": 0.0,
+    "orientacion": "no_coincide",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.225
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 370,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_033",
+   "estado": "CONTENIDO",
+   "medidas": {
+    "ok": false,
+    "d_extremo_m": 5.0,
+    "d_centro_m": 2.5,
+    "d_longitud_m": 5.0,
+    "d_orientacion": 0.0,
+    "orientacion": "no_coincide",
+    "L_barra_m": 0.225,
+    "L_tramo_m": 5.225
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 372,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_034",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.225,
+    "L_tramo_m": 5.225
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 374,
+   "tipo": "viga",
+   "nivel": "EII_CP2",
+   "viewer_id": "EII_CP2_V_035",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.225,
+    "L_tramo_m": 5.225
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 375,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_001",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 376,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_002",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 379,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_003",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 381,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_004",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 382,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_005",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 383,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_006",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 386,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_007",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 388,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_008",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 389,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_009",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 390,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_010",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 391,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_011",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 392,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_012",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 393,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_013",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 394,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_014",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 395,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_015",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 396,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_016",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 397,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_017",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 399,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_018",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 401,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_019",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 404,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_020",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 406,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_021",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 407,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_022",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 408,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_023",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 409,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_024",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 410,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_025",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 411,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_026",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 412,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_027",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 413,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_028",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 12.5,
+    "L_tramo_m": 12.5
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 424,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_033",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 4.65,
+    "L_tramo_m": 4.65
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 426,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_034",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.1,
+    "L_tramo_m": 5.1
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 428,
+   "tipo": "viga",
+   "nivel": "EII_CP3",
+   "viewer_id": "EII_CP3_V_035",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.1,
+    "L_tramo_m": 5.1
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 429,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_001",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 430,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_002",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 433,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_003",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 435,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_004",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 436,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_005",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 437,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_006",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 440,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_007",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 442,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_008",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 443,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_009",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 444,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_010",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 445,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_011",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 446,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_012",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 447,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_013",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 448,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_014",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 449,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_015",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 450,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_016",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 451,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_017",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.0,
+    "L_tramo_m": 5.0
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 453,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_018",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 455,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_019",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 458,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_020",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 8.9,
+    "L_tramo_m": 8.9
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 460,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_021",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 7.25,
+    "L_tramo_m": 7.25
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 461,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_022",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 462,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_023",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 463,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_024",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 464,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_025",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 465,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_026",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 466,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_027",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 3.75,
+    "L_tramo_m": 3.75
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 467,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_028",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 12.5,
+    "L_tramo_m": 12.5
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 478,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_033",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 4.65,
+    "L_tramo_m": 4.65
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 480,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_034",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.1,
+    "L_tramo_m": 5.1
+   }
+  },
+  {
+   "edificio": "II",
+   "tag": 482,
+   "tipo": "viga",
+   "nivel": "EII_CP4",
+   "viewer_id": "EII_CP4_V_035",
+   "estado": "1A1",
+   "medidas": {
+    "ok": true,
+    "d_extremo_m": 0.0,
+    "d_centro_m": 0.0,
+    "d_longitud_m": 0.0,
+    "d_orientacion": 0.0,
+    "orientacion": "directa",
+    "L_barra_m": 5.1,
+    "L_tramo_m": 5.1
+   }
+  }
+ ]
+}

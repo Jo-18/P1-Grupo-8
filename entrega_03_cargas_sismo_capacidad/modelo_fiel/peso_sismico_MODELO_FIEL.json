@@ -1,0 +1,231 @@
+{
+  "caso": "peso_sismico",
+  "iteracion": "MODELO_FIEL_1",
+  "q_Q_kN_m2": 2.0,
+  "fraccion_Q": 0.5,
+  "EI": {
+    "por_piso": {
+      "-7.01": {
+        "nivel": "sotano nucleo (z -7.01)",
+        "z_m": -7.01,
+        "PP_checkpoint_kN": 172.7773,
+        "PP_confirmado_nuevo_kN": 0.0,
+        "PP_fiel_kN": 172.7773,
+        "Q_total_kN": 52.2101,
+        "W_fiel_kN": 198.8824,
+        "CM_G_x_m": 10.899606,
+        "CM_G_y_m": -10.819,
+        "CM_Q_x_m": 10.897991,
+        "CM_Q_y_m": -10.819,
+        "CM_W_x_m": 10.899394,
+        "CM_W_y_m": -10.819
+      },
+      "-4.01": {
+        "nivel": "CP1S",
+        "z_m": -4.01,
+        "PP_checkpoint_kN": 2324.3751,
+        "PP_confirmado_nuevo_kN": 1049.6912,
+        "PP_fiel_kN": 3374.0663,
+        "Q_total_kN": 721.8509,
+        "W_fiel_kN": 3734.9918,
+        "CM_G_x_m": 7.355815,
+        "CM_G_y_m": 2.183355,
+        "CM_Q_x_m": 7.974471,
+        "CM_Q_y_m": 0.269884,
+        "CM_W_x_m": 7.415598,
+        "CM_W_y_m": 1.99845
+      },
+      "-0.05": {
+        "nivel": "P1",
+        "z_m": -0.05,
+        "PP_checkpoint_kN": 6513.3433,
+        "PP_confirmado_nuevo_kN": 3340.7096,
+        "PP_fiel_kN": 9854.0528,
+        "Q_total_kN": 2011.4586,
+        "W_fiel_kN": 10859.7821,
+        "CM_G_x_m": 25.741667,
+        "CM_G_y_m": 7.918388,
+        "CM_Q_x_m": 26.811826,
+        "CM_Q_y_m": 8.536549,
+        "CM_W_x_m": 25.840775,
+        "CM_W_y_m": 7.975636
+      },
+      "3.91": {
+        "nivel": "P2",
+        "z_m": 3.91,
+        "PP_checkpoint_kN": 5266.698,
+        "PP_confirmado_nuevo_kN": 4405.815,
+        "PP_fiel_kN": 9672.513,
+        "Q_total_kN": 1698.458,
+        "W_fiel_kN": 10521.742,
+        "CM_G_x_m": 22.512011,
+        "CM_G_y_m": 8.266042,
+        "CM_Q_x_m": 22.278051,
+        "CM_Q_y_m": 8.246023,
+        "CM_W_x_m": 22.493128,
+        "CM_W_y_m": 8.264426
+      },
+      "7.87": {
+        "nivel": "P3",
+        "z_m": 7.87,
+        "PP_checkpoint_kN": 5715.7725,
+        "PP_confirmado_nuevo_kN": 4530.7615,
+        "PP_fiel_kN": 10246.534,
+        "Q_total_kN": 1865.054,
+        "W_fiel_kN": 11179.061,
+        "CM_G_x_m": 25.112882,
+        "CM_G_y_m": 8.23585,
+        "CM_Q_x_m": 24.894047,
+        "CM_Q_y_m": 8.20809,
+        "CM_W_x_m": 25.094627,
+        "CM_W_y_m": 8.233534
+      },
+      "11.83": {
+        "nivel": "P4",
+        "z_m": 11.83,
+        "PP_checkpoint_kN": 5234.7655,
+        "PP_confirmado_nuevo_kN": 3852.2488,
+        "PP_fiel_kN": 9087.0143,
+        "Q_total_kN": 1869.913,
+        "W_fiel_kN": 10021.9708,
+        "CM_G_x_m": 25.675582,
+        "CM_G_y_m": 8.237464,
+        "CM_Q_x_m": 25.104113,
+        "CM_Q_y_m": 8.354012,
+        "CM_W_x_m": 25.622269,
+        "CM_W_y_m": 8.248337
+      }
+    },
+    "W_total_kN": 46516.4301
+  },
+  "EII": {
+    "por_piso": {
+      "-4.01": {
+        "nivel": "EII_CP1S",
+        "z_m": -4.01,
+        "PP_checkpoint_kN": 4893.8546,
+        "PP_confirmado_nuevo_kN": 4893.8546,
+        "PP_fiel_kN": 4893.8546,
+        "Q_total_kN": 1062.0427,
+        "W_fiel_kN": 5424.8759,
+        "CM_G_x_m": 10.501235,
+        "CM_G_y_m": 7.876166,
+        "CM_Q_x_m": 10.529098,
+        "CM_Q_y_m": 7.620313,
+        "CM_W_x_m": 10.503962,
+        "CM_W_y_m": 7.851121
+      },
+      "-0.05": {
+        "nivel": "EII_CP1",
+        "z_m": -0.05,
+        "PP_checkpoint_kN": 5483.2985,
+        "PP_confirmado_nuevo_kN": 5483.2985,
+        "PP_fiel_kN": 5483.2985,
+        "Q_total_kN": 1062.0427,
+        "W_fiel_kN": 6014.3198,
+        "CM_G_x_m": 10.547672,
+        "CM_G_y_m": 7.955464,
+        "CM_Q_x_m": 10.189203,
+        "CM_Q_y_m": 7.752233,
+        "CM_W_x_m": 10.516022,
+        "CM_W_y_m": 7.93752
+      },
+      "3.91": {
+        "nivel": "EII_CP2",
+        "z_m": 3.91,
+        "PP_checkpoint_kN": 5438.4876,
+        "PP_confirmado_nuevo_kN": 5438.4876,
+        "PP_fiel_kN": 5438.4876,
+        "Q_total_kN": 1062.2177,
+        "W_fiel_kN": 5969.5965,
+        "CM_G_x_m": 10.42883,
+        "CM_G_y_m": 8.01996,
+        "CM_Q_x_m": 10.26342,
+        "CM_Q_y_m": 7.789088,
+        "CM_W_x_m": 10.414114,
+        "CM_W_y_m": 7.99942
+      },
+      "7.87": {
+        "nivel": "EII_CP3",
+        "z_m": 7.87,
+        "PP_checkpoint_kN": 5410.0473,
+        "PP_confirmado_nuevo_kN": 5410.0473,
+        "PP_fiel_kN": 5410.0473,
+        "Q_total_kN": 1062.0427,
+        "W_fiel_kN": 5941.0687,
+        "CM_G_x_m": 10.342435,
+        "CM_G_y_m": 8.032485,
+        "CM_Q_x_m": 10.263272,
+        "CM_Q_y_m": 7.787711,
+        "CM_W_x_m": 10.335359,
+        "CM_W_y_m": 8.010607
+      },
+      "11.83": {
+        "nivel": "EII_CP4",
+        "z_m": 11.83,
+        "PP_checkpoint_kN": 4745.3114,
+        "PP_confirmado_nuevo_kN": 4745.3114,
+        "PP_fiel_kN": 4745.3114,
+        "Q_total_kN": 1011.083,
+        "W_fiel_kN": 5250.8529,
+        "CM_G_x_m": 10.252655,
+        "CM_G_y_m": 7.9877,
+        "CM_Q_x_m": 10.448406,
+        "CM_Q_y_m": 7.471998,
+        "CM_W_x_m": 10.271502,
+        "CM_W_y_m": 7.938049
+      }
+    },
+    "W_total_kN": 28600.7138
+  },
+  "rangos": {
+    "EI": {
+      "W_inferior_kN": 46516.4301,
+      "pendientes_cuantificados_kN": 8453.54,
+      "W_rango_superior_kN": 54969.97,
+      "nota": "no incluye V.S.I. 20/150 ni metalicos (PP no cuantificado); son el limite del rango solo con lo cuantificado"
+    },
+    "EII": {
+      "W_inferior_kN": 28600.7138,
+      "pendientes_cuantificados_kN": 3752.91,
+      "W_rango_superior_kN": 32353.62,
+      "nota": "muros 3328.79 + losas 6.27 + ruteo 417.85"
+    }
+  },
+  "pendientes_excluidos": {
+    "EI": "tramos BASE->nivel, contencion, V.S.I. sin material, metalicos (no cuantificados)",
+    "EII": "muros/losas/ruteo (cuantificados, ver G_EII_MODELO_FIEL)"
+  },
+  "verificaciones": [
+    {
+      "check": "equil_g_ei_fiel",
+      "estado": "OK",
+      "detalle": "W == PP_fiel + 0.5 Q"
+    },
+    {
+      "check": "q_ei_total",
+      "estado": "OK",
+      "detalle": "Q EI 8218.94463"
+    },
+    {
+      "check": "q_eii_total",
+      "estado": "OK",
+      "detalle": "Q EII 5259.42883"
+    },
+    {
+      "check": "pp_eii_total",
+      "estado": "OK",
+      "detalle": "PP EII 25970.9994"
+    },
+    {
+      "check": "pp_ei_fiel_total",
+      "estado": "OK",
+      "detalle": "PP EI fiel 42406.9577"
+    },
+    {
+      "check": "rango_maqueta",
+      "estado": "OK",
+      "detalle": "W_max > W_min"
+    }
+  ]
+}
