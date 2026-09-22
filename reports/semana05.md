@@ -44,11 +44,13 @@ contra el resultado FE de referencia (no contra los rotulos de correspondencia).
 
 ## 2. Verificacion de superposicion (3 casos de carga, un elemento, una componente)
 
-Fuente mostrada: `esfuerzos_FE_EDIFICIO_{I,II}.json` (viewer). Fuente de
-referencia: `pm_capacidad_demanda_{I,II}.json` -> `por_elemento` (mismo viewer_id,
-caso dominante, D/C interpolado). Elementos de ejemplo con los mismos viewer_id en
-los 3 casos: **EI tag 6** (`COL_EI_CP1_E_1`, componente `Mz_j`) y **EII tag 10**
-(`EII_CP3_COL_001`, componente `Mz_j`).
+Fuente mostrada: `esfuerzos_FE_EDIFICIO_{I,II}.json` (viewer). Los 3 estados se
+verifican contra los valores numericos del MISMO paquete exportado
+(`evidence/superposicion_3_casos_Mz_j_{I,II}.json`), con el criterio de la
+convencion del viewer (`Mz_j` = indice 11). Elementos de ejemplo con el mismo
+viewer_id en los 3 casos (verificado en `esfuerzos_FE_EDIFICIO_{I,II}.json` ->
+`correspondencia.viewer_id`): **EI tag 6** (`COL_EI_CP1_E_1`, P1, componente
+`Mz_j`) y **EII tag 10** (`EII_CP3_COL_001`, componente `Mz_j`).
 
 Los 3 casos, numericamente (misma componente `Mz_j`; unidades kN-m; valores del
 JSON exportado REAL `evidence/superposicion_3_casos_Mz_j_{I,II}.json`):
@@ -138,7 +140,7 @@ guardan copias `..._ANTERIOR_*.json`, usadas en la verificacion de restauracion.
 | Diagramas | IMPLEMENTADO | N/V/M por elemento FE; interiores de viga con carga distr. NO exactos (rotulado) |
 | Superposicion de estados | IMPLEMENTADO | 3 casos seleccionables (U1_GQ/U2_EX_POS/U3_EY_NEG) + superposicion libre con sliders λ (G,Q,EX,EY) verificada exacta |
 | P-M (capacidad) | IMPLEMENTADO | curva P-M DEMO hipotesis (armadura DEMO rotulada, NO diseño) + punto P-M y D/C DINAMICOS bajo superposicion libre |
-| Modificacion del modelo | IMPLEMENTADO | MOD1/MOD2 reales corridos + restaurados + verificados (seccion 2) MI + laboratorio interactivo M1/M2/M3/M4 con criterio de reanalisis (seccion 8) |
+| Modificacion del modelo | IMPLEMENTADO | MOD1/MOD2 reales corridos + restaurados + verificados (seccion 2) + laboratorio interactivo M1/M2/M3/M4 con criterio de reanalisis (seccion 8) |
 | Build movil | IMPLEMENTADO | APK REAL: `artifacts/android/lab-viewer-inicial.apk` (71,051,518 B, rc=0, Succeeded, 0 errores) |
 
 ## 5. Evaluacion de las 6 preguntas que el viewer debe responder
@@ -148,20 +150,30 @@ guardan copias `..._ANTERIOR_*.json`, usadas en la verificacion de restauracion.
 | Donde esta el elemento | Viewer (tag, viewer_id, nivel, coordenadas) | SI |
 | Como esta apoyado | Viewer (apoyos.json, apoyos por viewer) | SI |
 | Que lo carga | Viewer (casos G/Q/EX/EY + expresion NCh3171 combinada) | SI |
-| Como se deforma | Viewer (deformada FE por caso; envolvente pendiente) | PARCIAL |
+| Como se deforma | Viewer (deformada FE por caso y envolvente por nodo; slider de amplificacion) | IMPLEMENTADO |
 | Que fuerzas/componentes tiene | Viewer (N,V,M en ambos extremos; comp. dominante) | SI |
 | Cuanta capacidad tiene | Viewer (curva P-M + D/C); **hipotesis DEMO**, no diseno | PARCIAL |
 
-## 6. Funcion compleja implementada por agente (documentada y verificada)
+## 6. Funciones complejas implementadas por agente (documentadas y verificadas)
 
-Funcion: **interpolacion de mu en modo `interpolado`** del D/C viewer
-(`pm_capacidad_demanda_{I,II}.json`): toma M_demanda del caso de carga y M_u_N de la
-curva P-M, interpola. Verificacion independiente (no reusa el exportador): script
-python recalculo D/C = M_demanda / M_u_N para EI tag 6, dio coincidencia a 1e-4
-(0.6954). La curva P-M usa armadura **DEMO** -> se rotula explicitamente como
-hipotesis (no presentada como diseno confirmado). Los diagramas interiores de viga
-con carga distribuida se muestran como interpolados, NO como resultado exacto del
-modelo de barras.
+1. **Motor de superposicion lineal evaluado al vuelo** (`EsfuerzosController`,
+   semana 5): dado el vector λ de los sliders, combina los 4 casos base
+   G/Q/EX/EY (12 componentes por elemento y los 3 desplazamientos por nodo del
+   FE) sin re-resolver. Verificacion independiente (script que NO reusa el
+   codigo del viewer): `evidence/evidencia_1_linealidad.txt` -- 378 elementos x
+   12 componentes x 9 combinaciones con `max|diff| = 6.2e-06` y deformada por
+   nodo con `max|diff| = 2.0e-08`. OK.
+2. **D/C dinamico con M_u interpolado** (`MuParaN`, modo `interpolado`):
+   `M_u(P)` se interpola en la curva de capacidad `N-kN/M-kN` con la convencion
+   del paquete `P = max(compresion N_i,N_j)`, `M = max(|My_i|,|Mz_i|,|My_j|,|Mz_j|)`.
+   Verificacion independiente: `evidence/evidencia_2_pm.txt` -- D/C dinamico ==
+   `pm_capacidad_demanda` en 115/115 elementos de la curva,
+   `max|diff| P=1.4e-06, M=1.6e-06, D/C=4.9e-05`. OK (corroborado en
+   `evidence/superposicion_estados_s05.json`: `D_C_recalculado == D_C_rotulado`).
+3. La curva P-M usa armadura **DEMO** -> se rotula explicitamente como hipotesis
+   (no presentada como diseno confirmado). Los diagramas interiores de viga
+   con carga distribuida se muestran como interpolados, NO como resultado exacto del
+   modelo de barras.
 
 ## 7. Pendientes explicitos (no ocultos)
 
@@ -254,10 +266,10 @@ factor de area tributaria del laboratorio). Modulo SOLO lectura de datos FE.
 - `evidence/demanda_capacidad_dinamica.py` -> salida
   `evidence/evidencia_2_pm.txt`: **D/C DINAMICO == pm_capacidad_demanda** en 115/115
   elementos demostrables de la curva: `max|diff| P=1.4e-06, M=1.6e-06, D/C=4.9e-05`. OK.
-- QA Unity batchmode (5200.x, `6000.5.10f1`): compilacion limpia (solo warnings
-  previos), `CheckData` OK, `CheckEsfuerzosOverlay` **completo OK** (FE 378/253,
-  13 casos por edificio, valores ancla y envolvente coincidentes, geometria del
-  overlay con error maximo 0.0000 m, restauracion OK).
+- QA Unity batchmode (editor `6000.5.10f1`): compilacion limpia (solo warnings
+  previos UAC1001), `CheckData` OK, `CheckEsfuerzosOverlay` **completo OK** (FE
+  378/253, 13 casos por edificio, valores ancla y envolvente coincidentes,
+  geometria del overlay con error maximo 0.0000 m, restauracion OK).
 - Build movil: ver seccion 3 (APK real 71 051 518 B).
 - Repositorio (gestion): `git init` + commit raiz **`0579e6b`** (563 archivos,
   arbol limpio); evidencias verificadas en `evidence/` y reporte en `reports/`;
@@ -296,8 +308,9 @@ global; el HUD lo rotula ("factor lab x...").
 Las celdas son una particion de la losa (disjuntas y cubrientes), por lo que
 `sum(CargaKN de todas las celdas del piso) = total G tributario del piso` y
 `sum(CargaKN de los receptores) = misma carga`, sin fugas ni solapes. El QA
-`CheckData` verifica ese invariante en el estatico: receptors=166 y
-cargaTotalG ~= 25,227.81 kN para el Edificio I con la suma conservada.
+`CheckData` del estatico reporta esa suma para el Edificio I: receptores
+tributarios = 166 y `cargaTotalG` ~= 25,227.81 kN (suma de las celdas del
+paquete).
 
 ### Respuesta visual
 El receptor identificado se resalta (material magenta con guardado/restauracion
