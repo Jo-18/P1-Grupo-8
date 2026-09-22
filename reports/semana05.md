@@ -17,6 +17,21 @@
 >    El METODO de build (`BuildPipeline.BuildPlayer`) SI se AGREGO y el APK REAL
 >    fue generado (ver seccion 3: APK REAL 71,051,518 B, rc=0, Succeeded).**
 
+## 0. Cumplimiento de la rubrica (mapa de la entrega)
+
+| Criterio (rubrica 20 pts) | Pts | Donde se responde en este reporte |
+|---|---|---|
+| Viewer estructural | 5 | Seccion 1 (tabla de funciones) y seccion 5 (6 preguntas del viewer) |
+| Modificacion / reanalisis | 4 | Seccion 2 (MOD1/MOD2 reales) y seccion 8.2 (laboratorio M1-M4, criterio explicito y flujo reproducible de reanalisis) |
+| Superposicion / demanda-capacidad | 4 | Seccion 2 (3 estados verificados numericamente) + 8.1/8.4 (sliders lambda y D/C dinamico, evidencia con exit 0) |
+| QA / UX | 3 | Seccion 5 (UX estructural) y seccion 8.4 (QA batchmode Unity completo) |
+| Preparacion movil, IA y gestion | 4 | Seccion 3 (build movil inicial + telefono objetivo) + seccion 6 (funcion compleja por agente, verificada) + gestion (git/evidencia, seccion 8.4 y pendientes) |
+
+Nota: el solver de referencia del proyecto NO es el binario OpenSees sino el modelo
+FE funcional Python `src/modelo_fiel/modelo_fe_completo.py` (correccion de la v1 en
+la introduccion). El pipeline persigue la misma semantica
+interfaz/dato -> modelo -> solver -> resultados -> Unity que pide la rubrica.
+
 ## 1. Correccion de la superposicion (error reconocido y corregido)
 
 Error en la v1: se rotularon los estados de **superposicion** con los estados de
@@ -204,6 +219,23 @@ corresponden al modelo ORIGINAL" + comando reproducible
   `StreamingAssets/lab_data/modelo_modificado_lab.json` con el registro completo y
   el flag global, para re-correr el solver con el mismo conjunto de cambios.
 
+**Flujo manual reproducible (interfaz -> dato -> modelo -> solver -> resultados
+-> Unity)**, para cualquier MOD (batch o lab):
+
+1. Aplicar la modificacion desde la interfaz del viewer (M1..M4) o sobre los
+   datos (`config/cargas.json`, `config/sismo.json`) como en MOD1/MOD2.
+2. El laboratorio deja el registro en
+   `modelo_modificado_lab.json` (StreamingAssets) y enciende el banner rojo
+   "requiere reanalisis" con el comando exacto a correr.
+3. Correr el solver y re-exportar resultados:
+   `python -X utf8 -m src.modelo_fiel.modelo_fe_completo --g --sismo --combinadas`
+   (regenera `esfuerzos_FE_EDIFICIO_{I,II}.json` y
+   `pm_capacidad_demanda_{I,II}.json`).
+4. Re-empaquetar para el viewer:
+   `python -X utf8 src/lab/export_lab_data.py` (copia a StreamingAssets).
+5. Rejugar en Unity: el viewer relee el paquete y muestra los resultados del
+   modelo modificado; con "Reiniciar lab" se limpia el registro y el banner.
+
 ### 8.3 SQ4 - Carga movil (sidequest)
 
 `CargaMovilController` (toggle "SQ4 Carga movil" en panel izquierdo): con el modo
@@ -227,4 +259,48 @@ factor de area tributaria del laboratorio). Modulo SOLO lectura de datos FE.
   13 casos por edificio, valores ancla y envolvente coincidentes, geometria del
   overlay con error maximo 0.0000 m, restauracion OK).
 - Build movil: ver seccion 3 (APK real 71 051 518 B).
-- Repositorio: `git init` + commit (hash en la entrega), ver `git log`.
+- Repositorio (gestion): `git init` + commit raiz **`0579e6b`** (563 archivos,
+  arbol limpio); evidencias verificadas en `evidence/` y reporte en `reports/`;
+  ver `git log`.
+
+## 9. Sidequest: carga movil (SQ4) -- `CargaMovilController.cs`
+
+Toggle "SQ4 Carga movil" en el panel izquierdo (semana 5) activa el modo de
+identificacion de la viga receptora de la carga muerta bajo el cursor. Modulo
+**solo lectura** del paquete tributario (`regiones_tributarias.json`), no altera
+el modelo FE.
+
+### Regla fisica
+La carga muerta G de un piso se reparte hacia sus vigas receptoras por CELDAS
+tributarias (reparto directo: cada zona X-Y de la losa pertenece a una sola
+celda/poligono -> un solo receptor; sin momentos de losa ni piso como diafragma
+flexible). Clic: se levanta un rayo desde la camara; el impacto sobre la losa se
+transforma al frame local del edificio (`local = world - BuildingOrigin("I")`,
+inversa de `ToWorldModel`) y se busca la celda cuyo poligono X-Z contiene al
+punto proyectado y cuya cota dista <= 0.6 m del punto; de varias, la de menor
+distancia de cota. La celda identificada define la viga receptora que reparte
+esa zona (mismas celdas que el FE uso para cargar las vigas con G).
+
+### Panel
+HUD fijo abajo-izquierda (330x108 px) mientras el modo esta activo: receptor
+(viewer_id y nivel), losa de origen, cota, area de la celda (m2), carga de la
+celda (kN) y reparto G hacia el receptor.
+
+### Reparto
+Al receptor le llega `reg.CargaKN` de la celda (lo que el FE asigno como carga
+permanente G distribuida sobre esa viga). Si el laboratorio tiene activo el
+factor de area tributaria (M4), la carga mostrada se multiplica por el factor
+global; el HUD lo rotula ("factor lab x...").
+
+### Conservacion de la carga
+Las celdas son una particion de la losa (disjuntas y cubrientes), por lo que
+`sum(CargaKN de todas las celdas del piso) = total G tributario del piso` y
+`sum(CargaKN de los receptores) = misma carga`, sin fugas ni solapes. El QA
+`CheckData` verifica ese invariante en el estatico: receptors=166 y
+cargaTotalG ~= 25,227.81 kN para el Edificio I con la suma conservada.
+
+### Respuesta visual
+El receptor identificado se resalta (material magenta con guardado/restauracion
+del color original al moverse/soltar), el HUD actualiza el valor, y la camara/
+panel no dispara identificacion cuando el cursor esta sobre UI
+(`InteraccionUI.PointerSobreUI()`).
