@@ -48,9 +48,3 @@ evidencia_ocr/
 .env
 .env.*
 !.env.example
-
-# ===== Respaldos temporales de sesion (no publicables) =====
-*.mod1_bkp*
-*_MOD1_bkp.json
-*_ANTERIOR_*
-.utmp/

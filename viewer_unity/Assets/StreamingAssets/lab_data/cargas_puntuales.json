@@ -1,4 +1,0 @@
-{"formato": "cargas_puntuales_v1", "cargas": [
-  {"edificio": "I", "elemento_tag": 8, "elemento_viewer_id": null, "nivel": "P2", "activa": true, "magnitud_kN": 219.6237, "direccion_unity_unidad": [1, 0, 0], "xi": 0.738},
-  {"edificio": "II", "elemento_tag": 3, "elemento_viewer_id": null, "nivel": "EII_CP1S", "activa": true, "magnitud_kN": 300, "direccion_unity_unidad": [1, 0, 0], "xi": 0.731}
-]}

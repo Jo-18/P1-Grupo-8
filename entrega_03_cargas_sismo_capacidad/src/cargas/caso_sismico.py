@@ -204,9 +204,8 @@ def _verificaciones(marco, sol, sismo_res, direccion, cotas, edificio):
     idx = 0 if direccion == "X" else 1
     otro = 1 if direccion == "X" else 0
 
-    # 1) sum fn = Fi por nivel (la banda del ledger se valida contra el z real
-    #    del nodo del modelo, no contra la cota nominal, para contemplar las
-    #    bandas del foso y las cotas desplazadas de los montantes)
+    # 1) sum fn = Fi por nivel
+    por_nivel = _agrupar_por_nivel(cargas_sismo, marco.key_of_tag, cotas)
     corte_basal = 0.0
     sum_check = []
     for fl in ledger:
@@ -214,8 +213,11 @@ def _verificaciones(marco, sol, sismo_res, direccion, cotas, edificio):
         fi = fl["F_lateral_kN"]
         corte_basal += fi
         f_aplic = 0.0
-        for t, f in cargas_sismo.items():
-            if abs(marco.key_of_tag[t][2] - z) <= 0.1:
+        for cod, car in por_nivel.items():
+            fc = cotas.get(cod)
+            if fc is None or abs(fc - z) > 0.05:
+                continue
+            for f in car.values():
                 f_aplic += f[idx]
         sum_check.append({"z_m": z, "F_esperada_kN": round(fi, 6),
                           "F_aplicada_kN": round(f_aplic, 6),
@@ -348,7 +350,7 @@ def run_caso(edificio: str, direccion: str) -> int:
     cfg_sismo = leer_config_sismo()
     q_Q = float(cfg_cargas["q_Q"][edificio]["q_Q_kN_m2"])
     etiq_q = cfg_cargas["q_Q"][edificio].get("etiqueta_corrida",
-                                             "Q_%s_NCH1537_2009_3.0_kN_m2" % edificio)
+                                             "Q_%s_ADOPTADA_2.0_kN_m2" % edificio)
 
     # Construir modelo una vez para ensamblar cargas y pesos
     marco, G_flat, Q_flat, cotas = _marcos_y_cargas(edificio, q_Q)
