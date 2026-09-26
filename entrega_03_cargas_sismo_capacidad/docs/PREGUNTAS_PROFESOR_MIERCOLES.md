@@ -21,14 +21,16 @@ respuesta destraba.
 
 ## 2. Valor real de `q_Q` (carga viva repartida) y cómo se pide
 
-- **Contexto:** `q_Q` está `null` en `config/cargas.json` (ambos edificios). El caso Q
-  del Edificio I ya corre como FE completo con `--demo` y `q_Q=2.0 kN/m²` marcado
-  `DEMOSTRACION_ARBITRARIA_qQ_2.0`; el Edificio II quedó `PREPARADO_NO_EJECUTADO`.
-- **Pregunta:** ¿cuál es el valor real de carga viva por m² a usar (y si aplica en
-  losa y en la totalidad de la planta)? ¿Se debe usar *un solo* `q_Q` o hay
-  sobrecarga por destinos?
-- **Bloquea / destraba:** quitar la marca de demostración y ejecutar el caso Q
-  definitivo (`q_Q` real) en ambos edificios.
+- **Contexto:** `q_Q` era `null` en `config/cargas.json`. Hoy quedó **resuelto con la
+  norma**: se adoptó `q_Q = 3,0 kN/m²` como **mínimo** de la categoría "Escuelas ·
+  salas de clases" de la **Tabla 4 de la NCh 1537:2009** (`PARAMETRO_BASADO_EN_NORMA_...`
+  ), aplicada a ambos edificios. El caso Q corre como FE completo en EI y EII sin
+  `--demo` (etiquetas `Q_EI/EII_NCH1537_2009_3.0_kN_m2`).
+- **Pregunta:** ¿confirmar que es válido fijar `q_Q=3,0 kN/m²` (mín. NCh 1537:2009
+  Tabla 4, "Escuelas · salas de clases") como carga viva repartida de uso general de
+  los edificios, o corresponde otro destino/valor? ¿Y si debiera diferenciarse por
+  niveles (solo se usa un `q_Q` hoy)?
+- **Bloquea / destraba:** confirmar el criterio normativo adoptado (ya sin `--demo`).
 
 ## 3. Definición del sismo `EX` / `EY` (antes bloqueado por parámetros)
 
@@ -52,9 +54,12 @@ respuesta destraba.
 
 ## 5. Sección real para el análisis de capacidad (RC) del Edificio I
 
-- **Contexto:** la sección `DEMO_50x50_8#25` (fc=21 MPa, fy=420 MPa, 196 fibras de
-  hormigón + 8 de acero) es arbitraria y marcada como demostración; no proviene de la
-  geometría FE del edificio.
+- **Contexto:** la sección de demostración oficial es `DEMO_RC_EI` (**0,70 × 0,70 m,
+  12Ø25, rec 0,04 m, fc=40 MPa (hipótesis del grupo G40), fy=420 MPa**; 208 fibras
+  totales: 196 de hormigón + 12 de acero). La geometría **sí** proviene de la
+  geometría FE del edificio (columnas `P. 70x70` documentadas); el **armado es
+  demostración** (real no documentado). La antigua `DEMO_50x50_8#25` (fc=21) quedó
+  eliminada como artefacto obsoleto.
 - **Pregunta:** ¿qué sección(columna/viga) real se debe analizar con la fibra
   (dimensiones, recubrimiento, cuantía y materiales según el edificio)? ¿Se cuenta con
   planos o se fija un criterio para elegirla?

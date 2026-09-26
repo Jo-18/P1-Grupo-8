@@ -18,7 +18,7 @@ class TestCargaVivaQ(unittest.TestCase):
 
     def test_q_Q_null_sin_demo_aborta(self):
         cfg = {"q_Q": {"I": {"q_Q_kN_m2": None, "estado": "PENDIENTE"}},
-               "DEMOSTRACION_ARBITRARIA": {"q_Q_kN_m2": 2.0, "marcado": True},
+               "DEMOSTRACION_ARBITRARIA": {"q_Q_kN_m2": 3.0, "marcado": True},
                "aplicada_al_modelo_FE": False, "tolerancia_rel_sum_Q": 0.005}
         with self.assertRaises(SystemExit):
             aplicar_Q("I", self.geom_I, cfg, usar_demo=False)
@@ -48,8 +48,9 @@ class TestCargaVivaQ(unittest.TestCase):
         self.assertEqual(cfg["aplicada_al_modelo_FE"], antes)  # no muta el flag
         catalogo = rep["catalogo_sobrecarga_documentada"]
         self.assertIn("SC_por_nivel_kgf_m2", catalogo)
-        self.assertEqual(rep["q_Q"]["q_Q_kN_m2"], 2.0)
-        self.assertEqual(rep["q_Q"]["estado"], "PARAMETRO_ADOPTADO_POR_EL_GRUPO")
+        self.assertEqual(rep["q_Q"]["q_Q_kN_m2"], 3.0)
+        self.assertEqual(rep["q_Q"]["estado"],
+                         "PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4")
 
     def test_catalogo_eii_tiene_SC_lineal_no_uniforme(self):
         cat = leer_catalogo_sobrecarga("II")

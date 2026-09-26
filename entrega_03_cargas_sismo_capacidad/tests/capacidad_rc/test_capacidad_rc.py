@@ -10,15 +10,23 @@ from src.capacidad_rc.demanda_capacidad import _M_u_interp
 from src.capacidad_rc.diagrama_pm import puntos_pm
 from src.capacidad_rc.materiales import Concrete01, Steel02Simpl
 from src.capacidad_rc.momento_curvatura import curva_mphi
-from src.capacidad_rc.seccion import seccion_demo
+from src.capacidad_rc.seccion import seccion_con_armado
 
 _HAS_OPS = importlib.util.find_spec("openseespy") is not None
+
+
+def _seccion_oficial_demo():
+    """Seccion oficial de demostracion DEMO_RC_EI (0.70x0.70 m, 12#25, fc=40 MPa,
+    rec=0.04 m, fy=420 MPa). Reemplaza a la generica DEMO_50x50_8#25 eliminada."""
+    return seccion_con_armado(
+        h=0.70, b=0.70, rec=0.04, diam_m=0.025, n_cn=4,
+        n_en_medio_cn_Y=2, n_en_medio_cn_Z=2, fc_mpa=40.0, fy_mpa=420.0)
 
 
 class TestCapacidadRC(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.sec = seccion_demo()
+        cls.sec = _seccion_oficial_demo()
 
     def test_area_fibras_conserva_area_bruta(self):
         total = fibra_mod.area_total_fibras(self.sec)
@@ -34,9 +42,10 @@ class TestCapacidadRC(unittest.TestCase):
     def test_Mu_sanity_rango_demo(self):
         cur = curva_mphi(self.sec, N_kN=0.0, kappa_max=0.24, n_pasos=240)
         Mu = float(cur["M_u_kN_m"])
-        # rango generoso para una 0.50x0.50, fc21, fy420, 8#25 (esperado ~330-430 kN*m)
-        self.assertGreater(Mu, 250.0)
-        self.assertLess(Mu, 500.0)
+        # rango generoso para la seccion oficial de demostracion DEMO_RC_EI
+        # (0.70x0.70, fc40, fy420, 12#25; M_u(N=0)=896.46 kN*m en el informe)
+        self.assertGreater(Mu, 650.0)
+        self.assertLess(Mu, 1150.0)
         # el M_u debe venir del criterio de falla (no del maximo sobre toda la malla)
         self.assertNotEqual(cur["criterio_falla"], "CAP_MALLA_SIN_FALLA")
         # valores exactos de los limites utilizados
@@ -58,14 +67,14 @@ class TestCapacidadRC(unittest.TestCase):
             self.assertGreater(cur["indice_fractura_acero"],
                                cur["indice_aplastamiento"])
         Mu = float(cur["M_u_kN_m"])
-        self.assertGreater(Mu, 330.0)
-        self.assertLess(Mu, 430.0)
+        self.assertGreater(Mu, 800.0)
+        self.assertLess(Mu, 1000.0)
 
     def test_criterio_termino_fractura_acero_eps_su(self):
         """Modo 2: una fibra de ACERO alcanza abs(eps) >= eps_su.
 
         Con eps_su=0.015 la fractura del acero ocurre ANTES que el aplastamiento
-        (en el aplastamiento la fibra de acero mas exigida tiene ~0.035 > 0.015)."""
+        (en el aplastamiento la fibra de acero mas exigida supera 0.015)."""
         cur = curva_mphi(self.sec, N_kN=0.0, kappa_max=0.24, n_pasos=480,
                          eps_su=0.015)
         self.assertEqual(cur["criterio_falla"],
@@ -78,8 +87,9 @@ class TestCapacidadRC(unittest.TestCase):
         if cur["indice_aplastamiento"] is not None:
             self.assertLess(cur["indice_fractura_acero"],
                             cur["indice_aplastamiento"])
-        # con corte por acero M_u es menor que con aplastamiento
-        self.assertLess(float(cur["M_u_kN_m"]), 378.99)
+        # con corte por acero M_u es menor que la referencia con aplastamiento
+        cur_ref = curva_mphi(self.sec, N_kN=0.0, kappa_max=0.24, n_pasos=480)
+        self.assertLess(float(cur["M_u_kN_m"]), float(cur_ref["M_u_kN_m"]))
 
     def test_criterio_termino_cap_malla_sin_falla(self):
         """Modo 3: la malla de curvaturas termina sin alcanzar ningun criterio."""

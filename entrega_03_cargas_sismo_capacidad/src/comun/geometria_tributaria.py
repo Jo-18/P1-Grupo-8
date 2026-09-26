@@ -1,10 +1,16 @@
-"""Geometria tributaria canonica. Reutiliza EXACTAMENTE los artefactos de Semana 2:
+"""Geometria tributaria canonica. Reutiliza EXACTAMENTE las copias internas mínimas:
 
-  - Edificio I : `viewer_unity/Assets/StreamingAssets/lab_data/edificios/I/tributary/por_viga.json`
-                 (area tributaria por receptor/viga por nivel; pesos nodales por longitud de segmento).
-  - Edificio II: `.../CP2_transferencia_mixta_FASE4B/tablas/areas_tributarias.csv`
-                 (ensayo de transferencia del nivel EII_CP2 a 1 kPa; los demas niveles
-                 del EII no tienen geometria tributaria versionada).
+  - Edificio I : `data/externas/por_viga.json`
+                 (copia interna de viewer_unity/Assets/StreamingAssets/lab_data/
+                 edificios/I/tributary/por_viga.json; area tributaria por
+                 receptor/viga por nivel; pesos nodales por longitud de segmento).
+  - Edificio II: `data/externas/areas_tributarias.csv`
+                 (copia interna del ensayo CP2 FASE4B; nivel EII_CP2; los demas
+                 niveles del EII no tienen geometria tributaria versionada).
+
+Las rutas se resuelven SIEMPRE relativo a la raiz de la copia (sin rutas
+absolutas): si la entrega se corre desde el repo o desde una copia temporal
+aislada, `REPO` apunta a la carpeta que contiene `entrega_03_...`.
 
 Nada de esto modifica fuentes: solo lectura.
 """

@@ -7,14 +7,14 @@ Edificio I (DEMO_RC_EI):
   columnas evaluadas (procedimiento) : 97
   dentro de D/C<=1 (aritmetico)     : 97
   fuera de D/C<=1 (aritmetico)      : 0
-  max D/C (demo)                    : 0.501
+  max D/C (demo)                    : 0.537
   columna critica                   : 208
 
 Edificio II (DEMO_RC_EII):
   columnas evaluadas (procedimiento) : 32
   dentro de D/C<=1 (aritmetico)     : 32
   fuera de D/C<=1 (aritmetico)      : 0
-  max D/C (demo)                    : 0.258
+  max D/C (demo)                    : 0.257
   columna critica                   : 25
 
 ADVERTENCIA: secciones de DEMOSTRACION (armado 12#25). El resultado

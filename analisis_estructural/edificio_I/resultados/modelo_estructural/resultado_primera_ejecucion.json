@@ -1554,5 +1554,5 @@
       "nota": "receptores con carga tributaria asignada pero sin nodos FE en el modelo; su carga NO se aplica. Debe resolverse, no descartarse."
     }
   },
-  "tiempos_s": 3.74
+  "tiempos_s": 3.92
 }

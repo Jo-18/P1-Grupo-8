@@ -1,0 +1,122 @@
+{
+  "nombre_estado": "G_EII_MODELO_FIEL_1",
+  "G_confirmado_kN": 25970.999352,
+  "G_por_componente_confirmado_kN": {
+    "columnas": 1522.3043,
+    "vigas_incl_V031": 11585.4664,
+    "V_031": 179.4615,
+    "muros_pipeline_directo": 3192.4703,
+    "losas_aplicada": 9670.7583
+  },
+  "pendientes_explicitos": {
+    "muros_kN": 3328.7897,
+    "muros_explicacion": "publicado 6521.26 vs pipeline 3192.47: A=t*(L/2) por montante (3.192,47); la identidad A=t*L por panel daria 4.330,02; deficit = 2.191,24 + 1.137,55 = 3.328,79",
+    "losas_kN": 6.2684,
+    "ruteo_no_transferido_kN": 417.8508,
+    "n_ruteos_sin_camino": 14,
+    "ruteo_explicacion": "14 cargas SIN camino estructural confirmado (cruce de vano o salida por junta); se dejan en su nodo original (no transferidas)",
+    "v_031_seccion_alternativa": {
+      "escenario": "V.30/80",
+      "estado": "HIPOTESIS_MODELO (sin eleccion)",
+      "V60_80_kN": 11585.4664
+    },
+    "rigidLinks_franja_DD": {
+      "n": 32,
+      "estado": "HIPOTESIS (documentada, no resorte publicado)",
+      "nota": "16 rigidLink('beam'); 8 a 0.15 m sobre M_003_B/M_004_B (defensible) y 8 a 1.61-4.14 m (HIPOTESIS_ESTRUCTURAL)"
+    }
+  },
+  "total_publicado_kN": 29306.0667,
+  "diferencia_global_kN": 3335.0673,
+  "identidad_componentes": {
+    "suma_componentes_mas_losas_kN": 25970.999352,
+    "P_z_aplicada_kN": 25970.999352,
+    "ok": true
+  },
+  "equilibrio_vertical": {
+    "R_z_kN": 25970.9994,
+    "P_z_kN": 25970.9994,
+    "residuo_kN": 0.0,
+    "ok": true
+  },
+  "coincide_con_checkpoint": {
+    "caso_G_EII_reproducible_Fz_kN": 25970.999352,
+    "G_MODELO_FIEL_Fz_kN": 25970.999352,
+    "ok": true
+  },
+  "filas_componente": [
+    {
+      "componente": "losas (aplicada via mallado)",
+      "publicado_kN": 9677.0267,
+      "reproducible_kN": 9670.758325,
+      "diferencia_pub_repro_kN": 6.26837455
+    },
+    {
+      "componente": "losas (directa geometria publicada)",
+      "publicado_kN": null,
+      "reproducible_kN": 9670.748464,
+      "diferencia_pub_repro_kN": null
+    },
+    {
+      "componente": "vigas (incluye V_031)",
+      "publicado_kN": 11585.48,
+      "reproducible_kN": 11585.46643,
+      "diferencia_pub_repro_kN": 0.0135704
+    },
+    {
+      "componente": "V_031 (subconjunto de vigas)",
+      "publicado_kN": "incluido en vigas",
+      "reproducible_kN": 179.461512,
+      "diferencia_pub_repro_kN": "no publicado por separado"
+    },
+    {
+      "componente": "columnas",
+      "publicado_kN": 1522.31,
+      "reproducible_kN": 1522.30434,
+      "diferencia_pub_repro_kN": 0.00565952
+    },
+    {
+      "componente": "muros (pipeline A=t*(L/2) por montante)",
+      "publicado_kN": 6521.26,
+      "reproducible_kN": 3192.470257,
+      "diferencia_pub_repro_kN": 3328.78974311
+    }
+  ],
+  "residuo_identidad_NOTAS": "losas publicadas = 29306.0667 - 19629.04 = 9677.03 kN; aplicadas aprox 9670.75 => +6.27. Muros +3.328,79. Redondeo publicado +0.01 => brecha global 3335.07 (29306.0667 - 25970.999).",
+  "verificaciones": [
+    {
+      "check": "G_igual_checkpoint",
+      "estado": "OK",
+      "detalle": "fiel 25970.9994 vs checkpoint 25970.9994"
+    },
+    {
+      "check": "equilibrio_vertical",
+      "estado": "OK",
+      "detalle": 0.0
+    },
+    {
+      "check": "identidad_cargas_vs_geometria",
+      "estado": "OK",
+      "detalle": {
+        "suma_componentes_mas_losas_kN": 25970.999352,
+        "P_z_aplicada_kN": 25970.999352,
+        "ok": true
+      }
+    },
+    {
+      "check": "ruteo_pendientes_14",
+      "estado": "OK",
+      "detalle": "fiel 14 vs checkpoint 14"
+    },
+    {
+      "check": "carga_pendiente_ruteo",
+      "estado": "OK",
+      "detalle": "fiel 417.850839 vs checkpoint 417.850839 vs nota 417.850839"
+    },
+    {
+      "check": "no_doble_conteo_pares_ruteo",
+      "estado": "OK",
+      "detalle": "14 filas unicas por (origen, elemento, nodo, receptor, carga)"
+    }
+  ]
+}

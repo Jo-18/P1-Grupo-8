@@ -1,0 +1,1 @@
+python -X utf8 -m src.modelo_fiel.caso_G_EI_MODELO_FIEL_v3 --g

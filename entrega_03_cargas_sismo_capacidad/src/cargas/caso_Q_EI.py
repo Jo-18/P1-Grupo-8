@@ -9,8 +9,9 @@
 - Verificaciones: (a) sum(Q aplicada) == q_Q * A_tributaria, (b) equilibrio
   vertical carga aplicada vs reaccion vertical, (c) identificacion del q_Q.
 
-q_Q fue adoptado por el grupo en 2.0 kN/m2 (PARAMETRO_ADOPTADO_POR_EL_GRUPO, ver
-config/cargas.json) y la corrida queda marcada `Q_EI_ADOPTADA_2.0_kN_m2`. La
+q_Q = 3.0 kN/m2 es el minimo de la categoria 'Escuelas - salas de clases' de la
+Tabla 4 de la NCh 1537:2009 (PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4, ver
+config/cargas.json) y la corrida queda marcada `Q_EI_NCH1537_2009_3.0_kN_m2`. La
 bandera --demo sigue disponible para forzar un valor arbitrario de respaldo.
 """
 
@@ -36,7 +37,7 @@ from analisis.fe.hipotesis import niveles_ordenados  # noqa: E402
 from analisis.fe.marco import Marco                 # noqa: E402
 
 CASO = "I"
-Q_DEMO_DEFAULT_KN_M2 = 2.0
+Q_DEMO_DEFAULT_KN_M2 = 3.0
 TOL_SUM_Q = 0.005
 TOL_EQUILIBRIO_VERT = 0.05  # 5 %
 

@@ -1,0 +1,40 @@
+{
+  "edificio": "I",
+  "tag": 6,
+  "viewer_id": null,
+  "nivel": "P1",
+  "convencion": "N_i,Vy_i,Vz_i,T_i,My_i,Mz_i(5),N_j,Vy_j,Vz_j,T_j,My_j,Mz_j(11)",
+  "componente_verificada": "Mz_j",
+  "estados_seleccionables": [
+    "U1_GQ",
+    "U2_EX_POS",
+    "U3_EY_NEG"
+  ],
+  "nota_correccion": "antes se rotulaba indice 5 (Mz_i) con el nombre Mz_j; indice 11 es Mz_j",
+  "por_caso": [
+    {
+      "caso": "U1_GQ",
+      "componente": "Mz_j",
+      "indice_fuerzas": 11,
+      "valor_viewer_kN_m": 8.039853,
+      "referencia_FE_kN_m": 8.039853,
+      "diferencia": 0.0
+    },
+    {
+      "caso": "U2_EX_POS",
+      "componente": "Mz_j",
+      "indice_fuerzas": 11,
+      "valor_viewer_kN_m": -650.923736,
+      "referencia_FE_kN_m": -650.923736,
+      "diferencia": 0.0
+    },
+    {
+      "caso": "U3_EY_NEG",
+      "componente": "Mz_j",
+      "indice_fuerzas": 11,
+      "valor_viewer_kN_m": 28.49765,
+      "referencia_FE_kN_m": 28.49765,
+      "diferencia": 0.0
+    }
+  ]
+}

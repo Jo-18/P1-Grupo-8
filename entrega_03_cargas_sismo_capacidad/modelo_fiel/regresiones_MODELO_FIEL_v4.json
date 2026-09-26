@@ -1,0 +1,162 @@
+{
+  "iteracion": "MODELO_FIEL_4",
+  "gravedad_m_s2": 9.80665,
+  "n_checks_v4": 31,
+  "checks": [
+    {
+      "check": "rec_9_9_checks",
+      "estado": "OK",
+      "detalle": "reconciliacion 9/9 OK y estado OK"
+    },
+    {
+      "check": "rec_pendientes_63",
+      "estado": "OK",
+      "detalle": "63 PP pendientes EI"
+    },
+    {
+      "check": "rec_por_categoria_68",
+      "estado": "OK",
+      "detalle": "C1..C6 suman 68 filas"
+    },
+    {
+      "check": "rec_categorias_C1_C6",
+      "estado": "OK",
+      "detalle": "{'C1_real_FE_seccion_pendiente': 9, 'C2_seccion_confirmada_tramo_pendiente': 18, 'C3_hipotesis_base_nivel': 4, 'C4_metalico_tubular_confirmado': 17, 'C5_muro_una_sola_planta': 19, 'C6_no_incluida': 1}"
+    },
+    {
+      "check": "rec_pp_confirmado",
+      "estado": "OK",
+      "detalle": "PP confirmado = 17179.2261 kN"
+    },
+    {
+      "check": "rec_hipotesis_informativo",
+      "estado": "OK",
+      "detalle": "hipotesis 8453.5488 kN solo informativo; aplicado 0"
+    },
+    {
+      "check": "rec_igual_inventario",
+      "estado": "OK",
+      "detalle": "PP confirmado == inventario 17179.2261"
+    },
+    {
+      "check": "rec_consistente_ledger",
+      "estado": "OK",
+      "detalle": "LEDGER EI PP_elementos 17179.2261"
+    },
+    {
+      "check": "rec_artefactos_csv_md",
+      "estado": "OK",
+      "detalle": "csv+md presentes"
+    },
+    {
+      "check": "bloq_estado",
+      "estado": "OK",
+      "detalle": "BLOQUEADO_FALTA_EVIDENCIA_POSICIONAL"
+    },
+    {
+      "check": "bloq_6_familias_0_kN",
+      "estado": "OK",
+      "detalle": "A-F AMBIGUO_NO_APLICADO, 0 kN, cobertura 0"
+    },
+    {
+      "check": "bloq_conversion_g",
+      "estado": "OK",
+      "detalle": "260/1500 Kg/m con g=9.80665"
+    },
+    {
+      "check": "bloq_dxf_exacto",
+      "estado": "OK",
+      "detalle": "2017_67-700.dxf sha F86BB87FDC16FB47"
+    },
+    {
+      "check": "bloq_pdf_alternativo",
+      "estado": "OK",
+      "detalle": "Union PDF's Edificio II.pdf sha ok"
+    },
+    {
+      "check": "bloq_no_por_proximidad_no_regenerar",
+      "estado": "OK",
+      "detalle": "sin mapeo por proximidad"
+    },
+    {
+      "check": "bloq_consistencia_v3",
+      "estado": "OK",
+      "detalle": "v3 y v4 cobertura 0"
+    },
+    {
+      "check": "bloq_lugares_buscados",
+      "estado": "OK",
+      "detalle": "9 ubicaciones"
+    },
+    {
+      "check": "cons_NO_REGENERAR_todo_ok",
+      "estado": "OK",
+      "detalle": "conservacion sin regenerar, 6/6 OK"
+    },
+    {
+      "check": "cons_G_EI_EII",
+      "estado": "OK",
+      "detalle": "G_EI 42406.9577 ; G_EII 25970.9994"
+    },
+    {
+      "check": "cons_peso_sismico",
+      "estado": "OK",
+      "detalle": "EII 28600.7138 A==B ; EI B 46516.4301"
+    },
+    {
+      "check": "cons_pmadic_0_AeqB",
+      "estado": "OK",
+      "detalle": "PM.ADIC EII 0 ; peso EII A==B"
+    },
+    {
+      "check": "cons_peso3_EII",
+      "estado": "OK",
+      "detalle": "peso v3 EII intacto 28600.7138"
+    },
+    {
+      "check": "port_copia_por_viga",
+      "estado": "OK",
+      "detalle": "por_viga.json sha 7952CE51B1F82213"
+    },
+    {
+      "check": "port_copia_eii_viewer",
+      "estado": "OK",
+      "detalle": "eii_viewer.json sha C3435C7B23072A87"
+    },
+    {
+      "check": "port_copia_catalogo_I",
+      "estado": "OK",
+      "detalle": "catalogo_cargas_diseno_edificio_I.json sha 2CD90CABB35F2622"
+    },
+    {
+      "check": "port_copia_areas_II",
+      "estado": "OK",
+      "detalle": "areas_tributarias.csv sha 54D98D404EA9F58A"
+    },
+    {
+      "check": "port_config_I_interna",
+      "estado": "OK",
+      "detalle": "config I -> data/externas/por_viga.json"
+    },
+    {
+      "check": "port_config_II_interna",
+      "estado": "OK",
+      "detalle": "config II -> data/externas/areas_tributarias.csv"
+    },
+    {
+      "check": "port_scan_sin_externos",
+      "estado": "OK",
+      "detalle": "son libres salvo procedencia; fuera: ninguno"
+    },
+    {
+      "check": "regresiones_v3_42_42",
+      "estado": "OK",
+      "detalle": "rc=0 checks=42"
+    },
+    {
+      "check": "unittest_28_28",
+      "estado": "OK",
+      "detalle": "discover tests/ RC=0"
+    }
+  ]
+}

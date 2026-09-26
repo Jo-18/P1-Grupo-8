@@ -1,34 +1,36 @@
 {
   "titulo": "Cargas vivas (Q) - configuracion Entrega 3",
   "unidades": "SI: kN, kN/m2, m",
-  "nota_general": "El grupo adopta una sobrecarga de uso uniforme q_Q = 2.0 kN/m2 para los edificios I y II (PARAMETRO_ADOPTADO_POR_EL_GRUPO), coherente y aplicable a ambos. Esta carga superficial uniforme NO se mezcla con las cargas lineales SC de catalogos anteriores (SC por trama del EI y SC_lineal por zona del EII): esas quedan como referencias no usadas. La adopcion se marca explicitamente en el JSON; no se presenta como carga normativa definitiva del profesor.",
+  "nota_general": "La sobrecarga de uso uniforme q_Q = 3.0 kN/m2 adopta el minimo de la categoria 'Escuelas - salas de clases' de la Tabla 4 de la NCh 1537:2009 (Of.2009 Cargas de diseno de construcciones - Sobrecargas), PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4, aplicable a los edificios I y II. Esta carga superficial uniforme NO se mezcla con las cargas lineales SC de catalogos anteriores (SC por trama del EI y SC_lineal por zona del EII): esas quedan como referencias no usadas. La base normativa se registra explicitamente en el JSON; si el profesor fija otra categoria o valor, se parametriza aqui.",
   "q_Q": {
     "I": {
-      "q_Q_kN_m2": 2.0,
-      "estado": "PARAMETRO_ADOPTADO_POR_EL_GRUPO",
-      "etiqueta_corrida": "Q_EI_ADOPTADA_2.0_kN_m2",
+      "q_Q_kN_m2": 3.0,
+      "estado": "PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4",
+      "etiqueta_corrida": "Q_EI_NCH1537_2009_3.0_kN_m2",
+      "fuente_norma": "NCh 1537:2009 (Of. 2009) Cargas de diseno de construcciones - Sobrecargas, Tabla 4, categoria 'Escuelas - salas de clases': minimo 3,0 kN/m2.",
       "fuente_catalogo_SC_no_usada": "entrega_03_cargas_sismo_capacidad/data/externas/catalogo_cargas_diseno_edificio_I.json (copia versionada; SC_kgf_m2 por trama por nivel) - NO se usa como Q; solo referencia de que no habia Q uniforme",
-      "nota_adopcion": "Valor uniforme adoptado por el grupo (2.0 kN/m2) para ambos edificios. No es una carga normativa definitiva; queda parametrizable.",
+      "nota_adopcion": "q_Q = 3.0 kN/m2 adoptado como minimo de la Tabla 4 NCh 1537:2009 para 'Escuelas - salas de clases' (ambos edificios). Reemplaza la adopcion previa del grupo de 2.0 kN/m2.",
       "nota_conversion": "1 kgf/m2 = 0.00980665 kN/m2 (regla catalogada, no aplicada)"
     },
     "II": {
-      "q_Q_kN_m2": 2.0,
-      "estado": "PARAMETRO_ADOPTADO_POR_EL_GRUPO",
-      "etiqueta_corrida": "Q_EII_ADOPTADA_2.0_kN_m2",
+      "q_Q_kN_m2": 3.0,
+      "estado": "PARAMETRO_BASADO_EN_NORMA_NCH1537_2009_TABLA4",
+      "etiqueta_corrida": "Q_EII_NCH1537_2009_3.0_kN_m2",
+      "fuente_norma": "NCh 1537:2009 (Of. 2009) Cargas de diseno de construcciones - Sobrecargas, Tabla 4, categoria 'Escuelas - salas de clases': minimo 3,0 kN/m2.",
       "fuente_catalogo_SC_no_usada": "analisis_estructural/edificio_II_casoG_PP_elementos/eii_viewer.json cargas.caso_G.SC_lineal_kg_m (zona A-F) - NO se usa; solo referencia de que no habia Q uniforme",
-      "nota_adopcion": "Valor uniforme adoptado por el grupo (2.0 kN/m2) para ambos edificios. No es una carga normativa definitiva; queda parametrizable.",
+      "nota_adopcion": "q_Q = 3.0 kN/m2 adoptado como minimo de la Tabla 4 NCh 1537:2009 para 'Escuelas - salas de clases' (ambos edificios). Reemplaza la adopcion previa del grupo de 2.0 kN/m2.",
       "nota_conversion": "1 kgf/m = 0.00980665 kN/m (regla catalogada, no aplicada)"
     }
   },
   "DEMOSTRACION_ARBITRARIA": {
-    "q_Q_kN_m2": 2.0,
+    "q_Q_kN_m2": 3.0,
     "marcado": true,
-    "nota": "Valor de respaldo identico al adoptado por el grupo; se mantiene esta clave para compatibilidad con los caminos --demo."
+    "nota": "Valor de respaldo identico al oficial (3.0 kN/m2) para conservar la compatibilidad con los caminos --demo; queda marcado DEMOSTRACION_ARBITRARIA."
   },
   "aplicada_al_modelo_FE": true,
   "tolerancia_rel_sum_Q": 0.005,
   "geometria_tributaria": {
-    "I": "viewer_unity/Assets/StreamingAssets/lab_data/edificios/I/tributary/por_viga.json",
+    "I": "entrega_03_cargas_sismo_capacidad/data/externas/por_viga.json",
     "II": "entrega_03_cargas_sismo_capacidad/data/externas/areas_tributarias.csv"
   }
 }
