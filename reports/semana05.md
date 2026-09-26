@@ -6,11 +6,15 @@
 > que MOD1/MOD2 no se podian correr por "OpenSees ausente" y que el SDK Android
 > estaba "ausente". Ambos impedimentos eran FALSOS:**
 >
-> 1. El solver de referencia del proyecto NO es el binario OpenSees sino el modelo
->    FE funcional Python `src/modelo_fiel/modelo_fe_completo.py` (flags `--g`,
->    `--sismo`, `--combinadas`), que SI esta instalado, corre rc=0 y re-exporta. Con
->    esa corrida REAL, las DOS modificaciones quedan COMPLETAS, con antes/despues
->    reales y restauracion+verificacion.
+> 1. El solver de referencia del proyecto NO invoca el binario/ejecutable clasico
+>    de OpenSees (tcl / `OpenSees.exe`): el modelo FE funcional es el script
+>    `src/modelo_fiel/modelo_fe_completo.py` (flags `--g`, `--sismo`,
+>    `--combinadas`), que construye el modelo en Python y lo resuelve con
+>    **OpenSeesPy** (`import openseespy.opensees as ops`), la libreria oficial de
+>    OpenSees para Python, que usa el MISMO kernel de analisis de OpenSees. Corre
+>    rc=0 en el entorno aislado `.venv` (Python 3.12, `openseespy==3.7.0.3`) y
+>    re-exporta. Con esa corrida REAL, las DOS modificaciones quedan COMPLETAS, con
+>    antes/despues reales y restauracion+verificacion.
 > 2. El SDK Android SI esta presente: bundled en el editor Unity real
 >    (`Editor\Data\PlaybackEngines\AndroidPlayer\SDK\` con `adb`, `aapt`,
 >    `platform-tools`) + AndroidPlayer + JDK bundel; no requiere `ANDROID_HOME`.
@@ -27,10 +31,13 @@
 | QA / UX | 3 | Seccion 5 (UX estructural) y seccion 8.4 (QA batchmode Unity completo) |
 | Preparacion movil, IA y gestion | 4 | Seccion 3 (build movil inicial + telefono objetivo) + seccion 6 (funcion compleja por agente, verificada) + gestion (git/evidencia, seccion 8.4 y pendientes) |
 
-Nota: el solver de referencia del proyecto NO es el binario OpenSees sino el modelo
-FE funcional Python `src/modelo_fiel/modelo_fe_completo.py` (correccion de la v1 en
-la introduccion). El pipeline persigue la misma semantica
-interfaz/dato -> modelo -> solver -> resultados -> Unity que pide la rubrica.
+Nota de precision (correccion de la v1 en la introduccion): el proyecto no invoca
+el binario/ejecutable clasico de OpenSees (tcl / `OpenSees.exe`). El kernel de
+calculo estructural es **OpenSeesPy** (`openseespy.opensees`), la libreria oficial
+de OpenSees para Python: el modelo se arma en Python y OpenSeesPy resuelve con el
+kernel de OpenSees. El lazo completo persigue la misma semantica
+interfaz/dato -> modelo (Python) -> solver (OpenSeesPy) -> resultados -> Unity que
+pide la rubrica.
 
 ## 1. Correccion de la superposicion (error reconocido y corregido)
 
@@ -223,30 +230,55 @@ JSON FE (no re-resuelve en Unity; el reanalisis se delega al flujo reproducible)
 
 Cada modificacion M2/M3/M4 se registra (`ModRegistro` con hora/tipo/elemento/
 detalle/flag) y enciende un **banner rojo** central: "los resultados visibles
-corresponden al modelo ORIGINAL" + comando reproducible
-`modelo_fe_completo.py --g --sismo --combinadas && export_lab_data.py`. Boton
-"Reiniciar lab" restaura geometria, overlay FE, secciones y factores.
+corresponden al modelo ORIGINAL" + el comando reproducible de reanalisis (ver
+"Flujo reproducible" abajo). Boton "Reiniciar lab" restaura geometria, overlay FE,
+secciones y factores.
 
 - **Exportacion reproducible**: `LabModificaciones.Exportar()` escribe
   `StreamingAssets/lab_data/modelo_modificado_lab.json` con el registro completo y
   el flag global, para re-correr el solver con el mismo conjunto de cambios.
 
-**Flujo manual reproducible (interfaz -> dato -> modelo -> solver -> resultados
--> Unity)**, para cualquier MOD (batch o lab):
+**Flujo reproducible (interfaz/dato -> modelo -> solver OpenSeesPy -> resultados
+-> export -> Unity)**, para cualquier MOD (batch o lab):
 
+0. Entorno (una sola vez, Python 3.12 aislado en `.venv` para Windows):
+   `python -m venv .venv` + `.venv\Scripts\Activate.ps1` +
+   `pip install openseespy==3.7.0.3 shapely jsonschema matplotlib`.
+   Verificacion: `.venv\Scripts\python.exe -X utf8 -c "import openseespy.opensees
+   as ops; print('OpenSeesPy OK')"`.
+0.1. Insumos de Entrega 3 (solo si `results/` fue limpiado; son artefactos
+   regenerables, git-ignored; cada paso es un modulo verificado del repo):
+   - `python -X utf8 -m src.capacidad_rc.edificios`
+     -> `results/capacidad_rc/DEMO_RC_{EI,EII}.json`.
+   - `python -X utf8 -m src.peso_propio_teorico_EDIFICIO_I_v2`
+     -> `results/peso_propio_teorico_EDIFICIO_I_v2.json`.
 1. Aplicar la modificacion desde la interfaz del viewer (M1..M4) o sobre los
    datos (`config/cargas.json`, `config/sismo.json`) como en MOD1/MOD2.
 2. El laboratorio deja el registro en
    `modelo_modificado_lab.json` (StreamingAssets) y enciende el banner rojo
    "requiere reanalisis" con el comando exacto a correr.
-3. Correr el solver y re-exportar resultados:
+3. Correr el solver (OpenSeesPy, desde `entrega_03_cargas_sismo_capacidad/`):
    `python -X utf8 -m src.modelo_fiel.modelo_fe_completo --g --sismo --combinadas`
-   (regenera `esfuerzos_FE_EDIFICIO_{I,II}.json` y
-   `pm_capacidad_demanda_{I,II}.json`).
-4. Re-empaquetar para el viewer:
-   `python -X utf8 src/lab/export_lab_data.py` (copia a StreamingAssets).
-5. Rejugar en Unity: el viewer relee el paquete y muestra los resultados del
-   modelo modificado; con "Reiniciar lab" se limpia el registro y el banner.
+   (resuelve G, Q, sismo X/Y y las 9 combinaciones NCh3171; rc=0 verificado; NO
+   escribe en StreamingAssets).
+4. Re-empaquetar resultados para el viewer (ambos modulos leen/escriben
+   `StreamingAssets/lab_data/edificios/{I,II}/results/`, default I y II):
+   - `python -X utf8 -m src.unity_esfuerzos.exportar_esfuerzos_funcional_para_viewer`
+     -> `esfuerzos_FE_EDIFICIO_{I,II}.json` (opcion `--dry-run` para verificar sin
+     escribir).
+   - `python -X utf8 -m src.unity_esfuerzos.pm_capacidad_demanda_hitob`
+     -> `pm_capacidad_demanda_{I,II}.json` (P-M / demanda-capacidad; relee los
+     esfuerzos del paso anterior + `DEMO_RC_*`). SI debe regenerarse P-M junto con
+     los esfuerzos: consume los nuevos vectores FE.
+5. Rejugar en Unity: el viewer relee el paquete (`StreamingAssets`) y muestra los
+   resultados del modelo modificado; con "Reiniciar lab" se limpia el registro y
+   el banner.
+
+Nota: la re-exportacion usa `exportar_esfuerzos_funcional_para_viewer.py`; el
+modulo homonimo mas antiguo (`exportar_esfuerzos_para_viewer.py`, usado por el
+runner de tests) ademas requiere `results/superposicion/verificacion_superposicion_completa_{I,II}.json`
+(paso E3.4 de `src/ejecutar_entrega_03.py`), artefacto regenerable, no es parte
+del flujo S05.
 
 ### 8.3 SQ4 - Carga movil (sidequest)
 
@@ -317,3 +349,37 @@ El receptor identificado se resalta (material magenta con guardado/restauracion
 del color original al moverse/soltar), el HUD actualiza el valor, y la camara/
 panel no dispara identificacion cuando el cursor esta sobre UI
 (`InteraccionUI.PointerSobreUI()`).
+
+## 10. Correcciones post-evaluacion (Semana 5, 2026-09-24) -- resumen ejecutivo
+
+Aniadido tras la evaluacion; detalle completo y evidencias numericas en
+`reports/CORRECCIONES_POST_EVALUACION.md`.
+
+| Corr. | Que cambio | Estado |
+|---|---|---|
+| Corr.1 | Camara (pivote, zoom/pan sobre pivote, Home/FrameAll, click con umbral 6 px, seleccion en release) | COMPLETO |
+| Corr.2 | **Carga puntual seleccionable que llega a OpenSeesPy** (`eleLoad beamPoint`, caso `PL1`): panel Unity + estado `cargas_puntuales.json` + `carga_puntual.py` + inyeccion condicional `PL1` en el exportador funcional + escala lineal Caso A (`EFElemento.FactorPL`) y reanalisis Caso B con banner rojo | COMPLETO (evidencias I y II abajo) |
+| Corr.3 | Diagramas N/V/M con valores i/j y `max\|<magnitud>\|` rotulados con unidad | COMPLETO |
+| Corr.4 | Deformada global REAL: mapeo 6DOF de OpenSeesPy `[u,v,cota,Ru,Rv,Rcota]` + interpolacion Hermite 6DOF por elemento (`ELEMENTO NORMALIZADO`), max\|δ\| real rotulado | COMPLETO |
+
+### Evidencia PL1 (paquete oficial del viewer, redondeo 6)
+
+| Metrica | EI tag 8 (P=50 kN, +U, xi=0.5) | EII tag 3 (P=40 kN, -V, xi=0.3) |
+|---|---|---|
+| N_i / Vy_i / Mz_i | 0.8017 / -25.8931 / -18.5838 | -0.2289 / -0.0374 / -0.0962 |
+| max\|desp\| (m) | 0.00022523 (nodo 630) | 0.00000665 (nodo 164) |
+| equilibrio R+P | 3e-09 (residuo) | 0.0 |
+| auditoria paquete | 23/23 | 23/23 |
+
+Los paquetes `esfuerzos_FE_EDIFICIO_{I,II}.json` ahora incluyen **14 casos**
+(base 5 + 8 combinaciones + PL1). `CheckEsfuerzosOverlay` (seccion 8.4) reporto
+13 casos porque corre sin payloads PL1; con los payloads PL1 presentes el `casos`
+del paquete funcional pasa a 14.
+
+### Regresion de tests
+
+- 88 passed / 20 failed. Los 2 impactados por el contrato PL1 fueron actualizados
+  y pasan; los 20 failed son los preexistentes regenerables
+  (`verificacion_superposicion_completa_{I,II}.json`, paso E3.4 de Entrega 3,
+  fuera del flujo S05).
+- Compilacion Unity batchmode `6000.5.10f1`: rc=0, sin `error CS`.

@@ -169,9 +169,12 @@ namespace LabViewer
         private void OnGUI()
         {
             if (!Activo) return;
-            Rect hud = new Rect(10, Screen.height - 116, 330, 108);
-            InteraccionUI.Registrar(hud);
+            // HUD SQ4 ARRASTRABLE desde su barra de titulo (Paneles): el arrastre
+            // no orbita/panea la camara ni selecciona detras (InteraccionUI) y el
+            // panel se clampa para no perderse fuera de pantalla.
+            Rect hud = Paneles.Rect("cm_hud", new Rect(10, Screen.height - 116, 330, 108));
             GUI.Box(hud, "SQ4  CARGA MOVIL (modo activo, clic sobre una losa del Ed. I)");
+            Paneles.BarraArrastrable("cm_hud", 20f);
             GUILayout.BeginArea(new Rect(hud.x + 8, hud.y + 22, hud.width - 16, hud.height - 30));
             if (ReceptorSobreCursor != null && RegionSobreCursor != null)
             {

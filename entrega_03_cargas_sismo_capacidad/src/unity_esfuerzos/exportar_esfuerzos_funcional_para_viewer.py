@@ -73,6 +73,7 @@ from src.unity_esfuerzos.auditar_cobertura_viewer_fe import (  # noqa: E402
 
 FORMATO = "esfuerzos_FE_edificio_v1"
 CASOS_BASE = ["G", "Q", "EX", "EY"]
+PL_CASO = "PL1"
 
 from src.modelo_fiel.combinaciones_nch3171 import (  # noqa: E402
     COMBINACIONES_NCH3171, IDS_COMBINACIONES, NOMBRE_NORMA, NOTA_100_30,
@@ -389,10 +390,15 @@ def combos_obsoletos() -> list[str]:
 
 def casos_vigentes(edificio: str) -> list[str]:
     """Casos coherentes con la topologia actual: G/Q/EX/EY + combinaciones
-    NCh3171 SOLO si no estan obsoletas (no mezclar topologias)."""
+    NCh3171 SOLO si no estan obsoletas (no mezclar topologias). Se agrega el
+    caso AISLADO PL1 de carga puntual cuando su payload del perfil existe."""
     if _estado_combos(edificio) == _MARCA_OBSOLETA:
-        return list(CASOS_BASE)
-    return list(CASOS)
+        base = list(CASOS_BASE)
+    else:
+        base = list(CASOS)
+    if (OUT / f"{PL_CASO}_{PREFIJO[edificio]}_MODELO_FE_COMPLETO_FUNCIONAL.json").exists():
+        base.append(PL_CASO)
+    return base
 
 
 def bloquear_combos_para_topologia(exigir: bool) -> None:
@@ -430,7 +436,7 @@ def _leer_fuerzas(edificio: str, casos=None):
     local = {}
     global_ = {}
     for caso in casos:
-        if caso in CASOS_BASE:
+        if caso in CASOS_BASE or caso == PL_CASO:
             p = _leer_payload(edificio, caso)
         else:
             p = _leer_payload_combo(edificio, caso)
@@ -455,7 +461,8 @@ def _leer_desplazamientos(edificio: str, casos) -> dict:
     """-> {caso: {str tag: [6 dof]}} para todos los casos vigentes."""
     out = {}
     for caso in casos:
-        p = (_leer_payload(edificio, caso) if caso in CASOS_BASE
+        p = (_leer_payload(edificio, caso)
+             if caso in CASOS_BASE or caso == PL_CASO
              else _leer_payload_combo(edificio, caso))
         out[caso] = _desplazamientos_de(p)
     return out
@@ -471,6 +478,38 @@ def _leer_apoyos_G(edificio: str) -> dict:
                   if max(abs(x) for x in v) > 1e-3},
         "Rz_payload_kN": round(float(p.get("Rz_kN", 0.0)), 4),
         "Pz_aplicada_kN": round(float(p.get("Pz_kN", 0.0)), 4),
+    }
+
+
+def _bloque_carga_puntual(edificio: str) -> dict | None:
+    """Bloque `carga_puntual` del paquete viewer: configuracion RESUELTA del caso
+    PL1 (si su payload del perfil existe). La UI la compara con su estado local
+    para distinguir Caso A (escala lineal exacta, solo magnitud) de Caso B
+    (elemento/direccion/xi cambiados => reanalizar en OpenSees)."""
+    pref = PREFIJO[edificio]
+    path = OUT / f"{PL_CASO}_{pref}_MODELO_FE_COMPLETO_FUNCIONAL.json"
+    if not path.exists():
+        return None
+    p = json.loads(path.read_text(encoding="utf-8"))
+    cp = p.get("carga_puntual") or {}
+    d_solver = [float(x) for x in cp.get("direccion_solver_unidad", [0.0, 0.0, -1.0])]
+    return {
+        "caso": PL_CASO,
+        "unidad": cp.get("unidad", "kN"),
+        "elemento_tag": int(cp.get("elemento_tag", -1)),
+        "elemento_viewer_id": cp.get("elemento_viewer_id"),
+        "elemento_tipo": cp.get("elemento_tipo"),
+        "elemento_nivel": cp.get("elemento_nivel"),
+        "xi": round(float(cp.get("xi", 0.5)), 6),
+        "direccion_solver_unidad": [round(x, 6) for x in d_solver],
+        "direccion_unity_unidad": [
+            round(d_solver[0], 6), round(d_solver[2], 6), round(d_solver[1], 6)],
+        "magnitud_kN": round(float(cp.get("magnitud_kN", 0.0)), 6),
+        "P_global_kN": [round(float(x), 6) for x in cp.get("P_global_kN", [0.0, 0.0, 0.0])],
+        "R_global_kN": [round(float(x), 6) for x in cp.get("R_global_kN", [0.0, 0.0, 0.0])],
+        "equilibrio_ok": bool(p.get("equilibrio_ok", False)),
+        "solucion_ok": bool(p.get("solucion_ok", False)),
+        "archivo": path.name,
     }
 
 
@@ -619,6 +658,23 @@ def _auditar(edificio: str, cotas: dict, recs: dict, fuerzas: dict,
               f"Vx={float(hor['Vx_aplicada_kN']):.2f}, "
               f"Vy={float(hor['Vy_aplicada_kN']):.2f}, residuo_global={hor_res:.3e}; "
               f"sol_ok={bool(ver['solucion_ok'])}")
+
+    # 3c) carga puntual PL1 (Corr.2): el vector aplicado debe equilibrarse con
+    #     la resultante de reacciones y el corte basal Pz con Rz.
+    if PL_CASO in fuerzas:
+        ppl = _leer_payload(edificio, PL_CASO)
+        ap = [float(x) for x in ppl["carga_puntual"]["P_global_kN"]]
+        re = [float(x) for x in ppl["carga_puntual"]["R_global_kN"]]
+        # Equilibrium: las reacciones se oponen al vector aplicado (R + P = 0),
+        # convencion verificada contra el solver (eleLoad beamPoint).
+        residuo = max(abs(a + b) for a, b in zip(ap, re))
+        Pz, Rz, eq = float(ppl["Pz_kN"]), float(ppl["Rz_kN"]), bool(ppl["equilibrio_ok"])
+        escala_pl = max(max(abs(x) for x in ap), 1.0)
+        ok_pl = bool(ppl["solucion_ok"]) and eq and residuo <= TOL_EQ * escala_pl
+        check("equilibrio_carga_puntual_PL1", ok_pl,
+              f"P_global={['%.4g' % x for x in ap]}, R_global="
+              f"{['%.4g' % x for x in re]}, |R+P|={residuo:.3e}; "
+              f"Pz={Pz:.4f}, Rz={Rz:.4f}, sol_ok={bool(ppl['solucion_ok'])}")
 
     # 4) sismo: equilibria entre la fuerza global POR NODO (salida real de
     #    OpenSees, `globalForce`) y (carga nodal aplicada + reaccion). Convencion
@@ -985,7 +1041,7 @@ def generar(edificio: str, escribir: bool = True, destino: Path | None = None):
     if escribir:
         bloquear_combos_para_topologia(exigir=True)
     casos = casos_vigentes(edificio)
-    combos_vigentes = [c for c in casos if c not in CASOS_BASE]
+    combos_vigentes = [c for c in casos if c not in CASOS_BASE and c != PL_CASO]
     cotas, recs, geo, marco = _metadata(edificio)
     fuerzas, fuerzas_global = _leer_fuerzas(edificio, casos)
 
@@ -1062,7 +1118,9 @@ def generar(edificio: str, escribir: bool = True, destino: Path | None = None):
                 [f"{caso}_{PREFIJO[edificio]}_MODELO_FE_COMPLETO_FUNCIONAL.json"
                  for caso in CASOS_BASE]
                 + [f"COMB_{cid}_{PREFIJO[edificio]}_MODELO_FE_COMPLETO_FUNCIONAL.json"
-                   for cid in IDS_COMBINACIONES]),
+                   for cid in IDS_COMBINACIONES]
+                + ([f"{PL_CASO}_{PREFIJO[edificio]}_MODELO_FE_COMPLETO_FUNCIONAL.json"]
+                   if PL_CASO in casos else [])),
             "ruta": str(OUT.relative_to(RAIZ)),
         },
         "fuente_metadata": "modelo_fe_completo(_eii).py (tags deterministicos del perfil)",
@@ -1091,6 +1149,7 @@ def generar(edificio: str, escribir: bool = True, destino: Path | None = None):
             "nota": "nodos con |reaccion| > 1e-3 kN en el caso G "
                     "(base de cimentacion + vinculaciones laterales)"},
         "materiales": {k: v for k, v in materiales.items()},
+        "carga_puntual": _bloque_carga_puntual(edificio),
         "casos": list(casos),
         "casos_base": list(CASOS_BASE),
         "combos_estado": _estado_combos(edificio),

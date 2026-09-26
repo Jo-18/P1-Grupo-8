@@ -19,6 +19,47 @@ namespace LabViewer
         private static int _ultimoFrameReg = -1;
         private static bool _scrollConsumidoEnFrame;
 
+        // --- distincion CLIC vs ARRASTRE de camara ---
+        // El LMB tambien pannea con Shift (CameraController). Sin este umbral, el
+        // pan o un simple arrastre del raton lanzaria la seleccion al soltar. Los
+        // controllers llaman TrackClic() cada Update (antes del chequeo UI) y solo
+        // ClicLiberadoDisponible() (que exige down->up con desplazamiento < umbral
+        // y sin Shift) dispara la seleccion.
+        private static bool _posibleClic;
+        private static Vector2 _posibleClicInicio;
+
+        private static bool ShiftAbajo()
+        {
+            return Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        }
+
+        /// <summary>Rastrear LMB cada Update: arma el candidato a clic solo si baja
+        /// sin Shift (el pan con Shift+izq no debe seleccionar) y lo anula si el
+        /// raton se mueve mas del umbral (se convirtio en arrastre/pan).</summary>
+        public static void TrackClic()
+        {
+            if (Input.GetMouseButtonDown(0) && !ShiftAbajo())
+            {
+                _posibleClic = true;
+                _posibleClicInicio = Input.mousePosition;
+            }
+            else if (_posibleClic &&
+                     Vector2.Distance(_posibleClicInicio, (Vector2)Input.mousePosition) > CameraController.UmbralClicPx)
+            {
+                _posibleClic = false;
+            }
+        }
+
+        /// <summary>True en el frame del MouseUp SOLO si fue un clic valido (habia
+        /// candidato y sin superar el umbral de arrastre). Lo consumen ViewerController
+        /// y EsfuerzosController para sus raycasts de seleccion (solo lectura, ambos
+        /// pueden reaccionar al mismo clic como antes). El candidato se rearma en el
+        /// proximo MouseDown y se anula con el umbral de arrastre.</summary>
+        public static bool ClicLiberadoDisponible()
+        {
+            return _posibleClic && Input.GetMouseButtonUp(0);
+        }
+
         /// <summary>
         /// Limpiar SOLO una vez por frame. Los rects se registran desde el OnGUI
         /// de varios controllers (ViewerController + EsfuerzosController); Unity

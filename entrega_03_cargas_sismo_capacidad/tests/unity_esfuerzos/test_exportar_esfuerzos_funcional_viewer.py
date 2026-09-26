@@ -8,7 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from src.unity_esfuerzos.exportar_esfuerzos_funcional_para_viewer import (
     CASOS, CASOS_BASE, COMBINACIONES_NCH3171, GEOMETRIA_VIEWER,
     IDS_COMBINACIONES, INDICES_NOMBRES, MAX_STUB_LONG_M, NIVELES,
-    RAZON_SIN_REGISTRO, STUB_TIPO, _ESTADO_COMBO_CALCULADA,
+    PL_CASO, RAZON_SIN_REGISTRO, STUB_TIPO, _ESTADO_COMBO_CALCULADA,
     bloquear_combos_para_topologia, casos_vigentes, combos_obsoletos, generar,
 )
 
@@ -37,7 +37,7 @@ def _payload_combo(edificio, cid):
 
 
 def _fuerzas_fuente(edificio, caso):
-    if caso in CASOS_BASE:
+    if caso in CASOS_BASE or caso == PL_CASO:
         p = _payload(edificio, caso)
     else:
         p = _payload_combo(edificio, caso)
@@ -371,7 +371,8 @@ class TestBloqueoCombinacionesObsoletas(unittest.TestCase):
     """Hito congelacion topologia Semana 4 (2026-09-15): las COMB_*.json se
     regeneraron sobre la topologia cerrada (4 islas + grillaje torre P4) y
     quedan CALCULADA. El bloqueo por obsolescencia ya no aplica; las corridas
-    ofrecen 13 casos y la escritura de paquetes queda habilitada."""
+    ofrecen base + 8 combinaciones (+ PL1 si su payload existe) y la escritura
+    de paquetes queda habilitada."""
 
     def test_combos_calculadas(self):
         self.assertFalse(combos_obsoletos(),
@@ -381,7 +382,13 @@ class TestBloqueoCombinacionesObsoletas(unittest.TestCase):
     def test_generar_memoria_ofrece_combos_y_escribir_no_bloquea(self):
         for edificio in ("I", "II"):
             d = generar(edificio, escribir=False)[0]
-            self.assertEqual(d["casos"], list(CASOS_BASE) + list(IDS_COMBINACIONES))
+            # Contrato: casos = base + combinaciones calculadas + PL1 (solo si el
+            # payload PL1 del perfil existe -> casos_vigentes lo refleja).
+            self.assertEqual(d["casos"],
+                             list(CASOS_BASE) + list(IDS_COMBINACIONES)
+                             + ([PL_CASO] if (PL_CASO in casos_vigentes(edificio))
+                                else []))
+            self.assertEqual(d["casos"], casos_vigentes(edificio))
             self.assertEqual(d["combos_estado"], _ESTADO_COMBO_CALCULADA)
             self.assertEqual(d["combinaciones_normativas_NCh3171"]
                              ["utilizables"], True)

@@ -499,14 +499,49 @@ namespace LabViewer
         // ---------------------------------------------------------------- //
         void Update()
         {
+            // Distinguir CLIC de ARRASTRE/PAN: el candidato a clic se anula con el
+            // umbral de desplazamiento y el pan con Shift+izq. Las teclas de foco
+            // (F = enfocar seleccion, Inicio = reencuadrar) corren SIEMPRE, incluso
+            // con el cursor sobre un panel (excepto si el GUI tiene foco de teclado).
+            InteraccionUI.TrackClic();
+            HandleCameraKeys();
             // clic sobre un panel IMGUI => no seleccionar elementos detras (y el
             // panel recibe el clic para sus toggles/botones).
             if (InteraccionUI.PointerSobreUI()) return;
-            if (Input.GetMouseButtonDown(0) && !_draggingUi)
+            if (InteraccionUI.ClicLiberadoDisponible() && !_draggingUi)
             {
                 ElementRef hit = RaycastPick();
                 if (hit != null) Select(hit);
             }
+        }
+
+        private void HandleCameraKeys()
+        {
+            if (Cam == null) return;
+            if (GUIUtility.keyboardControl != 0) return; // foco de teclado en algun campo GUI
+            if (Input.GetKeyDown(KeyCode.F)) TryFocusSelection();
+            if (Input.GetKeyDown(KeyCode.Home)) Cam.Home();
+        }
+
+        private void TryFocusSelection()
+        {
+            Vector3 pivot;
+            float diam;
+            if (_esf != null && _esf.PivotSeleccion(out pivot, out diam))
+            {
+                Cam.FocusOn(pivot, diam);
+                return;
+            }
+            if (_selected != null)
+            {
+                var r = _selected.GetComponent<Renderer>();
+                if (r != null)
+                {
+                    Cam.FocusOn(r.bounds.center, r.bounds.size.magnitude * 1.6f);
+                    return;
+                }
+            }
+            FrameAll();
         }
 
         private ElementRef RaycastPick()
@@ -578,16 +613,63 @@ namespace LabViewer
         // ---------------------------------------------------------------- //
         //  Camara
         // ---------------------------------------------------------------- //
+        /// <summary>Encuadra el CONJUNTO de edificios visibles (I y II a la vez) en una
+        /// sola vista: el bbox es la union de los renderers de cada edificio activo,
+        /// de modo que la comparacion entre ambos se lee en el mismo encuadre y con
+        /// la misma escala. No mezcla datos: solo encuadra lo que ya se dibuja.
+        /// Si no hay ningun edificio visible se recurre a todos los renderers de Lab.</summary>
         public void FrameAll()
         {
             if (Cam == null) return;
             var lab = GameObject.Find("Lab");
-            var all = new List<Renderer>();
-            if (lab != null) foreach (var r in lab.GetComponentsInChildren<Renderer>()) all.Add(r);
-            if (all.Count == 0) return;
-            Bounds b = all[0].bounds;
-            foreach (var r in all) b.Encapsulate(r.bounds);
+            if (lab == null) return;
+            var b = new Bounds();
+            bool alguno = false;
+            foreach (Transform bldg in lab.transform)
+            {
+                if (!BuildingOn(bldg.name)) continue;
+                if (!bldg.gameObject.activeInHierarchy) continue;
+                var rs = bldg.GetComponentsInChildren<Renderer>();
+                for (int i = 0; i < rs.Length; i++)
+                {
+                    if (rs[i] == null || !rs[i].enabled) continue;
+                    if (!alguno) { b = rs[i].bounds; alguno = true; }
+                    else b.Encapsulate(rs[i].bounds);
+                }
+            }
+            if (!alguno)
+            {
+                var all = lab.GetComponentsInChildren<Renderer>();
+                for (int i = 0; i < all.Length; i++)
+                {
+                    if (all[i] == null || !all[i].enabled) continue;
+                    if (!alguno) { b = all[i].bounds; alguno = true; }
+                    else b.Encapsulate(all[i].bounds);
+                }
+            }
+            if (!alguno) return;
             Cam.FrameAll(b);
+        }
+
+        /// <summary>Encuadra SOLO un edificio (I o II). Se usa desde la ficha del panel
+        /// para revisar un caso por separado sin perder la vista isometrica general.</summary>
+        public void FrameBuilding(string b)
+        {
+            if (Cam == null || string.IsNullOrEmpty(b)) return;
+            var lab = GameObject.Find("Lab");
+            if (lab == null) return;
+            Transform bldg = lab.transform.Find(b);
+            if (bldg == null) return;
+            var rs = bldg.GetComponentsInChildren<Renderer>();
+            var bounds = new Bounds();
+            bool alguno = false;
+            for (int i = 0; i < rs.Length; i++)
+            {
+                if (rs[i] == null || !rs[i].enabled) continue;
+                if (!alguno) { bounds = rs[i].bounds; alguno = true; }
+                else bounds.Encapsulate(rs[i].bounds);
+            }
+            if (alguno) Cam.FrameAll(bounds);
         }
         public void ViewTop() => Cam?.SetViewTop();
         public void ViewIso() => Cam?.SetViewIso();
@@ -717,9 +799,17 @@ namespace LabViewer
             InteraccionUI.UsarScrollSobrePanel();
 
             GUILayout.Label("Camara");
-            if (GUILayout.Button("Encuadrar todo")) FrameAll();
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Conjunto I+II")) FrameAll();
+            if (GUILayout.Button("Solo I")) FrameBuilding("I");
+            if (GUILayout.Button("Solo II")) FrameBuilding("II");
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Vista inicial")) Cam.Home();
             if (GUILayout.Button("Vista superior")) ViewTop();
             if (GUILayout.Button("Vista isometrica")) ViewIso();
+            GUILayout.EndHorizontal();
+            if (GUILayout.Button("Restablecer paneles")) Paneles.Reset();
 
             GUILayout.Space(6);
             GUILayout.Label("Resultados estructurales");

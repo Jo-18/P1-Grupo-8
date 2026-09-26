@@ -27,9 +27,10 @@ namespace LabViewer
     ///      superposicion lineal exacta  => NO requiere reanalisis.
     ///   M2 elemento ON/OFF:  cambia K y el reparto       => requiere reanalisis.
     ///   M3 seccion w x h :   cambia la rigidez           => requiere reanalisis.
-    ///   M4 area tributaria:  cambia el reparto de cargas => requiere reanalisis.
-    /// Flujo reproducible: solver Python (modelo_fe_completo.py --g --sismo
-    /// --combinadas) + export_lab_data.py. El banner y el registro dejan explicito
+///     M4 area tributaria:  cambia el reparto de cargas => requiere reanalisis.
+    /// Flujo reproducible: solver OpenSeesPy (modelo_fe_completo.py --g --sismo
+    /// --combinadas) + exportar_esfuerzos_funcional_para_viewer +
+    /// pm_capacidad_demanda_hitob. El banner y el registro dejan explicito
     /// cuando lo mostrado deja de corresponder al modelo analizado.</summary>
     public class LabModificaciones : MonoBehaviour
     {
@@ -204,7 +205,7 @@ namespace LabViewer
             sb.AppendLine("  \"version\": \"S05-lab_modificaciones\",");
             sb.AppendLine("  \"generado\": \"" + System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "\",");
             sb.AppendLine("  \"requiere_reanalisis\": " + (RequiereReanalisis ? "true" : "false") + ",");
-            sb.AppendLine("  \"reanalisis_reproducible\": \"modelo_fe_completo.py --g --sismo --combinadas && export_lab_data.py\",");
+            sb.AppendLine("  \"reanalisis_reproducible\": \"modelo_fe_completo.py --g --sismo --combinadas && exportar_esfuerzos_funcional_para_viewer && pm_capacidad_demanda_hitob\",");
             sb.AppendLine("  \"modificaciones\": [");
             for (int i = 0; i < Registro.Count; i++)
             {
@@ -246,7 +247,7 @@ namespace LabViewer
         {
             if (Screen.width < 600) return;
             float w = Mathf.Min(660f, Screen.width - 40f);
-            Rect r = new Rect((Screen.width - w) / 2f, 6f, w, 42f);
+            Rect r = new Rect((Screen.width - w) / 2f, 6f, w, RequiereReanalisis ? 60f : 42f);
             InteraccionUI.Registrar(r);
             if (RequiereReanalisis)
             {
@@ -256,7 +257,9 @@ namespace LabViewer
                 GUI.Label(new Rect(r.x + 8, r.y + 4, r.width - 16, 16),
                           "MODIFICACION ESTRUCTURAL ACTIVA: los resultados visibles corresponden al modelo ORIGINAL.");
                 GUI.Label(new Rect(r.x + 8, r.y + 22, r.width - 16, 16),
-                          "REANALISIS: modelo_fe_completo.py --g --sismo --combinadas + export_lab_data.py (o 'Reiniciar lab').");
+                          "REANALISIS: modelo_fe_completo.py --g --sismo --combinadas");
+                GUI.Label(new Rect(r.x + 8, r.y + 40, r.width - 16, 16),
+                          "luego exportar_esfuerzos_funcional_para_viewer + pm_capacidad_demanda_hitob (o 'Reiniciar lab').");
             }
             else
             {
@@ -270,13 +273,18 @@ namespace LabViewer
 
         private void DrawPanel()
         {
+            // Panel S5 ARRASTRABLE desde la barra de titulo (Paneles). El rect se
+            // memoriza en sesion; el arrastre queda registrado en InteraccionUI
+            // (no orbita/panea camara ni selecciona detras) y se clampa para que
+            // la barra superior siga siempre accesible.
             float pw = 344f;
             float x = Screen.width - pw - 8f;
             float y = 318f;
-            Rect rect = new Rect(x, y, pw, 330f);
-            if (rect.yMax > Screen.height - 4f) rect.y = Screen.height - rect.height - 4f;
-            InteraccionUI.Registrar(rect);
+            Rect porDefecto = new Rect(x, y, pw, 330f);
+            if (porDefecto.yMax > Screen.height - 4f) porDefecto.y = Screen.height - porDefecto.height - 4f;
+            Rect rect = Paneles.Rect("lab_s5_panel", porDefecto);
             GUI.Box(rect, "LABORATORIO S5  /  MODIFICACION DEL MODELO");
+            Paneles.BarraArrastrable("lab_s5_panel", 20f);
             GUILayout.BeginArea(new Rect(rect.x + 8, rect.y + 24, rect.width - 16, rect.height - 32));
 
             GUILayout.BeginHorizontal();

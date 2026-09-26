@@ -55,6 +55,12 @@ namespace LabViewer
             return Disponible.Contains(caso);
         }
 
+        /// <summary>Corr.2 Carga puntual: factor de ESCALA LINEAL EXACTA aplicado a los
+        /// resultados del caso PL1 cuando SOLO cambia la magnitud (mismo elemento +
+        /// dirección + ξ). Lineal elástico => escalar P/P0 reproduce la corrida de
+        /// OpenSees sin reanálisis (Caso A). Lo actualiza EsfuerzosController.</summary>
+        public static float FactorPL = 1f;
+
         /// <summary>Caso gobernante de la envolvente para una magnitud/representación
         /// (null si SIN_RESULTADO).</summary>
         public string CasoGobernante(int magnitud, int repre)
@@ -84,9 +90,10 @@ namespace LabViewer
             }
             var f = De(caso);
             if (f == null) return float.NaN;
-            if (repre == 0) return f[iIdx];
-            if (repre == 1) return f[jIdx];
-            return Mathf.Max(Mathf.Abs(f[iIdx]), Mathf.Abs(f[jIdx]));
+            float esc = caso == EsfuerzosController.PL_CASO ? FactorPL : 1f;
+            if (repre == 0) return f[iIdx] * esc;
+            if (repre == 1) return f[jIdx] * esc;
+            return Mathf.Max(Mathf.Abs(f[iIdx]), Mathf.Abs(f[jIdx])) * esc;
         }
 
         public float Longitud => Vector3.Distance(Pi, Pj);
@@ -115,6 +122,9 @@ namespace LabViewer
         public string Clasif;
         public string EstadoArmadura;
         public string Nota;
+        public float Bm, Hm;      // b/h de la sección (m) para la ficha P-M (rúbrica 4.2)
+        public int NBarras;       // n_barras de la hipótesis de armado DEMO
+        public float AsTotalM2;   // refuerzo total de la hipótesis DEMO (m^2)
         public bool MaxMQueda;
         public float PlotScaleM = 1f;
         public float PlotScaleN = 1f;
@@ -186,6 +196,12 @@ namespace LabViewer
         /// de análisis). Por elemento y componente guarda el caso con mayor |valor|
         /// entre las 9 combinaciones, conservando el caso y el signo gobernante.</summary>
         public const string ENVOLVENTE = "ENVOLVENTE_NCh3171";
+
+        /// <summary>Caso CORR.2 "Carga puntual" generado por el reanálisis Python
+        /// (payload PL1_{EI,EII}_MODELO_FE_COMPLETO_FUNCIONAL.json + bloque
+        /// `carga_puntual` del viewer JSON). Solo aparece en el selector si el
+        /// paquete del edificio lo trae (Disponible.Contains("PL1")).</summary>
+        public const string PL_CASO = "PL1";
 
         /// <summary>Pseudo-caso "LIBRE" (Superposición en vivo): combinación del
         /// usuario C = λG·G + λQ·Q + λEX·EX + λEY·EY evaluada por superposición sobre
@@ -274,11 +290,33 @@ namespace LabViewer
         public bool DiagnosticoVisible = true;
 
         // --- Hito B: deformada amplificada + ficha material/reactivos + panel P-M ---
+        // --- Corrección integral: alcance por elemento / edificio / ambos ---
+        public enum AlcanceVisual { Elemento = 0, EdificioI = 1, EdificioII = 2, Ambos = 3 }
+
+        /// <summary>Alcance del diagrama N/V/M: solo el elemento seleccionado,
+        /// un edificio completo o ambos. Siempre sobre el caso activo.</summary>
+        public AlcanceVisual DiagramaAlcance = AlcanceVisual.Elemento;
+        /// <summary>Alcance de la deformada (mismo criterio). Por defecto Ambos:
+        /// la visión unificada I+II comparte un único factor de amplificación.</summary>
+        public AlcanceVisual DeformadaAlcance = AlcanceVisual.Ambos;
+        /// <summary>Escala VISUAL común de los diagramas con alcance edificio/ambos
+        /// (altura del pico máximo en metros). No altera los valores físicos.</summary>
+        public float DiagramaEscala = 5f;
+
         public bool MostrarDeformada;
         public float Amplificacion = 60f;
+        private string _defFirma = "";
+        // firma de qué elementos se interpolaron (caso + alcance + selección)
+        private int _diagConteo;
+        // cuántos FE pintaron curva en el último repintado de alcance de edificio(s)
+        private int _diagDibujados;
         private readonly Dictionary<string, Dictionary<string, Vector3>> _defNodos =
             new Dictionary<string, Dictionary<string, Vector3>>();
-        // _despCaso[b][caso][tagNodo] = [du, dcota, dv, rx, ry, rz]
+        // _despCaso[b][caso][tagNodo] = [u, v, cota, Ru, Rv, Rcota] (ORDEN DEL
+        // SOLVER, no del editor: el JSON `desplazamientos_por_caso` lo declara
+        // "orden [u, v, cota] del solver"). El frame Unity es (X=u, Y=cota, Z=v):
+        // SolverDespAUnity hace el remapeo. Los archivos `deformada.nodos` si usan
+        // el orden Unity [u, cota, v] directamente.
         private readonly Dictionary<string, Dictionary<string, Dictionary<string, float[]>>>
             _despCaso = new Dictionary<string, Dictionary<string, Dictionary<string, float[]>>>();
         // reacciones_G[b][tagNodo] = [Rx, Ry, Rz, Mx, My, Mz]
@@ -414,8 +452,11 @@ namespace LabViewer
         private void MarcarDiagramaSucio()
         {
             _diagramaSucia = true;
-            if (SelectedFE == null) return;
-            DrawDiagrams(SelectedFE);   // valores ya disponibles: dibujo INMEDIATO
+            // Con alcance de edificio(s) el diagrama NO depende de la seleccion: se
+            // dibujan todos los elementos del alcance, asi que se repinta aunque no
+            // haya ningun FE elegido. En alcance Elemento si hace falta seleccion.
+            if (SelectedFE == null && DiagramaAlcance == AlcanceVisual.Elemento) return;
+            DrawDiagrams(SelectedFE);
         }
 
         /// <summary>Todos los elementos FE de un edificio (para pruebas y paneles).</summary>
@@ -736,7 +777,15 @@ namespace LabViewer
         private float[] FuerzasVista(EFElemento e)
         {
             if (Caso == CASO_LIBRE) return CombinarLibre(e);
-            return e.De(Caso);
+            float[] f = e.De(Caso);
+            // Corr.2: escala lineal exacta aplicada a los resultados PL1 (Caso A).
+            if (Caso == PL_CASO && f != null && EFElemento.FactorPL != 1f)
+            {
+                var c = new float[12];
+                for (int k = 0; k < 12; k++) c[k] = f[k] * EFElemento.FactorPL;
+                return c;
+            }
+            return f;
         }
 
         /// <summary>Desplazamiento de nodos para un caso de cálculo por superposición
@@ -754,13 +803,55 @@ namespace LabViewer
                 foreach (var kv in di)
                 {
                     float[] v = kv.Value;
+                    Vector3 d = SolverDespAUnity(v) * l;
                     if (!outD.TryGetValue(kv.Key, out var cur))
-                        outD[kv.Key] = new Vector3(v[0] * l, v[1] * l, v[2] * l);
+                        outD[kv.Key] = d;
                     else
-                        outD[kv.Key] = cur + new Vector3(v[0] * l, v[1] * l, v[2] * l);
+                        outD[kv.Key] = cur + d;
                 }
             }
             return outD;
+        }
+
+        /// <summary>Convierte un vector del solver (orden [u, v, cota, Ru, Rv, Rcota])
+        /// a Vector3 en el frame Unity del modelo (X=u, Y=cota, Z=v): las traslaciones
+        /// son (v[0], v[2], v[1]). Solo traslaciones: ver DespActivoRaw para los 6 DOF.</summary>
+        private static Vector3 SolverDespAUnity(float[] v)
+        {
+            return new Vector3(v[0], v[2], v[1]);
+        }
+
+        private static float[] Vec6Escalar(float[] v, float s)
+        {
+            var c = new float[6];
+            for (int i = 0; i < 6; i++) c[i] = v[i] * s;
+            return c;
+        }
+
+        /// <summary>Casos base + el caso PL1 de carga puntual (Corr.2) SOLO si el
+        /// paquete del edificio activo lo trae (Disponible de algún elemento).</summary>
+        public string[] CasosSelectables()
+        {
+            bool tienePL = false;
+            foreach (var e in _elementos)
+            {
+                if (e.Building == Edificio && e.Tiene(PL_CASO)) { tienePL = true; break; }
+            }
+            if (!tienePL) return CASOS_BASE;
+            var lst = new List<string>(CASOS_BASE);
+            lst.Add(PL_CASO);
+            return lst.ToArray();
+        }
+
+        /// <summary>Corr.2: fija la escala lineal exacta de los resultados PL1
+        /// (Caso A: solo cambio de magnitud ⇒ escalar P/P0 es EXACTO en lineal
+        /// elástico, sin reanálisis). Refresca colores, deformada y diagrama.</summary>
+        public void SetFactorPL(float f)
+        {
+            EFElemento.FactorPL = Mathf.Max(0f, f);
+            if (Caso != PL_CASO) return;
+            ActualizarColoresLibre();
+            RebuildDeformada();
         }
 
         /// <summary>M_u(P) interpolada sobre la curva de capacidad (convención:
@@ -988,6 +1079,8 @@ namespace LabViewer
                 viewer.gameObject.AddComponent<LabModificaciones>();
             if (viewer.GetComponent<CargaMovilController>() == null)
                 viewer.gameObject.AddComponent<CargaMovilController>();
+            if (viewer.GetComponent<CargaPuntualController>() == null) // Corr.2
+                viewer.gameObject.AddComponent<CargaPuntualController>();
         }
 
         void Awake()
@@ -1014,6 +1107,16 @@ namespace LabViewer
             if (_loader.Model == null || _loader.Model.Elements.Count == 0) _loader.Load();
             CargarPaquetes();
             if (OverlayOn) RebuildOverlay(); // si el usuario ya lo encendio antes de terminar la carga
+        }
+
+        /// <summary>Corr.2: recarga los paquetes desde disco (p.ej. tras un
+        /// reanalisis de carga puntual) e invalida las geometrias derivadas.</summary>
+        public void RecargarPaquetes()
+        {
+            CargarPaquetes();
+            RebuildOverlay();
+            RebuildDeformada();
+            MarcarDiagramaSucio();
         }
 
         private void CargarPaquetes()
@@ -1108,7 +1211,7 @@ namespace LabViewer
                         if (capRaw != null)
                         {
                             cap.Columna = ParseCurva(capRaw, "curva_columna");
-                            cap.Columna.Seccion = SeccionEtiqueta(capRaw, "seccion");
+                            AplicarSeccionCurva(capRaw, "seccion", cap.Columna);
                             cap.Columna.FcMpa = (float)Json.Num(capRaw, "fc_MPa");
                             cap.Columna.MuN0 = (float)Json.Num(capRaw, "M_u_N0_kN_m");
                             cap.Columna.Clasif = Json.Str(capRaw, "clasificacion") ?? "";
@@ -1155,9 +1258,7 @@ namespace LabViewer
                                     cap.MuroCurva = ParseCurva(capPm, "curva_muro");
                                     cap.MuroCurva.Clasif = Json.Str(capPm, "clasificacion") ?? "";
                                     cap.MuroCurva.FcMpa = (float)Json.Num(capPm, "fc_MPa");
-                                    var sec2 = capPm.TryGetValue("seccion", out var s2)
-                                        ? Json.AsObj(s2) : null;
-                                    if (sec2 != null) cap.MuroCurva.Seccion = Json.Str(sec2, "etiqueta") ?? "";
+                                    AplicarSeccionCurva(capPm, "seccion", cap.MuroCurva);
                                     cap.MuroCurva.EstadoArmadura = Json.Str(capPm, "armadura_hipotesis") ?? "";
                                 }
                             }
@@ -1208,6 +1309,17 @@ namespace LabViewer
             return s != null ? (Json.Str(s, "etiqueta") ?? "") : "";
         }
 
+        private static void AplicarSeccionCurva(Dictionary<string, object> cont, string key, PMCurva c)
+        {
+            var s = cont != null && cont.TryGetValue(key, out var sv) ? Json.AsObj(sv) : null;
+            if (s == null) return;
+            c.Seccion = Json.Str(s, "etiqueta") ?? "";
+            c.Bm = (float)Json.Num(s, "b_m");
+            c.Hm = (float)Json.Num(s, "h_m");
+            c.NBarras = (int)Json.Num(s, "n_barras");
+            c.AsTotalM2 = (float)Json.Num(s, "As_total_m2");
+        }
+
         private static float[] Floats6(object o)
         {
             var arr = Json.AsArr(o);
@@ -1247,14 +1359,16 @@ namespace LabViewer
                 var fuerzas = d.TryGetValue("fuerzas", out var fw) ? Json.AsObj(fw) : null;
                 if (fuerzas != null)
                 {
-                    foreach (var caso in CASOS)
+                    // Corr.2: se itera sobre las claves PRESENTES (G/Q/EX/EY/combos
+                    // + PL1 si el exportador lo inyecto), ya no sobre CASOS fijos.
+                    foreach (var kv in fuerzas)
                     {
-                        var v = Json.Arr(fuerzas, caso);
+                        var v = Json.AsArr(kv.Value);
                         if (v == null || v.Count < 12) continue;
                         var f = new float[12];
                         for (int i = 0; i < 12; i++) f[i] = (float)Json.ToNum(v[i]);
-                        e.Fuerzas[caso] = f;
-                        e.Disponible.Add(caso);
+                        e.Fuerzas[kv.Key] = f;
+                        e.Disponible.Add(kv.Key);
                     }
                 }
                 // Envolvente NCh3171 (independiente): 12 entradas {indice, caso, valor}.
@@ -1326,18 +1440,45 @@ namespace LabViewer
         // ------------------------------------------------------------------ //
         void Update()
         {
+            // Distinguir CLIC de ARRASTRE/PAN: sin esto el pan con Shift+izq o un
+            // simple arrastre del raton seleccionaria un elemento al soltar.
+            InteraccionUI.TrackClic();
             // clic sobre un panel IMGUI => no seleccionar FE detras de la UI.
             if (InteraccionUI.PointerSobreUI()) return;
-            if (!OverlayOn || !Input.GetMouseButtonDown(0)) return;
+            if (!OverlayOn) return;
             if (Camera.main == null) return;
-            // Seleccion por correspondencia viewer <-> FE: el ElementRef de la geometria
-            // original (primer hit) define el viewer_id; los FE se eligen por el mapping
-            // de correspondencias. Ya no se usa "EFPicker mas cercano a la camara".
-            ProcesarClic(Input.mousePosition);
+            if (InteraccionUI.ClicLiberadoDisponible())
+            {
+                // Seleccion por correspondencia viewer <-> FE: el ElementRef de la geometria
+                // original (primer hit) define el viewer_id; los FE se eligen por el mapping
+                // de correspondencias. Ya no se usa "EFPicker mas cercano a la camara".
+                ProcesarClic(Input.mousePosition);
+            }
         }
 
-        /// <summary>Llamado por ViewerController cuando cambian los filtros visuales.</summary>
-        public void OnVisualFiltersChanged() => ApplyOverlayVisibility();
+        /// <summary>Pivote para la tecla F (foco): centro del FE seleccionado en
+        /// coordenadas de mundo (Pi/Pj estan en el frame del modelo, y el Lab vive
+        /// en el origen). Devuelve false si no hay seleccion FE con overlay activo.</summary>
+        public bool PivotSeleccion(out Vector3 pivot, out float diametro)
+        {
+            pivot = Vector3.zero;
+            diametro = 2f;
+            if (!OverlayOn || SelectedFE == null) return false;
+            pivot = (SelectedFE.Pi + SelectedFE.Pj) * 0.5f;
+            diametro = Mathf.Max(SelectedFE.Longitud, 1.5f);
+            return true;
+        }
+
+        /// <summary>Llamado por ViewerController cuando cambian los filtros visuales
+        /// (edificio/planta/tipo). El overlay se reaplica y, como la deformada y los
+        /// diagramas respeta el alcance y la visibilidad de cada edificio, ambos se
+        /// redibujan: si se oculta el edificio II, sus curvas desaparecen.</summary>
+        public void OnVisualFiltersChanged()
+        {
+            ApplyOverlayVisibility();
+            RebuildDeformada();
+            MarcarDiagramaSucio();
+        }
 
         private GameObject Raiz()
         {
@@ -1617,11 +1758,53 @@ namespace LabViewer
             if (caso == CASO_LIBRE) return DespLibre(b);
             if (porCaso.TryGetValue(caso, out var d1))
             {
+                float s = caso == PL_CASO ? EFElemento.FactorPL : 1f;
                 foreach (var kv in d1)
                 {
                     float[] v = kv.Value;
-                    outD[kv.Key] = new Vector3(v[0], v[1], v[2]);
+                    outD[kv.Key] = SolverDespAUnity(v) * s;
                 }
+                return outD;
+            }
+            if (caso == ENVOLVENTE)
+            {
+                for (int i = 0; i < COMBINACIONES.Length; i++)
+                {
+                    if (!porCaso.TryGetValue(COMBINACIONES[i], out var di)) continue;
+                    foreach (var kv in di)
+                    {
+                        float[] v = kv.Value;
+                        Vector3 d = SolverDespAUnity(v);
+                        if (!outD.TryGetValue(kv.Key, out var cur))
+                        {
+                            outD[kv.Key] = d;
+                            continue;
+                        }
+                        if (Mathf.Abs(d.x) > Mathf.Abs(cur.x)) cur.x = d.x;
+                        if (Mathf.Abs(d.y) > Mathf.Abs(cur.y)) cur.y = d.y;
+                        if (Mathf.Abs(d.z) > Mathf.Abs(cur.z)) cur.z = d.z;
+                        outD[kv.Key] = cur;
+                    }
+                }
+            }
+            return outD;
+        }
+
+        /// <summary>6 DOF por nodo [u, v, cota, Ru, Rv, Rcota] (orden SOLVER) del caso
+        /// activo: mismo criterio que DespActivo pero conservando las rotaciones para
+        /// interpolar la deformada con funciones de forma (Hermite). Para el caso LIBRE
+        /// superpone los 4 base; para la envolvente toma max|componente| con signo.</summary>
+        private Dictionary<string, float[]> DespActivoRaw(string b, string caso)
+        {
+            var outD = new Dictionary<string, float[]>();
+            var porCaso = _despCaso.TryGetValue(b, out var pc) ? pc : null;
+            if (porCaso == null) return outD;
+            if (caso == CASO_LIBRE) return DespLibreRaw(b);
+            if (porCaso.TryGetValue(caso, out var d1))
+            {
+                float s = caso == PL_CASO ? EFElemento.FactorPL : 1f;
+                foreach (var kv in d1)
+                    outD[kv.Key] = s == 1f ? kv.Value : Vec6Escalar(kv.Value, s);
                 return outD;
             }
             if (caso == ENVOLVENTE)
@@ -1634,59 +1817,198 @@ namespace LabViewer
                         float[] v = kv.Value;
                         if (!outD.TryGetValue(kv.Key, out var cur))
                         {
-                            outD[kv.Key] = new Vector3(v[0], v[1], v[2]);
+                            outD[kv.Key] = (float[])v.Clone();
                             continue;
                         }
-                        if (Mathf.Abs(v[0]) > Mathf.Abs(cur.x)) cur.x = v[0];
-                        if (Mathf.Abs(v[1]) > Mathf.Abs(cur.y)) cur.y = v[1];
-                        if (Mathf.Abs(v[2]) > Mathf.Abs(cur.z)) cur.z = v[2];
-                        outD[kv.Key] = cur;
+                        for (int c = 0; c < 6; c++)
+                            if (Mathf.Abs(v[c]) > Mathf.Abs(cur[c])) cur[c] = v[c];
                     }
                 }
             }
             return outD;
         }
 
+        private Dictionary<string, float[]> DespLibreRaw(string b)
+        {
+            var outD = new Dictionary<string, float[]>();
+            var porCaso = _despCaso.TryGetValue(b, out var pc) ? pc : null;
+            if (porCaso == null) return outD;
+            for (int i = 0; i < CASOS_BASE.Length; i++)
+            {
+                float l = Lam[i];
+                if (l == 0f) continue;
+                if (!porCaso.TryGetValue(CASOS_BASE[i], out var di)) continue;
+                foreach (var kv in di)
+                {
+                    float[] v = kv.Value;
+                    if (!outD.TryGetValue(kv.Key, out var cur))
+                    {
+                        var c = new float[6];
+                        for (int k = 0; k < 6; k++) c[k] = v[k] * l;
+                        outD[kv.Key] = c;
+                    }
+                    else
+                    {
+                        for (int k = 0; k < 6; k++) cur[k] += v[k] * l;
+                    }
+                }
+            }
+            return outD;
+        }
+
+        /// <summary>Edificios incluidos en el alcance pedido, ya filtrados por lo que
+        /// el usuario tiene VISIBLE. `null` (alcance Elemento) = el edificio activo.
+        /// La deformada y los diagramas de cortes comparten esta lista, de modo que
+        /// un corte transversal se lee igual en los dos edificios: la comparacion
+        /// usa la misma amplificacion/escala, nunca una referencia distinta por
+        /// edificio. Datos de cada edificio SIEMPRE los suyos (nada se promedia).</summary>
+        private List<string> EdificiosEnAlcance(AlcanceVisual alcance)
+        {
+            var l = new List<string>(2);
+            switch (alcance)
+            {
+                case AlcanceVisual.EdificioI:
+                    if (VisibleEnViewer("I")) l.Add("I");
+                    return l;
+                case AlcanceVisual.EdificioII:
+                    if (VisibleEnViewer("II")) l.Add("II");
+                    return l;
+                case AlcanceVisual.Ambos:
+                    if (VisibleEnViewer("I")) l.Add("I");
+                    if (VisibleEnViewer("II")) l.Add("II");
+                    return l;
+                default:
+                    if (VisibleEnViewer(Edificio)) l.Add(Edificio);
+                    return l;
+            }
+        }
+
+        private bool VisibleEnViewer(string b)
+        {
+            if (string.IsNullOrEmpty(b)) return false;
+            return _viewer == null || _viewer.BuildingVisible(b);
+        }
+
         public void RebuildDeformada()
         {
             DestroyDeformada();
             if (!MostrarDeformada || _loader == null) return;
-            if (!_despCaso.TryGetValue(Edificio, out var porCaso) || porCaso.Count == 0) return;
-            if (!_defNodos.TryGetValue(Edificio, out var nodos) || nodos.Count == 0) return;
-            var desp = DespActivo(Edificio, Caso);
-            if (desp.Count == 0) return;
+            var alcance = EdificiosEnAlcance(DeformadaAlcance);
+            if (alcance.Count == 0) return;
+            // 6 DOF por nodo (traslaciones + ROTACIONES del solver) => la deformada
+            // NO es solo la linea recta entre extremos desplazados: se interpola la
+            // elástica completa con las FUNCIONES DE FORMA CÚBICAS de Hermite
+            // (Euler-Bernoulli) que usa el elemento elasticBeamColumn. Resultado:
+            // deformada continua por nodos compartidos (C0 en la estructura) y con
+            // la curvatura real dentro de cada elemento.
             var raiz = Raiz();
             if (raiz == null) return;
+            // Amplitud visual del usuario, la MISMA para todos los edificios del
+            // alcance: con "Ambos" las dos deformadas son directamente comparables.
             float A = Amplificacion;
+            const int nSeg = 20;
+            Color colDeformada = new Color(0.95f, 0.18f, 0.22f);
+            var despPorEd = new Dictionary<string, Dictionary<string, float[]>>();
+            for (int i = 0; i < alcance.Count; i++)
+            {
+                string b = alcance[i];
+                if (!_despCaso.TryGetValue(b, out var pcB) || pcB.Count == 0) continue;
+                if (!_defNodos.TryGetValue(b, out var nodosB) || nodosB == null || nodosB.Count == 0) continue;
+                var dB = DespActivoRaw(b, Caso);
+                if (dB.Count == 0) continue;
+                despPorEd[b] = dB;
+            }
+            if (despPorEd.Count == 0) return;
+
             foreach (var e in _elementos)
             {
-                if (e.Building != Edificio) continue;
+                if (!alcance.Contains(e.Building)) continue;
+                if (!despPorEd.TryGetValue(e.Building, out var desp)) continue;
+                if (!_defNodos.TryGetValue(e.Building, out var nodos) || nodos == null) continue;
                 if (e.NodoI == null || e.NodoJ == null) continue;
-                if (!desp.TryGetValue(e.NodoI, out var di)) continue;
-                if (!desp.TryGetValue(e.NodoJ, out var dj)) continue;
+                if (!desp.TryGetValue(e.NodoI, out var d6i)) continue;
+                if (!desp.TryGetValue(e.NodoJ, out var d6j)) continue;
                 if (!nodos.TryGetValue(e.NodoI, out var ni)) continue;
                 if (!nodos.TryGetValue(e.NodoJ, out var nj)) continue;
-                Vector3 w0 = _loader.ToWorldModel(e.Building,
-                    ni.x + di.x * A, ni.y + di.y * A, ni.z + di.z * A);
-                Vector3 w1 = _loader.ToWorldModel(e.Building,
-                    nj.x + dj.x * A, nj.y + dj.y * A, nj.z + dj.z * A);
-                DrawDeformadaLine(w0, w1, new Color(0.95f, 0.16f, 0.2f),
-                                 "DEF_EFE_" + e.Building + "_" + e.Tag, 0.15f);
+                Vector3 delta = nj - ni;
+                float len = delta.magnitude;
+                if (len < 1e-4f) continue;
+
+                // Traslaciones/rotaciones al frame Unity (X=u, Y=cota, Z=v), amplificadas.
+                Vector3 di = SolverDespAUnity(d6i) * A;
+                Vector3 dj = SolverDespAUnity(d6j) * A;
+                Vector3 ti = new Vector3(d6i[3] * A, d6i[5] * A, d6i[4] * A);
+                Vector3 tj = new Vector3(d6j[3] * A, d6j[5] * A, d6j[4] * A);
+
+                // Base ortonormal del elemento en el frame del modelo (mismo criterio
+                // uphold que el geometría viewer y el exportador: referencia = cota).
+                Vector3 ex = delta / len;
+                Vector3 refU = Mathf.Abs(ex.y) < 0.9f ? Vector3.up : Vector3.forward;
+                Vector3 ez = Vector3.Cross(ex, refU);
+                ez = ez.sqrMagnitude < 1e-6f ? Vector3.Cross(ex, Vector3.forward).normalized : ez.normalized;
+                Vector3 ey = Vector3.Cross(ez, ex).normalized;
+
+                // Proyecciones de los desplazamientos/rotaciones de extremo.
+                float ui = Vector3.Dot(di, ex), uj = Vector3.Dot(dj, ex);
+                float vi = Vector3.Dot(di, ey), vj = Vector3.Dot(dj, ey);
+                float wi = Vector3.Dot(di, ez), wj = Vector3.Dot(dj, ez);
+                float txz_i = Vector3.Dot(ti, ez), txz_j = Vector3.Dot(tj, ez); // rot sobre ez => plano ex-ey
+                float ty_i = Vector3.Dot(ti, ey), ty_j = Vector3.Dot(tj, ey);  // rot sobre ey => plano ex-ez (signo -)
+
+                // Curva Hermite por elemento (puntos muestreados sobre la longitud).
+                var pts = new List<Vector3>(nSeg + 1);
+                for (int s = 0; s <= nSeg; s++)
+                {
+                    float xi = (float)s / nSeg;
+                    float xi2 = xi * xi, xi3 = xi2 * xi;
+                    float N1 = 1f - 3f * xi2 + 2f * xi3;
+                    float N2 = xi - 2f * xi2 + xi3;
+                    float N3 = 3f * xi2 - 2f * xi3;
+                    float N4 = -xi2 + xi3;
+                    float us = (1f - xi) * ui + xi * uj;                                  // axial lineal
+                    float vs = N1 * vi + N2 * len * txz_i + N3 * vj + N4 * len * txz_j;   // flexión en ex-ey
+                    float ws = N1 * wi - N2 * len * ty_i + N3 * wj - N4 * len * ty_j;     // flexión en ex-ez
+                    Vector3 pm = Vector3.Lerp(ni, nj, xi) + ex * us + ey * vs + ez * ws;
+                    pts.Add(_loader.ToWorldModel(e.Building, pm.x, pm.y, pm.z));
+                }
+                DrawDeformadaCurva(pts, colDeformada, "DEF_EFE_" + e.Building + "_" + e.Tag, 0.15f);
             }
         }
 
-        private void DrawDeformadaLine(Vector3 a, Vector3 b, Color c, string nombre, float grosor)
+        /// <summary>Máx módulo (magnitud) de desplazamiento nodal REAL, sin amplificar,
+        /// del caso activo, en mm. Usado en el HUD para que la escala visual (slider)
+        /// nunca altere el valor mostrado ni el de la ficha.</summary>
+        public float MaxDespActivoMm(string b)
         {
+            var desp = DespActivo(b, Caso);
+            if (desp.Count == 0) return 0f;
+            float m = 0f;
+            foreach (var kv in desp)
+            {
+                float mag = kv.Value.magnitude;
+                if (mag > m) m = mag;
+            }
+            return m * 1000f;
+        }
+
+        private void DrawDeformadaCurva(List<Vector3> pts, Color c, string nombre, float grosor)
+        {
+            if (pts == null || pts.Count < 2) return;
             var lab = Raiz();
             if (lab == null) return;
             var go = new GameObject(nombre);
             go.transform.SetParent(lab.transform, false);
             var lr = go.AddComponent<LineRenderer>();
-            lr.positionCount = 2;
-            lr.SetPosition(0, a);
-            lr.SetPosition(1, b);
+            lr.positionCount = pts.Count;
+            for (int i = 0; i < pts.Count; i++) lr.SetPosition(i, pts[i]);
             lr.startWidth = lr.endWidth = grosor;
-            lr.material = new Material(Shader.Find("Standard")) { color = c };
+            lr.useWorldSpace = true;
+            Shader sh = Shader.Find("Unlit/Color");
+            if (sh == null) sh = Shader.Find("Sprites/Default");
+            if (sh == null) sh = Shader.Find("Standard");
+            var mat = new Material(sh);
+            mat.color = c;
+            lr.material = mat;
             _deformadaGo.Add(go);
         }
 
@@ -1798,18 +2120,19 @@ namespace LabViewer
             if (fila == null) cap.PorElemento.TryGetValue(e.Tag, out fila);
             if (fila == null) return;
 
-            // Demanda-concurrente DINAMICA (S05): bajo superposición libre el punto
-            // P-M se recalcula al vuelo con la MISMA convención del paquete sobre el
-            // vector combinado Σλ·base: P = max(compresión N_i, N_j), M = max(|My|,
-            // |Mz|) de i/j del mismo caso; M_u(P) interpolada en la curva de capacidad
-            // => el punto de demanda y el D/C siguen los sliders instantáneamente.
-            bool libreActivo = Caso == CASO_LIBRE;
+            // Demanda-concurrente del CASO ACTIVO (S05). El punto P-M, la M_u(P) y el
+            // D/C se recalculan desde el vector del caso que el usuario tiene seleccionado
+            // con la MISMA convención del paquete: P = max(compresión N_i, N_j),
+            // M = max(|My_i|, |Mz_i|, |My_j|, |Mz_j|) del mismo caso; M_u(P) interpolada
+            // en la curva de capacidad. Aplica a casos base y combinaciones NCh3171
+            // (corridas FE explícitas), al caso LIBRE (Σ λ·caso, sigue los sliders) y a
+            // la envolvente (no es una corrida: se conserva la fila crítica del paquete).
             PMFila refFila = fila;
             PMFila vista = fila;
-            if (libreActivo)
+            if (Caso == CASO_LIBRE)
             {
                 var fc = CombinarLibre(e);
-                if (fc != null)
+                if (fc != null && curva != null)
                 {
                     vista = new PMFila
                     {
@@ -1825,13 +2148,37 @@ namespace LabViewer
                     vista.DC = vista.Mu > 0f ? vista.M / vista.Mu : float.NaN;
                 }
             }
+            else if (Caso != ENVOLVENTE && curva != null)
+            {
+                var fv = e.De(Caso);
+                if (fv != null)
+                {
+                    vista = new PMFila
+                    {
+                        Tag = fila.Tag, ViewerId = fila.ViewerId, Nivel = fila.Nivel,
+                        EsMuro = fila.EsMuro, Nota = fila.Nota,
+                        Caso = Caso,
+                        Expresion = FORMULAS.TryGetValue(Caso, out var fx) ? fx : Caso,
+                        P = Mathf.Max(fv[0], fv[6], 0f),
+                        M = Mathf.Max(Mathf.Abs(fv[4]), Mathf.Abs(fv[5]),
+                                      Mathf.Abs(fv[10]), Mathf.Abs(fv[11])),
+                    };
+                    vista.Mu = MuParaN(curva, vista.P);
+                    vista.DC = vista.Mu > 0f ? vista.M / vista.Mu : float.NaN;
+                }
+            }
+            bool puntoCalculado = vista != refFila;
 
             GUILayout.Space(4);
             GUILayout.Box("P-M: capacidad DEMO + demanda concurrente");
+            GUILayout.Label("Elemento en evaluación: tag " + fila.Tag
+                            + (string.IsNullOrEmpty(fila.Nivel) ? "" : " · " + fila.Nivel)
+                            + (string.IsNullOrEmpty(fila.ViewerId) ? "" : " · " + fila.ViewerId)
+                            + "  [" + e.Building + "]  "
+                            + (fila.EsMuro ? "(MURO)" : "(columna)"));
             GUILayout.Label("Caso: " + vista.Caso
-                            + (string.IsNullOrEmpty(vista.Expresion) ? "" : "  [" + vista.Expresion + "]")
-                            + (vista.EsMuro ? "  (MURO EII)" : "  (columna)"));
-            if (libreActivo && refFila != null && vista != refFila)
+                            + (string.IsNullOrEmpty(vista.Expresion) ? "" : "  [" + vista.Expresion + "]"));
+            if (puntoCalculado && Caso == CASO_LIBRE)
             {
                 GUI.color = new Color(0.35f, 1f, 0.45f);
                 GUILayout.Label("Punto P-M DINAMICO (Σ λ·caso): referencia " + refFila.Caso
@@ -1842,11 +2189,12 @@ namespace LabViewer
                             + "M_demanda = " + vista.M.ToString("0.0") + " kN*m");
             GUILayout.Label("M_u(P) = " + vista.Mu.ToString("0.0") + " kN*m   ->   "
                             + "D/C = " + vista.DC.ToString("0.00")
-                            + (libreActivo ? "   [dinamico]" : ""));
+                            + (puntoCalculado ? "   [punto del caso activo]" : ""));
             if (curva != null)
             {
                 GUILayout.Label("Capacidad: " + curva.Seccion + "  |  fc=" + curva.FcMpa
                                 + " MPa  |  " + curva.Clasif);
+                DibujarMiniSeccion(curva);
             }
             if (curva != null && curva.N.Count > 1 && curva.M.Count > 1)
             {
@@ -1861,7 +2209,9 @@ namespace LabViewer
                     GUI.DrawTexture(new Rect(px - 3f, py - 3f, 6f, 6f), Texture2D.whiteTexture);
                     GUI.color = Color.white;
                     GUILayout.Label("eje N compr. vertical arriba; M (kN*m) horizontal.");
-                    GUILayout.Label("(demanda P-M = " + (libreActivo ? "caso LIBRE (Σ λ·caso)" : "caso actual")
+                    GUILayout.Label("(demanda P-M " + (puntoCalculado
+                        ? (Caso == CASO_LIBRE ? "= caso LIBRE (Σ λ·caso)" : "= caso activo " + vista.Caso)
+                        : "= referencia crítica del paquete (" + vista.Caso + ")")
                                     + ", D/C aritmético sin validez de diseño)");
                 }
             }
@@ -1875,6 +2225,28 @@ namespace LabViewer
                 GUILayout.Label("ADVERTENCIA: " + fila.Nota);
                 GUI.color = Color.white;
             }
+        }
+
+        private static void DibujarMiniSeccion(PMCurva c)
+        {
+            if (c == null) return;
+            float bx = c.Bm, hx = c.Hm;
+            float max = Mathf.Max(bx, hx, 1e-3f);
+            float w = bx > 0f ? 56f * bx / max : 36f;
+            float h = hx > 0f ? 56f * hx / max : 36f;
+            Rect hr = GUILayoutUtility.GetRect(150f, Mathf.Max(h, 28f) + 6f);
+            float x0 = hr.x + 6f, y0 = hr.y + 3f;
+            GUI.color = new Color(0.02f, 0.02f, 0.02f, 1f);
+            GUI.DrawTexture(new Rect(x0 - 2f, y0 - 2f, w + 4f, h + 4f), Texture2D.whiteTexture);
+            GUI.color = new Color(0.28f, 0.45f, 0.78f, 0.9f);
+            GUI.DrawTexture(new Rect(x0, y0, w, h), Texture2D.whiteTexture);
+            GUI.color = Color.white;
+            string dims = bx > 0f && hx > 0f
+                ? "Sección utilizada: b " + bx.ToString("0.##") + " m x h " + hx.ToString("0.##") + " m"
+                : "Sección utilizada: " + c.Seccion;
+            dims += "  |  " + c.NBarras + " barras, As = " + (c.AsTotalM2 * 10000f).ToString("0.#") + " cm² (hip." +
+                " DEMO)";
+            GUILayout.Label(dims);
         }
 
         // ------------------------------------------------------------------ //
@@ -1908,12 +2280,15 @@ namespace LabViewer
             float left = Screen.width - pw - 356f;
             if (left < 240f) left = 240f;
 
-            // region del panel IMGUI: excluye del control de camara y de la
-            // seleccion FE cualquier clic/scroll dentro de esta zona.
-            Rect panelRect = new Rect(left, 10, pw + 120, ph);
-            InteraccionUI.Registrar(panelRect);
-            GUI.Box(new Rect(left, 10, pw, ph), "Resultados estructurales — Esfuerzos FE");
-            GUILayout.BeginArea(new Rect(left + 4, 34, pw - 12, ph - 44));
+            // region del panel IMGUI: arrastrable desde la cabecera (Paneles).
+            // El recto queda registrado en InteraccionUI (bloqueo camara/seleccion).
+            Rect panelRect = Paneles.Rect("esf_panel",
+                new Rect(left, 10, pw + 120, ph));
+            GUI.Box(new Rect(panelRect.x, panelRect.y, pw, ph), "Resultados estructurales — Esfuerzos FE");
+            // barra de titulo arrastrable (franja superior del recto del panel)
+            Paneles.BarraArrastrable("esf_panel", 26f);
+            Rect area = new Rect(panelRect.x + 4, panelRect.y + 34, pw - 12, ph - 44);
+            GUILayout.BeginArea(area);
 
             DibujarCabeceraFija();
 
@@ -1957,6 +2332,7 @@ namespace LabViewer
             if (mPres != ModoPresentacion) ModoPresentacion = mPres;
             bool mDiag = GUILayout.Toggle(DiagnosticoVisible, "Diagnóstico", "button");
             if (mDiag != DiagnosticoVisible) DiagnosticoVisible = mDiag;
+            if (GUILayout.Button("Restablecer paneles", "button", GUILayout.Width(140))) Paneles.Reset();
             GUILayout.EndHorizontal();
 
             // elemento seleccionado + valores (siempre visibles)
@@ -1985,13 +2361,19 @@ namespace LabViewer
                 ApplyOverlayVisibility();
             }
 
-            // caso base (G, Q, EX, EY)
+            // caso base (G, Q, EX, EY) + PL1 (Corr.2, si el paquete lo trae)
             GUILayout.BeginHorizontal();
             GUILayout.Label("Caso:", GUILayout.Width(42));
-            foreach (var c in CASOS_BASE)
+            foreach (var c in CasosSelectables())
             {
                 bool onC = GUILayout.Toggle(Caso == c, c, "button");
-                if (onC && Caso != c) { Caso = c; CombinacionIdx = -1; RebuildOverlay(); }
+                if (onC && Caso != c)
+                {
+                    Caso = c;
+                    CombinacionIdx = -1;
+                    if (c == PL_CASO) { SuperposicionOn = false; RebuildDeformada(); }
+                    RebuildOverlay();
+                }
             }
             GUILayout.EndHorizontal();
 
@@ -2065,7 +2447,7 @@ namespace LabViewer
             bool ov = InteraccionUI.ToggleEstado(OverlayOn, "Overlay FE", "button");
             if (ov != OverlayOn) SetOverlay(ov);
             bool dia = InteraccionUI.ToggleEstado(MostrarDiagrama, "Diagrama " + MAGNITUDES[MagnitudIdx], "button");
-            if (dia != MostrarDiagrama) { MostrarDiagrama = dia; if (SelectedFE != null) DrawDiagrams(SelectedFE); }
+            if (dia != MostrarDiagrama) { MostrarDiagrama = dia; MarcarDiagramaSucio(); }
             // Estado EXPLICITO: OCULTO / VISIBLE / SIN AMPLITUD (el componente del
             // elemento es 0 real, p.ej. Vy=Vz en celosias/grillage EII: es el numero
             // del JSON, no un fallo de mapeo ni un valor a inventar).
@@ -2075,7 +2457,7 @@ namespace LabViewer
                 estadoDia = "OCULTO";
                 GUI.color = Color.white;
             }
-            else if (SelectedFE == null || !TieneAmplitud(SelectedFE))
+            else if (!DiagramaTieneAmplitud())
             {
                 estadoDia = "SIN AMPLITUD";
                 GUI.color = new Color(1f, 0.65f, 0.2f);
@@ -2097,6 +2479,74 @@ namespace LabViewer
             GUILayout.Label(MostrarDeformada ? "Deformada: VISIBLE" : "Deformada: OCULTO");
             GUI.color = Color.white;
             GUILayout.EndHorizontal();
+
+            // ------------------------------------------------------------------ //
+            //  ALCANCE: que parte del modelo se dibuja. "Ambos" usa una escala COMUN
+            //  para que los dos edificios se comparen en la misma referencia, pero
+            //  cada uno conserva SUS resultados (no se mezclan nodos ni esfuerzos).
+            // ------------------------------------------------------------------ //
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Alcance diag:", GUILayout.Width(88));
+            GUILayout.Label(DibujarSelectorAlcance(ref DiagramaAlcance, "Diagrama"));
+            GUILayout.EndHorizontal();
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Alcance def:", GUILayout.Width(88));
+            GUILayout.Label(DibujarSelectorAlcance(ref DeformadaAlcance, "Deformada"));
+            GUILayout.EndHorizontal();
+
+            if (DiagramaAlcance != AlcanceVisual.Elemento)
+            {
+                GUILayout.BeginHorizontal();
+                GUILayout.Label("Escala comun (m):", GUILayout.Width(118));
+                float escAnt = DiagramaEscala;
+                DiagramaEscala = GUILayout.HorizontalSlider(DiagramaEscala, 0.5f, 12f);
+                GUILayout.Label(DiagramaEscala.ToString("0.0"), GUILayout.Width(34));
+                GUILayout.EndHorizontal();
+                if (!Mathf.Approximately(escAnt, DiagramaEscala)) MarcarDiagramaSucio();
+                GUILayout.Label("Pico del alcance = " + DiagramaEscala.ToString("0.0")
+                    + " m (misma referencia en I y II)");
+                GUILayout.Label(_diagDibujados + " FE con curva; rotulo i/j/max solo en el pico");
+            }
+        }
+
+        /// <summary>Si hay ALGO que dibujar en el alcance activo del diagrama. En alcance
+        /// Elemento depende de la seleccion; en alcance de edificio(s) busca el primer
+        /// elemento visible del alcance con magnitud no nula en la magnitud activa.</summary>
+        private bool DiagramaTieneAmplitud()
+        {
+            if (DiagramaAlcance == AlcanceVisual.Elemento)
+                return SelectedFE != null && TieneAmplitud(SelectedFE);
+            var eds = EdificiosEnAlcance(DiagramaAlcance);
+            for (int i = 0; i < eds.Count; i++)
+            {
+                foreach (var e in _elementos)
+                {
+                    if (e.Building != eds[i]) continue;
+                    if (FEOcultoLab(e)) continue;
+                    if (TieneAmplitud(e)) return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>Fila de 4 botones que fija el alcance visual (elemento / edificio I /
+        /// edificio II / ambos). `refAlc` se actualiza in situ y dispara el repintado
+        /// correspondiente: los diagramas usan la escala comun, la deformada la propia.</summary>
+        private string DibujarSelectorAlcance(ref AlcanceVisual refAlc, string que)
+        {
+            GUILayout.BeginHorizontal();
+            AlcanceVisual previo = refAlc;
+            if (GUILayout.Toggle(refAlc == AlcanceVisual.Elemento, "Elem", "button")) refAlc = AlcanceVisual.Elemento;
+            if (GUILayout.Toggle(refAlc == AlcanceVisual.EdificioI, "Edif I", "button")) refAlc = AlcanceVisual.EdificioI;
+            if (GUILayout.Toggle(refAlc == AlcanceVisual.EdificioII, "Edif II", "button")) refAlc = AlcanceVisual.EdificioII;
+            if (GUILayout.Toggle(refAlc == AlcanceVisual.Ambos, "Ambos", "button")) refAlc = AlcanceVisual.Ambos;
+            GUILayout.EndHorizontal();
+            if (previo != refAlc)
+            {
+                if (que == "Deformada") RebuildDeformada();
+                else MarcarDiagramaSucio();
+            }
+            return "";
         }
 
         /// <summary>Bloque de diagnostico: filtros, representacion, escala, advertencias,
@@ -2198,6 +2648,14 @@ namespace LabViewer
                     Amplificacion = nv;
                     RebuildDeformada();
                 }
+                // Escala VISUAL pura (slider): los valores REALES (sin amplificar) se
+                // muestran intactos aqui y en la ficha del elemento.
+                GUILayout.Label("Máx |δ| real: " + MaxDespActivoMm(Edificio).ToString("0.###")
+                                + " mm  (caso " + Caso + ")");
+                GUI.color = new Color(0.55f, 0.55f, 0.55f);
+                GUILayout.Label("Deformada interpolada con las funciones de forma cúbicas");
+                GUILayout.Label("(Hermite) del elemento; sumergida en rotaciones del solver.");
+                GUI.color = Color.white;
             }
 
             GUILayout.Space(6);
@@ -2682,28 +3140,95 @@ namespace LabViewer
                 else DestroyImmediate(go);
             }
             _diagramas.Clear();
-            if (!MostrarDiagrama || _loader == null || e == null) return;
+            if (!MostrarDiagrama || _loader == null) return;
 
             // ------------------------------------------------------------------ //
-            //  Magnitud ACTIVA del panel (MagnitudIdx 0..5 = N, Vy, Vz, T, My, Mz).
-            //  Extremo i en el indice m y extremo j en m+6 del vector local FE
-            //  (f[0..5] = i; f[6..11] = j). Con la envolvente NCh3171 los valores
-            //  i/j provienen de EnvValores/EnvCasos (caso y signo gobernantes).
+            //  ALCANCE del diagrama. Elemento = solo el FE seleccionado (comportamiento
+            //  original). EdificioI/II/Ambos = TODOS los elementos del alcance con una
+            //  escala COMUN de pico: el valor mayor del alcance ocupa DiagramaEscala
+            //  metros, de modo que las magnitudes de I y II se comparan directamente
+            //  (misma referencia), sin mezclar ni recalcular datos entre edificios.
             // ------------------------------------------------------------------ //
             int m = MagnitudIdx;
-            float vi, vj;
+            float picoAlcance = 0f;
+            EFElemento picoElem = null;
+            List<EFElemento> destino = null;
+            if (DiagramaAlcance == AlcanceVisual.Elemento)
+            {
+                if (e == null) return;
+                destino = new List<EFElemento> { e };
+            }
+            else
+            {
+                var eds = EdificiosEnAlcance(DiagramaAlcance);
+                if (eds.Count == 0) return;
+                destino = new List<EFElemento>();
+                for (int i = 0; i < eds.Count; i++)
+                {
+                    string b = eds[i];
+                    foreach (var el in _elementos)
+                    {
+                        if (el.Building != b) continue;
+                        if (FEOcultoLab(el)) continue;
+                        if (!ValoresMagnitud(el, m, out float ai, out float aj)) continue;
+                        destino.Add(el);
+                        float pk = Mathf.Max(Mathf.Abs(ai), Mathf.Abs(aj));
+                        if (pk > picoAlcance) { picoAlcance = pk; picoElem = el; }
+                    }
+                }
+                if (destino.Count == 0) return;
+                _diagDibujados = destino.Count;
+            }
+
+            // Factor COMUN: en alcance Elemento cada FE mantiene su escala local
+            // (pico ~25 % de la longitud, recortada), que evita que un FE con
+            // momento minimo sea invisible. En alcance de edificio(s) manda la
+            // escala global del alcance (DiagramaEscala metros por el pico mayor).
+            float escalaComun = 0f;
+            bool esAlcanceEdificio = DiagramaAlcance != AlcanceVisual.Elemento;
+            if (esAlcanceEdificio && picoAlcance > 1e-4f)
+                escalaComun = Mathf.Max(DiagramaEscala, 0.5f) / picoAlcance;
+
+            // En alcance de edificio(s) se dibuja la curva de TODOS los elementos
+            // (misma escala, comparables) pero se rotulan SOLO los valores i/j/max
+            // del elemento de pico: un TextMesh por FE y extremo son ~2000 objetos
+            // en modo Ambos, inviables en movil y ademas ilegibles de tan juntos.
+            for (int k = 0; k < destino.Count; k++)
+            {
+                bool etiquetar = !esAlcanceEdificio || destino[k] == picoElem;
+                DrawDiagramaElemento(destino[k], m, escalaComun, etiquetar);
+            }
+        }
+
+        /// <summary>Valores de la magnitud m (0..5) en los extremos i/j del elemento
+        /// para el caso activo. En envolvente se leen del JSON (EnvValores: caso y
+        /// signo gobernantes); false si el elemento no aporta ese dato.</summary>
+        private bool ValoresMagnitud(EFElemento e, int m, out float vi, out float vj)
+        {
+            vi = 0f; vj = 0f;
+            if (e == null) return false;
             if (Caso == ENVOLVENTE && e.EnvValores != null)
             {
                 vi = float.IsNaN(e.EnvValores[m]) ? 0f : e.EnvValores[m];
                 vj = float.IsNaN(e.EnvValores[m + 6]) ? 0f : e.EnvValores[m + 6];
+                return true;
             }
-            else
-            {
-                var f = FuerzasVista(e);
-                if (f == null) return;
-                vi = float.IsNaN(f[m]) ? 0f : f[m];
-                vj = float.IsNaN(f[m + 6]) ? 0f : f[m + 6];
-            }
+            var f = FuerzasVista(e);
+            if (f == null) return false;
+            vi = float.IsNaN(f[m]) ? 0f : f[m];
+            vj = float.IsNaN(f[m + 6]) ? 0f : f[m + 6];
+            return true;
+        }
+
+        /// <summary>Dibuja el diagrama de la magnitud m de UN elemento. `escalaComun`
+        /// > 0 fuerza el factor de conversion (alcance de edificio, escala comun);
+        /// <= 0 usa la escala local proporcional a la longitud del FE. `etiquetar`
+        /// añade los TextMesh con los valores i/j/max (en alcance de edificio solo
+        /// se rotula el elemento de pico, por rendimiento y legibilidad).</summary>
+        private void DrawDiagramaElemento(EFElemento e, int m, float escalaComun, bool etiquetar)
+        {
+            if (e == null) return;
+            if (!ValoresMagnitud(e, m, out float vi, out float vj)) return;
             // SIN AMPLITUD: el componente es 0 real (p.ej. Vy/Vz de celosias/grillage).
             // No se inventa nada ni se sustituye valor; simplemente no hay curva.
             if (Mathf.Max(Mathf.Abs(vi), Mathf.Abs(vj)) <= 1e-4f) return;
@@ -2762,14 +3287,25 @@ namespace LabViewer
             //  de ±800,26) siguen visibles por ser escala LOCAL del elemento.
             // ------------------------------------------------------------------ //
             float lenFE = Mathf.Max(e.Longitud, 1e-3f);
-            // Amplitud visual REAL: pico = 25 % de la longitud del FE, recortado al
-            // rango [0,8 m .. 5,0 m] para salir SIEMPRE del tubo (peralte tipico
-            // 0,30-0,50 m, y 0,60x0,80 en columnas grandes) sin volverse gigante.
             bool esMuro = e.Tipo != null && e.Tipo.Contains("muro");
-            float ampVisual = Mathf.Clamp(lenFE * 0.25f, 0.8f, 5f);
-            if (esMuro) ampVisual = Mathf.Clamp(lenFE * 0.35f, 1.2f, 6f);
             float rama = Mathf.Max(Mathf.Abs(vi), Mathf.Abs(vj), 1e-6f);
-            float factor = ampVisual / rama;   // pico local REAL = ampVisual
+            float factor;
+            if (escalaComun > 0f)
+            {
+                // Alcance de edificio(s): referencia COMUN, el pico mayor del alcance
+                // ocupa DiagramaEscala metros. Todos los FE comparten este factor, de
+                // modo que la altura de las curvas es directamente comparable.
+                factor = escalaComun;
+            }
+            else
+            {
+                // Amplitud visual REAL: pico = 25 % de la longitud del FE, recortado al
+                // rango [0,8 m .. 5,0 m] para salir SIEMPRE del tubo (peralte tipico
+                // 0,30-0,50 m, y 0,60x0,80 en columnas grandes) sin volverse gigante.
+                float ampVisual = Mathf.Clamp(lenFE * 0.25f, 0.8f, 5f);
+                if (esMuro) ampVisual = Mathf.Clamp(lenFE * 0.35f, 1.2f, 6f);
+                factor = ampVisual / rama;   // pico local REAL = ampVisual
+            }
 
             // Muros: la barra FE vive EN el plano del panel (borde de la losa-muro), el
             // diagrama quedaria dentro del espesor. Se desplaza la LINEA BASE fuera del
@@ -2787,12 +3323,44 @@ namespace LabViewer
             // montantes i/j desde el eje de la barra (desplazado en muros) hasta el valor
             Vector3 pi = b0 + eje * (vi * factor);
             Vector3 pj = b1 + eje * (vj * factor);
-            DrawLine(b0, pi, _colorMagnitud[MagnitudIdx], "DIAG_MONT_i");
-            DrawLine(b1, pj, _colorMagnitud[MagnitudIdx], "DIAG_MONT_j");
+            Color colMag = _colorMagnitud[MagnitudIdx];
+            DrawLine(b0, pi, colMag, "DIAG_MONT_i");
+            DrawLine(b1, pj, colMag, "DIAG_MONT_j");
 
             // curva interpolada i->j (lineal entre extremos; distribucion continua
             // real NO disponible en el JSON: se documenta como interpolacion FE)
-            DrawLine(pi, pj, _colorMagnitud[MagnitudIdx], "DIAG_MAG_" + m);
+            DrawLine(pi, pj, colMag, "DIAG_MAG_" + m);
+
+            // VALORES NUMERICOS en la escena para la revision: extremo i, extremo j
+            // y max|valor| con el signo gobernante (dato del JSON, no interpolado).
+            // Unidades: fuerzas (N, Vy, Vz) en kN; momentos (T, My, Mz) en kN·m.
+            if (!etiquetar) return;
+            string unidad = m <= 2 ? " kN" : " kN·m";
+            Vector3 ejeEt = eje * (factor * 1.4f);
+            Vector3 upEt = Vector3.up * 0.22f;
+            DibujarEtiqueta(pi + ejeEt + upEt, "i  " + vi.ToString("0.###") + unidad, colMag);
+            DibujarEtiqueta(pj + ejeEt + upEt, "j  " + vj.ToString("0.###") + unidad, colMag);
+            bool maxI = Mathf.Abs(vi) >= Mathf.Abs(vj);
+            DibujarEtiqueta((maxI ? pi : pj) + ejeEt * 0.5f + Vector3.up * 0.75f,
+                "max|" + MAGNITUDES[m] + "| = " + (maxI ? vi : vj).ToString("0.###") + unidad,
+                new Color(1f, 1f, 1f));
+        }
+
+        /// <summary>Etiqueta de texto 3D (TextMesh) sobre el diagrama del elemento,
+        /// registrada en la lista de diagramas para destruirse junto con la curva.</summary>
+        private void DibujarEtiqueta(Vector3 pos, string texto, Color color)
+        {
+            var lab = Raiz();
+            if (lab == null) return;
+            var go = new GameObject("DIAG_ETQ_" + _diagramas.Count);
+            go.transform.SetParent(lab.transform, false);
+            var tm = go.AddComponent<TextMesh>();
+            tm.text = texto;
+            tm.characterSize = 0.16f;
+            tm.fontSize = 26;
+            tm.color = color;
+            tm.transform.position = pos;
+            _diagramas.Add(go);
         }
 
         private void DrawLine(Vector3 a, Vector3 b, Color c, string nombre)
