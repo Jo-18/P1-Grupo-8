@@ -9,8 +9,13 @@ namespace LabViewer
     /// como marcadores de referencia en un filtro independiente de "Columnas".</summary>
     public enum ElemType { Losas, Vigas, Columnas, Muros, Diafragma, Abertura, Nodos, RefPendientes }
 
-    /// <summary>Estado de validacion mostrado en el inspector.</summary>
-    public enum ValState { Confirmado, Hipotetico, Pendiente }
+    /// <summary>Estado de validacion mostrado en el inspector. MarcadorArranque =
+    /// referencia de fundacion (columna de arranque en el nivel base CP1S del
+    /// edificio II): visible y seleccionable, PERO no es un tramo fisico propio
+    /// (su barra real [cota base, cota CP1] la representa la columna de cabeza
+    /// CP1), por lo que no requiere resultado FE y no cuenta como columna
+    /// SIN_RESULTADO en la cobertura.</summary>
+    public enum ValState { Confirmado, Hipotetico, Pendiente, MarcadorArranque }
 
     /// <summary>Referencia a un elemento dibujado (para seleccion + inspeccion).</summary>
     public class ElementRef : MonoBehaviour
@@ -40,6 +45,23 @@ namespace LabViewer
         public string TribSource;
         public List<string> TribSourceLosas;    // ids de losas origen
         public List<TribRegion> TribRegions;    // regiones (celdas) reales del reparto geometrico
+
+        // --- cobertura de resultados FE (runtime, la llena EsfuerzosController
+        //     despues de cargar el paquete de esfuerzos del edificio) ---
+        // null = tipo/elemento sin evaluar (losas/diafragma/nodos/abr, o paquete FE
+        // no cargado). Estados visibles en el panel "Inspeccion" y en el toggle
+        // "Marca sin enlace/resultado FE" del ViewerController.
+        // IMPORTANTE: SIN_ENLACE_VIEWER_ID NO significa "sin resultado FE"; solo dice
+        // que ningun elemento FE enlaza a esta geometria por viewer_id. La geometria
+        // PODRIA tener cobertura por otra via no resuelta, por lo que no se presenta
+        // como ausencia de resultado (es estado ambiguo/pendiente de verificar).
+        public const string FE_OK = "RESULTADOS_OK";
+        public const string FE_SIN_RESULTADO = "SIN_RESULTADO";
+        public const string FE_SIN_VINCULO = "SIN_ENLACE_VIEWER_ID";
+        public const string FE_MARCADOR = "MARCADOR_ARRANQUE";
+        public string EstadoCoberturaFE;   // null | FE_OK | FE_SIN_RESULTADO | FE_SIN_VINCULO | FE_MARCADOR
+        public bool TieneResultadosFE => EstadoCoberturaFE == FE_OK;
+        public bool EsMarcadorArranque => State == ValState.MarcadorArranque;
 
         // geometria util (vigas/muros: extremos; columnas: posicion)
         public Vector3 P0, P1;
