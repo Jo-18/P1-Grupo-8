@@ -88,6 +88,32 @@ namespace LabViewer
             PositionCamera();
         }
 
+        /// <summary>Encuadra el bounds para que quepa dentro de la region CENTRAL
+        /// disponible de la pantalla, evitando esconderse detras de los paneles
+        /// laterales o de la barra superior. hwPx/hhPx = media anchura/altura (px)
+        /// de esa region libre; mantiene la vista isometrica y no toca el FOV.</summary>
+        public void FrameAllCentral(Bounds b, float hwPx, float hhPx, float safety)
+        {
+            LookAt = b.center;
+            _panOffset = Vector3.zero;
+            Yaw = 45f; Pitch = 25f;
+            var cam = Camera.main;
+            if (cam == null) return;
+            // Angulo efectivo al que la region central subtiende desde el centro de
+            // la pantalla (lineal en tangente de la mitad del FOV), por cada eje.
+            float tanHalfV = Mathf.Tan(cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
+            float tanEffV = tanHalfV * (hhPx / (Screen.height * 0.5f));
+            float tanEffH = tanHalfV * cam.aspect * (hwPx / (Screen.width * 0.5f));
+            float tanEff = Mathf.Max(0.02f, Mathf.Min(tanEffV, tanEffH));
+            float beta = Mathf.Atan(tanEff);
+            // Esfera envolvente: para que quepa en el cono de semi-angulo beta hace
+            // falta distancia = R / sin(beta); el factor safety evita que roce los
+            // bordes (margenes visuales del usuario, no de la estructura).
+            float R = Mathf.Max(0.5f, b.extents.magnitude);
+            Distance = Mathf.Clamp(R / Mathf.Sin(beta) * safety, MinDist, MaxDist);
+            PositionCamera();
+        }
+
         /// <summary>Vuelve a encuadrar el ultimo FrameAll guardado (tecla Inicio).</summary>
         public void Home()
         {
