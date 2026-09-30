@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.SpatialTracking;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using LabViewer.AR;
 
 namespace LabViewer
 {
@@ -47,8 +48,8 @@ namespace LabViewer
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
             CreateARSession();
-            var camera = CreateXROrigin(lib);
-            CreateARContent();
+            var (_, imageManager, anchorManager) = CreateXROrigin(lib);
+            CreateARContent(imageManager, anchorManager);
             CreateDirectionalLight();
 
             EditorSceneManager.SaveScene(scene, ScenePath);
@@ -78,7 +79,7 @@ namespace LabViewer
             ObjectFactory.CreateGameObject("AR Session", typeof(ARSession), typeof(ARInputManager));
         }
 
-        static Camera CreateXROrigin(XRReferenceImageLibrary lib)
+        static (Camera camera, ARTrackedImageManager imageManager, ARAnchorManager anchorManager) CreateXROrigin(XRReferenceImageLibrary lib)
         {
             var originGo = ObjectFactory.CreateGameObject("XR Origin", typeof(XROrigin));
             var offsetGo = ObjectFactory.CreateGameObject("Camera Offset");
@@ -94,8 +95,8 @@ namespace LabViewer
             cameraGo.tag = "MainCamera";
             cameraGo.transform.SetParent(offsetGo.transform, false);
 
-            originGo.AddComponent<ARTrackedImageManager>();
-            originGo.AddComponent<ARAnchorManager>();
+            var trackedImageManager = originGo.AddComponent<ARTrackedImageManager>();
+            var anchorManager = originGo.AddComponent<ARAnchorManager>();
 
             var camera = cameraGo.GetComponent<Camera>();
             camera.clearFlags = CameraClearFlags.Color;
@@ -115,16 +116,26 @@ namespace LabViewer
                 so.ApplyModifiedPropertiesWithoutUndo();
             }
 
-            var trackedImageManager = originGo.GetComponent<ARTrackedImageManager>();
             trackedImageManager.referenceLibrary = lib;
             trackedImageManager.requestedMaxNumberOfMovingImages = 1;
 
-            return camera;
+            return (camera, trackedImageManager, anchorManager);
         }
 
-        static void CreateARContent()
+        static void CreateARContent(ARTrackedImageManager imageManager, ARAnchorManager anchorManager)
         {
-            ObjectFactory.CreateGameObject("AR Content");
+            var contentGo = ObjectFactory.CreateGameObject("AR Content");
+
+            if (contentGo.GetComponent<ARImageAnchorController>() == null)
+                ObjectFactory.AddComponent<ARImageAnchorController>(contentGo);
+
+            var controller = contentGo.GetComponent<ARImageAnchorController>();
+            var so = new SerializedObject(controller);
+            so.FindProperty("m_ImageManager").objectReferenceValue = imageManager;
+            so.FindProperty("m_AnchorManager").objectReferenceValue = anchorManager;
+            so.FindProperty("m_ContentRoot").objectReferenceValue = contentGo.transform;
+            so.FindProperty("m_ExpectedImageName").stringValue = ARImageAnchorController.DefaultExpectedImageName;
+            so.ApplyModifiedPropertiesWithoutUndo();
         }
 
         static void CreateDirectionalLight()
