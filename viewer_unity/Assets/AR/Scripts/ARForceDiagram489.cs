@@ -65,7 +65,9 @@ namespace LabViewer.AR
         bool m_Visible;
         bool m_Fallido;
         int m_ConteoConstrucciones;
+        int m_ConteoValidaciones;
         int m_ConteoFallos;
+        string m_CausaBreve;
         GameObject m_DiagramGo;
         LineRenderer m_Base;
         LineRenderer m_Linea;
@@ -76,7 +78,9 @@ namespace LabViewer.AR
         public bool DiagramaVisible => m_Visible;
         public bool Fallido => m_Fallido;
         public int ConteoConstrucciones => m_ConteoConstrucciones;
+        public int ConteoValidaciones => m_ConteoValidaciones;
         public int ConteoFallos => m_ConteoFallos;
+        public string CausaBreve => m_CausaBreve;
         public int StationCount => m_Estaciones != null ? m_Estaciones.Length : 0;
         public int MagnitudIndex => m_MagIndex;
         public string MagnitudActual => Magnitudes[m_MagIndex];
@@ -89,8 +93,37 @@ namespace LabViewer.AR
 
         public static string UnidadDe(int mag) => mag < 3 ? "kN" : "kN*m";
 
+        static GUIStyle s_EstiloStatus;
+        static GUIStyle s_EstiloStatusOscuro;
+
+        static GUIStyle ObtenerEstiloStatus()
+        {
+            if (s_EstiloStatus == null) s_EstiloStatus = CrearEstiloStatus(Color.white);
+            return s_EstiloStatus;
+        }
+
+        static GUIStyle ObtenerEstiloStatusOscuro()
+        {
+            if (s_EstiloStatusOscuro == null) s_EstiloStatusOscuro = CrearEstiloStatus(new Color(0f, 0f, 0f, 0.85f));
+            return s_EstiloStatusOscuro;
+        }
+
+        static GUIStyle CrearEstiloStatus(Color color)
+        {
+            var gs = new GUIStyle(GUI.skin.label);
+            gs.fontSize = 22;
+            gs.fontStyle = FontStyle.Bold;
+            gs.normal.textColor = color;
+            return gs;
+        }
+
         void Start()
         {
+            // Identificador del binario en ejecucion: se emite una sola vez, antes
+            // de cargar cualquier JSON, para poder confirmar en el telefono que el
+            // build corregido (v2, sin la ruta antigua Construir-inmediato) corre.
+            Debug.Log("[ARDiag489] Runtime orchestration v2");
+
             if (m_Loader == null || m_Controller == null)
             {
                 Debug.LogError("[ARDiag489] Sin referencias serializadas (loader/controller); diagrama no mostrado");
@@ -136,6 +169,19 @@ namespace LabViewer.AR
             AceptarJson(raiz);
             if (m_Fallido || !m_JsonListo) yield break;
 
+            // Mismo flujo posterior al JSON que se ejecuta en Android.
+            yield return CoordinarDesdeJson();
+        }
+
+        // Orquestacion posterior a haber conservado un JSON valido en memoria:
+        // sin loader terminal no valida ni construye (espera sin marcar fallo);
+        // con loader correcto valida cruzado y construye exactamente una vez;
+        // con loader erroneo falla una sola vez y conserva el fallback. Es el
+        // mismo metodo de entrada que usa Android (despues de la descarga).
+        public IEnumerator CoordinarDesdeJson()
+        {
+            // Guard obligatorio: no validar/construir/marcar fallo antes de que el
+            // loader haya terminado; mientras tanto solo retener los datos.
             while (m_Loader != null && !m_Loader.LoadCompleted) yield return null;
             if (m_Loader == null || !m_Loader.LoadCompleted)
             {
@@ -204,10 +250,15 @@ namespace LabViewer.AR
             }
 
             Debug.Log("[ARDiag489] Validacion cruzada OK");
+            m_ConteoValidaciones++;
             m_DataLoaded = true;
 
             ConstruirGeometria();
-            if (m_DiagramGo != null) RellenarLineas();
+            if (m_DiagramGo != null)
+            {
+                RellenarLineas();
+                Debug.Log("[ARDiag489] Diagrama construido: " + MagnitudActual);
+            }
 
             if (m_Controller != null && m_Controller.Anchor != null)
                 NotificarAnchor();
@@ -236,6 +287,15 @@ namespace LabViewer.AR
             if (m_Loader == null)
             {
                 errs.Add("sin referencia al loader");
+                return errs;
+            }
+
+            // Guard obligatorio: el cruce solo es legitimo con el estado final
+            // correcto del loader; antes, retener y no validar ni marcar fallo.
+            if (!m_Loader.LoadCompleted || !m_Loader.LoadSucceeded || !m_Loader.DataLoaded)
+            {
+                errs.Add("loader no termino correctamente (completed=" + m_Loader.LoadCompleted
+                    + " ok=" + m_Loader.LoadSucceeded + " data=" + m_Loader.DataLoaded + ")");
                 return errs;
             }
 
@@ -277,7 +337,15 @@ namespace LabViewer.AR
             if (m_Fallido) return;
             m_Fallido = true;
             m_ConteoFallos++;
+            m_CausaBreve = Breve(mensaje);
             Debug.LogError("[ARDiag489] " + mensaje);
+        }
+
+        static string Breve(string s)
+        {
+            if (string.IsNullOrEmpty(s)) return "error desconocido";
+            string t = s.Replace('\n', ' ').Trim();
+            return t.Length <= 90 ? t : t.Substring(0, 90) + "…";
         }
 
         Estacion[] ParseEstaciones(Dictionary<string, object> raiz)
@@ -313,6 +381,12 @@ namespace LabViewer.AR
 
         void ConstruirGeometria()
         {
+            // Guard obligatorio: requiere loader terminal correcto y exactamente
+            // una construccion (idempotente). Si no se dan las condiciones, se
+            // retienen los datos y no se construye ni se marca fallo.
+            if (m_Loader == null || !m_Loader.LoadCompleted || !m_Loader.LoadSucceeded || !m_Loader.DataLoaded) return;
+            if (m_DiagramGo != null) return;
+
             Vector3 aLocal = m_Loader.VigaPILocal;
             Vector3 bLocal = m_Loader.VigaPJLocal;
             float lenAR = m_Loader.VigaLongitudAR;
@@ -408,8 +482,28 @@ namespace LabViewer.AR
 
         void OnGUI()
         {
-            if (!m_DataLoaded || !m_Visible) return;
             Rect safe = Screen.safeArea;
+
+            // Estado visible de diagnostico (sin tapar la camara): mientras el
+            // diagrama carga se muestra la indicacion; si fallo, la causa breve;
+            // al cargar correctamente la indicacion se reemplaza por el selector.
+            if (m_Fallido)
+            {
+                GUI.Label(new Rect(safe.xMin + 13, safe.yMin + 13, safe.width - 26, 46),
+                    "Diagramas no disponibles: " + m_CausaBreve, ObtenerEstiloStatusOscuro());
+                GUI.Label(new Rect(safe.xMin + 12, safe.yMin + 12, safe.width - 26, 46),
+                    "Diagramas no disponibles: " + m_CausaBreve, ObtenerEstiloStatus());
+                return;
+            }
+            if (!m_DataLoaded)
+            {
+                GUI.Label(new Rect(safe.xMin + 13, safe.yMin + 13, safe.width - 26, 46),
+                    "Diagramas: cargando…", ObtenerEstiloStatusOscuro());
+                GUI.Label(new Rect(safe.xMin + 12, safe.yMin + 12, safe.width - 26, 46),
+                    "Diagramas: cargando…", ObtenerEstiloStatus());
+                return;
+            }
+
             const float margen = 14f;
             const float alto = 64f;
             int n = Magnitudes.Length;

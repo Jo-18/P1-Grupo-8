@@ -112,15 +112,17 @@ namespace LabViewer.AR.EditorTools
                 a1 = dA.JsonListo && !dA.Fallido && !dA.DataLoaded && dA.ConteoConstrucciones == 0;
                 res["A_json_primero_aceptado_sin_error"] = a1;
 
-                // Loader TODAVIA no listo: notificar no debe marcar error ni construir.
+                // Loader TODAVIA no listo: notificar no debe marcar error, validar ni construir.
                 dA.NotificarLoaderTerminado();
-                a2 = !dA.Fallido && !dA.DataLoaded && dA.ConteoConstrucciones == 0 && dA.ConteoFallos == 0;
+                a2 = !dA.Fallido && !dA.DataLoaded && dA.ConteoConstrucciones == 0
+                    && dA.ConteoValidaciones == 0 && dA.ConteoFallos == 0;
                 res["A_loader_no_listo_no_error_no_construye"] = a2;
 
                 // Loader pasa a estado correcto: valida cruzado y construye una sola vez.
                 PonerLoaderOk(lA, idA);
                 dA.NotificarLoaderTerminado();
-                a3 = !dA.Fallido && dA.DataLoaded && dA.ConteoConstrucciones == 1 && dA.JsonListo;
+                a3 = !dA.Fallido && dA.DataLoaded && dA.ConteoConstrucciones == 1
+                    && dA.ConteoValidaciones == 1 && dA.JsonListo;
                 res["A_validacion_cruzada_ok_y_construye"] = a3;
                 res["A_magnitud_actual"] = dA.MagnitudActual;
 
@@ -129,10 +131,11 @@ namespace LabViewer.AR.EditorTools
                 a4 = !dA.DiagramaVisible && dA.DataLoaded && dA.ConteoConstrucciones == 1;
                 res["A_espera_anchor_para_visible"] = a4;
 
-                // Duplicados: segunda notificacion => 1 sola construccion, sin fallo.
+                // Duplicados: segunda notificacion => 1 sola validacion/construccion, sin fallo.
                 dA.NotificarLoaderTerminado();
                 dA.NotificarAnchor();
-                a5 = dA.ConteoConstrucciones == 1 && !dA.Fallido && dA.DataLoaded && !dA.DiagramaVisible;
+                a5 = dA.ConteoConstrucciones == 1 && dA.ConteoValidaciones == 1
+                    && !dA.Fallido && dA.DataLoaded && !dA.DiagramaVisible;
                 res["A_sin_duplicados"] = a5;
 
                 bool aGlobal = a1 && a2 && a3 && a4 && a5;
@@ -249,6 +252,78 @@ namespace LabViewer.AR.EditorTools
                 DestroyDiagram(rootE);
             }
 
+            // Orden F: el MISMO metodo de entrada que ejecuta Android una vez el
+            // JSON esta disponible (CoordinarDesdeJson). El JSON llega primero; la
+            // coroutine espera al loader sin validar ni construir; al terminar el
+            // loader valida cruzado y construye exactamente una vez; el selector
+            // queda activo (DataLoaded) y el fallback no es el rotulo principal.
+            bool f1, f2, f3, f4, f5, f6;
+            GameObject rootF = CrearDiagrama(out ARForceDiagram489 dF, out ARBeam489Loader lF, out ARElementIdentity idF,
+                out ARImageAnchorController cF);
+            try
+            {
+                dF.AceptarJson(raiz);
+                f1 = dF.JsonListo && !dF.Fallido && !dF.DataLoaded
+                    && dF.ConteoConstrucciones == 0 && dF.ConteoValidaciones == 0;
+                res["F_json_primero_aceptado"] = f1;
+
+                var iterador = (System.Collections.IEnumerator)dF.CoordinarDesdeJson();
+                try
+                {
+                    // Primer avance: el loader aun no termino => retener datos, sin
+                    // validar, sin construir y sin marcar fallo.
+                    bool primer = iterador.MoveNext();
+                    f2 = primer && !dF.Fallido && !dF.DataLoaded
+                        && dF.ConteoConstrucciones == 0 && dF.ConteoValidaciones == 0 && dF.ConteoFallos == 0;
+                    res["F_esperando_loader_sin_validar_ni_construir"] = f2;
+
+                    PonerLoaderOk(lF, idF);
+
+                    // Avanzar hasta validar/construir (acota el giro de la espera
+                    // de anchor, que en EditMode no termina).
+                    int guardas = 0;
+                    while (!dF.DataLoaded && guardas < 200) { iterador.MoveNext(); guardas++; }
+
+                    f3 = dF.DataLoaded && !dF.Fallido
+                        && dF.ConteoValidaciones == 1 && dF.ConteoConstrucciones == 1;
+                    res["F_valida_y_construye_una_vez"] = f3;
+                    res["F_magnitud_actual"] = dF.MagnitudActual;
+
+                    // Pasos adicionales: sin duplicar validacion/construccion ni fallo.
+                    for (int i = 0; i < 5; i++) iterador.MoveNext();
+                    f4 = dF.ConteoValidaciones == 1 && dF.ConteoConstrucciones == 1
+                        && !dF.Fallido && dF.ConteoFallos == 0;
+                    res["F_sin_duplicados_ni_fallo"] = f4;
+
+                    // Selector activo (DataLoaded, inicial Vz) y fallback ausente.
+                    f5 = string.Equals(dF.MagnitudActual, "Vz", StringComparison.Ordinal)
+                        && dF.DataLoaded && !dF.Fallido;
+                    res["F_selector_activo_sin_fallback"] = f5;
+
+                    // El texto del error de la ruta antigua no puede aparecer antes
+                    // de LoadCompleted: en toda la espera no hubo fallo ni causa breve.
+                    f6 = dF.ConteoFallos == 0 && string.IsNullOrEmpty(dF.CausaBreve);
+                    res["F_sin_error_antiguo_antes_de_loader"] = f6;
+
+                    if (!(f1 && f2 && f3 && f4 && f5 && f6))
+                    {
+                        errores.Add("orden F (entrada Android) no paso: JsonListo=" + dF.JsonListo
+                            + " Fallido=" + dF.Fallido + " DataLoaded=" + dF.DataLoaded
+                            + " Validaciones=" + dF.ConteoValidaciones + " Construcciones=" + dF.ConteoConstrucciones
+                            + " Fallos=" + dF.ConteoFallos);
+                    }
+                }
+                finally
+                {
+                    var disp = iterador as IDisposable;
+                    if (disp != null) disp.Dispose();
+                }
+            }
+            finally
+            {
+                DestroyDiagram(rootF);
+            }
+
             // Resumen agregado.
             res["ordenes_exitosos"] = (bool)res["A_json_primero_aceptado_sin_error"]
                 && (bool)res["A_loader_no_listo_no_error_no_construye"]
@@ -256,7 +331,8 @@ namespace LabViewer.AR.EditorTools
                 && (bool)res["A_espera_anchor_para_visible"]
                 && (bool)res["A_sin_duplicados"]
                 && b3 && (bool)res["B_loader_antes_json_sin_error"]
-                && c2 && c3 && (bool)res["D_selector_inicial_vz"];
+                && c2 && c3 && (bool)res["D_selector_inicial_vz"]
+                && f2 && f3 && f4 && f5 && f6;
         }
 
         static GameObject CrearDiagrama(out ARForceDiagram489 diagrama, out ARBeam489Loader loader,
