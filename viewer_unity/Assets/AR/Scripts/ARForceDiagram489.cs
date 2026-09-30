@@ -32,19 +32,30 @@ namespace LabViewer.AR
         const string MagnitudInicial = "Vz";
         const int NStationsEsperado = 51;
         const int PasoOrdenadas = 5;
-        const float AnchoBase = 0.002f;
-        const float AnchoLinea = 0.004f;
+
+        // Superficie de la cara lateral de la viga (T32). Espesores en metros AR.
+        const float AnchoBase = 0.0025f;
+        const float AnchoLinea = 0.005f;
         const float AnchoOrdenada = 0.0015f;
+
+        // Margen libre dentro de la silueta: la amplitud nunca rebasa alto/2 - margen.
+        const float MargenSilueta = 0.005f;
+        // Separacion del plano de la cara para evitar z-fighting.
+        const float OffsetSuperficial = 0.0015f;
+        // Histeresis del cambio de cara: la camara debe salir de una banda central
+        // mayor que el semi-ancho para que el diagrama salte de lado.
+        const float HisteresisZ = 0.02f;
 
         [SerializeField] ARImageAnchorController m_Controller;
         [SerializeField] ARBeam489Loader m_Loader;
         [SerializeField] ARResult489Label m_Label;
         [SerializeField] Transform m_ContentRoot;
+        [SerializeField] Camera m_Camera;
         [SerializeField] Material m_BaseMaterial;
         [SerializeField] Material m_DiagramMaterial;
         [SerializeField] Material m_OrdinateMaterial;
-        [Tooltip("Amplitud visual maxima del diagrama (m, escala AR 1:10) cuando |valor| == maxAbs.")]
-        [SerializeField] float m_AmplitudMaxima = 0.065f;
+        [Tooltip("Amplitud visual maxima del diagrama (m, escala AR 1:10) cuando |valor| == maxAbs. Se recorta a alto/2 - margen de la seccion.")]
+        [SerializeField] float m_AmplitudMaxima = 0.035f;
 
         struct Estacion
         {
@@ -67,6 +78,9 @@ namespace LabViewer.AR
         int m_ConteoConstrucciones;
         int m_ConteoValidaciones;
         int m_ConteoFallos;
+        int m_CambiosCara;
+        int m_SignoCara = 1;
+        float m_AmplitudEfectiva;
         string m_CausaBreve;
         GameObject m_DiagramGo;
         LineRenderer m_Base;
@@ -80,6 +94,7 @@ namespace LabViewer.AR
         public int ConteoConstrucciones => m_ConteoConstrucciones;
         public int ConteoValidaciones => m_ConteoValidaciones;
         public int ConteoFallos => m_ConteoFallos;
+        public int ConteoCambiosCara => m_CambiosCara;
         public string CausaBreve => m_CausaBreve;
         public int StationCount => m_Estaciones != null ? m_Estaciones.Length : 0;
         public int MagnitudIndex => m_MagIndex;
@@ -90,6 +105,19 @@ namespace LabViewer.AR
         public string UnidadActual => UnidadDe(m_MagIndex);
         public float ValorEstacion(int k) => (m_Estaciones != null && k >= 0 && k < m_Estaciones.Length) ? m_Estaciones[k].val[m_MagIndex] : 0f;
         public float XEstacion(int k) => (m_Estaciones != null && k >= 0 && k < m_Estaciones.Length) ? m_Estaciones[k].xM : 0f;
+
+        // Superficie de la cara visible (T32), expuesta para la auditoria Editor.
+        public Transform Contenedor => m_DiagramGo != null ? m_DiagramGo.transform : null;
+        public int SignoCara => m_SignoCara;
+        public float AmplitudMaximaConfigurada => m_AmplitudMaxima;
+        public float AmplitudEfectiva => m_AmplitudEfectiva;
+        public float MargenSiluetaM => MargenSilueta;
+        public float OffsetSuperficialM => OffsetSuperficial;
+        public float HisteresisM => HisteresisZ;
+        public LineRenderer LineaBase => m_Base;
+        public LineRenderer LineaDiagrama => m_Linea;
+        public LineRenderer LineaOrdenadas => m_Ordenadas;
+        public float OrdenadaDe(int k) => Ordenada(k);
 
         public static string UnidadDe(int mag) => mag < 3 ? "kN" : "kN*m";
 
@@ -379,6 +407,11 @@ namespace LabViewer.AR
             return mx;
         }
 
+        // Geometria sobre la cara lateral visible de la viga (T32). El contenedor
+        // se engacha al transform de la viga que creo el loader: la X local es el
+        // eje longitudinal, la Y local la ordenada del diagrama (base en el centro
+        // de la cara, y = 0) y la Z local la profundidad, a ancho/2 + offset del
+        // plano de la cara. Solo se dibuja; ningun valor del JSON se modifica.
         void ConstruirGeometria()
         {
             // Guard obligatorio: requiere loader terminal correcto y exactamente
@@ -387,30 +420,90 @@ namespace LabViewer.AR
             if (m_Loader == null || !m_Loader.LoadCompleted || !m_Loader.LoadSucceeded || !m_Loader.DataLoaded) return;
             if (m_DiagramGo != null) return;
 
-            Vector3 aLocal = m_Loader.VigaPILocal;
-            Vector3 bLocal = m_Loader.VigaPJLocal;
             float lenAR = m_Loader.VigaLongitudAR;
             if (lenAR <= 0.0001f) return;
 
+            // La amplitud nunca puede rebasar la silueta de la seccion.
+            float alto = m_Loader.VigaAltoAR;
+            float maximo = alto * 0.5f - MargenSilueta;
+            if (maximo <= 0f) return;
+            m_AmplitudEfectiva = Mathf.Min(m_AmplitudMaxima, maximo);
+
+            Transform viga = m_Loader.VigaTransform;
+            if (viga == null) return;
+
+            // El contenedor comparte el SISTEMA DE EJES de la viga (X longitudinal,
+            // Y ordenada del diagrama, Z normal de las caras laterales) tomando su
+            // pose, pero cuelga del AR Content sin escalar: colgarlo del transform
+            // escalado de la viga haria que Unity normalice posiciones y espesores
+            // con una escala no uniforme (0.305, 0.080, 0.030). Sigue siendo hijo
+            // del anchor a traves del AR Content.
             var go = new GameObject("AR489_Diagrama");
-            go.transform.SetParent(m_ContentRoot != null ? m_ContentRoot : transform, false);
-            go.transform.localPosition = 0.5f * (aLocal + bLocal);
-            go.transform.localRotation = (bLocal - aLocal).sqrMagnitude > 0.0001f
-                ? Quaternion.FromToRotation(Vector3.right, (bLocal - aLocal).normalized)
-                : Quaternion.identity;
+            go.transform.SetParent(m_ContentRoot != null ? m_ContentRoot : transform, true);
+            go.transform.localScale = Vector3.one;
+            go.transform.SetPositionAndRotation(viga.position, viga.rotation);
             go.SetActive(false);
 
             // Un LineRenderer por hijo: Unity no permite dos LineRenderer en un
             // mismo GameObject (el segundo AddComponent devuelve null).
-            m_Base = CrearLinea(go, "Base", m_BaseMaterial, AnchoBase);
-            m_Linea = CrearLinea(go, "Diagrama", m_DiagramMaterial, AnchoLinea);
-            m_Ordenadas = CrearLinea(go, "Ordenadas", m_OrdinateMaterial, AnchoOrdenada);
+            m_Base = CrearLinea(go, "Base", m_BaseMaterial, AnchoBase, 0);
+            m_Ordenadas = CrearLinea(go, "Ordenadas", m_OrdinateMaterial, AnchoOrdenada, 1);
+            m_Linea = CrearLinea(go, "Diagrama", m_DiagramMaterial, AnchoLinea, 2);
 
             m_DiagramGo = go;
+            AplicarCara();
             m_ConteoConstrucciones++;
         }
 
-        LineRenderer CrearLinea(GameObject raiz, string nombre, Material mat, float ancho)
+        // Coloca el contenedor sobre la cara lateral visible. Es la UNICA operacion
+        // que se repite en el tiempo: no reconstruye las 51 estaciones ni toca los
+        // puntos, solo la posicion del contenedor.
+        void AplicarCara()
+        {
+            if (m_DiagramGo == null || m_Loader == null) return;
+            Transform viga = m_Loader.VigaTransform;
+            if (viga == null) return;
+            float z = m_SignoCara * (m_Loader.VigaAnchoAR * 0.5f + OffsetSuperficial);
+            m_DiagramGo.transform.position = viga.position + viga.TransformDirection(0f, 0f, z);
+        }
+
+        // Cara visible a partir de la posicion de la camara expresada en el
+        // sistema local de la viga (Z local = normal de las caras laterales).
+        // Solo cambia de lado cuando la camara sale de la banda central
+        // (histeresis), de modo que no parpadea al cruzar el plano medio.
+        public bool ActualizarCaraVisible(Vector3 camaraMundo)
+        {
+            if (m_DiagramGo == null || m_Loader == null) return false;
+            Transform viga = m_Loader.VigaTransform;
+            if (viga == null) return false;
+
+            Vector3 local = viga.InverseTransformPoint(camaraMundo);
+            int signo = local.z > 0f ? 1 : (local.z < 0f ? -1 : 0);
+            if (signo == 0 || signo == m_SignoCara) return false;
+            if (Mathf.Abs(local.z) < HisteresisZ) return false;
+
+            m_SignoCara = signo;
+            m_CambiosCara++;
+            AplicarCara();
+            return true;
+        }
+
+        // Unico uso de LateUpdate: elegir la cara visible. No reconstruye nada.
+        void LateUpdate()
+        {
+            if (m_DiagramGo == null) return;
+            Camera cam = ResolverCamara();
+            if (cam == null) return;
+            ActualizarCaraVisible(cam.transform.position);
+        }
+
+        Camera ResolverCamara()
+        {
+            if (m_Camera == null && Application.isPlaying) m_Camera = Camera.main;
+            return m_Camera;
+        }
+
+        LineRenderer CrearLinea(GameObject raiz, string nombre, Material mat, float ancho, int orden)
         {
             var child = new GameObject(nombre);
             child.transform.SetParent(raiz.transform, false);
@@ -418,20 +511,26 @@ namespace LabViewer.AR
             child.transform.localRotation = Quaternion.identity;
             child.transform.localScale = Vector3.one;
             var lr = child.AddComponent<LineRenderer>();
-            if (lr != null) Configurar(lr, mat, ancho);
+            if (lr != null) Configurar(lr, mat, ancho, orden);
             return lr;
         }
 
-        void Configurar(LineRenderer lr, Material mat, float ancho)
+        void Configurar(LineRenderer lr, Material mat, float ancho, int orden)
         {
             if (lr == null) return;
             lr.useWorldSpace = false;
             lr.loop = false;
+            lr.alignment = LineAlignment.View;
+            lr.textureMode = LineTextureMode.Stretch;
             lr.startWidth = ancho;
             lr.endWidth = ancho;
             lr.shadowCastingMode = ShadowCastingMode.Off;
             lr.receiveShadows = false;
             if (mat != null) lr.sharedMaterial = mat;
+            // Orden explicito de dibujo: las tres lineas son coplanares en la cara
+            // y el material es transparente (sin ZWrite), asi que el orden decide
+            // el solape en vez del z-fighting.
+            lr.sortingOrder = orden;
             lr.positionCount = 0;
         }
 
@@ -473,11 +572,14 @@ namespace LabViewer.AR
             return new Vector3((m_Estaciones[k].xi - 0.5f) * lenAR, Ordenada(k), 0f);
         }
 
+        // Normalizacion por magnitud conservada: solo cambia la escala grafica
+        // (amplitud efectiva recortada a la silueta de la seccion). Estaciones,
+        // signos, valores y forma vienen del JSON sin modificar.
         float Ordenada(int k)
         {
             float maxAbs = m_MaxAbs[m_MagIndex];
             if (maxAbs <= 0f) return 0f;
-            return (m_Estaciones[k].val[m_MagIndex] / maxAbs) * m_AmplitudMaxima;
+            return (m_Estaciones[k].val[m_MagIndex] / maxAbs) * m_AmplitudEfectiva;
         }
 
         void OnGUI()
@@ -504,25 +606,71 @@ namespace LabViewer.AR
                 return;
             }
 
-            const float margen = 14f;
-            const float alto = 64f;
+            const float margen = 18f;
+            const float separacion = 10f;
+            const float alto = 72f;
             int n = Magnitudes.Length;
-            float ancho = (safe.width - margen * (n + 1)) / n;
+            float ancho = (safe.width - margen * 2f - separacion * (n - 1)) / n;
             if (ancho < 40f) return;
 
             float y = safe.yMax - margen - alto;
             for (int i = 0; i < n; i++)
             {
-                var rect = new Rect(safe.xMin + margen + i * (ancho + margen), y, ancho, alto);
+                var rect = new Rect(safe.xMin + margen + i * (ancho + separacion), y, ancho, alto);
                 bool on = i == m_MagIndex;
-                Color prev = GUI.backgroundColor;
-                GUI.backgroundColor = on
-                    ? new Color(0.10f, 0.55f, 0.95f, 1f)
-                    : new Color(0.12f, 0.12f, 0.14f, 0.78f);
-                bool click = GUI.Button(rect, Magnitudes[i]);
-                GUI.backgroundColor = prev;
+                bool click = GUI.Button(rect, Magnitudes[i], on ? ObtenerEstiloBotonActivo() : ObtenerEstiloBotonInactivo());
                 if (click && !on) CambiarMagnitud(i);
             }
+        }
+
+        // Contraste del selector (T32): fondo oscuro semitransparente, texto
+        // blanco y la magnitud activa en cian. Solo cambia el aspecto; las seis
+        // opciones y el comportamiento tactil son los ya probados.
+        static GUIStyle s_EstiloBotonInactivo;
+        static GUIStyle s_EstiloBotonActivo;
+
+        static GUIStyle ObtenerEstiloBotonInactivo()
+        {
+            if (s_EstiloBotonInactivo == null)
+                s_EstiloBotonInactivo = CrearEstiloBoton(
+                    new Color(0.05f, 0.06f, 0.08f, 0.88f), new Color(0.10f, 0.12f, 0.15f, 0.92f), Color.white);
+            return s_EstiloBotonInactivo;
+        }
+
+        static GUIStyle ObtenerEstiloBotonActivo()
+        {
+            if (s_EstiloBotonActivo == null)
+                s_EstiloBotonActivo = CrearEstiloBoton(
+                    new Color(0.00f, 0.55f, 0.70f, 0.95f), new Color(0.00f, 0.70f, 0.85f, 1f), Color.white);
+            return s_EstiloBotonActivo;
+        }
+
+        static GUIStyle CrearEstiloBoton(Color fondo, Color fondoHover, Color texto)
+        {
+            var gs = new GUIStyle(GUI.skin.button);
+            gs.fontSize = 30;
+            gs.fontStyle = FontStyle.Bold;
+            gs.alignment = TextAnchor.MiddleCenter;
+            gs.normal.textColor = texto;
+            gs.normal.background = CrearTextura(fondo);
+            gs.hover.textColor = texto;
+            gs.hover.background = CrearTextura(fondoHover);
+            gs.active.textColor = texto;
+            gs.active.background = CrearTextura(fondoHover);
+            gs.focused.textColor = texto;
+            gs.focused.background = CrearTextura(fondo);
+            return gs;
+        }
+
+        static Texture2D CrearTextura(Color c)
+        {
+            var tex = new Texture2D(1, 1, TextureFormat.RGBA32, false)
+            {
+                hideFlags = HideFlags.HideAndDontSave
+            };
+            tex.SetPixel(0, 0, c);
+            tex.Apply();
+            return tex;
         }
 
         void CambiarMagnitud(int mag)
@@ -532,6 +680,13 @@ namespace LabViewer.AR
             RellenarLineas();
             if (m_Label != null) m_Label.ActualizarConDiagrama(this);
             Debug.Log("[ARDiag489] Magnitud seleccionada: " + Magnitudes[m_MagIndex]);
+        }
+
+        // Seam de auditoria Editor: delega en la MISMA rutina que usa el toque del
+        // selector, sin duplicar logica ni alterar el comportamiento tactil.
+        public void SeleccionarMagnitud(int mag)
+        {
+            CambiarMagnitud(mag);
         }
 
         // Validacion estructural y semantica del JSON de diagramas. Se usa tambien

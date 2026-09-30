@@ -377,10 +377,11 @@ MonoBehaviour:
   m_Loader: {fileID: 1287309406}
   m_Label: {fileID: 1287309405}
   m_ContentRoot: {fileID: 1287309408}
+  m_Camera: {fileID: 1341925317}
   m_BaseMaterial: {fileID: 2100000, guid: 6f10be1609b56414abb4581b949e9e2d, type: 2}
   m_DiagramMaterial: {fileID: 2100000, guid: 858f1229bf804bb4bb17b7512e94f194, type: 2}
   m_OrdinateMaterial: {fileID: 2100000, guid: 55dd25147b0337a419b6ff8e442bd8cf, type: 2}
-  m_AmplitudMaxima: 0.065
+  m_AmplitudMaxima: 0.035
 --- !u!1 &1341925316
 GameObject:
   m_ObjectHideFlags: 0

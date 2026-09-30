@@ -19,8 +19,12 @@ namespace LabViewer.AR
         [SerializeField] ARForceDiagram489 m_Diagrama;
 
         const string FormatoNumero = "+0.000;-0.000;0.000";
+        // Separacion vertical extra del rotulo respecto de la cara superior de la
+        // viga, para que no se solape con la geometria ni con el diagrama.
+        const float SeparacionSuperior = 0.030f;
 
         GameObject m_TextoGo;
+        GameObject m_FondoGo;
         TextMesh m_Texto;
         bool m_Visible;
 
@@ -107,10 +111,10 @@ namespace LabViewer.AR
             // Tamano en unidades de mundo AR (escala 1:10 del modelo real), no en
             // pixeles de pantalla. Formula del TextMesh legacy:
             //   characterSize = altoObjetivoMundo * 10 / fontSize
-            // Objetivo: bloque de texto no mas ancho que la viga AR (0.305 m) y
-            // legible a distancia normal de observacion.
+            // Objetivo: bloque de texto algo mas compacto que la viga AR (0.305 m),
+            // legible a distancia normal y sin tapar la geometria.
             float len = m_Loader.VigaLongitudAR;
-            float maxAncho = Mathf.Max(0.10f, Mathf.Min(len, 0.28f));
+            float maxAncho = Mathf.Max(0.09f, Mathf.Min(len, 0.24f));
             int maxChars = MayorLinea(texto);
             float anchoGlifo = 0.5f;
             float altoGlifo = maxAncho / Mathf.Max(1f, maxChars * anchoGlifo);
@@ -121,10 +125,58 @@ namespace LabViewer.AR
 
             int nLineas = CantidadLineas(texto);
             float altoBloque = altoGlifo * nLineas * 1.2f;
-            Vector3 tamViga = m_Loader.VigaTamanoAR;
-            float semiAlturaViga = tamViga.y * 0.5f;
-            float offsetY = semiAlturaViga + 0.02f + altoBloque * 0.5f;
+            // Centro del rotulo por encima de la cara superior de la viga, con
+            // separacion visual suficiente para no solaparse con la geometria.
+            float semiAlturaViga = (m_Loader.VigaAltoAR > 0f ? m_Loader.VigaAltoAR : m_Loader.VigaTamanoAR.y) * 0.5f;
+            float offsetY = semiAlturaViga + SeparacionSuperior + altoBloque * 0.5f;
             m_TextoGo.transform.localPosition = m_Loader.VigaCentroLocal + new Vector3(0f, offsetY, 0f);
+
+            ActualizarFondo();
+        }
+
+        // Fondo semitransparente del rotulo: un quad plano con material sin
+        // iluminacion, hijo del texto (hereda el billboard) y dibujado antes que
+        // el texto. Es deliberadamente simple: no introduce ningun sistema de UI.
+        void ActualizarFondo()
+        {
+            if (m_TextoGo == null) return;
+            var rend = m_TextoGo.GetComponent<Renderer>();
+            if (rend == null) return;
+
+            if (m_FondoGo == null)
+            {
+                m_FondoGo = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                m_FondoGo.name = "Fondo";
+                var col = m_FondoGo.GetComponent<Collider>();
+                if (col != null) Destroy(col);
+                m_FondoGo.transform.SetParent(m_TextoGo.transform, false);
+                // +Z local apunta hacia el fondo de la escena: el texto queda por
+                // delante. sortingOrder -1 fija el orden de dibujo.
+                m_FondoGo.transform.localPosition = new Vector3(0f, 0f, 0.0015f);
+                m_FondoGo.transform.localRotation = Quaternion.identity;
+
+                Material mat = CrearMaterialFondo();
+                if (mat != null) m_FondoGo.GetComponent<Renderer>().sharedMaterial = mat;
+                m_FondoGo.GetComponent<Renderer>().sortingOrder = -1;
+                m_FondoGo.layer = m_TextoGo.layer;
+            }
+
+            Vector3 tam = rend.bounds.size;
+            float w = tam.x + 0.012f;
+            float h = tam.y + 0.008f;
+            if (w <= 0f || h <= 0f) return;
+            m_FondoGo.transform.localScale = new Vector3(w, h, 1f);
+        }
+
+        static Material CrearMaterialFondo()
+        {
+            Shader sh = Shader.Find("Sprites/Default");
+            if (sh == null) sh = Shader.Find("Unlit/Transparent");
+            if (sh == null) sh = Shader.Find("Unlit/Color");
+            if (sh == null) return null;
+            var mat = new Material(sh) { hideFlags = HideFlags.HideAndDontSave };
+            if (mat.HasProperty("_Color")) mat.SetColor("_Color", new Color(0f, 0f, 0f, 0.55f));
+            return mat;
         }
 
         string TextoBase()

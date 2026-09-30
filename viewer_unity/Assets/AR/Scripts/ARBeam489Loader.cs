@@ -34,6 +34,8 @@ namespace LabViewer.AR
         float m_VzJ;
         float m_VigaLongitudM;
         float m_VigaLongitudAR;
+        float m_VigaAltoAR;
+        float m_VigaAnchoAR;
         Vector3 m_VigaCentroLocal;
         Vector3 m_VigaPILocal;
         Vector3 m_VigaPJLocal;
@@ -60,6 +62,16 @@ namespace LabViewer.AR
         public Vector3 VigaPILocal => m_VigaPILocal;
         public Vector3 VigaPJLocal => m_VigaPJLocal;
         public Vector3 VigaTamanoAR => m_Beam != null ? m_Beam.transform.localScale : Vector3.zero;
+
+        // Sistema local de la viga (T32). El primitivo se construye con la
+        // longitud en la X local y la seccion en Y (alto) / Z (ancho), de modo que
+        // las caras laterales del solido son los planos locales Z = +-ancho/2. El
+        // diagrama se apoya en ese mismo transform: no se recalcula aqui ninguna
+        // transformacion OpenSees->Unity, solo se expone la geometria ya creada.
+        public Transform VigaTransform => m_Beam != null ? m_Beam.transform : null;
+        public float VigaAltoAR => m_VigaAltoAR;
+        public float VigaAnchoAR => m_VigaAnchoAR;
+        public Vector3 VigaEjeLongitudinal => Vector3.right;
 
         void Awake()
         {
@@ -198,6 +210,8 @@ namespace LabViewer.AR
             m_VigaCentroLocal = 0.5f * (a + b);
             m_VigaPILocal = a;
             m_VigaPJLocal = b;
+            m_VigaAltoAR = hM * m_ARScale;
+            m_VigaAnchoAR = wM * m_ARScale;
 
             GameObject beam = GameObject.CreatePrimitive(PrimitiveType.Cube);
             beam.name = string.Format(BeamName, m_ElementTag, viewerId);
@@ -213,7 +227,7 @@ namespace LabViewer.AR
             beam.transform.localRotation = dir.sqrMagnitude > 0.0001f
                 ? Quaternion.FromToRotation(Vector3.right, dir.normalized)
                 : Quaternion.identity;
-            beam.transform.localScale = new Vector3(lenAR, hM * m_ARScale, wM * m_ARScale);
+            beam.transform.localScale = new Vector3(lenAR, m_VigaAltoAR, m_VigaAnchoAR);
 
             var identity = beam.GetComponent<ARElementIdentity>();
             if (identity == null) identity = beam.AddComponent<ARElementIdentity>();

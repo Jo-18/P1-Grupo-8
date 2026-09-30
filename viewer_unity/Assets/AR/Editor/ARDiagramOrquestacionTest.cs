@@ -362,6 +362,16 @@ namespace LabViewer.AR.EditorTools
 
         static void PonerLoaderOk(ARBeam489Loader loader, ARElementIdentity identidad)
         {
+            // Viga de la prueba con las dimensiones AR reales de la seccion
+            // (0.305 x 0.080 x 0.030). El diagrama se engancha a su transform, de
+            // modo que la viga debe existir para que se pueda construir.
+            var viga = new GameObject("FE_TAG_489_prueba");
+            viga.transform.SetParent(loader.transform, false);
+            viga.transform.localPosition = Vector3.zero;
+            viga.transform.localRotation = Quaternion.identity;
+            viga.transform.localScale = new Vector3(0.305f, 0.080f, 0.030f);
+
+            PonerCampo(loader, "m_Beam", viga);
             PonerCampo(loader, "m_Identity", identidad);
             PonerCampo(loader, "m_DataLoaded", true);
             PonerCampo(loader, "m_LoadCompleted", true);
@@ -369,6 +379,8 @@ namespace LabViewer.AR.EditorTools
             PonerCampo(loader, "m_LoadError", null);
             PonerCampo(loader, "m_VigaLongitudM", 3.05f);
             PonerCampo(loader, "m_VigaLongitudAR", 0.305f);
+            PonerCampo(loader, "m_VigaAltoAR", 0.080f);
+            PonerCampo(loader, "m_VigaAnchoAR", 0.030f);
             PonerCampo(loader, "m_VigaCentroLocal", Vector3.zero);
             PonerCampo(loader, "m_VigaPILocal", Vector3.zero);
             PonerCampo(loader, "m_VigaPJLocal", new Vector3(0.305f, 0f, 0f));
