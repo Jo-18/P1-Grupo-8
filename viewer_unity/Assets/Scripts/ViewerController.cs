@@ -760,7 +760,7 @@ namespace LabViewer
         private void DrawP4InfoPanel()
         {
             float pw = 340f, ph = 170f;
-            GUI.Box(new Rect(Screen.width - pw - 10, 10, pw, ph), "Cielo P4 / CP4");
+            GUI.Box(new Rect(Screen.width - pw - 10, 10, pw, ph), "Cielo P4 / CP4", PanelBoxStyle());
             GUILayout.BeginArea(new Rect(Screen.width - pw - 4, 36, pw - 12, ph - 30));
             GUILayout.Label("Edificio I — nivel P4");
             GUILayout.Label("  Cota: 11.83 m   Losas activas: " + _p4CountI);
@@ -775,8 +775,62 @@ namespace LabViewer
         // ---------------------------------------------------------------- //
         //  UI
         // ---------------------------------------------------------------- //
+
+        /// <summary>Legibilidad base del viewer (pasada UI): tipografia algo mayor
+        /// y titulo de cajas en color ambar para mejor contraste sobre el fondo
+        /// oscuro del editor/player. No altera geometria, resultados, armaduras
+        /// ni el panel P-M.</summary>
+        private static void MejorarLegibilidadSkin()
+        {
+            GUI.skin.label.fontSize = 14;
+            GUI.skin.box.fontSize = 14;
+            GUI.skin.button.fontSize = 14;
+            GUI.skin.toggle.fontSize = 14;
+            GUI.skin.label.normal.textColor = new Color(0.95f, 0.95f, 0.97f);
+            GUI.skin.box.normal.textColor = new Color(1f, 0.85f, 0.3f);
+        }
+
+        private static GUIStyle _secHeader;
+        private static GUIStyle SecHeaderStyle()
+        {
+            if (_secHeader == null)
+            {
+                _secHeader = new GUIStyle(GUI.skin.label);
+                _secHeader.fontStyle = FontStyle.Bold;
+                _secHeader.fontSize = 14;
+                _secHeader.normal.textColor = new Color(1f, 0.85f, 0.3f);
+            }
+            return _secHeader;
+        }
+
+        private static Texture2D _panelBg;
+        private static GUIStyle _panelBoxStyle;
+
+        /// <summary>Fondo OPACO para los paneles de la UI (izquierda, inspector y
+        /// resultados FE): el modelo nunca debe verse a traves de los controles,
+        /// aun con la camara cerca. Una sola textura compartida entre paneles.</summary>
+        internal static GUIStyle PanelBoxStyle()
+        {
+            if (_panelBoxStyle == null)
+            {
+                _panelBg = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+                _panelBg.SetPixel(0, 0, new Color(0.10f, 0.12f, 0.16f, 1f));
+                _panelBg.Apply();
+                _panelBoxStyle = new GUIStyle(GUI.skin.box);
+                _panelBoxStyle.normal.background = _panelBg;
+                _panelBoxStyle.normal.textColor = new Color(1f, 0.85f, 0.3f);
+                _panelBoxStyle.border = new RectOffset(2, 2, 2, 2);
+            }
+            return _panelBoxStyle;
+        }
+
         void OnGUI()
         {
+            // Estilos base SOLO dentro de OnGUI (GUI.skin no es accesible desde
+            // Awake/Start/Update; hacerlo ahi lanza
+            // "You can only call GUI functions from inside OnGUI").
+            MejorarLegibilidadSkin();
+
             // -- interaccion panel<->escena: registrar TODOS los paneles como
             //    regiones excluidas del control de camara (orbit/pan/zoom via
             //    CameraController.Update) y de la seleccion por raycast
@@ -789,17 +843,18 @@ namespace LabViewer
             InteraccionUI.Registrar(new Rect(Screen.width - 340, Screen.height - 430, 330, 420)); // diag
             InteraccionUI.Registrar(new Rect(Screen.width - 340, Screen.height - 210, 330, 200)); // leyenda
             InteraccionUI.Registrar(new Rect(Screen.width - 340, 10, 330, 300));                 // inspeccion
-            GUI.Box(new Rect(10, 10, 230, 12 + 4), "Lab FE viewer");
+            GUI.Box(new Rect(10, 10, 230, 12 + 4), "Lab FE viewer", PanelBoxStyle());
+            GUI.Box(new Rect(10, 30, 230, 616), "", PanelBoxStyle());      // fondo opaco del panel izquierdo
             int y = 30;
             GUILayout.BeginArea(new Rect(10, y, 230, 700));
-            _scroll = GUILayout.BeginScrollView(_scroll, GUI.skin.box, GUILayout.Width(230), GUILayout.Height(560));
+            _scroll = GUILayout.BeginScrollView(_scroll, GUIStyle.none, GUILayout.Width(230), GUILayout.Height(560));
 
             // scroll dentro del panel: consumir la rueda para que no escape al zoom
             // de la camara mientras el cursor esta sobre este rect (los ScrollViews
             // IMGUI ya consumen la rueda local; esto evita el doble disparo).
             InteraccionUI.UsarScrollSobrePanel();
 
-            GUILayout.Label("Camara");
+            GUILayout.Label("Camara", SecHeaderStyle());
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Conjunto I+II")) FrameAll();
             if (GUILayout.Button("Solo I")) FrameBuilding("I");
@@ -813,7 +868,7 @@ namespace LabViewer
             if (GUILayout.Button("Restablecer paneles")) Paneles.Reset();
 
             GUILayout.Space(6);
-            GUILayout.Label("Resultados estructurales");
+            GUILayout.Label("Resultados estructurales", SecHeaderStyle());
             if (_esf != null)
             {
                 bool esfOn = _esf.OverlayOn;
@@ -826,7 +881,7 @@ namespace LabViewer
             }
 
             GUILayout.Space(6);
-            GUILayout.Label("Semana 5 - Laboratorio");
+            GUILayout.Label("Semana 5 - Laboratorio", SecHeaderStyle());
             if (_esf != null)
             {
                 bool sup = _esf.SuperposicionOn;
@@ -863,14 +918,14 @@ namespace LabViewer
             }
 
             GUILayout.Space(6);
-            GUILayout.Label("Controles de lote");
+            GUILayout.Label("Controles de lote", SecHeaderStyle());
             if (GUILayout.Button("Mostrar todo")) ShowAll();
             if (GUILayout.Button("Ocultar todo")) HideAll();
             if (GUILayout.Button("Restaurar filtros")) RestoreView();
             if (GUILayout.Button("Aislar seleccionado")) IsolateSelected();
 
             GUILayout.Space(6);
-            GUILayout.Label("Edificios");
+            GUILayout.Label("Edificios", SecHeaderStyle());
             foreach (var b in new[] { "I", "II" })
             {
                 bool bOn = BuildingOn(b);
@@ -885,7 +940,7 @@ namespace LabViewer
             if (di != _showIntegrationDiag) { _showIntegrationDiag = di; }
 
             GUILayout.Space(6);
-            GUILayout.Label("Solo nivel (Edificio I)");
+            GUILayout.Label("Solo nivel (Edificio I)", SecHeaderStyle());
             if (GUILayout.Button("Todos los niveles")) { SetLevelAll(true); ApplyFilters(); }
             foreach (var lv in new[] { "CP1S", "P1", "P2", "P3", "P4" })
             {
@@ -893,7 +948,7 @@ namespace LabViewer
             }
 
             GUILayout.Space(6);
-            GUILayout.Label("Tipos de elemento");
+            GUILayout.Label("Tipos de elemento", SecHeaderStyle());
             foreach (ElemType t in System.Enum.GetValues(typeof(ElemType)))
             {
                 string key = t.ToString();
@@ -903,7 +958,7 @@ namespace LabViewer
             }
 
             GUILayout.Space(6);
-            GUILayout.Label("Superpuestos");
+            GUILayout.Label("Superpuestos", SecHeaderStyle());
             bool nn = GUILayout.Toggle(ShowNodos, "Nodos");
             if (nn != ShowNodos) { ShowNodos = nn; RebuildOverlays(); }
             bool aa = GUILayout.Toggle(ShowApoyos, "Apoyos de base");
@@ -995,7 +1050,7 @@ namespace LabViewer
             float carDp = bii.max.x;
             float junta = carD - carDp;
 
-            GUI.Box(new Rect(Screen.width - 340, Screen.height - 430, 330, 420), "Diagnostico integracion I/II");
+            GUI.Box(new Rect(Screen.width - 340, Screen.height - 430, 330, 420), "Diagnostico integracion I/II", PanelBoxStyle());
             GUILayout.BeginArea(new Rect(Screen.width - 334, Screen.height - 394, 318, 382));
             GUILayout.Label("Junta D-D' (cara a cara): " + junta.ToString("0.###") + " m");
             GUILayout.Label("  cara D  (EI, oeste) x=" + carD.ToString("0.###") + " (mundo)");
@@ -1026,7 +1081,7 @@ namespace LabViewer
         private void DrawP4CandidateNote()
         {
             GUI.backgroundColor = new Color(1f, 0.97f, 0.85f);
-            GUI.Box(new Rect(10, Screen.height - 118, 250, 100), "Candidata P4 - vigas +0.18 m");
+            GUI.Box(new Rect(10, Screen.height - 118, 250, 100), "Candidata P4 - vigas +0.18 m", PanelBoxStyle());
             GUILayout.BeginArea(new Rect(16, Screen.height - 100, 238, 80));
             GUILayout.Label("Grid de vigas trasladado +0.18 m en v");
             GUILayout.Label("(fuente 2017_67-103.dxf; ejes 0.18/9.08/16.33).");
@@ -1038,7 +1093,7 @@ namespace LabViewer
 
         private void DrawLegend()
         {
-            GUI.Box(new Rect(Screen.width - 340, Screen.height - 210, 330, 200), "Leyenda");
+            GUI.Box(new Rect(Screen.width - 340, Screen.height - 210, 330, 200), "Leyenda", PanelBoxStyle());
             GUILayout.BeginArea(new Rect(Screen.width - 334, Screen.height - 176, 318, 168));
             LegendRow(new Color(0.9f, 0.49f, 0.13f), "Vigas");
             LegendRow(new Color(0.2f, 0.6f, 0.86f), "Columnas");
@@ -1115,7 +1170,7 @@ namespace LabViewer
         {
             if (_selected == null) return;
             var r = _selected;
-            GUI.Box(new Rect(Screen.width - 340, 10, 330, 300), "Inspeccion");
+            GUI.Box(new Rect(Screen.width - 340, 10, 330, 300), "Inspeccion", PanelBoxStyle());
             GUILayout.BeginArea(new Rect(Screen.width - 334, 50, 318, 250));
             _inspScroll = GUILayout.BeginScrollView(_inspScroll, GUIStyle.none, GUI.skin.verticalScrollbar);
 

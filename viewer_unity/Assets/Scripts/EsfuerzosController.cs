@@ -2609,7 +2609,7 @@ namespace LabViewer
             // El recto queda registrado en InteraccionUI (bloqueo camara/seleccion).
             Rect panelRect = Paneles.Rect("esf_panel",
                 new Rect(left, 10, pw + 120, ph));
-            GUI.Box(new Rect(panelRect.x, panelRect.y, pw, ph), "Resultados estructurales — Esfuerzos FE");
+            GUI.Box(new Rect(panelRect.x, panelRect.y, pw, ph), "Resultados estructurales — Esfuerzos FE", ViewerController.PanelBoxStyle());
             // barra de titulo arrastrable (franja superior del recto del panel)
             Paneles.BarraArrastrable("esf_panel", 26f);
             Rect area = new Rect(panelRect.x + 4, panelRect.y + 34, pw - 12, ph - 44);
