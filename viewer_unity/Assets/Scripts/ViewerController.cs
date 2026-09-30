@@ -126,6 +126,7 @@ namespace LabViewer
             {
                 foreach (Transform bldg in lab.transform)
                 {
+                    if (!_bldgOn.ContainsKey(bldg.name)) continue;
                     bool bOn = BuildingOn(bldg.name);
                     bldg.gameObject.SetActive(bOn);
                     if (!bOn) continue;
