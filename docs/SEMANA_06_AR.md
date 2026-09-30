@@ -187,3 +187,30 @@ Flujo esperado de la demostración en vivo:
 - **Dispositivo requerido**: teléfono compatible con **ARCore** y con **Android API 29 o superior**.
 - **Primera versión acotada**: la escena AR muestra **un solo elemento** (tag 489) y **un solo resultado** (caso `G`, `Vz`).
 - **Extensible**: el diseño permite **reemplazar el JSON y la biblioteca de imágenes** para mostrar otros elementos/resultados sin cambiar la lógica AR.
+
+## 13. Diagramas internos reales del tag 489 (persistencia)
+
+Junto al vector de esfuerzos se persisten los **diagramas internos exactos** del
+elemento `489` para el caso `G` en:
+
+```text
+viewer_unity/Assets/StreamingAssets/lab_data/edificios/II/results/
+diagramas_FE_tag489_G.json
+```
+
+(51 estaciones entre `x=0` y `x=3.05` m; `N=0`, `Vy=0`, `Vz=+53.035246 kN`
+constante, `T=-48.634120 kN·m` constante, `My=-21.504977+53.035246·x kN·m`,
+`Mz=0`; en `x=L`: `My=+140.252523 kN·m=-My_j`; 20 comprobaciones OK). El
+generador reproducible es
+`entrega_03_cargas_sismo_capacidad/src/unity_esfuerzos/exportar_diagrama_ar_tag489.py`
+(ver nota de procedencia en el propio JSON).
+
+> **Procedencia (importante):**
+> - Los diagramas corresponden al snapshot FE del Edificio II de **258 elementos**
+>   que consume la aplicación (`esfuerzos_FE_EDIFICIO_II.json`).
+> - El generador general actual del repositorio **todavía no reproduce esa
+>   topología**: el modelo regenerado hoy tiene **253 elementos** y excluye la
+>   viga de junta `EII_CP2_V_029` (`PENDIENTE_DE_FUENTE`).
+> - Este JSON **no es** resultado de una regeneración actual del modelo completo;
+>   su `payload_fuente.sha256` fija la procedencia y el generador aborta si el
+>   payload canónico cambia o falla cualquier condición de validación.

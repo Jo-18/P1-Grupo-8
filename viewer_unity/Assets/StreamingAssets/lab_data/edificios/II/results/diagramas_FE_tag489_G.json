@@ -1,0 +1,790 @@
+{
+  "advertencia_procedencia": {
+    "es_snapshot_FE_258_elementos": true,
+    "no_presentar_como": "regeneracion_actual_modelo_completo",
+    "nota": "Los diagramas corresponden al snapshot FE del Edificio II de 258 elementos que consume la aplicacion (esfuerzos_FE_EDIFICIO_II.json, fecha y SHA256 en payload_fuente). El generador general actual del repositorio todavia NO reproduce esa topologia: el modelo regenerado hoy tiene 253 elementos y excluye la viga de junta EII_CP2_V_029 como PENDIENTE_DE_FUENTE. NO presentar este JSON como resultado de una regeneracion actual del modelo completo."
+  },
+  "caso": "G",
+  "comprobaciones": [
+    {
+      "check": "x_inicio_0",
+      "detalle": {
+        "x_m": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "x_fin_L",
+      "detalle": {
+        "L_m": 3.05,
+        "x_m": 3.05
+      },
+      "ok": true
+    },
+    {
+      "check": "n_stations_51",
+      "detalle": {
+        "n": 51
+      },
+      "ok": true
+    },
+    {
+      "check": "sin_nan_inf",
+      "detalle": {
+        "stations": 51
+      },
+      "ok": true
+    },
+    {
+      "check": "equilibrio_fuerzas_N",
+      "detalle": {
+        "N_i+N_j": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "equilibrio_fuerzas_Vy",
+      "detalle": {
+        "Vy_i+Vy_j": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "equilibrio_fuerzas_Vz",
+      "detalle": {
+        "Vz_i+Vz_j": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "equilibrio_torsor",
+      "detalle": {
+        "T_i+T_j": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "equilibrio_momento_local_y_sobre_i",
+      "detalle": {
+        "residuo_kN_m": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "equilibrio_momento_local_z_sobre_i",
+      "detalle": {
+        "residuo_kN_m": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "extremo_L_N",
+      "detalle": {
+        "-N_j": 0.0,
+        "diagrama_N(L)": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "extremo_L_Vy",
+      "detalle": {
+        "-Vy_j": 0.0,
+        "diagrama_Vy(L)": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "extremo_L_Vz",
+      "detalle": {
+        "-Vz_j": 53.035246,
+        "diagrama_Vz(L)": 53.035246
+      },
+      "ok": true
+    },
+    {
+      "check": "extremo_L_T",
+      "detalle": {
+        "-T_j": -48.63412,
+        "diagrama_T(L)": -48.63412
+      },
+      "ok": true
+    },
+    {
+      "check": "extremo_L_My",
+      "detalle": {
+        "-My_j": 140.252523,
+        "diagrama_My(L)": 140.252523
+      },
+      "ok": true
+    },
+    {
+      "check": "extremo_L_Mz",
+      "detalle": {
+        "-Mz_j": 0.0,
+        "diagrama_Mz(L)": 0.0
+      },
+      "ok": true
+    },
+    {
+      "check": "relacion_diferencial_dMy_dx_igual_Vz",
+      "detalle": {
+        "Vz_kN": 53.035246,
+        "dMy/dx_kN": 53.035246
+      },
+      "ok": true
+    },
+    {
+      "check": "Vz_constante",
+      "detalle": {
+        "Vz_kN": 53.035246
+      },
+      "ok": true
+    },
+    {
+      "check": "T_constante",
+      "detalle": {
+        "T_kN_m": -48.63412
+      },
+      "ok": true
+    },
+    {
+      "check": "cero_N_Vy_Mz",
+      "detalle": {
+        "max_abs": 0.0
+      },
+      "ok": true
+    }
+  ],
+  "convencion_signos": "Resultantes internas sobre el corte, en ejes locales del FE (x local = eje u de i a j; y local = v; z local = cota, arriba). El diagrama en x=0 coincide con los 6 primeros componentes del vector localForce del caso G del elemento (indices_componentes del payload). Forma exacta sin cargas interiores: N(x)=N_i; Vy(x)=Vy_i; Vz(x)=Vz_i; T(x)=T_i; My(x)=My_i+Vz_i*x; Mz(x)=Mz_i-Vy_i*x. +N = compresion en el extremo. Unidades: kN y kN*m. El extremo j del vector reporta las fuerzas NODALES (opuestas por convencion al corte interior en x=L); por eso en x=L se verifica diagrama ~= -extremo_j.",
+  "edificio": "II",
+  "elementTag": 489,
+  "formato": "diagrama_interno_FE_v1",
+  "fuente_metodologica": "Equilibrio exacto de un elasticBeamColumn sin cargas interiores (todas las cargas G del perfil son nodales via ops.load). La forma exacta de los diagramas se dedujo de la mecanica del elemento y se verifico en T31A reproduciendo el localForce del tag 489 con OpenSeesPy desde los desplazamientos publicados en el propio payload (max|diff| ~ 1e-3, por el redondeo de los desplazamientos). No se interpola valor_i -> valor_j.",
+  "indices_componentes": {
+    "My_i": 4,
+    "My_j": 10,
+    "Mz_i": 5,
+    "Mz_j": 11,
+    "N_i": 0,
+    "N_j": 6,
+    "T_i": 3,
+    "T_j": 9,
+    "Vy_i": 1,
+    "Vy_j": 7,
+    "Vz_i": 2,
+    "Vz_j": 8
+  },
+  "longitud_m": 3.05,
+  "n_stations": 51,
+  "nivel": "EII_CP2",
+  "nodos": {
+    "i": "487",
+    "j": "488"
+  },
+  "nota_sin_cargas_interiores": "sin_cargas_interiores = True: el elemento 489 no tiene eleLoad; su distribucion interna proviene solo de las fuerzas nodales de extremo (Vz y T constantes, My lineal).",
+  "p_i_unity": [
+    -3.35,
+    3.91,
+    4.265
+  ],
+  "p_j_unity": [
+    -0.3,
+    3.91,
+    4.265
+  ],
+  "payload_fuente": {
+    "archivo": "esfuerzos_FE_EDIFICIO_II.json",
+    "fecha": "2026-09-29T23:13:51+00:00",
+    "formato": "esfuerzos_FE_edificio_v1",
+    "n_elementos": 258,
+    "perfil": "MODELO_FE_COMPLETO_FUNCIONAL",
+    "sha256": "79A7B612F21C865091FD0DFD21A10BB5AFBB599991E63699AA936C52E2A133A9"
+  },
+  "seccion": "V.30/80",
+  "sin_cargas_interiores": true,
+  "stations": [
+    {
+      "My_kN_m": -21.504977,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 0,
+      "x_m": 0.0,
+      "xi": 0.0
+    },
+    {
+      "My_kN_m": -18.269827,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 1,
+      "x_m": 0.061,
+      "xi": 0.02
+    },
+    {
+      "My_kN_m": -15.034677,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 2,
+      "x_m": 0.122,
+      "xi": 0.04
+    },
+    {
+      "My_kN_m": -11.799527,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 3,
+      "x_m": 0.183,
+      "xi": 0.06
+    },
+    {
+      "My_kN_m": -8.564377,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 4,
+      "x_m": 0.244,
+      "xi": 0.08
+    },
+    {
+      "My_kN_m": -5.329227,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 5,
+      "x_m": 0.305,
+      "xi": 0.1
+    },
+    {
+      "My_kN_m": -2.094077,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 6,
+      "x_m": 0.366,
+      "xi": 0.12
+    },
+    {
+      "My_kN_m": 1.141073,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 7,
+      "x_m": 0.427,
+      "xi": 0.14
+    },
+    {
+      "My_kN_m": 4.376223,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 8,
+      "x_m": 0.488,
+      "xi": 0.16
+    },
+    {
+      "My_kN_m": 7.611373,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 9,
+      "x_m": 0.549,
+      "xi": 0.18
+    },
+    {
+      "My_kN_m": 10.846523,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 10,
+      "x_m": 0.61,
+      "xi": 0.2
+    },
+    {
+      "My_kN_m": 14.081673,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 11,
+      "x_m": 0.671,
+      "xi": 0.22
+    },
+    {
+      "My_kN_m": 17.316823,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 12,
+      "x_m": 0.732,
+      "xi": 0.24
+    },
+    {
+      "My_kN_m": 20.551973,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 13,
+      "x_m": 0.793,
+      "xi": 0.26
+    },
+    {
+      "My_kN_m": 23.787123,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 14,
+      "x_m": 0.854,
+      "xi": 0.28
+    },
+    {
+      "My_kN_m": 27.022273,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 15,
+      "x_m": 0.915,
+      "xi": 0.3
+    },
+    {
+      "My_kN_m": 30.257423,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 16,
+      "x_m": 0.976,
+      "xi": 0.32
+    },
+    {
+      "My_kN_m": 33.492573,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 17,
+      "x_m": 1.037,
+      "xi": 0.34
+    },
+    {
+      "My_kN_m": 36.727723,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 18,
+      "x_m": 1.098,
+      "xi": 0.36
+    },
+    {
+      "My_kN_m": 39.962873,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 19,
+      "x_m": 1.159,
+      "xi": 0.38
+    },
+    {
+      "My_kN_m": 43.198023,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 20,
+      "x_m": 1.22,
+      "xi": 0.4
+    },
+    {
+      "My_kN_m": 46.433173,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 21,
+      "x_m": 1.281,
+      "xi": 0.42
+    },
+    {
+      "My_kN_m": 49.668323,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 22,
+      "x_m": 1.342,
+      "xi": 0.44
+    },
+    {
+      "My_kN_m": 52.903473,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 23,
+      "x_m": 1.403,
+      "xi": 0.46
+    },
+    {
+      "My_kN_m": 56.138623,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 24,
+      "x_m": 1.464,
+      "xi": 0.48
+    },
+    {
+      "My_kN_m": 59.373773,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 25,
+      "x_m": 1.525,
+      "xi": 0.5
+    },
+    {
+      "My_kN_m": 62.608923,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 26,
+      "x_m": 1.586,
+      "xi": 0.52
+    },
+    {
+      "My_kN_m": 65.844073,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 27,
+      "x_m": 1.647,
+      "xi": 0.54
+    },
+    {
+      "My_kN_m": 69.079223,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 28,
+      "x_m": 1.708,
+      "xi": 0.56
+    },
+    {
+      "My_kN_m": 72.314373,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 29,
+      "x_m": 1.769,
+      "xi": 0.58
+    },
+    {
+      "My_kN_m": 75.549523,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 30,
+      "x_m": 1.83,
+      "xi": 0.6
+    },
+    {
+      "My_kN_m": 78.784673,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 31,
+      "x_m": 1.891,
+      "xi": 0.62
+    },
+    {
+      "My_kN_m": 82.019823,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 32,
+      "x_m": 1.952,
+      "xi": 0.64
+    },
+    {
+      "My_kN_m": 85.254973,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 33,
+      "x_m": 2.013,
+      "xi": 0.66
+    },
+    {
+      "My_kN_m": 88.490123,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 34,
+      "x_m": 2.074,
+      "xi": 0.68
+    },
+    {
+      "My_kN_m": 91.725273,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 35,
+      "x_m": 2.135,
+      "xi": 0.7
+    },
+    {
+      "My_kN_m": 94.960423,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 36,
+      "x_m": 2.196,
+      "xi": 0.72
+    },
+    {
+      "My_kN_m": 98.195573,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 37,
+      "x_m": 2.257,
+      "xi": 0.74
+    },
+    {
+      "My_kN_m": 101.430723,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 38,
+      "x_m": 2.318,
+      "xi": 0.76
+    },
+    {
+      "My_kN_m": 104.665873,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 39,
+      "x_m": 2.379,
+      "xi": 0.78
+    },
+    {
+      "My_kN_m": 107.901023,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 40,
+      "x_m": 2.44,
+      "xi": 0.8
+    },
+    {
+      "My_kN_m": 111.136173,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 41,
+      "x_m": 2.501,
+      "xi": 0.82
+    },
+    {
+      "My_kN_m": 114.371323,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 42,
+      "x_m": 2.562,
+      "xi": 0.84
+    },
+    {
+      "My_kN_m": 117.606473,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 43,
+      "x_m": 2.623,
+      "xi": 0.86
+    },
+    {
+      "My_kN_m": 120.841623,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 44,
+      "x_m": 2.684,
+      "xi": 0.88
+    },
+    {
+      "My_kN_m": 124.076773,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 45,
+      "x_m": 2.745,
+      "xi": 0.9
+    },
+    {
+      "My_kN_m": 127.311923,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 46,
+      "x_m": 2.806,
+      "xi": 0.92
+    },
+    {
+      "My_kN_m": 130.547073,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 47,
+      "x_m": 2.867,
+      "xi": 0.94
+    },
+    {
+      "My_kN_m": 133.782223,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 48,
+      "x_m": 2.928,
+      "xi": 0.96
+    },
+    {
+      "My_kN_m": 137.017373,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 49,
+      "x_m": 2.989,
+      "xi": 0.98
+    },
+    {
+      "My_kN_m": 140.252523,
+      "Mz_kN_m": 0.0,
+      "N_kN": 0.0,
+      "T_kN_m": -48.63412,
+      "Vy_kN": 0.0,
+      "Vz_kN": 53.035246,
+      "k": 50,
+      "x_m": 3.05,
+      "xi": 1.0
+    }
+  ],
+  "tipo_elemento": "viga",
+  "unidades": {
+    "fuerza": "kN",
+    "longitud": "m",
+    "momento": "kN*m"
+  },
+  "vector_localForce_12_caso_G": [
+    0.0,
+    0.0,
+    53.035246,
+    -48.63412,
+    -21.504977,
+    0.0,
+    0.0,
+    0.0,
+    -53.035246,
+    48.63412,
+    -140.252523,
+    0.0
+  ],
+  "version": 1,
+  "viewer_id": "EII_CP2_V_029"
+}
