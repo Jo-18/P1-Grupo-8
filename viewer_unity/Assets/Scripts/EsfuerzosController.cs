@@ -2663,10 +2663,14 @@ namespace LabViewer
             bool fMape = InteraccionUI.ToggleEstado(FiltroCorr == "Mapeados", "Mapeados", "button");
             bool fTodos = InteraccionUI.ToggleEstado(FiltroCorr == "Todos los FE", "Todos los FE (diag.)", "button");
             GUILayout.EndHorizontal();
-            if ((fMape && FiltroCorr != "Mapeados") || (fTodos && FiltroCorr != "Todos los FE"))
+            if (fMape && FiltroCorr != "Mapeados")
             {
-                if (fMape) FiltroCorr = "Mapeados";
-                if (fTodos) FiltroCorr = "Todos los FE";
+                FiltroCorr = "Mapeados";
+                ApplyOverlayVisibility();
+            }
+            else if (fTodos && FiltroCorr != "Todos los FE")
+            {
+                FiltroCorr = "Todos los FE";
                 ApplyOverlayVisibility();
             }
 
