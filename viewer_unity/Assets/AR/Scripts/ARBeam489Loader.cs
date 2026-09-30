@@ -8,6 +8,9 @@ using UnityEngine.Networking;
 
 namespace LabViewer.AR
 {
+    // La geometria (viga del tag 489) y el resultado (caso G del mismo tag)
+    // comparten el mismo elemento FE. OpenSees produjo previamente el vector de
+    // esfuerzos de 12 componentes; el telefono solo lee y presenta ese resultado.
     [DisallowMultipleComponent]
     public sealed class ARBeam489Loader : MonoBehaviour
     {
@@ -21,9 +24,26 @@ namespace LabViewer.AR
 
         const string BeamName = "FE_TAG_{0}_{1}";
         const string ResultadosAgo = "lab_data/edificios/II/results/esfuerzos_FE_EDIFICIO_II.json";
+        const string CasoG = "G";
 
         GameObject m_Beam;
         bool m_BeamVisible;
+        bool m_DataLoaded;
+        float m_VzI;
+        float m_VzJ;
+        float m_VigaLongitudAR;
+        Vector3 m_VigaCentroLocal;
+        ARElementIdentity m_Identity;
+
+        public bool DataLoaded => m_DataLoaded;
+        public string Caso => CasoG;
+        public float VzI => m_VzI;
+        public float VzJ => m_VzJ;
+        public string Unidad => "kN";
+        public ARElementIdentity Identity => m_Identity;
+        public int ElementTag => m_ElementTag;
+        public float VigaLongitudAR => m_VigaLongitudAR;
+        public Vector3 VigaCentroLocal => m_VigaCentroLocal;
 
         void Awake()
         {
@@ -129,6 +149,8 @@ namespace LabViewer.AR
             float lenReal = Vector3.Distance(pi.Value, pj.Value);
             float lenAR = lenReal * m_ARScale;
             Vector3 dir = pj.Value - pi.Value;
+            m_VigaLongitudAR = lenAR;
+            m_VigaCentroLocal = 0.5f * (a + b);
 
             GameObject beam = GameObject.CreatePrimitive(PrimitiveType.Cube);
             beam.name = string.Format(BeamName, m_ElementTag, viewerId);
@@ -150,6 +172,10 @@ namespace LabViewer.AR
             if (identity == null) identity = beam.AddComponent<ARElementIdentity>();
             identity.Init(m_ElementTag, viewerId, edificio ?? m_Building, tipo, seccion);
 
+            // El resultado se lee del mismo elemento FE (tag 489) del mismo JSON.
+            m_Identity = identity;
+            m_DataLoaded = LeerVzCasoG(d);
+
             beam.SetActive(false);
             m_Beam = beam;
             m_BeamVisible = false;
@@ -157,6 +183,48 @@ namespace LabViewer.AR
             Debug.Log("[AR489] Viga creada, longitud AR=" + lenAR.ToString("0.000", CultureInfo.InvariantCulture) + " m");
 
             StartCoroutine(EsperarAnchor());
+        }
+
+        // Vector de 12 componentes del caso G (convencion de la fuente):
+        // [2] = Vz_i, [8] = Vz_j (cortante local, kN). No se hardcodea ningun valor.
+        bool LeerVzCasoG(Dictionary<string, object> d)
+        {
+            var fuerzas = d.TryGetValue("fuerzas", out var f) ? Json.AsObj(f) : null;
+            if (fuerzas == null)
+            {
+                Debug.LogError("[AR489] Elemento tag " + m_ElementTag + " sin objeto 'fuerzas'");
+                return false;
+            }
+
+            var coincidencias = new List<List<object>>();
+            foreach (var kv in fuerzas)
+            {
+                if (string.Equals(kv.Key, CasoG, StringComparison.Ordinal)) coincidencias.Add(Json.AsArr(kv.Value));
+            }
+
+            if (coincidencias.Count == 0)
+            {
+                Debug.LogError("[AR489] Elemento tag " + m_ElementTag + " sin caso '" + CasoG + "' en fuerzas");
+                return false;
+            }
+
+            if (coincidencias.Count > 1)
+            {
+                Debug.LogError("[AR489] Caso '" + CasoG + "' duplicado para el tag " + m_ElementTag);
+                return false;
+            }
+
+            var vec = coincidencias[0];
+            if (vec == null || vec.Count < 12)
+            {
+                Debug.LogError("[AR489] Caso '" + CasoG + "' incompleto para tag " + m_ElementTag
+                    + " (" + (vec != null ? vec.Count : 0) + " componentes, se esperan 12)");
+                return false;
+            }
+
+            m_VzI = (float)Json.ToNum(vec[2]);
+            m_VzJ = (float)Json.ToNum(vec[8]);
+            return true;
         }
 
         IEnumerator EsperarAnchor()

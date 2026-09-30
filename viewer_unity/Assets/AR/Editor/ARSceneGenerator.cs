@@ -48,8 +48,8 @@ namespace LabViewer
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
             CreateARSession();
-            var (_, imageManager, anchorManager) = CreateXROrigin(lib);
-            CreateARContent(imageManager, anchorManager);
+            var (camera, imageManager, anchorManager) = CreateXROrigin(lib);
+            CreateARContent(camera, imageManager, anchorManager);
             CreateDirectionalLight();
 
             EditorSceneManager.SaveScene(scene, ScenePath);
@@ -122,7 +122,7 @@ namespace LabViewer
             return (camera, trackedImageManager, anchorManager);
         }
 
-        static void CreateARContent(ARTrackedImageManager imageManager, ARAnchorManager anchorManager)
+        static void CreateARContent(Camera camera, ARTrackedImageManager imageManager, ARAnchorManager anchorManager)
         {
             var contentGo = ObjectFactory.CreateGameObject("AR Content");
 
@@ -150,6 +150,17 @@ namespace LabViewer
             lso.FindProperty("m_ARScale").floatValue = 0.10f;
             lso.FindProperty("m_SectionM").vector2Value = new Vector2(0.30f, 0.80f);
             lso.ApplyModifiedPropertiesWithoutUndo();
+
+            if (contentGo.GetComponent<ARResult489Label>() == null)
+                ObjectFactory.AddComponent<ARResult489Label>(contentGo);
+
+            var label = contentGo.GetComponent<ARResult489Label>();
+            var nso = new SerializedObject(label);
+            nso.FindProperty("m_Loader").objectReferenceValue = loader;
+            nso.FindProperty("m_Controller").objectReferenceValue = controller;
+            nso.FindProperty("m_ContentRoot").objectReferenceValue = contentGo.transform;
+            nso.FindProperty("m_Camera").objectReferenceValue = camera;
+            nso.ApplyModifiedPropertiesWithoutUndo();
         }
 
         static void CreateDirectionalLight()
