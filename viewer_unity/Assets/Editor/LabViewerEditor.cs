@@ -398,10 +398,10 @@ namespace LabViewer.EditorTools
         /// Verificacion de aceptacion del OVERLAY DE ESFUERZOS FE en MODO EDITOR
         /// (deterministica, sin play ni raycast): ejercita el mismo codigo runtime
         /// EsfuerzosController sobre un LabLoader real. Comprueba: carga de ambos
-        /// paquetes (FE_TOTAL I 378, II 253), los 13 casos V1 presentes sin casos
+        /// paquetes (FE_TOTAL I 378, II 258), los 13 casos V1 presentes sin casos
         /// heredados, valores identicos a la fuente (anclas de combinaciones
         /// NCh3171 + envolvente con caso/signo gobernante), construccion del overlay
-        /// en MODO NORMAL (OVERLAY_NORMAL_MAPEADO I 284, II 253: solo 1A1+CONTENIDO;
+        /// en MODO NORMAL (OVERLAY_NORMAL_MAPEADO I 284, II 256: solo 1A1+CONTENIDO;
         /// SIN_CORRESPONDENCIA_VIEWER y stubs ocultos) y en modo diagnostico
         /// ("Todos los FE" = FE_TOTAL completo), seleccion de dos columnas y dos
         /// vigas con valores reales distintos, cambio real de valores entre casos,
@@ -428,9 +428,9 @@ namespace LabViewer.EditorTools
 // 1) carga de paquetes y FE_TOTAL (elementos completos del paquete)
                 bool loadPass = esf.EstaCargado("I") && esf.EstaCargado("II");
                 int nI = esf.TotalElementos("I"), nII = esf.TotalElementos("II");
-                bool countPass = nI == 378 && nII == 253;
+                bool countPass = nI == 378 && nII == 258;
                 Log(string.Format("[Esf] [Carga] I={0} II={1} -> {2}", esf.EstaCargado("I"), esf.EstaCargado("II"), loadPass ? "OK" : "FALLO"));
-                Log(string.Format("[Esf] [FE_TOTAL] I={0} II={1} (esperados 378/253) -> {2}", nI, nII, countPass ? "OK" : "FALLO"));
+                Log(string.Format("[Esf] [FE_TOTAL] I={0} II={1} (esperados 378/258) -> {2}", nI, nII, countPass ? "OK" : "FALLO"));
                 ok &= loadPass && countPass;
 
                 // 1.5) 13 casos V1 disponibles (perfil MODELO_FE_COMPLETO_FUNCIONAL),
@@ -502,7 +502,7 @@ namespace LabViewer.EditorTools
 // 4) overlay por edificio en MODO NORMAL (solo 1A1+CONTENIDO): combinacion sismica
 //    NCh3171 (I), envolvente independiente (I y II) y caso base (II G/Mz).
 //    En modo normal los SIN_CORRESPONDENCIA_VIEWER (incluidos los 54 stubs EI)
-//    NO se renderizan => OVERLAY_NORMAL_MAPEADO EI 284, EII 253.
+//    NO se renderizan => OVERLAY_NORMAL_MAPEADO EI 284, EII 256.
 esf.SetFiltros(true, true, true, "Mapeados");
 esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
 int dibI = esf.CountOverlayRenderers("I");
@@ -522,16 +522,16 @@ CapturarEditor("capturas/esfuerzos_I_envolvente_N.png");
 
 esf.SetUI("II", "ENVOLVENTE_NCh3171", 5, 1, 1, true);
 int dibIIEnv = esf.CountOverlayRenderers("II");
-bool ovIIEnvPass = dibIIEnv == 253;
-Log(string.Format("[Esf] [Overlay II Envolvente Mz/extremo j (MODO_NORMAL)] tubos={0} esperados=253 escala={1} -> {2}",
+bool ovIIEnvPass = dibIIEnv == 256;
+Log(string.Format("[Esf] [Overlay II Envolvente Mz/extremo j (MODO_NORMAL)] tubos={0} esperados=256 escala={1} -> {2}",
     dibIIEnv, esf.EscalaActual, ovIIEnvPass ? "OK" : "FALLO"));
 ok &= ovIIEnvPass;
 CapturarEditor("capturas/esfuerzos_II_envolvente_Mz.png");
 
 esf.SetUI("II", "G", 5, 0, 1, true);
 int dibII = esf.CountOverlayRenderers("II");
-bool ovIIPass = dibII == 253;
-Log(string.Format("[Esf] [Overlay II G/Mz (MODO_NORMAL)] tubos={0} esperados=253 escala={1} maxReal={2} -> {3}",
+bool ovIIPass = dibII == 256;
+Log(string.Format("[Esf] [Overlay II G/Mz (MODO_NORMAL)] tubos={0} esperados=256 escala={1} maxReal={2} -> {3}",
     dibII, esf.EscalaActual, esf.MaxRealActual, ovIIPass ? "OK" : "FALLO"));
 ok &= ovIIPass;
 CapturarEditor("capturas/esfuerzos_II_G_Mz.png");
@@ -1136,10 +1136,10 @@ esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
 
     /// <summary>
     /// Verificacion de aceptacion del OVERLAY DE ESFUERZOS FE (independiente por
-    /// elemento). En modo Play: carga (FE_TOTAL I: 378, II: 253), los 13 casos V1
+    /// elemento). En modo Play: carga (FE_TOTAL I: 378, II: 258), los 13 casos V1
     /// presentes sin casos heredados, valores identicos a la fuente (anclas de
     /// combinaciones NCh3171 + envolvente con caso/signo gobernante), construccion
-    /// del overlay en MODO NORMAL (OVERLAY_NORMAL_MAPEADO I 284, II 253: solo
+    /// del overlay en MODO NORMAL (OVERLAY_NORMAL_MAPEADO I 284, II 256: solo
     /// 1A1+CONTENIDO) y en modo diagnostico (Todos los FE = FE_TOTAL completo),
     /// seleccion por correspondencia con clics reales (2 columnas y 2 vigas), por
     /// tag y restauracion. Toma capturas: combinacion sismica y envolvente en modo
@@ -1225,8 +1225,8 @@ esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
 
             // 2) FE_TOTAL por edificio (elementos completos del paquete)
             int nI = esf.TotalElementos("I"), nII = esf.TotalElementos("II");
-            bool countPass = nI == 378 && nII == 253;
-            Debug.Log(string.Format("[LabViewer] [FE_TOTAL] I={0} II={1} (esperados 378/253) -> {2}", nI, nII, countPass ? "OK" : "FALLO"));
+            bool countPass = nI == 378 && nII == 258;
+            Debug.Log(string.Format("[LabViewer] [FE_TOTAL] I={0} II={1} (esperados 378/258) -> {2}", nI, nII, countPass ? "OK" : "FALLO"));
             if (!countPass) ok = false;
 
             // 2.5) los 13 casos V1 presentes (columna probe 1A1) sin casos heredados
@@ -1276,11 +1276,32 @@ Debug.Log(string.Format("[LabViewer] [Conteos I (MODO_NORMAL)] FE_TOTAL={0} OVER
     totI, mapI, sinI, stubsI, convI ? "OK" : "FALLO"));
 if (!convI) ok = false;
 esf.ConteosCorrespondencia("II", out int totII, out int mapII, out int sinII, out int stubsII);
-bool convII = totII == 253 && mapII == 253 && sinII == 0 && stubsII == 0;
+bool convII = totII == 258 && mapII == 256 && sinII == 2 && stubsII == 2;
 Debug.Log(string.Format("[LabViewer] [Conteos II (MODO_NORMAL)] FE_TOTAL={0} OVERLAY_NORMAL_MAPEADO={1} "
     + "SIN_CORRESPONDENCIA={2} stubs_analiticos={3} -> {4}",
     totII, mapII, sinII, stubsII, convII ? "OK" : "FALLO"));
 if (!convII) ok = false;
+
+// 4.1) V029 en EII_CP2: la viga EII_CP2_V_029 (tag 489) mapeada 1A1 al viewer mas
+//      los 2 stubs analiticos de la junta rigida excentrica (tags 490 y 491), que
+//      quedan SIN_CORRESPONDENCIA_VIEWER. El motivo vive en el campo
+//      "auxiliar_analitico.razon_existencia" del JSON, que EFElemento no expone, asi
+//      que se verifica el par tag+estado+stub solicitado.
+var eV29 = esf.Buscar("II", 489);
+var eStA = esf.Buscar("II", 490);
+var eStB = esf.Buscar("II", 491);
+bool v029Ok = eV29 != null && eV29.ViewerId == "EII_CP2_V_029" && eV29.EstadoCorr == "1A1";
+bool stubsOk = eStA != null && eStB != null
+               && eStA.Tipo == "stub_elastico_rigidez_elevada" && eStA.EstadoCorr == "SIN_CORRESPONDENCIA_VIEWER"
+               && eStB.Tipo == "stub_elastico_rigidez_elevada" && eStB.EstadoCorr == "SIN_CORRESPONDENCIA_VIEWER"
+               && stubsII == 2;
+Debug.Log(string.Format("[LabViewer] [V029 EII_CP2] tag489={0} viewer_id={1} "
+    + "stubs490/491={2} tipo={3} -> {4}",
+    eV29 != null, eV29 != null ? eV29.ViewerId : "-",
+    eStA != null && eStB != null ? eStA.Tipo : "-",
+    stubsOk ? "2 stubs SIN_CORRESPONDENCIA_VIEWER" : "faltan/erroneos",
+    v029Ok && stubsOk ? "OK" : "FALLO"));
+if (!(v029Ok && stubsOk)) ok = false;
 
 esf.SetUI("I", "U2_EX_POS", 0, 2, 0, true);
 int dibujadasI = esf.CountOverlayRenderers("I");
