@@ -357,6 +357,63 @@ namespace LabViewer
             }
         }
 
+        public void ConteosCoberturaFisica(
+            string b,
+            out int visibles,
+            out int evaluables,
+            out int conResultado,
+            out int sinResultado,
+            out int marcadores)
+        {
+            visibles = 0;
+            evaluables = 0;
+            conResultado = 0;
+            sinResultado = 0;
+            marcadores = 0;
+
+            if (_loader == null || _loader.Model == null) return;
+
+            foreach (var r in _loader.Model.Elements)
+            {
+                if (r.Building != b) continue;
+                if (r.Type != ElemType.Columnas &&
+                    r.Type != ElemType.Vigas &&
+                    r.Type != ElemType.Muros)
+                    continue;
+
+                visibles++;
+
+                if (r.EsMarcadorArranque)
+                {
+                    marcadores++;
+                    continue;
+                }
+
+                evaluables++;
+
+                if (r.EstadoCoberturaFE == ElementRef.FE_OK)
+                    conResultado++;
+                else if (r.EstadoCoberturaFE != null)
+                    sinResultado++;
+            }
+        }
+
+        private void SincronizarCoberturaMarcadores()
+        {
+            if (_loader == null || _loader.Model == null) return;
+
+            foreach (var r in _loader.Model.Elements)
+            {
+                if (r.Type != ElemType.Columnas &&
+                    r.Type != ElemType.Vigas &&
+                    r.Type != ElemType.Muros)
+                    continue;
+
+                if (r.EsMarcadorArranque)
+                    r.EstadoCoberturaFE = ElementRef.FE_MARCADOR;
+            }
+        }
+
         public double Valor(string b, int tag, string caso, int comp)
         {
             var e = Buscar(b, tag);
@@ -1146,6 +1203,7 @@ namespace LabViewer
                     Debug.LogError("[EsfuerzosFE] Error cargando " + path + ": " + ex.Message);
                 }
             }
+            SincronizarCoberturaMarcadores();
         }
 
         private void CargarAuxiliares(string b, Dictionary<string, object> raiz)
@@ -2677,6 +2735,26 @@ namespace LabViewer
             GUILayout.Label(string.Format("SIN_GEOMETRIA_FISICA_3D (solo diagnóstico): {0}", nSinGeo));
             GUILayout.Label(string.Format("Cobertura viewer\u2194FE (excluye stubs): {0}/{1} ({2:0.0}%)   ",
                                           mapFE, baseCobertura, pct));
+            ConteosCoberturaFisica(
+                Edificio,
+                out int objVis,
+                out int objEval,
+                out int objCon,
+                out int objSin,
+                out int objMar);
+
+            GUILayout.Space(4);
+            GUILayout.Label(string.Format(
+                "Cobertura fisica viewer [{0}]: visibles {1} = evaluables_FE {2} + marcadores {3}",
+                Edificio,
+                objVis,
+                objEval,
+                objMar));
+
+            GUILayout.Label(string.Format(
+                "   evaluables_FE: con resultado {0}  ·  pendientes {1}",
+                objCon,
+                objSin));
             if (SelectedFE != null) DrawFicha(SelectedFE);
             else GUILayout.Label("Seleccione un elemento FE (clic sobre el overlay).");
         }
