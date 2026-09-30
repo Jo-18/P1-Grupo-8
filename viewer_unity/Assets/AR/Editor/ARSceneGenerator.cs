@@ -16,6 +16,8 @@ namespace LabViewer
         const string ScenePath = "Assets/Scenes/ARMain.unity";
         const string ReferenceName = "REF_EII_CP2_V_029";
         const string LibraryGuid = "3d96e05733a27544ea6586824e399576";
+        const string BeamMaterialPath = "Assets/AR/Materials/Beam489.mat";
+        const string BeamMaterialFolder = "Assets/AR/Materials";
 
         [MenuItem("AR/Generate ARMain Scene + Build Settings")]
         public static void GenerateFromMenu()
@@ -37,6 +39,54 @@ namespace LabViewer
             }
 
             EditorApplication.Exit(0);
+        }
+
+        // Batch dedicado: solo crea (o reutiliza) el material versionado de la viga.
+        // No regenera la escena. Referenciado serializadamente en ARMain.unity, el
+        // material y su shader quedan incluidos en el build Android aunque "Standard"
+        // no este en Always Included Shaders.
+        [MenuItem("AR/Ensure Beam 489 Material")]
+        public static void BatchEnsureBeamMaterial()
+        {
+            try
+            {
+                Material mat = EnsureBeamMaterial();
+                if (mat == null)
+                    throw new InvalidOperationException("No se pudo crear/ubicar el material Beam489");
+                Debug.Log("[ARSceneGenerator] Beam489 material listo: " + AssetDatabase.GetAssetPath(mat));
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("[ARSceneGenerator] fallo al asegurar material: " + e);
+                EditorApplication.Exit(1);
+                return;
+            }
+
+            EditorApplication.Exit(0);
+        }
+
+        // Material estructural (naranja/ambar) del tag 489. Solo existe un asset
+        // versionado, asi que la referencia serializada de la escena viaja al APK.
+        static Material EnsureBeamMaterial()
+        {
+            var existing = AssetDatabase.LoadAssetAtPath<Material>(BeamMaterialPath);
+            if (existing != null) return existing;
+
+            if (!AssetDatabase.IsValidFolder(BeamMaterialFolder))
+                AssetDatabase.CreateFolder("Assets/AR", "Materials");
+
+            Shader sh = Shader.Find("Standard");
+            if (sh == null) sh = Shader.Find("Unlit/Color");
+            if (sh == null)
+                throw new InvalidOperationException("Sin shader Standard ni Unlit/Color en el editor");
+
+            var mat = new Material(sh);
+            mat.color = new Color(1f, 0.55f, 0.05f, 1f);
+            if (mat.HasProperty("_Glossiness")) mat.SetFloat("_Glossiness", 0.4f);
+            if (mat.HasProperty("_Metallic")) mat.SetFloat("_Metallic", 0f);
+            AssetDatabase.CreateAsset(mat, BeamMaterialPath);
+            AssetDatabase.SaveAssets();
+            return mat;
         }
 
         static void Generate()
@@ -149,6 +199,7 @@ namespace LabViewer
             lso.FindProperty("m_ExpectedViewerId").stringValue = "EII_CP2_V_029";
             lso.FindProperty("m_ARScale").floatValue = 0.10f;
             lso.FindProperty("m_SectionM").vector2Value = new Vector2(0.30f, 0.80f);
+            lso.FindProperty("m_BeamMaterial").objectReferenceValue = EnsureBeamMaterial();
             lso.ApplyModifiedPropertiesWithoutUndo();
 
             if (contentGo.GetComponent<ARResult489Label>() == null)

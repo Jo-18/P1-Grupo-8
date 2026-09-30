@@ -71,24 +71,84 @@ namespace LabViewer.AR
             }
 
             // Identidad, geometria y resultado provienen del mismo tag 489.
-            float len = m_Loader.VigaLongitudAR;
-            m_Texto.text = identity.ViewerId + "\n"
+            string texto = identity.ViewerId + "\n"
                 + "FE tag " + m_Loader.ElementTag + " | Caso " + m_Loader.Caso + "\n"
                 + "Vz(i): " + Fmt(m_Loader.VzI) + " " + m_Loader.Unidad + "\n"
                 + "Vz(j): " + Fmt(m_Loader.VzJ) + " " + m_Loader.Unidad + "\n"
                 + "Escala AR 1:10";
+            m_Texto.text = texto;
             m_Texto.anchor = TextAnchor.MiddleCenter;
             m_Texto.alignment = TextAlignment.Center;
             m_Texto.color = Color.black;
-            m_Texto.fontSize = 36;
-            m_Texto.characterSize = Mathf.Max(len * 0.12f, 0.03f);
 
-            float offsetY = Mathf.Max(len * 0.6f, 0.06f);
+            // Tamano en unidades de mundo AR (escala 1:10 del modelo real), no en
+            // pixeles de pantalla. Formula del TextMesh legacy:
+            //   characterSize = altoObjetivoMundo * 10 / fontSize
+            // Objetivo: bloque de texto no mas ancho que la viga AR (0.305 m) y
+            // legible a distancia normal de observacion.
+            float len = m_Loader.VigaLongitudAR;
+            float maxAncho = Mathf.Max(0.10f, Mathf.Min(len, 0.28f));
+            int maxChars = MayorLinea(texto);
+            float anchoGlifo = 0.5f;
+            float altoGlifo = maxAncho / Mathf.Max(1f, maxChars * anchoGlifo);
+            m_Texto.fontSize = 48;
+            m_Texto.characterSize = Mathf.Max(altoGlifo * 10f / m_Texto.fontSize, 0.001f);
+
+            AjustarAnchoReal(maxAncho);
+
+            int nLineas = CantidadLineas(texto);
+            float altoBloque = altoGlifo * nLineas * 1.2f;
+            Vector3 tamViga = m_Loader.VigaTamanoAR;
+            float semiAlturaViga = tamViga.y * 0.5f;
+            float offsetY = semiAlturaViga + 0.02f + altoBloque * 0.5f;
             m_TextoGo.transform.localPosition = m_Loader.VigaCentroLocal + new Vector3(0f, offsetY, 0f);
 
             Debug.Log("[AR489] Resultado visible: tag=" + m_Loader.ElementTag + " caso=" + m_Loader.Caso
                 + " Vz_i=" + m_Loader.VzI.ToString("0.000", CultureInfo.InvariantCulture) + " " + m_Loader.Unidad
                 + " Vz_j=" + m_Loader.VzJ.ToString("0.000", CultureInfo.InvariantCulture) + " " + m_Loader.Unidad);
+        }
+
+        static int MayorLinea(string texto)
+        {
+            int max = 1;
+            int cur = 0;
+            for (int i = 0; i < texto.Length; i++)
+            {
+                if (texto[i] == '\n')
+                {
+                    max = Mathf.Max(max, cur);
+                    cur = 0;
+                }
+                else
+                {
+                    cur++;
+                }
+            }
+            return Mathf.Max(max, cur);
+        }
+
+        static int CantidadLineas(string texto)
+        {
+            int n = 1;
+            for (int i = 0; i < texto.Length; i++)
+            {
+                if (texto[i] == '\n') n++;
+            }
+            return n;
+        }
+
+        // Limite dinamico: si el ancho real del bloque (medido por el renderer)
+        // excede el maximo, reescala uniformemente characterSize. Sin divisiones
+        // invalidas: se ignora si el renderer aun no reporta geometria (size nulo).
+        void AjustarAnchoReal(float maxAncho)
+        {
+            if (m_TextoGo == null || maxAncho <= 0f) return;
+            var rend = m_TextoGo.GetComponent<Renderer>();
+            if (rend == null) return;
+            float ancho = rend.bounds.size.x;
+            if (ancho <= 0.0001f || ancho <= maxAncho) return;
+            float factor = Mathf.Clamp(maxAncho / ancho, 0.05f, 5f);
+            m_Texto.characterSize *= factor;
         }
 
         static string Fmt(float v)

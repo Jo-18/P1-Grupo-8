@@ -16,6 +16,7 @@ namespace LabViewer.AR
     {
         [SerializeField] ARImageAnchorController m_Controller;
         [SerializeField] Transform m_ContentRoot;
+        [SerializeField] Material m_BeamMaterial;
         [SerializeField] int m_ElementTag = 489;
         [SerializeField] string m_Building = "II";
         [SerializeField] string m_ExpectedViewerId = "EII_CP2_V_029";
@@ -44,6 +45,7 @@ namespace LabViewer.AR
         public int ElementTag => m_ElementTag;
         public float VigaLongitudAR => m_VigaLongitudAR;
         public Vector3 VigaCentroLocal => m_VigaCentroLocal;
+        public Vector3 VigaTamanoAR => m_Beam != null ? m_Beam.transform.localScale : Vector3.zero;
 
         void Awake()
         {
@@ -158,7 +160,7 @@ namespace LabViewer.AR
             if (col != null) Destroy(col);
 
             var renderer = beam.GetComponent<Renderer>();
-            var mat = CrearMaterial();
+            Material mat = m_BeamMaterial != null ? m_BeamMaterial : CrearMaterial();
             if (renderer != null && mat != null) renderer.sharedMaterial = mat;
 
             beam.transform.SetParent(m_ContentRoot != null ? m_ContentRoot : transform, false);
@@ -275,10 +277,11 @@ namespace LabViewer.AR
         static Material CrearMaterial()
         {
             Shader sh = Shader.Find("Standard");
+            if (sh == null) sh = Shader.Find("Legacy Shaders/Diffuse");
             if (sh == null) sh = Shader.Find("Unlit/Color");
             if (sh == null) return null;
             Material m = new Material(sh);
-            m.color = new Color(0.80f, 0.22f, 0.16f, 1f);
+            m.color = new Color(1f, 0.55f, 0.05f, 1f);
             return m;
         }
     }
