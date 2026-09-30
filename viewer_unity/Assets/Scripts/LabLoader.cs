@@ -22,6 +22,7 @@ namespace LabViewer
         private const string MURO_COLOR_HEX = "#95A5A6";
         private const string ABER_COLOR_HEX = "#E74C3C";
         private const string PENDIENTE_COLOR_HEX = "#FFAA00";
+        private const string MARCADOR_COLOR_HEX = "#7C8A97";
         // Marcador de "Referencias pendientes": registros solo con posicion de rotulo de
         // texto (RLE-TEXTO-1/P.M.I.) sin geometria fisica respaldada.
         private const string REF_COLOR_HEX = "#9B59B6";
@@ -508,7 +509,11 @@ namespace LabViewer
                 {
                     baseY = pos.Value.y;
                     topY = pos.Value.y + 0.5f;
-                    baseState = ValState.Pendiente;
+                    // Nivel base del II: las columnas son MARCADORES DE ARRANQUE (la barra
+                    // real [cota base, cota CP1] la dibuja la columna de cabeza EII_CP1).
+                    // La clasificacion los saca de la cobertura "SIN_RESULTADO" sin
+                    // ocultarlos ni asignarles fuerza de la barra CP1.
+                    baseState = (lvl == "EII_CP1S") ? ValState.MarcadorArranque : ValState.Pendiente;
                 }
                 else
                 {
@@ -891,6 +896,7 @@ namespace LabViewer
         private string StateColorKey(string kind, ElementRef e)
         {
             if (e.State == ValState.Pendiente) return PENDIENTE_COLOR_HEX;
+            if (e.State == ValState.MarcadorArranque) return MARCADOR_COLOR_HEX;
             switch (kind)
             {
                 case "viga": return VIGA_COLOR_HEX;
