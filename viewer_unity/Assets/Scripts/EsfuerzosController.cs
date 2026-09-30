@@ -3219,15 +3219,17 @@ namespace LabViewer
             switch (e.EstadoCorr)
             {
                 case "1A1":
-                    GUILayout.Label("Correspondencia viewer: 1A1 -> " + e.ViewerId + " [" + e.ViewerNivel + "]");
+                    GUILayout.Label("Correspondencia viewer: 1A1 -> " + e.IdVincActivo + " [" + e.ViewerNivel + "]");
                     break;
                 case "CONTENIDO":
-                    GUILayout.Label("Correspondencia viewer: CONTENIDO -> " + e.ViewerId + " [" + e.ViewerNivel + "]");
+                    GUILayout.Label("Correspondencia viewer: CONTENIDO -> " + e.IdVincActivo + " [" + e.ViewerNivel + "]");
                     break;
                 default:
                     GUILayout.Label("Sin correspondencia: " + (e.EstadoCorr ?? "SIN_CORRESPONDENCIA_VIEWER"));
                     break;
             }
+            if (!string.IsNullOrEmpty(e.GeoLinkNota))
+                GUILayout.Label(e.GeoLinkNota);
 
             // Hito B: material de la ficha (desde el perfil)
             if (e.TieneMaterial)
@@ -3454,7 +3456,7 @@ namespace LabViewer
             foreach (var e in _elementos)
             {
                 if (e.Building != r.Building) continue;
-                if (string.Equals(e.ViewerId, r.Id) && !string.IsNullOrEmpty(e.Seccion))
+                if (EnlazaA(e, r) && !string.IsNullOrEmpty(e.Seccion))
                     return e.Seccion;
             }
             return null;
