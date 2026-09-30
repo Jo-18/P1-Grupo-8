@@ -1,16 +1,18 @@
-# Semana 6 — Demostración AR del elemento estructural FE (tag 489) y primera compilación APK
+# Semana 6 — Demostración AR del elemento estructural FE (tag 489) con diagramas internos y versión final probada en teléfono
 
 > **Rama:** `semana-06-ar`
 > **Versión del editor:** Unity 6000.5.10f1 — render pipeline built-in
-> **Fecha de la evidencia:** 29 de septiembre de 2026
+> **Release final:** [`semana-06-ar-v1`](https://github.com/Jo-18/P1-Grupo-8/releases/tag/semana-06-ar-v1) (compilación probada físicamente)
+> **Compilación previa (histórica):** [`semana-06-ar-pre1`](https://github.com/Jo-18/P1-Grupo-8/releases/tag/semana-06-ar-pre1) — prerelease sin prueba física, ver §9
+> **Fecha de la evidencia:** 30 de septiembre de 2026
 
 ## 1. Estado de la entrega
 
-**Estado: compilación Android y validación estática del APK completadas. La instalación y demostración física con cámara/ARCore quedan pendientes para la sesión en vivo.**
+**Estado: VERSIÓN FINAL PROBADA FÍSICAMENTE EN TELÉFONO el 30 de septiembre de 2026.** Se publica en la release normal `semana-06-ar-v1`.
 
-En esta semana se implementó la representación en Realidad Aumentada (AR) de un elemento estructural de la malla exportada: la viga `EII_CP2_V_029` (tag FE `489`) del Edificio II, junto con la lectura local del resultado de esfuerzo del caso `G` (`Vz`). El flujo de AR quedó implementado y compilado en un APK Android con escena única, y el contenido del APK fue validado estáticamente (manifest, escena única, librerías ARCore/IL2CPP e inclusión del JSON de resultados).
+En esta semana se implementó la representación en Realidad Aumentada (AR) del elemento estructural `EII_CP2_V_029` (tag FE `489`) del Edificio II, junto con la lectura local del resultado de esfuerzo del caso `G` y de sus **diagramas internos** (51 estaciones reales) con selector táctil de magnitud `N | Vy | Vz | T | My | Mz`.
 
-La prueba física en teléfono **todavía está pendiente** porque no se dispone de un dispositivo Android compatible conectado en este entorno de trabajo. Este documento no reporta ninguna verificación física con cámara o tracking; eso se realizará en la sesión en vivo.
+La prueba física en un teléfono Android **fue exitosa**: permiso de cámara concedido, marcador reconocido, pose AR obtenida, anchor creado, viga `EII_CP2_V_029` (tag `489`, sección `V.30/80`, escala 1:10) visible junto con los diagramas, ambos estables bajo el mismo anchor, y las seis magnitudes comprobadas desde el selector. La secuencia completa, los logs y las capturas están en [§15](#15-evidencia-de-la-prueba-física-en-teléfono).
 
 ## 2. Requisitos de Semana 6
 
@@ -23,8 +25,8 @@ La prueba física en teléfono **todavía está pendiente** porque no se dispone
 | Transformación de coordenadas | Conversión OpenSees → Unity: `(x,y,z) = (u, cota, v)` y del espacio local al anchor (`T_anchor × local`) | Implementado y compilado |
 | Mostrar elemento estructural | Viga `EII_CP2_V_029` como primitivo con las dimensiones de la sección `V.30/80` a escala `1:10` | Implementado y compilado |
 | Usar el mismo tag FE | Tag `489` leído desde el JSON en `StreamingAssets` | Implementado y compilado |
-| Mostrar el resultado | Caso `G`, `Vz_i` y `Vz_j` del vector de fuerzas del tag `489` | Implementado y compilado |
-| Verificación en dispositivo | Instalación, tracking del marcador y estabilidad del anchor en un teléfono Android | **Pendiente de comprobación física** |
+| Mostrar el resultado | Caso `G` y sus seis diagramas internos de 51 estaciones, con selector `N \| Vy \| Vz \| T \| My \| Mz` (inicial `Vz`) | Implementado, compilado y **probado** |
+| Verificación en dispositivo | Instalación, tracking del marcador, estabilidad del anchor y selector táctil en un teléfono Android | **Probado físicamente el 30/09/2026** (§15) |
 
 ## 3. Elemento mostrado
 
@@ -49,7 +51,9 @@ La viga se construye como un cubo único centrado entre `p_i` y `p_j`, con su et
 
 ## 4. Resultado OpenSees presentado
 
-Se presenta el esfuerzo `Vz` (cortante en el plano vertical) del caso **`G`** (peso propio) para el tag `489`.
+La aplicación presenta el caso **`G`** (peso propio) del tag `489` mediante sus **seis diagramas internos de esfuerzo**, con selector de magnitud `N | Vy | Vz | T | My | Mz` (magnitud inicial `Vz`).
+
+En este caso las tres magnitudes que no participan en la combinación son **idénticamente nulas**: `N = 0`, `Vy = 0` y `Mz = 0`. Por eso, al seleccionarlas en el teléfono se muestra **solo la línea base** de la viga, sin división inválida, con estado `0` en la etiqueta; es el comportamiento correcto, no un fallo. Las magnitudes con contenido real son `Vz`, `T` y `My`.
 
 Vector real de fuerzas del caso `G` (12 componentes, con los índices relevantes marcados):
 
@@ -63,9 +67,9 @@ Vector real de fuerzas del caso `G` (12 componentes, con los índices relevantes
 | `Vz_i` | 2 | `+53.035246 kN` |
 | `Vz_j` | 8 | `-53.035246 kN` |
 
-El rótulo AR muestra, redondeado al milésimo: `Vz(i): +53.035 kN` y `Vz(j): -53.035 kN`.
+El rótulo AR muestra los valores internos de sección de la primera y la última estación de la magnitud activa, redondeados al milésimo (p. ej. `Vz: +53.035 kN`, `T: -48.634 kN·m`, `My: -21.505 / +140.253 kN·m`); la tabla completa de las seis magnitudes está en [§14](#14-diagramas-internos-reales-en-ar-selector-de-magnitud).
 
-Es importante aclarar que **OpenSees calculó previamente los esfuerzos** (modelo estructural, geometría, casos y combinaciones); el teléfono solo **lee** el JSON y **presenta** el valor correspondiente. La aplicación no recalcula ningún esfuerzo: embebe el dato ya calculado.
+Es importante aclarar que **OpenSees calculó previamente los esfuerzos y los diagramas** (modelo estructural, geometría, casos y combinaciones); el teléfono solo **lee** el JSON y **presenta** los valores correspondientes. La aplicación no recalcula ningún esfuerzo ni ninguna estación: representa las 51 estaciones ya calculadas y validadas.
 
 ## 5. Coordenadas y registro espacial
 
@@ -92,8 +96,13 @@ En el dispositivo Android se ejecutan estos procesos:
 3. **Pose y anchor**: se obtiene la pose del marcador y se crea el anchor persistente.
 4. **Lectura local del JSON** desde `StreamingAssets` (`lab_data/edificios/II/results/esfuerzos_FE_EDIFICIO_II.json`).
 5. **Creación de la geometría** de la viga a escala 1:10 anclada a la pose.
-6. **Presentación del resultado**: se lee el vector del caso `G` y se muestra `Vz_i` / `Vz_j` en un rótulo.
-7. **Billboard**: el rótulo se orienta siempre hacia la cámara (billboard en `LateUpdate`), legible en cualquier ángulo.
+6. **Presentación del resultado**: se lee el vector del caso `G` y se muestra la
+   etiqueta de la viga.
+7. **Diagramas internos**: se lee `diagramas_FE_tag489_G.json` (51 estaciones), se
+   valida de forma cruzada contra la viga y se dibuja la curva de la magnitud activa
+   sobre la cara visible; el **selector táctil** `N | Vy | Vz | T | My | Mz`
+   (inicial `Vz`) cambia de magnitud sin recalcular nada.
+8. **Billboard**: el rótulo se orienta siempre hacia la cámara (billboard en `LateUpdate`), legible en cualquier ángulo.
 
 ## 7. Qué fue calculado previamente
 
@@ -119,50 +128,87 @@ El teléfono se limita a leer este JSON y presentarlo, lo que hace el diseño ex
 
 **Instrucciones de impresión:** imprimir a **30 × 30 cm**, escala **100 %** (sin ajustar al tamaño de página), preferentemente en **papel mate** para evitar reflejos que dificulten la detección por la cámara.
 
+La prueba física del 30/09/2026 se realizó con este mismo marcador impreso a **30 × 30 cm** y fue reconocido por la cámara sin ajustes adicionales. La biblioteca de imágenes de referencia contiene **un solo marcador** (`REF_EII_CP2_V_029`); para representar otro elemento hay que **incorporar su imagen a la biblioteca y recompilar** el APK (ver §12).
+
 ![Marcador REF_EII_CP2_V_029](../viewer_unity/Assets/AR/ReferenceImages/marker_489.png)
 
-## 9. APK generado
+## 9. APK final publicado
+
+### 9.1 Compilación final (probada físicamente)
 
 | Propiedad | Valor |
 |---|---|
-| Nombre | `lab-viewer-AR-tag489.apk` |
-| Tamaño | `83 548 680` bytes (~79.7 MB) |
-| SHA256 | `FD7DA35FEA8BCB350A1EBF131576FF537C0E9B0A3761537A5590AF9A4A5CBB83` |
+| Nombre del asset | `lab-viewer-AR-tag489-diagramas.apk` |
+| Tamaño | `83 702 889` bytes (~79.8 MB) |
+| SHA256 | `241730D32F8758610E2FE2047ADB375539BE8AD0DE615627E92D948128B36F5E` |
 | Package identifier | `com.grupo8.labviewer.artag489` |
 | Versión / versionCode | `1.0` / `1` |
 | minSdk | **29** (Android API 29+) |
 | targetSdk | `36` |
-| ABI | `ARMv7` (`armeabi-v7a`) y `ARM64` (`arm64-v8a`) |
-| ARCore | Integrado e incluido entre los requisitos de la app (librerías ARCore presentes, meta-data `com.google.ar.core` en el manifest) |
+| ABI | **ARMv7** (`armeabi-v7a`) y **ARM64** (`arm64-v8a`) |
+| ARCore | **Required**: meta-data `com.google.ar.core` = `required` en el manifest y `uses-feature` de AR |
 | Permiso | `android.permission.CAMERA` (además de `INTERNET`) |
 | Backend de scripting | IL2CPP |
 | Escena | Única: `Assets/Scenes/ARMain.unity` (`level0`) |
+| Fecha del build | 30 de septiembre de 2026 |
 
-**Enlace de descarga previsto:**
-
-```text
-https://github.com/Jo-18/P1-Grupo-8/releases/download/semana-06-ar-v1/lab-viewer-AR-tag489.apk
-```
-
-> Nota: el enlace funcionará **después de publicar** la GitHub Release `semana-06-ar-v1` con el APK adjunto. El APK no se copia dentro del repositorio; la publicación se hará posteriormente.
-
-## 10. Instalación y prueba futura
-
-Con un teléfono compatible conectado (depuración USB habilitada):
+**Descarga (release final `semana-06-ar-v1`):**
 
 ```text
-adb install -r lab-viewer-AR-tag489.apk
+https://github.com/Jo-18/P1-Grupo-8/releases/download/semana-06-ar-v1/lab-viewer-AR-tag489-diagramas.apk
 ```
 
-Flujo esperado de la demostración en vivo:
+Checksum publicado junto al APK:
+
+```text
+https://github.com/Jo-18/P1-Grupo-8/releases/download/semana-06-ar-v1/lab-viewer-AR-tag489-diagramas.apk.sha256
+```
+
+> El APK **no** se versiona dentro del repositorio: se publica como asset de la release y su SHA256 permite verificar la descarga.
+
+### 9.2 Compilación previa (histórica, no final)
+
+La release [`semana-06-ar-pre1`](https://github.com/Jo-18/P1-Grupo-8/releases/tag/semana-06-ar-pre1) (prerelease del 30/09/2026, **sin prueba física**) conserva la primera compilación con la etiqueta de extremos de nodo, que quedó superada por esta versión con diagramas y selector:
+
+| Propiedad | Valor (compilación previa) |
+|---|---|
+| Nombre del asset | `lab-viewer-AR-tag489.apk` |
+| Tamaño | `83 548 680` bytes |
+| SHA256 | `FD7DA35FEA8BCB350A1EBF131576FF537C0E9B0A3761537A5590AF9A4A5CBB83` |
+| Enlace | `https://github.com/Jo-18/P1-Grupo-8/releases/download/semana-06-ar-pre1/lab-viewer-AR-tag489.apk` |
+
+> Para reproducir la versión validada en el teléfono, usar **solo** el asset de §9.1.
+
+## 10. Instalación y prueba en teléfono
+
+Requisitos del dispositivo: **Android API 29 o superior**, **ARCore** instalado y
+funcional, sensor de cámara con **autofoco** y espacio libre. ABI `ARMv7` o `ARM64`.
+
+### 10.1 Instalación
+
+1. Descargar `lab-viewer-AR-tag489-diagramas.apk` desde la release `semana-06-ar-v1`
+   (§9.1) en el teléfono o en el computador.
+2. (Opcional, recomendado) Verificar la integridad del archivo descargado:
+   ```text
+   SHA256 (Android API 29)  lab-viewer-AR-tag489-diagramas.apk
+   ```
+   debe coincidir con `241730D32F8758610E2FE2047ADB375539BE8AD0DE615627E92D948128B36F5E`,
+   también disponible en el asset `.sha256` de la misma release.
+3. Habilitar **instalar apps de orígenes desconocidos** para la app de archivos o el
+   navegador y abrir el `.apk`; en dispositivos de desarrollo, `adb install -r
+   lab-viewer-AR-tag489-diagramas.apk`.
+4. Aceptar el permiso de cámara y el aviso de **ARCore Required**.
+
+### 10.2 Secuencia de la prueba (la que se ejecutó el 30/09/2026)
 
 1. Abrir la aplicación.
 2. Conceder el permiso de cámara.
-3. Apuntar la cámara al marcador impreso (30 × 30 cm).
-4. Verificar que aparecen la viga y el rótulo con `Vz(i)`/`Vz(j)`.
-5. Mover el teléfono y comprobar que el contenido sigue la posición real.
-6. Ocultar momentáneamente el marcador (giro o tapa).
-7. Comprobar que el anchor mantiene el contenido estable en el lugar correcto.
+3. Apuntar la cámara al marcador `REF_EII_CP2_V_029` impreso a 30 × 30 cm.
+4. Esperar el mensaje de imagen detectada; aparece la viga `EII_CP2_V_029` (tag `489`).
+5. Verificar los diagramas internos: por defecto `Vz`; usar el selector inferior
+   `N | Vy | Vz | T | My | Mz` para cambiar de magnitud.
+6. Mover el teléfono alrededor de la viga y comprobar que el contenido sigue la
+   posición real (tracking y anclaje espacial).
 
 ## 11. Evidencia del build
 
@@ -172,21 +218,35 @@ Flujo esperado de la demostración en vivo:
 | Resultado del `BuildReport` | `Succeeded` |
 | Errores | `0` |
 | Warnings | `14` (aviso de serialización CS0618/CS0414 del proyecto y avisos del toolchain) |
-| Duración | `215.7 s` |
-| Fecha de la ejecución | 29 de septiembre de 2026 |
-| SHA256 del APK | `FD7DA35FEA8BCB350A1EBF131576FF537C0E9B0A3761537A5590AF9A4A5CBB83` |
+| Duración | `158.7 s` |
+| Fecha de la ejecución | 30 de septiembre de 2026 |
+| SHA256 del APK | `241730D32F8758610E2FE2047ADB375539BE8AD0DE615627E92D948128B36F5E` |
 | Manifest (aapt) | package `com.grupo8.labviewer.artag489`, minSdk 29, targetSdk 36, permiso `CAMERA`, `INTERNET`, meta-data ARCore `com.google.ar.core`, `uses-feature` AR, ABI `arm64-v8a`/`armeabi-v7a` |
-| JSON dentro del APK | `assets/lab_data/edificios/II/results/esfuerzos_FE_EDIFICIO_II.json` presente |
+| JSON dentro del APK | `assets/lab_data/edificios/II/results/esfuerzos_FE_EDIFICIO_II.json` y `assets/lab_data/edificios/II/results/diagramas_FE_tag489_G.json` (idénticos al repositorio) presentes |
+| Materiales de diagramas | `DiagramLine489`, `DiagramBase489`, `DiagramOrdinate489` (`Unlit/Color`) incluidos en `sharedassets0.assets` |
 | Librerías ARCore | `lib/arm64-v8a/libUnityARCore.so`, `libarcore_sdk_c.so`, `libarcore_sdk_jni.so` |
 | IL2CPP | `lib/arm64-v8a/libil2cpp.so` + `Managed/Metadata/global-metadata.dat` |
 | Escena inicial | Única (`level0`, sin `level1`) |
 
-## 12. Limitaciones
+## 12. Limitaciones y alcance de la versión publicada
 
-- **Falta la prueba física**: no se ha verificado el tracking, la proyección del contenido ni la estabilidad del anchor en un dispositivo Android real; esa comprobación queda para la sesión en vivo.
-- **Dispositivo requerido**: teléfono compatible con **ARCore** y con **Android API 29 o superior**.
-- **Primera versión acotada**: la escena AR muestra **un solo elemento** (tag 489) y **un solo caso** (`G`), con **selector de magnitud** (`N | Vy | Vz | T | My | Mz`).
-- **Extensible**: el diseño permite **reemplazar el JSON y la biblioteca de imágenes** para mostrar otros elementos/resultados sin cambiar la lógica AR.
+- **Alcance acotado:** la versión publicada representa **un solo elemento**, la viga
+  `EII_CP2_V_029` (tag `489`) del Edificio II, y **un solo caso de carga**, el caso
+  `G`. El selector muestra sus seis magnitudes internas.
+- **Un solo marcador registrado:** la biblioteca de imágenes de referencia contiene
+  únicamente `REF_EII_CP2_V_029` (30 × 30 cm). **Para agregar otro marcador hay que
+  incorporarlo a la biblioteca y recompilar** el APK: no se puede cambiar el
+  marcador desde el teléfono.
+- **Sin cálculo en el dispositivo:** el teléfono no resuelve la estructura ni
+  recalcula esfuerzos; representa las 51 estaciones de diagramas y los vectores de
+  fuerzas previamente calculados por OpenSees y embebidos en los JSON (§7).
+- **Magnitudes nulas en este caso:** `N`, `Vy` y `Mz` son cero para el caso `G`;
+  al seleccionarlas se muestra solo la línea base, sin información de diagrama.
+- **Requisitos de hardware:** teléfono Android **API 29+** con **ARCore**
+  (la app declara ARCore como `required`) y cámara con autofocus; ABI ARMv7 o ARM64.
+- **Extensible:** el diseño permite **reemplazar el JSON y la biblioteca de
+  imágenes** para mostrar otros elementos, casos o resultados sin cambiar la lógica
+  AR, siempre que el JSON cumpla el contrato de validación del runtime.
 
 ## 13. Diagramas internos reales del tag 489 (persistencia)
 
@@ -239,19 +299,24 @@ magnitud visible: `N | Vy | Vz | T | My | Mz`, inicial `Vz`.
 
 ### Transformación estación→posición AR y escala
 
-- El diagrama es hijo de `AR Content` (mismo `anchor` que la viga), con la
-  posición/rotación local de la viga (ejes locales: `x` a lo largo del eje del
-  elemento, `y` = vertical del contenido).
+- El diagrama cuelga del contenedor **sin escala** de contenido y comparte el
+  `anchor` y los ejes locales de la viga (`x` a lo largo del elemento, `y` =
+  vertical), de modo que la escala AR 1:10 y la pose detectada se conservan
+  exactamente.
 - Estación `k` → `posición = lerp(p_i_local, p_j_local, xi)`; la **ordenada**
   sigue el eje vertical local del contenido:
-  `ordenada = (valor/maxAbs) · amplitudMaxima`, con `amplitudMaxima = 0.065 m`
-  inicial (escala puramente visual; no altera la escala AR 1:10). Los valores
+  `ordenada = (valor/maxAbs) · amplitudMaxima`, con `amplitudMaxima = 0.035 m`
+  (escala puramente visual; no altera la escala AR 1:10). Los valores
   **conservan el signo** (negativos hacia el lado opuesto de la línea base) y
   los cruces por cero quedan exactos.
+- El diagrama se dibuja sobre la **cara lateral visible** de la viga, con un
+  desplazamiento de `0.0015 m` y una histéresis de `0.02 m` que evita el
+  *z-fighting*; el cambio de cara solo recoloca las ordenadas, sin reconstruir
+  las 51 estaciones.
 - Elementos: **línea base** sobre el eje de la viga (gris claro), **curva** a
-  través de las 51 estaciones (cian) y **ordenadas** desde la base a la curva
-  en los dos extremos y cada 5 estaciones (cian atenuado). **Sin** suavizado /
-  Bézier / interpolación entre valores.
+  través de las 51 estaciones (cian intenso) y **ordenadas** desde la base a la
+  curva en los dos extremos y cada 5 estaciones (ámbar atenuado). **Sin**
+  suavizado / Bézier / interpolación entre valores.
 - Si `maxAbs == 0` (p. ej. `N`): solo línea base y estado `0` en la etiqueta
   (sin división inválida).
 
@@ -291,7 +356,7 @@ magnitud visible: `N | Vy | Vz | T | My | Mz`, inicial `Vz`.
   unidades/índices, Vz/T constantes, `dMy/dx=Vz`, N/Vy/Mz nulos, extremos
   exactos, caso `maxAbs=0` sin división inválida) y el cableado de la escena
   (`ARMain`): un único `ARForceDiagram489`, referencias serializadas
-  (controller/loader/label/content/materiales) y `amplitud=0.065 m`. Las
+  (controller/loader/label/content/materiales) y `amplitud=0.035 m`. Las
   expectativas de forma se derivan del propio `vector_localForce_12_caso_G`
   con tolerancias documentadas (0.001 constante/extremos, 0.01 pendiente) y
   **nunca** se usan para dibujar.
@@ -332,3 +397,72 @@ magnitud visible: `N | Vy | Vz | T | My | Mz`, inicial `Vz`.
   estaciones`, `[ARDiag489] Esperando datos de la viga 489`,
   `[ARDiag489] Validacion cruzada OK`, `[ARDiag489] Diagrama visible: Vz` y, al
   cambiar, `[ARDiag489] Magnitud seleccionada: My`.
+
+## 15. Evidencia de la prueba física en teléfono
+
+**Fecha de la prueba:** 30 de septiembre de 2026. **APK probado:** el de §9.1
+(`lab-viewer-AR-tag489-diagramas.apk`, SHA256
+`241730D32F8758610E2FE2047ADB375539BE8AD0DE615627E92D948128B36F5E`).
+
+### 15.1 Secuencia completa verificada
+
+| # | Paso | Resultado observado |
+|---|---|---|
+| 1 | Permiso de cámara | Concedido; la app inicia la sesión AR sin bloqueos |
+| 2 | Marcador `REF_EII_CP2_V_029` (30 × 30 cm) | Detectado por la cámara |
+| 3 | Pose AR | Obtenida de la imagen detectada (posición y orientación) |
+| 4 | Anchor | Creado sobre la pose del marcador |
+| 5 | Tag y elemento | Viga `EII_CP2_V_029`, tag `489`, sección `V.30/80`, escala 1:10 |
+| 6 | Diagramas | 51 estaciones cargadas y dibujadas bajo el mismo anchor |
+| 7 | Selector de magnitud | Los 6 botones `N \| Vy \| Vz \| T \| My \| Mz` responden al toque |
+| 8 | Estabilidad | Viga y diagramas permanecen anclados al mover el teléfono |
+
+### 15.2 Magnitudes comprobadas en el dispositivo
+
+| Magnitud | Valor observado | Descripción en pantalla |
+|---|---|---|
+| `Vz` | `+53.035 kN` constante | Curva paralela a la línea base, en un solo lado de la viga |
+| `T` | `−48.634 kN·m` constante | Curva paralela, en el lado opuesto al de `Vz` |
+| `My` | `−21.505 → +140.253 kN·m` | Curva lineal que **cruza por cero** dentro de la viga |
+| `N` | `0` | Solo línea base (magnitud nula en el caso `G`) |
+| `Vy` | `0` | Solo línea base (magnitud nula en el caso `G`) |
+| `Mz` | `0` | Solo línea base (magnitud nula en el caso `G`) |
+
+### 15.3 Registro de la sesión
+
+```text
+[ARDiag489] Runtime orchestration v2
+[AR489] JSON cargado
+[AR489] Viga creada, longitud AR=0.305 m
+[ARDiag489] JSON de diagramas cargado: 51 estaciones
+[ARDiag489] Esperando datos de la viga 489
+[ARDiag489] Validacion cruzada OK
+[ARDiag489] Diagrama construido: Vz
+[AR489] Imagen detectada
+[AR489] Anchor creado
+[AR489] Viga visible bajo anchor
+[ARDiag489] Diagrama visible: Vz
+```
+
+### 15.4 Capturas
+
+Magnitud `Vz` (curva constante, un solo lado de la viga):
+
+![Prueba física en teléfono — magnitud Vz](evidencia/semana_06_ar/telefono_vz.png)
+
+Magnitud `T` (curva constante, lado opuesto):
+
+![Prueba física en teléfono — magnitud T](evidencia/semana_06_ar/telefono_t.png)
+
+Magnitud `My` (curva lineal con cruce por cero):
+
+![Prueba física en teléfono — magnitud My](evidencia/semana_06_ar/telefono_my.png)
+
+### 15.5 Conclusión de la prueba
+
+La versión publicada se validó en un teléfono Android real con cámara y ARCore:
+el marcador se reconoce, la pose y el anchor se crean correctamente, la viga del
+tag `489` aparece a escala 1:10 con sus diagramas internos y el selector permite
+recorrer las seis magnitudes sin que se pierdan el tracking ni el anclaje. La
+versión `semana-06-ar-v1` es, por tanto, la **versión final probada físicamente**
+de la entrega de Semana 6.
