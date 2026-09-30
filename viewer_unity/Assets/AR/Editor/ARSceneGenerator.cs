@@ -136,6 +136,20 @@ namespace LabViewer
             so.FindProperty("m_ContentRoot").objectReferenceValue = contentGo.transform;
             so.FindProperty("m_ExpectedImageName").stringValue = ARImageAnchorController.DefaultExpectedImageName;
             so.ApplyModifiedPropertiesWithoutUndo();
+
+            if (contentGo.GetComponent<ARBeam489Loader>() == null)
+                ObjectFactory.AddComponent<ARBeam489Loader>(contentGo);
+
+            var loader = contentGo.GetComponent<ARBeam489Loader>();
+            var lso = new SerializedObject(loader);
+            lso.FindProperty("m_Controller").objectReferenceValue = controller;
+            lso.FindProperty("m_ContentRoot").objectReferenceValue = contentGo.transform;
+            lso.FindProperty("m_ElementTag").intValue = 489;
+            lso.FindProperty("m_Building").stringValue = "II";
+            lso.FindProperty("m_ExpectedViewerId").stringValue = "EII_CP2_V_029";
+            lso.FindProperty("m_ARScale").floatValue = 0.10f;
+            lso.FindProperty("m_SectionM").vector2Value = new Vector2(0.30f, 0.80f);
+            lso.ApplyModifiedPropertiesWithoutUndo();
         }
 
         static void CreateDirectionalLight()
