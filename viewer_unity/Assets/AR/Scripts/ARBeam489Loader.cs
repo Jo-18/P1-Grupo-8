@@ -38,6 +38,9 @@ namespace LabViewer.AR
         Vector3 m_VigaPILocal;
         Vector3 m_VigaPJLocal;
         ARElementIdentity m_Identity;
+        bool m_LoadCompleted;
+        bool m_LoadSucceeded;
+        string m_LoadError;
 
         public bool DataLoaded => m_DataLoaded;
         public string Caso => CasoG;
@@ -45,6 +48,11 @@ namespace LabViewer.AR
         public float VzJ => m_VzJ;
         public string Unidad => "kN";
         public ARElementIdentity Identity => m_Identity;
+        // Estado final de la carga del loader. LoadCompleted se activa siempre
+        // (con exito o con error) para que el diagrama no espere indefinidamente.
+        public bool LoadCompleted => m_LoadCompleted;
+        public bool LoadSucceeded => m_LoadSucceeded;
+        public string LoadError => m_LoadError;
         public int ElementTag => m_ElementTag;
         public float VigaLongitudM => m_VigaLongitudM;
         public float VigaLongitudAR => m_VigaLongitudAR;
@@ -66,6 +74,7 @@ namespace LabViewer.AR
 
         IEnumerator CargarJson()
         {
+            Dictionary<string, object> raiz = null;
             string url = UrlStreamingAssets(ResultadosAgo);
             using (var req = UnityWebRequest.Get(url))
             {
@@ -75,18 +84,39 @@ namespace LabViewer.AR
                 if (req.result != UnityWebRequest.Result.Success)
                 {
                     Debug.LogError("[AR489] No se pudo cargar el JSON de esfuerzos (" + req.error + "): " + ResultadosAgo);
+                    TerminarFallo("No se pudo cargar el JSON de esfuerzos: " + req.error);
                     yield break;
                 }
 
-                var raiz = Json.AsObj(Json.Parse(req.downloadHandler.text));
+                try
+                {
+                    raiz = Json.AsObj(Json.Parse(req.downloadHandler.text));
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("[AR489] JSON de esfuerzos invalido: " + e.Message);
+                    TerminarFallo("JSON de esfuerzos invalido: " + e.Message);
+                    yield break;
+                }
                 if (raiz == null)
                 {
                     Debug.LogError("[AR489] JSON invalido o raiz no es objeto: " + ResultadosAgo);
+                    TerminarFallo("JSON invalido o raiz no es objeto: " + ResultadosAgo);
                     yield break;
                 }
 
                 Debug.Log("[AR489] JSON cargado");
+            }
+
+            // Fuera del bloque with yield: cualquier excepcion inesperada en la
+            // construccion sincrona tambien debe dejar LoadCompleted activo.
+            try
+            {
                 ConstruirViga(raiz);
+            }
+            catch (Exception e)
+            {
+                TerminarFallo("excepcion al cargar esfuerzos: " + e.Message);
             }
         }
 
@@ -96,6 +126,7 @@ namespace LabViewer.AR
             if (!EsTxt(edificio, m_Building))
             {
                 Debug.LogError("[AR489] Edificio del JSON '" + (edificio ?? "null") + "' != esperado '" + m_Building + "'");
+                TerminarFallo("edificio del JSON != " + m_Building);
                 return;
             }
 
@@ -113,12 +144,14 @@ namespace LabViewer.AR
             if (hits.Count == 0)
             {
                 Debug.LogError("[AR489] No se encontro ningun elemento con tag " + m_ElementTag + " en " + ResultadosAgo);
+                TerminarFallo("sin elemento con tag " + m_ElementTag);
                 return;
             }
 
             if (hits.Count > 1)
             {
                 Debug.LogError("[AR489] Se encontraron " + hits.Count + " elementos con tag " + m_ElementTag + "; se esperaba exactamente 1");
+                TerminarFallo("tag " + m_ElementTag + " duplicado (" + hits.Count + ")");
                 return;
             }
 
@@ -127,6 +160,7 @@ namespace LabViewer.AR
             if (!EsTxt(tipo, "viga"))
             {
                 Debug.LogError("[AR489] Elemento tag " + m_ElementTag + " no es viga (tipo='" + (tipo ?? "null") + "')");
+                TerminarFallo("elemento tag " + m_ElementTag + " no es viga");
                 return;
             }
 
@@ -135,6 +169,7 @@ namespace LabViewer.AR
             if (!EsTxt(viewerId, m_ExpectedViewerId))
             {
                 Debug.LogError("[AR489] correspondencia.viewer_id '" + (viewerId ?? "null") + "' != esperado '" + m_ExpectedViewerId + "'");
+                TerminarFallo("viewer_id '" + (viewerId ?? "null") + "' != esperado '" + m_ExpectedViewerId + "'");
                 return;
             }
 
@@ -143,6 +178,7 @@ namespace LabViewer.AR
             if (!pi.HasValue || !pj.HasValue)
             {
                 Debug.LogError("[AR489] Elemento tag " + m_ElementTag + " sin p_i_unity/p_j_unity validos");
+                TerminarFallo("elemento tag " + m_ElementTag + " sin p_i_unity/p_j_unity validos");
                 return;
             }
 
@@ -192,6 +228,9 @@ namespace LabViewer.AR
             m_BeamVisible = false;
 
             Debug.Log("[AR489] Viga creada, longitud AR=" + lenAR.ToString("0.000", CultureInfo.InvariantCulture) + " m");
+
+            if (m_DataLoaded) TerminarExito();
+            else TerminarFallo("no se pudo leer el vector de esfuerzos del caso G");
 
             StartCoroutine(EsperarAnchor());
         }
@@ -260,6 +299,23 @@ namespace LabViewer.AR
             if (Application.platform == RuntimePlatform.Android)
                 return path;
             return "file://" + path;
+        }
+
+        // Estado final: LoadCompleted siempre se activa con exito o con error.
+        // Los detalles del error ya se registran en el punto exacto que lo
+        // detecta; aqui solo se propaga la condicion para el diagrama.
+        void TerminarExito()
+        {
+            m_LoadCompleted = true;
+            m_LoadSucceeded = true;
+            m_LoadError = null;
+        }
+
+        void TerminarFallo(string detalle)
+        {
+            m_LoadCompleted = true;
+            m_LoadSucceeded = false;
+            m_LoadError = detalle;
         }
 
         static bool EsTxt(string a, string b)

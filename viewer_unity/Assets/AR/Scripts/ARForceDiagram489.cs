@@ -14,6 +14,14 @@ namespace LabViewer.AR
     // ordenadas; no reconstruye ningun valor desde el vector de esfuerzos.
     // Selector de magnitud N|Vy|Vz|T|My|Mz (inicial Vz): un toque cambia el
     // diagrama y la etiqueta; los valores provienen de las estaciones internas.
+    //
+    // Coordinacion de carga (T31D): el JSON se carga y valida internamente y se
+    // conserva en memoria ANTES de tocar al loader; las validaciones cruzadas
+    // (identidad, tag, viewer_id, longitud, extremos) y la construccion de la
+    // geometria esperan el estado final del loader (LoadCompleted) y se ejecutan
+    // exactamente una vez. La visibilidad espera el anchor. No hay retrasos fijos
+    // ni reintentos por frame; las transiciones AceptarJson /
+    // NotificarLoaderTerminado / NotificarAnchor son idempotentes y por-fase.
     [DisallowMultipleComponent]
     public sealed class ARForceDiagram489 : MonoBehaviour
     {
@@ -49,15 +57,26 @@ namespace LabViewer.AR
         Estacion[] m_Estaciones;
         float[] m_MaxAbs;
         float m_LongitudM;
+        Vector3 m_pIUnity;
+        Vector3 m_pJUnity;
         int m_MagIndex = Array.IndexOf(Magnitudes, MagnitudInicial);
+        bool m_JsonListo;
         bool m_DataLoaded;
         bool m_Visible;
+        bool m_Fallido;
+        int m_ConteoConstrucciones;
+        int m_ConteoFallos;
         GameObject m_DiagramGo;
         LineRenderer m_Base;
         LineRenderer m_Linea;
         LineRenderer m_Ordenadas;
 
         public bool DataLoaded => m_DataLoaded;
+        public bool JsonListo => m_JsonListo;
+        public bool DiagramaVisible => m_Visible;
+        public bool Fallido => m_Fallido;
+        public int ConteoConstrucciones => m_ConteoConstrucciones;
+        public int ConteoFallos => m_ConteoFallos;
         public int StationCount => m_Estaciones != null ? m_Estaciones.Length : 0;
         public int MagnitudIndex => m_MagIndex;
         public string MagnitudActual => Magnitudes[m_MagIndex];
@@ -78,11 +97,14 @@ namespace LabViewer.AR
                 return;
             }
             if (m_ContentRoot == null) m_ContentRoot = transform;
-            StartCoroutine(Cargar());
+            StartCoroutine(Coordinar());
         }
 
-        IEnumerator Cargar()
+        // Unica coroutine de coordinacion: carga el JSON, espera el estado final
+        // del loader y el anchor, delegando las transiciones idempotentes.
+        IEnumerator Coordinar()
         {
+            Dictionary<string, object> raiz = null;
             string url = UrlStreamingAssets(NombreJSON);
             using (var req = UnityWebRequest.Get(url))
             {
@@ -91,71 +113,171 @@ namespace LabViewer.AR
 
                 if (req.result != UnityWebRequest.Result.Success)
                 {
-                    Debug.LogError("[ARDiag489] No se pudo cargar el JSON de diagramas (" + req.error + "): " + NombreJSON);
+                    Fallar("No se pudo cargar el JSON de diagramas (" + req.error + "): " + NombreJSON);
                     yield break;
                 }
 
-                Dictionary<string, object> raiz = null;
                 try
                 {
                     raiz = Json.AsObj(Json.Parse(req.downloadHandler.text));
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError("[ARDiag489] JSON de diagramas invalido: " + e.Message);
+                    Fallar("JSON de diagramas invalido: " + e.Message);
                     yield break;
                 }
-
                 if (raiz == null)
                 {
-                    Debug.LogError("[ARDiag489] JSON de diagramas invalido o raiz no es objeto: " + NombreJSON);
+                    Fallar("JSON de diagramas invalido o raiz no es objeto: " + NombreJSON);
                     yield break;
                 }
-
-                Construir(raiz);
             }
+
+            AceptarJson(raiz);
+            if (m_Fallido || !m_JsonListo) yield break;
+
+            while (m_Loader != null && !m_Loader.LoadCompleted) yield return null;
+            if (m_Loader == null || !m_Loader.LoadCompleted)
+            {
+                Fallar("El loader de la viga 489 no quedo disponible");
+                yield break;
+            }
+
+            NotificarLoaderTerminado();
+            if (m_Fallido) yield break;
+
+            while (m_Controller != null && m_Controller.Anchor == null) yield return null;
+            if (m_Controller == null) yield break;
+
+            NotificarAnchor();
         }
 
-        void Construir(Dictionary<string, object> raiz)
+        // Transicion 1: JSON cargado y validado internamente (sin depender del
+        // loader). Conserva estaciones/maxAbs/longitud en memoria y queda a la
+        // espera del loader. Idempotente y sin efecto si ya fallo.
+        public void AceptarJson(Dictionary<string, object> raiz)
         {
+            if (m_Fallido || m_JsonListo) return;
+
             List<string> errs = Validar(raiz, "II", 489, "EII_CP2_V_029", "G", 3.05f, NStationsEsperado);
-
-            if (m_Loader != null)
-            {
-                float lenJson = (float)Json.Num(raiz, "longitud_m");
-                if (Mathf.Abs(lenJson - m_Loader.VigaLongitudM) > 0.001f)
-                    errs.Add("longitud_m del JSON != longitud de la viga del loader");
-
-                Vector3? pi = Json.V3(raiz, "p_i_unity");
-                Vector3? pj = Json.V3(raiz, "p_j_unity");
-                if (pi.HasValue && pj.HasValue &&
-                    Mathf.Abs(Vector3.Distance(pi.Value, pj.Value) - m_Loader.VigaLongitudM) > 0.001f)
-                    errs.Add("distancia p_i..p_j != longitud de la viga del loader");
-            }
-
             if (errs.Count > 0)
             {
-                Debug.LogError("[ARDiag489] Diagrama tag 489 invalido (" + errs.Count + " problemas); primero: " + errs[0]);
+                Fallar("Diagrama tag 489 invalido (" + errs.Count + " problemas): " + string.Join("; ", errs));
                 return;
             }
 
             m_Estaciones = ParseEstaciones(raiz);
             m_MaxAbs = CalcularMaxAbs();
             m_LongitudM = (float)Json.Num(raiz, "longitud_m");
+            Vector3? pi = Json.V3(raiz, "p_i_unity");
+            Vector3? pj = Json.V3(raiz, "p_j_unity");
+            if (pi.HasValue && pj.HasValue)
+            {
+                m_pIUnity = pi.Value;
+                m_pJUnity = pj.Value;
+            }
+
+            m_JsonListo = true;
+            Debug.Log("[ARDiag489] JSON de diagramas cargado: " + m_Estaciones.Length + " estaciones");
+            Debug.Log("[ARDiag489] Esperando datos de la viga 489");
+        }
+
+        // Transicion 2: el loader alcanzo su estado final. Sin efecto si el JSON
+        // aun no esta o si ya paso (valida y construye exactamente una vez).
+        public void NotificarLoaderTerminado()
+        {
+            if (m_Fallido || !m_JsonListo || m_DataLoaded) return;
+            if (m_Loader == null || !m_Loader.LoadCompleted) return;
+
+            if (!m_Loader.LoadSucceeded)
+            {
+                Fallar("El loader de la viga 489 termino con error: "
+                    + (m_Loader.LoadError ?? "sin detalle"));
+                return;
+            }
+
+            List<string> cruz = CrossValidarConLoader();
+            if (cruz.Count > 0)
+            {
+                Fallar("Diagrama tag 489 invalido (" + cruz.Count + " problemas): " + string.Join("; ", cruz));
+                return;
+            }
+
+            Debug.Log("[ARDiag489] Validacion cruzada OK");
             m_DataLoaded = true;
 
-            Debug.Log("[ARDiag489] Diagrama tag 489 cargado: " + m_Estaciones.Length + " estaciones; "
-                + "Vz=" + m_Estaciones[0].val[2].ToString("0.000", CultureInfo.InvariantCulture) + " kN; "
-                + "T=" + m_Estaciones[0].val[3].ToString("0.000", CultureInfo.InvariantCulture) + " kN*m; "
-                + "My_i=" + m_Estaciones[0].val[4].ToString("0.000", CultureInfo.InvariantCulture) + " kN*m; "
-                + "My_L=" + m_Estaciones[m_Estaciones.Length - 1].val[4].ToString("0.000", CultureInfo.InvariantCulture) + " kN*m");
-
             ConstruirGeometria();
-            if (m_DiagramGo != null)
-                RellenarLineas();
+            if (m_DiagramGo != null) RellenarLineas();
 
+            if (m_Controller != null && m_Controller.Anchor != null)
+                NotificarAnchor();
+        }
+
+        // Transicion 3: anchor disponible. Muestra el diagrama una sola vez y
+        // sincroniza el rotulo. Sin efecto si el diagrama no esta validado.
+        public void NotificarAnchor()
+        {
+            if (m_Fallido || !m_DataLoaded || m_Visible) return;
+            if (m_Controller == null || m_Controller.Anchor == null) return;
+            if (m_DiagramGo == null) return;
+
+            m_DiagramGo.SetActive(true);
+            m_Visible = true;
+            Debug.Log("[ARDiag489] Diagrama visible: " + MagnitudActual);
             if (m_Label != null) m_Label.ActualizarConDiagrama(this);
-            StartCoroutine(EsperarVisibilidad());
+        }
+
+        // Cruz entre el JSON (memoria) y el estado final del loader: identidad,
+        // tag, viewer_id, edificio, longitudes y extremos locales. Reporta todos
+        // los problemas, no solo el primero.
+        List<string> CrossValidarConLoader()
+        {
+            var errs = new List<string>();
+            if (m_Loader == null)
+            {
+                errs.Add("sin referencia al loader");
+                return errs;
+            }
+
+            var id = m_Loader.Identity;
+            if (id == null)
+            {
+                errs.Add("identidad de la viga nula");
+            }
+            else
+            {
+                if (id.ElementTag != 489) errs.Add("identidad.ElementTag " + id.ElementTag + " != 489");
+                if (!EsTxt(id.ViewerId, "EII_CP2_V_029")) errs.Add("identidad.viewer_id '" + id.ViewerId + "' != EII_CP2_V_029");
+                if (!EsTxt(id.Building, "II")) errs.Add("identidad.edificio '" + id.Building + "' != II");
+            }
+
+            if (!m_Loader.DataLoaded) errs.Add("loader sin DataLoaded; la viga no quedo cargada");
+            if (m_Loader.VigaLongitudM <= 0f) errs.Add("longitud real de la viga invalida (" + m_Loader.VigaLongitudM + " m)");
+
+            float lenAR = m_Loader.VigaLongitudAR;
+            if (lenAR <= 0.0001f) errs.Add("longitud AR de la viga invalida (" + lenAR + " m)");
+
+            Vector3 a = m_Loader.VigaPILocal;
+            Vector3 b = m_Loader.VigaPJLocal;
+            float distLocal = Vector3.Distance(a, b);
+            if (distLocal <= 0.0001f) errs.Add("extremos locales de la viga invalidos (longitud nula)");
+            if (lenAR > 0f && Mathf.Abs(distLocal - lenAR) > 0.001f)
+                errs.Add("extremos locales inconsistentes con la longitud AR (dist=" + distLocal + " m, lenAR=" + lenAR + " m)");
+
+            if (Mathf.Abs(m_LongitudM - m_Loader.VigaLongitudM) > 0.001f)
+                errs.Add("longitud_m del JSON != longitud de la viga del loader");
+            if (Mathf.Abs(Vector3.Distance(m_pIUnity, m_pJUnity) - m_Loader.VigaLongitudM) > 0.001f)
+                errs.Add("distancia p_i..p_j != longitud de la viga del loader");
+
+            return errs;
+        }
+
+        void Fallar(string mensaje)
+        {
+            if (m_Fallido) return;
+            m_Fallido = true;
+            m_ConteoFallos++;
+            Debug.LogError("[ARDiag489] " + mensaje);
         }
 
         Estacion[] ParseEstaciones(Dictionary<string, object> raiz)
@@ -204,18 +326,31 @@ namespace LabViewer.AR
                 : Quaternion.identity;
             go.SetActive(false);
 
-            m_Base = go.AddComponent<LineRenderer>();
-            m_Linea = go.AddComponent<LineRenderer>();
-            m_Ordenadas = go.AddComponent<LineRenderer>();
-            Configurar(m_Base, m_BaseMaterial, AnchoBase);
-            Configurar(m_Linea, m_DiagramMaterial, AnchoLinea);
-            Configurar(m_Ordenadas, m_OrdinateMaterial, AnchoOrdenada);
+            // Un LineRenderer por hijo: Unity no permite dos LineRenderer en un
+            // mismo GameObject (el segundo AddComponent devuelve null).
+            m_Base = CrearLinea(go, "Base", m_BaseMaterial, AnchoBase);
+            m_Linea = CrearLinea(go, "Diagrama", m_DiagramMaterial, AnchoLinea);
+            m_Ordenadas = CrearLinea(go, "Ordenadas", m_OrdinateMaterial, AnchoOrdenada);
 
             m_DiagramGo = go;
+            m_ConteoConstrucciones++;
+        }
+
+        LineRenderer CrearLinea(GameObject raiz, string nombre, Material mat, float ancho)
+        {
+            var child = new GameObject(nombre);
+            child.transform.SetParent(raiz.transform, false);
+            child.transform.localPosition = Vector3.zero;
+            child.transform.localRotation = Quaternion.identity;
+            child.transform.localScale = Vector3.one;
+            var lr = child.AddComponent<LineRenderer>();
+            if (lr != null) Configurar(lr, mat, ancho);
+            return lr;
         }
 
         void Configurar(LineRenderer lr, Material mat, float ancho)
         {
+            if (lr == null) return;
             lr.useWorldSpace = false;
             lr.loop = false;
             lr.startWidth = ancho;
@@ -269,36 +404,6 @@ namespace LabViewer.AR
             float maxAbs = m_MaxAbs[m_MagIndex];
             if (maxAbs <= 0f) return 0f;
             return (m_Estaciones[k].val[m_MagIndex] / maxAbs) * m_AmplitudMaxima;
-        }
-
-        IEnumerator EsperarVisibilidad()
-        {
-            while (m_Controller == null || m_Controller.Anchor == null
-                   || m_Loader == null || !m_Loader.DataLoaded || m_Loader.Identity == null)
-            {
-                yield return null;
-            }
-
-            if (m_DiagramGo == null || m_Visible) yield break;
-
-            if (!EsConsistenteConIdentity())
-            {
-                Debug.LogError("[ARDiag489] Identidad del loader no coincide con el diagrama; diagrama oculto");
-                yield break;
-            }
-
-            m_DiagramGo.SetActive(true);
-            m_Visible = true;
-            if (m_Label != null) m_Label.ActualizarConDiagrama(this);
-        }
-
-        bool EsConsistenteConIdentity()
-        {
-            var id = m_Loader.Identity;
-            if (id == null) return false;
-            return id.ElementTag == 489
-                && string.Equals(id.ViewerId, "EII_CP2_V_029", StringComparison.Ordinal)
-                && string.Equals(id.Building, "II", StringComparison.Ordinal);
         }
 
         void OnGUI()

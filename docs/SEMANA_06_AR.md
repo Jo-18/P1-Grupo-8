@@ -298,3 +298,37 @@ magnitud visible: `N | Vy | Vz | T | My | Mz`, inicial `Vz`.
 - Build Android vía `LabViewer.AR.BuildTools.ARAndroidBuild.BuildAR` (mismo
   `com.grupo8.labviewer.artag489`, escena única `ARMain`). En el APK viajan el
   JSON de esfuerzos, el JSON de diagramas, los materiales y los ensamblados.
+
+### Coordinación de carga (carrera de inicialización)
+
+- **Causa raíz**: `ARForceDiagram489` cargaba su JSON y validaba contra la viga
+  del loader inmediatamente; en el teléfono el JSON de diagramas llega ~50 ms
+  antes que el JSON de esfuerzos, por lo que la validación cruzada veía
+  `VigaLongitudM=0` y descartaba el diagrama ("longitud_m del JSON != longitud
+  de la viga del loader") sin volver a intentar.
+- **Solución (T31D)**: coordinación determinista en tres transiciones
+  idempotentes y por-fase, sin retrasos fijos ni reintentos por frame:
+
+  1. `AceptarJson`: carga, valida internamente el JSON (51 estaciones) y lo
+     conserva en memoria (estaciones, `maxAbs`, longitud, `p_i`/`p_j`).
+  2. `NotificarLoaderTerminado`: solo actúa cuando el loader alcanzó
+     `LoadCompleted`; entonces valida cruzado (identidad, tag, `viewer_id`,
+     edificio, longitudes y extremos locales, reportando **todos** los
+     problemas) y construye la geometría exactamente una vez.
+  3. `NotificarAnchor`: muestra el diagrama bajo el anchor y sincroniza el
+     rótulo; el selector queda habilitado al validar (inicial `Vz`).
+
+- `ARBeam489Loader` exponen ahora estado final de solo lectura:
+  `LoadCompleted` (siempre al terminar), `LoadSucceeded` y `LoadError`. Si el
+  loader falla, el diagrama falla una sola vez y el rótulo conserva el texto
+  base. Sin estado final, el diagrama no espera indefinidamente.
+- **Prueba controlada** (EditMode, sin PlayMode):
+  `LabViewer.AR.EditorTools.ARDiagramOrquestacionTest.BatchTestSecuencia`
+  simula ambos órdenes (JSON primero / loader después, y loader primero /
+  JSON después), el fallo definitivo del loader, la ausencia de duplicados, el
+  fallback conservado y el selector inicial `Vz`; escribe
+  `%TEMP%\AR_DIAGRAM_ORQUESTACION_resultado.json`.
+- Logs estables, una vez cada uno: `[ARDiag489] JSON de diagramas cargado: 51
+  estaciones`, `[ARDiag489] Esperando datos de la viga 489`,
+  `[ARDiag489] Validacion cruzada OK`, `[ARDiag489] Diagrama visible: Vz` y, al
+  cambiar, `[ARDiag489] Magnitud seleccionada: My`.
