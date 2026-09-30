@@ -622,9 +622,7 @@ namespace LabViewer
             var grupo = new List<EFElemento>();
             foreach (var e in _elementos)
             {
-                if (e.Building != refEl.Building) continue;
-                if (string.IsNullOrEmpty(e.ViewerId)) continue;
-                if (e.ViewerId != refEl.Id) continue;
+                if (!EnlazaA(e, refEl)) continue;
                 grupo.Add(e);
             }
             if (grupo.Count == 0)
