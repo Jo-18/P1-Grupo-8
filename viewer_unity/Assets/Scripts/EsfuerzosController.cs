@@ -2654,7 +2654,7 @@ namespace LabViewer
             bool bI = InteraccionUI.ToggleEstado(Edificio == "I", "I", "button");
             bool bII = InteraccionUI.ToggleEstado(Edificio == "II", "II", "button");
             if (bI && Edificio != "I") { Edificio = "I"; SelectedFE = null; SincronizarInspeccion(null); SetResaltado(null); RebuildOverlay(); }
-            if (bII && Edificio != "II") { Edificio = "II"; SelectedFE = null; SincronizarInspeccion(null); SetResaltado(null); RebuildOverlay(); }
+            else if (bII && Edificio != "II") { Edificio = "II"; SelectedFE = null; SincronizarInspeccion(null); SetResaltado(null); RebuildOverlay(); }
             GUILayout.EndHorizontal();
 
             // modo de correspondencia (lista blanca normal / diagnostico completo)
