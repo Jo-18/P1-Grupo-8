@@ -32,8 +32,11 @@ namespace LabViewer.AR
         bool m_DataLoaded;
         float m_VzI;
         float m_VzJ;
+        float m_VigaLongitudM;
         float m_VigaLongitudAR;
         Vector3 m_VigaCentroLocal;
+        Vector3 m_VigaPILocal;
+        Vector3 m_VigaPJLocal;
         ARElementIdentity m_Identity;
 
         public bool DataLoaded => m_DataLoaded;
@@ -43,8 +46,11 @@ namespace LabViewer.AR
         public string Unidad => "kN";
         public ARElementIdentity Identity => m_Identity;
         public int ElementTag => m_ElementTag;
+        public float VigaLongitudM => m_VigaLongitudM;
         public float VigaLongitudAR => m_VigaLongitudAR;
         public Vector3 VigaCentroLocal => m_VigaCentroLocal;
+        public Vector3 VigaPILocal => m_VigaPILocal;
+        public Vector3 VigaPJLocal => m_VigaPJLocal;
         public Vector3 VigaTamanoAR => m_Beam != null ? m_Beam.transform.localScale : Vector3.zero;
 
         void Awake()
@@ -151,8 +157,11 @@ namespace LabViewer.AR
             float lenReal = Vector3.Distance(pi.Value, pj.Value);
             float lenAR = lenReal * m_ARScale;
             Vector3 dir = pj.Value - pi.Value;
+            m_VigaLongitudM = lenReal;
             m_VigaLongitudAR = lenAR;
             m_VigaCentroLocal = 0.5f * (a + b);
+            m_VigaPILocal = a;
+            m_VigaPJLocal = b;
 
             GameObject beam = GameObject.CreatePrimitive(PrimitiveType.Cube);
             beam.name = string.Format(BeamName, m_ElementTag, viewerId);

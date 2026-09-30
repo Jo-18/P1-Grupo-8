@@ -17,6 +17,9 @@ namespace LabViewer
         const string ReferenceName = "REF_EII_CP2_V_029";
         const string LibraryGuid = "3d96e05733a27544ea6586824e399576";
         const string BeamMaterialPath = "Assets/AR/Materials/Beam489.mat";
+        const string DiagramBaseMaterialPath = "Assets/AR/Materials/DiagramBase489.mat";
+        const string DiagramLineMaterialPath = "Assets/AR/Materials/DiagramLine489.mat";
+        const string DiagramOrdinateMaterialPath = "Assets/AR/Materials/DiagramOrdinate489.mat";
         const string BeamMaterialFolder = "Assets/AR/Materials";
 
         [MenuItem("AR/Generate ARMain Scene + Build Settings")]
@@ -87,6 +90,103 @@ namespace LabViewer
             AssetDatabase.CreateAsset(mat, BeamMaterialPath);
             AssetDatabase.SaveAssets();
             return mat;
+        }
+
+        // Materiales del diagrama interno: base (gris claro), curva (cian) y
+        // ordenadas (cian atenuado). Unlit/Color para Android/Vulkan. Al estar
+        // referenciados serializadamente en la escena quedan incluidos en el APK.
+        static Material EnsureDiagramMaterial(string path, Color color)
+        {
+            var existing = AssetDatabase.LoadAssetAtPath<Material>(path);
+            if (existing != null) return existing;
+
+            if (!AssetDatabase.IsValidFolder(BeamMaterialFolder))
+                AssetDatabase.CreateFolder("Assets/AR", "Materials");
+
+            Shader sh = Shader.Find("Unlit/Color");
+            if (sh == null) sh = Shader.Find("Standard");
+            if (sh == null)
+                throw new InvalidOperationException("Sin shader Unlit/Color ni Standard en el editor");
+
+            var mat = new Material(sh);
+            mat.color = color;
+            AssetDatabase.CreateAsset(mat, path);
+            AssetDatabase.SaveAssets();
+            return mat;
+        }
+
+        static void EnsureDiagramMaterials(out Material baseM, out Material lineaM, out Material ordM)
+        {
+            baseM = EnsureDiagramMaterial(DiagramBaseMaterialPath, new Color(0.80f, 0.78f, 0.75f, 1f));
+            lineaM = EnsureDiagramMaterial(DiagramLineMaterialPath, new Color(0.00f, 1.00f, 1.00f, 1f));
+            ordM = EnsureDiagramMaterial(DiagramOrdinateMaterialPath, new Color(0.00f, 0.60f, 0.60f, 1f));
+        }
+
+        // Batch dedicado: asegura los materiales del diagrama y registra el
+        // componente ARForceDiagram489 en "AR Content" de la escena existente
+        // (sin regenerarla). Referencias serializadas => incluidos en el APK.
+        [MenuItem("AR/Ensure AR Diagram 489 Setup (materials + escena)")]
+        public static void BatchEnsureDiagramSetup()
+        {
+            try
+            {
+                EnsureDiagramMaterials(out Material baseM, out Material lineaM, out Material ordM);
+                if (baseM == null || lineaM == null || ordM == null)
+                    throw new InvalidOperationException("No se pudieron crear/ubicar los materiales del diagrama");
+
+                RegistrarDiagramaEnEscena(baseM, lineaM, ordM);
+                Debug.Log("[ARSceneGenerator] Setup de diagrama tag 489 listo");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("[ARSceneGenerator] fallo al asegurar setup de diagrama: " + e);
+                EditorApplication.Exit(1);
+                return;
+            }
+
+            EditorApplication.Exit(0);
+        }
+
+        static void RegistrarDiagramaEnEscena(Material baseM, Material lineaM, Material ordM)
+        {
+            var scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
+
+            GameObject content = null;
+            foreach (var root in scene.GetRootGameObjects())
+            {
+                if (root.name == "AR Content") { content = root; break; }
+            }
+            if (content == null)
+                throw new InvalidOperationException("No se encontro 'AR Content' en " + ScenePath);
+
+            var controller = content.GetComponent<ARImageAnchorController>();
+            var loader = content.GetComponent<ARBeam489Loader>();
+            var label = content.GetComponent<ARResult489Label>();
+            if (controller == null) throw new InvalidOperationException("AR Content sin ARImageAnchorController");
+            if (loader == null) throw new InvalidOperationException("AR Content sin ARBeam489Loader");
+            if (label == null) throw new InvalidOperationException("AR Content sin ARResult489Label");
+
+            if (content.GetComponent<ARForceDiagram489>() == null)
+                ObjectFactory.AddComponent<ARForceDiagram489>(content);
+
+            var diagram = content.GetComponent<ARForceDiagram489>();
+            var so = new SerializedObject(diagram);
+            so.FindProperty("m_Controller").objectReferenceValue = controller;
+            so.FindProperty("m_Loader").objectReferenceValue = loader;
+            so.FindProperty("m_Label").objectReferenceValue = label;
+            so.FindProperty("m_ContentRoot").objectReferenceValue = content.transform;
+            so.FindProperty("m_BaseMaterial").objectReferenceValue = baseM;
+            so.FindProperty("m_DiagramMaterial").objectReferenceValue = lineaM;
+            so.FindProperty("m_OrdinateMaterial").objectReferenceValue = ordM;
+            so.FindProperty("m_AmplitudMaxima").floatValue = 0.065f;
+            so.ApplyModifiedPropertiesWithoutUndo();
+
+            var lso = new SerializedObject(label);
+            lso.FindProperty("m_Diagrama").objectReferenceValue = diagram;
+            lso.ApplyModifiedPropertiesWithoutUndo();
+
+            EditorSceneManager.SaveScene(scene, ScenePath);
+            AssetDatabase.SaveAssets();
         }
 
         static void Generate()
@@ -211,6 +311,26 @@ namespace LabViewer
             nso.FindProperty("m_Controller").objectReferenceValue = controller;
             nso.FindProperty("m_ContentRoot").objectReferenceValue = contentGo.transform;
             nso.FindProperty("m_Camera").objectReferenceValue = camera;
+            nso.ApplyModifiedPropertiesWithoutUndo();
+
+            EnsureDiagramMaterials(out Material baseM, out Material lineaM, out Material ordM);
+
+            if (contentGo.GetComponent<ARForceDiagram489>() == null)
+                ObjectFactory.AddComponent<ARForceDiagram489>(contentGo);
+
+            var diagram = contentGo.GetComponent<ARForceDiagram489>();
+            var dso = new SerializedObject(diagram);
+            dso.FindProperty("m_Controller").objectReferenceValue = controller;
+            dso.FindProperty("m_Loader").objectReferenceValue = loader;
+            dso.FindProperty("m_Label").objectReferenceValue = label;
+            dso.FindProperty("m_ContentRoot").objectReferenceValue = contentGo.transform;
+            dso.FindProperty("m_BaseMaterial").objectReferenceValue = baseM;
+            dso.FindProperty("m_DiagramMaterial").objectReferenceValue = lineaM;
+            dso.FindProperty("m_OrdinateMaterial").objectReferenceValue = ordM;
+            dso.FindProperty("m_AmplitudMaxima").floatValue = 0.065f;
+            dso.ApplyModifiedPropertiesWithoutUndo();
+
+            nso.FindProperty("m_Diagrama").objectReferenceValue = diagram;
             nso.ApplyModifiedPropertiesWithoutUndo();
         }
 

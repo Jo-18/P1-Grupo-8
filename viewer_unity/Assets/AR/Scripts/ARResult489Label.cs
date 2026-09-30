@@ -6,6 +6,9 @@ namespace LabViewer.AR
 {
     // Pantalla de resultados: el vector de esfuerzos (caso G, tag 489) fue
     // producido por OpenSees. Este componente solo lee y presenta esos datos.
+    // Si el diagrama interno esta cargado, muestra los valores de seccion
+    // (primer/ultima estacion) de la magnitud seleccionada; si no, el caso por
+    // defecto Vz(i)/Vz(j) de extremos del vector.
     [DisallowMultipleComponent]
     public sealed class ARResult489Label : MonoBehaviour
     {
@@ -13,6 +16,7 @@ namespace LabViewer.AR
         [SerializeField] ARImageAnchorController m_Controller;
         [SerializeField] Transform m_ContentRoot;
         [SerializeField] Camera m_Camera;
+        [SerializeField] ARForceDiagram489 m_Diagrama;
 
         const string FormatoNumero = "+0.000;-0.000;0.000";
 
@@ -53,6 +57,12 @@ namespace LabViewer.AR
             var identity = m_Loader.Identity;
             if (identity == null) return;
 
+            if (m_TextoGo == null) CrearTextoGo();
+            AplicarTexto();
+        }
+
+        void CrearTextoGo()
+        {
             m_TextoGo = new GameObject("AR489_Resultado");
             m_TextoGo.transform.SetParent(m_ContentRoot, false);
             m_TextoGo.AddComponent<MeshRenderer>();
@@ -70,16 +80,29 @@ namespace LabViewer.AR
                 m_Texto.GetComponent<MeshRenderer>().sharedMaterial = font.material;
             }
 
-            // Identidad, geometria y resultado provienen del mismo tag 489.
-            string texto = identity.ViewerId + "\n"
-                + "FE tag " + m_Loader.ElementTag + " | Caso " + m_Loader.Caso + "\n"
-                + "Vz(i): " + Fmt(m_Loader.VzI) + " " + m_Loader.Unidad + "\n"
-                + "Vz(j): " + Fmt(m_Loader.VzJ) + " " + m_Loader.Unidad + "\n"
-                + "Escala AR 1:10";
-            m_Texto.text = texto;
             m_Texto.anchor = TextAnchor.MiddleCenter;
             m_Texto.alignment = TextAlignment.Center;
             m_Texto.color = Color.black;
+        }
+
+        // Llamado por el diagrama cuando carga o cuando cambia la magnitud
+        // seleccionada. Si el rotulo aun no es visible, Mostrar() usara el
+        // diagrama solo si ya esta listo.
+        public void ActualizarConDiagrama(ARForceDiagram489 diagrama)
+        {
+            if (diagrama == null || !diagrama.DataLoaded) return;
+            if (m_TextoGo == null) return;
+            AplicarTexto();
+        }
+
+        void AplicarTexto()
+        {
+            if (m_Texto == null || m_Loader == null || m_Loader.Identity == null) return;
+
+            string texto = (m_Diagrama != null && m_Diagrama.DataLoaded)
+                ? TextoConDiagrama(m_Diagrama)
+                : TextoBase();
+            m_Texto.text = texto;
 
             // Tamano en unidades de mundo AR (escala 1:10 del modelo real), no en
             // pixeles de pantalla. Formula del TextMesh legacy:
@@ -102,10 +125,31 @@ namespace LabViewer.AR
             float semiAlturaViga = tamViga.y * 0.5f;
             float offsetY = semiAlturaViga + 0.02f + altoBloque * 0.5f;
             m_TextoGo.transform.localPosition = m_Loader.VigaCentroLocal + new Vector3(0f, offsetY, 0f);
+        }
 
-            Debug.Log("[AR489] Resultado visible: tag=" + m_Loader.ElementTag + " caso=" + m_Loader.Caso
-                + " Vz_i=" + m_Loader.VzI.ToString("0.000", CultureInfo.InvariantCulture) + " " + m_Loader.Unidad
-                + " Vz_j=" + m_Loader.VzJ.ToString("0.000", CultureInfo.InvariantCulture) + " " + m_Loader.Unidad);
+        string TextoBase()
+        {
+            var identity = m_Loader.Identity;
+            return identity.ViewerId + "\n"
+                + "FE tag " + m_Loader.ElementTag + " | Caso " + m_Loader.Caso + "\n"
+                + "Vz(i): " + Fmt(m_Loader.VzI) + " " + m_Loader.Unidad + "\n"
+                + "Vz(j): " + Fmt(m_Loader.VzJ) + " " + m_Loader.Unidad + "\n"
+                + "Escala AR 1:10";
+        }
+
+        string TextoConDiagrama(ARForceDiagram489 d)
+        {
+            var identity = m_Loader.Identity;
+            string unidad = d.UnidadActual.Replace("*", "·");
+            int ultima = Mathf.Max(0, d.StationCount - 1);
+            string estado = d.EsNuloActual ? "Diagrama nulo (0)" : "Diagrama normalizado";
+            return identity.ViewerId + "\n"
+                + "FE tag " + m_Loader.ElementTag + " | Caso " + m_Loader.Caso + "\n"
+                + "Diagrama interno: " + d.MagnitudActual + "\n"
+                + "x=" + d.XEstacion(0).ToString("0.000", CultureInfo.InvariantCulture) + " m: " + Fmt(d.ValorEstacion(0)) + " " + unidad + "\n"
+                + "x=" + d.XEstacion(ultima).ToString("0.000", CultureInfo.InvariantCulture) + " m: " + Fmt(d.ValorEstacion(ultima)) + " " + unidad + "\n"
+                + "Escala geometrica AR 1:10\n"
+                + estado;
         }
 
         static int MayorLinea(string texto)
@@ -160,8 +204,7 @@ namespace LabViewer.AR
         void LateUpdate()
         {
             if (m_TextoGo == null || m_Camera == null) return;
-            m_TextoGo.transform.rotation =
-                Quaternion.LookRotation(m_TextoGo.transform.position - m_Camera.transform.position);
+            m_TextoGo.transform.rotation = Quaternion.LookRotation(m_TextoGo.transform.position - m_Camera.transform.position);
         }
     }
 }

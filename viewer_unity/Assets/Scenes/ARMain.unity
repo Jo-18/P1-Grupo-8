@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 1287309407}
   - component: {fileID: 1287309406}
   - component: {fileID: 1287309405}
+  - component: {fileID: 1287309409}
   m_Layer: 0
   m_Name: AR Content
   m_TagString: Untagged
@@ -300,6 +301,7 @@ MonoBehaviour:
   m_Controller: {fileID: 1287309407}
   m_ContentRoot: {fileID: 1287309408}
   m_Camera: {fileID: 1341925317}
+  m_Diagrama: {fileID: 1287309409}
 --- !u!114 &1287309406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,12 +316,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LabViewer.AR.ARBeam489Loader
   m_Controller: {fileID: 1287309407}
   m_ContentRoot: {fileID: 1287309408}
+  m_BeamMaterial: {fileID: 2100000, guid: 77b52631cba65ac4383dbf3f67e84058, type: 2}
   m_ElementTag: 489
   m_Building: II
   m_ExpectedViewerId: EII_CP2_V_029
   m_ARScale: 0.1
   m_SectionM: {x: 0.3, y: 0.8}
-  m_BeamMaterial: {fileID: 2100000, guid: 77b52631cba65ac4383dbf3f67e84058, type: 2}
 --- !u!114 &1287309407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +361,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1287309409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1287309404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc782708db522e04aaffacc3ec20259d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LabViewer.AR.ARForceDiagram489
+  m_Controller: {fileID: 1287309407}
+  m_Loader: {fileID: 1287309406}
+  m_Label: {fileID: 1287309405}
+  m_ContentRoot: {fileID: 1287309408}
+  m_BaseMaterial: {fileID: 2100000, guid: 6f10be1609b56414abb4581b949e9e2d, type: 2}
+  m_DiagramMaterial: {fileID: 2100000, guid: 858f1229bf804bb4bb17b7512e94f194, type: 2}
+  m_OrdinateMaterial: {fileID: 2100000, guid: 55dd25147b0337a419b6ff8e442bd8cf, type: 2}
+  m_AmplitudMaxima: 0.065
 --- !u!1 &1341925316
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,8 +497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4966719baa26e4b0e8231a24d9bd491a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.XR.ARFoundation::UnityEngine.XR.ARFoundation.ARCameraManager
-  m_FocusMode: 1
-  m_LightEstimationMode: 0
+  m_FocusMode: -1
+  m_LightEstimationMode: -1
   m_AutoFocus: 1
   m_ImageStabilization: 0
   m_LightEstimation: 0

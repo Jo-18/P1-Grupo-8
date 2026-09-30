@@ -185,7 +185,7 @@ Flujo esperado de la demostración en vivo:
 
 - **Falta la prueba física**: no se ha verificado el tracking, la proyección del contenido ni la estabilidad del anchor en un dispositivo Android real; esa comprobación queda para la sesión en vivo.
 - **Dispositivo requerido**: teléfono compatible con **ARCore** y con **Android API 29 o superior**.
-- **Primera versión acotada**: la escena AR muestra **un solo elemento** (tag 489) y **un solo resultado** (caso `G`, `Vz`).
+- **Primera versión acotada**: la escena AR muestra **un solo elemento** (tag 489) y **un solo caso** (`G`), con **selector de magnitud** (`N | Vy | Vz | T | My | Mz`).
 - **Extensible**: el diseño permite **reemplazar el JSON y la biblioteca de imágenes** para mostrar otros elementos/resultados sin cambiar la lógica AR.
 
 ## 13. Diagramas internos reales del tag 489 (persistencia)
@@ -214,3 +214,87 @@ generador reproducible es
 > - Este JSON **no es** resultado de una regeneración actual del modelo completo;
 >   su `payload_fuente.sha256` fija la procedencia y el generador aborta si el
 >   payload canónico cambia o falla cualquier condición de validación.
+
+## 14. Diagramas internos reales en AR (selector de magnitud)
+
+La aplicación AR ahora **muestra las curvas internas** del tag `489` (caso `G`)
+leídas **tal cual** del JSON persistido (§13), y permite elegir en pantalla la
+magnitud visible: `N | Vy | Vz | T | My | Mz`, inicial `Vz`.
+
+### Carga y validación (reglas compartidas con el runtime)
+
+- `ARForceDiagram489` (`Assets/AR/Scripts/ARForceDiagram489.cs`) carga
+  `StreamingAssets/lab_data/edificios/II/results/diagramas_FE_tag489_G.json`.
+- Antes de dibujar valida: `formato=diagrama_interno_FE_v1`, `version=1`,
+  `edificio=II`, `elementTag=489`, `viewer_id=EII_CP2_V_029`, `caso=G`,
+  `nivel=EII_CP2`, `nodos=487→488`, `longitud_m=3.05`, **51 estaciones** con
+  `xi` ordenado y `x_m` en `[0,L]`, seis componentes finitos, unidades
+  `kN`/`kN·m`/`m`, `indices_componentes` coincidentes con el payload, todas las
+  comprobaciones embebidas `ok` y coherencia geométrica con la viga del loader
+  (`ARBeam489Loader`). Si falla: **no** se dibujan diagramas parciales, se
+  conserva la viga y la etiqueta básica, y se registra **un** error claro sin
+  cerrar la app.
+- La geometría mínima (`VigaPILocal`, `VigaPJLocal`, `VigaLongitudM`) se expone
+  desde el loader; **no** se duplica la transformación OpenSees→Unity.
+
+### Transformación estación→posición AR y escala
+
+- El diagrama es hijo de `AR Content` (mismo `anchor` que la viga), con la
+  posición/rotación local de la viga (ejes locales: `x` a lo largo del eje del
+  elemento, `y` = vertical del contenido).
+- Estación `k` → `posición = lerp(p_i_local, p_j_local, xi)`; la **ordenada**
+  sigue el eje vertical local del contenido:
+  `ordenada = (valor/maxAbs) · amplitudMaxima`, con `amplitudMaxima = 0.065 m`
+  inicial (escala puramente visual; no altera la escala AR 1:10). Los valores
+  **conservan el signo** (negativos hacia el lado opuesto de la línea base) y
+  los cruces por cero quedan exactos.
+- Elementos: **línea base** sobre el eje de la viga (gris claro), **curva** a
+  través de las 51 estaciones (cian) y **ordenadas** desde la base a la curva
+  en los dos extremos y cada 5 estaciones (cian atenuado). **Sin** suavizado /
+  Bézier / interpolación entre valores.
+- Si `maxAbs == 0` (p. ej. `N`): solo línea base y estado `0` en la etiqueta
+  (sin división inválida).
+
+### Materiales y selector
+
+- Materiales versionados `Assets/AR/Materials/DiagramBase489.mat`,
+  `DiagramLine489.mat`, `DiagramOrdinate489.mat` (`Unlit/Color`,
+  Android/Vulkan), referenciados serializadamente → incluidos en el APK. **No**
+  se modifica `Beam489.mat`.
+- Selector IMGUI dentro de `Screen.safeArea`, botones grandes, inicial `Vz`,
+  opción activa resaltada; **un toque** cambia la curva + ordenadas + etiqueta
+  de inmediato. Solo existe **una** magnitud visible a la vez y el diagrama **no**
+  se reconstruye por frame (solo al cargar datos o cambiar de magnitud).
+
+### Etiqueta sincronizada
+
+- `ARResult489Label` muestra los **valores internos de sección** de la primera y
+  la última estación de la magnitud elegida (no los nodales con signo `j`):
+  `Vz → +53.035 kN`, `T → -48.634 kN·m`, `My → -21.505 / +140.253 kN·m`.
+  Mientras el diagrama no está listo conserva la etiqueta base `Vz(i)/Vz(j)`.
+
+### Tabla de extremos (caso G, tag 489, L=3.05 m)
+
+| Magnitud | x=0 | x=L | Forma |
+|----------|-----|-----|-------|
+| N (kN) | 0 | 0 | nulo |
+| Vy (kN) | 0 | 0 | nulo |
+| Vz (kN) | +53.035246 | +53.035246 | constante |
+| T (kN·m) | -48.634120 | -48.634120 | constante |
+| My (kN·m) | -21.504977 | +140.252523 | lineal, cruce en xi≈0.133 |
+| Mz (kN·m) | 0 | 0 | nulo |
+
+### Validación Editor y build
+
+- `LabViewer.AR.EditorTools.ARDiagramValidator.BatchValidate` comprueba **sin
+  PlayMode**: estructura y forma del JSON (51 estaciones, seis magnitudes,
+  unidades/índices, Vz/T constantes, `dMy/dx=Vz`, N/Vy/Mz nulos, extremos
+  exactos, caso `maxAbs=0` sin división inválida) y el cableado de la escena
+  (`ARMain`): un único `ARForceDiagram489`, referencias serializadas
+  (controller/loader/label/content/materiales) y `amplitud=0.065 m`. Las
+  expectativas de forma se derivan del propio `vector_localForce_12_caso_G`
+  con tolerancias documentadas (0.001 constante/extremos, 0.01 pendiente) y
+  **nunca** se usan para dibujar.
+- Build Android vía `LabViewer.AR.BuildTools.ARAndroidBuild.BuildAR` (mismo
+  `com.grupo8.labviewer.artag489`, escena única `ARMain`). En el APK viajan el
+  JSON de esfuerzos, el JSON de diagramas, los materiales y los ensamblados.
