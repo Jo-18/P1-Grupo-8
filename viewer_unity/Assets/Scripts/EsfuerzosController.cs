@@ -18,6 +18,9 @@ namespace LabViewer
         public string EstadoCorr; // 1A1 | CONTENIDO | SIN_CORRESPONDENCIA_VIEWER | SIN_GEOMETRIA_FISICA_3D
         public string ViewerId;
         public string ViewerNivel;
+        public string GeoLinkId;
+        public string GeoLinkNota;
+        public bool EsVinculoGeometrico;
         public Dictionary<string, float[]> Fuerzas = new Dictionary<string, float[]>(); // caso -> 12
         public HashSet<string> Disponible = new HashSet<string>();
 
@@ -233,6 +236,10 @@ namespace LabViewer
         private ViewerController _viewer;
         private readonly List<EFElemento> _elementos = new List<EFElemento>();
         private readonly Dictionary<string, bool> _cargadoPorEdificio = new Dictionary<string, bool>();
+        private readonly Dictionary<string, EFElemento> _enlaceTramoCols = new Dictionary<string, EFElemento>();
+        private readonly HashSet<string> _conflictoTramoCol = new HashSet<string>();
+        private const float TOL_ENLACE_UV = 0.02f;
+        private const float TOL_ENLACE_COTA = 0.011f;
 
         // --- estado de la visualizacion ---
         public string Edificio = "I";
@@ -1176,6 +1183,192 @@ namespace LabViewer
             MarcarDiagramaSucio();
         }
 
+        /// <summary>Regla general por TRAMO para columnas de LOS DOS edificios (EI y EII):
+        /// el FE que cubre una columna del viewer es el tag del MISMO edificio, de la
+        /// MISMA posicion en planta (u,v) y cuyo intervalo vertical coincide con el
+        /// tramo DIBUJADO (P0.y->P1.y). No se usa el nombre de nivel ni el viewer_id
+        /// nominal del paquete (que en el FE se rotula por el nivel inferior de la barra
+        /// y quedo desplazado un nivel respecto al tramo fisico del viewer). Cada tag
+        /// queda atribuido a UNA sola columna y cada columna a UN solo tag; un
+        /// candidato ambiguo (2+ tags en el mismo tramo, o un tag reclamado por 2
+        /// columnas) queda SIN enlace: no se resuelve por proximidad. Excepcion
+        /// DOCUMENTADA para las columnas concretas de EI P4: se dibujan en la huella
+        /// fisica (+~0.18 m) fuera del eje de grilla; la transformacion origen->destino
+        /// se lee de los auxiliares `stub_elastico_rigidez_elevada` con razon_existencia
+        /// `puente_rigido_a_columna_fisica_P4` y se vincula el tag de COLUMNA de la
+        /// grilla (nunca el stub). El paquete de resultados, el modelo FE y P-M no se
+        /// tocan.</summary>
+        private void ResolverEnlaceColumnas()
+        {
+            _enlaceTramoCols.Clear();
+            _conflictoTramoCol.Clear();
+            if (_loader == null || _loader.Model == null)
+            {
+                Debug.LogWarning("[EsfuerzosFE] ResolverEnlaceColumnas: geometria no disponible");
+                return;
+            }
+            var cols = new List<ElementRef>();
+            foreach (var r in _loader.Model.Elements)
+                if (r.Type == ElemType.Columnas && (r.Building == "I" || r.Building == "II"))
+                    cols.Add(r);
+
+            // (1) candidatos: columna -> tags FE 'columna' del MISMO edificio con
+            // (u,v) y tramo exactos.
+            var candidatos = new Dictionary<string, List<EFElemento>>();
+            foreach (var r in cols)
+            {
+                double cx = r.P0.x, cz = r.P0.z;
+                double a = System.Math.Min(r.P0.y, r.P1.y), b = System.Math.Max(r.P0.y, r.P1.y);
+                if (b - a < TOL_ENLACE_COTA) continue; // tramo degenerado (p. ej. stub CP1S): sin enlace
+                var lista = new List<EFElemento>();
+                foreach (var e in _elementos)
+                {
+                    if (e == null || e.Building != r.Building || e.Tipo != "columna") continue;
+                    // barra vertical: u y v constantes en sus extremos
+                    if (System.Math.Abs(e.Pi.x - e.Pj.x) > TOL_ENLACE_UV) continue;
+                    if (System.Math.Abs(e.Pi.z - e.Pj.z) > TOL_ENLACE_UV) continue;
+                    if (System.Math.Abs(e.Pi.x - cx) > TOL_ENLACE_UV) continue;
+                    if (System.Math.Abs(e.Pi.z - cz) > TOL_ENLACE_UV) continue;
+                    double zi = System.Math.Min(e.Pi.y, e.Pj.y), zj = System.Math.Max(e.Pi.y, e.Pj.y);
+                    if (System.Math.Abs(zi - a) <= TOL_ENLACE_COTA && System.Math.Abs(zj - b) <= TOL_ENLACE_COTA)
+                        lista.Add(e);
+                }
+                if (lista.Count > 0) candidatos[r.Id] = lista;
+            }
+
+            // (1b) Excentricidad DOCUMENTADA de las columnas concretas de EI P4: se
+            // dibujan en la huella fisica (+~0.18 m en v), no en el eje de grilla
+            // analitico. El paquete FE documenta la transformacion con auxiliares
+            // `stub_elastico_rigidez_elevada` cuya `razon_existencia` es
+            // `puente_rigido_a_columna_fisica_P4`: origen = nodo sobre el eje de grilla
+            // en la cota 11.83, destino = nodo fisico de la columna P4. Solo se aplica a
+            // columnas EI del tramo 7.87->11.83 sin candidato directo, y el objeto
+            // fisico se vincula al tag de COLUMNA sobre la grilla (nunca al stub).
+            // Origen/destino provienen de los datos (no de valores ni IDs hardcodeados).
+            var stubsPuenteP4 = new List<(int Tag, Vector3 Origen, Vector3 Destino)>();
+            try
+            {
+                string pathI = System.IO.Path.Combine(
+                    Application.streamingAssetsPath, "lab_data", "edificios", "I",
+                    "results", "esfuerzos_FE_EDIFICIO_I.json");
+                if (System.IO.File.Exists(pathI))
+                {
+                    var raizI = Json.AsObj(Json.Parse(System.IO.File.ReadAllText(pathI)));
+                    var arrI = raizI != null ? Json.Arr(raizI, "elementos") : null;
+                    if (arrI != null)
+                    {
+                        foreach (var it in arrI)
+                        {
+                            var d = Json.AsObj(it);
+                            if (d == null) continue;
+                            var aa = d.TryGetValue("auxiliar_analitico", out var aaRaw)
+                                ? Json.AsObj(aaRaw) : null;
+                            if (aa == null) continue;
+                            if (Json.Str(aa, "etiqueta") != "stub_elastico_rigidez_elevada") continue;
+                            if (Json.Str(aa, "razon_existencia") != "puente_rigido_a_columna_fisica_P4") continue;
+                            var oo = Json.Arr(aa, "origen");
+                            var dd = Json.Arr(aa, "destino");
+                            if (oo == null || dd == null || oo.Count < 3 || dd.Count < 3) continue;
+                            // bloque auxiliar en orden (u, v, cota): normalizar a
+                            // Vector3(u, cota, v), el mismo frame que P0/P1 y Pi/Pj.
+                            var ori = new Vector3((float)Json.ToNum(oo[0]), (float)Json.ToNum(oo[2]), (float)Json.ToNum(oo[1]));
+                            var des = new Vector3((float)Json.ToNum(dd[0]), (float)Json.ToNum(dd[2]), (float)Json.ToNum(dd[1]));
+                            stubsPuenteP4.Add(((int)Json.Num(d, "tag"), ori, des));
+                        }
+                    }
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogWarning("[EsfuerzosFE] ResolverEnlaceColumnas: stubs puente P4 no leidos: " + ex.Message);
+            }
+
+            var notaStubP4 = new Dictionary<string, string>();
+            foreach (var r in cols)
+            {
+                if (candidatos.ContainsKey(r.Id)) continue;
+                if (r.Building != "I") continue;
+                double ca = System.Math.Min(r.P0.y, r.P1.y), cb = System.Math.Max(r.P0.y, r.P1.y);
+                if (System.Math.Abs(ca - 7.87) > TOL_ENLACE_COTA) continue;
+                if (System.Math.Abs(cb - 11.83) > TOL_ENLACE_COTA) continue;
+                (int Tag, Vector3 Origen, Vector3 Destino) stub = (0, Vector3.zero, Vector3.zero);
+                bool hayStub = false;
+                foreach (var s in stubsPuenteP4)
+                {
+                    if (System.Math.Abs(s.Destino.x - r.P0.x) <= TOL_ENLACE_UV
+                        && System.Math.Abs(s.Destino.z - r.P0.z) <= TOL_ENLACE_UV
+                        && System.Math.Abs(s.Destino.y - cb) <= TOL_ENLACE_COTA)
+                    { stub = s; hayStub = true; break; }
+                }
+                if (!hayStub) continue;
+                var lista = new List<EFElemento>();
+                foreach (var e in _elementos)
+                {
+                    if (e == null || e.Building != "I" || e.Tipo != "columna") continue;
+                    double zi = System.Math.Min(e.Pi.y, e.Pj.y), zj = System.Math.Max(e.Pi.y, e.Pj.y);
+                    if (System.Math.Abs(zi - 7.87) > TOL_ENLACE_COTA) continue;
+                    if (System.Math.Abs(zj - 11.83) > TOL_ENLACE_COTA) continue;
+                    if (System.Math.Abs(e.Pi.x - stub.Origen.x) <= TOL_ENLACE_UV
+                        && System.Math.Abs(e.Pi.z - stub.Origen.z) <= TOL_ENLACE_UV)
+                        lista.Add(e);
+                }
+                if (lista.Count > 0)
+                {
+                    candidatos[r.Id] = lista;
+                    notaStubP4[r.Id] = "Enlace P4 via stub FE " + stub.Tag
+                        + " (origen grilla -> huella fisica, excentricidad (du,dv)=("
+                        + (stub.Destino.x - stub.Origen.x).ToString("0.000") + ", "
+                        + (stub.Destino.z - stub.Origen.z).ToString("0.000") + ") m).";
+                }
+            }
+
+            // (2) asignacion 1:1 estricta. Columna sin tramo o con 2+ tags en el mismo
+            // tramo = ambiguo. Tag reclamado por 2 columnas distinas = ambiguo. Un
+            // elemento ambiguo NO se enlaza (tampoco por proximidad). El owner del tag
+            // se lleva POR EDIFICIO (el namespace de tags se comparte entre edificios).
+            var asignado = new Dictionary<string, EFElemento>();
+            var tagColAsignado = new Dictionary<string, string>();
+            foreach (var kv in candidatos)
+            {
+                string id = kv.Key;
+                if (kv.Value.Count != 1)
+                {
+                    _conflictoTramoCol.Add(id);
+                    continue;
+                }
+                var e = kv.Value[0];
+                string clave = e.Building + "\u001f" + e.Tag;
+                if (tagColAsignado.TryGetValue(clave, out var otro))
+                {
+                    _conflictoTramoCol.Add(id);
+                    _conflictoTramoCol.Add(otro);
+                    continue;
+                }
+                asignado[id] = e;
+                tagColAsignado[clave] = id;
+            }
+
+            // (3) aplicar enlace + etiqueta clara ("enlace geometrico verificado /
+            // FE rotulado <nivel> por convencion de nivel inferior").
+            foreach (var kv in asignado)
+            {
+                if (_conflictoTramoCol.Contains(kv.Key)) continue;
+                var e = kv.Value;
+                e.GeoLinkId = kv.Key;
+                e.EsVinculoGeometrico = true;
+                double za = System.Math.Min(e.Pi.y, e.Pj.y), zb = System.Math.Max(e.Pi.y, e.Pj.y);
+                e.GeoLinkNota = "Enlace geométrico verificado (posición + tramo vertical "
+                              + za.ToString("0.00") + "→" + zb.ToString("0.00") + " m); FE rotulado '"
+                              + (string.IsNullOrEmpty(e.Nivel) ? "?" : e.Nivel)
+                              + "' por convención de nivel inferior.";
+                if (notaStubP4.TryGetValue(kv.Key, out var snt)) e.GeoLinkNota += " " + snt;
+                _enlaceTramoCols[kv.Key] = e;
+            }
+
+            Debug.Log("[EsfuerzosFE] Columnas por tramo (EI+EII): " + _enlaceTramoCols.Count
+                      + " enlazadas, " + _conflictoTramoCol.Count + " ambiguas (sin enlace).");
+        }
+
         private void CargarPaquetes()
         {
             _elementos.Clear();
@@ -1204,6 +1397,7 @@ namespace LabViewer
                 }
             }
             SincronizarCoberturaMarcadores();
+            ResolverEnlaceColumnas();
         }
 
         private void CargarAuxiliares(string b, Dictionary<string, object> raiz)
