@@ -406,19 +406,45 @@ namespace LabViewer
             }
         }
 
-        private void SincronizarCoberturaMarcadores()
+        /// <summary>Marca en cada ElementRef de la geometria (columnas/vigas/muros) si
+        /// tiene resultados FE vinculados y con fuerzas, usando la correspondencia
+        /// viewer&lt;-&gt;FE del paquete recien cargado.
+        ///  - hay un FE con viewer_id == Id: RESULTADOS_OK (si alguno tiene fuerzas)
+        ///    o SIN_RESULTADO (vinculado pero sin fuerzas en ningun caso).
+        ///  - sin ningun FE que enlace por viewer_id: SIN_ENLACE_VIEWER_ID. ESTO NO
+        ///    significa ausencia de resultado FE: la geometria podria tener cobertura
+        ///    por otra via no resuelta; el panel lo presenta como ambiguo/pendiente,
+        ///    nunca como "sin resultado". Fuente unica: los tags FE y su ViewerId;
+        ///    NO se atribuyen resultados de elementos ajenos.</summary>
+        private void SincronizarCoberturaViewer(string b)
         {
             if (_loader == null || _loader.Model == null) return;
-
+            var fe = ElementosDe(b);
             foreach (var r in _loader.Model.Elements)
             {
-                if (r.Type != ElemType.Columnas &&
-                    r.Type != ElemType.Vigas &&
-                    r.Type != ElemType.Muros)
+                if (r.Building != b) continue;
+                if (r.Type != ElemType.Columnas && r.Type != ElemType.Vigas && r.Type != ElemType.Muros)
                     continue;
-
+                // Marcadores de arranque (nivel base del II): referencia de fundacion,
+                // NO requieren resultado FE propio (la barra real es la columna de
+                // cabeza CP1). Quedan visibles/seleccionables pero fuera de la
+                // cobertura con/sin resultado.
                 if (r.EsMarcadorArranque)
+                {
                     r.EstadoCoberturaFE = ElementRef.FE_MARCADOR;
+                    continue;
+                }
+                bool mapeado = false;
+                bool conFuerzas = false;
+                foreach (var e in fe)
+                {
+                    if (!EnlazaA(e, r)) continue;
+                    mapeado = true;
+                    if (e.Disponible.Count > 0 || e.EnvOk) conFuerzas = true;
+                }
+                r.EstadoCoberturaFE = mapeado
+                    ? (conFuerzas ? ElementRef.FE_OK : ElementRef.FE_SIN_RESULTADO)
+                    : ElementRef.FE_SIN_VINCULO;
             }
         }
 
@@ -1426,8 +1452,9 @@ namespace LabViewer
                     Debug.LogError("[EsfuerzosFE] Error cargando " + path + ": " + ex.Message);
                 }
             }
-            SincronizarCoberturaMarcadores();
             ResolverEnlaceColumnas();
+            SincronizarCoberturaViewer("I");
+            SincronizarCoberturaViewer("II");
         }
 
         private void CargarAuxiliares(string b, Dictionary<string, object> raiz)
