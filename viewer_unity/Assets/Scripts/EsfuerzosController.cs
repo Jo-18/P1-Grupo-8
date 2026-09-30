@@ -2016,6 +2016,22 @@ namespace LabViewer
                 bool nivelOn = _viewer == null || _viewer.LevelVisible(p.Elem.Nivel);
                 bool tipoOn = FiltroTipo(p.Elem.Tipo);
                 bool corrOn = todos || EsCorrespondenciaNormal(p.Elem);
+                if (!todos && corrOn && _loader != null && _loader.Model != null
+                    && !string.IsNullOrEmpty(p.Elem.ViewerId))
+                {
+                    // Modo normal "Mapeados": excluye elementos FE cuyo destino viewer
+                    // (Building+ViewerId) sea un marcador de referencia sin geometria
+                    // fisica (RefPendientes), aunque el paquete los rotule 1A1/CONTENIDO.
+                    // Excluidos por tipo, sin listas de IDs ni tags; siguen disponibles
+                    // en "Todos los FE (diag.)". No cambia coordenadas, tags,
+                    // correspondencias ni clasificacion.
+                    foreach (var r in _loader.Model.Elements)
+                    {
+                        if (r == null || r.Type != ElemType.RefPendientes) continue;
+                        if (r.Building == p.Elem.Building && r.Id == p.Elem.ViewerId)
+                        { corrOn = false; break; }
+                    }
+                }
                 bool ocultoLab = FEOcultoLab(p.Elem);
                 go.SetActive(bOn && nivelOn && tipoOn && corrOn && !ocultoLab);
             }
