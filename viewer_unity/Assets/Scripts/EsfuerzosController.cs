@@ -21,6 +21,7 @@ namespace LabViewer
         public string GeoLinkId;
         public string GeoLinkNota;
         public bool EsVinculoGeometrico;
+        public string IdVincActivo => string.IsNullOrEmpty(GeoLinkId) ? ViewerId : GeoLinkId;
         public Dictionary<string, float[]> Fuerzas = new Dictionary<string, float[]>(); // caso -> 12
         public HashSet<string> Disponible = new HashSet<string>();
 
@@ -1368,6 +1369,37 @@ namespace LabViewer
             Debug.Log("[EsfuerzosFE] Columnas por tramo (EI+EII): " + _enlaceTramoCols.Count
                       + " enlazadas, " + _conflictoTramoCol.Count + " ambiguas (sin enlace).");
         }
+
+        /// <summary>True si el FE `e` enlaza a la geometria `r` por la correspondencia
+        /// ACTIVA. Columnas (EI y EII): fuente = enlace por posicion+tramo (regla
+        /// general, nunca por nombre de nivel; el viewer_id nominal del paquete queda
+        /// ignorado cuando existe enlace por tramo). Resto de elementos: viewer_id del
+        /// paquete.</summary>
+        public bool EnlazaA(EFElemento e, ElementRef r)
+        {
+            if (e == null || r == null || e.Building != r.Building) return false;
+            if (r.Type == ElemType.Columnas)
+                return e.EsVinculoGeometrico && e.GeoLinkId == r.Id;
+            return !string.IsNullOrEmpty(e.ViewerId) && e.ViewerId == r.Id;
+        }
+
+        /// <summary>Si la columna `id` del edificio `building` tiene enlace por tramo
+        /// verificado (EI o EII).</summary>
+        public bool EsEnlaceTramoColumna(string building, string id)
+            => (building == "I" || building == "II") && id != null && _enlaceTramoCols.ContainsKey(id);
+
+        /// <summary>FE vinculado por tramo a la columna `id` (null si no aplica).</summary>
+        public EFElemento EnlaceTramoDeColumna(string building, string id)
+        {
+            if ((building != "I" && building != "II") || id == null) return null;
+            _enlaceTramoCols.TryGetValue(id, out var e);
+            return e;
+        }
+
+        /// <summary>Si la columna `id` quedo SIN enlace por candidato ambiguo de
+        /// tramo (2+ tags en el mismo tramo, o tag reclamado por 2 columnas).</summary>
+        public bool EsConflictoTramoColumna(string building, string id)
+            => (building == "I" || building == "II") && id != null && _conflictoTramoCol.Contains(id);
 
         private void CargarPaquetes()
         {
