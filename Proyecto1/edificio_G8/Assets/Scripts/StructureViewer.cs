@@ -149,6 +149,17 @@ public partial class StructureViewer : MonoBehaviour
     /// Reconstruye toda la escena con un JSON nuevo (escenario de reanalisis o el original).
     public void ReloadFromJson(string json, string source)
     {
+        if (string.IsNullOrWhiteSpace(json))
+        {
+            Debug.LogError("[StructureViewer] ReloadFromJson rechazado: JSON nulo o vacio. Fuente: " + source);
+            return;
+        }
+        ApplyReload(json, source);
+    }
+
+    // json == null deja el modelo vigente de Resources (sin override).
+    private void ApplyReload(string json, string source)
+    {
         var picker = FindAnyObjectByType<ElementPicker>();
         if (picker != null) picker.ClearSelection();
         var pm = FindAnyObjectByType<PMPanel>();
@@ -180,7 +191,8 @@ public partial class StructureViewer : MonoBehaviour
     {
         string path = ProjectJsonPath;
         structureJson = null;
-        ReloadFromJson(path != null ? System.IO.File.ReadAllText(path) : null, "Resources/estructura_p1l4_unity.json");
+        string json = path != null ? System.IO.File.ReadAllText(path) : null;
+        ApplyReload(string.IsNullOrWhiteSpace(json) ? null : json, "Resources/estructura_p1l4_unity.json");
     }
     public void CameraPreset(string preset) => SetCameraPreset(preset);
 
@@ -213,7 +225,10 @@ public partial class StructureViewer : MonoBehaviour
         }
         CreateDefaultMaterials();
 
-        if (structureJson == null && overrideJson == null)
+        bool hasOverride = !string.IsNullOrWhiteSpace(overrideJson);
+        if (!hasOverride) overrideJson = null;
+
+        if (structureJson == null && !hasOverride)
         {
             structureJson = Resources.Load<TextAsset>("estructura_p1l4_unity");
             if (structureJson == null)
@@ -223,8 +238,8 @@ public partial class StructureViewer : MonoBehaviour
             }
         }
 
-        string jsonSource = overrideJson != null ? LoadedSource : "Resources/estructura_p1l4_unity.json (TextAsset '" + structureJson.name + "')";
-        string jsonText = overrideJson ?? structureJson.text;
+        string jsonSource = hasOverride ? LoadedSource : "Resources/estructura_p1l4_unity.json (TextAsset '" + structureJson.name + "')";
+        string jsonText = hasOverride ? overrideJson : structureJson.text;
         if (string.IsNullOrWhiteSpace(jsonText))
         {
             Debug.LogError("[StructureViewer] El JSON de la estructura esta vacio. Fuente: " + jsonSource);
