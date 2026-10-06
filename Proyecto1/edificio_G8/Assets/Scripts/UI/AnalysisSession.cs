@@ -130,9 +130,15 @@ public class AnalysisSession
     public string ValidateInputs()
     {
         var problems = new List<string>();
-        if (qKgM2 < 0f || qKgM2 > 5000f) problems.Add($"Q = {qKgM2:0} kg/m² fuera de 0-5000");
-        if (qCubiertaKgM2 < 0f || qCubiertaKgM2 > 5000f) problems.Add($"Q cubierta = {qCubiertaKgM2:0} kg/m² fuera de 0-5000");
-        if (qG <= 0f || qG > 50f) problems.Add($"q_G = {qG:0.###} kN/m² fuera de 0-50");
+        if (!float.IsFinite(qKgM2)) problems.Add("Q sobrecarga de uso no es un número válido");
+        else if (qKgM2 < 0f) problems.Add($"Q sobrecarga de uso = {qKgM2:0.###} kg/m²: debe ser mayor o igual a cero");
+        else if (qKgM2 > 5000f) problems.Add($"Q sobrecarga de uso = {qKgM2:0} kg/m² fuera de 0-5000");
+        if (!float.IsFinite(qCubiertaKgM2)) problems.Add("Q cubierta no es un número válido");
+        else if (qCubiertaKgM2 < 0f) problems.Add($"Q cubierta = {qCubiertaKgM2:0.###} kg/m²: debe ser mayor o igual a cero");
+        else if (qCubiertaKgM2 > 5000f) problems.Add($"Q cubierta = {qCubiertaKgM2:0} kg/m² fuera de 0-5000");
+        if (!float.IsFinite(qG)) problems.Add("q_G no es un número válido");
+        else if (qG < 0f) problems.Add($"q_G = {qG:0.###} kN/m²: debe ser mayor o igual a cero");
+        else if (qG == 0f || qG > 50f) problems.Add($"q_G = {qG:0.###} kN/m² fuera de (0, 50]");
         foreach (var (name, k) in new[] { ("vigas", kViga), ("columnas", kColumna), ("muros", kMuro) })
             if (k < 0.05f || k > 1f) problems.Add($"rigidez de {name} = {k:0.##} fuera de 0,05-1");
         if (sismoNCh)

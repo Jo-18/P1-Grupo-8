@@ -1234,9 +1234,10 @@ public class ViewerUI : MonoBehaviour
             f.AddToClassList("dropdown");
             c.Add(f);
         }
-        qG.RegisterValueChangedCallback(e => Session.qG = Mathf.Max(0f, e.newValue));
-        qQ.RegisterValueChangedCallback(e => Session.qKgM2 = Mathf.Max(0f, e.newValue));
-        qR.RegisterValueChangedCallback(e => Session.qCubiertaKgM2 = Mathf.Max(0f, e.newValue));
+        // Sin recorte: un valor negativo debe llegar a Session.ValidateInputs para rechazarse con mensaje.
+        qG.RegisterValueChangedCallback(e => Session.qG = e.newValue);
+        qQ.RegisterValueChangedCallback(e => Session.qKgM2 = e.newValue);
+        qR.RegisterValueChangedCallback(e => Session.qCubiertaKgM2 = e.newValue);
         c.Add(Text("G = q_G·A_trib + peso propio (25 kN/m³ hormigón, 78,5 kN/m³ acero).", "hint"));
 
         // sismo: NCh433 estatico (C por edificio y direccion con T* del modal) o C fijo
