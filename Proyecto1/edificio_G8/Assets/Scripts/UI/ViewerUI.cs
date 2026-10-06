@@ -1368,7 +1368,12 @@ public class ViewerUI : MonoBehaviour
         }, "wide");
         run.style.height = 30;
         c.Add(run);
-        var reset = Btn("Restaurar valores del modelo cargado", () => { Session.LoadFrom(viewer.Data); Rebuild(); }, "wide");
+        var reset = Btn("Restaurar valores del modelo cargado", () =>
+        {
+            // Con un escenario sin guardar, el "modelo cargado" es el escenario: se vuelve primero al modelo vigente.
+            if (Session.ScenarioLoaded) Session.DiscardScenario(viewer); else Session.LoadFrom(viewer.Data);
+            Rebuild();   // los campos se crean con los valores de Session
+        }, "wide");
         c.Add(reset);
         var progress = Text("", "hint");
         c.Add(progress);
@@ -1431,7 +1436,7 @@ public class ViewerUI : MonoBehaviour
                        "(Assets/Resources/estructura_p1l4_unity.json, data/combinaciones.json y data/parametros_analisis.json).", "hint"));
             var keep = Row();
             keep.Add(Btn("Guardar como modelo vigente", () => { if (Session.SaveAsCurrent(viewer)) Rebuild(); }, "wide"));
-            keep.Add(Btn("Descartar", () => Session.DiscardScenario(viewer), "wide"));
+            keep.Add(Btn("Descartar", () => { Session.DiscardScenario(viewer); Rebuild(); }, "wide"));   // ReloadOriginal reconstruye antes de LoadFrom: se rehace con los valores restaurados
             c.Add(keep);
         }
     }

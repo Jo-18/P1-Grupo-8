@@ -110,6 +110,8 @@ public class AnalysisSession
         armElem.Clear();
         armSec.Clear();
         sections.Clear();
+        apoyos.Clear();
+        tributarias.Clear();
         if (d.resumenAnalisis?.secciones != null)
         {
             foreach (SectionChange s in d.resumenAnalisis.secciones)
