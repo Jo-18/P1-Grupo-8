@@ -9,27 +9,27 @@
 | Versión evaluada | tag `v1.0-final` · commit (completar) |
 | Fecha | octubre de 2026 |
 
+> **Estado del documento.** Faltan las capturas del viewer de las figuras 1, 2, 4, 5, 9, 10 y 12 a 18, y las de la app AR (figura 19): ver el Anexo B. La verificación de la app AR en el teléfono está pendiente del APK de la compañera. Las combinaciones C1 a C3 están pendientes de confirmar con el enunciado o el profesor (sección 7). El QA, la sensibilidad y el Excel de esfuerzos siguen pendientes de repetirse con OpenSees real (sección 18).
+
 <!--
 PENDIENTE ANTES DE ENTREGAR (borrar este bloque al terminar):
 1. Completar integrantes, enlace, tag y commit en la tabla de arriba.
-2. Generar las capturas del viewer: compilar con MCOC/Build Windows (viewer) y correr, desde la raíz del repositorio:
-     Proyecto1\edificio_G8\Builds\Windows\P1G8_Viewer.exe -autoshot "%CD%\reports\img\demo" -demo
-   Agregar a mano reports/img/demo/vista_tributarias.png (pestaña VISTA, áreas tributarias).
-3. Tomar con el teléfono las capturas de la app AR y guardarlas en reports/img/ar/ con los nombres de la sección 16.
-4. Volver a correr con OpenSees: exportar_resultados_unity.py, qa_semana06.py, sensibilidad_rigidez.py y exportar_excel_esfuerzos.py. Los resultados de esta versión se generaron con una réplica de verificación (sección 20). Después, correr python -m pytest y anotar el resultado en la sección 18.
-5. Completar la sección 21: cada integrante, con lo que hizo y revisó en persona.
-6. Revisar la sección 20 y agregar cualquier otro uso de IA del grupo.
+2. Generar desde el Editor de Unity las capturas pendientes del Anexo B (carpeta reports/img/demo/) y volver a insertarlas en el cuerpo. No se necesita ejecutable.
+3. AR: la verificación y las tres capturas (reports/img/ar/) quedan pendientes del APK de la compañera.
+4. Volver a correr con OpenSees real qa_semana06.py, sensibilidad_rigidez.py y exportar_excel_esfuerzos.py. El JSON principal y pytest (45 casos) ya se hicieron con OpenSees real (secciones 18 y 22).
+5. Confirmar las combinaciones C1 a C3 con el enunciado o el profesor (sección 7).
+6. Completar la sección 21 (cada integrante) y "otros usos de IA" de la sección 20.
 -->
 
 ## 1. Resumen
 
-El proyecto modela dos edificios de hormigón armado G35, con perfiles metálicos A36 en una zona en voladizo, separados por una junta de dilatación. La geometría sale de los planos estructurales (DXF) y se guarda como datos JSON. Con esos datos, Python arma el modelo en OpenSeesPy, resuelve los casos G, Q, EX y EY y las combinaciones C1 a C3, calcula la capacidad según ACI 318-19 y exporta todo a un JSON que lee Unity.
+El proyecto modela dos edificios de hormigón armado G35, con perfiles metálicos A36 en una zona en voladizo, separados por una junta de dilatación. La geometría sale de los planos estructurales (DXF) y se guarda como datos JSON. Con esos datos, Python arma el modelo en OpenSeesPy, resuelve los casos G, Q, EX y EY y las combinaciones C1 a C3 (factores pendientes de confirmar, sección 7), calcula la capacidad según ACI 318-19 y exporta todo a un JSON que lee Unity.
 
-Unity funciona como postprocesador: muestra geometría, apoyos, ejes, diafragmas, cargas, diagramas, deformada, curvas P-M y utilización. También funciona como preprocesador: desde la interfaz se cambian parámetros, combinaciones, armaduras y secciones, y se reanaliza llamando a Python. Sobre el mismo proyecto corre una app Android de realidad aumentada que ancla el modelo y sus resultados a un marcador impreso.
+Unity funciona como postprocesador: muestra geometría, apoyos, ejes, diafragmas, cargas, diagramas, deformada, curvas P-M y utilización. También funciona como preprocesador: desde la interfaz se cambian parámetros, combinaciones, armaduras y secciones, y se reanaliza llamando a Python. El proyecto incluye una app Android de realidad aumentada que ancla el modelo y sus resultados a un marcador impreso; su verificación en el teléfono está pendiente del APK del grupo (sección 16).
 
 Flujo: **planos → datos (JSON) → OpenSees → resultados (JSON) → Unity → AR**.
 
-Resultados principales del modelo vigente:
+Resultados principales del modelo vigente. El JSON de resultados se regeneró con OpenSees real (OpenSeesPy 3.8.0.0, Python 3.12.10); las diferencias con la versión anterior, hecha con la réplica de verificación, son de redondeo (sección 18):
 
 - **Cargas gravitacionales:** G = 75 701 kN y Q = 25 886 kN, ambas iguales a la suma de reacciones.
 - **Sismo (NCh433 estático):** corte basal de 9 483 kN en X y 7 798 kN en Y. Por edificio y dirección queda entre −7 % y +2 % del modelo ETABS de referencia, y los períodos entre −8 % y +7 % (sección 8).
@@ -111,10 +111,6 @@ El script `ajustar_modelo_planos.py` parte siempre del respaldo `estructura_comp
 
 Las unidades son kN, m y kN·m. Los desplazamientos se muestran en mm.
 
-![Geometría del edificio en el viewer](img/demo/demo01_geometria.png)
-
-*Figura 1. Geometría del modelo en el viewer (vista ISO).*
-
 ## 4. Cargas gravitacionales y áreas tributarias
 
 La carga muerta G suma la losa tributaria y el peso propio de los elementos:
@@ -128,10 +124,6 @@ La carga muerta G suma la losa tributaria y el peso propio de los elementos:
 **Resultado:** G = 75 700,9 kN, igual a ΣRz con un error menor que 10⁻⁶ kN.
 
 El resumen por piso que muestra la pestaña VISTA no coincide con este reparto (sección 19). Para revisar áreas tributarias conviene seleccionar el elemento, que muestra el área y la carga que usa el análisis.
-
-![Áreas tributarias en el viewer](img/demo/vista_tributarias.png)
-
-*Figura 2. Áreas tributarias en la pestaña VISTA.*
 
 ## 5. Carga viva
 
@@ -200,6 +192,8 @@ Las combinaciones se leen de `data/combinaciones.json`:
 | C2 | 1,0 | 0,5 | +0,3 | −0,2 |
 | C3 | 1,0 | 0,5 | −0,3 | +0,2 |
 
+**Pendiente de confirmación.** Estos factores no tienen respaldo explícito en este repositorio: el campo `origen` de `data/combinaciones.json` los describe como "Factores usados desde la semana 3 del curso (pendiente de confirmar con el enunciado/profesor)". Hasta confirmarlos, C1 a C3 y los resultados por combinación (desplazamientos y DCR) dependen de factores provisionales.
+
 Como el modelo es lineal, cada combinación es exactamente Σ λ_i · (caso i). El exportador también corre C1 a C3 directamente en OpenSees. `verificar_superposicion.py` y el QA comprueban que ambos caminos dan lo mismo, con un error máximo del orden de 10⁻⁹.
 
 En Unity, la *superposición en vivo* de la pestaña RESULTADOS tiene cuatro deslizadores (λG, λQ, λEX, λEY). Combina los resultados de los casos base sin reanalizar, así que el efecto de cada factor se ve al instante.
@@ -216,14 +210,10 @@ Lo que cambia en vivo:
 | Estado | λG / λQ / λEX / λEY | ux / uy / uz del nodo 492 en Unity [mm] | Error máx en reacciones | Error máx en fuerzas y desplazamientos |
 |---|---|---|---|---|
 | S1 = C1 | 1 / 0,5 / 0,3 / 0,2 | 7,60 / 5,42 / −1,01 | 6,5 · 10⁻⁹ kN | < 10⁻¹³ |
-| S2 = figura 4 | 1 / 0,5 / 1 / 0,3 | 22,11 / 6,02 / −0,87 | 9,3 · 10⁻⁹ kN | < 10⁻¹³ |
+| S2 = estado de la figura 4 (captura pendiente) | 1 / 0,5 / 1 / 0,3 | 22,11 / 6,02 / −0,87 | 9,3 · 10⁻⁹ kN | < 10⁻¹³ |
 | S3 = captura del grupo | 0,6 / 1 / 1 / 1 | 25,35 / 27,50 / −2,65 | 2,8 · 10⁻⁸ kN | < 10⁻¹³ |
 
 En los tres estados la superposición coincide con la corrida directa a precisión de máquina.
-
-![Superposición con deslizadores](img/demo/demo08_superposicion.png)
-
-*Figura 4. Superposición en vivo con λG = 1, λQ = 0,5, λEX = 1 y λEY = 0,3.*
 
 ## 8. Análisis global y verificaciones
 
@@ -240,7 +230,9 @@ Cada caso se resuelve con un análisis estático lineal en OpenSees (`carga_viva
 |---|---|---|---|---|---|---|---|
 | \|u\| máximo [mm] | 25,8 | 10,6 | 21,5 | 32,6 | 31,5 | 31,9 | 31,7 |
 
-**Sensibilidad a la rigidez.** `sensibilidad_rigidez.py` compara la sección bruta, la rigidez fisurada vigente y una variante con muros no fisurados:
+Estas dos tablas coinciden con el JSON regenerado con OpenSees real (OpenSeesPy 3.8.0.0, Python 3.12.10): las reacciones difieren menos de 10⁻⁶ kN y el desplazamiento máximo menos de 10⁻⁶ mm respecto de la versión con réplica.
+
+**Sensibilidad a la rigidez.** *Pendiente: esta tabla se generó con la réplica de verificación y debe repetirse con OpenSees real.* `sensibilidad_rigidez.py` compara la sección bruta, la rigidez fisurada vigente y una variante con muros no fisurados:
 
 | Rigidez | u máx EX [mm] | u máx EY [mm] | Deriva máx EX | Deriva máx EY | Corte en muros EX / EY | C máx columnas | C máx muros |
 |---|---|---|---|---|---|---|---|
@@ -291,10 +283,6 @@ No se espera que los valores sean iguales, sino similares. Las unidades de ETABS
 - **Diferencias revisadas que no son errores del modelo (sección 19):**
   - *Vigas largas del edificio 2:* en los ejes x = −33,98 y −41,48 m no hay columnas en los datos de los planos. El modelo base y el paso 11 de `ajustar_modelo_planos.py` apoyan esas vigas en muros (plano 2024_22). Su flecha con G (unos 25 mm en vigas de cerca de 16 m, con 0,35 Ig) está bajo L/240.
   - *Columnas metálicas del voladizo sur del piso 2:* trabajan como tirantes, porque el arriostre baja desde la punta del voladizo superior hasta el pilar del eje 3 (elevación 2017_67-802). La C21 de ETABS está comprimida con una fuerza parecida (49 kN), lo que sugiere un arriostre en el sentido contrario. Conviene confirmarlo en esa elevación.
-
-![Deformada](img/demo/demo06_deformada.png)
-
-*Figura 5. Deformada de C1 coloreada por |u|.*
 
 ## 9. Fiber Sections
 
@@ -393,14 +381,6 @@ La demanda de cada muro (P, M en el plano y V por combinación) sale de las fuer
 
 *Figura 8. Envolvente por fibras del muro de referencia (izquierda) y curva de diseño del muro más exigido, MURO-066, con sus demandas (derecha).*
 
-![P-M de columna en el viewer](img/demo/demo09_PM_columna.png)
-
-*Figura 9. Panel P-M de una columna en el viewer, con su punto de demanda.*
-
-![P-M de muro en el viewer](img/demo/demo10_PM_muro.png)
-
-*Figura 10. Panel P-M del muro W_MURO-013 en el viewer.*
-
 ## 12. Demanda-capacidad
 
 `capacidad_ha.py` calcula la capacidad ACI 318-19 con las armaduras de `data/armaduras.json`, para C1, C2 y C3. El factor de uso es DCR = demanda / capacidad, el mayor entre flexión, flexo-compresión y corte.
@@ -426,10 +406,6 @@ La demanda de cada muro (P, M en el plano y V por combinación) sale de las fuer
 
 *Figura 11. Distribución del DCR de vigas y columnas de hormigón (generada con `figuras_informe.py`).*
 
-![Utilización en el viewer](img/demo/demo12_utilizacion.png)
-
-*Figura 12. Elementos coloreados por utilización en el viewer.*
-
 ## 13. Unity como pre/postprocesador
 
 El proyecto está en `Proyecto1/edificio_G8` (Unity 6000.6.0f1), en la escena `Assets/Scenes/StructureViewerScene`. Unity no calcula: lee los resultados de `Assets/Resources/estructura_p1l4_unity.json`.
@@ -451,7 +427,7 @@ El proyecto está en `Proyecto1/edificio_G8` (Unity 6000.6.0f1), en la escena `A
 
 El escenario queda sin guardar hasta que se elige *Guardar como modelo vigente*, que escribe el JSON de Unity y los archivos de `data/`, o *Descartar*.
 
-Antes de analizar, `validacion_entradas.py` revisa las entradas. Si algo no es válido, el proceso termina con código 2 y Unity muestra el mensaje en la pestaña ANÁLISIS.
+Antes de analizar, `validacion_entradas.py` revisa las entradas. Si algo no es válido, el proceso termina con código 2 y Unity muestra el mensaje en la pestaña ANÁLISIS. Además, `AnalysisSession.ValidateInputs` revisa en Unity, antes de lanzar Python, que q_G, Q y Q de cubierta sean números válidos y no negativos; si no lo son, no se ejecuta OpenSees, no se carga ningún escenario y se conservan los últimos resultados válidos (sección 22, H4).
 
 En el teléfono el viewer es de solo lectura: usa los resultados que van dentro del APK.
 
@@ -469,10 +445,6 @@ En el teléfono el viewer es de solo lectura: usa los resultados que van dentro 
 - *Robustez:* cada parte de la interfaz se construye por separado. Si una falla, se registra en la Consola con el prefijo `[ViewerUI]` y el resto sigue funcionando, en vez de volver a la interfaz antigua.
 
 **Apariencia.** La paleta "Arrebol" (ciruela, rosa y menta) está en un solo archivo, `Assets/Scripts/Paleta.cs`, y los estilos de los paneles en `Assets/Resources/UI/viewer.uss`. Bajo el edificio hay un suelo de pasto con textura generada por código, con franjas de corte, y un cielo con tinte lila. El pasto queda bajo los dados de apoyo y no tiene collider, así que no tapa el subterráneo ni interfiere con la selección.
-
-![Parámetros en la pestaña ANÁLISIS](img/demo/demo11_parametros.png)
-
-*Figura 13. Pestaña ANÁLISIS con los parámetros editables.*
 
 **Estado de funciones.**
 
@@ -516,29 +488,6 @@ En el teléfono el viewer es de solo lectura: usa los resultados que van dentro 
   - Mientras hay un diagrama activo, el modelo se muestra en alambre.
 - **Deformada:** es curva, porque usa los giros de OpenSees. Se colorea por |u|, de índigo (menor) a dorado (mayor), y se puede animar.
 
-![Apoyos](img/demo/demo02_apoyos.png)
-
-*Figura 14. Apoyos empotrados (vista FRONT).*
-
-![Ejes](img/demo/demo03_ejes.png)
-
-*Figura 15. Ejes de grilla (vista TOP).*
-
-![Diafragmas](img/demo/demo04_diafragmas.png)
-
-*Figura 16. Diafragmas rígidos por piso y edificio.*
-
-![Cargas G](img/demo/demo05_cargas_G.png)
-![Cargas Q](img/demo/demo05_cargas_Q.png)
-![Cargas EX](img/demo/demo05_cargas_EX.png)
-![Cargas EY](img/demo/demo05_cargas_EY.png)
-
-*Figura 17. Cargas G, Q, EX y EY.*
-
-![Diagrama de momento](img/demo/demo07_diagrama_momento.png)
-
-*Figura 18. Diagrama de momento con la viga E1_72 seleccionada.*
-
 ## 15. Modificación del modelo
 
 Las modificaciones se hacen desde Unity, en el PC, porque necesitan Python y OpenSees. Todas dejan intactos los archivos del modelo.
@@ -559,6 +508,7 @@ Después de reanalizar, Unity carga el modelo nuevo y abre *Resultados del model
 | Activar o desactivar un elemento | MODIFICAR → *Quitar* | sí |
 | Carga puntual o repartida en un elemento, sola o sumada a G, C1, C2 o C3 | CARGAS → *Carga en elemento* | no |
 | Carga móvil y persona sobre la losa | CARGAS | no |
+| Volver al modelo vigente (*Descartar* y *Restaurar valores del modelo cargado*) | ANÁLISIS | no |
 
 Fuera de Unity, los mismos cambios se pueden reproducir:
 - editando los archivos de `data/`;
@@ -566,6 +516,8 @@ Fuera de Unity, los mismos cambios se pueden reproducir:
 - con `modificar_modelo.py`.
 
 ## 16. AR
+
+**Estado: pendiente de verificación.** La verificación de la app en el teléfono y sus tres capturas (modo 1:1, maqueta 1:100 y sobre plano) dependen del APK de la compañera y no están hechas. Esta sección describe el diseño y el uso previsto; no es una demostración de que la app funcione.
 
 La app AR es la escena `ARScene`, con AR Foundation 6.6.2 y ARCore. Detecta el marcador `Proyecto1/ar/marcador_E1_243_imprimir.pdf` como imagen de referencia de 20 cm.
 
@@ -590,12 +542,6 @@ La app AR es la escena `ARScene`, con AR Foundation 6.6.2 y ARCore. Detecta el m
 - La app usa OpenGL ES 3.
 
 El marcador de esta versión dice "MCOC P1_G8" y mantiene el mismo patrón de fondo. Después de regenerarlo hay que correr *MCOC/AR/Actualizar marcador* antes de compilar el APK.
-
-![AR modo 1:1](img/ar/ar_1a1_columna.jpg)
-![AR maqueta](img/ar/ar_maqueta_1a100.jpg)
-![AR sobre plano](img/ar/ar_sobre_plano.jpg)
-
-*Figura 19. App AR en el teléfono del grupo: modo 1:1 en la columna E1_243, maqueta 1:100 y sobre el plano.*
 
 ## 17. Sidequests implementados
 
@@ -657,7 +603,7 @@ El marcador de esta versión dice "MCOC P1_G8" y mantiene el mismo patrón de fo
 | P-M de muros (91) | ningún muro con C > 1 (máximo 0,20, MURO-066): OK |
 | IDs de Unity | 1 023 elementos, IDs y tags únicos, sin fuerzas faltantes: OK |
 
-El QA completo se volvió a correr con el modelo corregido (sección 8), usando la réplica de verificación de OpenSees (sección 20). Hay que repetirlo con OpenSees en el PC del grupo.
+Esta tabla y `qa_semana06.json` se generaron con el modelo corregido (sección 8) usando la réplica de verificación de OpenSees (sección 20), no con OpenSees real, y el archivo no registra el motor. **Pendiente:** repetir `qa_semana06.py`, `sensibilidad_rigidez.py` y `exportar_excel_esfuerzos.py` con OpenSees real.
 
 **Tests automáticos.** La suite `pytest` tiene 45 casos en 6 archivos:
 
@@ -671,20 +617,23 @@ El QA completo se volvió a correr con el modelo corregido (sección 8), usando 
 | `test_h5_armadura.py` | 2 | que más armadura regenere la curva P-M, aumente la capacidad y baje el DCR |
 
 ```bat
-python -m pytest                  :: los 45 casos, unos 2 minutos
+python -m pytest                  :: los 45 casos, unos 40 s
 python -m pytest -m "not lento"   :: sin las corridas completas del exportador, unos 10 s
 ```
 
-Resultado en el PC del grupo: (completar: `python -m pytest` → __ passed en __ s).
+**Resultado:** `py -3.12 -m pytest -ra` → **45 passed** en 47,08 s, con Python 3.12.10, OpenSeesPy 3.8.0.0 y OpenSees real (sin la variable `MCOC_REPLICA`), sobre el JSON regenerado con OpenSees real (commit `15ba09b`). Los paquetes instalados coinciden con `requirements.txt` y `pip check` no informa conflictos.
+
+**Historial del único fallo.** Con el JSON anterior (generado con la réplica), `test_unity_igual_a_opensees_directo` fallaba: la diferencia en fuerzas de elementos superaba 10⁻⁶ kN (máximo 8,7 · 10⁻⁵ kN en `W_MURO-056`, combinación EY, error relativo 8 · 10⁻⁹). Dos corridas consecutivas con OpenSees real dieron resultados idénticos (OpenSees es determinista en esta máquina). Al regenerar el JSON con OpenSees real la prueba pasó, sin cambiar tolerancias ni código.
 
 **Verificación de los cambios del grupo 8.**
 
-- *Cambios visuales y de nombres:* no alteraron el cálculo. Los archivos de `data/` y el JSON de resultados quedaron idénticos byte a byte a los de la base, y en el Excel de esfuerzos las 65 268 celdas numéricas también.
+- *Cambios visuales y de nombres:* no alteraron el cálculo. Los archivos de `data/` y el JSON de resultados quedaron idénticos byte a byte a los de la base (antes de regenerar el JSON con OpenSees real, ver abajo), y en el Excel de esfuerzos las 65 268 celdas numéricas también.
 - *Cambio de armadura:* modificó solo la capacidad. Fuerzas, desplazamientos y reacciones siguen idénticos. Con la armadura anterior, `actualizar_armadura.py` reproduce exactamente la capacidad del exportador en los 516 elementos.
 - *4 apoyos sueltos:* se quitaron 4 apoyos que estaban en nodos sin ningún elemento (nodos 250 a 253). No tenían carga ni reacción, así que G, Q, EX y EY no cambian; solo bajan los registros de desplazamiento de 5 054 a 5 026.
 - *Corrección de los muros:* antes de cambiar el modelo se comprobó que la réplica de verificación, con el exportador real del proyecto, reproduce la corrida de OpenSees. Las diferencias fueron de 10⁻¹⁰ m en desplazamientos y de 10⁻⁴ kN en fuerzas, con los mismos períodos y DCR. Después se cambiaron dos cosas: la inercia de los muros a 1,0 Ig y los muros a `ElasticTimoshenkoBeam`, con deformación por corte.
 - *Elementos completos:* los 1 023 elementos son idénticos a los del modelo base. Solo se quitaron 4 nodos con apoyo que no tenían ningún elemento.
-- *Pruebas:* con la réplica de verificación pasa toda la suite, incluidas las pruebas que corren el exportador. Hay que repetirla con OpenSees real. Se actualizó la prueba que simula los argumentos de Unity, que traía fijos los factores de rigidez antiguos.
+- *Pruebas:* con la réplica de verificación pasaba toda la suite. Con OpenSees real pasan los 45 casos (ver arriba). Se actualizó la prueba que simula los argumentos de Unity, que traía fijos los factores de rigidez antiguos.
+- *JSON regenerado con OpenSees real:* `estructura_p1l4_unity.json` se volvió a generar con OpenSees 3.8.0.0 (commit `4b44709`, mismas entradas: los hash de modelo, parámetros, combinaciones y armaduras no cambian). Diferencias respecto de la versión con réplica: reacciones de G y Q del orden de 10⁻⁷ kN, cortes basales de EX y EY del orden de 10⁻⁵ kN, desplazamiento máximo del orden de 10⁻⁷ mm y fuerzas de elementos hasta 8,7 · 10⁻⁵ kN. El DCR es idéntico en los 516 elementos con capacidad; el DCR máximo (vigas 0,998 en E1_56, columnas 0,409 en E1_287), los conteos (718 nodos, 1 023 elementos, 91 muros) y las combinaciones no cambian. El JSON nuevo agrega `resumenAnalisis.fc_MPa = 35`.
 
 ## 19. Limitaciones
 
@@ -713,16 +662,21 @@ Resultado en el PC del grupo: (completar: `python -m pytest` → __ passed en __
 9. **Planos DXF.** No están en el repositorio. `generar_ejes_grilla.py` los busca en `../Planos_1_dxf`.
 10. **Reanálisis.** Solo funciona en un PC con Python y OpenSeesPy; en el teléfono el viewer es de solo lectura.
 11. **AR.** Depende de que el marcador mida exactamente 20 cm, de la iluminación y de un teléfono compatible con ARCore.
-12. **Cambios por probar en Unity.** La paleta, el pasto y el cielo ya se probaron en Unity. Los paneles movibles y el nuevo lanzador de Python se revisaron solo de forma estática, así que falta comprobarlos en el editor y en el ejecutable.
+12. **Cambios por probar en Unity.** La paleta, el pasto y el cielo ya se probaron en Unity. La validación de cargas negativas, la restauración de valores y los reanálisis de H4 y H5 se probaron a mano en el Editor (Unity 6000.6.0f1, consola sin errores). Los paneles movibles y el nuevo lanzador de Python no tienen una prueba manual registrada en este informe.
 13. **Calibración con ETABS.** La rigidez de los muros (1,0 Ig con deformación por corte) se eligió comparando con el modelo ETABS de referencia. Los períodos quedan entre −8 % y +7 % y los cortes basales entre −7 % y +2 %. La sobrecarga del edificio 1 es 26 % mayor que en ETABS, por los supuestos de uso y de áreas (sección 8).
 14. **Vigas largas del edificio 2.** En los ejes x = −33,98 y −41,48 m hay vigas de cerca de 16 m apoyadas en muros y vigas, sin columnas intermedias, como en los datos del plano 2024_22. Su flecha con G (unos 25 mm con 0,35 Ig) está bajo L/240, pero conviene confirmar en los planos que no hay columnas ahí.
 15. **Columnas del voladizo.** Las columnas metálicas del voladizo sur del piso 2 trabajan como tirantes por el sentido del arriostre leído de la elevación 2017_67-802. En ETABS la C21 está comprimida, así que conviene confirmar en esa elevación hacia dónde baja el arriostre.
 16. **Solver de verificación.** Si se activa la casilla en Unity y falta OpenSees, el recálculo usa `replica_opensees.py`, una réplica de las funciones de OpenSees que usa el proyecto. Reproduce las corridas reales (mismos desplazamientos, fuerzas y períodos), pero no es OpenSees: la corrida oficial de la entrega debe hacerse con OpenSees, y el JSON indica el motor usado.
-17. **Interfaz sin probar en el equipo del grupo.** Los cambios de la interfaz (sub-paneles, recorte, cámara, editor de secciones) se revisaron solo de forma estática, porque el agente no puede ejecutar Unity. Hay que comprobar en el editor que compila y que se ve bien.
+17. **Interfaz.** El agente no ejecuta Unity: sus cambios de C# se revisan de forma estática y el grupo los compila y prueba en el Editor. Para los cambios de H4 y H5 eso ya se hizo (punto 12). Los demás cambios de la interfaz (sub-paneles, recorte, cámara, editor de secciones) siguen sin una prueba manual registrada aquí.
+18. **Combinaciones C1 a C3.** Sus factores están pendientes de confirmar con el enunciado o el profesor (sección 7).
+19. **QA, sensibilidad y Excel.** Se generaron con la réplica de verificación y están pendientes de repetirse con OpenSees real (sección 18).
+20. **AR.** La verificación de la app y sus tres capturas están pendientes del APK de la compañera (sección 16).
+21. **Inicialización doble del viewer.** `StructureViewer.OnEnable` y `Start` llaman ambos a `CreateStructure()`, así que el modelo se construye dos veces al entrar en Play. Está registrado y no se ha modificado.
+22. **Capturas del viewer.** Faltan las capturas del Anexo B.
 
 ## 20. Uso de IA
 
-Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aislado para ejecutar código. Ese entorno no tiene OpenSees ni Unity, así que el agente no pudo correr el análisis completo ni compilar el proyecto. Lo que depende de eso queda para verificarse en el PC del grupo.
+Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aislado para ejecutar código. En la primera etapa ese entorno no tenía OpenSees ni Unity, así que el agente no pudo correr el análisis completo ni compilar el proyecto. En las sesiones recientes (ver abajo) se trabajó en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.0, y el agente ejecutó el análisis y las pruebas. Unity sigue sin ejecutarlo el agente: el grupo compila y prueba el Editor y reporta el resultado.
 
 **Tareas delegadas**
 
@@ -760,7 +714,17 @@ Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aisla
    - *Validación:* primero comprobó que la réplica, con el exportador real del proyecto, reproduce la corrida de OpenSees.
    - *Diagnóstico:* luego la usó para el análisis modal.
    - *Regeneración:* finalmente cambió la rigidez de los muros y volvió a generar resultados, QA, sensibilidad y Excel.
-   - *Corrida oficial:* la réplica no forma parte del repositorio; la corrida oficial debe hacerse con OpenSees.
+   - *Corrida oficial:* la réplica no forma parte del repositorio; la corrida oficial debe hacerse con OpenSees. El JSON principal ya se regeneró con OpenSees real; el QA, la sensibilidad y el Excel siguen pendientes.
+
+**Sesiones recientes: verificación con OpenSees real y correcciones en Unity**
+
+Descripción factual, en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.0:
+
+1. Se creó un repositorio Git local como respaldo del estado recibido (commit `a313e0b`). Se instalaron en Python 3.12 las dependencias de `requirements.txt` y se ejecutó la suite: las pruebas rápidas pasaron (40) y en la corrida completa falló una prueba (sección 18).
+2. Se diagnosticó ese fallo: el JSON vigente se había generado con la réplica de verificación. Dos corridas con OpenSees real dieron resultados idénticos, así que se regeneró solo el JSON principal con OpenSees real (commit `15ba09b`) y los 45 casos pasaron sin cambiar tolerancias.
+3. Con pruebas manuales del grupo en Unity, el agente corrigió tres problemas de la interfaz (commits `a31906c`, `4b44709`, `5b77560` y `2e5f6a0`): la excepción por JSON vacío o nulo al cargar el viewer, el rechazo de cargas negativas en el reanálisis y la restauración de los campos al descartar el escenario.
+4. Se documentó la evidencia manual de H4 y H5 (capturas en `reports/img` y `reports/evidencia_H5.md`, commits `2e5f6a0` y `159269a`).
+5. En esta etapa se actualizó este informe con esos resultados y con los pendientes.
 
 **Errores detectados por el agente**
 
@@ -776,10 +740,16 @@ Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aisla
 - El error "Falta instalar openseespy" al quitar un elemento venía del Python que llama Unity, que no tenía openseespy. Ahora Unity busca un Python que lo tenga y el mensaje indica qué Python usó y cómo instalarlo.
 - Con los muros en 0,35 Ig, el edificio 2 tenía modos acoplados en diagonal y quedaba en C_min, con cortes 18 % y 34 % menores que ETABS. Se corrigió con la inercia bruta de los muros.
 - Los muros sin deformación por corte dejaban el edificio 1 demasiado rígido en X: su período salía 23 % más corto que en ETABS. Se corrigió con `ElasticTimoshenkoBeam`.
+- `StructureViewer.CreateStructure` trataba un `overrideJson` vacío como un override válido, lo que producía "JSON vacío" y luego un `NullReferenceException` en `UnityData.LoadData`. Se corrigió.
+- Los campos q_G, Q y Q cubierta recortaban los valores negativos a 0 (`Mathf.Max`), así que Q = −100 no se rechazaba: se analizaba con Q = 0. Se corrigió y ahora se rechaza con un mensaje claro.
+- *Descartar* y *Restaurar valores del modelo cargado* devolvían los resultados originales pero dejaban en los campos los valores del escenario (Q = 300, Q cubierta = 0). Se corrigió.
+- `exportar_resultados_unity.py` sin `--out` también reescribe `data/semana3_resultados_unity.json` (un efecto lateral); para regenerar solo el JSON principal se usó `--out`.
+- `StructureViewer` se inicializa dos veces (`OnEnable` y `Start`). No se ha modificado.
 - Las vigas de unos 16 m del edificio 2 y la tracción en las columnas del voladizo se revisaron. Coinciden con los datos de los planos y con la lectura de la elevación 2017_67-802, así que no se cambiaron (sección 19).
 
 **Verificaciones hechas por el agente**
 
+- Corrió los 45 casos con OpenSees real (45 passed) y comparó el JSON anterior con el regenerado.
 - Comparó byte a byte los datos y resultados con la base, e hizo la comparación registro por registro de fuerzas y desplazamientos (sección 18).
 - Corrió las pruebas del JSON de Unity que no requieren OpenSees.
 - Recalculó la curva M-φ con el integrador del proyecto.
@@ -851,10 +821,42 @@ Los de la app del teléfono (H1, H2 y H3) quedan pendientes.
 | Requisito | Cómo se cumple | Evidencia |
 |---|---|---|
 | Unity envía cambios y recibe resultados | `PythonJob` corre `exportar_resultados_unity.py` en segundo plano con los parámetros y los cambios: combinaciones, secciones, armadura, apoyos, áreas tributarias y f'c. Al terminar, Unity carga el escenario y muestra el resumen de resultados | ANÁLISIS → *Reanalizar* y MODIFICAR → *Reanalizar ahora* |
-| Validación | en Unity (`ValidateInputs`) y en Python (`validacion_entradas.py` y el exportador): rangos de q, sismo, rigidez y f'c; combinaciones, secciones y armadura; nodos de apoyo y áreas | `test_validacion_rechaza` (7 casos) y `test_exportador_sale_con_codigo_2`. En vivo, f'c = 5 MPa, Q = −100 kg/m² y un nodo inexistente salen con código 2 y su mensaje |
+| Motor | OpenSees real, con Python 3.12.10 y OpenSeesPy 3.8.0.0. Unity informa "Motor de cálculo: OpenSees, con py -3.12" | ![Motor OpenSees](img/h4_motor_opensees_py312.png) |
+| Validación | en Unity (`ValidateInputs`, antes de lanzar Python) y en Python (`validacion_entradas.py` y el exportador): rangos de q, sismo, rigidez y f'c; combinaciones, secciones y armadura; nodos de apoyo y áreas | `test_validacion_rechaza` (7 casos) y `test_exportador_sale_con_codigo_2`; capturas del rechazo, abajo |
 | Manejo de errores | Unity muestra el código de salida y la última línea del error, diagnostica el Python y OpenSees (*Revisar Python*) y avisa en pantalla si la interfaz falla. El solver de verificación es un respaldo opcional, marcado en la trazabilidad | `PythonJob.cs` y README §4.2 |
 | Ejecución reproducible | cada corrida guarda en el JSON el comando, la fecha, las versiones de Python y OpenSees, el motor de cálculo y el SHA-256 de cada entrada. El mismo comando se puede repetir desde la consola | campo `corrida` del JSON |
-| Comparación contra corrida directa | el escenario que pide Unity se compara con la corrida directa de OpenSees con los mismos parámetros | `test_unity_igual_a_opensees_directo` y `test_escenario_q300_vs_directo`, con diferencias de 10⁻⁹ m o menos |
+| Comparación contra corrida directa | el escenario que pide Unity se compara con la corrida directa de OpenSees con los mismos parámetros | `test_unity_igual_a_opensees_directo` y `test_escenario_q300_vs_directo`, con diferencias de 10⁻⁹ m o menos en desplazamientos y de 10⁻⁶ kN o menos en fuerzas |
+
+**Reanálisis con Q = 500 frente a Q = 300 kg/m².** Prueba manual en Unity. Valores leídos de las capturas. En el escenario Q = 300 solo cambió Q de piso: la carga de cubierta permaneció en 200 kg/m². Lo respalda la aritmética de las cifras: en una corrida con Q de piso igual a 0 y cubierta de 200 kg/m², la cubierta aporta unos 2 803 kN. Para Q = 300 la parte de piso es 16 653 − 2 803 ≈ 13 850 kN, que coincide con 0,6 × (25 886 − 2 803) ≈ 13 850 kN, o sea la parte de piso del caso base escalada por 300/500.
+
+| Magnitud | Base, Q = 500 | Reanálisis, Q = 300 |
+|---|---|---|
+| Q aplicada / ΣRz | 25 886 / 25 886 kN | 16 653 / 16 653 kN |
+| \|u\| máximo con Q | 10,64 mm | 6,41 mm |
+| Corte basal EX / EY | 9 483 / 7 798 kN | 9 250 / 7 668 kN |
+| Factor de uso máximo, vigas | 1,00 (E1_56) | 0,95 (B3085_V40/80a) |
+| Factor de uso máximo, columnas | 0,41 (E1_287) | 0,40 (E1_287) |
+| G aplicada / ΣRz | 75 701 / 75 701 kN | 75 701 / 75 701 kN |
+
+![Escenario base Q = 500](img/h4_escenario_base_Q500.png)
+
+*Figura H4-1. Escenario base (Q = 500 kg/m²).*
+
+![Reanálisis válido Q = 300](img/h4_reanalisis_valido_Q300.png)
+
+*Figura H4-2. Reanálisis válido con Q = 300 kg/m². Unity lo marca como "escenario cargado (sin guardar)".*
+
+**Validación de entradas negativas.** Con Q = −100 kg/m² el reanálisis se rechaza antes de ejecutar OpenSees, con el mensaje "Q sobrecarga de uso = −100 kg/m²: debe ser mayor o igual a cero". Con Q de cubierta = −5 y q_G = −1 se rechazan los dos campos a la vez. En ambos casos no se carga ningún escenario y se conservan los últimos resultados válidos. Antes de esta corrección el campo recortaba el valor negativo a 0 y el reanálisis se ejecutaba con Q = 0 (sección 20).
+
+![Rechazo de Q = −100](img/h4_rechazo_Q_negativo_Q-100.png)
+
+*Figura H4-3. Rechazo de Q = −100 kg/m².*
+
+![Rechazo de Q cubierta = −5 y q_G = −1](img/h4_rechazo_Qcubierta-5_qG-1.png)
+
+*Figura H4-4. Rechazo conjunto de Q cubierta = −5 kg/m² y q_G = −1 kN/m².*
+
+**Restauración.** *Descartar* y *Restaurar valores del modelo cargado* vuelven al modelo vigente y actualizan de inmediato los campos visibles y la sesión interna a los valores del JSON (Q = 500, Q de cubierta = 200 y el resto de los parámetros). Un reanálisis posterior con los valores originales dio de nuevo Q aplicada ≈ 25 886 kN y desplazamiento máximo con Q de 10,64 mm. Antes de la corrección, los campos quedaban con los valores del escenario descartado.
 
 Nivel propuesto: 4 (integrado, robusto y sobre el alcance base).
 
@@ -866,6 +868,15 @@ Nivel propuesto: 4 (integrado, robusto y sobre el alcance base).
 | Regeneración de la interacción | se recalculan la curva P-M de cada columna (con diámetros mixtos) y de cada muro (con sus barras de borde reales), φMn y φVn de las vigas, y el DCR | `capacidad_ha.py` y `actualizar_armadura.py`; pruebas `test_curva_regenerada`, `test_mas_armadura_mas_capacidad_menor_dcr`, `test_columna_diametros_mixtos` y `test_pm_muros_con_armadura_real` |
 | Visualización | panel P-M con el punto de demanda y la combinación activa; panel de capacidad de vigas (M y V contra φMn y φVn); colores por utilización; resumen tras reanalizar | Unity |
 | Material | f'c editable: cambia la rigidez y regenera la capacidad | ANÁLISIS → *Material* |
+
+**Prueba manual con la columna E1_287 (COL70/70).** Se cambió la armadura de 16φ28 a 20φ28 y se reanalizó con OpenSees:
+
+| Estado | Ast | DCR C1 | DCR crítico |
+|---|---|---|---|
+| Original, 16φ28 | 9 852 mm² | 0,392 | 0,392 (C1) |
+| Modificado, 20φ28 | 12 315 mm² | 0,329 | 0,343 (C2) |
+
+Unity regeneró la curva P-M después del reanálisis (el diagrama pasó de `COL70/70_16f28` a `COL70/70_20f28`). El escenario se descartó y no se guardó: el modelo oficial sigue con 16φ28. Las capturas y el detalle están en [`evidencia_H5.md`](evidencia_H5.md).
 
 Nivel propuesto: 3 a 4.
 
@@ -902,3 +913,31 @@ Nivel propuesto: 3 a 4.
 4. **Resultados.** `exportar_resultados_unity.py` agrega las combinaciones y la capacidad ACI, y escribe `estructura_p1l4_unity.json`.
 5. **Unity.** El viewer lo dibuja y, en el PC, reanaliza llamando a Python.
 6. **AR.** La misma información, anclada al marcador de la columna E1_243.
+
+## Anexo B. Capturas pendientes
+
+Las figuras siguientes se retiraron del cuerpo del informe porque los archivos no existen todavía. Hay que generarlas desde el Editor de Unity (escena `Assets/Scenes/StructureViewerScene`, en Play y con la vista Game), guardarlas en `reports/img/demo/` con el nombre indicado y volver a insertarlas en la sección y con la leyenda indicadas. No se necesita un ejecutable.
+
+| Figura | Archivo | Qué debe mostrar | Sección |
+|---|---|---|---|
+| 1 | `demo01_geometria.png` | geometría del modelo, vista ISO | 3 |
+| 2 | `vista_tributarias.png` | pestaña VISTA con las áreas tributarias | 4 |
+| 4 | `demo08_superposicion.png` | superposición en vivo con λG = 1, λQ = 0,5, λEX = 1 y λEY = 0,3 | 7 |
+| 5 | `demo06_deformada.png` | deformada de C1 coloreada por \|u\| | 8 |
+| 9 | `demo09_PM_columna.png` | panel P-M de una columna con su punto de demanda | 11 |
+| 10 | `demo10_PM_muro.png` | panel P-M del muro W_MURO-013 | 11 |
+| 12 | `demo12_utilizacion.png` | elementos coloreados por utilización | 12 |
+| 13 | `demo11_parametros.png` | pestaña ANÁLISIS con los parámetros editables | 13 |
+| 14 | `demo02_apoyos.png` | apoyos empotrados, vista FRONT | 14 |
+| 15 | `demo03_ejes.png` | ejes de grilla, vista TOP | 14 |
+| 16 | `demo04_diafragmas.png` | diafragmas rígidos por piso y edificio | 14 |
+| 17 | `demo05_cargas_G.png`, `demo05_cargas_Q.png`, `demo05_cargas_EX.png`, `demo05_cargas_EY.png` | cargas G, Q, EX y EY | 14 |
+| 18 | `demo07_diagrama_momento.png` | diagrama de momento con la viga E1_72 seleccionada | 14 |
+
+**Pendientes del APK de la compañera.** Estas capturas se toman con el teléfono y se guardan en `reports/img/ar/`. Hasta tenerlas, la app AR no está verificada (sección 16):
+
+| Figura | Archivo | Qué debe mostrar |
+|---|---|---|
+| 19 | `ar_1a1_columna.jpg` | modo 1:1 anclado a la columna E1_243 |
+| 19 | `ar_maqueta_1a100.jpg` | modo maqueta 1:100 |
+| 19 | `ar_sobre_plano.jpg` | modo sobre plano |
