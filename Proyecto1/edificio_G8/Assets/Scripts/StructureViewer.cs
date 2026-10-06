@@ -223,7 +223,31 @@ public partial class StructureViewer : MonoBehaviour
             }
         }
 
-        loadedData = JsonUtility.FromJson<StructureData>(overrideJson ?? structureJson.text);
+        string jsonSource = overrideJson != null ? LoadedSource : "Resources/estructura_p1l4_unity.json (TextAsset '" + structureJson.name + "')";
+        string jsonText = overrideJson ?? structureJson.text;
+        if (string.IsNullOrWhiteSpace(jsonText))
+        {
+            Debug.LogError("[StructureViewer] El JSON de la estructura esta vacio. Fuente: " + jsonSource);
+            return;
+        }
+
+        StructureData parsed;
+        try
+        {
+            parsed = JsonUtility.FromJson<StructureData>(jsonText);
+        }
+        catch (System.ArgumentException e)
+        {
+            Debug.LogError("[StructureViewer] JSON de la estructura invalido. Fuente: " + jsonSource + ". " + e.Message);
+            return;
+        }
+        if (parsed == null)
+        {
+            Debug.LogError("[StructureViewer] No se pudo deserializar el JSON de la estructura (resultado null). Fuente: " + jsonSource);
+            return;
+        }
+
+        loadedData = parsed;
         UnityData.LoadData(loadedData);
 
         if (loadedData.tributaryList != null)

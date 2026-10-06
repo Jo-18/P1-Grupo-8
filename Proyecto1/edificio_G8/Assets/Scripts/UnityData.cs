@@ -15,6 +15,12 @@ public static class UnityData
 
     public static void LoadData(StructureData data)
     {
+        if (data == null)
+        {
+            Debug.LogError("[UnityData] LoadData recibio data == null; se conserva el modelo anterior.");
+            return;
+        }
+
         Structure = data;
         ActiveCombo = null;
 
