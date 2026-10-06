@@ -1,0 +1,411 @@
+{
+  "descripcion": "Armaduras de vigas, columnas y muros de hormigon (ACI 318-19). 'secciones' = armadura tipo de cada seccion; 'elementos' = excepciones por elementTag (tienen prioridad); 'muros' = armadura de muros por seccion 'espesor x largo' en m. Editable aqui (VS Code) o desde Unity (pestana MODIFICAR > ARMADURA). Notacion: '4φ22' (o 4f22), '4φ28+16φ36'; estribos 'Eφ10a10' (2 ramas), 'EDφ10a10' (estribo doble, 4 ramas); malla de muro '2φ10a20' (doble, una por cara).",
+  "origen": "Columnas y muros: documento del grupo 'La enfierradura completa del edificio no esta definida en el proyecto' (oct. 2026). Vigas: armadura TIPO supuesta a partir de los planos 2017_67 (detalles tipo 002: suples +F=4φ22/4φ25; elevaciones 300-402: EDφ10a10 en apoyos y EDφ10a20 en tramo), porque el documento no trae la armadura de vigas.",
+  "recubrimiento_m": 0.04,
+  "secciones": {
+    "V60/80": {
+      "inferior": "5φ22",
+      "superior": "5φ22",
+      "supleApoyo": "4φ22",
+      "estribosApoyo": "EDφ10a10",
+      "estribosTramo": "EDφ10a20"
+    },
+    "V40/80": {
+      "inferior": "3φ22",
+      "superior": "3φ22",
+      "supleApoyo": "2φ22",
+      "estribosApoyo": "Eφ10a10",
+      "estribosTramo": "Eφ10a20"
+    },
+    "V30/80": {
+      "inferior": "4φ18",
+      "superior": "4φ18",
+      "supleApoyo": "2φ18",
+      "estribosApoyo": "Eφ10a10",
+      "estribosTramo": "Eφ10a20"
+    },
+    "V40/60": {
+      "inferior": "3φ18",
+      "superior": "3φ18",
+      "supleApoyo": "2φ18",
+      "estribosApoyo": "Eφ10a10",
+      "estribosTramo": "Eφ10a20"
+    },
+    "V30/45": {
+      "inferior": "3φ16",
+      "superior": "3φ16",
+      "supleApoyo": "2φ16",
+      "estribosApoyo": "Eφ8a10",
+      "estribosTramo": "Eφ8a20"
+    },
+    "COL70/70": {
+      "barras": "16φ28",
+      "estribos": "EDφ10a6",
+      "estribosCentro": "EDφ10a15"
+    }
+  },
+  "elementos": {
+    "C1004": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "C2004": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "C3004": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "C4004": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "C5004": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_292": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_293": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_294": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_295": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_296": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_297": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_298": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_299": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_300": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_301": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_302": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_303": {
+      "barras": "4φ28+16φ36",
+      "nota": "portico extremo (supuesto)"
+    },
+    "E1_291": {
+      "barras": "20φ36",
+      "nota": "columna especial del documento (supuesto: la mas exigida del modelo)"
+    },
+    "E1_8": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_9": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_11": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_12": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_57": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_59": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_60": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_61": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_62": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_104b": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_105": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_107": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_108": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_109": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "E1_110": {
+      "inferior": "6φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3001_V40/80a": {
+      "inferior": "4φ22",
+      "supleApoyo": "4φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3001_V40/80c": {
+      "inferior": "4φ22",
+      "supleApoyo": "4φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3022_V40/80a": {
+      "inferior": "4φ22",
+      "supleApoyo": "5φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3022_V40/80c": {
+      "inferior": "4φ22",
+      "supleApoyo": "4φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3043_V40/80a": {
+      "inferior": "4φ22",
+      "supleApoyo": "5φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3043_V40/80c": {
+      "inferior": "4φ22",
+      "supleApoyo": "5φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3064_V40/80a": {
+      "inferior": "4φ22",
+      "supleApoyo": "5φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3064_V40/80c": {
+      "inferior": "4φ22",
+      "supleApoyo": "5φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3085_V40/80a": {
+      "inferior": "4φ22",
+      "supleApoyo": "3φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    },
+    "B3085_V40/80c": {
+      "inferior": "4φ22",
+      "supleApoyo": "3φ22",
+      "nota": "armadura de diseño supuesta: la mínima estándar en una capa que deja DCR <= 1"
+    }
+  },
+  "muros": {
+    "descripcion": "Barras de borde en ambos extremos, en filas de 2 (una por cara) cada separacionFilasBorde_m (<= 2t/3, ACI 318-19 18.10.6.4), y malla central doble φ10 cada 0,20 m. 'bordes' = barras por cada extremo del muro.",
+    "malla": "2φ10a20",
+    "separacionFilasBorde_m": 0.15,
+    "secciones": {
+      "0.20x3.300": {
+        "bordes": "14φ32",
+        "panos": 4,
+        "fuente": "supuesto: el documento no trae muros de este espesor; muro del documento de largo más parecido (0.30 x 3.1 m); en 0,20 m dos φ40 por fila dejan 20 mm libres (< 40 mm): se usan 14φ32 (área ≥ 8φ40)",
+        "separacionFilasBorde_m": 0.13
+      },
+      "0.20x3.400": {
+        "bordes": "16φ32",
+        "panos": 10,
+        "fuente": "supuesto: el documento no trae muros de este espesor; muro del documento de largo más parecido (0.30 x 3.56 m); en 0,20 m dos φ40 por fila dejan 20 mm libres (< 40 mm): se usan 16φ32 (área ≥ 10φ40)",
+        "separacionFilasBorde_m": 0.13
+      },
+      "0.20x3.520": {
+        "bordes": "16φ32",
+        "panos": 1,
+        "fuente": "supuesto: el documento no trae muros de este espesor; muro del documento de largo más parecido (0.30 x 3.56 m); en 0,20 m dos φ40 por fila dejan 20 mm libres (< 40 mm): se usan 16φ32 (área ≥ 10φ40)",
+        "separacionFilasBorde_m": 0.13
+      },
+      "0.20x4.680": {
+        "bordes": "16φ32",
+        "panos": 1,
+        "fuente": "supuesto: el documento no trae muros de este espesor; muro del documento de largo más parecido (0.25 x 3.65 m); en 0,20 m dos φ40 por fila dejan 20 mm libres (< 40 mm): se usan 16φ32 (área ≥ 10φ40)",
+        "separacionFilasBorde_m": 0.13
+      },
+      "0.20x6.330": {
+        "bordes": "22φ32",
+        "panos": 1,
+        "fuente": "supuesto: el documento no trae muros de este espesor; muro del documento de largo más parecido (0.30 x 6.15 m); en 0,20 m dos φ40 por fila dejan 20 mm libres (< 40 mm): se usan 22φ32 (área ≥ 14φ40)",
+        "separacionFilasBorde_m": 0.13
+      },
+      "0.20x7.250": {
+        "bordes": "30φ32",
+        "panos": 2,
+        "fuente": "supuesto: el documento no trae muros de este espesor; muro del documento de largo más parecido (0.30 x 7.25 m); en 0,20 m dos φ40 por fila dejan 20 mm libres (< 40 mm): se usan 30φ32 (área ≥ 18φ40)",
+        "separacionFilasBorde_m": 0.13
+      },
+      "0.25x1.575": {
+        "bordes": "4φ40",
+        "panos": 10,
+        "fuente": "documento (0.25 x 1.58 m)"
+      },
+      "0.25x2.945": {
+        "bordes": "8φ40",
+        "panos": 10,
+        "fuente": "supuesto: muro del documento de igual espesor y largo más parecido (0.25 x 2.82 m)"
+      },
+      "0.25x3.205": {
+        "bordes": "8φ40",
+        "panos": 5,
+        "fuente": "supuesto: muro del documento de igual espesor y largo más parecido (0.25 x 2.82 m)"
+      },
+      "0.25x7.600": {
+        "bordes": "18φ40",
+        "panos": 5,
+        "fuente": "supuesto: muro del documento de igual espesor y largo más parecido (0.25 x 7.95 m)"
+      },
+      "0.30x1.850": {
+        "bordes": "6φ40",
+        "panos": 10,
+        "fuente": "supuesto: muro del documento de igual espesor y largo más parecido (0.30 x 2.25 m)"
+      },
+      "0.30x2.430": {
+        "bordes": "6φ40",
+        "panos": 10,
+        "fuente": "supuesto: muro del documento de igual espesor y largo más parecido (0.30 x 2.25 m)"
+      },
+      "0.30x2.645": {
+        "bordes": "8φ40",
+        "panos": 5,
+        "fuente": "documento (0.30 x 2.695 m)"
+      },
+      "0.30x5.000": {
+        "bordes": "14φ40",
+        "panos": 1,
+        "fuente": "supuesto: muro del documento de igual espesor y largo más parecido (0.30 x 6.15 m)"
+      },
+      "0.30x7.250": {
+        "bordes": "18φ40",
+        "panos": 2,
+        "fuente": "documento (0.30 x 7.25 m)"
+      },
+      "0.30x8.900": {
+        "bordes": "20φ40",
+        "panos": 2,
+        "fuente": "documento (0.30 x 8.9 m)"
+      },
+      "0.30x10.000": {
+        "bordes": "24φ40",
+        "panos": 2,
+        "fuente": "documento (0.30 x 10 m)"
+      },
+      "0.60x2.915": {
+        "bordes": "8φ40",
+        "panos": 5,
+        "fuente": "documento (0.60 x 2.915 m)"
+      },
+      "0.60x2.920": {
+        "bordes": "8φ40",
+        "panos": 5,
+        "fuente": "documento (0.60 x 2.92 m)"
+      }
+    },
+    "tablaDocumento": [
+      {
+        "seccion_m": "0.30 x 3.56",
+        "barrasPorExtremo": "10φ40"
+      },
+      {
+        "seccion_m": "0.60 x 2.915",
+        "barrasPorExtremo": "8φ40"
+      },
+      {
+        "seccion_m": "0.60 x 2.92",
+        "barrasPorExtremo": "8φ40"
+      },
+      {
+        "seccion_m": "0.25 x 7.95",
+        "barrasPorExtremo": "18φ40"
+      },
+      {
+        "seccion_m": "0.25 x 5.85",
+        "barrasPorExtremo": "14φ40"
+      },
+      {
+        "seccion_m": "0.30 x 2.695",
+        "barrasPorExtremo": "8φ40"
+      },
+      {
+        "seccion_m": "0.25 x 2.82",
+        "barrasPorExtremo": "8φ40"
+      },
+      {
+        "seccion_m": "0.30 x 7.25",
+        "barrasPorExtremo": "18φ40"
+      },
+      {
+        "seccion_m": "0.30 x 10",
+        "barrasPorExtremo": "24φ40"
+      },
+      {
+        "seccion_m": "0.30 x 8.9",
+        "barrasPorExtremo": "20φ40"
+      },
+      {
+        "seccion_m": "0.30 x 6.15",
+        "barrasPorExtremo": "14φ40"
+      },
+      {
+        "seccion_m": "0.25 x 1.58",
+        "barrasPorExtremo": "4φ40"
+      },
+      {
+        "seccion_m": "0.25 x 3.65",
+        "barrasPorExtremo": "10φ40"
+      },
+      {
+        "seccion_m": "0.30 x 2.25",
+        "barrasPorExtremo": "6φ40"
+      },
+      {
+        "seccion_m": "0.30 x 3.1",
+        "barrasPorExtremo": "8φ40"
+      }
+    ]
+  },
+  "supuestos": [
+    "Recubrimiento de 40 mm al estribo en columnas y muros (documento): centro de barras a 64 mm (φ28) y 68 mm (φ36) del borde.",
+    "Porticos extremos: el documento no los identifica con la numeracion del modelo; se asumen los de los extremos libres de cada edificio: eje I' (x = 35,0 m) del edificio 1 y eje A (x = -37,73 m) del edificio 2.",
+    "Columna especial 'ID 70': en este modelo el ID 70 es una viga (E1_70); se asigna 20φ36 a la columna mas exigida, E1_291.",
+    "Muros sin seccion igual en el documento: se usa el numero de φ40 por extremo del muro del documento de igual espesor y largo mas parecido; filas de borde cada 150 mm (130 mm en los muros de 0,20 m), sin superar 2t/3 de ACI 318-19 18.10.6.4 (no especificado en el documento).",
+    "φ40 no es un diametro habitual de A630-420H en Chile (hasta φ36); se usa porque asi lo indica el documento.",
+    "Columnas: el documento da estribos φ10 sin separacion; con 4 ramas, el confinamiento de ACI 318-19 18.7.5.4 (Ash/(s·bc) >= 0.0075) exige s <= 68 mm: EDφ10a6 en la zona de confinamiento (gobierna el corte) y EDφ10a15 fuera de ella.",
+    "Muros de 0,20 m: no aparecen en el documento y dos φ40 por fila no caben (separacion libre < 40 mm); se usan barras φ32 con area igual o mayor.",
+    "Vigas: el documento no trae su armadura; se mantiene la armadura tipo supuesta de los planos, subiendo V60/80 y V30/80 a la cuantia minima de ACI 318-19 9.6.1.2, y a las vigas que no cumplian se les asigna la armadura minima estandar en una capa que deja DCR <= 1 (rho <= 2,5 %)."
+  ]
+}

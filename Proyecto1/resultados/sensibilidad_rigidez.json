@@ -1,0 +1,82 @@
+{
+  "bruta": {
+    "factores": "seccion bruta",
+    "EX": {
+      "u_max_mm": 18.37203401414222,
+      "deriva_max": 0.0010821816415539844,
+      "corte_muros_pct": 91.01547563178889
+    },
+    "EY": {
+      "u_max_mm": 27.431187094142395,
+      "deriva_max": 0.0017386705503671222,
+      "corte_muros_pct": 97.26196110655131
+    },
+    "G_uz_max_mm": 13.229444952989537,
+    "columnas_C_max": 0.395873912102262,
+    "muros_C_mayor_1": [],
+    "muros_C_max": 0.19557240209442114
+  },
+  "ACI_fisurada": {
+    "factores": {
+      "viga": 0.35,
+      "columna": 0.7,
+      "muro": 0.35
+    },
+    "EX": {
+      "u_max_mm": 22.524635374032652,
+      "deriva_max": 0.0013309011975449637,
+      "corte_muros_pct": 94.56194015448463
+    },
+    "EY": {
+      "u_max_mm": 36.61697978725557,
+      "deriva_max": 0.0023075112989730823,
+      "corte_muros_pct": 99.34337505633243
+    },
+    "G_uz_max_mm": 25.884708534587723,
+    "columnas_C_max": 0.39368780917955776,
+    "muros_C_mayor_1": [],
+    "muros_C_max": 0.12205226091657408
+  },
+  "muros_no_fisurados": {
+    "factores": {
+      "viga": 0.35,
+      "columna": 0.7,
+      "muro": 0.7
+    },
+    "EX": {
+      "u_max_mm": 21.267730488596435,
+      "deriva_max": 0.0012873164961541039,
+      "corte_muros_pct": 95.56621755964609
+    },
+    "EY": {
+      "u_max_mm": 32.67654254835499,
+      "deriva_max": 0.002114837119083618,
+      "corte_muros_pct": 100.06798057646147
+    },
+    "G_uz_max_mm": 25.847797926166553,
+    "columnas_C_max": 0.38210212795857074,
+    "muros_C_mayor_1": [],
+    "muros_C_max": 0.1671272423893926
+  },
+  "muros_brutos_vigente": {
+    "factores": {
+      "viga": 0.35,
+      "columna": 0.7,
+      "muro": 1.0
+    },
+    "EX": {
+      "u_max_mm": 21.155083120773572,
+      "deriva_max": 0.0012944494504381694,
+      "corte_muros_pct": 95.87947701749532
+    },
+    "EY": {
+      "u_max_mm": 30.643723261531093,
+      "deriva_max": 0.002018259312479745,
+      "corte_muros_pct": 100.23725078915696
+    },
+    "G_uz_max_mm": 25.83799337069718,
+    "columnas_C_max": 0.3769952619194532,
+    "muros_C_mayor_1": [],
+    "muros_C_max": 0.20112736267681997
+  }
+}

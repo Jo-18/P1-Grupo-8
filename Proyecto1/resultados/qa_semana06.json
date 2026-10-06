@@ -1,0 +1,181 @@
+{
+  "parametros": {
+    "q_G_kN_m2": 6.22722275,
+    "Q_kN_m2": 4.903325,
+    "sismo": {
+      "metodo": "NCh433",
+      "zona": 3,
+      "suelo": "C",
+      "R": 7.0,
+      "I": 1.0,
+      "fraccionQ": 0.25
+    }
+  },
+  "sismo_NCh433": {
+    "hipotesis": "W_sismico = D + 0.25Q",
+    "edificios": [
+      {
+        "edificio": "edificio_1",
+        "P_kN": 45897.95972530152,
+        "T_X_s": 0.43606065688261275,
+        "T_Y_s": 0.685291607859194,
+        "C_X": 0.147,
+        "C_Y": 0.09157056306929694,
+        "Q0_X_kN": 6747.0000796193235,
+        "Q0_Y_kN": 4202.902015777774,
+        "C_en_limites": true,
+        "sumF_igual_Q0": true,
+        "sumA_k": 1.0
+      },
+      {
+        "edificio": "edificio_2",
+        "P_kN": 34678.32733471599,
+        "T_X_s": 0.7622037104818471,
+        "T_Y_s": 0.6271181228276688,
+        "C_X": 0.0789009044161862,
+        "C_Y": 0.10367937522533972,
+        "Q0_X_kN": 2736.151390349644,
+        "Q0_Y_kN": 3595.4273119231743,
+        "C_en_limites": true,
+        "sumF_igual_Q0": true,
+        "sumA_k": 1.0
+      }
+    ],
+    "ok": true
+  },
+  "G": {
+    "aplicada_kN": 75700.9374789417,
+    "reaccion_kN": 75700.93747927532,
+    "error_kN": 3.3361720852553844e-07,
+    "ok": true
+  },
+  "Q": {
+    "aplicada_kN": 25885.85882430345,
+    "reaccion_kN": 25885.858824395775,
+    "error_kN": 9.232462616637349e-08,
+    "ok": true
+  },
+  "EX": {
+    "aplicada_kN": 9483.151469968967,
+    "reaccion_kN": 9483.151474020438,
+    "error_kN": -4.051471478305757e-06,
+    "ok": true,
+    "esperado_kN": 9483.151469968967
+  },
+  "EY": {
+    "aplicada_kN": 7798.329327700949,
+    "reaccion_kN": 7798.329328187247,
+    "error_kN": -4.86297722090967e-07,
+    "ok": true,
+    "esperado_kN": 7798.329327700949
+  },
+  "derivas_NCh433": {
+    "limite_centro_masa": 0.002,
+    "exceso_punto": 0.001,
+    "edificios": {
+      "edificio_1": {
+        "EX": {
+          "centro_masa": 0.001096141545375377,
+          "entrepiso_bajo_z": 11.88,
+          "cualquier_punto": 0.001160143419443736,
+          "ok": true
+        },
+        "EY": {
+          "centro_masa": 0.0014576777979849302,
+          "entrepiso_bajo_z": 11.88,
+          "cualquier_punto": 0.0016027067976757269,
+          "ok": true
+        }
+      },
+      "edificio_2": {
+        "EX": {
+          "centro_masa": 0.0012679458824412918,
+          "entrepiso_bajo_z": 11.88,
+          "cualquier_punto": 0.0012944494504381694,
+          "ok": true
+        },
+        "EY": {
+          "centro_masa": 0.0013795671393908473,
+          "entrepiso_bajo_z": 15.84,
+          "cualquier_punto": 0.002018259312479745,
+          "ok": true
+        }
+      }
+    },
+    "ok": true
+  },
+  "superposicion": {
+    "combinaciones": [
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "max_err_global": 6.504706107079983e-09,
+    "valida": true
+  },
+  "M_phi": {
+    "mallas": {
+      "10": {
+        "Mmax_kN_m": 1279.395377424676,
+        "phi_Mmax_1_m": 0.0312,
+        "EI0_kN_m2": 212622.518920608
+      },
+      "20": {
+        "Mmax_kN_m": 1287.4073494097936,
+        "phi_Mmax_1_m": 0.0328,
+        "EI0_kN_m2": 213824.86281385098
+      },
+      "40": {
+        "Mmax_kN_m": 1287.2130813206477,
+        "phi_Mmax_1_m": 0.0324,
+        "EI0_kN_m2": 214144.8255083768
+      }
+    },
+    "dif_20_vs_40_pct": 0.01509214689976531,
+    "ok": true
+  },
+  "PM_columna": {
+    "columnas": 118,
+    "peor": {
+      "elementTag": "E1_287",
+      "combo": "C2",
+      "P_kN": 612.8759349906031,
+      "M_kN_m": 502.14168260570756,
+      "Mcap_kN_m": 1228.467390370335,
+      "C": 0.40875458847493823
+    },
+    "ok": true
+  },
+  "PM_muro": {
+    "muros": 91,
+    "muros_C_mayor_1": 0,
+    "peor": {
+      "muro": "MURO-066",
+      "curva": "W_600x2915_8f40",
+      "combo": "C2",
+      "P_kN": 1294.16,
+      "M_kN_m": 2415.82,
+      "Mcap_kN_m": 12011.389885998246,
+      "C": 0.20112743179006595
+    },
+    "ok": true,
+    "nota": "demanda del analisis OpenSees (columna ancha); curva de diseno de cada muro con su armadura (data/armaduras.json)"
+  },
+  "IDs_Unity": {
+    "elementos": 1023,
+    "ids_unicos": true,
+    "tags_unicos": true,
+    "fuerzas_faltantes": 0,
+    "nodos_invalidos": 0,
+    "casos": [
+      "G",
+      "Q",
+      "EX",
+      "EY",
+      "C1",
+      "C2",
+      "C3"
+    ],
+    "ok": true
+  }
+}

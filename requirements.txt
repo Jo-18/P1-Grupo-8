@@ -1,0 +1,9 @@
+# Python 3.12 (probado con 3.12.10). Instalar con: python -m pip install -r requirements.txt
+openseespy==3.8.0.0     # analisis (carga_viva_sismo.py, exportador, reanalisis desde Unity)
+numpy==2.5.2
+scipy==1.17.1            # solver de verificacion (replica_opensees.py), solo si falta OpenSees
+matplotlib==3.11.1      # graficos P-M y M-phi
+openpyxl==3.1.5         # exportar_excel_esfuerzos.py
+pillow==12.3.0          # generar_marcador_ar.py (marcador AR)
+ezdxf==1.4.4            # lectura de los planos DXF (generar_ejes_grilla.py); los DXF no estan en el repo
+pytest==9.1.1           # tests (python -m pytest)

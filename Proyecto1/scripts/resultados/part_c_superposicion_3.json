@@ -1,0 +1,113 @@
+{
+  "combinaciones": {
+    "S1 (C1)": {
+      "combinacion": "R = lambda_G G + lambda_Q Q + lambda_EX EX + lambda_EY EY",
+      "convergio_explicito": 0,
+      "errors": {
+        "disp_abs_m": [
+          1.7425297316187027e-15,
+          -6.396792817664476e-15,
+          -1.1882855810441129e-16
+        ],
+        "element_force_abs": [
+          0.0,
+          1.1102230246251565e-16,
+          -2.842170943040401e-14,
+          9.947598300641403e-14,
+          1.7053025658242404e-13,
+          2.6645352591003756e-16
+        ],
+        "max_disp_abs_m": 6.396792817664476e-15,
+        "max_element_force_abs": 1.7053025658242404e-13,
+        "max_reaction_abs_kN": 6.504706107079983e-09,
+        "reaction_abs_kN": [
+          5.788933776784688e-10,
+          6.504706107079983e-09,
+          3.4924596548080444e-10
+        ]
+      },
+      "lambdas": {
+        "EX": 0.3,
+        "EY": 0.2,
+        "G": 1.0,
+        "Q": 0.5
+      },
+      "max_err_global": 6.504706107079983e-09,
+      "superposicion_valida": true
+    },
+    "S2 (figura 4)": {
+      "combinacion": "R = lambda_G G + lambda_Q Q + lambda_EX EX + lambda_EY EY",
+      "convergio_explicito": 0,
+      "errors": {
+        "disp_abs_m": [
+          1.582067810090848e-15,
+          -9.141992718397773e-15,
+          -1.9092800257469733e-16
+        ],
+        "element_force_abs": [
+          0.0,
+          -1.1102230246251565e-16,
+          0.0,
+          0.0,
+          -2.2737367544323206e-13,
+          1.1102230246251565e-15
+        ],
+        "max_disp_abs_m": 9.141992718397773e-15,
+        "max_element_force_abs": 2.2737367544323206e-13,
+        "max_reaction_abs_kN": 9.300492820329964e-09,
+        "reaction_abs_kN": [
+          9.677023626863956e-10,
+          9.300492820329964e-09,
+          5.529727786779404e-10
+        ]
+      },
+      "lambdas": {
+        "EX": 1.0,
+        "EY": 0.3,
+        "G": 1.0,
+        "Q": 0.5
+      },
+      "max_err_global": 9.300492820329964e-09,
+      "superposicion_valida": true
+    },
+    "S3 (captura del grupo)": {
+      "combinacion": "R = lambda_G G + lambda_Q Q + lambda_EX EX + lambda_EY EY",
+      "convergio_explicito": 0,
+      "errors": {
+        "disp_abs_m": [
+          1.8318679906315083e-15,
+          -2.984418268070499e-14,
+          -1.1796119636642288e-16
+        ],
+        "element_force_abs": [
+          0.0,
+          1.7097434579227411e-15,
+          -2.842170943040401e-14,
+          0.0,
+          0.0,
+          8.881784197001252e-16
+        ],
+        "max_disp_abs_m": 2.984418268070499e-14,
+        "max_element_force_abs": 2.842170943040401e-14,
+        "max_reaction_abs_kN": 2.7687747206073254e-08,
+        "reaction_abs_kN": [
+          2.5902409106492996e-09,
+          2.7687747206073254e-08,
+          -3.245077095925808e-09
+        ]
+      },
+      "lambdas": {
+        "EX": 1.0,
+        "EY": 1.0,
+        "G": 0.6,
+        "Q": 1.0
+      },
+      "max_err_global": 2.7687747206073254e-08,
+      "superposicion_valida": true
+    }
+  },
+  "control_node": 492,
+  "element_id": 1,
+  "max_err_global": 2.7687747206073254e-08,
+  "superposicion_valida": true
+}

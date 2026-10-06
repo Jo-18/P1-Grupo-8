@@ -1,0 +1,59 @@
+{
+  "Ast_m2": 0.009852034561657593,
+  "Ast_mm2": 9852.034561657592,
+  "Po_kN": 18422.25648768687,
+  "b_m": 0.7,
+  "barArea_m2": 0.0006157521601035995,
+  "barArea_mm2": 615.7521601035995,
+  "barDiameter_mm": 28.0,
+  "capacityTitle": "Parte D - Capacidad HA COL70/70_FIBER",
+  "fc_MPa": 35.0,
+  "fy_MPa": 420.0,
+  "h_m": 0.7,
+  "interpretation": "Diagrama P-M COL70/70 (5 puntos manuales), fc=G35 (35 MPa). Regenerado por P1L4/exportar_resultados_unity.py.",
+  "pmPoints": [
+    {
+      "M_kN_m": 0.0,
+      "P_kN": 18422.25648768687,
+      "label": "A) Compresion pura",
+      "phiM_kN_m": 0.0,
+      "phiP_kN": 11974.466716996467,
+      "phi_1_m": 0.0
+    },
+    {
+      "M_kN_m": 2069.9088795149555,
+      "P_kN": 6999.936067512941,
+      "label": "B) Balance",
+      "phiM_kN_m": 1345.440771684721,
+      "phiP_kN": 4549.958443883412,
+      "phi_1_m": 0.0
+    },
+    {
+      "M_kN_m": 1877.246043518086,
+      "P_kN": 3456.6663844335403,
+      "label": "C) Ultima falla ductil",
+      "phiM_kN_m": 1689.5214391662776,
+      "phiP_kN": 3110.9997459901865,
+      "phi_1_m": 0.0
+    },
+    {
+      "M_kN_m": 1214.440374553368,
+      "P_kN": 4.547473508864641e-13,
+      "label": "D) Flexion pura",
+      "phiM_kN_m": 1092.9963370980313,
+      "phiP_kN": 4.092726157978177e-13,
+      "phi_1_m": 0.0
+    },
+    {
+      "M_kN_m": 0.0,
+      "P_kN": -4137.854515896189,
+      "label": "E) Traccion pura",
+      "phiM_kN_m": 0.0,
+      "phiP_kN": -3724.06906430657,
+      "phi_1_m": 0.0
+    }
+  ],
+  "rho_percent": 2.010619298297468,
+  "sectionId": "COL70/70_FIBER",
+  "steelBars": 16
+}
