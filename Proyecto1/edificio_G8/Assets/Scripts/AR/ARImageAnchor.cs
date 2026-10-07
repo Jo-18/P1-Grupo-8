@@ -23,6 +23,11 @@ public class ARImageAnchor : MonoBehaviour
     public Transform ContentRoot { get; private set; }
     public ARAnchor Anchor { get; private set; }
     public bool HasAnchor => Anchor != null;
+    public bool IsTracking => Anchor != null && Anchor.trackingState == TrackingState.Tracking;
+    public bool showLegacyDiagnostics;
+    public ARMarkerProfile HonorsProfile => HonorsConfiguration.H2 ? GetComponent<HonorsAnchorDriver>()?.ActiveProfile : null;
+    private int requestVersion;
+    private bool disposed;
     public event System.Action<Transform> Anchored;
 
     private ARTrackedImageManager images;
@@ -47,6 +52,8 @@ public class ARImageAnchor : MonoBehaviour
 
     private void Update()
     {
+        var honors=GetComponent<HonorsAnchorDriver>();honors?.Tick();
+        if(HonorsConfiguration.H2 && honors!=null && honors.enabled)return;
         if (images == null) return;
 
         marker = null;
@@ -75,13 +82,19 @@ public class ARImageAnchor : MonoBehaviour
     /// Crea (o recrea) el anchor en la pose actual de la imagen.
     public async void CreateAnchor()
     {
+        if(HonorsConfiguration.H2){GetComponent<HonorsAnchorDriver>()?.Reanchor();return;}
         if (marker == null || marker.trackingState != TrackingState.Tracking || anchors == null || creating) return;
         creating = true;
+        int version=++requestVersion;
         status = "creando anchor...";
         Pose pose = new Pose(marker.transform.position, marker.transform.rotation);
 
+        try {
         Result<ARAnchor> result = await anchors.TryAddAnchorAsync(pose);
-        creating = false;
+        if(disposed || this==null || version!=requestVersion || !isActiveAndEnabled) {
+            if(result.value!=null) UnityEngine.Object.Destroy(result.value.gameObject);
+            return;
+        }
         if (!result.status.IsSuccess() || result.value == null)
         {
             status = "no se pudo crear el anchor; reintentando";
@@ -102,7 +115,28 @@ public class ARImageAnchor : MonoBehaviour
         if (old != null) Destroy(old.gameObject);
 
         status = "anclado";
+        qaCount=qaNext=0;qaLogAt=Time.unscaledTime;
+        RegDeltaMm=RegAngleDeg=RegNoiseMm=0;
+        System.Array.Clear(qaPos,0,qaPos.Length);System.Array.Clear(qaAng,0,qaAng.Length);
         Anchored?.Invoke(ContentRoot);
+        } catch(System.Exception ex) {
+            if(!disposed && this!=null && version==requestVersion) {status="falló creación de anchor";Debug.LogException(ex,this);}
+        } finally { if(version==requestVersion)creating=false; }
+    }
+
+    private void OnDisable(){requestVersion++;creating=false;trackingSince=-1;}
+    public void AcceptHonorsAnchor(ARAnchor value,ARMarkerProfile profile,Vector2 size){
+        if(!HonorsConfiguration.H2||value==null)throw new System.InvalidOperationException("Honors anchor no aceptable");
+        var old=Anchor;Anchor=value;Anchor.name="Anchor_"+profile.markerId;
+        if(ContentRoot==null){ContentRoot=new GameObject("AR Content").transform;BuildMarkerGizmo(ContentRoot,size);}
+        ContentRoot.SetParent(Anchor.transform,false);ContentRoot.localPosition=Vector3.zero;ContentRoot.localRotation=Quaternion.identity;
+        Anchored?.Invoke(ContentRoot);if(old!=null&&old!=Anchor)Destroy(old.gameObject);
+    }
+    private void OnDestroy(){
+        disposed=true;requestVersion++;
+        if(ContentRoot!=null){foreach(var line in ContentRoot.GetComponentsInChildren<LineRenderer>(true))if(line.sharedMaterial!=null)Destroy(line.sharedMaterial);Destroy(ContentRoot.gameObject);ContentRoot=null;}
+        if(Anchor!=null){Destroy(Anchor.gameObject);Anchor=null;}
+        if(Instance==this)Instance=null;
     }
 
     // ------------------------------------------------------------------
@@ -179,6 +213,7 @@ public class ARImageAnchor : MonoBehaviour
 
     private void OnGUI()
     {
+        if(!showLegacyDiagnostics)return;
         UiTheme.ApplyScale();
         float w = 470f, x = UiTheme.SideM, y = UiTheme.SideM + 206f;
         UiTheme.GUIBox(new Rect(x, y, w, 194f), "AR · FASE 2 (imagen y anchor)");

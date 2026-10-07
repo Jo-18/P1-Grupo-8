@@ -153,7 +153,7 @@ public partial class StructureViewer
 
             if (nodes.TryGetValue(d.maestro, out Vector3 master))
             {
-                GameObject m = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                GameObject m = PrimitiveGeometry.CreateSphere();
                 m.name = $"Maestro_{tag}_{d.piso}_N{d.maestro}";
                 m.transform.SetParent(transform);
                 m.transform.position = master;

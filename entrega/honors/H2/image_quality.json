@@ -1,0 +1,16 @@
+{
+  "tool": "ARCore 6.6.2 arcoreimg eval-img",
+  "legacyScore": 100,
+  "horizontalScore": 100,
+  "images": [
+    {
+      "path": "Marcador_E1_243.png",
+      "sha256": "57312d5044b09350b071f459bba3baeddae2dcce6d1d3f929e5cbf450162071e"
+    },
+    {
+      "path": "Marcador_Honors_Plano.png",
+      "sha256": "5831e4765b6346bda9ccb63222f9a4ac775124b658771560e6c368551d026a2e"
+    }
+  ],
+  "physicalCalibrationVerified": false
+}

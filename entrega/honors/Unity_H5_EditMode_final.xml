@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="23" result="Passed" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 19:07:39Z" end-time="2026-10-06 19:07:43Z" duration="4,0131841">
+  <test-suite type="TestSuite" id="1000" name="P1_G8 Viewer" fullname="P1_G8 Viewer" runstate="Runnable" testcasecount="23" result="Passed" start-time="2026-10-06 19:07:39Z" end-time="2026-10-06 19:07:43Z" duration="4.013184" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1029" name="MCOC.EditModeTests.dll" fullname="H:/Proyecto1/edificio_G8/Library/ScriptAssemblies/MCOC.EditModeTests.dll" runstate="Runnable" testcasecount="23" result="Passed" start-time="2026-10-06 19:07:39Z" end-time="2026-10-06 19:07:43Z" duration="4.004159" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="2028" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="DataInitializationRegressionTests" fullname="DataInitializationRegressionTests" classname="DataInitializationRegressionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-06 19:07:39Z" end-time="2026-10-06 19:07:39Z" duration="0.377273" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1003" name="EmptyJsonIsNotAStructuralDataset" fullname="DataInitializationRegressionTests.EmptyJsonIsNotAStructuralDataset" methodname="EmptyJsonIsNotAStructuralDataset" classname="DataInitializationRegressionTests" runstate="Runnable" seed="934573586" result="Passed" start-time="2026-10-06 19:07:39Z" end-time="2026-10-06 19:07:39Z" duration="0.201422" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="NullDatasetFailsExplicitlyWithoutReplacingValidState" fullname="DataInitializationRegressionTests.NullDatasetFailsExplicitlyWithoutReplacingValidState" methodname="NullDatasetFailsExplicitlyWithoutReplacingValidState" classname="DataInitializationRegressionTests" runstate="Runnable" seed="137246615" result="Passed" start-time="2026-10-06 19:07:39Z" end-time="2026-10-06 19:07:39Z" duration="0.157505" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1004" name="HonorsCapacityTests" fullname="HonorsCapacityTests" classname="HonorsCapacityTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-06 19:07:39Z" end-time="2026-10-06 19:07:40Z" duration="0.442175" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1006" name="CertifiedComparisonContractCurveAndDemand" fullname="HonorsCapacityTests.CertifiedComparisonContractCurveAndDemand" methodname="CertifiedComparisonContractCurveAndDemand" classname="HonorsCapacityTests" runstate="Runnable" seed="1447172327" result="Passed" start-time="2026-10-06 19:07:39Z" end-time="2026-10-06 19:07:40Z" duration="0.438822" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1005" name="FlagsDefaultOffAndSaveForbidden" fullname="HonorsCapacityTests.FlagsDefaultOffAndSaveForbidden" methodname="FlagsDefaultOffAndSaveForbidden" classname="HonorsCapacityTests" runstate="Runnable" seed="574289936" result="Passed" start-time="2026-10-06 19:07:40Z" end-time="2026-10-06 19:07:40Z" duration="0.002334" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1007" name="StructuralDomainTests" fullname="StructuralDomainTests" classname="StructuralDomainTests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-10-06 19:07:40Z" end-time="2026-10-06 19:07:43Z" duration="3.183197" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1016" name="CalibratedColumnPoints" fullname="StructuralDomainTests.CalibratedColumnPoints" methodname="CalibratedColumnPoints" classname="StructuralDomainTests" runstate="Runnable" seed="1204743381" result="Passed" start-time="2026-10-06 19:07:40Z" end-time="2026-10-06 19:07:40Z" duration="0.148610" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1025" name="CapacityAssociationAndMissing" fullname="StructuralDomainTests.CapacityAssociationAndMissing" methodname="CapacityAssociationAndMissing" classname="StructuralDomainTests" runstate="Runnable" seed="1706992798" result="Passed" start-time="2026-10-06 19:07:40Z" end-time="2026-10-06 19:07:40Z" duration="0.138602" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1027" name="CorruptAppliedLoadAndVisualMappingAreInvalid" fullname="StructuralDomainTests.CorruptAppliedLoadAndVisualMappingAreInvalid" methodname="CorruptAppliedLoadAndVisualMappingAreInvalid" classname="StructuralDomainTests" runstate="Runnable" seed="110835366" result="Passed" start-time="2026-10-06 19:07:40Z" end-time="2026-10-06 19:07:40Z" duration="0.150532" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1011" name="InvalidDuplicateAndFailedCase" fullname="StructuralDomainTests.InvalidDuplicateAndFailedCase" methodname="InvalidDuplicateAndFailedCase" classname="StructuralDomainTests" runstate="Runnable" seed="364105467" result="Passed" start-time="2026-10-06 19:07:40Z" end-time="2026-10-06 19:07:40Z" duration="0.415649" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1026" name="LegacyMissingCannotBePhysicalZero" fullname="StructuralDomainTests.LegacyMissingCannotBePhysicalZero" methodname="LegacyMissingCannotBePhysicalZero" classname="StructuralDomainTests" runstate="Runnable" seed="911553533" result="Passed" start-time="2026-10-06 19:07:40Z" end-time="2026-10-06 19:07:41Z" duration="0.146518" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1009" name="MissingAndPartialAreNotZero" fullname="StructuralDomainTests.MissingAndPartialAreNotZero" methodname="MissingAndPartialAreNotZero" classname="StructuralDomainTests" runstate="Runnable" seed="552999247" result="Passed" start-time="2026-10-06 19:07:41Z" end-time="2026-10-06 19:07:41Z" duration="0.273215" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="RealDatasetAndWallMapping" fullname="StructuralDomainTests.RealDatasetAndWallMapping" methodname="RealDatasetAndWallMapping" classname="StructuralDomainTests" runstate="Runnable" seed="171071824" result="Passed" start-time="2026-10-06 19:07:41Z" end-time="2026-10-06 19:07:41Z" duration="0.135615" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1024" name="SixDiagramsExtremaAndFloatDisplay" fullname="StructuralDomainTests.SixDiagramsExtremaAndFloatDisplay" methodname="SixDiagramsExtremaAndFloatDisplay" classname="StructuralDomainTests" runstate="Runnable" seed="151668941" result="Passed" start-time="2026-10-06 19:07:41Z" end-time="2026-10-06 19:07:41Z" duration="0.136508" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1015" name="TransformRoundTripAndAnchorComposition" fullname="StructuralDomainTests.TransformRoundTripAndAnchorComposition" classname="StructuralDomainTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-06 19:07:41Z" end-time="2026-10-06 19:07:42Z" duration="0.404174" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1012" name="TransformRoundTripAndAnchorComposition(True,1.0f)" fullname="StructuralDomainTests.TransformRoundTripAndAnchorComposition(True,1.0f)" methodname="TransformRoundTripAndAnchorComposition" classname="StructuralDomainTests" runstate="Runnable" seed="778693419" result="Passed" start-time="2026-10-06 19:07:41Z" end-time="2026-10-06 19:07:41Z" duration="0.136871" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1013" name="TransformRoundTripAndAnchorComposition(False,0.01f)" fullname="StructuralDomainTests.TransformRoundTripAndAnchorComposition(False,0.01f)" methodname="TransformRoundTripAndAnchorComposition" classname="StructuralDomainTests" runstate="Runnable" seed="1180115797" result="Passed" start-time="2026-10-06 19:07:41Z" end-time="2026-10-06 19:07:41Z" duration="0.133706" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1014" name="TransformRoundTripAndAnchorComposition(False,0.0021172f)" fullname="StructuralDomainTests.TransformRoundTripAndAnchorComposition(False,0.0021172f)" methodname="TransformRoundTripAndAnchorComposition" classname="StructuralDomainTests" runstate="Runnable" seed="840654151" result="Passed" start-time="2026-10-06 19:07:41Z" end-time="2026-10-06 19:07:42Z" duration="0.132404" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1010" name="TrueZeroIsAvailable" fullname="StructuralDomainTests.TrueZeroIsAvailable" methodname="TrueZeroIsAvailable" classname="StructuralDomainTests" runstate="Runnable" seed="399669894" result="Passed" start-time="2026-10-06 19:07:42Z" end-time="2026-10-06 19:07:42Z" duration="0.280414" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1023" name="UniformLoadAxesAndEnds" fullname="StructuralDomainTests.UniformLoadAxesAndEnds" classname="StructuralDomainTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-06 19:07:42Z" end-time="2026-10-06 19:07:43Z" duration="0.812804" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1017" name="UniformLoadAxesAndEnds(1,0,0)" fullname="StructuralDomainTests.UniformLoadAxesAndEnds(1,0,0)" methodname="UniformLoadAxesAndEnds" classname="StructuralDomainTests" runstate="Runnable" seed="1817481929" result="Passed" start-time="2026-10-06 19:07:42Z" end-time="2026-10-06 19:07:42Z" duration="0.138382" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1018" name="UniformLoadAxesAndEnds(-1,0,0)" fullname="StructuralDomainTests.UniformLoadAxesAndEnds(-1,0,0)" methodname="UniformLoadAxesAndEnds" classname="StructuralDomainTests" runstate="Runnable" seed="254884168" result="Passed" start-time="2026-10-06 19:07:42Z" end-time="2026-10-06 19:07:42Z" duration="0.136094" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1019" name="UniformLoadAxesAndEnds(0,1,0)" fullname="StructuralDomainTests.UniformLoadAxesAndEnds(0,1,0)" methodname="UniformLoadAxesAndEnds" classname="StructuralDomainTests" runstate="Runnable" seed="2066371711" result="Passed" start-time="2026-10-06 19:07:42Z" end-time="2026-10-06 19:07:42Z" duration="0.134794" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1020" name="UniformLoadAxesAndEnds(0,-1,0)" fullname="StructuralDomainTests.UniformLoadAxesAndEnds(0,-1,0)" methodname="UniformLoadAxesAndEnds" classname="StructuralDomainTests" runstate="Runnable" seed="1046896511" result="Passed" start-time="2026-10-06 19:07:42Z" end-time="2026-10-06 19:07:42Z" duration="0.137124" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1021" name="UniformLoadAxesAndEnds(0,0,1)" fullname="StructuralDomainTests.UniformLoadAxesAndEnds(0,0,1)" methodname="UniformLoadAxesAndEnds" classname="StructuralDomainTests" runstate="Runnable" seed="727029167" result="Passed" start-time="2026-10-06 19:07:42Z" end-time="2026-10-06 19:07:42Z" duration="0.131711" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1022" name="UniformLoadAxesAndEnds(1,2,3)" fullname="StructuralDomainTests.UniformLoadAxesAndEnds(1,2,3)" methodname="UniformLoadAxesAndEnds" classname="StructuralDomainTests" runstate="Runnable" seed="1344332226" result="Passed" start-time="2026-10-06 19:07:42Z" end-time="2026-10-06 19:07:43Z" duration="0.133323" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1028" name="WallDemandsCoverAllExportedCases" fullname="StructuralDomainTests.WallDemandsCoverAllExportedCases" methodname="WallDemandsCoverAllExportedCases" classname="StructuralDomainTests" runstate="Runnable" seed="1829299572" result="Passed" start-time="2026-10-06 19:07:43Z" end-time="2026-10-06 19:07:43Z" duration="0.136496" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: H:\entrega\honors\Unity_H5_EditMode_final.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

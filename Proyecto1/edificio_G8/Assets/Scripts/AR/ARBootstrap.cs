@@ -13,6 +13,7 @@ using UnityEngine.XR.ARSubsystems;
 /// </summary>
 public class ARBootstrap : MonoBehaviour
 {
+    public bool showLegacyDiagnostics;
     private string availability = "verificando...";
     private ARRaycastManager raycaster;
     private ARPlaneManager planes;
@@ -64,7 +65,9 @@ public class ARBootstrap : MonoBehaviour
     private void OnDestroy()
     {
         BoostImu(false);
+        if(cameraManager!=null)cameraManager.frameReceived-=OnCameraFrame;
     }
+    private void OnCameraFrame(ARCameraFrameEventArgs args){cameraFrames++;}
 
     private IEnumerator Start()
     {
@@ -73,7 +76,7 @@ public class ARBootstrap : MonoBehaviour
         planes = FindAnyObjectByType<ARPlaneManager>();
         anchors = FindAnyObjectByType<ARAnchorManager>();
         cameraManager = FindAnyObjectByType<ARCameraManager>();
-        if (cameraManager != null) cameraManager.frameReceived += _ => cameraFrames++;
+        if (cameraManager != null) cameraManager.frameReceived += OnCameraFrame;
         frameWindowStart = Time.unscaledTime;
 
         if (ARSession.state == ARSessionState.None || ARSession.state == ARSessionState.CheckingAvailability)
@@ -93,9 +96,9 @@ public class ARBootstrap : MonoBehaviour
         }
 
         // toque sobre un plano detectado -> cubo anclado al plano
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == UnityEngine.TouchPhase.Began && raycaster != null)
+        if(!showLegacyDiagnostics)return;
+        if (raycaster != null && ARPointerInput.TryPress(out Vector2 pos))
         {
-            Vector2 pos = Input.GetTouch(0).position;
             bool anchored = ARImageAnchor.Instance != null && ARImageAnchor.Instance.HasAnchor;
             bool overPanels = anchored || pos.x / UiTheme.Scale < UiTheme.SideM + 480f;
             if (!overPanels && raycaster.Raycast(pos, Hits, TrackableType.PlaneWithinPolygon))
@@ -131,6 +134,7 @@ public class ARBootstrap : MonoBehaviour
 
     private void OnGUI()
     {
+        if(!showLegacyDiagnostics)return;
         UiTheme.ApplyScale();
         float w = 470f;
         float x = UiTheme.SideM, y = UiTheme.SideM;

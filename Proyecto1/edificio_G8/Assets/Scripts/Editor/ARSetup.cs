@@ -36,12 +36,12 @@ public static class ARSetup
     /// viewer normal (no inicia la sesion AR), true para el APK de AR.
     public static void ConfigureXR(bool initOnStart)
     {
-        if (!EditorBuildSettings.TryGetConfigObject(XRGeneralSettings.k_SettingsKey, out XRGeneralSettingsPerBuildTarget perTarget) || perTarget == null)
+        if (!EditorBuildSettings.TryGetConfigObject(XRGeneralSettings.settingsKey, out XRGeneralSettingsPerBuildTarget perTarget) || perTarget == null)
         {
             Directory.CreateDirectory("Assets/XR");
             perTarget = ScriptableObject.CreateInstance<XRGeneralSettingsPerBuildTarget>();
             AssetDatabase.CreateAsset(perTarget, XRSettingsPath);
-            EditorBuildSettings.AddConfigObject(XRGeneralSettings.k_SettingsKey, perTarget, true);
+            EditorBuildSettings.AddConfigObject(XRGeneralSettings.settingsKey, perTarget, true);
         }
         if (!perTarget.HasManagerSettingsForBuildTarget(BuildTargetGroup.Android))
         {
@@ -116,9 +116,10 @@ public static class ARSetup
         var go = new GameObject("ARPlaneVisual");
         go.AddComponent<ARPlane>();
         go.AddComponent<MeshFilter>();
-        go.AddComponent<MeshRenderer>().sharedMaterial = mat;
+        var renderer=go.AddComponent<MeshRenderer>();renderer.sharedMaterial = mat;renderer.enabled=false;
         go.AddComponent<MeshCollider>();
         go.AddComponent<ARPlaneMeshVisualizer>();
+        go.AddComponent<ARPlaneDebugVisibility>();
         var prefab = PrefabUtility.SaveAsPrefabAsset(go, prefabPath);
         Object.DestroyImmediate(go);
         return prefab;
@@ -182,6 +183,10 @@ public static class ARSetup
 
     public static void CreateARScene()
     {
+        var tags=new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
+        var layer=tags.FindProperty("layers").GetArrayElementAtIndex(ARStructure.StructuralLayer);
+        if(!string.IsNullOrEmpty(layer.stringValue)&&layer.stringValue!="MCOCStructure")throw new System.InvalidOperationException("La capa 8 está ocupada; revisar antes de generar escena AR");
+        layer.stringValue="MCOCStructure";tags.ApplyModifiedProperties();
         var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
         var light = new GameObject("Directional Light").AddComponent<Light>();
@@ -216,8 +221,11 @@ public static class ARSetup
         var app = new GameObject("AR App");
         app.AddComponent<ARBootstrap>();
         app.AddComponent<ARImageAnchor>();
-        app.AddComponent<ARStructure>();
-        app.AddComponent<ARResultsPanel>();
+        app.AddComponent<ARStructure>().mode=ARStructure.Mode.Maqueta100;
+        app.AddComponent<StructuralSelectionController>();
+        app.AddComponent<ARInspectorUI>();
+        // Legacy inspector remains available for comparison, disabled by default.
+        app.AddComponent<ARResultsPanel>().enabled=false;
 
         Directory.CreateDirectory(Path.GetDirectoryName(ScenePath));
         EditorSceneManager.SaveScene(scene, ScenePath);

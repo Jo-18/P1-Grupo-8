@@ -18,6 +18,7 @@ Requiere: openpyxl (pip install openpyxl).
 import argparse
 import json
 import math
+import hashlib
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
@@ -140,7 +141,7 @@ def main():
             columns.append(f"{comp} (i)")
         for comp, _, j in FORCE_NAMES:
             columns.append(f"{comp} (j)")
-        columns += ["P_compr kN", "M_dem kN*m", "M_cap kN*m", "C = M/Mcap"]
+        columns += ["P_compr kN", "M_dem kN*m", "phiMn_at_Pu kN*m", "DCR_PM exportado"]
         ws2.append(columns)
         for idx, cname in enumerate(columns, start=1):
             ws2.cell(row=1, column=idx).font = header_font
@@ -155,24 +156,29 @@ def main():
                 continue
             row = [eid, el.get("elementTag", ""), el.get("type", ""),
                    el.get("sectionId") or el.get("seccion", ""), el.get("sourceBuilding", "")]
-            p_comp = max(-f[0], -f[6], 0.0)
-            m_dem = math.sqrt(f[4] ** 2 + f[5] ** 2)
+            from export_contract import pm_demand
+            p_comp, m_dem = pm_demand(f)
+            if el.get('type')=='muro':
+                k=4 if el['wallInPlaneAxis']=='X' else 5
+                m_dem=max(abs(f[k]),abs(f[k+6]))
             m_cap = None
             ratio = ""
             sec_id = el.get("sectionId") or el.get("seccion", "")
             curve = None
             if el.get("type") == "columna":
-                curve = pm_capacity_for(data, sec_id) or pm_capacity_for(data, sec_id + "_FIBER")
-            if curve:
-                m_cap = moment_capacity_at_p(curve, p_comp)
-            if m_cap:
-                ratio = round(m_dem / m_cap, 3)
+                curve = pm_capacity_for(data, el.get('pmCurveId') or sec_id) or pm_capacity_for(data, sec_id + "_FIBER")
+            # Same authoritative, design-capacity result shown by the AR inspector.
+            # Do not recalculate DCR against a different/rounded nominal curve.
+            if el.get('type')=='columna':
+                cap_row=next((r for r in (el.get('capacidad') or {}).get('porCombo',[]) if r['combo']==combo),None)
+                if cap_row and 'DCR_PM' in cap_row:
+                    m_cap=cap_row['phiMn_at_Pu'];ratio=cap_row['DCR_PM']
             for comp, i, j in FORCE_NAMES:
                 row.append(round(f[i], 3))
             for comp, i, j in FORCE_NAMES:
                 row.append(round(f[j], 3))
             row += [round(p_comp, 2), round(m_dem, 2),
-                    round(m_cap, 2) if m_cap else None, ratio]
+                    round(m_cap, 2) if m_cap is not None else None, ratio]
             rows.append(row)
         for row in rows:
             ws2.append(row)
@@ -188,24 +194,33 @@ def main():
         for idx in range(1, len(columns) + 1):
             letter = get_column_letter(idx)
             ws2.column_dimensions[letter].width = 13 if idx <= 5 else 11
+        for letter,width in [('R',19),('S',19),('T',25),('U',24)]:ws2.column_dimensions[letter].width=width
+        for cell in ws2[1]:cell.alignment=Alignment(horizontal='center',vertical='center',wrap_text=True)
+        ws2.row_dimensions[1].height=32
+        ws2.freeze_panes='F2'
 
     # ── Hoja Muros ──────────────────────────────────────────────────
     ws3 = wb.create_sheet("Muros")
     wall_cols = ["ID", "Tag", "NodoI", "NodoJ", "t m", "L m", "Bottom", "Top",
-                 "Combo", "P kN", "M kN*m", "V kN", "Curva P-M"]
+                 "Combo", "P kN", "M kN*m", "V kN", "Curva P-M", "eleTag analitico", "Tag analitico"]
     ws3.append(wall_cols)
     for idx, cname in enumerate(wall_cols, start=1):
         ws3.cell(row=1, column=idx).font = header_font
         ws3.cell(row=1, column=idx).fill = header_fill
+    registries={w['index']:w for w in p1.get('wallRegistry',[])}
+    mappings={w['visualWallId']:w for w in p1.get('wallMappings',[])}
     for w in data.get("walls", []):
-        for d in w.get("demands", []):
+        registry=registries.get(w['id'],{});mapping=mappings.get(w['id'],{})
+        for d in registry.get("demands", []):
             ws3.append([
                 w.get("id", ""), w.get("elementTag", ""), w.get("nodeI", ""),
                 w.get("nodeJ", ""), w.get("grosor", ""), w.get("longitud", ""),
                 w.get("bottom", ""), w.get("top", ""),
                 d.get("combo", ""), d.get("P_kN", ""), d.get("M_kN_m", ""),
-                d.get("V_kN", ""), w.get("pmSectionId", ""),
+                d.get("V_kN", ""), registry.get("pmSectionId", ""),mapping.get('analyticalId',''),mapping.get('analyticalTag',''),
             ])
+    for letter,width in [('B',22),('G',20),('H',20),('M',40),('N',22),('O',24)]:ws3.column_dimensions[letter].width=width
+    ws3.freeze_panes='C2'
 
     # ── Hoja Resumen ────────────────────────────────────────────────
     ws4 = wb.create_sheet("Resumen")
@@ -226,9 +241,21 @@ def main():
         ("Combinaciones", ", ".join(combos)),
         ("Registros fuerza", sum(len(v) for v in forces.values())),
         ("JSON fuente", str(args.json)),
+        ("SHA256 JSON",hashlib.sha256(args.json.read_bytes()).hexdigest()),
+        ("Schema",data.get('schemaVersion','')),
+        ("Motor",data.get('corrida',{}).get('motor','')),
+        ("Fuerzas I/J",'Acciones raw del solver; sección I=-fI, J=+fJ; ejes locales'),
+        ("Demanda P",'Compresión positiva: (Ni-Nj)/2 = -Ncentro'),
+        ("Demanda M",'Columnas: máximo de resultantes en extremos; muros: máximo en su plano'),
+        ("DCR_PM",'capacidad.porCombo exportado por capacidad_ha.py; vacío significa no disponible'),
+        ("Area/carga tributaria",'Metadata legacy; no sustituye cargas de análisis activo'),
     ]
     for k, v in resumen:
         ws4.append([k, v])
+    ws4.column_dimensions['A'].width=30;ws4.column_dimensions['B'].width=110
+    for row in ws4.iter_rows(min_row=2):
+        row[1].alignment=Alignment(wrap_text=True,vertical='center')
+        if isinstance(row[1].value,str) and len(row[1].value)>100:ws4.row_dimensions[row[1].row].height=32
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     wb.save(args.out)

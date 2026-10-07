@@ -1,0 +1,315 @@
+{
+    "run": "2c907724e1564dae8d7dfc1ea455e6ea",
+    "kind": "QA_RELATIVA_NO_ERROR_ABSOLUTO",
+    "physical": "PENDIENTE",
+    "positionMm": {
+        "count": 0,
+        "median": 0.0,
+        "rms": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+    },
+    "angleDeg": {
+        "count": 0,
+        "median": 0.0,
+        "rms": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+    },
+    "samples": [
+        {
+            "timestamp": 11.093171403911565,
+            "run": "2c907724e1564dae8d7dfc1ea455e6ea",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "state_Searching",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "Missing",
+            "logicalState": "Searching",
+            "request": 3,
+            "windowCount": 1,
+            "windowSeconds": 0.0,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        },
+        {
+            "timestamp": 11.093343203911566,
+            "run": "2c907724e1564dae8d7dfc1ea455e6ea",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "sample",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "Missing",
+            "logicalState": "Searching",
+            "request": 3,
+            "windowCount": 2,
+            "windowSeconds": 0.00017179999849759042,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        },
+        {
+            "timestamp": 11.094557803911567,
+            "run": "2c907724e1564dae8d7dfc1ea455e6ea",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "accepted",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "None",
+            "logicalState": "Anchored",
+            "request": 5,
+            "windowCount": 3,
+            "windowSeconds": 0.001386399962939322,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        },
+        {
+            "timestamp": 11.095360403911567,
+            "run": "2c907724e1564dae8d7dfc1ea455e6ea",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "state_Limited",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "None",
+            "logicalState": "Limited",
+            "request": 5,
+            "windowCount": 4,
+            "windowSeconds": 0.002188999904319644,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        },
+        {
+            "timestamp": 11.095959803911565,
+            "run": "2c907724e1564dae8d7dfc1ea455e6ea",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "failed",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "None",
+            "logicalState": "Error",
+            "request": 8,
+            "windowCount": 5,
+            "windowSeconds": 0.0027884000446647406,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        },
+        {
+            "timestamp": 11.096979103911568,
+            "run": "2c907724e1564dae8d7dfc1ea455e6ea",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "accepted",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "None",
+            "logicalState": "Anchored",
+            "request": 9,
+            "windowCount": 6,
+            "windowSeconds": 0.0038077000062912703,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        },
+        {
+            "timestamp": 11.097666703911568,
+            "run": "2c907724e1564dae8d7dfc1ea455e6ea",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "disable",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "None",
+            "logicalState": "Suspended",
+            "request": 10,
+            "windowCount": 7,
+            "windowSeconds": 0.0044952998869121075,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        }
+    ]
+}

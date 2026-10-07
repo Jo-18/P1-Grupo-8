@@ -170,6 +170,7 @@ public class AnalysisSession
             return false;
         }
         string dir = Application.temporaryCachePath;
+        if(HonorsConfiguration.H5){dir=Path.Combine(HonorsPaths.Evidence,"reanálisis_UI",System.Guid.NewGuid().ToString("N"));Directory.CreateDirectory(dir);}
         string combosPath = Path.Combine(dir, "combos_unity.json");
         string modsPath = Path.Combine(dir, "mods_unity.json");
         File.WriteAllText(combosPath, CombosJson("Combinaciones editadas en Unity (escenario de reanalisis)."), NoBom);
@@ -183,7 +184,7 @@ public class AnalysisSession
             File.WriteAllText(armPath, ArmJson(), NoBom);
             args += " --armaduras \"" + armPath + "\"";
         }
-        if (!job.Start("exportar_resultados_unity.py", args, "escenario_unity.json"))
+        if (!job.Start("exportar_resultados_unity.py", args, HonorsConfiguration.H5 ? Path.Combine(dir,"escenario_unity.json") : "escenario_unity.json"))
         {
             Message = job.Error;
             return false;
@@ -212,6 +213,7 @@ public class AnalysisSession
     /// Copia el escenario al proyecto y guarda combinaciones y parametros.
     public bool SaveAsCurrent(StructureViewer viewer)
     {
+        if(HonorsConfiguration.H5){Message="Honors no permite guardar como vigente: base protegida. Descartar/restaurar.";return false;}
         string root = PythonJob.ProjectRoot;
         string target = StructureViewer.ProjectJsonPath;
         if (!ScenarioLoaded || scenarioPath == null || !File.Exists(scenarioPath) || root == null || target == null)

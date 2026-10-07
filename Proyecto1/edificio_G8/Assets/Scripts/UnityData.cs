@@ -4,6 +4,7 @@ using UnityEngine;
 public static class UnityData
 {
     public static StructureData Structure;
+    public static StructuralRepository Repository { get; private set; }
     public static string ActiveCombo;
 
     public static Dictionary<string, List<DisplacementRecord>> DisplacementsByCombo;
@@ -16,12 +17,10 @@ public static class UnityData
     public static void LoadData(StructureData data)
     {
         if (data == null)
-        {
-            Debug.LogError("[UnityData] LoadData recibio data == null; se conserva el modelo anterior.");
-            return;
-        }
-
+            throw new System.ArgumentNullException(nameof(data), "El JSON estructural debe deserializarse antes de publicar el dataset.");
         Structure = data;
+        Repository = new StructuralRepository(data);
+        forceIndex.Clear();
         ActiveCombo = null;
 
         if (data.p1l4 == null)
@@ -103,11 +102,20 @@ public static class UnityData
     {
         if (string.IsNullOrEmpty(combo) || DisplacementsByCombo == null || !DisplacementsByCombo.TryGetValue(combo, out var list) || list == null)
         {
-            return Vector3.zero;
+            return new Vector3(float.NaN,float.NaN,float.NaN);
         }
 
         DisplacementRecord d = GetDisplacementRecord(combo, nodeId);
-        return d != null ? new Vector3(d.ux, d.uz, d.uy) : Vector3.zero;
+        return d != null ? new Vector3(d.ux, d.uz, d.uy) : new Vector3(float.NaN,float.NaN,float.NaN);
+    }
+    /// Availability-aware API used by the AR inspector; vector uses original global axes.
+    public static bool TryGetNodeDisplacement(string combo,int nodeId,out DisplacementRecord record,out ResultAvailability status) {
+        record=null;status=ResultAvailability.Missing;
+        return Repository!=null && Repository.TryDisplacement(nodeId,combo,out record,out status);
+    }
+    public static bool TryGetElementForces(string combo,int elementId,out float[] f,out ResultAvailability status) {
+        f=null;status=ResultAvailability.Missing;
+        return Repository!=null && Repository.TryForces(elementId,combo,out f,out status);
     }
 
     /// Elementos que solo existen para el analisis: columna ancha de un muro y brazos rigidos.
@@ -892,6 +900,15 @@ public static class UnityData
     /// Demanda P-M de un elemento: P = compresion (+), M = max |M| resultante en I, centro y J.
     public static Vector2 PMDemand(ElementData e, string combo = null)
     {
+        if(e==null)return new Vector2(float.NaN,float.NaN);
+        var complete=GetElementForces(combo??ActiveCombo,e.id);
+        if(complete==null||complete.Length!=12)return new Vector2(float.NaN,float.NaN);
+        foreach(float v in complete)if(!StructuralRepository.Finite(v))return new Vector2(float.NaN,float.NaN);
+        // Column demand matches capacidad_ha.py and the new Excel contract.
+        if(e!=null && e.type=="columna") {
+            var raw=GetElementForces(combo??ActiveCombo,e.id);
+            if(raw!=null && raw.Length==12)return new Vector2(.5f*(raw[0]-raw[6]),Mathf.Max(new Vector2(raw[4],raw[5]).magnitude,new Vector2(raw[10],raw[11]).magnitude));
+        }
         float pComp = 0f, mMax = 0f;
         bool any = false;
         foreach (float t in new[] { 0f, 0.5f, 1f })
@@ -902,7 +919,7 @@ public static class UnityData
             if (t == 0.5f) pComp = -r[0];
             mMax = Mathf.Max(mMax, Mathf.Sqrt(r[4] * r[4] + r[5] * r[5]));
         }
-        return any ? new Vector2(pComp, mMax) : Vector2.zero;
+        return any ? new Vector2(pComp, mMax) : new Vector2(float.NaN,float.NaN);
     }
 
     public static ComboInfo GetComboInfo(string combo)

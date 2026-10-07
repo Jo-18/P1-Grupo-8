@@ -76,9 +76,8 @@ public class PMPanel : MonoBehaviour
         for (int i = 0; i < combos.Length; i++)
         {
             float[] forces = UnityData.GetElementForces(combos[i], element.data.id);
-            if (forces == null || forces.Length < 6)
+            if (forces == null || forces.Length !=12)
             {
-                demands[i] = new DemandRecord { combo = combos[i], P_kN = 0f, M_kN_m = 0f, note = "sin fuerzas" };
                 continue;
             }
 
@@ -230,7 +229,7 @@ public class PMPanel : MonoBehaviour
         float mMin = 0f;
 
         Vector2 selectedDemand = GetSelectedDemandPoint();
-        if (selectedDemand != Vector2.zero)
+        if (StructuralRepository.Finite(selectedDemand.x)&&StructuralRepository.Finite(selectedDemand.y))
         {
             pMax = Mathf.Max(pMax, selectedDemand.x * 1.15f);
             pMin = Mathf.Min(pMin, selectedDemand.x * 1.15f);
@@ -350,7 +349,7 @@ public class PMPanel : MonoBehaviour
         }
 
         DemandRecord columnDemand = GetActiveDemandRecord();
-        return columnDemand == null ? Vector2.zero : new Vector2(columnDemand.P_kN, columnDemand.M_kN_m);
+        return columnDemand == null ? new Vector2(float.NaN,float.NaN) : new Vector2(columnDemand.P_kN, columnDemand.M_kN_m);
     }
 
     private DemandRecord GetActiveDemandRecord()
@@ -368,7 +367,7 @@ public class PMPanel : MonoBehaviour
                 return demand;
             }
         }
-        return currentDemands[0];
+        return null;
     }
 
     private void DrawDemandLabel(float dx, float dy, string combo, float p, float m, bool prominent)
@@ -452,6 +451,7 @@ public class PMPanel : MonoBehaviour
             if (sel.pmSectionId != currentCurve.sectionId) continue;
 
             Vector2 pt = sel.GetDemandPoint();
+            if(!StructuralRepository.Finite(pt.x)||!StructuralRepository.Finite(pt.y))continue;
             float p = pt.x;
             float m = pt.y;
             if (p <= pMin || p >= pMax || m <= mMin || m >= mMax) continue;

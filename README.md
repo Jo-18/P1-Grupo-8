@@ -51,6 +51,7 @@ python -X utf8 Proyecto1\scripts\exportar_resultados_unity.py
 | `python -X utf8 Proyecto1\scripts\sensibilidad_rigidez.py` | `Proyecto1/resultados/sensibilidad_rigidez.json`, que compara sección bruta y rigidez fisurada |
 | `python -X utf8 Proyecto1\scripts\figuras_informe.py` | figuras del informe en `reports/img/`. No necesita OpenSees |
 | `python -X utf8 Proyecto1\scripts\actualizar_armadura.py` | recalcula capacidad, DCR y curvas P-M en el JSON de Unity después de editar `data/armaduras.json`, sin OpenSees (la armadura no cambia las fuerzas) |
+| `python -X utf8 Proyecto1\scripts\generar_arquitectura.py` | arquitectura **solo visual** del viewer (fachadas, escaleras, plaza de la entrada en el piso 2, sala y cafetería) en `Assets/Resources/arquitectura_visual.json`. Revisa que nada choque con la estructura. `--preview carpeta` guarda vistas previas. No toca el modelo ni los resultados |
 | `python -X utf8 Proyecto1\scripts\ajustar_modelo_planos.py` | reconstruye el modelo desde el respaldo con los 16 ajustes a planos y vuelve a exportar. `--dry-run` solo muestra el resumen |
 
 Los ejes de grilla se leen de los DXF con `generar_ejes_grilla.py`. Los planos no están en el repositorio: el script los busca en la carpeta `../Planos_1_dxf`.
@@ -58,7 +59,7 @@ Los ejes de grilla se leen de los DXF con `generar_ejes_grilla.py`. Los planos n
 ## 3. Ejecutar los tests
 
 ```bat
-python -m pytest                  :: 45 casos, unos 2 minutos
+python -m pytest                  :: 51 casos (51 passed con OpenSees real el 7 de octubre de 2026)
 python -m pytest -m "not lento"   :: sin las corridas completas del exportador, unos 10 s
 ```
 
@@ -70,9 +71,28 @@ La suite está en `tests/`. Verifica el modelo, las cargas, la capacidad, el JSO
 2. Cargar la escena `Assets/Scenes/StructureViewerScene` y presionar Play.
 3. Para recalcular (*Reanalizar*, *Quitar elemento*, cambios de sección y armadura), ejecutar una vez `instalar_dependencias.bat`. Instala openseespy en Python 3.12 (sección 4.2).
 
+**Cómo se ve.** Capturas del viewer en Unity con las tres capas de arquitectura activas (VISTA → *Arquitectura*). La estructura del modelo se ve en verde a través del vidrio. La arquitectura es solo visual y no cambia ningún valor.
+
+![Fachada sur en Unity](reports/img/unity_arquitectura_sur.png)
+
+*Fachada sur. La escalera naranja baja desde el piso 4, pasa sobre la sala de Métodos Computacionales y llega a la plataforma del piso 2. Desde ahí, la escalinata baja a la terraza de la cafetería, que tiene mesas con quitasol. La cafetería se ve bajo la sala.*
+
+![Entrada este en Unity](reports/img/unity_arquitectura_este.png)
+
+*Extremo este. La plaza de la entrada principal está a la altura del piso 2, con faroles y antepecho naranja, y por ese lado la planta baja queda bajo la plaza.*
+
+![Fachada norte en Unity](reports/img/unity_arquitectura_norte.png)
+
+*Fachada norte. La escalera de dos tramos con descanso baja desde la plaza hasta la terraza norte, que tiene mesas y quitasoles.*
+
 **Pestañas del viewer.** Cada pestaña muestra un solo panel a la vez, así que nada queda encima de otra cosa.
 
 - **VISTA:** capas, filtro por piso, áreas tributarias y *Restablecer posición y tamaño de los paneles*.
+  - *Arquitectura (solo visual):* interruptores *Fachada*, *Escaleras y entorno* y *Mobiliario*.
+  - Muestran las fachadas (vidrio al sur, aletas naranjas al norte) y el terreno en dos niveles: la plaza de la entrada principal al este, a la altura del piso 2, y la cafetería con sus terrazas un piso más abajo.
+  - También la escalera naranja hasta la plataforma del piso 2, la escalinata y la escalera norte de dos tramos con descanso, la sala de Métodos Computacionales (6 mesas cuadradas altas con taburetes) y la cafetería bajo la sala.
+  - No están en el modelo de OpenSees, no se seleccionan y no cambian ningún valor.
+  - La fachada y el entorno se ocultan solos al mostrar un diagrama, la utilización o un solo piso. En ese caso el pasto baja bajo los apoyos y se ve el subterráneo.
 - **RESULTADOS:** diagramas (axial, corte, momento), deformada con animación, superposición en vivo (λG, λQ, λEX, λEY) y colores por utilización.
 - **CARGAS:** tres sub-paneles, todos instantáneos.
   - *Carga móvil:* sobre un recorrido de vigas.
@@ -173,9 +193,26 @@ Unity.exe -batchmode -quit -force-d3d11 -projectPath Proyecto1\edificio_G8 -exec
 Proyecto1\edificio_G8\Builds\Windows\P1G8_Viewer.exe -autoshot "%CD%\reports\img\demo" -demo
 ```
 
-Las carpetas `Builds/` no se suben al repositorio: los ejecutables van en la release (ver el paso 7).
+Las carpetas `Builds/` no se suben al repositorio: los ejecutables van en la release (ver el paso 7). La excepción es la APK de realidad aumentada lista para instalar, que está en `APK/` (sección 6).
 
 ## 6. Realidad aumentada
+
+**APK lista para instalar.** Está en `APK/P1G8_Honors_H5_H2_H3_fix03.apk`, con los Honors H2 (QA), H3 (diagramas My y Vz, apagado al abrir) y H5 (comparar armaduras).
+
+- Versión 0.5.3 (build 109), package `cl.uandes.mcoc.p1g8.ar.honors`. Es otro package que la app base, así que se instalan las dos sin reemplazarse.
+- Requiere Android 10 o superior (ARM64), un teléfono compatible con ARCore y permiso de cámara.
+- Instalar con `adb install -r APK\P1G8_Honors_H5_H2_H3_fix03.apk`, o copiando el archivo al teléfono y abriéndolo.
+- SHA-256: `c2bf7f5ca4b15699193b093526ab948cc2b8354e016b121f949cd68a5cad4d4c`.
+- **Estado:** es la APK FIX03 original, probada y aprobada por el grupo en un teléfono Android (octubre de 2026). Esa prueba no se repitió al integrar el proyecto.
+- La APK candidata fusionada `P1G8_Honors_FUSION_fix03_candidata_v2.apk` (compilada desde el proyecto integrado) **no es la APK oficial, no está en este repositorio y no se probó en un teléfono.** Está firmada con otra clave de depuración: para instalarla hay que desinstalar antes la oficial.
+
+Al anclar el marcador aparece el edificio completo en maqueta 1:100. Arriba están los botones *Filtros* y *Estado*, y abajo *Honors H5 · comparar* y *Honors H2 · QA*.
+
+![App de realidad aumentada en maqueta 1:100](reports/img/ar/ar_maqueta_1a100.jpg)
+
+*La APK en un teléfono: el edificio en maqueta 1:100 anclado sobre el marcador, con los botones de filtros, estado y Honors H5 y H2.*
+
+**Uso del marcador.**
 
 1. Imprimir `Proyecto1/ar/marcador_E1_243_imprimir.pdf` al 100 % y comprobar que el cuadrado mida 20 cm.
 2. Pegarlo en la cara +X de la columna **E1_243** (eje F-3, sala del voladizo), con el centro a 1,20 m del piso.
@@ -188,26 +225,21 @@ Si se cambia el marcador:
 2. En Unity, usar el menú `MCOC/AR/Actualizar marcador (libreria de imagenes)`.
 3. Volver a compilar el APK.
 
-## 7. Entrega: tag y release
+## 7. Entrega: subir a GitHub
 
 ```bat
 git add .
-git commit -m "Entrega final P1_G8"
-git tag -a v1.0-final -m "Entrega final P1_G8"
-git push origin main --tags
+git commit -m "Integrar versión final para entrega"
+git push -u origin main
 ```
-
-Después, en GitHub, ir a **Releases → Draft a new release**, elegir el tag `v1.0-final` y adjuntar:
-
-- la carpeta `Builds/Windows` comprimida;
-- `P1G8_Viewer.apk`;
-- `P1G8_AR.apk`.
 
 En Canvas se entrega:
 
 - el enlace al repositorio;
-- el tag `v1.0-final` o el hash del commit;
+- el hash del commit;
 - el enlace directo a `reports/final.md`.
+
+La APK de realidad aumentada lista para instalar está en `APK/P1G8_Honors_H5_H2_H3_fix03.apk`; las carpetas `Builds/` no se suben al repositorio.
 
 ## Estructura
 
@@ -217,10 +249,13 @@ Proyecto1/
 ├─ scripts/       carga_viva_sismo.py (núcleo OpenSees), exportar_resultados_unity.py,
 │                 ajustar_modelo_planos.py, capacidad_ha.py (ACI 318), validacion_entradas.py,
 │                 qa_semana06.py, figuras_informe.py, generar_marcador_ar.py, quitar_elemento.py,
-│                 carga_movil.py, carga_elemento.py, modificar_modelo.py, …
+│                 carga_movil.py, carga_elemento.py, modificar_modelo.py,
+│                 generar_arquitectura.py (capa solo visual del viewer), …
 ├─ edificio_G8/   proyecto Unity (viewer + AR); resultados en Assets/Resources/
+│                 (arquitectura_visual.json: fachada y mobiliario, solo visual)
 ├─ ar/            marcador AR para imprimir
 └─ resultados/    evidencia del QA, sensibilidad y Excel de esfuerzos
+APK/              APK de realidad aumentada lista para instalar (Honors H2, H3 y H5)
 tests/            suite pytest
-reports/          informe final (final.md) y sus figuras (img/)
+reports/          informe final (final.md), sus figuras y las capturas de Unity (img/) y de la app AR (img/ar/)
 ```

@@ -6,17 +6,17 @@
 |---|---|
 | Integrantes | (completar) |
 | Repositorio | (completar enlace) |
-| Versión evaluada | tag `v1.0-final` · commit (completar) |
+| Versión evaluada | commit (completar con el hash) |
 | Fecha | octubre de 2026 |
 
-> **Estado del documento.** Faltan las capturas del viewer de las figuras 1, 2, 4, 5, 9, 10 y 12 a 18, y las de la app AR (figura 19): ver el Anexo B. La verificación de la app AR en el teléfono está pendiente del APK de la compañera. Las combinaciones C1 a C3 están pendientes de confirmar con el enunciado o el profesor (sección 7). El QA, la sensibilidad y el Excel de esfuerzos siguen pendientes de repetirse con OpenSees real (sección 18).
+> **Estado del documento.** Faltan las capturas del viewer de las figuras 1, 2, 4, 5, 9, 10 y 12 a 18, y dos de las tres de la app AR (figura 19): ver el Anexo B. La APK oficial FIX03 (versión 0.5.3, código 109) fue probada y aprobada por el grupo en el teléfono (sección 16); esa prueba no se repitió al integrar el proyecto. Las combinaciones C1 a C3 están pendientes de confirmar con el enunciado o el profesor (sección 7). El QA, la sensibilidad y el Excel de esfuerzos siguen pendientes de repetirse con OpenSees real (sección 18). La integración del Unity de la entrega con el de Honors se verificó el 7 de octubre de 2026: 51 pruebas Python/OpenSees, 64/64 de Unity EditMode y 23/23 de Unity PlayMode aprobadas (sección 18). El viewer de Windows no se regeneró después de esa integración.
 
 <!--
 PENDIENTE ANTES DE ENTREGAR (borrar este bloque al terminar):
-1. Completar integrantes, enlace, tag y commit en la tabla de arriba.
+1. Completar integrantes, enlace y commit en la tabla de arriba.
 2. Generar desde el Editor de Unity las capturas pendientes del Anexo B (carpeta reports/img/demo/) y volver a insertarlas en el cuerpo. No se necesita ejecutable.
-3. AR: la verificación y las tres capturas (reports/img/ar/) quedan pendientes del APK de la compañera.
-4. Volver a correr con OpenSees real qa_semana06.py, sensibilidad_rigidez.py y exportar_excel_esfuerzos.py. El JSON principal y pytest (45 casos) ya se hicieron con OpenSees real (secciones 18 y 22).
+3. AR: la app ya se probó en el teléfono. Faltan las capturas de los modos 1:1 y sobre plano (reports/img/ar/).
+4. Volver a correr con OpenSees real qa_semana06.py, sensibilidad_rigidez.py y exportar_excel_esfuerzos.py (siguen pendientes). El JSON principal y pytest ya se hicieron con OpenSees real; tras integrar Honors, pytest se repitió con 51 casos (secciones 18 y 22).
 5. Confirmar las combinaciones C1 a C3 con el enunciado o el profesor (sección 7).
 6. Completar la sección 21 (cada integrante) y "otros usos de IA" de la sección 20.
 -->
@@ -25,7 +25,7 @@ PENDIENTE ANTES DE ENTREGAR (borrar este bloque al terminar):
 
 El proyecto modela dos edificios de hormigón armado G35, con perfiles metálicos A36 en una zona en voladizo, separados por una junta de dilatación. La geometría sale de los planos estructurales (DXF) y se guarda como datos JSON. Con esos datos, Python arma el modelo en OpenSeesPy, resuelve los casos G, Q, EX y EY y las combinaciones C1 a C3 (factores pendientes de confirmar, sección 7), calcula la capacidad según ACI 318-19 y exporta todo a un JSON que lee Unity.
 
-Unity funciona como postprocesador: muestra geometría, apoyos, ejes, diafragmas, cargas, diagramas, deformada, curvas P-M y utilización. También funciona como preprocesador: desde la interfaz se cambian parámetros, combinaciones, armaduras y secciones, y se reanaliza llamando a Python. El proyecto incluye una app Android de realidad aumentada que ancla el modelo y sus resultados a un marcador impreso; su verificación en el teléfono está pendiente del APK del grupo (sección 16).
+Unity funciona como postprocesador: muestra geometría, apoyos, ejes, diafragmas, cargas, diagramas, deformada, curvas P-M y utilización. También funciona como preprocesador: desde la interfaz se cambian parámetros, combinaciones, armaduras y secciones, y se reanaliza llamando a Python. El proyecto incluye una app Android de realidad aumentada que ancla el modelo y sus resultados a un marcador impreso. El grupo la probó en el teléfono y funciona (sección 16).
 
 Flujo: **planos → datos (JSON) → OpenSees → resultados (JSON) → Unity → AR**.
 
@@ -446,6 +446,44 @@ En el teléfono el viewer es de solo lectura: usa los resultados que van dentro 
 
 **Apariencia.** La paleta "Arrebol" (ciruela, rosa y menta) está en un solo archivo, `Assets/Scripts/Paleta.cs`, y los estilos de los paneles en `Assets/Resources/UI/viewer.uss`. Bajo el edificio hay un suelo de pasto con textura generada por código, con franjas de corte, y un cielo con tinte lila. El pasto queda bajo los dados de apoyo y no tiene collider, así que no tapa el subterráneo ni interfiere con la selección.
 
+**Arquitectura (solo visual).** El viewer dibuja el edificio como se ve, a partir de las fotos del grupo. El terreno tiene dos niveles. La entrada principal está en el extremo este, a la altura del piso 2 (z = 3,96 m), así que por ese lado la planta baja queda enterrada. La cafetería y sus terrazas están un piso más abajo (z = 0). Hay tres capas, que se activan en VISTA:
+
+- *Fachada:*
+  - al sur, muro cortina de vidrio con montantes y bordes de losa blancos, y las dos cajas de vidrio en voladizo;
+  - al norte, ventanas de marco blanco con aletas naranjas inclinadas y bandas blancas de piso, igual en los dos edificios;
+  - al este, aletas naranjas, la caja terracota en voladizo del piso 4 y las puertas de la entrada principal en el piso 2.
+- *Escaleras y entorno:*
+  - la escalera naranja de la fachada sur sale del descanso L99 (piso 4), pasa sobre la sala, llega a la terraza L100/L101 bajo la caja superior y baja a una plataforma del piso 2 sobre pilares;
+  - desde la plataforma, una escalinata ancha con muros naranjas baja hacia el oeste hasta la terraza de la cafetería;
+  - al lado norte, una escalera de dos tramos con un descanso a media altura baja desde la plaza de la entrada hasta la terraza norte;
+  - la plaza de la entrada tiene muro de contención, taludes de pasto y faroles, y hay pavimentos en el nivel inferior.
+- *Mobiliario:*
+  - la sala de Métodos Computacionales (voladizo inferior del piso 2), con 6 mesas cuadradas altas, 36 taburetes y una pantalla;
+  - la cafetería, solo en el rectángulo de la planta baja bajo la sala (mismo ancho, de fachada a fachada), con 18 mesas, 72 sillas y una barra con taburetes;
+  - las terrazas del nivel inferior: 3 mesas bajo la sala, 11 con quitasol al sur y 5 con quitasol al norte.
+
+Todo se genera con `generar_arquitectura.py` en `Assets/Resources/arquitectura_visual.json`. Es un archivo aparte, y `StructureViewer.Arquitectura.cs` lo dibuja con mallas sin collider:
+
+- **Aislamiento del análisis:** no es parte del modelo de OpenSees, no se selecciona y no cambia ningún valor. La prueba `test_arquitectura_visual.py` comprueba que nada choque con la estructura y que generarla deje idénticos el modelo y los resultados.
+- **Vista estructural:** la fachada y el entorno se ocultan solos mientras se ve un diagrama, la utilización o un solo piso. El pasto vuelve entonces bajo los apoyos y el subterráneo queda a la vista.
+
+![Arquitectura visual (vista previa)](img/arquitectura_vista_previa.png)
+
+*Figura 13b. Vista previa de la capa de arquitectura generada desde los mismos datos que dibuja Unity (matplotlib, no es una captura de Unity), con la estructura en líneas moradas: a) sureste, b) noreste, c) sin fachada y d) este.*
+
+El grupo compiló la capa en el Editor de Unity y la revisó con las tres capas activas (figura 13c). La estructura del modelo se ve en verde a través del vidrio.
+
+![Fachada sur en Unity](img/unity_arquitectura_sur.png)
+
+![Entrada este en Unity](img/unity_arquitectura_este.png)
+
+![Fachada norte en Unity](img/unity_arquitectura_norte.png)
+
+*Figura 13c. Capturas del viewer en Unity, de arriba abajo:*
+- *Fachada sur: escalera naranja hasta la plataforma del piso 2, escalinata y terraza de la cafetería.*
+- *Extremo este: plaza de la entrada principal a la altura del piso 2.*
+- *Fachada norte: escalera de dos tramos con descanso y terraza norte.*
+
 **Estado de funciones.**
 
 | Función | Estado | Dónde en Unity | ¿Requiere reanálisis? |
@@ -461,6 +499,7 @@ En el teléfono el viewer es de solo lectura: usa los resultados que van dentro 
 | Superposición | lista | RESULTADOS → *Superposición en vivo* (λG, λQ, λEX, λEY) | no |
 | `P-M` y demanda-capacidad | lista | panel P-M al seleccionar una columna o un muro; panel de capacidad al seleccionar una viga; colores por utilización | no |
 | Modificación del modelo | lista | MODIFICAR (sección, armadura, apoyo, área tributaria, quitar elemento) y ANÁLISIS (cargas, material f'c, rigidez, combinaciones) | sí |
+| Arquitectura (solo visual) | lista | VISTA → *Arquitectura*: fachada, escaleras y entorno, mobiliario (figura 13c) | no (no cambia ningún valor) |
 
 **¿Ayuda el viewer a contestar las seis preguntas?** Sí. Al seleccionar un elemento, el panel de propiedades se ordena según esas preguntas. Ejemplo con la columna E1_287, la más exigida:
 
@@ -517,7 +556,13 @@ Fuera de Unity, los mismos cambios se pueden reproducir:
 
 ## 16. AR
 
-**Estado: pendiente de verificación.** La verificación de la app en el teléfono y sus tres capturas (modo 1:1, maqueta 1:100 y sobre plano) dependen del APK de la compañera y no están hechas. Esta sección describe el diseño y el uso previsto; no es una demostración de que la app funcione.
+**Estado: la APK oficial FIX03 fue probada y aprobada por el grupo en un teléfono Android** (octubre de 2026, según el registro del grupo; esta integración no repitió esa prueba). Es la APK `APK/P1G8_Honors_H5_H2_H3_fix03.apk`, FIX03 original, versión 0.5.3, código 109, con package `cl.uandes.mcoc.p1g8.ar.honors`, y su SHA-256 es `c2bf7f5ca4b15699193b093526ab948cc2b8354e016b121f949cd68a5cad4d4c`. Incluye los Honors H2, H3 y H5. La figura 19 muestra el modo maqueta 1:100. Faltan las capturas de los modos 1:1 y sobre plano (Anexo B).
+
+**APK candidata fusionada (no oficial).** Al integrar el proyecto Unity de la entrega con el de Honors se compiló una APK candidata (`P1G8_Honors_FUSION_fix03_candidata_v2.apk`, SHA-256 `710a7ad5f24c0ae48e0afd6c63876fcc6a6ee7416729b77e4fb96e3023303832`). Coincide con la oficial en package, versión, código, arquitectura (arm64-v8a), permisos y escena (`ARHonorsScene`), pero está firmada con otra clave de depuración, por lo que no se instala sobre la oficial sin desinstalarla, y contiene un archivo de datos más. **No es la APK oficial, no está en este repositorio y no se probó en un teléfono.**
+
+![App AR en maqueta 1:100](img/ar/ar_maqueta_1a100.jpg)
+
+*Figura 19. La app AR en el teléfono: el edificio en maqueta 1:100 anclado al marcador, con los botones Filtros, Estado, Honors H5 · comparar y Honors H2 · QA.*
 
 La app AR es la escena `ARScene`, con AR Foundation 6.6.2 y ARCore. Detecta el marcador `Proyecto1/ar/marcador_E1_243_imprimir.pdf` como imagen de referencia de 20 cm.
 
@@ -586,6 +631,7 @@ El marcador de esta versión dice "MCOC P1_G8" y mantiene el mismo patrón de fo
 - **Esfuerzos totales con la carga en elemento:** la carga puntual o repartida se ve sola o sumada a G, C1, C2 o C3, con sus flechas en 3D y los esfuerzos del elemento.
 - **Resultados tras reanalizar:** después de quitar un elemento o de cambiar sección, armadura, apoyo, área o material, aparece un resumen de resultados.
 - **Órbita libre:** sin botones de vista fija; la deformada se anima desde la barra superior.
+- **Arquitectura solo visual:** fachadas, escalera naranja con su plataforma y la escalinata, plaza de la entrada en el piso 2, escalera norte de dos tramos, sala de Métodos Computacionales y cafetería bajo la sala, a partir de fotos del edificio. Es un archivo aparte, sin collider, que no cambia ningún valor.
 
 ## 18. QA y tests
 
@@ -605,7 +651,7 @@ El marcador de esta versión dice "MCOC P1_G8" y mantiene el mismo patrón de fo
 
 Esta tabla y `qa_semana06.json` se generaron con el modelo corregido (sección 8) usando la réplica de verificación de OpenSees (sección 20), no con OpenSees real, y el archivo no registra el motor. **Pendiente:** repetir `qa_semana06.py`, `sensibilidad_rigidez.py` y `exportar_excel_esfuerzos.py` con OpenSees real.
 
-**Tests automáticos.** La suite `pytest` tiene 45 casos en 6 archivos:
+**Tests automáticos.** La suite `pytest` tiene 51 casos en 7 archivos:
 
 | Archivo | Casos | Verifica |
 |---|---|---|
@@ -615,15 +661,35 @@ Esta tabla y `qa_semana06.json` se generaron con el modelo corregido (sección 8
 | `test_unity_json.py` | 6 | integridad del JSON de Unity, capas de la demo, equilibrio del resumen, curvas de diseño, trazabilidad y coincidencia con OpenSees |
 | `test_h4_reanalisis.py` | 13 | validación de entradas y que el reanálisis de Unity sea igual a la corrida directa, y los cambios de apoyo, área tributaria y material pedidos desde Unity |
 | `test_h5_armadura.py` | 2 | que más armadura regenere la curva P-M, aumente la capacidad y baje el DCR |
+| `test_arquitectura_visual.py` | 6 | que la arquitectura visual sea un archivo aparte válido y al día con el generador, que la sala tenga 6 mesas y la cafetería quede solo bajo la sala, los dos niveles del terreno con la escalera norte y la escalinata, que nada choque con la estructura y que generarla no cambie el modelo ni los resultados |
 
 ```bat
-python -m pytest                  :: los 45 casos, unos 40 s
+python -m pytest                  :: los 51 casos, unos 40 s
 python -m pytest -m "not lento"   :: sin las corridas completas del exportador, unos 10 s
 ```
 
-**Resultado:** `py -3.12 -m pytest -ra` → **45 passed** en 47,08 s, con Python 3.12.10, OpenSeesPy 3.8.0.0 y OpenSees real (sin la variable `MCOC_REPLICA`), sobre el JSON regenerado con OpenSees real (commit `15ba09b`). Los paquetes instalados coinciden con `requirements.txt` y `pip check` no informa conflictos.
+**Resultado tras integrar Honors (7 de octubre de 2026):** `py -3.12 -m pytest` → **51 passed** en 36,04 s, con Python 3.12.10, OpenSeesPy 3.8.0.0 y OpenSees real (sin `MCOC_REPLICA`), sobre el árbol fusionado y con los dos exportadores ya fusionados (ver más abajo). La corrida se hizo en una copia de la fusión fuera de OneDrive, de contenido idéntico al integrado aquí.
+
+**Resultado de la corrida previa (antes de integrar Honors):** `py -3.12 -m pytest -ra` → **45 passed** en 47,08 s, con Python 3.12.10, OpenSeesPy 3.8.0.0 y OpenSees real (sin la variable `MCOC_REPLICA`), sobre el JSON regenerado con OpenSees real (commit `15ba09b`). Los paquetes instalados coinciden con `requirements.txt` y `pip check` no informa conflictos.
 
 **Historial del único fallo.** Con el JSON anterior (generado con la réplica), `test_unity_igual_a_opensees_directo` fallaba: la diferencia en fuerzas de elementos superaba 10⁻⁶ kN (máximo 8,7 · 10⁻⁵ kN en `W_MURO-056`, combinación EY, error relativo 8 · 10⁻⁹). Dos corridas consecutivas con OpenSees real dieron resultados idénticos (OpenSees es determinista en esta máquina). Al regenerar el JSON con OpenSees real la prueba pasó, sin cambiar tolerancias ni código.
+
+**Verificación de la integración con Honors (7 de octubre de 2026).** El proyecto Unity de la entrega se fusionó con el del donante de Honors (APK FIX03) en una copia de trabajo, sin modificar ninguno de los dos originales. Las pruebas se corrieron en una copia de esa fusión (Unity 6000.6.0f1, Python 3.12.10, OpenSeesPy 3.8.0.0 real) cuyos `Assets`, `Packages`, exportadores y `freeze_originales.json` coinciden con los de este repositorio.
+
+| Prueba | Resultado |
+|---|---|
+| pytest (Python/OpenSees real) | 51 passed |
+| Unity EditMode | 64/64 aprobadas |
+| Unity PlayMode | 23/23 aprobadas. `HonorsCapacityFlowTests.ScenarioFailureDiscardAndNativeRegeneration`, que antes fallaba porque faltaba `honors_comparar_armadura.py`, ahora pasa |
+| Importación y compilación de Unity | 0 errores (los avisos son de APIs obsoletas del código previo) |
+| Escenas en Play (modo batch) | `StructureViewerScene`, `ARHonorsScene`, `HonorsViewerScene` y `ARScene` cargan sin excepciones del proyecto. El viewer conserva la arquitectura visual, Persona SQ4, la capacidad de vigas y `DiagramController`; en `ARHonorsScene` están activos H5 y H2 y H3 queda apagado al abrir |
+
+- *Exportadores fusionados.* `exportar_resultados_unity.py` conserva los apoyos, las áreas tributarias, f'c (`--fc`) y `--mods` de la entrega, e incorpora `export_contract` (validación del análisis, exigencia de OpenSees real y campos de Honors). `exportar_excel_esfuerzos.py` incorpora la versión ampliada del complemento sin perder ninguna función. Prueba puntual con salida temporal: sin cambios, el JSON regenerado coincide con el vigente (diferencia máxima 0,0 en 7 161 registros de fuerzas); con el apoyo del nodo 7 articulado, el área de E1_1 en 8,0 m² y f'c = 40 MPa los cambios quedan reflejados; el Excel se genera con 1 023 elementos y 91 muros. No se regeneró ningún resultado oficial.
+- *JSON estructural.* El JSON de `Assets/Resources` es el del donante (esquema `mcoc.ar/2.0`), necesario para el catálogo Honors; sus resultados son idénticos a los de la entrega. Las rutas absolutas de `catalog_manifest.json` se reemplazaron por rutas relativas sin tocar sus hashes (el catálogo solo verifica `catalogSHA256`).
+- *Inicialización doble del viewer.* Quedó resuelta con la versión del donante: `Start` solo crea la estructura en Play y en el Editor se carga de forma diferida. En el log aparece una sola línea "Estructura lista".
+- *Viewer de Windows.* No fue regenerado después de incorporar el complemento externo. Se conserva el build anterior (`Builds/Windows/P1G8_Viewer.exe`, 125,8 MB, que no se versiona). Es válido porque `Packages` es idéntico y las únicas diferencias de `Assets` son archivos generados por pruebas o builds (una escena temporal de los tests de PlayMode y `XRGeneralSettingsPerBuildTarget.asset`). Tres intentos de recompilarlo se detuvieron sin terminar.
+- *Evidencia histórica de Honors.* `entrega/honors` contiene ensayos, resultados y manifiestos del equipo de origen. Se copió para trazabilidad: no se reejecutó y no se presenta como prueba nueva. En el repositorio solo se versionan `proteccion`, `H2`, `H5`, `H5_demostracion`, `QA`, `unity_H5` y los manifiestos y CSV de primer nivel; el resto (sesiones, ensayos, copias `baseline` y APK históricas) queda fuera de Git.
+- *Sigue pendiente de prueba manual.* En el teléfono, con la APK fusionada o la oficial: anclaje, H2 (QA), H3 (diagramas My y Vz manuales) y H5 (comparación). En el Editor: panel H5 y reanálisis en `HonorsViewerScene`, y la interacción con las pestañas y la arquitectura visual del viewer de escritorio. QA, sensibilidad y Excel oficiales con OpenSees real (sección 18).
 
 **Verificación de los cambios del grupo 8.**
 
@@ -632,7 +698,7 @@ python -m pytest -m "not lento"   :: sin las corridas completas del exportador, 
 - *4 apoyos sueltos:* se quitaron 4 apoyos que estaban en nodos sin ningún elemento (nodos 250 a 253). No tenían carga ni reacción, así que G, Q, EX y EY no cambian; solo bajan los registros de desplazamiento de 5 054 a 5 026.
 - *Corrección de los muros:* antes de cambiar el modelo se comprobó que la réplica de verificación, con el exportador real del proyecto, reproduce la corrida de OpenSees. Las diferencias fueron de 10⁻¹⁰ m en desplazamientos y de 10⁻⁴ kN en fuerzas, con los mismos períodos y DCR. Después se cambiaron dos cosas: la inercia de los muros a 1,0 Ig y los muros a `ElasticTimoshenkoBeam`, con deformación por corte.
 - *Elementos completos:* los 1 023 elementos son idénticos a los del modelo base. Solo se quitaron 4 nodos con apoyo que no tenían ningún elemento.
-- *Pruebas:* con la réplica de verificación pasaba toda la suite. Con OpenSees real pasan los 45 casos (ver arriba). Se actualizó la prueba que simula los argumentos de Unity, que traía fijos los factores de rigidez antiguos.
+- *Pruebas:* con la réplica de verificación pasaba toda la suite. Con OpenSees real pasaron los 45 casos que tenía la suite antes de agregar las 6 pruebas de la arquitectura visual, que no usan OpenSees. Se actualizó la prueba que simula los argumentos de Unity, que traía fijos los factores de rigidez antiguos.
 - *JSON regenerado con OpenSees real:* `estructura_p1l4_unity.json` se volvió a generar con OpenSees 3.8.0.0 (commit `4b44709`, mismas entradas: los hash de modelo, parámetros, combinaciones y armaduras no cambian). Diferencias respecto de la versión con réplica: reacciones de G y Q del orden de 10⁻⁷ kN, cortes basales de EX y EY del orden de 10⁻⁵ kN, desplazamiento máximo del orden de 10⁻⁷ mm y fuerzas de elementos hasta 8,7 · 10⁻⁵ kN. El DCR es idéntico en los 516 elementos con capacidad; el DCR máximo (vigas 0,998 en E1_56, columnas 0,409 en E1_287), los conteos (718 nodos, 1 023 elementos, 91 muros) y las combinaciones no cambian. El JSON nuevo agrega `resumenAnalisis.fc_MPa = 35`.
 
 ## 19. Limitaciones
@@ -667,12 +733,13 @@ python -m pytest -m "not lento"   :: sin las corridas completas del exportador, 
 14. **Vigas largas del edificio 2.** En los ejes x = −33,98 y −41,48 m hay vigas de cerca de 16 m apoyadas en muros y vigas, sin columnas intermedias, como en los datos del plano 2024_22. Su flecha con G (unos 25 mm con 0,35 Ig) está bajo L/240, pero conviene confirmar en los planos que no hay columnas ahí.
 15. **Columnas del voladizo.** Las columnas metálicas del voladizo sur del piso 2 trabajan como tirantes por el sentido del arriostre leído de la elevación 2017_67-802. En ETABS la C21 está comprimida, así que conviene confirmar en esa elevación hacia dónde baja el arriostre.
 16. **Solver de verificación.** Si se activa la casilla en Unity y falta OpenSees, el recálculo usa `replica_opensees.py`, una réplica de las funciones de OpenSees que usa el proyecto. Reproduce las corridas reales (mismos desplazamientos, fuerzas y períodos), pero no es OpenSees: la corrida oficial de la entrega debe hacerse con OpenSees, y el JSON indica el motor usado.
-17. **Interfaz.** El agente no ejecuta Unity: sus cambios de C# se revisan de forma estática y el grupo los compila y prueba en el Editor. Para los cambios de H4 y H5 eso ya se hizo (punto 12). Los demás cambios de la interfaz (sub-paneles, recorte, cámara, editor de secciones) siguen sin una prueba manual registrada aquí.
+17. **Interfaz.** Hasta la integración con Honors, el agente no había ejecutado Unity: sus cambios de C# se revisaban de forma estática y el grupo los compilaba y probaba en el Editor. En la integración sí se ejecutó Unity en modo batch (importación, tests EditMode y PlayMode y carga de las escenas; sección 18), pero eso no reemplaza la prueba manual de la interfaz. Para los cambios de H4 y H5 eso ya se hizo (punto 12), y la capa de arquitectura visual también se compiló y se vio en el Editor (figura 13c). Los demás cambios de la interfaz (sub-paneles, recorte, cámara, editor de secciones) siguen sin una prueba manual registrada aquí.
 18. **Combinaciones C1 a C3.** Sus factores están pendientes de confirmar con el enunciado o el profesor (sección 7).
 19. **QA, sensibilidad y Excel.** Se generaron con la réplica de verificación y están pendientes de repetirse con OpenSees real (sección 18).
-20. **AR.** La verificación de la app y sus tres capturas están pendientes del APK de la compañera (sección 16).
-21. **Inicialización doble del viewer.** `StructureViewer.OnEnable` y `Start` llaman ambos a `CreateStructure()`, así que el modelo se construye dos veces al entrar en Play. Está registrado y no se ha modificado.
+20. **AR.** El grupo probó y aprobó la APK oficial FIX03 en el teléfono (sección 16); esa prueba no se repitió al integrar el proyecto, y la APK candidata fusionada no se probó en un teléfono. Faltan las capturas de los modos 1:1 y sobre plano.
+21. **Inicialización doble del viewer.** Quedó resuelta al integrar Honors: `StructureViewer.Start` solo crea la estructura en Play y en el Editor la carga es diferida, y el log muestra una sola línea "Estructura lista" (sección 18).
 22. **Capturas del viewer.** Faltan las capturas del Anexo B.
+23. **Arquitectura aproximada.** La fachada, las escaleras, el terreno y el mobiliario se dibujaron a partir de fotos, no de planos de arquitectura, así que su ubicación es aproximada. Por ejemplo, la plaza de la entrada a la altura del piso 2, la plataforma y la escalinata del extremo este, y la cafetería en el rectángulo de la planta baja bajo la sala. Las medidas están al comienzo de `generar_arquitectura.py` para ajustarlas, y son solo visuales.
 
 ## 20. Uso de IA
 
@@ -715,6 +782,11 @@ Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aisla
    - *Diagnóstico:* luego la usó para el análisis modal.
    - *Regeneración:* finalmente cambió la rigidez de los muros y volvió a generar resultados, QA, sensibilidad y Excel.
    - *Corrida oficial:* la réplica no forma parte del repositorio; la corrida oficial debe hacerse con OpenSees. El JSON principal ya se regeneró con OpenSees real; el QA, la sensibilidad y el Excel siguen pendientes.
+10. Agregar al viewer la arquitectura **solo visual** pedida por el grupo, a partir de sus fotos: fachadas, escalera naranja, plaza de la entrada en el piso 2, escalinata, escalera norte de dos tramos, la sala de Métodos Computacionales (6 mesas altas con taburetes) y la cafetería bajo la sala.
+    - *Generación:* el agente escribió `generar_arquitectura.py`, que produce la geometría desde las coordenadas del modelo y revisa que no choque con columnas, vigas ni muros.
+    - *Dibujo:* `StructureViewer.Arquitectura.cs` dibuja esa geometría sin collider.
+    - *Verificación:* se comprobó que el modelo, los datos y los resultados quedan idénticos (huellas SHA-256) y se agregaron 6 pruebas (`test_arquitectura_visual.py`).
+11. Agregar al proyecto la APK de realidad aumentada que el grupo probó y aprobó (`APK/`), con su foto en el README y en la sección 16 (figura 19), y capturas del viewer en Unity al README y a la sección 13 (figura 13c). El agente solo copió la APK, sin modificarla, y comprobó que su huella SHA-256 coincide con la de su ficha.
 
 **Sesiones recientes: verificación con OpenSees real y correcciones en Unity**
 
@@ -725,6 +797,7 @@ Descripción factual, en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.
 3. Con pruebas manuales del grupo en Unity, el agente corrigió tres problemas de la interfaz (commits `a31906c`, `4b44709`, `5b77560` y `2e5f6a0`): la excepción por JSON vacío o nulo al cargar el viewer, el rechazo de cargas negativas en el reanálisis y la restauración de los campos al descartar el escenario.
 4. Se documentó la evidencia manual de H4 y H5 (capturas en `reports/img` y `reports/evidencia_H5.md`, commits `2e5f6a0` y `159269a`).
 5. En esta etapa se actualizó este informe con esos resultados y con los pendientes.
+6. Integración con Honors (7 de octubre de 2026): se fusionó el proyecto Unity de la entrega con el del donante en una copia de trabajo, se fusionaron por contenido los dos exportadores, se incorporó el complemento externo de Honors y se repitieron las pruebas: 51 de pytest, 64/64 de EditMode y 23/23 de PlayMode (sección 18). No se reconstruyó el viewer de Windows; se generó una APK candidata que no es la oficial y no se probó en un teléfono (sección 16).
 
 **Errores detectados por el agente**
 
@@ -755,6 +828,8 @@ Descripción factual, en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.
 - Recalculó la curva M-φ con el integrador del proyecto.
 - Comprobó que el cambio de armadura y la eliminación de los apoyos sueltos no alteran fuerzas ni reacciones, y que el script nuevo reproduce la capacidad del exportador.
 - Revisó los cambios de C# de forma estática: que existan todas las referencias a `Paleta` y que llaves y paréntesis estén balanceados.
+- Tras integrar Honors, repitió pytest con OpenSees real (51 passed) y ejecutó en Unity 6000.6.0f1 los tests EditMode (64/64) y PlayMode (23/23), además de cargar las cuatro escenas en modo Play (sección 18).
+- Comprobó que la APK oficial FIX03 guardada en `APK/` tiene el SHA-256 indicado en la sección 16, y que los exportadores del repositorio son idénticos a los verificados en la fusión.
 
 **Contribución real del agente**
 
@@ -802,7 +877,7 @@ Los objetivos Honors del Unity de escritorio están implementados y verificados:
 - **H4:** reanálisis OpenSees en vivo.
 - **H5:** cambio de refuerzo con regeneración de la interacción.
 
-Los de la app del teléfono (H1, H2 y H3) quedan pendientes.
+En la app del teléfono, la APK oficial FIX03 que el grupo probó y aprobó incluye H2 (QA) y H3 (diagramas My y Vz), además de H5 (sección 16). La ficha de esa APK no menciona H1. Tras la integración, H2, H3 y H5 siguen presentes en el proyecto Unity fusionado (H3 apagado al abrir), pero la APK candidata fusionada no se probó en un teléfono.
 
 **Condición del núcleo.** Los puntos Honors solo se evalúan si el núcleo no tiene errores graves:
 
@@ -814,7 +889,7 @@ Los de la app del teléfono (H1, H2 y H3) quedan pendientes.
 | Cargas | QA y `test_cargas.py`: G y Q aplicadas = reacciones, y el reparto tributario conserva el área |
 | Superposición | QA (C1 a C3) y verificación de tres estados (sección 7), con error de 10⁻⁸ o menos |
 | Curvas P-M | `test_capacidad.py`: puntos ACI, comparación con fibras y muros con su armadura real |
-| AR básica | se revisa con la APK (pendiente del grupo) |
+| AR básica | APK probada y aprobada por el grupo en el teléfono (sección 16, figura 19) |
 
 **H4: reanálisis OpenSees en vivo.**
 
@@ -934,10 +1009,10 @@ Las figuras siguientes se retiraron del cuerpo del informe porque los archivos n
 | 17 | `demo05_cargas_G.png`, `demo05_cargas_Q.png`, `demo05_cargas_EX.png`, `demo05_cargas_EY.png` | cargas G, Q, EX y EY | 14 |
 | 18 | `demo07_diagrama_momento.png` | diagrama de momento con la viga E1_72 seleccionada | 14 |
 
-**Pendientes del APK de la compañera.** Estas capturas se toman con el teléfono y se guardan en `reports/img/ar/`. Hasta tenerlas, la app AR no está verificada (sección 16):
+**Capturas de la app AR.** Se toman con el teléfono y se guardan en `reports/img/ar/`. La app ya está probada (sección 16) y la captura de maqueta 1:100 ya está en el informe. Faltan las otras dos:
 
-| Figura | Archivo | Qué debe mostrar |
-|---|---|---|
-| 19 | `ar_1a1_columna.jpg` | modo 1:1 anclado a la columna E1_243 |
-| 19 | `ar_maqueta_1a100.jpg` | modo maqueta 1:100 |
-| 19 | `ar_sobre_plano.jpg` | modo sobre plano |
+| Figura | Archivo | Qué debe mostrar | Estado |
+|---|---|---|---|
+| 19 | `ar_1a1_columna.jpg` | modo 1:1 anclado a la columna E1_243 | pendiente |
+| 19 | `ar_maqueta_1a100.jpg` | modo maqueta 1:100 | lista |
+| 19 | `ar_sobre_plano.jpg` | modo sobre plano | pendiente |

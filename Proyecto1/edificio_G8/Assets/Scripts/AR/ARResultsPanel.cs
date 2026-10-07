@@ -20,6 +20,7 @@ public class ARResultsPanel : MonoBehaviour
         structure = FindAnyObjectByType<ARStructure>();
         if (structure != null) structure.Rebuilt += OnRebuilt;
     }
+    private void OnDestroy(){if(structure!=null)structure.Rebuilt-=OnRebuilt;}
 
     private void OnRebuilt()
     {
@@ -47,8 +48,7 @@ public class ARResultsPanel : MonoBehaviour
     private void Update()
     {
         if (structure == null || structure.ModelRoot == null) return;
-        if (Input.touchCount != 1 || Input.GetTouch(0).phase != UnityEngine.TouchPhase.Began) return;
-        Vector2 pos = Input.GetTouch(0).position;
+        if (!ARPointerInput.TryPress(out Vector2 pos)) return;
         if (IsOverPanel(pos) || pos.x / UiTheme.Scale < UiTheme.SideM + 480f) return;
         Camera cam = Camera.main;
         if (cam == null) return;

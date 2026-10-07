@@ -1,0 +1,8 @@
+﻿requisito,estado,evidencia,pendiente
+H5,IMPLEMENTADO Y VERIFICADO,"Cambio de sección COL70/70, curvas/capacidad, exportador real, UI/controladores nativos, descarte",Interacción visual manual y teléfono pendientes
+H2 perfiles/transform/lifecycle/QA,IMPLEMENTADO Y VERIFICADO,Pruebas de código: Registry/bases/inversa/snapshot/root/timeout/async/CSV/JSON; proveedor simulado,Tracking ARCore físico y medidas independientes pendientes
+H2 múltiples markers físicos,PARCIAL,Biblioteca con dos imágenes distintas; nueva imagen 100/100; pipeline por identidad/guid,Segundo perfil deshabilitado hasta medir/calibrar; cambio físico no demostrado
+H2 sector mayor/error absoluto,NO IMPLEMENTADO,QA relativa disponible y protocolo de controles,No existe medición física independiente
+H2 persistencia espacial,NO IMPLEMENTADO,Cloud Anchors=0,Guardado de perfiles no es persistencia espacial
+H3,NO IMPLEMENTADO,Flag reservado y apagado,Opcional excluido de esta entrega
+H1/H4/P-Mx-My/segundo orden/deformada/tributarias AR,NO IMPLEMENTADO,No se agregaron en este encargo; conservar infraestructura histórica no equivale a implementar Honors,Sin expansión de alcance

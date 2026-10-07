@@ -1,0 +1,12 @@
+{
+  "center": [
+    -0.7375000000000007,
+    -1.8682971014492753,
+    0
+  ],
+  "pixelsPerModelMeter": 16.937710954280455,
+  "scale": 0.002117213869285057,
+  "declaredPrintWidth": 0.2,
+  "physicalCalibration": "PENDIENTE",
+  "markerSHA256": "5831e4765b6346bda9ccb63222f9a4ac775124b658771560e6c368551d026a2e"
+}

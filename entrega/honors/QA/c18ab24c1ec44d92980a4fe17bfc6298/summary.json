@@ -1,0 +1,147 @@
+{
+    "run": "c18ab24c1ec44d92980a4fe17bfc6298",
+    "kind": "QA_RELATIVA_NO_ERROR_ABSOLUTO",
+    "physical": "PENDIENTE",
+    "positionMm": {
+        "count": 0,
+        "median": 0.0,
+        "rms": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+    },
+    "angleDeg": {
+        "count": 0,
+        "median": 0.0,
+        "rms": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+    },
+    "samples": [
+        {
+            "timestamp": 7.356641702154196,
+            "run": "c18ab24c1ec44d92980a4fe17bfc6298",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "state_Limited",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "None",
+            "logicalState": "Limited",
+            "request": 2,
+            "windowCount": 1,
+            "windowSeconds": 0.0,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        },
+        {
+            "timestamp": 7.3580560021541945,
+            "run": "c18ab24c1ec44d92980a4fe17bfc6298",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "sample",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "None",
+            "logicalState": "Limited",
+            "request": 2,
+            "windowCount": 2,
+            "windowSeconds": 0.0014142999425530434,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        },
+        {
+            "timestamp": 7.375779202154195,
+            "run": "c18ab24c1ec44d92980a4fe17bfc6298",
+            "marker": "",
+            "trackableId": "",
+            "profile": "Marcador_E1_243",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "eventName": "disable",
+            "sessionState": "None",
+            "markerState": "Missing",
+            "anchorState": "None",
+            "logicalState": "Suspended",
+            "request": 3,
+            "windowCount": 3,
+            "windowSeconds": 0.01913749985396862,
+            "cameraDistanceMeters": 0.0,
+            "relativeMm": 0.0,
+            "relativeAngleDeg": 0.0,
+            "imagePosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "anchorPosition": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "imageRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "anchorRotation": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+            },
+            "relativeAvailable": false
+        }
+    ]
+}

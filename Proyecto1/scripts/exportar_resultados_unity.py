@@ -491,6 +491,11 @@ def main():
             print(f"  ERROR: {e}")
             all_results[combo_name] = None
 
+    from export_contract import validate_analysis, enrich_bundle
+    if getattr(cvm, 'MOTOR', None) != 'OpenSees':
+        raise RuntimeError('El bundle oficial AR requiere OpenSees real; no publicar réplica')
+    validate_analysis(data, {**base_results, **all_results})
+
     # ── Empaquetar desplazamientos ───────────────────────────────────
     print("\nEmpaquetando resultados...")
     displacements_flat = []
@@ -580,7 +585,7 @@ def main():
                 "tag": meta.get("elementTag", str(int(elem_id))),
                 "type": meta.get("type", ""),
                 "sourceBuilding": meta.get("sourceBuilding", ""),
-                "f": [float(v) for v in f[:12]] if len(f) >= 12 else [float(v) for v in f] + [0.0] * (12 - len(f))
+                "f": [float(v) for v in f]
             })
 
     # ── Construir curvas P-M ─────────────────────────────────────────
@@ -741,8 +746,8 @@ def main():
         if e is None:
             return None
         out = []
-        for combo_name in combos:
-            res = all_results.get(combo_name) or {}
+        for combo_name,res in {**base_results,**all_results}.items():
+            res = res or {}
             f = (res.get("element_forces") or {}).get(e["id"])
             if not f or len(f) < 12:
                 continue
@@ -979,6 +984,9 @@ def main():
         "pointLoads": data.get("pointLoads", []),
         "tributaryList": data.get("tributaryList", [])
     }
+
+    applied_cases={**load_sets, **{name:cvm.combine_nodal_loads(load_sets,factors) for name,factors in combos.items()}}
+    enrich_bundle(output, {**base_results, **all_results}, cvm.ops.version(), applied_cases)
 
     # ── Guardar ──────────────────────────────────────────────────────
     # Compacto: el JSON de Unity es generado y la indentacion lo triplica de tamano

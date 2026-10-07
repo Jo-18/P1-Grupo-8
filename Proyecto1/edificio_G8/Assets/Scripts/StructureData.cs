@@ -4,6 +4,11 @@ using UnityEngine;
 [Serializable]
 public class StructureData
 {
+    public string schemaVersion;
+    public RunProvenance corrida;
+    public ResultUnits resultUnits;
+    public ResultConventions conventions;
+    public string[] notes;
     public string units;
     public float q_G;
     public float Q_kN_m2;
@@ -171,6 +176,11 @@ public class DiaphragmData
 [Serializable]
 public class P1L4Extras
 {
+    public CaseState[] caseStates;
+    public WallMapping[] wallMappings;
+    public ReactionRecord[] reactions;
+    public MomentCurvatureReference[] momentCurvatureReferences;
+    public AppliedLoad[] appliedLoads;
     public ComboInfo[] combinations;
     public DisplacementRecord[] displacements;
     public ElementForceRecord[] elementForces;
@@ -259,6 +269,7 @@ public class ComboInfo
 [Serializable]
 public class DisplacementRecord
 {
+    public string status;
     public string combo;
     public int node;
     public float ux;
@@ -272,6 +283,7 @@ public class DisplacementRecord
 [Serializable]
 public class ElementForceRecord
 {
+    public string status;
     public string combo;
     public int id;
     public float[] f;
@@ -364,6 +376,8 @@ public class NodeData
 [Serializable]
 public class ElementData
 {
+    public string material, wallInPlaneAxis;
+    public int wallIndex;
     public int id;
     public string type;
     public int nodeI;

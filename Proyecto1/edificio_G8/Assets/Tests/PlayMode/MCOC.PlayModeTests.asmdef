@@ -1,0 +1,6 @@
+{
+  "name": "MCOC.PlayModeTests",
+  "references": ["MCOC.Runtime", "Unity.XR.ARFoundation", "Unity.XR.ARSubsystems", "Unity.InputSystem", "Unity.InputSystem.TestFramework"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "autoReferenced": false
+}

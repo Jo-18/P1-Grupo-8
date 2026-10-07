@@ -1,0 +1,96 @@
+{
+    "profiles": [
+        {
+            "markerId": "Marcador_E1_243",
+            "imageGuid": "7ece9545-44eb-4eb2-be3d-4949d2351578",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "source": "Modelo validado; algoritmo ARStructure.LoadModel / generar_marcador_ar.py",
+            "date": "2026-10-06",
+            "responsible": "MCOC G8",
+            "calibrationStatus": "DOCUMENTADA; verificacion fisica PENDIENTE",
+            "declaredWidthMeters": 0.20000000298023224,
+            "measuredWidthMeters": 0.0,
+            "scale": 1.0,
+            "reference": {
+                "x": 0.3499999940395355,
+                "y": -7.25,
+                "z": 5.159999847412109
+            },
+            "mx": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "my": {
+                "x": 1.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "mz": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "minimum": {
+                "x": -1.0,
+                "y": -12.0,
+                "z": 3.9600000381469727
+            },
+            "maximum": {
+                "x": 8.5,
+                "y": 0.5,
+                "z": 7.920000076293945
+            },
+            "mode": 0,
+            "sector": true,
+            "enabled": true,
+            "physicalVerified": false
+        },
+        {
+            "markerId": "Marcador_Honors_Plano",
+            "imageGuid": "14d14e7a-56c5-41fb-ad58-e44e8ae9d976",
+            "modelSHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+            "source": "Modelo validado; algoritmo ARStructure.LoadModel / generar_marcador_ar.py",
+            "date": "2026-10-06",
+            "responsible": "MCOC G8",
+            "calibrationStatus": "PENDIENTE: medir impresion y confirmar escala/dibujo; no maqueta fisica",
+            "declaredWidthMeters": 0.20000000298023224,
+            "measuredWidthMeters": 0.0,
+            "scale": 0.0021172137930989265,
+            "reference": {
+                "x": -0.737500011920929,
+                "y": -1.8682971000671387,
+                "z": 0.0
+            },
+            "mx": {
+                "x": 1.0,
+                "y": 0.0,
+                "z": 0.0
+            },
+            "my": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 1.0
+            },
+            "mz": {
+                "x": 0.0,
+                "y": 1.0,
+                "z": 0.0
+            },
+            "minimum": {
+                "x": -41.474998474121094,
+                "y": -11.369999885559082,
+                "z": 0.0
+            },
+            "maximum": {
+                "x": 40.0,
+                "y": 9.994999885559082,
+                "z": 50.0
+            },
+            "mode": 2,
+            "sector": false,
+            "enabled": false,
+            "physicalVerified": false
+        }
+    ]
+}

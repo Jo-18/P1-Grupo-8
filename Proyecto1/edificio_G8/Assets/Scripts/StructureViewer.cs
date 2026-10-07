@@ -76,7 +76,7 @@ public partial class StructureViewer : MonoBehaviour
 
     private void Start()
     {
-        CreateStructure();
+        if (Application.isPlaying) CreateStructure();
     }
 
     // ------------------------------------------------------------------
@@ -213,8 +213,34 @@ public partial class StructureViewer : MonoBehaviour
 
     private void OnEnable()
     {
+#if UNITY_EDITOR
+        // ExecuteAlways.OnEnable also runs inside asset import/domain reload.
+        // TextAsset contents are not ready there: load on a stable editor tick.
+        if (!Application.isPlaying)
+        {
+            UnityEditor.EditorApplication.delayCall -= CreateWhenEditorReady;
+            UnityEditor.EditorApplication.delayCall += CreateWhenEditorReady;
+        }
+#endif
+    }
+
+#if UNITY_EDITOR
+    private void OnDisable()
+    {
+        UnityEditor.EditorApplication.delayCall -= CreateWhenEditorReady;
+    }
+
+    private void CreateWhenEditorReady()
+    {
+        if (this == null || !isActiveAndEnabled || Application.isPlaying) return;
+        if (UnityEditor.EditorApplication.isCompiling || UnityEditor.EditorApplication.isUpdating)
+        {
+            UnityEditor.EditorApplication.delayCall += CreateWhenEditorReady;
+            return;
+        }
         CreateStructure();
     }
+#endif
 
     private void CreateStructure()
     {
@@ -303,6 +329,7 @@ public partial class StructureViewer : MonoBehaviour
         if (Application.isPlaying && GetComponent<PersonaSQ4>() == null) gameObject.AddComponent<PersonaSQ4>();   // SQ4: persona sobre la losa
         if (Application.isPlaying && GetComponent<PanelCapacidadViga>() == null) gameObject.AddComponent<PanelCapacidadViga>();   // capacidad de vigas
         CreateGroundGrid();
+        CreateArquitectura();   // capa SOLO VISUAL (fachada, escaleras, mobiliario): no entra al analisis
         if (Application.isPlaying && GetComponent<ViewerUI>() == null) gameObject.AddComponent<ViewerUI>();
 
         BuildComboOptions();
@@ -941,7 +968,7 @@ public partial class StructureViewer : MonoBehaviour
             arrow.transform.localScale = new Vector3(0.035f, direction.magnitude * 0.5f, 0.035f);
             arrow.GetComponent<Renderer>().material = CreateMaterial(Paleta.Carga);
 
-            GameObject head = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject head = PrimitiveGeometry.CreateSphere();
             head.name = $"Punta_Carga_N{load.node}";
             head.transform.SetParent(transform);
             head.transform.position = end;
@@ -993,7 +1020,7 @@ public partial class StructureViewer : MonoBehaviour
             loadObjects.Add(arrow);
             RegisterFloor(arrow, slab.nivel);
 
-            GameObject head = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject head = PrimitiveGeometry.CreateSphere();
             head.name = $"Punta_Carga_{slab.id}";
             head.transform.SetParent(transform);
             head.transform.position = end;
@@ -1107,7 +1134,7 @@ public partial class StructureViewer : MonoBehaviour
     {
         foreach (KeyValuePair<int, Vector3> kv in nodes)
         {
-            GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject marker = PrimitiveGeometry.CreateSphere();
             marker.name = $"Nodo_{kv.Key}";
             marker.transform.SetParent(transform);
             marker.transform.position = kv.Value;
@@ -1232,6 +1259,7 @@ public partial class StructureViewer : MonoBehaviour
         SetGroupVisible(loadObjects, showLoads);
         SetGroupVisible(gridObjects, showGrid);
         SetGroupVisible(diaphragmMarkObjects, showDiaphragmMarks);
+        ActualizarArquitectura();
     }
 
     private bool IsRemovedObject(GameObject go)
@@ -1413,7 +1441,7 @@ public partial class StructureViewer : MonoBehaviour
         float innerY = y + 30f;
         float innerW = w - 24f;
         leftScroll = GUI.BeginScrollView(new Rect(x + 4f, innerY, w - 8f, h - 38f), leftScroll,
-            new Rect(x + 4f, innerY, w - 24f, 596f));
+            new Rect(x + 4f, innerY, w - 24f, 622f));
 
         // Buscar elemento por id/tag: lo selecciona y centra la camara
         GUI.Label(new Rect(innerX, innerY, innerW, 20f), "BUSCAR ELEMENTO", UiTheme.Header);
@@ -1438,6 +1466,11 @@ public partial class StructureViewer : MonoBehaviour
         showIds = GUI.Toggle(new Rect(innerX, innerY, 104f, 20f), showIds, "IDs");
         showLocalAxes = GUI.Toggle(new Rect(innerX + 108f, innerY, 118f, 20f), showLocalAxes, "Ejes locales");
         showLoads = GUI.Toggle(new Rect(innerX + 234f, innerY, 78f, 20f), showLoads, "Cargas");
+        innerY += 26f;
+        // capa solo visual (StructureViewer.Arquitectura.cs)
+        showFachada = GUI.Toggle(new Rect(innerX, innerY, 104f, 20f), showFachada, "Fachada");
+        showEntorno = GUI.Toggle(new Rect(innerX + 108f, innerY, 90f, 20f), showEntorno, "Entorno");
+        showMobiliario = GUI.Toggle(new Rect(innerX + 200f, innerY, 110f, 20f), showMobiliario, "Mobiliario");
         innerY += 36f;
 
         GUI.Label(new Rect(innerX, innerY, innerW, 20f), "FILTRO POR PISO", UiTheme.Header);

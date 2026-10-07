@@ -1,0 +1,3300 @@
+{
+  "algorithm": "SHA256 completo",
+  "entries": [
+    {
+      "archivo": ".gitignore",
+      "bytes": 732,
+      "SHA256": "49895b49a7ae5d365b1ecc56449a8e30aa905fc22cf7f3122b88bded4f220956",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Abrir_Unity.bat",
+      "bytes": 1672,
+      "SHA256": "a91db28f60208c5680715c60750a248515b8d772ddfcd185ec8239b45325f7a3",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Ejecutar.bat",
+      "bytes": 1595,
+      "SHA256": "ca0e4ead880a02b1bcc57c85ddbac32f7506306c8d129772906534d6532626e7",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "instalar_dependencias.bat",
+      "bytes": 1529,
+      "SHA256": "3433c7cfc76d23b3723ecf310da4b6475a07a952a271040583f5937770f8b471",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "LEER_PRIMERO_ORGANIZACION.md",
+      "bytes": 539,
+      "SHA256": "79e9296b2bf0408475b60bc943d03c3725f285f5419b0c74a74d0d31569cdb21",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "pytest.ini",
+      "bytes": 155,
+      "SHA256": "1f9621ee2602ab210f3c56039a2f07c0102af0c80112bd827a350de000c95a8d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "README.md",
+      "bytes": 14520,
+      "SHA256": "a03de21761b7dfbebfc0feb809691d6e08e84ab0825d8baa44d57c97937b8f4e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "README_HONORS.md",
+      "bytes": 1944,
+      "SHA256": "cafa01f66454c5a1630263398402ed53e073d0cd619b87ae58aaae57b78d3786",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "requirements.txt",
+      "bytes": 616,
+      "SHA256": "9c125367e99d002b6088e7ab6f1025dab7588b71a580ac87dd28e0b8eeae7c0e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "entrega/Ejecutar_Honors.ps1",
+      "bytes": 2141,
+      "SHA256": "545f3f70a6fd6750ec24112aed7f0f6c0a8cdb5fa3642c22c27aeef57653ced0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/original_results_sha256.json",
+      "bytes": 439,
+      "SHA256": "e360d2e5fae1e5208d162d575d534a1f24019a0baa2504121a724bd763c476e8",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/UnityExacto.ps1",
+      "bytes": 1551,
+      "SHA256": "5d9725859e6c1f4193537c81692d6de880949709c39b4086ae8488aaa67c08ee",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "entrega/honors/adb_devices.txt",
+      "bytes": 28,
+      "SHA256": "bbfcc7239a6f1be3544814ebdc6bcc9b66bf5b1f0b03baa3340808f19265a630",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/ajustes_csv.py",
+      "bytes": 743,
+      "SHA256": "dbf81943ed9f1f754a393d4ea32a4489e723a6774a0e358a27c052e4e292f54b",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/alias_session.json",
+      "bytes": 365,
+      "SHA256": "2cca195f23acd46e4bea440d27f1cd1c965a4617f97fac3c75545b55f6d80c29",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/cerrar_entrega.py",
+      "bytes": 16054,
+      "SHA256": "7fe0fdac9008003c63259c0881483dc377a2a48ce4dbeac50ca655623e42f8a1",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/COMANDOS_EJECUTADOS.json",
+      "bytes": 10812,
+      "SHA256": "d1e74c2c63f87d485c2efa9c6812bae3506ca70175e93c779e3e80edeabc456f",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/ESTADO_HONORS.csv",
+      "bytes": 1177,
+      "SHA256": "ef5cc1c35bfdf216784118c8b089a95ec5ff1a5a958f7ccd3d89937e8e8b8138",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/gradle_stop.log",
+      "bytes": 32,
+      "SHA256": "9506a3843eb1d5f4ed7f6bc87fe61055d213e2b3fbbfb86a9c5b5bd04fef88a6",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Honors_apksigner_verify.txt",
+      "bytes": 972,
+      "SHA256": "27c75e29a800b29ae0d09d54f6a5c88ce70df6d8a2bfa46f7b7922dc356aa679",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Honors_final_badging.txt",
+      "bytes": 7131,
+      "SHA256": "5fea3c9d34992f2ff816388c40a85db34fe54543a0e9cee50a326d5228cc9cb0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Honors_final_manifest.txt",
+      "bytes": 8421,
+      "SHA256": "e819c2221bee43dd07af67bfb003d6d645e05583d09385b0bb1781d5f194faed",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/OMISIONES_ZIP.json",
+      "bytes": 490,
+      "SHA256": "f0a3ea7b2126c41a7ebd449204d09bdfef078d32329d15adb03fa33f57685b7f",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteger.py",
+      "bytes": 1441,
+      "SHA256": "8b036d570d4a093494af05d078be6261d23054b65e7c9b7ab1607847385e5e1e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Python_diagnostico_h5.log",
+      "bytes": 101,
+      "SHA256": "4033edc9375b4d24b443271261b817dd456e50be18283eedc1662a58c73e90c1",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Python_stage1.log",
+      "bytes": 2600,
+      "SHA256": "d65eea365b57bbba38fe6f1bae954f2c0242e627159fd71e2d87e30b8b6cfebd",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Python_stage1.xml",
+      "bytes": 12765,
+      "SHA256": "e69405a8aec3ff6787b0f810e0ceeb6d03493a02b70f9c0bd89566f6d0fec36c",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Python_stage1_corrected.log",
+      "bytes": 193,
+      "SHA256": "d02c190151d3eb54ebac020ec7ea15b4fa8415e5d82537d1b3beab2118a919a7",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Python_stage1_corrected.xml",
+      "bytes": 10425,
+      "SHA256": "6db953656e909f62d3e86a03a44471e57da9327341f06bca67392123c5c89bd4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/registrar_cierre.py",
+      "bytes": 3809,
+      "SHA256": "8d22e4e868fee9a9fb48bfe85e357e1e8b41f4f24216a0ba86982204bc6d87c2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/RESULTADO_FINAL.json",
+      "bytes": 1874,
+      "SHA256": "fd197c083feb9500cf1e390db74a0ba54ecb976e133a0672cffda4edb28e6e9a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/setup_honors.json",
+      "bytes": 141,
+      "SHA256": "19ba5ac212f78a2cb14395cfe81d37b939b93b321469f8f6c88125c1a5eaac01",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_Android_FlagsOff.log",
+      "bytes": 174693,
+      "SHA256": "850a5352a2cf04fc374e46c97b360c269e200f1e1e6ae6fae80bd29b92c8cd78",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_Android_FlagsOff_retry.log",
+      "bytes": 220517,
+      "SHA256": "b8f166e05e67cbbc561509986724148f5b69e1ff389ceab62a81707c4bfd96a5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_Android_Honors.log",
+      "bytes": 473740,
+      "SHA256": "86f4a7a6284bb43d46908e772932c0e189dce38eaa161f7f5cf5ccfab124e1a2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_Android_Honors_final.log",
+      "bytes": 227424,
+      "SHA256": "811c4e6d6ed84f0df3a8b9bd105f6fd157d8c54492a4851c5e061673124bb5b3",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_final12_HonorsScenes_PlayMode.log",
+      "bytes": 119559,
+      "SHA256": "b98047b8e46858cd321f36f849740380a880448f9672fa1e6908079432bc724d",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_final12_HonorsScenes_PlayMode.xml",
+      "bytes": 14756,
+      "SHA256": "5e4d29edee69937d16fd637630670dbcea4b27a86e8e9715d583e9d6c70f0fb8",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_final12_PlayMode.log",
+      "bytes": 126961,
+      "SHA256": "ae46ed7cef01dfa445fe42930e0048009268e26079fc11aa46865347580e72d0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_final12_PlayMode.xml",
+      "bytes": 14748,
+      "SHA256": "6904ca88a69c65f0742addcda3e95228060d3f201e7fcc4e0c3980260653acfc",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_final31_EditMode.log",
+      "bytes": 29193,
+      "SHA256": "e20ed14c2b2f320bc2405b265b30821af7794bc61531f2b1d74af1a79410ae94",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_final31_EditMode.xml",
+      "bytes": 22552,
+      "SHA256": "5df18a0c5425d19ede69b85b56e65a86280a6bf9dd6b38c94d6763df5617e6d8",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_final_PlayMode.log",
+      "bytes": 133682,
+      "SHA256": "339a4c463b8de044fd9bfb9298c42db5b6eb709436e5e5ae7573cf5791f993ec",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_final_PlayMode.xml",
+      "bytes": 14744,
+      "SHA256": "7d5c7e1a97373d17f41d6e67425f01d779a614fceb6841e5042a0a64c3de9458",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H2_EditMode.log",
+      "bytes": 35958,
+      "SHA256": "f288ecebaac2ca85695e5b72be116f607562cca1f578a3a6f1ff3aaf955db0ac",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H2_EditMode.xml",
+      "bytes": 21502,
+      "SHA256": "84286c717b4a02cbb976e07faea0ca7c09a51af56e90b40138c01f11a103847e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H2_PlayMode.log",
+      "bytes": 110720,
+      "SHA256": "eeb286df847961c334aaf00f947519f394cb985ef65d9a8983c1da3a4fa8bfb4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H2_PlayMode.xml",
+      "bytes": 11450,
+      "SHA256": "cee1ca55487095661c90334cbf06321fb01b94135150a8025aba3bc485095e4a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H2_Setup.log",
+      "bytes": 27079,
+      "SHA256": "b3beebbeff3412fbe1f491836720e3c9e7e6d3ef523198100443d07da7582985",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H5_EditMode.log",
+      "bytes": 147769,
+      "SHA256": "8057e6423c990566b1da00590543a5084db1f0af54f5dfedff7a63ea942277c5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H5_EditMode_final.log",
+      "bytes": 494342,
+      "SHA256": "e4e3ab33a1002682508568fb21a98562596f3653d07be997ee37d7c62f121276",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H5_EditMode_final.xml",
+      "bytes": 16645,
+      "SHA256": "f04296129952b1d0dfbdfcf54c0673e38c999731df6122197a5403d4f3b2cb30",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H5_EditMode_retry.log",
+      "bytes": 64309,
+      "SHA256": "d07beb7cfb27780c845d09429f02247c745044878d78f51ec6c302dc49ed2c1c",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H5_PlayMode.log",
+      "bytes": 109885,
+      "SHA256": "1333cead569c0426e2497e188a7cec9e32eca9e15214d489b807c04402d7bb1f",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_H5_PlayMode.xml",
+      "bytes": 10317,
+      "SHA256": "e59a6572dfc81208e3d32cf9d0bf3eead102322905efdbae1929e76bb38cc126",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_release_EditMode.log",
+      "bytes": 35637,
+      "SHA256": "cb77d574f1e1a04c9fa4e0603dc27688ddf4894b17137e5d8f5bbaec5f3965d2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_release_EditMode.xml",
+      "bytes": 21507,
+      "SHA256": "e9ab647bbe57bd8a1ab2b06ac0dc36e2539f3bad93986bb73f5f650b42aad5a9",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_release_PlayMode.log",
+      "bytes": 117481,
+      "SHA256": "32e186790d6061bf7bb00469b445225a8be673bc5a6dee1efa2a0f66b91a5470",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_release_PlayMode.xml",
+      "bytes": 14744,
+      "SHA256": "516c98e77e965b31d2ad56adeb59948bd0443f47363e2b7d621d8dea8e9a944a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Unity_Setup_release.log",
+      "bytes": 31100,
+      "SHA256": "a44a636e19ef3cfb30f4d5bbc50e1c91e85a53a7692cf146272a5f806a3000d5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android/FlagsOff_BuildReport.json",
+      "bytes": 364,
+      "SHA256": "b82e5df6dde2b3e4d2fcf13fe714e4145d114c697cea19402e8b5d11a0612beb",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android/FlagsOff_SettingsRestoration.json",
+      "bytes": 146,
+      "SHA256": "afefc395a5a4bea5d638e75f613840426558e80948e7ac6b0a7e30b5b3ae92a2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android/Honors_BuildConfiguration.json",
+      "bytes": 463,
+      "SHA256": "fbb22aad510d42c8d0c7c7ce211287eb92871c9f27be84da4c2da7d219ba66c6",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android/Honors_BuildReport.json",
+      "bytes": 682,
+      "SHA256": "284aebbae2936ce17997c37e8bc05ca0ca8fa93ea263fa12fc79269cfae617dc",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android/Honors_SettingsRestoration.json",
+      "bytes": 146,
+      "SHA256": "afefc395a5a4bea5d638e75f613840426558e80948e7ac6b0a7e30b5b3ae92a2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android/P1G8_AR_FlagsOff_Gate.apk",
+      "bytes": 39921230,
+      "SHA256": "e17fda75f1d37e976575a4811018a492733c73edd158491810d5eb9c1cc70a6d",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android/P1G8_Honors_H5_H2.apk",
+      "bytes": 39935094,
+      "SHA256": "695752c24cddad65a2365f9031f06350b16d8f5ed100adfbe8aeb2a7f72a19ae",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android_flagsoff_fallo/AR_SettingsRestoration.json",
+      "bytes": 146,
+      "SHA256": "afefc395a5a4bea5d638e75f613840426558e80948e7ac6b0a7e30b5b3ae92a2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android_flagsoff_fallo/FlagsOff_BuildReport.json",
+      "bytes": 3467,
+      "SHA256": "1a3f2ae12246c8c5341bf1e4f890256a4dd2b028988efdf32d3fcd0509cd7b66",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android_primer_ensayo/badging.txt",
+      "bytes": 7131,
+      "SHA256": "5fea3c9d34992f2ff816388c40a85db34fe54543a0e9cee50a326d5228cc9cb0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android_primer_ensayo/Honors_BuildConfiguration.json",
+      "bytes": 463,
+      "SHA256": "fbb22aad510d42c8d0c7c7ce211287eb92871c9f27be84da4c2da7d219ba66c6",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android_primer_ensayo/Honors_BuildReport.json",
+      "bytes": 3864,
+      "SHA256": "19f41399b65fbbe8069a6e9afd70d505955216960988e33a1e957fc0f7a0c4db",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android_primer_ensayo/Honors_SettingsRestoration.json",
+      "bytes": 146,
+      "SHA256": "afefc395a5a4bea5d638e75f613840426558e80948e7ac6b0a7e30b5b3ae92a2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android_primer_ensayo/manifest.txt",
+      "bytes": 8421,
+      "SHA256": "e819c2221bee43dd07af67bfb003d6d645e05583d09385b0bb1781d5f194faed",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android_primer_ensayo/Marcador_Honors_Plano.png",
+      "bytes": 39417,
+      "SHA256": "a6b4203da0df6153db2b7e839fbfa2a07b07e6b3551440a77c507f8b0916592b",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/Android_primer_ensayo/P1G8_Honors_H5_H2.apk",
+      "bytes": 39922490,
+      "SHA256": "a5318513c779052d0414eacae571b037b48c4d3f25909f42f3a452dc6868cc50",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H2/arcoreimg_legacy_quality.txt",
+      "bytes": 5,
+      "SHA256": "90b53df56816c127246136d4403aba3b26cec599b2b950fb2ba78d6c1fb4e6bf",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H2/arcoreimg_quality.txt",
+      "bytes": 5,
+      "SHA256": "90b53df56816c127246136d4403aba3b26cec599b2b950fb2ba78d6c1fb4e6bf",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H2/image_quality.json",
+      "bytes": 440,
+      "SHA256": "18eab353657d00dbfa9d29dce13dc2cea7a3f6681b1ab42b9622dd280ff251dc",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H2/plan_mapping.json",
+      "bytes": 319,
+      "SHA256": "649e1235d6a2641d93326f4f61e81b68494d87a97e58fc4730a0fca071a9f2ac",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5/after.json",
+      "bytes": 15527301,
+      "SHA256": "79de534d11086e0e38030faa230261b1f7610d14228bd124c25762c2db3b238d",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5/after.log",
+      "bytes": 388,
+      "SHA256": "648ad5a50dfcae3ec89b7ad2d64f17af4a089b247af7fdb087bfaad50e5e3e04",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5/after.overrides.json",
+      "bytes": 98,
+      "SHA256": "6122dc21232e8990e5090433479e1f7de3b549516eb256e2351c454754835004",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5/before.json",
+      "bytes": 15527191,
+      "SHA256": "fe5443520dde91af907498bb579b5d35606b001dedb7cc408bac92ef97b59ac0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5/before.log",
+      "bytes": 389,
+      "SHA256": "179b0fbe85637a9ed2597a5415fee991ca4e48635b0b4ee9b7af68f4531a9562",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5/before.overrides.json",
+      "bytes": 2,
+      "SHA256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/after.json",
+      "bytes": 15527301,
+      "SHA256": "ace1c50efd4fd2bfaa46dbb4592c7b5223af8704559737c79cab73bf02dabd5a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/after.log",
+      "bytes": 401,
+      "SHA256": "fab3130dc631f4fec6301950f4f69ede02e88751bf2a4558d1c03701c6b8a817",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/after.overrides.json",
+      "bytes": 98,
+      "SHA256": "6122dc21232e8990e5090433479e1f7de3b549516eb256e2351c454754835004",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/after_opensees.log",
+      "bytes": 5864,
+      "SHA256": "7c9aa5769b018ec6d14465d4d64d9e118b2de89dc638a6d41c4e5cba1dc9013f",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/after_opensees_direct.json",
+      "bytes": 15527210,
+      "SHA256": "aee39c1a92e48ef621d006d2b0a30218241c97a41583c37fcfda974de7ffc740",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/before.json",
+      "bytes": 15527191,
+      "SHA256": "ebdce98c601c599997d9528df83e0f78c5a7949055a3a8311613bf4d4b676b89",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/before.log",
+      "bytes": 402,
+      "SHA256": "d7a07561d196914e18c69c57f1cd06e1e21fc6a6ec2e172a5ec996f1f38d6756",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/before.overrides.json",
+      "bytes": 2,
+      "SHA256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/before_opensees.log",
+      "bytes": 5865,
+      "SHA256": "d92b34156b0f2d7251099284aed4834c3541e842e2e95764cfdfd49228a52fb2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/before_opensees_direct.json",
+      "bytes": 15527102,
+      "SHA256": "8f05eb7beb19ea2000c88a3c11b56d487528bf8907e196f25caa7afc6020a133",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/comparison.csv",
+      "bytes": 698,
+      "SHA256": "3b9ca19e19db367dc4898a76fb328cb467381adf3fb6e64d6fcd7547b9da29a0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/comparison.json",
+      "bytes": 2488,
+      "SHA256": "bf36130bd03498352ad7f610117354c9cf1a2ca9afaf38b5cf7fd6108ecbd929",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/comparison.png",
+      "bytes": 96467,
+      "SHA256": "3728c2d7942850ee2f54baef7a95c63ddf08f35a8b0f589c991e882424244906",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/manifest.json",
+      "bytes": 11498,
+      "SHA256": "b7e5d173f69976fea09e0510941c548b4dc0979c65097a27e2d3963fe3d78cda",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/H5_demostracion/validation.json",
+      "bytes": 352,
+      "SHA256": "020eb12c5f14cb7ffe900c4e1ea960f1b941310c16e19a2be20ca448a8da1ac7",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/copias_soporte_adicional.json",
+      "bytes": 418,
+      "SHA256": "b3a187da954f795d6d998b0cdef49d5cf74b9aaefdeef5e6a620b5ebad5aa1c2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/copias_verificadas.json",
+      "bytes": 87549,
+      "SHA256": "df5e23cb600fead47c93f9a4bfbb344b2ab19d872309800fb864b589fb99e50f",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/derivado_changes_stage2.json",
+      "bytes": 16469,
+      "SHA256": "66419e47e7d56d4093e53cc43ba2eaaf39cf0df7bb7bde7e502c8eb71b4083c2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/freeze_originales.json",
+      "bytes": 242300,
+      "SHA256": "ad2b5ac294971556a79384630ebad69d70f06beb7bb0ce84c754070ef259b834",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/freeze_originales_completo.json",
+      "bytes": 244484,
+      "SHA256": "2d9c69263375235036e69f5059ff7ebdd609d777ffd4b33618ae2d0b7b988bbd",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/inputs_tests_packages_preservados.json",
+      "bytes": 10748,
+      "SHA256": "31ca7303d3e4172c9cfe0d8f0e22a03981bfcd6010796e966b4a867e7c173852",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/integridad_FINAL.json",
+      "bytes": 80,
+      "SHA256": "93db3b696e5de4b6c3130c723e23f4b8ff3e3b75fe725060e90dfe5e4c0b51e5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/integridad_H2_build1.json",
+      "bytes": 80,
+      "SHA256": "93db3b696e5de4b6c3130c723e23f4b8ff3e3b75fe725060e90dfe5e4c0b51e5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/integridad_H2_code.json",
+      "bytes": 80,
+      "SHA256": "93db3b696e5de4b6c3130c723e23f4b8ff3e3b75fe725060e90dfe5e4c0b51e5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/integridad_H5.json",
+      "bytes": 80,
+      "SHA256": "5ae61c0b114fd780a81452b4574980dc79f0ed04ad028a4c1a1a17d6c7e7e111",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/integridad_H5_native.json",
+      "bytes": 80,
+      "SHA256": "93db3b696e5de4b6c3130c723e23f4b8ff3e3b75fe725060e90dfe5e4c0b51e5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/integridad_HONORS5.json",
+      "bytes": 80,
+      "SHA256": "93db3b696e5de4b6c3130c723e23f4b8ff3e3b75fe725060e90dfe5e4c0b51e5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/proteccion/integridad_HONORS5_flagsoff.json",
+      "bytes": 80,
+      "SHA256": "93db3b696e5de4b6c3130c723e23f4b8ff3e3b75fe725060e90dfe5e4c0b51e5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/42ab1149bb3045be8d6373d247ad5443/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/42ab1149bb3045be8d6373d247ad5443/raw.csv",
+      "bytes": 1480,
+      "SHA256": "58f03a88c7327f9ad4b0ede7b730f71bfdec108d4a14ab14929c521e3c51e9c0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/42ab1149bb3045be8d6373d247ad5443/summary.json",
+      "bytes": 6789,
+      "SHA256": "8f5e44ec578c750c656d764c8ba1df60f617ac14e900669652ba8d3b92664f8e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/52a99395e08b49bd8f1d30812387f9f8/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/52a99395e08b49bd8f1d30812387f9f8/profiles_snapshot.json",
+      "bytes": 3029,
+      "SHA256": "bb6b1c4001f2f354e68c0a9aeda214cd6f35ae025d901b56304eb7c8f0a85433",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/52a99395e08b49bd8f1d30812387f9f8/raw.csv",
+      "bytes": 1495,
+      "SHA256": "8ae4e3b7955ed78b021dc4418d9e8dd403ebbfa9348c5788d9768a070bc5e372",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/52a99395e08b49bd8f1d30812387f9f8/summary.json",
+      "bytes": 6944,
+      "SHA256": "0ca8fb255c21a51bee0722756ed30906ef28f433b24e77964ebaa6ed1a26363e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/782453efc8484febac21e98775187f26/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/782453efc8484febac21e98775187f26/profiles_snapshot.json",
+      "bytes": 3029,
+      "SHA256": "bb6b1c4001f2f354e68c0a9aeda214cd6f35ae025d901b56304eb7c8f0a85433",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/782453efc8484febac21e98775187f26/raw.csv",
+      "bytes": 1494,
+      "SHA256": "63c1575b56409bb6271db7f198a49ed6e0fa9f49bea4fd0421d54bc4615bb9a1",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/782453efc8484febac21e98775187f26/summary.json",
+      "bytes": 6946,
+      "SHA256": "5974caa3cca2a856ac7c0cd9ac1406037e485a89952600f4753248634a9d2836",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/830b8e326e9049f18108fd4f8562538d/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/830b8e326e9049f18108fd4f8562538d/raw.csv",
+      "bytes": 1479,
+      "SHA256": "f19e49fb201f36142ce416403ca950431511f0944fd245ac77238759bf42aea9",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/830b8e326e9049f18108fd4f8562538d/summary.json",
+      "bytes": 6791,
+      "SHA256": "8007468f30064bed589dca3ef25a09c147bf2afb5495d43e12e18b582c9ae05a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/8bd2cb459bb34dfc9bb069fb09f57c49/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/8bd2cb459bb34dfc9bb069fb09f57c49/raw.csv",
+      "bytes": 1887,
+      "SHA256": "020932631e49cc9bc4035d3329fa41e777dd26e835e3ffffafad9c38fe1edd80",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/8bd2cb459bb34dfc9bb069fb09f57c49/summary.json",
+      "bytes": 9292,
+      "SHA256": "1dfea984cdcf79145bd215c29d1f22e8efb87590c7714f244381eaa193d37451",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/b3ae77d7a37e44fbac2e8073a4a962b2/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/b3ae77d7a37e44fbac2e8073a4a962b2/raw.csv",
+      "bytes": 1753,
+      "SHA256": "c872e3b76473a932fda12f63fc08ce5f0ed9d305f69b97aab45204e550b0d476",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/b3ae77d7a37e44fbac2e8073a4a962b2/summary.json",
+      "bytes": 9161,
+      "SHA256": "eefc3a24c3a98aeac8a37cbef2dac5631a3690056e1943aa56f2ad3e18c5ba08",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/cc77ae09952e46038ff451666b92ee67/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/cc77ae09952e46038ff451666b92ee67/raw.csv",
+      "bytes": 1887,
+      "SHA256": "2e44c98736078a0fb09317be9a175cc52c86482d75f19e1bea57f28f3b0952e6",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/cc77ae09952e46038ff451666b92ee67/summary.json",
+      "bytes": 9290,
+      "SHA256": "604fae71476b8fc2eaf5b7e7fe5042cfe09640fc56fee3120b515cdb9391ecfb",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/dc39ea02bdf64df4b12aac8cbc150d18/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/dc39ea02bdf64df4b12aac8cbc150d18/profiles_snapshot.json",
+      "bytes": 3029,
+      "SHA256": "bb6b1c4001f2f354e68c0a9aeda214cd6f35ae025d901b56304eb7c8f0a85433",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/dc39ea02bdf64df4b12aac8cbc150d18/raw.csv",
+      "bytes": 1906,
+      "SHA256": "23fcd9495b2b7e30f0fad1e6096201b33982349c3570a8e5b4339c948506cfb3",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/dc39ea02bdf64df4b12aac8cbc150d18/request_5.json",
+      "bytes": 1593,
+      "SHA256": "f27264221f9e49f5041516101fe4f8130cb1f9b35cb774f6ffafde10a019e134",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/dc39ea02bdf64df4b12aac8cbc150d18/request_7.json",
+      "bytes": 1593,
+      "SHA256": "cc572b1247535d3a7920af06ac105efeca622f6e032b658290911e2c9cedf18b",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/dc39ea02bdf64df4b12aac8cbc150d18/request_9.json",
+      "bytes": 1593,
+      "SHA256": "cbf547434713fe2efc87f78cba44ab04fdb0108e07ccfb4b42e9dc7f4e77ddea",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/dc39ea02bdf64df4b12aac8cbc150d18/summary.json",
+      "bytes": 9508,
+      "SHA256": "ba447a7dbc6d17e1826b5d5fed7ac98009c7dabdab50aba94f46f32ac3713cce",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/f8298e28ddf640d2897102a918bc1748/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/f8298e28ddf640d2897102a918bc1748/profiles_snapshot.json",
+      "bytes": 3029,
+      "SHA256": "bb6b1c4001f2f354e68c0a9aeda214cd6f35ae025d901b56304eb7c8f0a85433",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/f8298e28ddf640d2897102a918bc1748/raw.csv",
+      "bytes": 1907,
+      "SHA256": "1273576c2f94debd35b11ef3032ec9c86f38d29dae1a9121e183f68aa5460b20",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/f8298e28ddf640d2897102a918bc1748/request_5.json",
+      "bytes": 1593,
+      "SHA256": "f27264221f9e49f5041516101fe4f8130cb1f9b35cb774f6ffafde10a019e134",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/f8298e28ddf640d2897102a918bc1748/request_7.json",
+      "bytes": 1593,
+      "SHA256": "cc572b1247535d3a7920af06ac105efeca622f6e032b658290911e2c9cedf18b",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/f8298e28ddf640d2897102a918bc1748/request_9.json",
+      "bytes": 1593,
+      "SHA256": "cbf547434713fe2efc87f78cba44ab04fdb0108e07ccfb4b42e9dc7f4e77ddea",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA/f8298e28ddf640d2897102a918bc1748/summary.json",
+      "bytes": 9511,
+      "SHA256": "b495cd11ee4312a59f70150d641516f2fb520b0125fe3b62e308604d8a1bb824",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA_test/512b4c72642c4596ac8ea4ce2092a075/acfe2ca13531432ca477ae06a61472e5/physical_reference_PENDING.csv",
+      "bytes": 135,
+      "SHA256": "2b392df0c55f663edbcf6b1d40a2bc0ddd34699e120776e37ee81e4a7100fb34",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA_test/512b4c72642c4596ac8ea4ce2092a075/acfe2ca13531432ca477ae06a61472e5/profiles_snapshot.json",
+      "bytes": 3029,
+      "SHA256": "bb6b1c4001f2f354e68c0a9aeda214cd6f35ae025d901b56304eb7c8f0a85433",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA_test/512b4c72642c4596ac8ea4ce2092a075/acfe2ca13531432ca477ae06a61472e5/raw.csv",
+      "bytes": 632,
+      "SHA256": "4072b82ec503adc2791bd36218aa1deac82f3239844fb8f1cddc32a9a363026b",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA_test/512b4c72642c4596ac8ea4ce2092a075/acfe2ca13531432ca477ae06a61472e5/request_1.json",
+      "bytes": 1593,
+      "SHA256": "0a8a33be7903138f046fc552443da44e6095b7ca554a5777627e0524d7deb98c",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/QA_test/512b4c72642c4596ac8ea4ce2092a075/acfe2ca13531432ca477ae06a61472e5/summary.json",
+      "bytes": 3921,
+      "SHA256": "7f0d08a05d413a7635c686b3b0c8858644a337ce528676fac9879a074b2c4ab1",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/277971a68d364c5fb69fb401592f8f5d/armaduras_unity.json",
+      "bytes": 72,
+      "SHA256": "eed2b4af02f45d6625fb0bc189169360e9596009fe05290df61bcc01f12cacb4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/277971a68d364c5fb69fb401592f8f5d/combos_unity.json",
+      "bytes": 577,
+      "SHA256": "9d537983e18b24a09a77a1a6c94903cedd16b3e7e74512f803877725cbb5d3fe",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/277971a68d364c5fb69fb401592f8f5d/escenario_unity.json",
+      "bytes": 15526742,
+      "SHA256": "9e557399c1d898c2867f7a95cc33c84d8e1832b445a3b1b397ecf3de7ba2caaf",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/277971a68d364c5fb69fb401592f8f5d/mods_unity.json",
+      "bytes": 16,
+      "SHA256": "07e376f1080572b147474c65dce2d3851abcadcf7029289d82a4753e45bd8f2e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/28468ff854704b46ad19c5277b222242/armaduras_unity.json",
+      "bytes": 72,
+      "SHA256": "eed2b4af02f45d6625fb0bc189169360e9596009fe05290df61bcc01f12cacb4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/28468ff854704b46ad19c5277b222242/combos_unity.json",
+      "bytes": 577,
+      "SHA256": "9d537983e18b24a09a77a1a6c94903cedd16b3e7e74512f803877725cbb5d3fe",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/28468ff854704b46ad19c5277b222242/escenario_unity.json",
+      "bytes": 15526742,
+      "SHA256": "8a591f9dbbad6d205866e41fe8df82301bfdd6fc584bc7d3b76f7ec648e6ce2a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/28468ff854704b46ad19c5277b222242/mods_unity.json",
+      "bytes": 16,
+      "SHA256": "07e376f1080572b147474c65dce2d3851abcadcf7029289d82a4753e45bd8f2e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/8630f790ec584b94907ea13ab98efb33/armaduras_unity.json",
+      "bytes": 72,
+      "SHA256": "eed2b4af02f45d6625fb0bc189169360e9596009fe05290df61bcc01f12cacb4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/8630f790ec584b94907ea13ab98efb33/combos_unity.json",
+      "bytes": 577,
+      "SHA256": "9d537983e18b24a09a77a1a6c94903cedd16b3e7e74512f803877725cbb5d3fe",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/8630f790ec584b94907ea13ab98efb33/escenario_unity.json",
+      "bytes": 15526742,
+      "SHA256": "697880a98bd29ac18ff1a25db9c82fdabab975a4051fc4121db0ac1d0ec528d3",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/8630f790ec584b94907ea13ab98efb33/mods_unity.json",
+      "bytes": 16,
+      "SHA256": "07e376f1080572b147474c65dce2d3851abcadcf7029289d82a4753e45bd8f2e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/a617e9fabe4f4a92842aacfe103abac7/armaduras_unity.json",
+      "bytes": 72,
+      "SHA256": "eed2b4af02f45d6625fb0bc189169360e9596009fe05290df61bcc01f12cacb4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/a617e9fabe4f4a92842aacfe103abac7/combos_unity.json",
+      "bytes": 577,
+      "SHA256": "9d537983e18b24a09a77a1a6c94903cedd16b3e7e74512f803877725cbb5d3fe",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/a617e9fabe4f4a92842aacfe103abac7/escenario_unity.json",
+      "bytes": 15526742,
+      "SHA256": "01b8d1379b59185d261146ad9843874dca198ce2455ef9bdf271f6bea3605b58",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/a617e9fabe4f4a92842aacfe103abac7/mods_unity.json",
+      "bytes": 16,
+      "SHA256": "07e376f1080572b147474c65dce2d3851abcadcf7029289d82a4753e45bd8f2e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/ac5de1e3c60741b4a79fed6e16778959/armaduras_unity.json",
+      "bytes": 72,
+      "SHA256": "eed2b4af02f45d6625fb0bc189169360e9596009fe05290df61bcc01f12cacb4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/ac5de1e3c60741b4a79fed6e16778959/combos_unity.json",
+      "bytes": 577,
+      "SHA256": "9d537983e18b24a09a77a1a6c94903cedd16b3e7e74512f803877725cbb5d3fe",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/ac5de1e3c60741b4a79fed6e16778959/escenario_unity.json",
+      "bytes": 15526742,
+      "SHA256": "4a35d087e46d7388fa6168b5e63adf67351ad33c6e90137a7b58407b9fa0564f",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/ac5de1e3c60741b4a79fed6e16778959/mods_unity.json",
+      "bytes": 16,
+      "SHA256": "07e376f1080572b147474c65dce2d3851abcadcf7029289d82a4753e45bd8f2e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/af13bfd472b742328894c59dff51456e/armaduras_unity.json",
+      "bytes": 72,
+      "SHA256": "eed2b4af02f45d6625fb0bc189169360e9596009fe05290df61bcc01f12cacb4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/af13bfd472b742328894c59dff51456e/combos_unity.json",
+      "bytes": 577,
+      "SHA256": "9d537983e18b24a09a77a1a6c94903cedd16b3e7e74512f803877725cbb5d3fe",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/af13bfd472b742328894c59dff51456e/escenario_unity.json",
+      "bytes": 15526742,
+      "SHA256": "9aedca8e1082389391943a7da73fdbcdb684a7aa85d2cd801b39b73b8b685280",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/reanálisis_UI/af13bfd472b742328894c59dff51456e/mods_unity.json",
+      "bytes": 16,
+      "SHA256": "07e376f1080572b147474c65dce2d3851abcadcf7029289d82a4753e45bd8f2e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/1c6e50f500f248a098f52ee27d28062a/input.json",
+      "bytes": 15526953,
+      "SHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/1c6e50f500f248a098f52ee27d28062a/override.json",
+      "bytes": 60,
+      "SHA256": "cb2f5810b1158beee83ea89655f801601bf678fcd060a9472c20bcde5caa1477",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/1c6e50f500f248a098f52ee27d28062a/result.json",
+      "bytes": 15527301,
+      "SHA256": "28c70b93ebe90e520d1499609c15160798ea914b5d9f2d9ef4c126b2db27e361",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/1c6e50f500f248a098f52ee27d28062a/result.log",
+      "bytes": 431,
+      "SHA256": "b0f3a83add0dbc8f4bf03df8558e4ef385bed351e8203c2752c644aacb745146",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/1c6e50f500f248a098f52ee27d28062a/result.overrides.json",
+      "bytes": 98,
+      "SHA256": "6122dc21232e8990e5090433479e1f7de3b549516eb256e2351c454754835004",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/7a452cf17b774947bd1d241355279557/input.json",
+      "bytes": 15526953,
+      "SHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/7a452cf17b774947bd1d241355279557/override.json",
+      "bytes": 60,
+      "SHA256": "cb2f5810b1158beee83ea89655f801601bf678fcd060a9472c20bcde5caa1477",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/7a452cf17b774947bd1d241355279557/result.json",
+      "bytes": 15527301,
+      "SHA256": "155f4c5c221f9c8985105782e9f3a69e3351b5e819bb7e3c315b4763c13781c9",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/7a452cf17b774947bd1d241355279557/result.log",
+      "bytes": 431,
+      "SHA256": "ea5d0c805a391f63a01dcfbaafc5c104dee60cdedac6ea33c63d963a7785927b",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/7a452cf17b774947bd1d241355279557/result.overrides.json",
+      "bytes": 98,
+      "SHA256": "6122dc21232e8990e5090433479e1f7de3b549516eb256e2351c454754835004",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/a450ed87f3954af493bbff03bbb0784e/input.json",
+      "bytes": 15526953,
+      "SHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/a450ed87f3954af493bbff03bbb0784e/override.json",
+      "bytes": 60,
+      "SHA256": "cb2f5810b1158beee83ea89655f801601bf678fcd060a9472c20bcde5caa1477",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/a450ed87f3954af493bbff03bbb0784e/result.json",
+      "bytes": 15527301,
+      "SHA256": "9da096edac8c8a98195e5637bfd421105a08c82846478e40a2801ebe22b429ce",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/a450ed87f3954af493bbff03bbb0784e/result.log",
+      "bytes": 431,
+      "SHA256": "2902f2862c889813dc82d8dae1577a34143db01f1294fa21a1b7d7a0e86bf39c",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/a450ed87f3954af493bbff03bbb0784e/result.overrides.json",
+      "bytes": 98,
+      "SHA256": "6122dc21232e8990e5090433479e1f7de3b549516eb256e2351c454754835004",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/b5d229bdaab84f88938a60e25a05d1f5/input.json",
+      "bytes": 15526953,
+      "SHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/b5d229bdaab84f88938a60e25a05d1f5/override.json",
+      "bytes": 60,
+      "SHA256": "cb2f5810b1158beee83ea89655f801601bf678fcd060a9472c20bcde5caa1477",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/b5d229bdaab84f88938a60e25a05d1f5/result.json",
+      "bytes": 15527301,
+      "SHA256": "262fc8de2fe271463329635d984fc8c91ee2c61f538c7658d6f90eb5a2f9e95d",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/b5d229bdaab84f88938a60e25a05d1f5/result.log",
+      "bytes": 431,
+      "SHA256": "f72447d03bcfc112aa13f75e2c00d60c609b2b9c385dbacbf6d04bfc37e28098",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/b5d229bdaab84f88938a60e25a05d1f5/result.overrides.json",
+      "bytes": 98,
+      "SHA256": "6122dc21232e8990e5090433479e1f7de3b549516eb256e2351c454754835004",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/d3f50c1c4ddd439b89747489975e57a9/input.json",
+      "bytes": 15526953,
+      "SHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/d3f50c1c4ddd439b89747489975e57a9/override.json",
+      "bytes": 60,
+      "SHA256": "cb2f5810b1158beee83ea89655f801601bf678fcd060a9472c20bcde5caa1477",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/d3f50c1c4ddd439b89747489975e57a9/result.json",
+      "bytes": 15527301,
+      "SHA256": "7621f5017d8f5daef57fc0eb2b8af2557465bac72166178fac5fef0fc2114d10",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/d3f50c1c4ddd439b89747489975e57a9/result.log",
+      "bytes": 431,
+      "SHA256": "2be42118ac162df6a967a90858675f014736e69cd7dd2c1f8b107fad70aff2b2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/d3f50c1c4ddd439b89747489975e57a9/result.overrides.json",
+      "bytes": 98,
+      "SHA256": "6122dc21232e8990e5090433479e1f7de3b549516eb256e2351c454754835004",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/eeff9f78b5cc46b49e3ad6f77e89bd00/input.json",
+      "bytes": 15526953,
+      "SHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/eeff9f78b5cc46b49e3ad6f77e89bd00/override.json",
+      "bytes": 60,
+      "SHA256": "cb2f5810b1158beee83ea89655f801601bf678fcd060a9472c20bcde5caa1477",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/eeff9f78b5cc46b49e3ad6f77e89bd00/result.json",
+      "bytes": 15527301,
+      "SHA256": "900232f6e7f66f3ba545a4122a37e12241229ad0b8251265c37d6c73a8e9cc94",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/eeff9f78b5cc46b49e3ad6f77e89bd00/result.log",
+      "bytes": 431,
+      "SHA256": "3716e42ae7a345a0f9ac73eb020ceea1fba58409d37226f7785ee33005f46e9e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/sesiones_H5/eeff9f78b5cc46b49e3ad6f77e89bd00/result.overrides.json",
+      "bytes": 98,
+      "SHA256": "6122dc21232e8990e5090433479e1f7de3b549516eb256e2351c454754835004",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/2e451fcd-f1b8-4bc9-8900-48b23c96d6df/after.json",
+      "bytes": 15527301,
+      "SHA256": "0b6faf99e446f7f0f3526d1c5c6f7d59d135e4b75f01c7302d616aa740c6f941",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/2e451fcd-f1b8-4bc9-8900-48b23c96d6df/after.log",
+      "bytes": 428,
+      "SHA256": "da6b64f52b359fb53c9a6e7ef4e67a292d4c7288bc63b91b5e9ebdb7788d77ae",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/2e451fcd-f1b8-4bc9-8900-48b23c96d6df/after.overrides.json",
+      "bytes": 78,
+      "SHA256": "5eabb62109427be172cb841ddb32f392a48163601e1d29765e8ccbb3545d7bf5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/2e451fcd-f1b8-4bc9-8900-48b23c96d6df/after_direct.json",
+      "bytes": 15527529,
+      "SHA256": "9014af26a5e1fe483fff84c545134a586d8a578797ea4cd81cc008464ff9a4e4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/2e451fcd-f1b8-4bc9-8900-48b23c96d6df/before.json",
+      "bytes": 15527191,
+      "SHA256": "9e76312012a648ccdcc53f65ebbcf0525d2a1b6329b19d90a6b811146efa68ad",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/2e451fcd-f1b8-4bc9-8900-48b23c96d6df/before.log",
+      "bytes": 429,
+      "SHA256": "c7673027c2dda0e044e781e19ae9eef1417b1a3f55c4be5009682f822a02d13b",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/2e451fcd-f1b8-4bc9-8900-48b23c96d6df/before.overrides.json",
+      "bytes": 2,
+      "SHA256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/2e451fcd-f1b8-4bc9-8900-48b23c96d6df/before_direct.json",
+      "bytes": 15527421,
+      "SHA256": "7b977e94606c048cfc3d70646333691d43d04e538070bf6a3e5bd63a0d1b9ac0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/485e2d7d-4d42-4236-ba99-63d59ee42ffe/after.json",
+      "bytes": 15527301,
+      "SHA256": "297b2afebb6fc381df8d6b0f3f00fdf379f7872471bfd45f949790e2ac8029ac",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/485e2d7d-4d42-4236-ba99-63d59ee42ffe/after.log",
+      "bytes": 428,
+      "SHA256": "c738cc527a43f0a2a0fe54ebc7f4611fb7f0181cb99a39139c368ceef2f3121d",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/485e2d7d-4d42-4236-ba99-63d59ee42ffe/after.overrides.json",
+      "bytes": 78,
+      "SHA256": "5eabb62109427be172cb841ddb32f392a48163601e1d29765e8ccbb3545d7bf5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/485e2d7d-4d42-4236-ba99-63d59ee42ffe/after_direct.json",
+      "bytes": 15527529,
+      "SHA256": "6bfc2be9c2ae99127c757072ed617643a09a3ab238c514dfe057b9146db72184",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/485e2d7d-4d42-4236-ba99-63d59ee42ffe/before.json",
+      "bytes": 15527191,
+      "SHA256": "f010db1218c79294ff2134376fbd0a7b14f9c96e05122576fbfd127a5b890add",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/485e2d7d-4d42-4236-ba99-63d59ee42ffe/before.log",
+      "bytes": 429,
+      "SHA256": "f07b8fe337b96c4185bb9cd9fc29ff7c89c1b6cd762ad63c734846e59774617b",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/485e2d7d-4d42-4236-ba99-63d59ee42ffe/before.overrides.json",
+      "bytes": 2,
+      "SHA256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/485e2d7d-4d42-4236-ba99-63d59ee42ffe/before_direct.json",
+      "bytes": 15527421,
+      "SHA256": "37a3557ac5242912f4fb8bbc046b59058e2879824e3ac49439a572af2df433ef",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/da767c1d-1dea-4350-9636-a90bcc6b5230/after.json",
+      "bytes": 15527301,
+      "SHA256": "68478f6bb663b9aaa33b77014b1685cbe639e79de64b117f39e6886ff778ee24",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/da767c1d-1dea-4350-9636-a90bcc6b5230/after.log",
+      "bytes": 428,
+      "SHA256": "f181e46284c44d24386b7711938765b071343b6f57add435e4f10b4e60751412",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/da767c1d-1dea-4350-9636-a90bcc6b5230/after.overrides.json",
+      "bytes": 78,
+      "SHA256": "5eabb62109427be172cb841ddb32f392a48163601e1d29765e8ccbb3545d7bf5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/da767c1d-1dea-4350-9636-a90bcc6b5230/after_direct.json",
+      "bytes": 15527529,
+      "SHA256": "2a9a85a94d33c46ea8ca00a7d038bd6023798b17ce8d80efb4d933bff00b111d",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/da767c1d-1dea-4350-9636-a90bcc6b5230/before.json",
+      "bytes": 15527191,
+      "SHA256": "8be6b6eba612a5a6fae973ccb6b9c28945595979cba917c77001720589e19af2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/da767c1d-1dea-4350-9636-a90bcc6b5230/before.log",
+      "bytes": 429,
+      "SHA256": "608135ecb98c44b99956b2e60fe1e8941baa92d5eb8925c800734f6d9a387abc",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/da767c1d-1dea-4350-9636-a90bcc6b5230/before.overrides.json",
+      "bytes": 2,
+      "SHA256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/tests/da767c1d-1dea-4350-9636-a90bcc6b5230/before_direct.json",
+      "bytes": 15527421,
+      "SHA256": "6df32e91126dc6e3b6649f2a11921963aa2c6a832a4294746933a31908d53ca8",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/unity_H5/existing_AnalysisSession_flow.json",
+      "bytes": 146,
+      "SHA256": "862f412b07f176be625ada77a2e53a36b609176c2d26f974d096caea5d591988",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/unity_H5/native_flow.json",
+      "bytes": 155,
+      "SHA256": "8d1fc81e260e8002ba67b5c54537e9bb3446f1d442dbd998927ff328221cad39",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "entrega/honors/unity_H5/viewer_after_geometry.png",
+      "bytes": 1079948,
+      "SHA256": "e487a553dbe5b3bbedc071e4c697352a2f6569360eccb0f5679034f77dd9d5a9",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/ar/marcador_E1_243.png",
+      "bytes": 147689,
+      "SHA256": "57312d5044b09350b071f459bba3baeddae2dcce6d1d3f929e5cbf450162071e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/ar/marcador_E1_243_imprimir.pdf",
+      "bytes": 706647,
+      "SHA256": "7414894289b56c70148ea85c6e236c51b9e4fdaccc137193429c12c175bed5ca",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/data/armaduras.json",
+      "bytes": 15042,
+      "SHA256": "7432604705e0c2adf03b90fb6560c12b70f2d7cf985d15829c7028bde4cabaeb",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/data/combinaciones.json",
+      "bytes": 669,
+      "SHA256": "f21db1be606091d83f07576547c88b042a8d733b89ec9aeb510824bb168dc119",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/data/ejes_grilla.json",
+      "bytes": 6256,
+      "SHA256": "e65d938979dceb8f96f76471bfbbb0afe1d3d5fdc942a791099aff72e797a359",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/data/estructura_completo_unity.json",
+      "bytes": 1040828,
+      "SHA256": "a8b0a2f52c5107589c1ea83924811a2625dff0e100e5ff0e320239b97ceddbaf",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/data/estructura_completo_unity.pre_planos.json",
+      "bytes": 494178,
+      "SHA256": "c50a7da81205d3cd2712aebe5ea9b26acf659687c2b9e7c2a0f33fdebc520224",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/data/parametros_analisis.json",
+      "bytes": 1126,
+      "SHA256": "7887879c76ae974dc8869d56fec6329007c161e0bac41440561b8d8888deba1b",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/data/part_e_wall.json",
+      "bytes": 5619,
+      "SHA256": "2296f6841108d3da1d6df7634221d9da767d03c733652554cae42df83d414c25",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/data/semana3_resultados_unity.json",
+      "bytes": 1638,
+      "SHA256": "3d2c55c1aa1f2fdc5bc9f2e4def6b5b1aaad1a9b395a72dc35c397a7acfcdeb9",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR.meta",
+      "bytes": 172,
+      "SHA256": "82da8f6236f502f56110f9bfe1d736167b5cf72d6025d1359d5a4866def781e4",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Plugins.meta",
+      "bytes": 172,
+      "SHA256": "47dca595d4e22f9af528590f9c1f0e501fbd68b4a6ec23e0eb399fd6647e437d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources.meta",
+      "bytes": 172,
+      "SHA256": "4bc044c7b23af847821ace22367eb0d1581e5789fa6077a00ffd3d3bfd92cbd6",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scenes.meta",
+      "bytes": 172,
+      "SHA256": "9c72015d3639edc09b565024e4a2bfa19f912ca9f35a0259a8f51d0caea14d2d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts.meta",
+      "bytes": 172,
+      "SHA256": "52a0a9bbeedcbe631bf203edc8ba54763e041d02b284c91d2dcc116cf5557265",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Shaders.meta",
+      "bytes": 172,
+      "SHA256": "4d3210c6e58e6aa22330c004f2fcac9275da438324d98dd64cb704d1e3f7d63c",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests.meta",
+      "bytes": 180,
+      "SHA256": "18fbc494bfbc9bd4258bc2007b0873397cf4c01312f57fc814419024bd2fe080",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR.meta",
+      "bytes": 172,
+      "SHA256": "8075afff4d43fdca6f8b178836ab9dbd95ed2e683fbc99a40cd3ab573c51b757",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/ARPlaneMat.mat",
+      "bytes": 1143,
+      "SHA256": "ad94cc05a6a854d118813effb6c60c7ab54afa52b764a34656ca5388f34076dc",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/ARPlaneMat.mat.meta",
+      "bytes": 188,
+      "SHA256": "0af403003b5218c27a2b6c587ff6597501113e79f66685ad4ef8e03995c59251",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/ARPlaneVisual.prefab",
+      "bytes": 4247,
+      "SHA256": "2e369afdd145abbb17289c289a07331ad0a60faae1851a62b536a8f214fb1e94",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/ARPlaneVisual.prefab.meta",
+      "bytes": 154,
+      "SHA256": "8045f420d3623f5e8e80fc9123432b7d2e31e92c6350c8d2ceefbba7d8ec5330",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/HonorsMarkerLibrary.asset",
+      "bytes": 1213,
+      "SHA256": "650252f5ec9db667b02bffe3890b53dc3307c4acecb51cc3db6d0e3fc226e9dd",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/HonorsMarkerLibrary.asset.meta",
+      "bytes": 189,
+      "SHA256": "cd814c73062647505fd665f9063a31c48777f5d630204386412a38d8e2c638d4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/MarcadorLibrary.asset",
+      "bytes": 898,
+      "SHA256": "6d7f09e9057841d2c16c510760270f90a3acbec015aa16b3d350ee57b8f98a8e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/MarcadorLibrary.asset.meta",
+      "bytes": 189,
+      "SHA256": "dfb4b495a7a0dfbce0e679ba367a2f933bfa130d53feb6f8bf0b281d74d6f611",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/Marcador_E1_243.png",
+      "bytes": 147689,
+      "SHA256": "57312d5044b09350b071f459bba3baeddae2dcce6d1d3f929e5cbf450162071e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/Marcador_E1_243.png.meta",
+      "bytes": 3071,
+      "SHA256": "47473af396d426d708afa53f31bb355be34e437ceb2939aa77ebf2296ae2d9bd",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/Marcador_Honors_Plano.png",
+      "bytes": 251580,
+      "SHA256": "5831e4765b6346bda9ccb63222f9a4ac775124b658771560e6c368551d026a2e",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/AR/Marcador_Honors_Plano.png.meta",
+      "bytes": 3071,
+      "SHA256": "20629b35ca9d14ab9df8f4c5eefe385deef01003d6b27d71e63eea1e2450c4fb",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Plugins/Android.meta",
+      "bytes": 172,
+      "SHA256": "8c92a601200c26295c6764a69e2333c6c8794084ebc6becf98ab74d7862c78dd",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Plugins/Android/ImuBooster.java",
+      "bytes": 2241,
+      "SHA256": "d98ea07130742a52decea492755a20790bd0ee0713552b18e408425e9b550bfb",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Plugins/Android/ImuBooster.java.meta",
+      "bytes": 59,
+      "SHA256": "b717f9fc61ab5890f6ce6e9749ae5f81bda13fd25bcbb7ae978c5838dad26853",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/estructura_p1l4_unity.json",
+      "bytes": 15526953,
+      "SHA256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/estructura_p1l4_unity.json.meta",
+      "bytes": 158,
+      "SHA256": "4cd85ea9c5bf85984d1b85a4b5f4da3513c64064a2c34a0f7c440d65021c24ef",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors.meta",
+      "bytes": 172,
+      "SHA256": "9c7c489b13a86e86bcfb1f9a116b362f39409d4901698a3f53c0231aa9022fa8",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/UI.meta",
+      "bytes": 172,
+      "SHA256": "a2996557bc1d6d14db9c04d5a565d4d63cfe80445006bc618f62858d02b9afe8",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors/H5.meta",
+      "bytes": 172,
+      "SHA256": "e7f9f4243f76dc614d1b6e3bc31f768730ca01869ebc4f524a9d8e18accd2d1a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors/marker_profiles.json",
+      "bytes": 3029,
+      "SHA256": "bb6b1c4001f2f354e68c0a9aeda214cd6f35ae025d901b56304eb7c8f0a85433",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors/marker_profiles.json.meta",
+      "bytes": 158,
+      "SHA256": "c7f6bfb62787c75176082782449e6a5351ccb27c4a4b96d8c74de5e470257a6b",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors/H5/after.json",
+      "bytes": 15527301,
+      "SHA256": "ace1c50efd4fd2bfaa46dbb4592c7b5223af8704559737c79cab73bf02dabd5a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors/H5/after.json.meta",
+      "bytes": 158,
+      "SHA256": "6e1f00d1ccf56550fb3b7c3d6bc68d21f7b47801bf6a7ce3c5b34cee1cea63d9",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors/H5/certified.json",
+      "bytes": 83,
+      "SHA256": "5cda8bcebc3c0a587528edc2397be1a631b64cf7aba908bdd6a28076be5d56c7",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors/H5/certified.json.meta",
+      "bytes": 158,
+      "SHA256": "afafa21cb4257d143c87f0284c72530b9f58ba40b790dd7219f1e713ce0ee0f3",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors/H5/comparison.png",
+      "bytes": 96467,
+      "SHA256": "3728c2d7942850ee2f54baef7a95c63ddf08f35a8b0f589c991e882424244906",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/Honors/H5/comparison.png.meta",
+      "bytes": 3071,
+      "SHA256": "898d95753f141f9bd247fa6f24e57dfce7b4b3f1965e4f4dd4b84834d7166f35",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/UI/viewer.uss",
+      "bytes": 7268,
+      "SHA256": "5841c435e4636a2055d74fe6736d1c34a32b729512cd131ed2ea82474fb38bba",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/UI/viewer.uss.meta",
+      "bytes": 336,
+      "SHA256": "72846ee97e5abe284e6c04765d63c3c600776199320272a57b68f836277a3742",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/UI/ViewerTheme.tss",
+      "bytes": 38,
+      "SHA256": "682e2b1c6cc1d6e332c15f56c840f7d8282cb1e5bc627eb6664580352a752fda",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Resources/UI/ViewerTheme.tss.meta",
+      "bytes": 336,
+      "SHA256": "3b7bf0b5d4f804990742bb5cafee1044ebb0ad3a0501810e3621da35c5f36aad",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scenes/ARHonorsScene.unity",
+      "bytes": 23910,
+      "SHA256": "5d1796e028a1c3ad8fb24940d20ac4dc20165849f5694ee2401a91ead313ca65",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scenes/ARHonorsScene.unity.meta",
+      "bytes": 155,
+      "SHA256": "416121fe8b33aae8169643a2c87b582658a083cfdb63f142426565f1503e9512",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scenes/ARScene.unity",
+      "bytes": 22488,
+      "SHA256": "a12c518e760502d3f5e034f77727ac9210d2dcbd2c261231b2ca4c21c0b44bb2",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scenes/ARScene.unity.meta",
+      "bytes": 155,
+      "SHA256": "ae3d099d0d61869d2b7d980b99c047fdaf03e1b7acc8a4e227af5059b16f64c3",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scenes/HonorsViewerScene.unity",
+      "bytes": 11081,
+      "SHA256": "1d5d3afdfc39e85bfb3fd991f8f4483b295413d9e50e52fa3e7bc99f58057277",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scenes/HonorsViewerScene.unity.meta",
+      "bytes": 155,
+      "SHA256": "497d28b9c6d350bb8ffbb65f889728a313393d219381359a7cbcaed44dd16ce5",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scenes/StructureViewerScene.unity",
+      "bytes": 10583,
+      "SHA256": "4bf14dc6be38321d5069db4d06b52f2a7971bf68886e2a1e8c2b708ba5596db5",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scenes/StructureViewerScene.unity.meta",
+      "bytes": 155,
+      "SHA256": "7ef6f8ee3845b38f8b51204473f89f4def0cc76476c637f9eca75a0c448d149e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR.meta",
+      "bytes": 172,
+      "SHA256": "518ddfd0406e4e07b6985bd64228513b23210621af776c282dd86b8017ce3ee5",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/DebugOverlay.cs",
+      "bytes": 3154,
+      "SHA256": "aa6e668eee7e4d9ddd1da67e651aba3d26c9a1ecc5594d840eedd0470b0690d6",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/DebugOverlay.cs.meta",
+      "bytes": 59,
+      "SHA256": "8db79028b773deacdd2c22a5e5f5507319cd588e5bf15b971c4561ed4b71f794",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/DiagramController.cs",
+      "bytes": 39380,
+      "SHA256": "51a8436477bab97853d054f928e75c359c43b80d760969ed2d2c0956e676fb47",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/DiagramController.cs.meta",
+      "bytes": 59,
+      "SHA256": "a187b74eaedb585d08c4436e31fd6f157ad7e25ee197a07ec682112fff5812b2",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor.meta",
+      "bytes": 172,
+      "SHA256": "b14e1e0767d2d8bfa8ed2a633ee682834d9685c456288bceddc676e307fecf6e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/ElementLoadPanel.cs",
+      "bytes": 18178,
+      "SHA256": "e4b99d5e495386013fbaa158d58f962c92bf06827830ed46d01c958fcdf26ad7",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/ElementLoadPanel.cs.meta",
+      "bytes": 59,
+      "SHA256": "73054631ddce18d25951ffc1859b90bea8667f648e2a60ba39456286d3fbf4ac",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/ElementPicker.cs",
+      "bytes": 10464,
+      "SHA256": "2bc57d6b0f4b99735c00c588edab9b15764378c4846e9c2b8717545514e70f7a",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/ElementPicker.cs.meta",
+      "bytes": 59,
+      "SHA256": "f11663eef38e8d55ed66d48316b7bcf3350a15f68cb54f2d8f659e4eaee4f4a9",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/ElementRemovalPanel.cs",
+      "bytes": 16669,
+      "SHA256": "06c38957ff53aadb531c05f67837129eb7f645384a2890ea4287ea736610b8c1",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/ElementRemovalPanel.cs.meta",
+      "bytes": 59,
+      "SHA256": "ca830395e1f8118e6e30ac522486a303e5f9c89be70cf8759a749243be377410",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/ElementSelectable.cs",
+      "bytes": 19932,
+      "SHA256": "bc607ecdc4616cfc65af980dde850e6708c7f8a4afb4fe9d0132c6290c38e2de",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/ElementSelectable.cs.meta",
+      "bytes": 59,
+      "SHA256": "b707165a56acc36f8fb9fc584a534379dbcd058f2d069363d98f8912ed151929",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/FaceCamera.cs",
+      "bytes": 355,
+      "SHA256": "2d52ec510f633358afc00efd0071a336d7e96dfb1fab0ffa4a58c90ed2f685de",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/FaceCamera.cs.meta",
+      "bytes": 59,
+      "SHA256": "a0327bc91d263a09efea41d944c13e0be3f7d6c7c3fb4112d9609a8a5bed7775",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors.meta",
+      "bytes": 172,
+      "SHA256": "0671110175785e20e2381b31c56845833f0899d38b42e78ea3ab26625de98bd8",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/InfoPreguntas.cs",
+      "bytes": 2817,
+      "SHA256": "9ff63461a5321982dd6dd10e3efdcc4491d26195879f6e12205df066646e336d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/InfoPreguntas.cs.meta",
+      "bytes": 254,
+      "SHA256": "632d7f22665415639fb6ed093eef4d5e83725a85e2d1a2a35c4a5aad5e028bd7",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/InfoSelectable.cs",
+      "bytes": 211,
+      "SHA256": "cebea0024fdd64377ab6891264f6a44e564105864b3d4a21aa4f1f937bdda4f2",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/InfoSelectable.cs.meta",
+      "bytes": 59,
+      "SHA256": "b3971ab6eaa90ca3798d8043535c4c57295db0f5a4625c9e4314eeb219cffcaa",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/MCOC.Runtime.asmdef",
+      "bytes": 189,
+      "SHA256": "6f4b80232242ec90ea60b0071796531ed407492b811045fa563b1909840ec23b",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/MCOC.Runtime.asmdef.meta",
+      "bytes": 173,
+      "SHA256": "35b6f936be698201fcf3caf5966b6dd44cae328ec67600f19928d399635966d9",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/MovingLoadPanel.cs",
+      "bytes": 15361,
+      "SHA256": "d15d4404cb114981bd7e3e8d4093bfef2a10b4b75ad43f6c5383a0a0ed42af57",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/MovingLoadPanel.cs.meta",
+      "bytes": 59,
+      "SHA256": "6b6f67b3b1bbb7de3e12b4a7c0f915416e211cc264e1e6c652c8f3ac67858603",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/OrbitCamera.cs",
+      "bytes": 10048,
+      "SHA256": "7f9e13974281dde8ac4b3be9e421c3221bde902fbcdcf48c1fc6924a13551fdd",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/OrbitCamera.cs.meta",
+      "bytes": 59,
+      "SHA256": "5b3c3eb3044fd5436d17e4578f65ac0a0a70fe4217ccf339f9b5544ada7b8804",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Paleta.cs",
+      "bytes": 8395,
+      "SHA256": "d2571ed9953008062596aa26168b996d10483be1bb51d454d007fa711b4740fc",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Paleta.cs.meta",
+      "bytes": 254,
+      "SHA256": "cf0eb3ca4fbdcd98ddac2577eb0f9bb4eb38732a7d3e07ad757608542df6a92d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/PMPanel.cs",
+      "bytes": 21522,
+      "SHA256": "f1a3c77c74427432f9bea442599b0b0631c85a3f4d961dc90cf83b0ffd5bfcd4",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/PMPanel.cs.meta",
+      "bytes": 59,
+      "SHA256": "83f826880765008f6e574a38f9c063495830e38cab15357d9b2bba88d36527d5",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/PythonJob.cs",
+      "bytes": 10855,
+      "SHA256": "c7f60ad23f0ec50eb715361a5ca8f86252cdb0cedd87a7e6f8d2432ea521c6e2",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/PythonJob.cs.meta",
+      "bytes": 59,
+      "SHA256": "bdf589c80328ff483f118500e32ca635258cc6f1de9260402249d83075e5a528",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Structural.meta",
+      "bytes": 180,
+      "SHA256": "bf1a2248d804df848d65c5c6e1c2f4d034dcda58266f8bd876d7618486229a57",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/StructureData.cs",
+      "bytes": 12439,
+      "SHA256": "529f501b8da9ec36cf3361fae1d6225135d13dd4e32d1934962729819886b396",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/StructureData.cs.meta",
+      "bytes": 59,
+      "SHA256": "e286cefcf7c710e83149fe82c16772a5cf5cfa8b1fa4e9d40190b1231e821c29",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/StructureViewer.cs",
+      "bytes": 72935,
+      "SHA256": "97b21312948c616434adcbe5a9fb39079652328a69d3d5558c4636a10e6da404",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/StructureViewer.cs.meta",
+      "bytes": 59,
+      "SHA256": "5fe2b4cd5f51289aff3e87f1915525706b16584ccf5b4d11a9a720de83594d6c",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/StructureViewer.Overlays.cs",
+      "bytes": 17283,
+      "SHA256": "1335e1e59fccd40a8608266a81335cff8b28dc1f929339484a1e1efe37a99656",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/StructureViewer.Overlays.cs.meta",
+      "bytes": 59,
+      "SHA256": "cad3f6dc7f018857a967e7f52ef1b8ae27ff5f333829469559a8639726b68301",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UI.meta",
+      "bytes": 172,
+      "SHA256": "10c30e06f842775fe624417ecfbb52e691379cfe385cd2a17f5ae39870cb586a",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UiTheme.cs",
+      "bytes": 13055,
+      "SHA256": "99aced4ff7e52223b32a76ba16989374b30988394c23c580456fcc6878787740",
+      "estado": "MODIFICADO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UiTheme.cs.meta",
+      "bytes": 59,
+      "SHA256": "a1a23678efe32a7a34ffa886b23da361b01b9a2a69c91cdb57584e2f349cd1b7",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UnityData.cs",
+      "bytes": 40864,
+      "SHA256": "41e27d1766ab05664bab1e52fe4a36e2c09e4e3034746a7c5271b0c1691ff63e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UnityData.cs.meta",
+      "bytes": 59,
+      "SHA256": "a1afb58c38954b7185414d8baced1293ea737b214b51f648527f4e4b7841ff35",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/VigilanteInterfaz.cs",
+      "bytes": 847,
+      "SHA256": "8ff0b21e44dff11cdb11cddc94f28952a95b8dfaf1f5391918d690b242b25fb6",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/VigilanteInterfaz.cs.meta",
+      "bytes": 254,
+      "SHA256": "ea8223e44dd157f1064f900e4a72f4ea345c6588934ce2b7cbf67ad131b7f8be",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARBootstrap.cs",
+      "bytes": 6373,
+      "SHA256": "b9922e00ee38b16bac40f1cfd13e99555c665d958b945e859c36b06b1c05f56a",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARBootstrap.cs.meta",
+      "bytes": 59,
+      "SHA256": "39d43730f8213e569bc9114c2e347e90447f31dd10d10bc7db9b6117de437604",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARDiagramPanel.cs",
+      "bytes": 2015,
+      "SHA256": "b63d309677b34970961c76400254790db5c7a2e26cb28f674fce9ce5879d3477",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARDiagramPanel.cs.meta",
+      "bytes": 254,
+      "SHA256": "d3c6eca8e41893b873e69df50ca54623f6fbc90bcad5cf183033ffc7b3030c66",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARImageAnchor.cs",
+      "bytes": 11820,
+      "SHA256": "db15a0f702a39c91c313e79aa49a458b34ba79919108a7572db3af5989dc6a44",
+      "estado": "MODIFICADO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARImageAnchor.cs.meta",
+      "bytes": 59,
+      "SHA256": "722ea227c9bff67147ac04bdf0bb257a1b9c1f3ed425c45c3639bc22cb57cddf",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARInspectorUI.cs",
+      "bytes": 18518,
+      "SHA256": "f7b3062501d8b8890bf7dd5106846d073f6ce928bf5d91e20f6cb8205c1e45b2",
+      "estado": "MODIFICADO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARInspectorUI.cs.meta",
+      "bytes": 254,
+      "SHA256": "fd23a90d83be706228d382d2957cbfd40ef92b38335fe03181129a89e0fd79a5",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARPointerInput.cs",
+      "bytes": 1551,
+      "SHA256": "3773888e824fd30660848be230a76d28def4503c5058b68710d29e597c8e2662",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARPointerInput.cs.meta",
+      "bytes": 59,
+      "SHA256": "e7569be6b3af26f19e2e581b738b1b5e1d06b2b90a282d9e1bbac861428d4dc8",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARResultsPanel.cs",
+      "bytes": 11339,
+      "SHA256": "4e4cad52b4fc5bf8295a4dc07cd79d4841cd36bef2733fb32afe5026b9ace87e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARResultsPanel.cs.meta",
+      "bytes": 59,
+      "SHA256": "5ef976035ebc83b2a078082d66c0680f133b5b193c0c5fe47dd1d6a04b65dceb",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARStructure.cs",
+      "bytes": 18383,
+      "SHA256": "ba9b424ae4c954b0dd5460bf313f830aed3f3ddd8149c2f091abd2a4ebe03707",
+      "estado": "MODIFICADO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/ARStructure.cs.meta",
+      "bytes": 59,
+      "SHA256": "9f3623e7eb198d571a98622e61feaf74a42dcaa8141e8012ac9c23b33dd6699f",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/StructuralSelectionController.cs",
+      "bytes": 2658,
+      "SHA256": "b6b20bd6362ddef9867c7c6294c1202eabbf5c38e9aa13d632ae322cde282077",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/AR/StructuralSelectionController.cs.meta",
+      "bytes": 254,
+      "SHA256": "dc28c987c78ecd1c17c27355fd964f3f046b69f541e822ea9b9ded05d176850e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/ARManifestPatch.cs",
+      "bytes": 2373,
+      "SHA256": "1f64596cdb90899821f4d0d346d5987897be61ff4a7208c5634affcf7b280c2e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/ARManifestPatch.cs.meta",
+      "bytes": 59,
+      "SHA256": "188b9f847ea56018a4534d117cfd418656a3a032351f7b8b9545689988d580bd",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/ARPackageInstaller.cs",
+      "bytes": 1778,
+      "SHA256": "1c307cd66543e0034b6e03565a802a3865eb6e340b818118a3173ac06fca692a",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/ARPackageInstaller.cs.meta",
+      "bytes": 59,
+      "SHA256": "6ce4f5a45483ca1283f90289bdaeda6f9a2b6135fcd60c95ae8896315a3609d8",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/ARSetup.cs",
+      "bytes": 11859,
+      "SHA256": "242535c1a100f6c57c4b5b4287003f4400db298c3d9b3f1fbf66176dfa81038b",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/ARSetup.cs.meta",
+      "bytes": 59,
+      "SHA256": "40ada04ef51fdcc301022da6d3138e9f2a59a73278009f75cef137a15a4dd17d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/BuildAndroid.cs",
+      "bytes": 25741,
+      "SHA256": "fcec38eaa5bb80e8c5082abe88a6978af4218474f534ca1443c39558a9ee7993",
+      "estado": "MODIFICADO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/BuildAndroid.cs.meta",
+      "bytes": 59,
+      "SHA256": "ef3cc4029ded71c6527e1d674faaf332b31418a46dcadb52b1d84f53ae8b2149",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/BuildWindows.cs",
+      "bytes": 2336,
+      "SHA256": "c28a371638c5c9c0d60d62bc6183b7aa8e243a0b448afcbf1cd3339bf9c7c7bb",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/BuildWindows.cs.meta",
+      "bytes": 59,
+      "SHA256": "099e3ccb1501538f7f8c09a88558561376cf815a90636373eaa6e628f392a999",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/HonorsSetup.cs",
+      "bytes": 3629,
+      "SHA256": "23daf244af9887512ca556a07bb4f36a15b50ec23831613b39c5dcb945e1e364",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/HonorsSetup.cs.meta",
+      "bytes": 59,
+      "SHA256": "14835c609b7b8cff21fc5312bbb3a3f955c5661d6aeb21005a113280dd3b0fd9",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/MCOC.Editor.asmdef",
+      "bytes": 358,
+      "SHA256": "62f2e007e0d324ee730328daabf2ec77477a2ce8a34df40a83d679f9d19049c3",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/MCOC.Editor.asmdef.meta",
+      "bytes": 173,
+      "SHA256": "2331b312495475a8171b246956d1d09d34264c87e0463486d950faf588d87698",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/MCOCSetup.cs",
+      "bytes": 3584,
+      "SHA256": "10ec07018a99858ef089e62d8e1e5834f0fb642b496ccfba1bfefde766ce6062",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/MCOCSetup.cs.meta",
+      "bytes": 59,
+      "SHA256": "31e7bba6a7309ca90468c055be2c937c4d53c3c8bfb152dc26485f3021d14125",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/UnityIterationValidation.cs",
+      "bytes": 4880,
+      "SHA256": "db01868d782cd44e45c90b60e98e6fba833afa647851ecd43b7bd71813b4e38b",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/UnityIterationValidation.cs.meta",
+      "bytes": 59,
+      "SHA256": "1432f390f67e6a95d1e1e2939c5d5a8850987db33af168a3e731a94cb69c2d69",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/ViewerCapture.cs",
+      "bytes": 3373,
+      "SHA256": "b2669812a829fe5e1960a63e478b2070a4c0938a46aeafd3e82adb018f2a0c4e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Editor/ViewerCapture.cs.meta",
+      "bytes": 59,
+      "SHA256": "cfee70b5a809d54d08837629508060640ebbf084532bb81631cc9e742a34704e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/ARAnchorSessionState.cs",
+      "bytes": 2815,
+      "SHA256": "f8f7c30b6fbc718d4f821ac11bd6aae2236cf553b869ad483297fef9128be592",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/ARAnchorSessionState.cs.meta",
+      "bytes": 59,
+      "SHA256": "56af5a870812e6c6130ad7b56f189bc235cf80001405b3a75187a8052978d593",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/ARMarkerProfile.cs",
+      "bytes": 2090,
+      "SHA256": "092b7e506a3a73f52406ecdf39b3fc6e8d59b405274f793d445b1194d553c856",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/ARMarkerProfile.cs.meta",
+      "bytes": 59,
+      "SHA256": "94eab5bd1845b5e90ad3fb4bb085ef08242e3d5c759550b363e53625b49966b0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/ARMarkerProfileRegistry.cs",
+      "bytes": 1195,
+      "SHA256": "d877b9fd6ec542d1ab48c05d9cb3765b6a15ca49eaf04434a431c2c3ef71e46c",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/ARMarkerProfileRegistry.cs.meta",
+      "bytes": 59,
+      "SHA256": "868f71248eef3361d2d7ac0f03edcd882573bfaa14dc44db25569106d3496df3",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/ARRegistrationRecorder.cs",
+      "bytes": 4403,
+      "SHA256": "c9aa2e19c0872aba5476e6af36b1c148c32f081a5a83329dbc818dda0b6c13ac",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/ARRegistrationRecorder.cs.meta",
+      "bytes": 59,
+      "SHA256": "b02b4691bada648691a296ac2d12a4f792d7b43cab833b131ac8b67268348ccc",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsAnchorDriver.cs",
+      "bytes": 9612,
+      "SHA256": "4eb4b0b89e17e61707fbe35dbe1b46af21f80570c233aae0df16d4b2ff4f04ee",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsAnchorDriver.cs.meta",
+      "bytes": 59,
+      "SHA256": "4a782da824ef1d96c8c5be70c9c7d69187cb1a9915768e2839bf37e11d0cd581",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsAnchorProvider.cs",
+      "bytes": 675,
+      "SHA256": "12974364145b8daa4e4707ca08efcf5a350a53ef5e991f4d06535072728c7900",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsAnchorProvider.cs.meta",
+      "bytes": 59,
+      "SHA256": "2ee6b480cbaa8e0b7907b803d89d7cf2fcd712d7f93809af8a4cdfbd552658a9",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsCapacityComparisonPanel.cs",
+      "bytes": 3796,
+      "SHA256": "36935f9033f35dcdd22cab398cb174ce4ffd361ed1a2d050704ee41b08058c05",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsCapacityComparisonPanel.cs.meta",
+      "bytes": 59,
+      "SHA256": "3a236ccf95a62cc5a427338c37c3a68743bfc0e431cc88a4e71418f38a5e3b3c",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsCapacitySession.cs",
+      "bytes": 5391,
+      "SHA256": "51652741b69c099ad450827a616afe4fac426cf46f82460ec89655fdbace1bb3",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsCapacitySession.cs.meta",
+      "bytes": 59,
+      "SHA256": "82ef5523eabf48394f0516f855abc5c9de6d990a1744c5617a0c254bddf0e741",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsConfiguration.cs",
+      "bytes": 559,
+      "SHA256": "4376996002fc6e6c527e7547954cb8c6cda84559c649f020fbc9f18f350568ef",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsConfiguration.cs.meta",
+      "bytes": 59,
+      "SHA256": "c68c3c3ea53b01e71e7ae17c516efa853cd3df87197c989bc5991ab441768648",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsMarkerTransform.cs",
+      "bytes": 594,
+      "SHA256": "6689b307f55ca76f4f5d852cf8d5d7a484bb4356b40f827ed75f6d2b2f5255d1",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsMarkerTransform.cs.meta",
+      "bytes": 59,
+      "SHA256": "e608e9f9adeca2148b0e733bb58a782cf3cd6a039eeb303e4fc5e7edc10aed14",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsPaths.cs",
+      "bytes": 841,
+      "SHA256": "8d15308793350e2b8d81d16e24488699669341e01eed0707c0b9b2a54ceb9cdc",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Honors/HonorsPaths.cs.meta",
+      "bytes": 59,
+      "SHA256": "b56c736462873d1a02d5241028b7cfd100716062532de7bf020be549f652fc83",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Structural/ModelCoordinateTransform.cs",
+      "bytes": 1006,
+      "SHA256": "93ae4132818f0ffd3de9b5236afb927a590bedd435389e5c21aeab679ff8a2f8",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Structural/ModelCoordinateTransform.cs.meta",
+      "bytes": 254,
+      "SHA256": "a9846806ba2933ded2450285464f32a0b045c62fd37204c227f45c9994a024a8",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Structural/ResultAvailability.cs",
+      "bytes": 1502,
+      "SHA256": "b980d8ad60b768d494c7620429d3569f185973e64df5588973c9804a9e793c6c",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Structural/ResultAvailability.cs.meta",
+      "bytes": 254,
+      "SHA256": "23d6f4135c04df9595eeee38bdf043bd7f95e7162dc970f6ee0229e2adfc3e7e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Structural/StructuralRepository.cs",
+      "bytes": 9508,
+      "SHA256": "7a723a409bcc5b5d665869a712031843a40f512a47f3185dff00d2004bc12242",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Structural/StructuralRepository.cs.meta",
+      "bytes": 254,
+      "SHA256": "dfda24a0bb162db846458ae559b6a4b69e10049ffec3a57cbabce7ff52927ac6",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Structural/StructuralResultSampler.cs",
+      "bytes": 4005,
+      "SHA256": "5bddd79257884d8a3fbf87af66b1b8eee26a2228195394c075eb7b2e9ad2bdb0",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/Structural/StructuralResultSampler.cs.meta",
+      "bytes": 254,
+      "SHA256": "4060995bf0eb10936378210392959bc27d7094c2f8074f8e497a07d2747e397d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UI/AnalysisSession.cs",
+      "bytes": 16305,
+      "SHA256": "c4f27b01427e5d4a6197e0691d51bfc95afdc90b95e996ec86c365cfa8e5d0b9",
+      "estado": "MODIFICADO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UI/AnalysisSession.cs.meta",
+      "bytes": 59,
+      "SHA256": "6c7343cfde0b976e3850206301fe30e205e2d00ada137b5ef354590b15d34f38",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UI/AutoShot.cs",
+      "bytes": 6801,
+      "SHA256": "44d9aecd3f14f84a8c54291d16cee3dbd6a6a4c071bd017ada5dc8f27c72f47b",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UI/AutoShot.cs.meta",
+      "bytes": 59,
+      "SHA256": "ef61b26ec5300b5602a267213e55108a27aa2aab5aa95ba0a68052be0800a01e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UI/PanelMovible.cs",
+      "bytes": 7177,
+      "SHA256": "e06c2faf845cef28833b641b64393b29de0bf792f46dd1bf4c8357005b7f7f49",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UI/PanelMovible.cs.meta",
+      "bytes": 254,
+      "SHA256": "ec7628c1dcea555b8d4e682d1ea9aa8e455471e6c485cf32d0b4fd4ad5dedca5",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UI/ViewerUI.cs",
+      "bytes": 69897,
+      "SHA256": "f1358997b3a386ad0189e0a17415809fd75458e7ce027f1cacd9e827b4336554",
+      "estado": "MODIFICADO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Scripts/UI/ViewerUI.cs.meta",
+      "bytes": 59,
+      "SHA256": "725b2a3dc83071481eb7c2fb65568aa5217124364489a0b59ab7713377e477aa",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Shaders/AlwaysOnTopLine.shader",
+      "bytes": 388,
+      "SHA256": "746c6ac08fe6bc576650002abd337e108cc27c41f2c41ef70c29b18e4c6ae209",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Shaders/AlwaysOnTopLine.shader.meta",
+      "bytes": 204,
+      "SHA256": "8f2a3534b20a40489ab7f2eb2f5ad224f37cbbea4a50b54376de3687df5fd0ff",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode.meta",
+      "bytes": 180,
+      "SHA256": "9f3281606ced361948da1f7ec08d5cbf164f27faf29457accea5e3cc127ca5f8",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode.meta",
+      "bytes": 180,
+      "SHA256": "dbb486bb4133cbf46c58b2b9e61c78e6df6d60c6d48b30a14691992405b22521",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/DataInitializationRegressionTests.cs",
+      "bytes": 963,
+      "SHA256": "1baec5ac2bc1641b8d5ad4fb88d3857baf87ca244ae00dbcd71d8dac7c0fbd2e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/DataInitializationRegressionTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "4e2305ab744cdd4707d5b27a47981d68be983b7de92fa03b86a2ed2a6894df16",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/HonorsAnchorLifecycleTests.cs",
+      "bytes": 1880,
+      "SHA256": "0f271b70dd1b3a387042a045bc4ad162d4d69d56648ce247bf212ae1a5ce0b15",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/HonorsAnchorLifecycleTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "f152f17b2f8463daa3ad9a0b798aa15c9e30f98ae5b71ffdcea48dbfa0fdecdb",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/HonorsCapacityTests.cs",
+      "bytes": 1402,
+      "SHA256": "4afc6efdb37e5f1dcc84e1553b849b63d9e1eae42785196b861d95ea3caf0f4d",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/HonorsCapacityTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "9cae2521735da0d0d7169c19d0f5487538d77b0d34c401a247cc19433ddbbfbf",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/HonorsMarkerProfileTests.cs",
+      "bytes": 2299,
+      "SHA256": "3b1dfb80c608973133fb2e691e9030e29116f1c12f00ed81197bb5ed839f2c9a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/HonorsMarkerProfileTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "5cd45a754126a8c76c56cbb2e4bec684a4c7fae40c249f7c6fe28149afb75b44",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/HonorsRecorderTests.cs",
+      "bytes": 2152,
+      "SHA256": "95d19426c7cb6c1e92d4ef0c6c8085319b2a9de59db52b72ca537a72f7607fe4",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/HonorsRecorderTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "5ed395f2a7eb734938ba9f61e9f5ed8f948469088b2f671661e8f26287e24420",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/MCOC.EditModeTests.asmdef",
+      "bytes": 179,
+      "SHA256": "2770d24a4d1869c8e458cdae95e7a9ad268106d10e564198e877bca931dade6b",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/MCOC.EditModeTests.asmdef.meta",
+      "bytes": 173,
+      "SHA256": "fa76f7748f524f73ce9f08f3c6718556b3359841cfd630bd928565b2a1aba652",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/StructuralDomainTests.cs",
+      "bytes": 5492,
+      "SHA256": "0456872812df9b2ce0aab9c5a30fa9264569c37b4c0da566dbc0522d07042df9",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/EditMode/StructuralDomainTests.cs.meta",
+      "bytes": 254,
+      "SHA256": "90d76de4c2c5dd004789bb19c21befe1e0f00bbea7f81cb530bf8e84645fc3f2",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ARInputRegressionTests.cs",
+      "bytes": 986,
+      "SHA256": "4436b337e2bddd039aed8c2399cd377efac70f15c2f6563037ca0d7a7edf335d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ARInputRegressionTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "35fee565c2566cfd4866ef96796c94160293c087b8897dabf9955dd0cf0b72f9",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ARInteractionTests.cs",
+      "bytes": 4334,
+      "SHA256": "9a0840bae72f8ea3df60194c325016cc719bc209edb3704b178a528d3608eacd",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ARInteractionTests.cs.meta",
+      "bytes": 254,
+      "SHA256": "d314bc8cecce6a5780fae563e4dfaa0b25c257ad4ee7c56713f144a9aec0aa5f",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/HonorsAnchorProviderTests.cs",
+      "bytes": 4231,
+      "SHA256": "f04723fca1515fb47d95eb370fe58b6925175a6abcc03c9e71cb566ae2587cf0",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/HonorsAnchorProviderTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "b20cfe62fd7065d0e260c743f057304c2f2ca1bc08073811855c2184ef60d8f1",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/HonorsCapacityFlowTests.cs",
+      "bytes": 4106,
+      "SHA256": "0df0904a42931943ef4f2c4dce0dedb3beb607a3f2eeed27c522c6d917e7c143",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/HonorsCapacityFlowTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "a762e049134afc598cb1fca9ba428c0a7c72986e4f961ec1aa6b4d6f99f8c3c6",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/HonorsSceneTests.cs",
+      "bytes": 2072,
+      "SHA256": "baa11beadb1f000b87972f69e5d1af3cc8c148039f8b3d277e1b4eade1ee48ea",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/HonorsSceneTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "b6c4c621a759b4150a6f8903d526cbc9a422b985356bdd8fec3ae761b5406d70",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/MCOC.PlayModeTests.asmdef",
+      "bytes": 251,
+      "SHA256": "c5bb56e093b81987033813a012a815d81abc5cbc74165c4c2b0af4c56e509f53",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/MCOC.PlayModeTests.asmdef.meta",
+      "bytes": 173,
+      "SHA256": "cdcde1bed253784f7385e42be3004a79e2d361d77079f099003cff8a09aeb890",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ViewerSceneRegressionTests.cs",
+      "bytes": 1892,
+      "SHA256": "02a2ef1fa22e37a2da573b4652058efe6894967b50e363ff807671e4047ec480",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ViewerSceneRegressionTests.cs.meta",
+      "bytes": 59,
+      "SHA256": "1630915e04d07c2d4c251fbb389c93f5eb42f6b019552117c3646c74abfda625",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Loaders.meta",
+      "bytes": 172,
+      "SHA256": "4c187442116ca4a1eaca25903ca475386d1ddcf80fb979a741214c541f360352",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Resources.meta",
+      "bytes": 172,
+      "SHA256": "41333756574c9d33cc9aabb06c97d92186cc1495d6a2916b80cfff87b8048b52",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Settings.meta",
+      "bytes": 172,
+      "SHA256": "85d3a14bdaa6968eb2319e7e3edfaad7ccb1687ba0733fbbf2046bc35e520606",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/UserSimulationSettings.meta",
+      "bytes": 172,
+      "SHA256": "8d48c669e1991a166c779e0be7009aff47056747851bd4f944c1f713a4e4cc8d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/XRGeneralSettingsPerBuildTarget.asset",
+      "bytes": 1729,
+      "SHA256": "41baee0facee4107dccbf3cdd21f2f5c63387aa7c34e5cf080249adb3ed6b8b3",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/XRGeneralSettingsPerBuildTarget.asset.meta",
+      "bytes": 189,
+      "SHA256": "8a475372129e439a261c9c5215dbddeb42588bab3c2102675662fce759b87461",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Loaders/ARCoreLoader.asset",
+      "bytes": 452,
+      "SHA256": "a5e605f0ecc9d6d8b3ae02363eced9c226c2d3383759a246a75b260849daa3fb",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Loaders/ARCoreLoader.asset.meta",
+      "bytes": 189,
+      "SHA256": "cce6b6ffee9d33d4f7389dcc9bbe27523efc7386cb253183b4dac16e428a45cd",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Loaders/SimulationLoader.asset",
+      "bytes": 468,
+      "SHA256": "f2ba21266323a7535f0ff53d6ca6eacf13524a39d5899e924bccd18f1bd69e09",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Loaders/SimulationLoader.asset.meta",
+      "bytes": 189,
+      "SHA256": "949baaedc43d67a1bbe911fbfe02ffe9dffe892ea2b34fc473645a5388eb767d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Resources/ARCoreRuntimeSettings.asset",
+      "bytes": 534,
+      "SHA256": "eb37e0167571f8cf5afb13d4f5c6f1e523f41a6f7bbf9f312e1bc867942b0636",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Resources/ARCoreRuntimeSettings.asset.meta",
+      "bytes": 189,
+      "SHA256": "8a3b65b466666ecd8ca394363a2ed1589097998384d6f9bbc80492b58ee1a8df",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Resources/XRSimulationRuntimeSettings.asset",
+      "bytes": 1920,
+      "SHA256": "b5d862588e148e5370808d52abc0f8ec584ec8549a436dddc7044fb14faea9d5",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Resources/XRSimulationRuntimeSettings.asset.meta",
+      "bytes": 189,
+      "SHA256": "cfee5e593da87c71c8b3afcd4c2dd262a11be9a20ee56d32d2f118a2481925eb",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Settings/ARCoreSettings.asset",
+      "bytes": 522,
+      "SHA256": "3b1672784381ccd378903a74b8e2e33ebd92d1edd572f8b63b59994c8549e1d3",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Settings/ARCoreSettings.asset.meta",
+      "bytes": 189,
+      "SHA256": "80a4f01288cf4b64952760a24b142a1680bd68533df32e9b45e9d2ab7e10ec99",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Settings/XRSimulationRuntimeSettings.asset",
+      "bytes": 1920,
+      "SHA256": "b5d862588e148e5370808d52abc0f8ec584ec8549a436dddc7044fb14faea9d5",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/Settings/XRSimulationRuntimeSettings.asset.meta",
+      "bytes": 189,
+      "SHA256": "740fdfc0eddb92608c0deadafdd89dba46e2d5d8c09a4e4a429497c2c01935b5",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/UserSimulationSettings/Resources.meta",
+      "bytes": 172,
+      "SHA256": "1074ad72a0ba3c39699992647a6b3513a6803569a0904a67de14797ecc65c792",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/UserSimulationSettings/SimulationEnvironmentAssetsManager.asset",
+      "bytes": 569,
+      "SHA256": "8f8a2a16b400995761ace338f27be8ada34ae44f21b3010492724f3fa6ad59ae",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/UserSimulationSettings/SimulationEnvironmentAssetsManager.asset.meta",
+      "bytes": 189,
+      "SHA256": "9d4535589912df96ef63f9f41840ee2660f5696a6ab499e1db8813e054f52783",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/UserSimulationSettings/Resources/XRSimulationPreferences.asset",
+      "bytes": 1159,
+      "SHA256": "d60ab84506a30e4296011af0cd34e207220b63790b76928c95ef60d3a6e5411f",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Assets/XR/UserSimulationSettings/Resources/XRSimulationPreferences.asset.meta",
+      "bytes": 189,
+      "SHA256": "970f5d29ab4ac0a8e2a4b46b081ab558540d122a9261f75735d97c15e048ffab",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/build/outputs/logs/unity---stop-build.log",
+      "bytes": 38,
+      "SHA256": "63b3b053d39a00d0131788861236a840924e2034075e93e2733cd8bf4cf52003",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Builds/Android/AR_BuildReport.json",
+      "bytes": 682,
+      "SHA256": "284aebbae2936ce17997c37e8bc05ca0ca8fa93ea263fa12fc79269cfae617dc",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Builds/Android/AR_SettingsRestoration.json",
+      "bytes": 146,
+      "SHA256": "afefc395a5a4bea5d638e75f613840426558e80948e7ac6b0a7e30b5b3ae92a2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Builds/Android/FlagsOff_BuildReport.json",
+      "bytes": 364,
+      "SHA256": "b82e5df6dde2b3e4d2fcf13fe714e4145d114c697cea19402e8b5d11a0612beb",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Builds/Android/FlagsOff_SettingsRestoration.json",
+      "bytes": 146,
+      "SHA256": "afefc395a5a4bea5d638e75f613840426558e80948e7ac6b0a7e30b5b3ae92a2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Builds/Android/Honors_BuildConfiguration.json",
+      "bytes": 463,
+      "SHA256": "fbb22aad510d42c8d0c7c7ce211287eb92871c9f27be84da4c2da7d219ba66c6",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Builds/Android/Honors_BuildReport.json",
+      "bytes": 682,
+      "SHA256": "284aebbae2936ce17997c37e8bc05ca0ca8fa93ea263fa12fc79269cfae617dc",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Builds/Android/Honors_SettingsRestoration.json",
+      "bytes": 146,
+      "SHA256": "afefc395a5a4bea5d638e75f613840426558e80948e7ac6b0a7e30b5b3ae92a2",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Builds/Android/P1G8_AR_FlagsOff_Gate.apk",
+      "bytes": 39921230,
+      "SHA256": "e17fda75f1d37e976575a4811018a492733c73edd158491810d5eb9c1cc70a6d",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Builds/Android/P1G8_Honors_H5_H2.apk",
+      "bytes": 39935094,
+      "SHA256": "695752c24cddad65a2365f9031f06350b16d8f5ed100adfbe8aeb2a7f72a19ae",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Packages/manifest.json",
+      "bytes": 690,
+      "SHA256": "b198fed59de085d6b0665dd26bd3d9abd13db48b56fa96dad6261630e615661f",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/Packages/packages-lock.json",
+      "bytes": 6698,
+      "SHA256": "967ccd35d1115c478fde88322b8470ba796ff65cacd4ef149d6a8df5a17350f5",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/AudioManager.asset",
+      "bytes": 523,
+      "SHA256": "9543c41dbfc7d3951217c4dd9481ed026eb8e529b85ecf4463969a0fea747729",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/ClusterInputManager.asset",
+      "bytes": 114,
+      "SHA256": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/DynamicsManager.asset",
+      "bytes": 1574,
+      "SHA256": "d102dd312ef330f5e5ca255c070fb34f68f59ec633d1e9fd67e2f2f6f88f66c8",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/EditorBuildSettings.asset",
+      "bytes": 499,
+      "SHA256": "d1612ef7506e5870aca2b025b9d22b7eae79385c3c07c130b8b4adbc6535eb21",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/EditorSettings.asset",
+      "bytes": 1705,
+      "SHA256": "29bbdc2f4f4b92e0bead569cec8e85c94692d2644827de2b935cee5443559bc0",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/GraphicsSettings.asset",
+      "bytes": 3031,
+      "SHA256": "4ec172c03e9353b273a8bd0fd3256879618d036c7084ada315e29dd24b14d781",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/InputManager.asset",
+      "bytes": 5816,
+      "SHA256": "d0f454ddb880912abcae92e3e12957a7446786ba89e24937e019ff3bbc0d4300",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/MemorySettings.asset",
+      "bytes": 1265,
+      "SHA256": "25fb3fdd1ce94347ccdcf23d5d5e446055ca81d8b3756a7df85d614645a71ac4",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/MultiplayerManager.asset",
+      "bytes": 157,
+      "SHA256": "aba89fd1a1ddad182727ad82727e536d27372e90328a8196da2a4560398983dd",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/NavMeshAreas.asset",
+      "bytes": 1361,
+      "SHA256": "7ebbf8f53b8033104e1878b95ca07a28d0954092d81c220f14196a42f651e658",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/PackageManagerSettings.asset",
+      "bytes": 1242,
+      "SHA256": "622993c5611db4016b72dbf12de4754a642fa96b071d2fd663cc40253db5764e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/Physics2DSettings.asset",
+      "bytes": 1862,
+      "SHA256": "1cfc0c8fbceec604fd7cd2a06c04ff05dddee6335b75c92b0f5715ad80ba9490",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/PhysicsCoreProjectSettings2D.asset",
+      "bytes": 151,
+      "SHA256": "bedc5339a832c60dc3f11b84abc4f4384dbfa20b0cd9ad6c444b907e751fc35e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/PresetManager.asset",
+      "bytes": 146,
+      "SHA256": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/ProjectAuditorSettings.asset",
+      "bytes": 1036,
+      "SHA256": "9e68444b9bda981e2927a98df9edf69ea88362f0c6b7f3c81b39b9d515d2a416",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/ProjectSettings.asset",
+      "bytes": 21492,
+      "SHA256": "dd855641088b02bde74599e7cc203ea17697a8a92404c650cdb7d5a5714e9a5b",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/ProjectVersion.txt",
+      "bytes": 83,
+      "SHA256": "39584c3e6c1e571d53a79ef2dd6ea91c0568ac086792cc435e86401a0ba824ed",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/QualitySettings.asset",
+      "bytes": 9802,
+      "SHA256": "f1f893b1be47ad2442f58338dd7c860dc1986bb317e2f5bb31084454ffabbf4c",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/SceneTemplateSettings.json",
+      "bytes": 3535,
+      "SHA256": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/TagManager.asset",
+      "bytes": 456,
+      "SHA256": "b8f0f020f5227e3eb9b13d0c143092c82daec541623c9f4f38c6b2983eab1607",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/TimeManager.asset",
+      "bytes": 305,
+      "SHA256": "3396f52fdc16d445024e01d7a2d99db6f0a37569d1d73c0302e9ffb857d90287",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/UnityConnectSettings.asset",
+      "bytes": 1063,
+      "SHA256": "11251dae0356b6f43dd2c67bb511f6b7ecda4e5de425186bba3297e6f3dc1c6f",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/VersionControlSettings.asset",
+      "bytes": 172,
+      "SHA256": "e199cdfa6a8f2bf33cfd47e549198f13e3eb2a5099e908fdb4e0f14d939ccc6b",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/ProjectSettings/VFXManager.asset",
+      "bytes": 525,
+      "SHA256": "2973a6af930e142f62cde00076beda8a3cc3a66d9bfcde7a58ba7d4be2251c26",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/UserSettings/EditorUserSettings.asset",
+      "bytes": 1511,
+      "SHA256": "28ed89b00c5f5b8c909b8eb404c5f4992022f5eadd9b6c11c5129a812ac60963",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/edificio_G8/UserSettings/Search.settings",
+      "bytes": 2,
+      "SHA256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/resultados/esfuerzos_por_elemento.xlsx",
+      "bytes": 797640,
+      "SHA256": "20f8e38006721c68940a7eb16a16946fea1e323a8f9dbad0f423a248ff3e4be0",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/resultados/qa_semana06.json",
+      "bytes": 4296,
+      "SHA256": "2bdc800aab1174600d786091bedc89cb55e2a41cfca4874cd4c55a945eb3ba17",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/resultados/sensibilidad_rigidez.json",
+      "bytes": 2126,
+      "SHA256": "5edb66b64a252b16019023a61e839456114a9cf4ca673757ca86f8599824e337",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/actualizar_armadura.py",
+      "bytes": 10364,
+      "SHA256": "8b2c03c521d3d7bde9140964f730c478371f819151f3095dbe6f24a852f24b7e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/ajustar_modelo_planos.py",
+      "bytes": 44249,
+      "SHA256": "a5a8c1f61b2325a13f28843fd1088bfeb3dc48f93244d43c4e525695a7dbc51e",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/capacidad_ha.py",
+      "bytes": 21102,
+      "SHA256": "e04b5c5c15c527f4622a8b6f28478695504f428a31400909e6a3dc24ebc45262",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/carga_elemento.py",
+      "bytes": 6664,
+      "SHA256": "1e7d1e664f958d49b107f8ad9bee7de8d96534b2446b7ec0346dc9f8e6e8f5c3",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/carga_movil.py",
+      "bytes": 8884,
+      "SHA256": "5108064b142e7800a5b48024d40d3710b5a0bacc413ff00ab47cc4a5ea792325",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/carga_viva_sismo.py",
+      "bytes": 137309,
+      "SHA256": "3f5f7dc02fdf01dc1c48df0b6f0bcff0fec378bb88fc3af88e0ffe268289eb38",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/exportar_excel_esfuerzos.py",
+      "bytes": 12243,
+      "SHA256": "39e7ae3caa144b0955543cee03778b172071ff95174eda55f0c034ea0eb57be0",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/exportar_resultados_unity.py",
+      "bytes": 45593,
+      "SHA256": "29b59d10f1718b4590c4c22135a58d33079edb9e2d92ea3380f6c08149b9f071",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/export_contract.py",
+      "bytes": 11463,
+      "SHA256": "f6dd5254db262e68dd339ee38751686af71d58782ee881a35fe81a04ae1cf2db",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/extraer_indicadores.py",
+      "bytes": 2044,
+      "SHA256": "19d5005cc1e6894759bf1d619deb40a32d32dfeb17bbf33eba9aed861c58e976",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/figuras_informe.py",
+      "bytes": 10376,
+      "SHA256": "dd8a73ef975357616a3e1d2531747bde5c951477c6c8955f4263cc3565b9b801",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/generar_ejes_grilla.py",
+      "bytes": 5850,
+      "SHA256": "c8fe3c4edeb60a9ecc7907a4b681bdca704cef9f9d1e8c67121b4066012009f4",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/generar_marcador_ar.py",
+      "bytes": 7113,
+      "SHA256": "75462748615058fc06ce09b72cff3a4d80feeda7b2b37ba40e90715de86712b0",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/honors_comparar_armadura.py",
+      "bytes": 9353,
+      "SHA256": "72aff69d0d76d3d65e4973f8cfc1fe0f2ad05c6405814f62b1a4f3ea9a0ff087",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/scripts/honors_generar_perfiles.py",
+      "bytes": 3554,
+      "SHA256": "f6affc2c4f3a50b345f43f6aacfb49cd100872748349d44fd9d362a2e3c56872",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "Proyecto1/scripts/modificar_modelo.py",
+      "bytes": 22151,
+      "SHA256": "19605b90ea462b92239a4079a0df88cbf167faf78c8bc1b40dd09d9a145ad544",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/qa_semana06.py",
+      "bytes": 11909,
+      "SHA256": "9935de7a2e9003f06a97bf768906745daf6ebc52efe30fa380d7011585edfeda",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/quitar_elemento.py",
+      "bytes": 5690,
+      "SHA256": "97e2c1eb15ca10f965ac044a8869b442a0631ffb9c975279cc2fb6c0d149fcb0",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/replica_opensees.py",
+      "bytes": 8662,
+      "SHA256": "8ab750ad4aed44a48311d8512ba86c935f2cc9f0502b069746acfa331e27369d",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/sensibilidad_rigidez.py",
+      "bytes": 6027,
+      "SHA256": "85056140f837f59a8a56817ab3314fb8554b2f657cf15d0ba145ad011c5415f8",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/validacion_entradas.py",
+      "bytes": 7396,
+      "SHA256": "71de808ec48d12eea0c77871a0a60328176ce89ace03d8865816dcff59105edd",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/verificar_superposicion.py",
+      "bytes": 3569,
+      "SHA256": "5f9ee1a3d9af6d202e59cb31482cdd8239d8dcc2c624d643335ed56995e631ab",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/resultados/carga_viva_sismo.json",
+      "bytes": 177102,
+      "SHA256": "97b939f1ee8c1fc06befbc1191516216e622b572f12ab8b9ae0ecd195b64d67c",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "Proyecto1/scripts/resultados/part_c_superposicion_3.json",
+      "bytes": 3161,
+      "SHA256": "d64912add35ae0622d97d661a5bd80e2d0f290bd577c0d87431a805fce6594c7",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "reports/archivos_codigo_honors.md",
+      "bytes": 2769,
+      "SHA256": "b092e5348e5c14d1412648a478825a2e6dc05cbdf94d05d7b3e46dc6de05bdce",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "reports/defensa_honors.md",
+      "bytes": 4202,
+      "SHA256": "627155f97389a3a4a2586dc8d1fb36e489f61b7a89145457dcdb99260ba8e971",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "reports/protocolo_telefono_honors.md",
+      "bytes": 3471,
+      "SHA256": "f2738beac529a9cb3201073e8653189c7e85af19752669d28957035c140729b1",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "reports/validacion_honors.md",
+      "bytes": 5421,
+      "SHA256": "b848514eb8bd3d742b472cdc3b20910cb0b2ebf11e145627290214df5ce5536a",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "tests/conftest.py",
+      "bytes": 2454,
+      "SHA256": "8922d43342f140b1c728b6b6b2f4ad0a21150b72f833719b1fa3dee0c39c968f",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "tests/test_capacidad.py",
+      "bytes": 5519,
+      "SHA256": "991fae10965e651ce7fa6343cf5366663b18a48149a5ac982b4eeb4341220166",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "tests/test_cargas.py",
+      "bytes": 4282,
+      "SHA256": "27d2ed74a2e6c4c4bfe0af90ef8a93c31e66e076e669eaad3a5c1992c33daadc",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "tests/test_export_contract.py",
+      "bytes": 6836,
+      "SHA256": "97dc9c140392d39481242e4f9c5b4b3972a1039b7e6a71a16e48437b91df8394",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "tests/test_h4_reanalisis.py",
+      "bytes": 5210,
+      "SHA256": "c13f90d61ea251d365cb0b985e91bdfe8fc94eeae8312f06ddc95d9c5d871f32",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "tests/test_h5_armadura.py",
+      "bytes": 2952,
+      "SHA256": "9959bff04f15e588efadd4b5626b3bce20dbd0a828f3b07653fc4b3c636b2daf",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "tests/test_honors_capacidad.py",
+      "bytes": 2610,
+      "SHA256": "76c973a3abe79ab04581d416241f6315e3ceeb7583f30807c439c7a6c9b417f7",
+      "estado": "NUEVO"
+    },
+    {
+      "archivo": "tests/test_modelo.py",
+      "bytes": 3670,
+      "SHA256": "f27fda3d477869b246155635037a6cc8f0394a654cbb955440a4344583c31a41",
+      "estado": "BASELINE"
+    },
+    {
+      "archivo": "tests/test_unity_json.py",
+      "bytes": 2839,
+      "SHA256": "a2d14285612512a9cdc0d232e3c9270bfad07a0c43088c30efed7f9c278d3a53",
+      "estado": "BASELINE"
+    }
+  ],
+  "excludedSelf": true
+}

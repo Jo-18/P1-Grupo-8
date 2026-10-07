@@ -43,7 +43,18 @@ public class ARStructure : MonoBehaviour
     // Dibujo de la planta en el marcador (mismos parametros que scripts/generar_marcador_ar.py)
     private const float MarkerPx = 1600f, PlanMarginTop = 230f, PlanMargin = 110f, PlanBottomBand = 160f;
 
-    public Mode mode = Mode.Columna1a1;
+    public Mode mode = Mode.Maqueta100;
+    public bool ShowBeams=true, ShowColumns=true, ShowWalls=true, ShowBraces=true, ShowIds;
+    public string FloorFilter="", BuildingFilter="";
+    public int IsolatedId=-1;
+    public const int StructuralLayer=8;
+    public readonly List<ARElementTag> Elements=new List<ARElementTag>();
+    private readonly List<ARElementTag> visibleElements=new List<ARElementTag>();
+    public Transform SupportRoot { get; private set; }
+    public Transform AxesRoot { get; private set; }
+    private ARImageAnchor subscribedAnchor;
+    private readonly Dictionary<int,Transform> tagLabels=new Dictionary<int,Transform>();
+    private Material matWall;
     public static ARStructure Instance { get; private set; }
     public Transform ModelRoot { get; private set; }
     public float Scale { get; private set; } = 1f;
@@ -56,7 +67,7 @@ public class ARStructure : MonoBehaviour
     private readonly List<Transform> labels = new List<Transform>();
     private Transform contentRoot;
     private Font labelFont;
-    private Material matColumn, matBeam, matBrace, matAnchor, matSelected, matText;
+    private Material matColumn, matBeam, matBrace, matAnchor, matSelected;
     private Vector2 planCenter;
     private float planScale;   // m de dibujo por m de modelo (modo SobrePlano)
 
@@ -68,7 +79,11 @@ public class ARStructure : MonoBehaviour
     private void Start()
     {
         LoadModel();
-        if (ARImageAnchor.Instance != null) ARImageAnchor.Instance.Anchored += OnAnchored;
+        subscribedAnchor=ARImageAnchor.Instance;
+        if (subscribedAnchor != null) {
+            subscribedAnchor.Anchored += OnAnchored;
+            if(subscribedAnchor.ContentRoot!=null)OnAnchored(subscribedAnchor.ContentRoot);
+        }
     }
 
     private void LoadModel()
@@ -79,6 +94,7 @@ public class ARStructure : MonoBehaviour
             if (json == null) { Debug.LogError("[ARStructure] Falta Resources/estructura_p1l4_unity.json"); return; }
             UnityData.LoadData(JsonUtility.FromJson<StructureData>(json.text));
         }
+        if(UnityData.Repository==null || !UnityData.Repository.ContractValid) {Debug.LogError("[ARStructure] Contrato inválido; no construir geometría");return;}
         nodes.Clear();
         float xmin = float.MaxValue, xmax = float.MinValue, ymin = float.MaxValue, ymax = float.MinValue;
         foreach (NodeData n in UnityData.Structure.nodes)
@@ -104,6 +120,7 @@ public class ARStructure : MonoBehaviour
         matBrace = new Material(lit) { color = Paleta.ARArriostre };
         matAnchor = new Material(lit) { color = Paleta.ARAncla };
         matSelected = new Material(lit) { color = Paleta.Seleccion };
+        matWall = new Material(lit) { color = new Color(.65f,.72f,.82f) };
     }
 
     private void OnAnchored(Transform root)
@@ -122,16 +139,15 @@ public class ARStructure : MonoBehaviour
     /// Cambio de ejes M (modelo -> ejes de la imagen), sin escala.
     public Vector3 AxesToImage(Vector3 d)
     {
-        if (mode != Mode.Columna1a1) return new Vector3(d.x, d.z, d.y);
-        Vector3 n = MarkerFaceNormal;
-        Vector3 r = new Vector3(-n.y, n.x, 0f);   // (−n) × z: derecha de quien mira la cara
-        return new Vector3(Vector3.Dot(d, r), Vector3.Dot(d, n), d.z);
+        var p=ARImageAnchor.Instance?.HonorsProfile;if(p!=null && mode==Mode.Columna1a1)return new HonorsMarkerTransform(p).Direction(d);
+        return new ModelCoordinateTransform(1,Vector3.zero,mode==Mode.Columna1a1).Direction(d);
     }
 
     /// Punto del modelo (OpenSees) -> coordenadas locales del anchor: s · M · (p − p_ref).
     public Vector3 ModelToAnchor(Vector3 p)
     {
-        return Scale * AxesToImage(p - RefPoint);
+        var profile=ARImageAnchor.Instance?.HonorsProfile;if(profile!=null && mode==Mode.Columna1a1)return Scale*new HonorsMarkerTransform(profile).Direction(p-RefPoint);
+        return new ModelCoordinateTransform(Scale,RefPoint,mode==Mode.Columna1a1).Forward(p);
     }
 
     /// Direccion vertical del modelo (+z OpenSees) en ejes de la imagen.
@@ -145,6 +161,8 @@ public class ARStructure : MonoBehaviour
 
     public bool InSector(ElementData e)
     {
+        var profile=ARImageAnchor.Instance?.HonorsProfile;
+        if(profile!=null && mode==Mode.Columna1a1){if(!profile.sector)return true;foreach(var id in new[]{e.nodeI,e.nodeJ}){var p=NodePos(id);var lo=profile.minimum;var hi=profile.maximum;if(p.x<lo.x-.01f||p.x>hi.x+.01f||p.y<lo.y-.01f||p.y>hi.y+.01f||p.z<lo.z-.01f||p.z>hi.z+.01f)return false;}return true;}
         foreach (int id in new[] { e.nodeI, e.nodeJ })
         {
             NodeData n = nodes[id];
@@ -157,9 +175,15 @@ public class ARStructure : MonoBehaviour
     public void Rebuild()
     {
         if (contentRoot == null || UnityData.Structure == null) return;
-        if (ModelRoot != null) Destroy(ModelRoot.gameObject);
+        if(UnityData.Repository==null || !UnityData.Repository.ContractValid) {GetComponent<StructuralSelectionController>()?.Clear();if(ModelRoot!=null)ModelRoot.gameObject.SetActive(false);return;}
+        GetComponent<StructuralSelectionController>()?.Clear();
+        if (ModelRoot != null) {
+            foreach(var line in ModelRoot.GetComponentsInChildren<LineRenderer>(true))if(line.sharedMaterial!=null)Destroy(line.sharedMaterial);
+            ModelRoot.gameObject.SetActive(false); Destroy(ModelRoot.gameObject);
+        }
         renderers.Clear();
         labels.Clear();
+        tagLabels.Clear();Elements.Clear();Selected=null;IsolatedId=-1;
 
         switch (mode)
         {
@@ -167,6 +191,7 @@ public class ARStructure : MonoBehaviour
             case Mode.Maqueta100: Scale = 0.01f; RefPoint = new Vector3(planCenter.x, planCenter.y, 0f); break;
             default: Scale = planScale; RefPoint = new Vector3(planCenter.x, planCenter.y, 0f); break;
         }
+        var profile=ARImageAnchor.Instance?.HonorsProfile;if(profile!=null && mode==Mode.Columna1a1){RefPoint=profile.reference;} // Registration never chooses visualization mode.
 
         ModelRoot = new GameObject("Modelo AR (" + mode + ")").transform;
         ModelRoot.SetParent(contentRoot, false);
@@ -189,12 +214,30 @@ public class ARStructure : MonoBehaviour
             renderers[e.id] = r;
 
             bool isAnchor = e.elementTag == AnchorTag;
-            if (sectorOnly || isAnchor || featured)
             {
                 float textH = sectorOnly ? 0.12f : 0.006f;
                 AddLabel(e.elementTag, (a + b) * 0.5f + ModelUpLocal * textH * 0.6f, textH, isAnchor);
+                tagLabels[e.id]=labels[labels.Count-1];
             }
         }
+        var repo=UnityData.Repository;
+        if(repo!=null && repo.ContractValid)foreach(var wall in UnityData.Structure.walls??System.Array.Empty<WallData>()) {
+            if(!repo.Walls.TryGetValue(wall.id,out var mapping))continue;
+            var e=repo.Elements[mapping.analyticalId];
+            if(sectorOnly && !InSector(e))continue;
+            Vector3 i=repo.Point(wall.nodeI),j=repo.Point(wall.nodeJ);i.z=j.z=mapping.bottomZ;
+            Vector3 a=ModelToAnchor(i),b=ModelToAnchor(j);
+            Vector3 center=(a+b)/2+ModelUpLocal*Scale*(mapping.topZ-mapping.bottomZ)/2;
+            var go=GameObject.CreatePrimitive(PrimitiveType.Cube);go.name=wall.elementTag+" -> "+e.elementTag;
+            go.layer=StructuralLayer;go.transform.SetParent(ModelRoot,false);go.transform.localPosition=center;
+            go.transform.localRotation=Quaternion.LookRotation((b-a).normalized,ModelUpLocal);
+            go.transform.localScale=new Vector3(Scale*wall.grosor,Scale*(mapping.topZ-mapping.bottomZ),(b-a).magnitude);
+            var tag=go.AddComponent<ARElementTag>();tag.element=e;tag.wall=wall;tag.mapping=mapping;Elements.Add(tag);
+            renderers[e.id]=go.GetComponent<Renderer>();
+            AddLabel(wall.elementTag,center,sectorOnly?.12f:.006f,false);tagLabels[e.id]=labels[labels.Count-1];
+        }
+        BuildAuxiliaryLayers();
+        ApplyVisibility();
         RefreshColors();
         Rebuilt?.Invoke();
     }
@@ -203,6 +246,7 @@ public class ARStructure : MonoBehaviour
     {
         var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
         go.name = e.elementTag;
+        go.layer=StructuralLayer;
         go.transform.SetParent(ModelRoot, false);
         Vector3 d = b - a;
         float len = d.magnitude;
@@ -214,7 +258,7 @@ public class ARStructure : MonoBehaviour
             go.transform.localRotation = Quaternion.LookRotation(d / len, up);
         }
         go.transform.localScale = new Vector3(w, h, len);
-        go.AddComponent<ARElementTag>().element = e;
+        var tag=go.AddComponent<ARElementTag>();tag.element=e;Elements.Add(tag);
         return go.GetComponent<Renderer>();
     }
 
@@ -241,6 +285,7 @@ public class ARStructure : MonoBehaviour
             ElementData e = kv.Value.GetComponent<ARElementTag>().element;
             Material m = e == Selected ? matSelected
                 : e.elementTag == AnchorTag ? matAnchor
+                : e.type == "muro" ? matWall
                 : e.type == "columna" ? matColumn
                 : e.type == "viga" ? matBeam : matBrace;
             kv.Value.sharedMaterial = m;
@@ -261,8 +306,40 @@ public class ARStructure : MonoBehaviour
         if (cam == null) return;
         foreach (Transform t in labels)
         {
-            if (t != null) t.rotation = Quaternion.LookRotation(t.position - cam.transform.position, cam.transform.up);
+            if (t != null && t.gameObject.activeInHierarchy) t.rotation = Quaternion.LookRotation(t.position - cam.transform.position, cam.transform.up);
         }
+    }
+    public void ApplyVisibility() {
+        visibleElements.Clear();
+        foreach(var tag in Elements) {
+            var e=tag.element;
+            bool type=e.type=="viga"?ShowBeams:e.type=="columna"?ShowColumns:e.type=="muro"?ShowWalls:ShowBraces;
+            bool visible=type&&(string.IsNullOrEmpty(FloorFilter)||e.piso==FloorFilter)&&(string.IsNullOrEmpty(BuildingFilter)||e.sourceBuilding==BuildingFilter)&&(IsolatedId<0||e.id==IsolatedId);
+            tag.gameObject.SetActive(visible);
+            if(visible)visibleElements.Add(tag);
+            if(tagLabels.TryGetValue(e.id,out var label))label.gameObject.SetActive(visible&&ShowIds);
+        }
+        visibleElements.Sort((a,b)=>a.element.id.CompareTo(b.element.id));
+        var selection=GetComponent<StructuralSelectionController>();
+        if(selection!=null && selection.Selected!=null && !selection.Selected.gameObject.activeInHierarchy)selection.Clear();
+    }
+    public List<ARElementTag> VisibleElements() => visibleElements;
+    void BuildAuxiliaryLayers() {
+        SupportRoot=new GameObject("Apoyos (restricciones, no fuerzas)").transform;SupportRoot.SetParent(ModelRoot,false);
+        foreach(var s in UnityData.Structure.supports??System.Array.Empty<SupportData>()) {
+            if(!nodes.ContainsKey(s.node))continue;var go=PrimitiveGeometry.CreateSphere();go.transform.SetParent(SupportRoot,false);go.transform.localPosition=ModelToAnchor(NodePos(s.node));go.transform.localScale=Vector3.one*(mode==Mode.Columna1a1?.12f:.003f);Destroy(go.GetComponent<Collider>());go.GetComponent<Renderer>().sharedMaterial=matAnchor;
+        }SupportRoot.gameObject.SetActive(false);
+        AxesRoot=new GameObject("Ejes del plano").transform;AxesRoot.SetParent(ModelRoot,false);
+        foreach(var axis in UnityData.Structure.ejesGrilla??System.Array.Empty<EjeGrillaData>()) {
+            Vector3 a=axis.direccion=="y"?new Vector3(axis.coord,axis.desde,0):new Vector3(axis.desde,axis.coord,0);
+            Vector3 b=axis.direccion=="y"?new Vector3(axis.coord,axis.hasta,0):new Vector3(axis.hasta,axis.coord,0);
+            ARImageAnchor.Line(AxesRoot,axis.nombre,Color.white,mode==Mode.Columna1a1?.008f:.0007f,false,ModelToAnchor(a),ModelToAnchor(b));
+        }AxesRoot.gameObject.SetActive(false);
+    }
+    void OnDestroy() {
+        if(subscribedAnchor!=null)subscribedAnchor.Anchored-=OnAnchored;
+        if(Instance==this)Instance=null;
+        foreach(var m in new[]{matColumn,matBeam,matBrace,matAnchor,matSelected,matWall})if(m!=null)Destroy(m);
     }
 }
 
@@ -270,6 +347,8 @@ public class ARStructure : MonoBehaviour
 public class ARElementTag : MonoBehaviour
 {
     public ElementData element;
+    public WallData wall;
+    public WallMapping mapping;
 }
 
 /// Constantes compartidas con el editor (ARSetup.MarkerWidth).

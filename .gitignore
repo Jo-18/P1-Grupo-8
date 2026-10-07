@@ -37,3 +37,40 @@ P1L2/Builds/
 .vsconfig
 **/edificio_G8/.utmp/
 .pytest_cache/
+
+# Evidencia local de Honors que no se versiona (queda solo en disco; se conserva en la fusion local completa).
+# Se versionan: entrega/honors/{proteccion,H2,H5,H5_demostracion,QA,unity_H5} y los manifiestos y CSV del nivel superior.
+/entrega/honors/tests/
+/entrega/honors/sesiones_H5/
+/entrega/honors/fix01/
+/entrega/honors/fix02/
+/entrega/honors/fix03/
+/entrega/honors/rean*lisis_UI/
+/entrega/honors/Android/
+/entrega/honors/Android_primer_ensayo/
+/entrega/honors/Android_flagsoff_fallo/
+/entrega/honors/pytest_stage1/
+/entrega/honors/pytest_stage1_corrected/
+/entrega/honors/QA_test/
+/entrega/honors/ensayos_*/
+/entrega/honors/*.log
+
+# APK: solo la oficial en APK/
+*.apk
+!/APK/P1G8_Honors_H5_H2_H3_fix03.apk
+
+# Evidencia local con rutas personales del equipo de origen (no esencial; queda solo en disco).
+# proteccion/freeze_originales.json SI se versiona: HonorsPaths exige que exista.
+/entrega/honors/cerrar_entrega.py
+/entrega/honors/proteger.py
+/entrega/honors/registrar_cierre.py
+/entrega/honors/ZIP_SHA256.json
+/entrega/honors/COMANDOS_EJECUTADOS.json
+/entrega/honors/alias_session.json
+/entrega/honors/Python_stage1.xml
+/entrega/honors/proteccion/freeze_originales_completo.json
+/entrega/honors/proteccion/copias_verificadas.json
+/entrega/honors/H5/after.log
+/entrega/honors/H5/before.log
+/entrega/honors/H5_demostracion/after.log
+/entrega/honors/H5_demostracion/before.log

@@ -56,6 +56,7 @@ public class ElementSelectable : MonoBehaviour
     {
         if (data == null) return "";
         string combo = UnityData.ActiveCombo;
+        if(UnityData.GetDisplacementRecord(combo,data.nodeI)==null||UnityData.GetDisplacementRecord(combo,data.nodeJ)==null)return "\n"+StructuralRepository.MissingText;
         // GetNodeDisplacement entrega ejes de Unity (x, z del modelo hacia arriba, y): se vuelve a ux, uy, uz
         Vector3 a = UnityData.GetNodeDisplacement(combo, data.nodeI) * 1000f;
         Vector3 b = UnityData.GetNodeDisplacement(combo, data.nodeJ) * 1000f;

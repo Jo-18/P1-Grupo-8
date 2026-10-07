@@ -1,0 +1,89 @@
+Parametros de data/parametros_analisis.json: Q=500.0 kg/m2, q_G=6.22722275, secciones=0
+Parametros: Q=4.903 kN/m2 (500 kg/m2), Q cubierta=200 kg/m2, sismo={'metodo': 'NCh433', 'zona': 3, 'suelo': 'C', 'R': 7.0, 'I': 1.0, 'fraccionQ': 0.25, 'C': 0.2}
+Cargando estructura base...
+  Rigidez fisurada: {'viga': 0.35, 'columna': 0.7, 'muro': 1.0}
+Cargando curva P-M del muro...
+  Puntos P-M muro: 24
+Calculando curva P-M columna COL70/70_FIBER (G35)...
+  Po = 18422.3 kN | fc' = 35 MPa | puntos = 5
+Construyendo casos de carga G, Q, EX, EY...
+  NCh433 edificio_1: T*x=0.436 s Cx=0.147 Q0x=6747 kN | T*y=0.685 s Cy=0.092 Q0y=4203 kN | P=45898 kN
+  NCh433 edificio_2: T*x=0.762 s Cx=0.079 Q0x=2736 kN | T*y=0.627 s Cy=0.104 Q0y=3595 kN | P=34678 kN
+  Corte basal EX=9483 kN, EY=7798 kN (W_sismico = D + 0.25Q)
+Combinaciones: C1: G+0.5Q+0.3EX+0.2EY | C2: G+0.5Q+0.3EX-0.2EY | C3: G+0.5Q-0.3EX+0.2EY
+
+Analizando caso base G...
+  OK=True | fuerzas_elem=1023
+
+Analizando caso base Q...
+  OK=True | fuerzas_elem=1023
+
+Analizando caso base EX...
+  OK=True | fuerzas_elem=1023
+
+Analizando caso base EY...
+  OK=True | fuerzas_elem=1023
+
+Analizando combinacion C1...
+  OK=True | desplazamientos=718 | fuerzas_elem=1023
+
+Analizando combinacion C2...
+  OK=True | desplazamientos=718 | fuerzas_elem=1023
+
+Analizando combinacion C3...
+  OK=True | desplazamientos=718 | fuerzas_elem=1023
+
+Empaquetando resultados...
+Armadura/capacidad: {'vigas': 398, 'columnas': 118, 'vigas_DCR_mayor_1': 0, 'columnas_DCR_mayor_1': 0, 'DCR_max_viga': 0.998, 'DCR_max_columna': 0.409, 'peorViga': 'E1_56', 'peorColumna': 'E1_287'}
+
+Precalculando carga movil (casos unitarios OpenSees)...
+  [E1_EJE2_CIELO_1S] s=  1.30 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=9.15e-18 m
+  [E1_EJE2_CIELO_1S] s=  5.00 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=5.56e-18 m
+  [E1_EJE2_CIELO_1S] s=  8.10 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=6.99e-19 m
+  Carga movil E1_EJE2_CIELO_1S: 1 vigas, L=10.00 m, 4 casos unitarios
+  [E1_EJE2_CIELO_1] s=  5.85 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.74e-17 m
+  [E1_EJE2_CIELO_1] s= 22.50 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.20e-17 m
+  [E1_EJE2_CIELO_1] s= 36.45 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=7.52e-18 m
+  Carga movil E1_EJE2_CIELO_1: 9 vigas, L=45.00 m, 20 casos unitarios
+  [E1_EJE2_CIELO_2] s=  5.85 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.79e-17 m
+  [E1_EJE2_CIELO_2] s= 22.50 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=2.40e-17 m
+  [E1_EJE2_CIELO_2] s= 36.45 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.94e-17 m
+  Carga movil E1_EJE2_CIELO_2: 9 vigas, L=45.00 m, 20 casos unitarios
+  [E1_EJE2_CIELO_3] s=  6.50 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.97e-17 m
+  [E1_EJE2_CIELO_3] s= 25.00 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=8.67e-19 m
+  [E1_EJE2_CIELO_3] s= 40.50 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=7.11e-18 m
+  Carga movil E1_EJE2_CIELO_3: 12 vigas, L=50.00 m, 26 casos unitarios
+  [E1_EJE2_CIELO_4] s=  6.50 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.38e-17 m
+  [E1_EJE2_CIELO_4] s= 25.00 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.52e-18 m
+  [E1_EJE2_CIELO_4] s= 40.50 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.78e-18 m
+  Carga movil E1_EJE2_CIELO_4: 11 vigas, L=50.00 m, 24 casos unitarios
+  [E2_EJE2_CIELO_1S] s=  3.60 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.12e-18 m
+  [E2_EJE2_CIELO_1S] s= 13.86 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=3.58e-18 m
+  [E2_EJE2_CIELO_1S] s= 22.46 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=2.91e-17 m
+  Carga movil E2_EJE2_CIELO_1S: 3 vigas, L=27.73 m, 8 casos unitarios
+  [E2_EJE2_CIELO_1] s=  3.60 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=6.97e-18 m
+  [E2_EJE2_CIELO_1] s= 13.86 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.38e-18 m
+  [E2_EJE2_CIELO_1] s= 22.46 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.39e-17 m
+  Carga movil E2_EJE2_CIELO_1: 3 vigas, L=27.73 m, 8 casos unitarios
+  [E2_EJE2_CIELO_2] s=  3.60 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.21e-18 m
+  [E2_EJE2_CIELO_2] s= 13.86 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=3.23e-18 m
+  [E2_EJE2_CIELO_2] s= 22.46 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.97e-17 m
+  Carga movil E2_EJE2_CIELO_2: 3 vigas, L=27.73 m, 8 casos unitarios
+  [E2_EJE2_CIELO_3] s=  3.60 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=3.09e-18 m
+  [E2_EJE2_CIELO_3] s= 13.86 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=3.07e-18 m
+  [E2_EJE2_CIELO_3] s= 22.46 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=1.97e-17 m
+  Carga movil E2_EJE2_CIELO_3: 3 vigas, L=27.73 m, 8 casos unitarios
+  [E2_EJE2_CIELO_4] s=  3.60 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=3.82e-18 m
+  [E2_EJE2_CIELO_4] s= 13.86 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=4.27e-18 m
+  [E2_EJE2_CIELO_4] s= 22.46 m | sumRz=50.000000 kN (P=50.0) | directo=50.000000 | err uz max=3.05e-17 m
+  Carga movil E2_EJE2_CIELO_4: 3 vigas, L=27.73 m, 8 casos unitarios
+
+JSON enriquecido guardado en: entrega\honors\H5_demostracion\before_opensees_direct.json
+  Nodos: 718
+  Elementos: 1023
+  Combinaciones: 3
+  Registros desplazamientos: 5026 (7 por nodo)
+  Registros fuerzas_elem: 7161 (casos G/Q/EX/EY + C1/C2/C3)
+  Curvas P-M: 25
+Listo.
+

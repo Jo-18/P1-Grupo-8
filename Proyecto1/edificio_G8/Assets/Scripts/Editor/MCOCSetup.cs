@@ -10,6 +10,11 @@ public static class MCOCSetup
     {
         EditorApplication.delayCall += () =>
         {
+            // Domain reload also occurs in PlayMode, tests and ARScene. Only
+            // repair the desktop scene in an interactive, stable edit session.
+            if (Application.isBatchMode || EditorApplication.isPlayingOrWillChangePlaymode ||
+                EditorApplication.isCompiling || EditorApplication.isUpdating ||
+                EditorSceneManager.GetActiveScene().path != "Assets/Scenes/StructureViewerScene.unity") return;
             if (GameObject.Find("StructureViewer") != null)
             {
                 return;
@@ -26,6 +31,8 @@ public static class MCOCSetup
 
     public static void CrearVisualizador(bool showDialog)
     {
+        if (EditorApplication.isPlayingOrWillChangePlaymode)
+            throw new System.InvalidOperationException("Crear Visualizador requiere EditMode; no debe guardar escenas durante PlayMode.");
         TextAsset json = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Resources/estructura_p1l4_unity.json");
         if (json == null)
         {

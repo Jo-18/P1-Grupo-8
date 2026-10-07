@@ -30,6 +30,7 @@ public static class UiTheme
     /// cae sobre la barra superior, la columna de paneles o el panel de resultados.
     public static bool IsOverUI(Vector2 screenPos, bool infoPanelVisible)
     {
+        if(HonorsCapacityComparisonPanel.Blocks(screenPos))return true;
         if (ViewerUI.Active) return ViewerUI.IsPointerOverUI(screenPos);
         float gx = screenPos.x / Scale;
         float gy = (Screen.height - screenPos.y) / Scale;

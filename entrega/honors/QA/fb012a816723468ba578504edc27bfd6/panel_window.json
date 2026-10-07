@@ -1,0 +1,29 @@
+{
+    "samples": 10,
+    "totalSamples": 11,
+    "detections": 1,
+    "losses": 0,
+    "recoveries": 0,
+    "reanchors": 0,
+    "pauses": 0,
+    "resumes": 0,
+    "duration": 0.9,
+    "lastEventTime": 0.0,
+    "lastDetection": 0.0,
+    "lastEvent": "detection",
+    "noiseMm": 0.0,
+    "position": {
+        "count": 10,
+        "median": 2.0,
+        "rms": 2.0,
+        "p95": 2.0,
+        "max": 2.0
+    },
+    "angle": {
+        "count": 10,
+        "median": 0.10000000149011612,
+        "rms": 0.10000000149011612,
+        "p95": 0.10000000149011612,
+        "max": 0.10000000149011612
+    }
+}

@@ -1,0 +1,202 @@
+{
+  "inputs": [
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\edificio_G8\\Assets\\Resources\\estructura_p1l4_unity.json",
+      "sha256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\data\\armaduras.json",
+      "sha256": "7432604705e0c2adf03b90fb6560c12b70f2d7cf985d15829c7028bde4cabaeb"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\actualizar_armadura.py",
+      "sha256": "8b2c03c521d3d7bde9140964f730c478371f819151f3095dbe6f24a852f24b7e"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\ajustar_modelo_planos.py",
+      "sha256": "a5a8c1f61b2325a13f28843fd1088bfeb3dc48f93244d43c4e525695a7dbc51e"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\capacidad_ha.py",
+      "sha256": "e04b5c5c15c527f4622a8b6f28478695504f428a31400909e6a3dc24ebc45262"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\carga_elemento.py",
+      "sha256": "1e7d1e664f958d49b107f8ad9bee7de8d96534b2446b7ec0346dc9f8e6e8f5c3"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\carga_movil.py",
+      "sha256": "5108064b142e7800a5b48024d40d3710b5a0bacc413ff00ab47cc4a5ea792325"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\carga_viva_sismo.py",
+      "sha256": "3f5f7dc02fdf01dc1c48df0b6f0bcff0fec378bb88fc3af88e0ffe268289eb38"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\exportar_excel_esfuerzos.py",
+      "sha256": "39e7ae3caa144b0955543cee03778b172071ff95174eda55f0c034ea0eb57be0"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\exportar_resultados_unity.py",
+      "sha256": "29b59d10f1718b4590c4c22135a58d33079edb9e2d92ea3380f6c08149b9f071"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\export_contract.py",
+      "sha256": "f6dd5254db262e68dd339ee38751686af71d58782ee881a35fe81a04ae1cf2db"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\extraer_indicadores.py",
+      "sha256": "19d5005cc1e6894759bf1d619deb40a32d32dfeb17bbf33eba9aed861c58e976"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\figuras_informe.py",
+      "sha256": "dd8a73ef975357616a3e1d2531747bde5c951477c6c8955f4263cc3565b9b801"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\generar_ejes_grilla.py",
+      "sha256": "c8fe3c4edeb60a9ecc7907a4b681bdca704cef9f9d1e8c67121b4066012009f4"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\generar_marcador_ar.py",
+      "sha256": "75462748615058fc06ce09b72cff3a4d80feeda7b2b37ba40e90715de86712b0"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\honors_comparar_armadura.py",
+      "sha256": "72aff69d0d76d3d65e4973f8cfc1fe0f2ad05c6405814f62b1a4f3ea9a0ff087"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\modificar_modelo.py",
+      "sha256": "19605b90ea462b92239a4079a0df88cbf167faf78c8bc1b40dd09d9a145ad544"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\qa_semana06.py",
+      "sha256": "9935de7a2e9003f06a97bf768906745daf6ebc52efe30fa380d7011585edfeda"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\quitar_elemento.py",
+      "sha256": "97e2c1eb15ca10f965ac044a8869b442a0631ffb9c975279cc2fb6c0d149fcb0"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\replica_opensees.py",
+      "sha256": "8ab750ad4aed44a48311d8512ba86c935f2cc9f0502b069746acfa331e27369d"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\sensibilidad_rigidez.py",
+      "sha256": "85056140f837f59a8a56817ab3314fb8554b2f657cf15d0ba145ad011c5415f8"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\validacion_entradas.py",
+      "sha256": "71de808ec48d12eea0c77871a0a60328176ce89ace03d8865816dcff59105edd"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\scripts\\verificar_superposicion.py",
+      "sha256": "5f9ee1a3d9af6d202e59cb31482cdd8239d8dcc2c624d643335ed56995e631ab"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\data\\armaduras.json",
+      "sha256": "7432604705e0c2adf03b90fb6560c12b70f2d7cf985d15829c7028bde4cabaeb"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\data\\combinaciones.json",
+      "sha256": "f21db1be606091d83f07576547c88b042a8d733b89ec9aeb510824bb168dc119"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\data\\ejes_grilla.json",
+      "sha256": "e65d938979dceb8f96f76471bfbbb0afe1d3d5fdc942a791099aff72e797a359"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\data\\estructura_completo_unity.json",
+      "sha256": "a8b0a2f52c5107589c1ea83924811a2625dff0e100e5ff0e320239b97ceddbaf"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\data\\estructura_completo_unity.pre_planos.json",
+      "sha256": "c50a7da81205d3cd2712aebe5ea9b26acf659687c2b9e7c2a0f33fdebc520224"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\data\\parametros_analisis.json",
+      "sha256": "7887879c76ae974dc8869d56fec6329007c161e0bac41440561b8d8888deba1b"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\data\\part_e_wall.json",
+      "sha256": "2296f6841108d3da1d6df7634221d9da767d03c733652554cae42df83d414c25"
+    },
+    {
+      "path": "C:\\Users\\javie\\OneDrive\\Escritorio\\Universidad\\9no semestre\\MCOC\\Proyecto_1_final\\09_HONORS\\implementacion_honors_2026-10-06\\Proyecto1\\data\\semana3_resultados_unity.json",
+      "sha256": "3d2c55c1aa1f2fdc5bc9f2e4def6b5b1aaad1a9b395a72dc35c397a7acfcdeb9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "after.json",
+      "bytes": 15527301,
+      "sha256": "ace1c50efd4fd2bfaa46dbb4592c7b5223af8704559737c79cab73bf02dabd5a"
+    },
+    {
+      "path": "after.log",
+      "bytes": 401,
+      "sha256": "fab3130dc631f4fec6301950f4f69ede02e88751bf2a4558d1c03701c6b8a817"
+    },
+    {
+      "path": "after.overrides.json",
+      "bytes": 98,
+      "sha256": "6122dc21232e8990e5090433479e1f7de3b549516eb256e2351c454754835004"
+    },
+    {
+      "path": "after_opensees.log",
+      "bytes": 5864,
+      "sha256": "7c9aa5769b018ec6d14465d4d64d9e118b2de89dc638a6d41c4e5cba1dc9013f"
+    },
+    {
+      "path": "after_opensees_direct.json",
+      "bytes": 15527210,
+      "sha256": "aee39c1a92e48ef621d006d2b0a30218241c97a41583c37fcfda974de7ffc740"
+    },
+    {
+      "path": "before.json",
+      "bytes": 15527191,
+      "sha256": "ebdce98c601c599997d9528df83e0f78c5a7949055a3a8311613bf4d4b676b89"
+    },
+    {
+      "path": "before.log",
+      "bytes": 402,
+      "sha256": "d7a07561d196914e18c69c57f1cd06e1e21fc6a6ec2e172a5ec996f1f38d6756"
+    },
+    {
+      "path": "before.overrides.json",
+      "bytes": 2,
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "path": "before_opensees.log",
+      "bytes": 5865,
+      "sha256": "d92b34156b0f2d7251099284aed4834c3541e842e2e95764cfdfd49228a52fb2"
+    },
+    {
+      "path": "before_opensees_direct.json",
+      "bytes": 15527102,
+      "sha256": "8f05eb7beb19ea2000c88a3c11b56d487528bf8907e196f25caa7afc6020a133"
+    },
+    {
+      "path": "comparison.csv",
+      "bytes": 698,
+      "sha256": "3b9ca19e19db367dc4898a76fb328cb467381adf3fb6e64d6fcd7547b9da29a0"
+    },
+    {
+      "path": "comparison.json",
+      "bytes": 2488,
+      "sha256": "bf36130bd03498352ad7f610117354c9cf1a2ca9afaf38b5cf7fd6108ecbd929"
+    },
+    {
+      "path": "comparison.png",
+      "bytes": 96467,
+      "sha256": "3728c2d7942850ee2f54baef7a95c63ddf08f35a8b0f589c991e882424244906"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 352,
+      "sha256": "020eb12c5f14cb7ffe900c4e1ea960f1b941310c16e19a2be20ca448a8da1ac7"
+    }
+  ],
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "replica": false
+}

@@ -1,0 +1,59 @@
+{
+  "date": "2026-10-06T16:43:18.857035-03:00",
+  "unity": "6000.6.0f1",
+  "contract": "mcoc.ar/2.0",
+  "tests": {
+    "EditMode": {
+      "total": 31,
+      "passed": 31,
+      "failed": 0,
+      "xml": "Unity_final31_EditMode.xml"
+    },
+    "PlayMode": {
+      "total": 12,
+      "passed": 12,
+      "failed": 0,
+      "xml": "Unity_final12_HonorsScenes_PlayMode.xml"
+    },
+    "Python": {
+      "passed": 94,
+      "xml": "Python_stage1_corrected.xml"
+    }
+  },
+  "build": {
+    "unity": "6000.6.0f1",
+    "result": "Succeeded",
+    "apk": "H:/Proyecto1/edificio_G8/Builds/Android/P1G8_Honors_H5_H2.apk",
+    "sha256": "695752c24cddad65a2365f9031f06350b16d8f5ed100adfbe8aeb2a7f72a19ae",
+    "warningDetails": [
+      "The following asset(s) located in immutable packages were unexpectedly altered. Making changes to immutable packages isn't recommended because the changes can be lost without any warning during Package Manager operations.\n  Packages/com.unity.xr.arcore/Tests/Editor/Assets/TestReferenceImageLibrary.asset\n"
+    ],
+    "errors": 0,
+    "warnings": 1,
+    "seconds": 29.852248,
+    "bytes": 39935094,
+    "totalBuildBytes": 564092715
+  },
+  "flagsOffBuild": {
+    "unity": "6000.6.0f1",
+    "result": "Succeeded",
+    "apk": "H:/Proyecto1/edificio_G8/Builds/Android/P1G8_AR_FlagsOff_Gate.apk",
+    "sha256": "e17fda75f1d37e976575a4811018a492733c73edd158491810d5eb9c1cc70a6d",
+    "warningDetails": [],
+    "errors": 0,
+    "warnings": 0,
+    "seconds": 19.3183026,
+    "bytes": 39921230,
+    "totalBuildBytes": 564144369
+  },
+  "originals": {
+    "originales": 573,
+    "tests": 24,
+    "alterados": [],
+    "passed": true
+  },
+  "apkSHA256": "695752c24cddad65a2365f9031f06350b16d8f5ed100adfbe8aeb2a7f72a19ae",
+  "phoneExecuted": false,
+  "H3Implemented": false,
+  "markerImageQuality": 100
+}

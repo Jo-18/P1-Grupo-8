@@ -1,4 +1,6 @@
 using System.IO;
+using System.Linq;
+using System.Xml.Linq;
 using UnityEditor.Android;
 using UnityEngine;
 
@@ -18,11 +20,19 @@ public class ARManifestPatch : IPostGenerateGradleAndroidProject
     {
         string manifest = Path.Combine(path, "src", "main", "AndroidManifest.xml");
         if (!File.Exists(manifest)) return;
-        string xml = File.ReadAllText(manifest);
-        if (xml.Contains(Permission)) return;
-        int close = xml.IndexOf('>', xml.IndexOf("<manifest"));
-        xml = xml.Insert(close + 1, "\n  <uses-permission android:name=\"" + Permission + "\" />");
-        File.WriteAllText(manifest, xml);
+        var xml=XDocument.Load(manifest);XNamespace android="http://schemas.android.com/apk/res/android";var root=xml.Root;
+        foreach(var name in new[]{Permission,"android.permission.CAMERA"})if(!root.Elements("uses-permission").Any(e=>(string)e.Attribute(android+"name")==name))root.Add(new XElement("uses-permission",new XAttribute(android+"name",name)));
+        if(UnityEditor.PlayerSettings.GetApplicationIdentifier(UnityEditor.Build.NamedBuildTarget.Android).Contains(".ar")) {
+            if(!root.Elements("uses-feature").Any(e=>(string)e.Attribute(android+"name")=="android.hardware.camera.ar"))root.Add(new XElement("uses-feature",new XAttribute(android+"name","android.hardware.camera.ar"),new XAttribute(android+"required","true")));
+            // ARCore adds required depth but does not remove it on an incremental
+            // build when settings become optional. Reconcile the cached manifest.
+            if(UnityEditor.XR.ARCore.ARCoreSettings.GetOrCreateSettings().depth==UnityEditor.XR.ARCore.ARCoreSettings.Requirement.Optional) {
+                var depth=root.Elements("uses-feature").FirstOrDefault(e=>(string)e.Attribute(android+"name")=="com.google.ar.core.depth");
+                if(depth==null){depth=new XElement("uses-feature",new XAttribute(android+"name","com.google.ar.core.depth"));root.Add(depth);}
+                depth.SetAttributeValue(android+"required","false");
+            }
+        }
+        xml.Save(manifest);
         Debug.Log("[ARManifestPatch] Permiso agregado: " + Permission);
     }
 }

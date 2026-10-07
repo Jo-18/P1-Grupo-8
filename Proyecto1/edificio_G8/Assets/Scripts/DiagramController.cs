@@ -47,6 +47,8 @@ public class DiagramController : MonoBehaviour
     private readonly List<ElementSelectable> structuralElements = new List<ElementSelectable>();
     private readonly List<GameObject> diagramObjects = new List<GameObject>();
     private DiagramMode currentMode = DiagramMode.None;
+    /// true mientras se dibuja un diagrama o la deformada (la arquitectura visual se oculta para no tapar la estructura).
+    public bool MostrandoResultado => currentMode != DiagramMode.None;
     private readonly Dictionary<string, float> deformedScaleByBuilding = new Dictionary<string, float>();
 
     // diagrama dibujado de cada elemento (para etiquetas y lectura con el mouse)

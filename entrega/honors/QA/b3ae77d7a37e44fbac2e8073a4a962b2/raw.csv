@@ -1,0 +1,8 @@
+monotonicSeconds,run,marker,profile,modelSHA256,event,session,markerState,anchorState,logicalState,request,relativeAvailable,relativeMm,relativeAngleDeg,distanceMeters,windowSeconds,windowCount,imageX,imageY,imageZ,imageQX,imageQY,imageQZ,imageQW,anchorX,anchorY,anchorZ,anchorQX,anchorQY,anchorQZ,anchorQW
+4.6854199043083895,b3ae77d7a37e44fbac2e8073a4a962b2,,Marcador_E1_243,,state_Searching,None,Missing,Missing,Searching,3,False,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1
+4.6866776043083895,b3ae77d7a37e44fbac2e8073a4a962b2,,Marcador_E1_243,,sample,None,Missing,Missing,Searching,3,False,0,0,0,0.0012577,2,0,0,0,0,0,0,1,0,0,0,0,0,0,1
+4.68791540430839,b3ae77d7a37e44fbac2e8073a4a962b2,,Marcador_E1_243,87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a,accepted,None,Missing,None,Anchored,5,False,0,0,0,0.0024955,3,0,0,0,0,0,0,1,0,0,0,0,0,0,1
+4.6916827043083895,b3ae77d7a37e44fbac2e8073a4a962b2,,Marcador_E1_243,87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a,state_Limited,None,Missing,None,Limited,5,False,0,0,0,0.0062628,4,0,0,0,0,0,0,1,0,0,0,0,0,0,1
+4.69258760430839,b3ae77d7a37e44fbac2e8073a4a962b2,,Marcador_E1_243,87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a,failed,None,Missing,None,Error,8,False,0,0,0,0.0071677,5,0,0,0,0,0,0,1,0,0,0,0,0,0,1
+4.6934482043083907,b3ae77d7a37e44fbac2e8073a4a962b2,,Marcador_E1_243,87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a,accepted,None,Missing,None,Anchored,9,False,0,0,0,0.0080283,6,0,0,0,0,0,0,1,0,0,0,0,0,0,1
+4.69398590430839,b3ae77d7a37e44fbac2e8073a4a962b2,,Marcador_E1_243,87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a,disable,None,Missing,None,Suspended,10,False,0,0,0,0.008566,7,0,0,0,0,0,0,1,0,0,0,0,0,0,1

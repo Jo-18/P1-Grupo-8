@@ -1,0 +1,25 @@
+{
+  "catalogSHA256": "4a9688c6154e198fe799c2bdcc163c89ac7423bf8e18bbc75ddf4f6a1b75e24a",
+  "inputs": [
+    {
+      "path": "Proyecto1/edificio_G8/Assets/Resources/estructura_p1l4_unity.json",
+      "sha256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a"
+    },
+    {
+      "path": "Proyecto1/edificio_G8/Assets/Resources/Honors/H5/after.json",
+      "sha256": "ace1c50efd4fd2bfaa46dbb4592c7b5223af8704559737c79cab73bf02dabd5a"
+    },
+    {
+      "path": "Proyecto1/edificio_G8/Assets/Resources/Honors/H5/certified.json",
+      "sha256": "5cda8bcebc3c0a587528edc2397be1a631b64cf7aba908bdd6a28076be5d56c7"
+    },
+    {
+      "path": "Proyecto1/scripts/honors_catalogo_h5.py",
+      "sha256": "0c523e2f22462a1fbc68989cffc9a7c7e250dc7c8e298c2f440f9503116a2465"
+    },
+    {
+      "path": "Proyecto1/data/armaduras.json",
+      "sha256": "7432604705e0c2adf03b90fb6560c12b70f2d7cf985d15829c7028bde4cabaeb"
+    }
+  ]
+}

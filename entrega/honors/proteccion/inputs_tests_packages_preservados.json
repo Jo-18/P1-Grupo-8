@@ -1,0 +1,258 @@
+[
+  {
+    "relative": "Proyecto1/data/armaduras.json",
+    "sha256": "7432604705e0c2adf03b90fb6560c12b70f2d7cf985d15829c7028bde4cabaeb"
+  },
+  {
+    "relative": "Proyecto1/data/combinaciones.json",
+    "sha256": "f21db1be606091d83f07576547c88b042a8d733b89ec9aeb510824bb168dc119"
+  },
+  {
+    "relative": "Proyecto1/data/ejes_grilla.json",
+    "sha256": "e65d938979dceb8f96f76471bfbbb0afe1d3d5fdc942a791099aff72e797a359"
+  },
+  {
+    "relative": "Proyecto1/data/estructura_completo_unity.json",
+    "sha256": "a8b0a2f52c5107589c1ea83924811a2625dff0e100e5ff0e320239b97ceddbaf"
+  },
+  {
+    "relative": "Proyecto1/data/estructura_completo_unity.pre_planos.json",
+    "sha256": "c50a7da81205d3cd2712aebe5ea9b26acf659687c2b9e7c2a0f33fdebc520224"
+  },
+  {
+    "relative": "Proyecto1/data/parametros_analisis.json",
+    "sha256": "7887879c76ae974dc8869d56fec6329007c161e0bac41440561b8d8888deba1b"
+  },
+  {
+    "relative": "Proyecto1/data/part_e_wall.json",
+    "sha256": "2296f6841108d3da1d6df7634221d9da767d03c733652554cae42df83d414c25"
+  },
+  {
+    "relative": "Proyecto1/data/semana3_resultados_unity.json",
+    "sha256": "3d2c55c1aa1f2fdc5bc9f2e4def6b5b1aaad1a9b395a72dc35c397a7acfcdeb9"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Resources/estructura_p1l4_unity.json",
+    "sha256": "87eaa21d0e29a8246fad7ff3fe05a68822011dc8b81edac39401093b5b60dd0a"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/EditMode.meta",
+    "sha256": "9f3281606ced361948da1f7ec08d5cbf164f27faf29457accea5e3cc127ca5f8"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/PlayMode.meta",
+    "sha256": "dbb486bb4133cbf46c58b2b9e61c78e6df6d60c6d48b30a14691992405b22521"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/EditMode/DataInitializationRegressionTests.cs",
+    "sha256": "1baec5ac2bc1641b8d5ad4fb88d3857baf87ca244ae00dbcd71d8dac7c0fbd2e"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/EditMode/DataInitializationRegressionTests.cs.meta",
+    "sha256": "4e2305ab744cdd4707d5b27a47981d68be983b7de92fa03b86a2ed2a6894df16"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/EditMode/MCOC.EditModeTests.asmdef",
+    "sha256": "2770d24a4d1869c8e458cdae95e7a9ad268106d10e564198e877bca931dade6b"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/EditMode/MCOC.EditModeTests.asmdef.meta",
+    "sha256": "fa76f7748f524f73ce9f08f3c6718556b3359841cfd630bd928565b2a1aba652"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/EditMode/StructuralDomainTests.cs",
+    "sha256": "0456872812df9b2ce0aab9c5a30fa9264569c37b4c0da566dbc0522d07042df9"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/EditMode/StructuralDomainTests.cs.meta",
+    "sha256": "90d76de4c2c5dd004789bb19c21befe1e0f00bbea7f81cb530bf8e84645fc3f2"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ARInputRegressionTests.cs",
+    "sha256": "4436b337e2bddd039aed8c2399cd377efac70f15c2f6563037ca0d7a7edf335d"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ARInputRegressionTests.cs.meta",
+    "sha256": "35fee565c2566cfd4866ef96796c94160293c087b8897dabf9955dd0cf0b72f9"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ARInteractionTests.cs",
+    "sha256": "9a0840bae72f8ea3df60194c325016cc719bc209edb3704b178a528d3608eacd"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ARInteractionTests.cs.meta",
+    "sha256": "d314bc8cecce6a5780fae563e4dfaa0b25c257ad4ee7c56713f144a9aec0aa5f"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/MCOC.PlayModeTests.asmdef",
+    "sha256": "c5bb56e093b81987033813a012a815d81abc5cbc74165c4c2b0af4c56e509f53"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/MCOC.PlayModeTests.asmdef.meta",
+    "sha256": "cdcde1bed253784f7385e42be3004a79e2d361d77079f099003cff8a09aeb890"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ViewerSceneRegressionTests.cs",
+    "sha256": "02a2ef1fa22e37a2da573b4652058efe6894967b50e363ff807671e4047ec480"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Assets/Tests/PlayMode/ViewerSceneRegressionTests.cs.meta",
+    "sha256": "1630915e04d07c2d4c251fbb389c93f5eb42f6b019552117c3646c74abfda625"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Packages/manifest.json",
+    "sha256": "b198fed59de085d6b0665dd26bd3d9abd13db48b56fa96dad6261630e615661f"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/Packages/packages-lock.json",
+    "sha256": "967ccd35d1115c478fde88322b8470ba796ff65cacd4ef149d6a8df5a17350f5"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/AudioManager.asset",
+    "sha256": "9543c41dbfc7d3951217c4dd9481ed026eb8e529b85ecf4463969a0fea747729"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/ClusterInputManager.asset",
+    "sha256": "40e65dd214bf254955d2c8829ca8ce2130fd3510485560ce012e9a1ddd93e623"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/DynamicsManager.asset",
+    "sha256": "d102dd312ef330f5e5ca255c070fb34f68f59ec633d1e9fd67e2f2f6f88f66c8"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/EditorBuildSettings.asset",
+    "sha256": "d1612ef7506e5870aca2b025b9d22b7eae79385c3c07c130b8b4adbc6535eb21"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/EditorSettings.asset",
+    "sha256": "29bbdc2f4f4b92e0bead569cec8e85c94692d2644827de2b935cee5443559bc0"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/GraphicsSettings.asset",
+    "sha256": "4ec172c03e9353b273a8bd0fd3256879618d036c7084ada315e29dd24b14d781"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/InputManager.asset",
+    "sha256": "d0f454ddb880912abcae92e3e12957a7446786ba89e24937e019ff3bbc0d4300"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/MemorySettings.asset",
+    "sha256": "25fb3fdd1ce94347ccdcf23d5d5e446055ca81d8b3756a7df85d614645a71ac4"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/MultiplayerManager.asset",
+    "sha256": "aba89fd1a1ddad182727ad82727e536d27372e90328a8196da2a4560398983dd"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/NavMeshAreas.asset",
+    "sha256": "7ebbf8f53b8033104e1878b95ca07a28d0954092d81c220f14196a42f651e658"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/PackageManagerSettings.asset",
+    "sha256": "622993c5611db4016b72dbf12de4754a642fa96b071d2fd663cc40253db5764e"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/Physics2DSettings.asset",
+    "sha256": "1cfc0c8fbceec604fd7cd2a06c04ff05dddee6335b75c92b0f5715ad80ba9490"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/PhysicsCoreProjectSettings2D.asset",
+    "sha256": "bedc5339a832c60dc3f11b84abc4f4384dbfa20b0cd9ad6c444b907e751fc35e"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/PresetManager.asset",
+    "sha256": "29c125923fe6e29f90190d4fce1c82d660e7051546e2c9d02908d18c9cf2436c"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/ProjectAuditorSettings.asset",
+    "sha256": "9e68444b9bda981e2927a98df9edf69ea88362f0c6b7f3c81b39b9d515d2a416"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/ProjectSettings.asset",
+    "sha256": "dd855641088b02bde74599e7cc203ea17697a8a92404c650cdb7d5a5714e9a5b"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/ProjectVersion.txt",
+    "sha256": "39584c3e6c1e571d53a79ef2dd6ea91c0568ac086792cc435e86401a0ba824ed"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/QualitySettings.asset",
+    "sha256": "f1f893b1be47ad2442f58338dd7c860dc1986bb317e2f5bb31084454ffabbf4c"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/SceneTemplateSettings.json",
+    "sha256": "bb9098b3bfcde78d93e264b96f7b77b5430e64e8c57a7aad7f5a5d9c3945e16a"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/TagManager.asset",
+    "sha256": "b8f0f020f5227e3eb9b13d0c143092c82daec541623c9f4f38c6b2983eab1607"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/TimeManager.asset",
+    "sha256": "3396f52fdc16d445024e01d7a2d99db6f0a37569d1d73c0302e9ffb857d90287"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/UnityConnectSettings.asset",
+    "sha256": "11251dae0356b6f43dd2c67bb511f6b7ecda4e5de425186bba3297e6f3dc1c6f"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/VersionControlSettings.asset",
+    "sha256": "e199cdfa6a8f2bf33cfd47e549198f13e3eb2a5099e908fdb4e0f14d939ccc6b"
+  },
+  {
+    "relative": "Proyecto1/edificio_G8/ProjectSettings/VFXManager.asset",
+    "sha256": "2973a6af930e142f62cde00076beda8a3cc3a66d9bfcde7a58ba7d4be2251c26"
+  },
+  {
+    "relative": "Proyecto1/resultados/esfuerzos_por_elemento.xlsx",
+    "sha256": "20f8e38006721c68940a7eb16a16946fea1e323a8f9dbad0f423a248ff3e4be0"
+  },
+  {
+    "relative": "Proyecto1/resultados/qa_semana06.json",
+    "sha256": "2bdc800aab1174600d786091bedc89cb55e2a41cfca4874cd4c55a945eb3ba17"
+  },
+  {
+    "relative": "Proyecto1/resultados/sensibilidad_rigidez.json",
+    "sha256": "5edb66b64a252b16019023a61e839456114a9cf4ca673757ca86f8599824e337"
+  },
+  {
+    "relative": "Proyecto1/scripts/resultados/carga_viva_sismo.json",
+    "sha256": "97b939f1ee8c1fc06befbc1191516216e622b572f12ab8b9ae0ecd195b64d67c"
+  },
+  {
+    "relative": "Proyecto1/scripts/resultados/part_c_superposicion_3.json",
+    "sha256": "d64912add35ae0622d97d661a5bd80e2d0f290bd577c0d87431a805fce6594c7"
+  },
+  {
+    "relative": "tests/conftest.py",
+    "sha256": "8922d43342f140b1c728b6b6b2f4ad0a21150b72f833719b1fa3dee0c39c968f"
+  },
+  {
+    "relative": "tests/test_capacidad.py",
+    "sha256": "991fae10965e651ce7fa6343cf5366663b18a48149a5ac982b4eeb4341220166"
+  },
+  {
+    "relative": "tests/test_cargas.py",
+    "sha256": "27d2ed74a2e6c4c4bfe0af90ef8a93c31e66e076e669eaad3a5c1992c33daadc"
+  },
+  {
+    "relative": "tests/test_export_contract.py",
+    "sha256": "97dc9c140392d39481242e4f9c5b4b3972a1039b7e6a71a16e48437b91df8394"
+  },
+  {
+    "relative": "tests/test_h4_reanalisis.py",
+    "sha256": "c13f90d61ea251d365cb0b985e91bdfe8fc94eeae8312f06ddc95d9c5d871f32"
+  },
+  {
+    "relative": "tests/test_h5_armadura.py",
+    "sha256": "9959bff04f15e588efadd4b5626b3bce20dbd0a828f3b07653fc4b3c636b2daf"
+  },
+  {
+    "relative": "tests/test_modelo.py",
+    "sha256": "f27fda3d477869b246155635037a6cc8f0394a654cbb955440a4344583c31a41"
+  },
+  {
+    "relative": "tests/test_unity_json.py",
+    "sha256": "a2d14285612512a9cdc0d232e3c9270bfad07a0c43088c30efed7f9c278d3a53"
+  }
+]

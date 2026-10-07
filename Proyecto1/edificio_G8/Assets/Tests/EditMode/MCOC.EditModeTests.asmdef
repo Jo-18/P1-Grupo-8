@@ -1,0 +1,7 @@
+{
+  "name": "MCOC.EditModeTests",
+  "references": ["MCOC.Runtime"],
+  "includePlatforms": ["Editor"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "autoReferenced": false
+}

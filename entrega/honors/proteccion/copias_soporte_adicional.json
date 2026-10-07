@@ -1,0 +1,14 @@
+[
+  {
+    "relative": "instalar_dependencias.bat",
+    "sha256": "3433c7cfc76d23b3723ecf310da4b6475a07a952a271040583f5937770f8b471"
+  },
+  {
+    "relative": "Ejecutar.bat",
+    "sha256": "ca0e4ead880a02b1bcc57c85ddbac32f7506306c8d129772906534d6532626e7"
+  },
+  {
+    "relative": "entrega/original_results_sha256.json",
+    "sha256": "e360d2e5fae1e5208d162d575d534a1f24019a0baa2504121a724bd763c476e8"
+  }
+]

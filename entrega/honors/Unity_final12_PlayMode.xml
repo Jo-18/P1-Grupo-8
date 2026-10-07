@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="12" result="Passed" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-06 19:29:51Z" end-time="2026-10-06 19:30:14Z" duration="23,6525259">
+  <test-suite type="TestSuite" id="1022" name="P1_G8 Viewer" fullname="P1_G8 Viewer" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-06 19:29:51Z" end-time="2026-10-06 19:30:14Z" duration="23.652526" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1019" name="MCOC.PlayModeTests.dll" fullname="H:/Proyecto1/edificio_G8/Library/ScriptAssemblies/MCOC.PlayModeTests.dll" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-06 19:29:51Z" end-time="2026-10-06 19:30:14Z" duration="23.642941" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="18636" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="ARInputRegressionTests" fullname="ARInputRegressionTests" classname="ARInputRegressionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-06 19:29:51Z" end-time="2026-10-06 19:29:51Z" duration="0.147670" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1003" name="MultipleTouchesDoNotPick" fullname="ARInputRegressionTests.MultipleTouchesDoNotPick" methodname="MultipleTouchesDoNotPick" classname="ARInputRegressionTests" runstate="Runnable" seed="455146524" result="Passed" start-time="2026-10-06 19:29:51Z" end-time="2026-10-06 19:29:51Z" duration="0.124834" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="SingleTouchPressHasPositionAndDoesNotRepeat" fullname="ARInputRegressionTests.SingleTouchPressHasPositionAndDoesNotRepeat" methodname="SingleTouchPressHasPositionAndDoesNotRepeat" classname="ARInputRegressionTests" runstate="Runnable" seed="2033552503" result="Passed" start-time="2026-10-06 19:29:51Z" end-time="2026-10-06 19:29:51Z" duration="0.008214" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1004" name="ARInteractionTests" fullname="ARInteractionTests" classname="ARInteractionTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-06 19:29:51Z" end-time="2026-10-06 19:29:53Z" duration="2.388360" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1005" name="CompleteGeometryAndMetadata" fullname="ARInteractionTests.CompleteGeometryAndMetadata" methodname="CompleteGeometryAndMetadata" classname="ARInteractionTests" runstate="Runnable" seed="1353829000" result="Passed" start-time="2026-10-06 19:29:51Z" end-time="2026-10-06 19:29:51Z" duration="0.467855" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1009" name="MissingPartialAndFailedCaseDoNotFabricateForces" fullname="ARInteractionTests.MissingPartialAndFailedCaseDoNotFabricateForces" methodname="MissingPartialAndFailedCaseDoNotFabricateForces" classname="ARInteractionTests" runstate="Runnable" seed="1014424526" result="Passed" start-time="2026-10-06 19:29:51Z" end-time="2026-10-06 19:29:52Z" duration="0.935427" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="PanelHitTesting" fullname="ARInteractionTests.PanelHitTesting" methodname="PanelHitTesting" classname="ARInteractionTests" runstate="Runnable" seed="1665950492" result="Passed" start-time="2026-10-06 19:29:52Z" end-time="2026-10-06 19:29:53Z" duration="0.308194" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1007" name="ReanchorRebuildClearsSelection" fullname="ARInteractionTests.ReanchorRebuildClearsSelection" methodname="ReanchorRebuildClearsSelection" classname="ARInteractionTests" runstate="Runnable" seed="1403154418" result="Passed" start-time="2026-10-06 19:29:53Z" end-time="2026-10-06 19:29:53Z" duration="0.361373" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1006" name="RepeatedSelectionPanelCaseFilterAndIsolation" fullname="ARInteractionTests.RepeatedSelectionPanelCaseFilterAndIsolation" methodname="RepeatedSelectionPanelCaseFilterAndIsolation" classname="ARInteractionTests" runstate="Runnable" seed="856646364" result="Passed" start-time="2026-10-06 19:29:53Z" end-time="2026-10-06 19:29:53Z" duration="0.313177" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1010" name="HonorsAnchorProviderTests" fullname="HonorsAnchorProviderTests" classname="HonorsAnchorProviderTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-06 19:29:53Z" end-time="2026-10-06 19:29:54Z" duration="0.281348" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1011" name="DisabledAndDestroyedDriverRejectLateResults" fullname="HonorsAnchorProviderTests.DisabledAndDestroyedDriverRejectLateResults" methodname="DisabledAndDestroyedDriverRejectLateResults" classname="HonorsAnchorProviderTests" runstate="Runnable" seed="1067174140" result="Passed" start-time="2026-10-06 19:29:53Z" end-time="2026-10-06 19:29:53Z" duration="0.137856" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1012" name="LateResultDoesNotAdoptAndAcceptedReplacementHasSingleRoot" fullname="HonorsAnchorProviderTests.LateResultDoesNotAdoptAndAcceptedReplacementHasSingleRoot" methodname="LateResultDoesNotAdoptAndAcceptedReplacementHasSingleRoot" classname="HonorsAnchorProviderTests" runstate="Runnable" seed="1798730177" result="Passed" start-time="2026-10-06 19:29:53Z" end-time="2026-10-06 19:29:54Z" duration="0.142476" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1013" name="HonorsCapacityFlowTests" fullname="HonorsCapacityFlowTests" classname="HonorsCapacityFlowTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-06 19:29:54Z" end-time="2026-10-06 19:30:11Z" duration="17.195083" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1014" name="ScenarioFailureDiscardAndNativeRegeneration" fullname="HonorsCapacityFlowTests.ScenarioFailureDiscardAndNativeRegeneration" methodname="ScenarioFailureDiscardAndNativeRegeneration" classname="HonorsCapacityFlowTests" runstate="Runnable" seed="727561830" result="Passed" start-time="2026-10-06 19:29:54Z" end-time="2026-10-06 19:30:11Z" duration="17.194234" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[DiagramController] listo con 537 elementos con datos (todos los edificios)
+[StructureViewer] Estructura lista: 628 elementos interactivos, 3 combinaciones.
+[DiagramController] listo con 537 elementos con datos (todos los edificios)
+[StructureViewer] Estructura lista: 628 elementos interactivos, 3 combinaciones.
+[DiagramController] listo con 537 elementos con datos (todos los edificios)
+[StructureViewer] Estructura lista: 628 elementos interactivos, 3 combinaciones.
+[DiagramController] listo con 537 elementos con datos (todos los edificios)
+[StructureViewer] Estructura lista: 628 elementos interactivos, 3 combinaciones.
+[DiagramController] listo con 537 elementos con datos (todos los edificios)
+[StructureViewer] Estructura lista: 628 elementos interactivos, 3 combinaciones.
+[DiagramController] listo con 537 elementos con datos (todos los edificios)
+[StructureViewer] Estructura lista: 628 elementos interactivos, 3 combinaciones.
+[DiagramController] listo con 537 elementos con datos (todos los edificios)
+[StructureViewer] Estructura lista: 628 elementos interactivos, 3 combinaciones.
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1015" name="HonorsSceneTests" fullname="HonorsSceneTests" classname="HonorsSceneTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-06 19:30:11Z" end-time="2026-10-06 19:30:14Z" duration="3.286496" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1016" name="HonorsSceneSyntheticGeometryCertifiedH5AndFlagsOff" fullname="HonorsSceneTests.HonorsSceneSyntheticGeometryCertifiedH5AndFlagsOff" methodname="HonorsSceneSyntheticGeometryCertifiedH5AndFlagsOff" classname="HonorsSceneTests" runstate="Runnable" seed="609749039" result="Passed" start-time="2026-10-06 19:30:11Z" end-time="2026-10-06 19:30:14Z" duration="3.281614" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[No active UnityEngine.XR.ARSubsystems.XRSessionSubsystem is available. This feature is either not supported on the current platform, or you may need to enable a provider in <b>Project Settings</b> > <b>XR Plug-in Management</b>.
+No active UnityEngine.XR.ARSubsystems.XRCameraSubsystem is available. This feature is either not supported on the current platform, or you may need to enable a provider in <b>Project Settings</b> > <b>XR Plug-in Management</b>.
+No active UnityEngine.XR.XRInputSubsystem is available. Please ensure that a valid loader configuration exists in the XR project settings.
+No active UnityEngine.XR.ARSubsystems.XRImageTrackingSubsystem is available. This feature is either not supported on the current platform, or you may need to enable a provider in <b>Project Settings</b> > <b>XR Plug-in Management</b>.
+No active UnityEngine.XR.ARSubsystems.XRAnchorSubsystem is available. This feature is either not supported on the current platform, or you may need to enable a provider in <b>Project Settings</b> > <b>XR Plug-in Management</b>.
+No active UnityEngine.XR.ARSubsystems.XRRaycastSubsystem is available. This feature is either not supported on the current platform, or you may need to enable a provider in <b>Project Settings</b> > <b>XR Plug-in Management</b>.
+No active UnityEngine.XR.ARSubsystems.XRPlaneSubsystem is available. This feature is either not supported on the current platform, or you may need to enable a provider in <b>Project Settings</b> > <b>XR Plug-in Management</b>.
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1017" name="ViewerSceneRegressionTests" fullname="ViewerSceneRegressionTests" classname="ViewerSceneRegressionTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-06 19:30:14Z" end-time="2026-10-06 19:30:14Z" duration="0.341731" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1018" name="DesktopSceneRetainsGeometrySelectionCasesAndPanels" fullname="ViewerSceneRegressionTests.DesktopSceneRetainsGeometrySelectionCasesAndPanels" methodname="DesktopSceneRetainsGeometrySelectionCasesAndPanels" classname="ViewerSceneRegressionTests" runstate="Runnable" seed="1696882973" result="Passed" start-time="2026-10-06 19:30:14Z" end-time="2026-10-06 19:30:14Z" duration="0.340785" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[[DiagramController] listo con 537 elementos con datos (todos los edificios)
+[StructureViewer] Estructura lista: 628 elementos interactivos, 3 combinaciones.
+[DiagramController] Axial: 537 diagramas | max 4264,1 kN | escala 3,0 m
+[DiagramController] Shear: 527 diagramas | max 389,5 kN | escala 3,0 m
+[DiagramController] Moment: 527 diagramas | max 737,7 kN·m | escala 3,0 m
+[DiagramController] Deformada C3: 537 elementos, |u| max 31,67 mm, escala x81
+Saving results to: H:\entrega\honors\Unity_final12_PlayMode.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

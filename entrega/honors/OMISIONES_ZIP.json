@@ -1,0 +1,13 @@
+{
+  "directories": [
+    ".pytest_cache",
+    "entrega\\honors\\pytest_stage1",
+    "entrega\\honors\\pytest_stage1_corrected",
+    "Proyecto1\\edificio_G8\\.utmp",
+    "Proyecto1\\edificio_G8\\Library",
+    "Proyecto1\\edificio_G8\\Logs",
+    "Proyecto1\\scripts\\__pycache__",
+    "tests\\__pycache__"
+  ],
+  "reason": "Caches Unity/Python y basetemp de pytest excluidos; permanecen en derivado. XML/logs y escenarios demostrativos se conservan. No se borra ningún ensayo."
+}

@@ -91,6 +91,7 @@ public class ViewerUI : MonoBehaviour
     private void Start()
     {
         viewer = GetComponent<StructureViewer>();
+        if(HonorsConfiguration.H5 && GetComponent<HonorsCapacityComparisonPanel>()==null) gameObject.AddComponent<HonorsCapacityComparisonPanel>();
         diagrams = viewer.Diagrams;
         picker = FindAnyObjectByType<ElementPicker>();
         try { Session.LoadFrom(viewer.Data); }   // antes de construir: la pestana ANALISIS muestra estos valores
@@ -554,6 +555,26 @@ public class ViewerUI : MonoBehaviour
         grid.Add(Check("Ejes", () => viewer.ShowGridLayer, v => viewer.ShowGridLayer = v));
         grid.Add(Check("Diafragmas", () => viewer.ShowDiaphragmsLayer, v => viewer.ShowDiaphragmsLayer = v));
         c.Add(grid);
+        if (viewer.HayArquitectura)
+        {
+            c.Add(Title("ARQUITECTURA (SOLO VISUAL)"));
+            var arq = new VisualElement();
+            arq.AddToClassList("grid3");
+            arq.Add(Check("Fachada", () => viewer.ShowFachadaLayer, v => viewer.ShowFachadaLayer = v));
+            arq.Add(Check("Escaleras y entorno", () => viewer.ShowEntornoLayer, v => viewer.ShowEntornoLayer = v));
+            arq.Add(Check("Mobiliario", () => viewer.ShowMobiliarioLayer, v => viewer.ShowMobiliarioLayer = v));
+            c.Add(arq);
+            var arqInfo = Text("", "hint");
+            c.Add(arqInfo);
+            syncers.Add(() =>
+            {
+                string t = "Fachadas, escaleras, plaza de la entrada (piso 2), sala de Métodos Computacionales y cafetería: solo se dibujan. " +
+                           "No están en el modelo de OpenSees, no se seleccionan y no cambian ningún valor." +
+                           (viewer.VistaEstructural ? " Ahora están ocultas la fachada y el entorno porque hay un diagrama, la utilización o un solo piso a la vista." :
+                                                      " Se ocultan solas al mostrar un diagrama, la utilización o un solo piso.");
+                if (arqInfo.text != t) arqInfo.text = t;
+            });
+        }
         var loadInfo = Text("", "hint");
         c.Add(loadInfo);
         syncers.Add(() =>
