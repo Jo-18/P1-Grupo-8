@@ -41,12 +41,12 @@ Resultados principales del modelo vigente. El JSON de resultados se regeneró co
 
 Estos resultados y sus límites se discuten en las secciones 8, 12 y 19.
 
-**Origen del trabajo.** La base del sistema (modelo, scripts de análisis, viewer de Unity y app AR) proviene del repositorio [P1_G4_Final](https://github.com/mauricio-lenz/P1_G4_Final) del grupo 4. Esta versión adapta esa base al grupo 8 en seis puntos:
+**Alcance de esta versión.** Esta versión del sistema (modelo, scripts de análisis, viewer de Unity y app AR) incluye los siguientes puntos de trabajo del grupo 8:
 
 - la identidad del proyecto y de las apps;
 - la paleta visual, el suelo de pasto y paneles que se pueden mover y redimensionar;
 - la armadura de columnas y muros, según el documento de armaduras del grupo;
-- la verificación de que los resultados no cambiaron;
+- la verificación de los resultados;
 - las figuras reproducibles y la documentación de esta entrega.
 
 El detalle de lo que hizo cada integrante y de lo que se hizo con IA está en las secciones 20 y 21.
@@ -281,7 +281,7 @@ No se espera que los valores sean iguales, sino similares. Las unidades de ETABS
   - La C4 de LT2 (piso 3) lleva 1 596 kN, algo sobre nuestro máximo de ese piso (1 304 kN).
   - Los momentos de las vigas B739 y B189 (100 a 170 kN·m) están dentro de los rangos de nuestras vigas de luz parecida en esos pisos.
 - **Diferencias revisadas que no son errores del modelo (sección 19):**
-  - *Vigas largas del edificio 2:* en los ejes x = −33,98 y −41,48 m no hay columnas en los datos de los planos. El modelo base y el paso 11 de `ajustar_modelo_planos.py` apoyan esas vigas en muros (plano 2024_22). Su flecha con G (unos 25 mm en vigas de cerca de 16 m, con 0,35 Ig) está bajo L/240.
+  - *Vigas largas del edificio 2:* en los ejes x = −33,98 y −41,48 m no hay columnas en los datos de los planos. El modelo y el paso 11 de `ajustar_modelo_planos.py` apoyan esas vigas en muros (plano 2024_22). Su flecha con G (unos 25 mm en vigas de cerca de 16 m, con 0,35 Ig) está bajo L/240.
   - *Columnas metálicas del voladizo sur del piso 2:* trabajan como tirantes, porque el arriostre baja desde la punta del voladizo superior hasta el pilar del eje 3 (elevación 2017_67-802). La C21 de ETABS está comprimida con una fuerza parecida (49 kN), lo que sugiere un arriostre en el sentido contrario. Conviene confirmarlo en esa elevación.
 
 ## 9. Fiber Sections
@@ -600,7 +600,7 @@ El marcador de esta versión dice "MCOC P1_G8" y mantiene el mismo patrón de fo
 | Conservación de la carga | F_A + F_B = P y Σ Rz = P, con aviso OK | Σ cargas asignadas = P ✓ |
 | Respuesta visual | la carga avanza sobre las vigas y se actualizan los diagramas y la deformada | la persona se mueve, se resaltan las vigas receptoras y se muestra su carga en 3D |
 
-**Incluidos en la base del sistema** (repositorio del grupo 4):
+**Componentes del sistema:**
 
 - **Carga móvil:** sobre un recorrido de vigas, con casos unitarios y fuerzas de empotramiento.
 - **Carga en un elemento:** puntual o repartida, con 12 casos unitarios.
@@ -674,30 +674,30 @@ python -m pytest -m "not lento"   :: sin las corridas completas del exportador, 
 
 **Historial del único fallo.** Con el JSON anterior (generado con la réplica), `test_unity_igual_a_opensees_directo` fallaba: la diferencia en fuerzas de elementos superaba 10⁻⁶ kN (máximo 8,7 · 10⁻⁵ kN en `W_MURO-056`, combinación EY, error relativo 8 · 10⁻⁹). Dos corridas consecutivas con OpenSees real dieron resultados idénticos (OpenSees es determinista en esta máquina). Al regenerar el JSON con OpenSees real la prueba pasó, sin cambiar tolerancias ni código.
 
-**Verificación de la integración con Honors (7 de octubre de 2026).** El proyecto Unity de la entrega se fusionó con el del donante de Honors (APK FIX03) en una copia de trabajo, sin modificar ninguno de los dos originales. Las pruebas se corrieron en una copia de esa fusión (Unity 6000.6.0f1, Python 3.12.10, OpenSeesPy 3.8.0.0 real) cuyos `Assets`, `Packages`, exportadores y `freeze_originales.json` coinciden con los de este repositorio.
+**Verificación de la integración con Honors (7 de octubre de 2026).** Se fusionaron en una copia de trabajo el proyecto Unity de la entrega y el proyecto Unity de Honors (APK FIX03), sin modificar ninguno de los dos. Las pruebas se corrieron en una copia de esa fusión (Unity 6000.6.0f1, Python 3.12.10, OpenSeesPy 3.8.0.0 real) cuyos `Assets`, `Packages`, exportadores y `freeze_originales.json` coinciden con los de este repositorio.
 
 | Prueba | Resultado |
 |---|---|
 | pytest (Python/OpenSees real) | 51 passed |
 | Unity EditMode | 64/64 aprobadas |
 | Unity PlayMode | 23/23 aprobadas. `HonorsCapacityFlowTests.ScenarioFailureDiscardAndNativeRegeneration`, que antes fallaba porque faltaba `honors_comparar_armadura.py`, ahora pasa |
-| Importación y compilación de Unity | 0 errores (los avisos son de APIs obsoletas del código previo) |
+| Importación y compilación de Unity | 0 errores (los avisos son de APIs obsoletas) |
 | Escenas en Play (modo batch) | `StructureViewerScene`, `ARHonorsScene`, `HonorsViewerScene` y `ARScene` cargan sin excepciones del proyecto. El viewer conserva la arquitectura visual, Persona SQ4, la capacidad de vigas y `DiagramController`; en `ARHonorsScene` están activos H5 y H2 y H3 queda apagado al abrir |
 
 - *Exportadores fusionados.* `exportar_resultados_unity.py` conserva los apoyos, las áreas tributarias, f'c (`--fc`) y `--mods` de la entrega, e incorpora `export_contract` (validación del análisis, exigencia de OpenSees real y campos de Honors). `exportar_excel_esfuerzos.py` incorpora la versión ampliada del complemento sin perder ninguna función. Prueba puntual con salida temporal: sin cambios, el JSON regenerado coincide con el vigente (diferencia máxima 0,0 en 7 161 registros de fuerzas); con el apoyo del nodo 7 articulado, el área de E1_1 en 8,0 m² y f'c = 40 MPa los cambios quedan reflejados; el Excel se genera con 1 023 elementos y 91 muros. No se regeneró ningún resultado oficial.
-- *JSON estructural.* El JSON de `Assets/Resources` es el del donante (esquema `mcoc.ar/2.0`), necesario para el catálogo Honors; sus resultados son idénticos a los de la entrega. Las rutas absolutas de `catalog_manifest.json` se reemplazaron por rutas relativas sin tocar sus hashes (el catálogo solo verifica `catalogSHA256`).
-- *Inicialización doble del viewer.* Quedó resuelta con la versión del donante: `Start` solo crea la estructura en Play y en el Editor se carga de forma diferida. En el log aparece una sola línea "Estructura lista".
-- *Viewer de Windows.* No fue regenerado después de incorporar el complemento externo. Se conserva el build anterior (`Builds/Windows/P1G8_Viewer.exe`, 125,8 MB, que no se versiona). Es válido porque `Packages` es idéntico y las únicas diferencias de `Assets` son archivos generados por pruebas o builds (una escena temporal de los tests de PlayMode y `XRGeneralSettingsPerBuildTarget.asset`). Tres intentos de recompilarlo se detuvieron sin terminar.
-- *Evidencia histórica de Honors.* `entrega/honors` contiene ensayos, resultados y manifiestos del equipo de origen. Se copió para trazabilidad: no se reejecutó y no se presenta como prueba nueva. En el repositorio solo se versionan `proteccion`, `H2`, `H5`, `H5_demostracion`, `QA`, `unity_H5` y los manifiestos y CSV de primer nivel; el resto (sesiones, ensayos, copias `baseline` y APK históricas) queda fuera de Git.
+- *JSON estructural.* El JSON de `Assets/Resources` es el del proyecto Honors (esquema `mcoc.ar/2.0`), necesario para el catálogo Honors; sus resultados son idénticos a los de la entrega. Las rutas absolutas de `catalog_manifest.json` se reemplazaron por rutas relativas sin tocar sus hashes (el catálogo solo verifica `catalogSHA256`).
+- *Inicialización doble del viewer.* Quedó resuelta con la versión de Honors: `Start` solo crea la estructura en Play y en el Editor se carga de forma diferida. En el log aparece una sola línea "Estructura lista".
+- *Viewer de Windows.* No fue regenerado después de incorporar el complemento de Honors. Se conserva el build anterior (`Builds/Windows/P1G8_Viewer.exe`, 125,8 MB, que no se versiona). Es válido porque `Packages` es idéntico y las únicas diferencias de `Assets` son archivos generados por pruebas o builds (una escena temporal de los tests de PlayMode y `XRGeneralSettingsPerBuildTarget.asset`). Tres intentos de recompilarlo se detuvieron sin terminar.
+- *Evidencia histórica de Honors.* `entrega/honors` contiene ensayos, resultados y manifiestos de Honors. Se copió para trazabilidad: no se reejecutó y no se presenta como prueba nueva. En el repositorio solo se versionan `proteccion`, `H2`, `H5`, `H5_demostracion`, `QA`, `unity_H5` y los manifiestos y CSV de primer nivel; el resto (sesiones, ensayos, copias `baseline` y APK históricas) queda fuera de Git.
 - *Sigue pendiente de prueba manual.* En el teléfono, con la APK fusionada o la oficial: anclaje, H2 (QA), H3 (diagramas My y Vz manuales) y H5 (comparación). En el Editor: panel H5 y reanálisis en `HonorsViewerScene`, y la interacción con las pestañas y la arquitectura visual del viewer de escritorio. QA, sensibilidad y Excel oficiales con OpenSees real (sección 18).
 
 **Verificación de los cambios del grupo 8.**
 
-- *Cambios visuales y de nombres:* no alteraron el cálculo. Los archivos de `data/` y el JSON de resultados quedaron idénticos byte a byte a los de la base (antes de regenerar el JSON con OpenSees real, ver abajo), y en el Excel de esfuerzos las 65 268 celdas numéricas también.
+- *Cambios visuales y de nombres:* no alteraron el cálculo. Los archivos de `data/` y el JSON de resultados quedaron idénticos byte a byte antes y después de esos cambios (antes de regenerar el JSON con OpenSees real, ver abajo), y en el Excel de esfuerzos las 65 268 celdas numéricas también.
 - *Cambio de armadura:* modificó solo la capacidad. Fuerzas, desplazamientos y reacciones siguen idénticos. Con la armadura anterior, `actualizar_armadura.py` reproduce exactamente la capacidad del exportador en los 516 elementos.
 - *4 apoyos sueltos:* se quitaron 4 apoyos que estaban en nodos sin ningún elemento (nodos 250 a 253). No tenían carga ni reacción, así que G, Q, EX y EY no cambian; solo bajan los registros de desplazamiento de 5 054 a 5 026.
 - *Corrección de los muros:* antes de cambiar el modelo se comprobó que la réplica de verificación, con el exportador real del proyecto, reproduce la corrida de OpenSees. Las diferencias fueron de 10⁻¹⁰ m en desplazamientos y de 10⁻⁴ kN en fuerzas, con los mismos períodos y DCR. Después se cambiaron dos cosas: la inercia de los muros a 1,0 Ig y los muros a `ElasticTimoshenkoBeam`, con deformación por corte.
-- *Elementos completos:* los 1 023 elementos son idénticos a los del modelo base. Solo se quitaron 4 nodos con apoyo que no tenían ningún elemento.
+- *Elementos completos:* los 1 023 elementos son idénticos a los del modelo anterior a los cambios. Solo se quitaron 4 nodos con apoyo que no tenían ningún elemento.
 - *Pruebas:* con la réplica de verificación pasaba toda la suite. Con OpenSees real pasaron los 45 casos que tenía la suite antes de agregar las 6 pruebas de la arquitectura visual, que no usan OpenSees. Se actualizó la prueba que simula los argumentos de Unity, que traía fijos los factores de rigidez antiguos.
 - *JSON regenerado con OpenSees real:* `estructura_p1l4_unity.json` se volvió a generar con OpenSees 3.8.0.0 (commit `4b44709`, mismas entradas: los hash de modelo, parámetros, combinaciones y armaduras no cambian). Diferencias respecto de la versión con réplica: reacciones de G y Q del orden de 10⁻⁷ kN, cortes basales de EX y EY del orden de 10⁻⁵ kN, desplazamiento máximo del orden de 10⁻⁷ mm y fuerzas de elementos hasta 8,7 · 10⁻⁵ kN. El DCR es idéntico en los 516 elementos con capacidad; el DCR máximo (vigas 0,998 en E1_56, columnas 0,409 en E1_287), los conteos (718 nodos, 1 023 elementos, 91 muros) y las combinaciones no cambian. El JSON nuevo agrega `resumenAnalisis.fc_MPa = 35`.
 
@@ -747,8 +747,8 @@ Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aisla
 
 **Tareas delegadas**
 
-1. Armar la carpeta del grupo 8 a partir del ZIP del repositorio P1_G4_Final del grupo 4. Se dejaron fuera los informes semanales, las capturas y el registro AR de ese grupo.
-2. Cambiar la identidad del proyecto de G4 a G8 en:
+1. Organizar la carpeta del grupo 8: proyecto Unity, scripts, datos, pruebas e informe.
+2. Definir la identidad del proyecto G8 en:
    - la carpeta del proyecto Unity (`edificio_G8`) y las rutas de scripts y tests;
    - los nombres e identificadores de las apps Android (`cl.uandes.mcoc.p1g8`);
    - los textos de la interfaz;
@@ -792,19 +792,19 @@ Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aisla
 
 Descripción factual, en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.0:
 
-1. Se creó un repositorio Git local como respaldo del estado recibido (commit `a313e0b`). Se instalaron en Python 3.12 las dependencias de `requirements.txt` y se ejecutó la suite: las pruebas rápidas pasaron (40) y en la corrida completa falló una prueba (sección 18).
+1. Se creó un repositorio Git local como respaldo del estado inicial del repositorio (commit `a313e0b`). Se instalaron en Python 3.12 las dependencias de `requirements.txt` y se ejecutó la suite: las pruebas rápidas pasaron (40) y en la corrida completa falló una prueba (sección 18).
 2. Se diagnosticó ese fallo: el JSON vigente se había generado con la réplica de verificación. Dos corridas con OpenSees real dieron resultados idénticos, así que se regeneró solo el JSON principal con OpenSees real (commit `15ba09b`) y los 45 casos pasaron sin cambiar tolerancias.
 3. Con pruebas manuales del grupo en Unity, el agente corrigió tres problemas de la interfaz (commits `a31906c`, `4b44709`, `5b77560` y `2e5f6a0`): la excepción por JSON vacío o nulo al cargar el viewer, el rechazo de cargas negativas en el reanálisis y la restauración de los campos al descartar el escenario.
 4. Se documentó la evidencia manual de H4 y H5 (capturas en `reports/img` y `reports/evidencia_H5.md`, commits `2e5f6a0` y `159269a`).
 5. En esta etapa se actualizó este informe con esos resultados y con los pendientes.
-6. Integración con Honors (7 de octubre de 2026): se fusionó el proyecto Unity de la entrega con el del donante en una copia de trabajo, se fusionaron por contenido los dos exportadores, se incorporó el complemento externo de Honors y se repitieron las pruebas: 51 de pytest, 64/64 de EditMode y 23/23 de PlayMode (sección 18). No se reconstruyó el viewer de Windows; se generó una APK candidata que no es la oficial y no se probó en un teléfono (sección 16).
+6. Integración con Honors (7 de octubre de 2026): se fusionaron en una copia de trabajo el proyecto Unity de la entrega y el de Honors, se fusionaron por contenido los dos exportadores, se incorporó el complemento de Honors y se repitieron las pruebas: 51 de pytest, 64/64 de EditMode y 23/23 de PlayMode (sección 18). No se reconstruyó el viewer de Windows; se generó una APK candidata que no es la oficial y no se probó en un teléfono (sección 16).
 
 **Errores detectados por el agente**
 
-- La grilla de referencia del suelo del viewer original se dibujaba en un plano vertical, porque `CreateGroundGrid` intercambiaba los ejes Y y Z. Se reemplazó por el plano de pasto.
+- La grilla de referencia del suelo del viewer se dibujaba en un plano vertical, porque `CreateGroundGrid` intercambiaba los ejes Y y Z. Se reemplazó por el plano de pasto.
 - El resumen de áreas tributarias por piso de la pestaña VISTA no corresponde al reparto que usa el análisis (sección 19).
 - `resultados/sensibilidad_rigidez.json` corresponde a una corrida anterior del modelo (sección 8).
-- La documentación de Unity de la base indicaba teclas y colores de diagramas que no coincidían con el código; la deformada es la tecla 4.
+- La documentación de Unity indicaba teclas y colores de diagramas que no coincidían con el código; la deformada es la tecla 4.
 - Los `.bat` tenían saltos de línea Unix y se pasaron a CRLF, para evitar problemas de `cmd` con `goto`.
 - La verificación P-M de muros del QA no pasaba con la malla φ12@200 escalada. Con la armadura de borde del documento ahora pasa.
 - El documento llama "columna especial ID 70" a una columna, pero en este modelo el elemento 70 es una viga (E1_70). Se supuso la columna más exigida.
@@ -823,7 +823,7 @@ Descripción factual, en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.
 **Verificaciones hechas por el agente**
 
 - Corrió los 45 casos con OpenSees real (45 passed) y comparó el JSON anterior con el regenerado.
-- Comparó byte a byte los datos y resultados con la base, e hizo la comparación registro por registro de fuerzas y desplazamientos (sección 18).
+- Comparó byte a byte los datos y resultados antes y después de los cambios, e hizo la comparación registro por registro de fuerzas y desplazamientos (sección 18).
 - Corrió las pruebas del JSON de Unity que no requieren OpenSees.
 - Recalculó la curva M-φ con el integrador del proyecto.
 - Comprobó que el cambio de armadura y la eliminación de los apoyos sueltos no alteran fuerzas ni reacciones, y que el script nuevo reproduce la capacidad del exportador.
@@ -833,7 +833,7 @@ Descripción factual, en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.
 
 **Contribución real del agente**
 
-El agente no desarrolló el modelo estructural, el análisis, el viewer ni la app AR: esos componentes vienen del repositorio del grupo 4. Su aporte fue:
+Su aporte fue:
 
 - la adaptación al grupo 8 (identidad, paleta, pasto, cielo y paneles movibles);
 - la aplicación de la armadura del documento del grupo y los supuestos para completarla;

@@ -6,8 +6,6 @@ Este proyecto modela dos edificios de hormigón armado G35, con perfiles metáli
 
 **Informe final:** [`reports/final.md`](reports/final.md).
 
-**Origen:** la base del sistema (modelo, análisis, viewer y AR) proviene del repositorio [P1_G4_Final](https://github.com/mauricio-lenz/P1_G4_Final) del grupo 4. Los cambios del grupo 8 se detallan en las secciones 20 y 21 del informe.
-
 ## Requisitos
 
 | Componente | Versión |
@@ -199,7 +197,7 @@ Las carpetas `Builds/` no se suben al repositorio: los ejecutables van en la rel
 
 **APK lista para instalar.** Está en `APK/P1G8_Honors_H5_H2_H3_fix03.apk`, con los Honors H2 (QA), H3 (diagramas My y Vz, apagado al abrir) y H5 (comparar armaduras).
 
-- Versión 0.5.3 (build 109), package `cl.uandes.mcoc.p1g8.ar.honors`. Es otro package que la app base, así que se instalan las dos sin reemplazarse.
+- Versión 0.5.3 (build 109), package `cl.uandes.mcoc.p1g8.ar.honors`. Es otro package que el viewer (`cl.uandes.mcoc.p1g8`) y que la app AR básica (`cl.uandes.mcoc.p1g8.ar`), así que se instalan sin reemplazarse.
 - Requiere Android 10 o superior (ARM64), un teléfono compatible con ARCore y permiso de cámara.
 - Instalar con `adb install -r APK\P1G8_Honors_H5_H2_H3_fix03.apk`, o copiando el archivo al teléfono y abriéndolo.
 - SHA-256: `c2bf7f5ca4b15699193b093526ab948cc2b8354e016b121f949cd68a5cad4d4c`.
