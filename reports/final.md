@@ -1,13 +1,12 @@
 # Informe final — Proyecto 1 · Grupo 8
 
+**Integrantes:**
+- Josefa Loyola
+- Javiera Mosqueira
+- Josefina Muro
+
 **MCOC · Edificio G35: análisis en OpenSees, Unity como pre y postprocesador y realidad aumentada**
 
-| | |
-|---|---|
-| Integrantes | (completar) |
-| Repositorio | (completar enlace) |
-| Versión evaluada | commit (completar con el hash) |
-| Fecha | octubre de 2026 |
 
 > **Estado del documento.** Faltan las capturas del viewer de las figuras 1, 2, 4, 5, 9, 10 y 12 a 18, y dos de las tres de la app AR (figura 19): ver el Anexo B. La APK oficial FIX03 (versión 0.5.3, código 109) fue probada y aprobada por el grupo en el teléfono (sección 16); esa prueba no se repitió al integrar el proyecto. Las combinaciones C1 a C3 están pendientes de confirmar con el enunciado o el profesor (sección 7). El QA, la sensibilidad y el Excel de esfuerzos siguen pendientes de repetirse con OpenSees real (sección 18). La integración del Unity de la entrega con el de Honors se verificó el 7 de octubre de 2026: 51 pruebas Python/OpenSees, 64/64 de Unity EditMode y 23/23 de Unity PlayMode aprobadas (sección 18). El viewer de Windows no se regeneró después de esa integración.
 
