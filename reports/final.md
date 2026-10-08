@@ -5,20 +5,18 @@
 - Javiera Mosqueira
 - Josefina Muro
 
+**Identificación de la versión**
+
+- Repositorio: `https://github.com/Jo-18/P1-Grupo-8`
+- Rama evaluada: `main`
+- Informe: `reports/final.md`
+- Producto ejecutable: `APK/P1G8_Honors_H5_H2_H3_fix03.apk`
+- Fecha de verificación: 7 de octubre de 2026
+
 **MCOC · Edificio G35: análisis en OpenSees, Unity como pre y postprocesador y realidad aumentada**
 
 
-> **Estado del documento.** Faltan las capturas del viewer de las figuras 1, 2, 4, 5, 9, 10 y 12 a 18, y dos de las tres de la app AR (figura 19): ver el Anexo B. La APK oficial FIX03 (versión 0.5.3, código 109) fue probada y aprobada por el grupo en el teléfono (sección 16); esa prueba no se repitió al integrar el proyecto. Las combinaciones C1 a C3 están pendientes de confirmar con el enunciado o el profesor (sección 7). El QA, la sensibilidad y el Excel de esfuerzos siguen pendientes de repetirse con OpenSees real (sección 18). La integración del Unity de la entrega con el de Honors se verificó el 7 de octubre de 2026: 51 pruebas Python/OpenSees, 64/64 de Unity EditMode y 23/23 de Unity PlayMode aprobadas (sección 18). El viewer de Windows no se regeneró después de esa integración.
-
-<!--
-PENDIENTE ANTES DE ENTREGAR (borrar este bloque al terminar):
-1. Completar integrantes, enlace y commit en la tabla de arriba.
-2. Generar desde el Editor de Unity las capturas pendientes del Anexo B (carpeta reports/img/demo/) y volver a insertarlas en el cuerpo. No se necesita ejecutable.
-3. AR: la app ya se probó en el teléfono. Faltan las capturas de los modos 1:1 y sobre plano (reports/img/ar/).
-4. Volver a correr con OpenSees real qa_semana06.py, sensibilidad_rigidez.py y exportar_excel_esfuerzos.py (siguen pendientes). El JSON principal y pytest ya se hicieron con OpenSees real; tras integrar Honors, pytest se repitió con 51 casos (secciones 18 y 22).
-5. Confirmar las combinaciones C1 a C3 con el enunciado o el profesor (sección 7).
-6. Completar la sección 21 (cada integrante) y "otros usos de IA" de la sección 20.
--->
+> **Verificación final.** El 7 de octubre de 2026 se ejecutaron con Python 3.12.10 y OpenSeesPy 3.8.0 el QA, el estudio de sensibilidad, la exportación a Excel y los 51 tests de Python. Unity 6000.6.0f1 aprobó 64/64 tests EditMode y 23/23 tests PlayMode, y las cuatro escenas principales cargan sin excepciones propias del proyecto. La APK oficial FIX03 (versión 0.5.3, código 109) fue probada por el grupo en un teléfono Android. El QA marca el MURO-056 (C = 1,14 en EY) para revisión: no se presenta como cumplimiento (secciones 12 y 19).
 
 ## 1. Resumen
 
@@ -26,29 +24,30 @@ El proyecto modela dos edificios de hormigón armado G35, con perfiles metálico
 
 Unity funciona como postprocesador: muestra geometría, apoyos, ejes, diafragmas, cargas, diagramas, deformada, curvas P-M y utilización. También funciona como preprocesador: desde la interfaz se cambian parámetros, combinaciones, armaduras y secciones, y se reanaliza llamando a Python. El proyecto incluye una app Android de realidad aumentada que ancla el modelo y sus resultados a un marcador impreso. El grupo la probó en el teléfono y funciona (sección 16).
 
-Flujo: **planos → datos (JSON) → OpenSees → resultados (JSON) → Unity → AR**.
+Flujo: **planos → datos (JSON) → OpenSees → resultados (JSON) → Unity → AR**. El JSON es el puente entre Python/OpenSees y Unity (sección 13).
 
-Resultados principales del modelo vigente. El JSON de resultados se regeneró con OpenSees real (OpenSeesPy 3.8.0.0, Python 3.12.10); las diferencias con la versión anterior, hecha con la réplica de verificación, son de redondeo (sección 18):
+Resultados principales del modelo vigente. El JSON y la evidencia de QA se verificaron con OpenSees real (OpenSeesPy 3.8.0, Python 3.12.10; sección 18):
 
 - **Cargas gravitacionales:** G = 75 701 kN y Q = 25 886 kN, ambas iguales a la suma de reacciones.
 - **Sismo (NCh433 estático):** corte basal de 9 483 kN en X y 7 798 kN en Y. Por edificio y dirección queda entre −7 % y +2 % del modelo ETABS de referencia, y los períodos entre −8 % y +7 % (sección 8).
 - **Desplazamientos:** máximo de 32,6 mm con EY y de 31,9 mm en la combinación más desfavorable (C2). La deriva máxima en el centro de masa es 0,00146, bajo el límite de 0,002 de la NCh433.
 - **Columnas de hormigón:** ninguna supera su capacidad (DCR máximo 0,41).
 - **Vigas:** ninguna supera su capacidad, después de completar su armadura (el documento no la trae).
-- **Muros:** con su armadura de borde, ninguno supera su capacidad (C máximo 0,20).
+- **Muros:** la comprobación directa P-M identifica un muro que requiere revisión: MURO-056 en EY, con C = 1,14. El resto queda dentro de su envolvente (secciones 12, 18 y 19).
 - **Armadura:** la de columnas y muros sale del documento de armaduras del grupo, completada con supuestos y revisada con ACI 318-19 (secciones 12 y 19).
 
 Estos resultados y sus límites se discuten en las secciones 8, 12 y 19.
 
-**Alcance de esta versión.** Esta versión del sistema (modelo, scripts de análisis, viewer de Unity y app AR) incluye los siguientes puntos de trabajo del grupo 8:
+**Contenido de la entrega**
 
-- la identidad del proyecto y de las apps;
-- la paleta visual, el suelo de pasto y paneles que se pueden mover y redimensionar;
-- la armadura de columnas y muros, según el documento de armaduras del grupo;
-- la verificación de los resultados;
-- las figuras reproducibles y la documentación de esta entrega.
+- el modelo estructural en OpenSeesPy, con sus datos de entrada, combinaciones y armaduras;
+- los resultados exportados, el QA y los tests automáticos;
+- el viewer de Unity como pre y postprocesador, con la arquitectura visual y los sidequests;
+- la aplicación de realidad aumentada (APK oficial `APK/P1G8_Honors_H5_H2_H3_fix03.apk`);
+- el Honors Track: H2, H3, H4 y H5;
+- las figuras reproducibles, el README y este informe.
 
-El detalle de lo que hizo cada integrante y de lo que se hizo con IA está en las secciones 20 y 21.
+El uso de IA y la contribución individual se presentan en las secciones 20 y 21.
 
 ## 2. Edificio e idealización
 
@@ -69,6 +68,7 @@ El edificio 1 sale de los planos 2017_67 y el edificio 2 de los planos 2024_22. 
 - **Losas:** no se modelan como placas. Reparten la carga a vigas y brazos de muro mediante áreas tributarias e imponen un diafragma rígido por piso y por edificio, con el nodo maestro en el centro de masa.
 - **Apoyos:** empotrados en la base.
 - **Rigidez:** 0,35 Ig en vigas y 0,70 Ig en columnas (ACI 318-19, 6.6.3.1.1). Los muros llevan su inercia bruta (1,0 Ig): con 0,35 Ig el edificio 2 quedaba mucho más flexible que el modelo ETABS de referencia (sección 8).
+- **Ejes:** el sistema global tiene X e Y horizontales y Z vertical hacia arriba. Cada elemento usa `geomTransf` con su eje local x de I a J: los elementos casi verticales (pendiente en z mayor que 0,90 de su longitud) con vecxz = (1, 0, 0) y los demás (vigas, brazos y arriostres) con vecxz = (0, 0, 1), de modo que y = vecxz × x y z = x × y (en una columna vertical, y local = −Y global y z local = +X global). Los diagramas, las tablas de fuerzas y el Excel usan esos ejes locales.
 - **Análisis:** estático lineal. Cada caso se resuelve una vez y las combinaciones se obtienen por superposición.
 
 ## 3. Geometría y datos
@@ -179,7 +179,7 @@ El criterio de las semanas anteriores, C fijo con F = C (D + 0,5Q), sigue dispon
 
 ![Fuerzas sísmicas por piso](img/sismo_pisos.png)
 
-*Figura 3. Fuerzas sísmicas por piso aplicadas en los nodos maestros (generada con `figuras_informe.py`).*
+*Figura 1. Fuerzas sísmicas por piso aplicadas en los nodos maestros (generada con `figuras_informe.py`).*
 
 ## 7. Superposición
 
@@ -209,8 +209,8 @@ Lo que cambia en vivo:
 | Estado | λG / λQ / λEX / λEY | ux / uy / uz del nodo 492 en Unity [mm] | Error máx en reacciones | Error máx en fuerzas y desplazamientos |
 |---|---|---|---|---|
 | S1 = C1 | 1 / 0,5 / 0,3 / 0,2 | 7,60 / 5,42 / −1,01 | 6,5 · 10⁻⁹ kN | < 10⁻¹³ |
-| S2 = estado de la figura 4 (captura pendiente) | 1 / 0,5 / 1 / 0,3 | 22,11 / 6,02 / −0,87 | 9,3 · 10⁻⁹ kN | < 10⁻¹³ |
-| S3 = captura del grupo | 0,6 / 1 / 1 / 1 | 25,35 / 27,50 / −2,65 | 2,8 · 10⁻⁸ kN | < 10⁻¹³ |
+| S2 = estado de referencia | 1 / 0,5 / 1 / 0,3 | 22,11 / 6,02 / −0,87 | 9,3 · 10⁻⁹ kN | < 10⁻¹³ |
+| S3 = estado de prueba | 0,6 / 1 / 1 / 1 | 25,35 / 27,50 / −2,65 | 2,8 · 10⁻⁸ kN | < 10⁻¹³ |
 
 En los tres estados la superposición coincide con la corrida directa a precisión de máquina.
 
@@ -229,11 +229,11 @@ Cada caso se resuelve con un análisis estático lineal en OpenSees (`carga_viva
 |---|---|---|---|---|---|---|---|
 | \|u\| máximo [mm] | 25,8 | 10,6 | 21,5 | 32,6 | 31,5 | 31,9 | 31,7 |
 
-Estas dos tablas coinciden con el JSON regenerado con OpenSees real (OpenSeesPy 3.8.0.0, Python 3.12.10): las reacciones difieren menos de 10⁻⁶ kN y el desplazamiento máximo menos de 10⁻⁶ mm respecto de la versión con réplica.
+Estas dos tablas corresponden al JSON generado con OpenSees real (OpenSeesPy 3.8.0, Python 3.12.10) y al QA del 7 de octubre de 2026.
 
-**Sensibilidad a la rigidez.** *Pendiente: esta tabla se generó con la réplica de verificación y debe repetirse con OpenSees real.* `sensibilidad_rigidez.py` compara la sección bruta, la rigidez fisurada vigente y una variante con muros no fisurados:
+**Sensibilidad a la rigidez.** La tabla se regeneró con OpenSees real el 7 de octubre de 2026. `sensibilidad_rigidez.py` compara la sección bruta, la rigidez fisurada vigente y una variante con muros no fisurados:
 
-| Rigidez | u máx EX [mm] | u máx EY [mm] | Deriva máx EX | Deriva máx EY | Corte en muros EX / EY | C máx columnas | C máx muros |
+| Rigidez | u máx EX [mm] | u máx EY [mm] | Deriva máx EX | Deriva máx EY | Corte en muros EX / EY | C máx columnas (C1–C3) | C máx muros (C1–C3) |
 |---|---|---|---|---|---|---|---|
 | Sección bruta | 18,4 | 27,4 | 0,00108 | 0,00174 | 91 % / 97 % | 0,40 | 0,20 |
 | ACI fisurada (muros 0,35 Ig) | 22,5 | 36,6 | 0,00133 | 0,00231 | 95 % / 99 % | 0,39 | 0,12 |
@@ -243,13 +243,14 @@ Estas dos tablas coinciden con el JSON regenerado con OpenSees real (OpenSeesPy 
 - **Corte en muros:** los muros toman prácticamente todo el corte sísmico. Un valor sobre 100 % indica que los marcos trabajan en sentido contrario.
 - **Deriva en el centro de masa (NCh433 5.9.2):** la máxima es 0,00146 (edificio 1, EY), medida en el nodo maestro de cada diafragma. Queda bajo el límite de 0,002. La verifica `qa_semana06.py` (bloque `derivas_NCh433`).
 - **Deriva en cualquier punto (NCh433 5.9.3):** la mayor, medida en columnas y muros, es 0,00202 (edificio 2, EY). Queda bajo la deriva en el centro de masa más 0,001 (0,00138 + 0,001).
+- **Capacidad de muros:** las dos últimas columnas de la tabla se calculan solo con las combinaciones C1 a C3 y sirven para comparar escenarios de rigidez. Con la rigidez vigente, el máximo de los muros (0,20) es el de C2 y coincide con el QA. Este indicador resumido no reemplaza la comprobación final elemento por elemento del bloque P-M del QA, que además evalúa por separado los casos G, Q, EX y EY: ahí MURO-056 alcanza C = 1,14 en EY (sin G ni Q). Ese es el resultado que gobierna la revisión de capacidad (secciones 12 y 19).
 
 ### Comparación con los modelos ETABS de referencia (LT1 y LT2)
 
 El profesor entregó resultados de dos modelos ETABS hechos por un estudiante de doctorado:
 
-- **LT1:** la parte antigua del edificio, que corresponde a nuestro edificio 1 (planos 2017_67).
-- **LT2:** la parte nueva, que corresponde a nuestro edificio 2 (planos 2024_22).
+- **LT1:** la parte antigua del edificio, que corresponde al edificio 1 del modelo (planos 2017_67).
+- **LT2:** la parte nueva, que corresponde al edificio 2 del modelo (planos 2024_22).
 
 No se espera que los valores sean iguales, sino similares. Las unidades de ETABS se convirtieron: N a kN y N·mm a kN·m.
 
@@ -275,10 +276,10 @@ No se espera que los valores sean iguales, sino similares. Las unidades de ETABS
   - La sobrecarga del edificio 2 coincide.
   - La del edificio 1 es 26 % mayor. Probablemente se debe a supuestos de uso o de áreas, porque aquí van 500 kg/m² en todos los pisos, incluidos el cielo del subterráneo y el voladizo.
 - **Esfuerzos:** los elementos de ETABS no se pueden identificar uno a uno, porque la numeración es distinta, pero los órdenes de magnitud coinciden.
-  - La columna C9 de LT1 (piso 1) lleva 3 557 kN de CM; nuestras columnas del piso 1 del edificio 1 llevan entre 343 y 3 265 kN de G.
+  - La columna C9 de LT1 (piso 1) lleva 3 557 kN de CM; las columnas del piso 1 del edificio 1 llevan entre 343 y 3 265 kN de G.
   - La columna C1 de LT2 lleva 1 994 kN, dentro del rango del edificio 2 (440 a 2 712 kN).
-  - La C4 de LT2 (piso 3) lleva 1 596 kN, algo sobre nuestro máximo de ese piso (1 304 kN).
-  - Los momentos de las vigas B739 y B189 (100 a 170 kN·m) están dentro de los rangos de nuestras vigas de luz parecida en esos pisos.
+  - La C4 de LT2 (piso 3) lleva 1 596 kN, algo sobre el máximo del modelo en ese piso (1 304 kN).
+  - Los momentos de las vigas B739 y B189 (100 a 170 kN·m) están dentro de los rangos de las vigas del modelo de luz parecida en esos pisos.
 - **Diferencias revisadas que no son errores del modelo (sección 19):**
   - *Vigas largas del edificio 2:* en los ejes x = −33,98 y −41,48 m no hay columnas en los datos de los planos. El modelo y el paso 11 de `ajustar_modelo_planos.py` apoyan esas vigas en muros (plano 2024_22). Su flecha con G (unos 25 mm en vigas de cerca de 16 m, con 0,35 Ig) está bajo L/240.
   - *Columnas metálicas del voladizo sur del piso 2:* trabajan como tirantes, porque el arriostre baja desde la punta del voladizo superior hasta el pilar del eje 3 (elevación 2017_67-802). La C21 de ETABS está comprimida con una fuerza parecida (49 kN), lo que sugiere un arriostre en el sentido contrario. Conviene confirmarlo en esa elevación.
@@ -327,7 +328,7 @@ Su envolvente P-M se calcula por fibras con el mismo criterio de deformación ú
 
 ![M-phi de la columna COL70/70](img/mphi_col70.png)
 
-*Figura 6. Curva M-φ de la COL70/70 (16φ28) con las tres mallas.*
+*Figura 2. Curva M-φ de la COL70/70 (16φ28) con las tres mallas.*
 
 ## 11. `P-M` columna y muro
 
@@ -359,7 +360,7 @@ Como referencia también se muestra la curva nominal de 5 puntos de la sección 
 
 ![P-M de la columna](img/pm_columna.png)
 
-*Figura 7. Curvas P-M de diseño de las tres armaduras de columna, con las demandas C1, C2 y C3 de las columnas con 16φ28 (generada con `figuras_informe.py`).*
+*Figura 3. Curvas P-M de diseño de las tres armaduras de columna, con las demandas C1, C2 y C3 de las columnas con 16φ28 (generada con `figuras_informe.py`).*
 
 **Muros.** Cada uno de los 91 paños tiene la curva de su propia armadura, con la misma formulación ACI de las columnas aplicada al muro en su plano:
 
@@ -374,11 +375,13 @@ Eso da 19 curvas, una por sección (`W_<t>x<L>_<n>f<φ>`, con t y L en mm).
 - **Cuantía local en la zona de borde:** entre 2,82 % y 6,82 %.
 - **Origen de la armadura:** 7 secciones están en el documento; para las otras se supuso el número de barras (sección 19).
 
-La demanda de cada muro (P, M en el plano y V por combinación) sale de las fuerzas de su columna ancha en OpenSees.
+La demanda de cada muro (P, M en el plano y V) sale de las fuerzas de su columna ancha en OpenSees, para cada caso base (G, Q, EX y EY) y para cada combinación. P es la compresión positiva al centro del paño, P = ½ (N_i − N_j), y M es el mayor momento en el plano entre los dos extremos.
 
 ![P-M de muros](img/pm_muros.png)
 
-*Figura 8. Envolvente por fibras del muro de referencia (izquierda) y curva de diseño del muro más exigido, MURO-066, con sus demandas (derecha).*
+*Figura 4. Envolvente por fibras del muro de referencia (izquierda) y ejemplo de curva de diseño para MURO-066 (derecha). La verificación final identifica a MURO-056 en EY como el caso crítico, con C = 1,14.*
+
+**Capacidad de la sección y del miembro.** Las curvas P-M son capacidades de sección: no incluyen esbeltez ni amplificación de momentos. El análisis es lineal de primer orden (sin P-Δ), así que la demanda tampoco incorpora efectos de segundo orden. En las columnas la demanda de momento es la resultante √(My² + Mz²) comparada con una curva uniaxial, que es una aproximación de la interacción biaxial P-Mx-My (esta no se calcula); en los muros solo se compara el momento en el plano. La capacidad del miembro frente a esbeltez, segundo orden y biaxialidad no se verificó y queda como limitación (sección 19).
 
 ## 12. Demanda-capacidad
 
@@ -396,18 +399,31 @@ La demanda de cada muro (P, M en el plano y V por combinación) sale de las fuer
 - **Vigas (398):** φM_n⁺ con la armadura inferior, φM_n⁻ con la superior más el suple de apoyo, y φV_n = 0,75 (V_c + V_s) con los estribos.
   - *Armadura tipo:* el documento no trae la armadura de vigas, así que se mantuvo la armadura tipo supuesta de los planos. V60/80 subió a 5φ22 y V30/80 a 4φ18, para cumplir la cuantía mínima de ACI 9.6.1.2.
   - *Vigas que no cumplían:* a las 25 vigas que seguían sin cumplir se les asignó la armadura mínima estándar que deja DCR ≤ 1 en una sola capa, con ρ ≤ 2,5 %.
-  - *Resultado:* ninguna viga supera 1. La más exigida es E1_56, con DCR = 0,998.
-- **Muros (91):** ningún muro supera su capacidad.
-  - *Resultado:* el más exigido es MURO-066, con C = 0,20 en C2: P = 1 294 kN, M = 2 416 kN·m y φM_n = 12 011 kN·m.
-  - *Antes:* con la malla φ12@200 escalada, 5 muros quedaban fuera de su envolvente por tracción.
+  - *Resultado:* ninguna viga supera 1. La más exigida es E1_56, con DCR = 0,998; le siguen B3022_V40/80c (0,991) y B3001_V40/80a (0,983). El margen es estrecho porque la armadura supuesta se ajustó hasta cumplir.
+- **Muros (91):** la comprobación directa de la interacción P-M deja un muro fuera de su envolvente y 90 dentro.
+  - *Resultado crítico:* MURO-056 en EY, con P = −1 166,8 kN (tracción), M = 10 560,4 kN·m, φM_n = 9 231,2 kN·m y C = 1,14.
+  - *Caso gobernante:* el exceso ocurre en el caso EY aplicado solo, sin G ni Q. En las combinaciones C1 a C3 el mayor C de los muros es 0,20 (C2) y el de MURO-056 es 0,19 (C3). Con P de tracción la capacidad de momento es 9 231 kN·m, frente a 12 700 a 14 000 kN·m con la compresión de C1 a C3.
+  - *Interpretación:* no se presenta como un cumplimiento ni se descarta por no ser una combinación de diseño. Requiere revisar la armadura asignada (curva `W_600x2920_8f40`), los signos y la transformación de los esfuerzos locales, la componente de momento utilizada (en el plano del muro), la correspondencia entre el muro y su curva P-M y la idealización como columna ancha. Si la revisión lo confirma, el muro podría requerir rediseño.
+  - *Alcance:* el análisis global sigue equilibrado y los tests numéricos pasan; la observación corresponde a la verificación local de capacidad de un elemento.
 
 ![Distribución del DCR](img/dcr_elementos.png)
 
-*Figura 11. Distribución del DCR de vigas y columnas de hormigón (generada con `figuras_informe.py`).*
+*Figura 5. Distribución del DCR de vigas y columnas de hormigón (generada con `figuras_informe.py`).*
 
 ## 13. Unity como pre/postprocesador
 
 El proyecto está en `Proyecto1/edificio_G8` (Unity 6000.6.0f1), en la escena `Assets/Scenes/StructureViewerScene`. Unity no calcula: lee los resultados de `Assets/Resources/estructura_p1l4_unity.json`.
+
+**Flujo de datos y el JSON como puente.**
+
+1. **Planos.** Los DXF 2017_67 y 2024_22 definen la grilla, las secciones y los niveles.
+2. **Datos.** `estructura_completo_unity.json`, ajustado a los planos por `ajustar_modelo_planos.py`, junto con los parámetros, las combinaciones y las armaduras de `Proyecto1/data/`.
+3. **OpenSeesPy.** `carga_viva_sismo.py` arma el modelo, calcula G, Q, EX y EY y los resuelve.
+4. **Resultados.** `exportar_resultados_unity.py` agrega las combinaciones y la capacidad ACI, y escribe `estructura_p1l4_unity.json` (esquema `mcoc.ar/2.0`).
+5. **Unity.** El viewer lo dibuja y, en el PC, reanaliza llamando a Python.
+6. **AR.** La misma información, anclada al marcador de la columna E1_243.
+
+Se usa JSON como puente porque separa el cálculo de la visualización. Python/OpenSees y Unity (C#) no comparten memoria ni librerías, y un archivo de texto con esquema versionado lo pueden leer ambos. Además guarda, junto a los resultados, el comando, las versiones y el SHA-256 de cada entrada (bloque `corrida`), se puede revisar con cualquier editor y viaja dentro de la APK, de modo que el teléfono muestra los resultados sin Python. Cada reanálisis escribe de nuevo el mismo contrato, así que Unity no calcula: dibuja lo que el análisis exportó.
 
 **Postprocesador.** Dibuja el modelo y, para el caso o la combinación activa:
 
@@ -468,9 +484,9 @@ Todo se genera con `generar_arquitectura.py` en `Assets/Resources/arquitectura_v
 
 ![Arquitectura visual (vista previa)](img/arquitectura_vista_previa.png)
 
-*Figura 13b. Vista previa de la capa de arquitectura generada desde los mismos datos que dibuja Unity (matplotlib, no es una captura de Unity), con la estructura en líneas moradas: a) sureste, b) noreste, c) sin fachada y d) este.*
+*Figura 6. Vista previa de la capa de arquitectura generada desde los mismos datos que dibuja Unity (matplotlib, no es una captura de Unity), con la estructura en líneas moradas: a) sureste, b) noreste, c) sin fachada y d) este.*
 
-El grupo compiló la capa en el Editor de Unity y la revisó con las tres capas activas (figura 13c). La estructura del modelo se ve en verde a través del vidrio.
+El grupo compiló la capa en el Editor de Unity y la revisó con las tres capas activas (figura 7). La estructura del modelo se ve en verde a través del vidrio.
 
 ![Fachada sur en Unity](img/unity_arquitectura_sur.png)
 
@@ -478,7 +494,7 @@ El grupo compiló la capa en el Editor de Unity y la revisó con las tres capas 
 
 ![Fachada norte en Unity](img/unity_arquitectura_norte.png)
 
-*Figura 13c. Capturas del viewer en Unity, de arriba abajo:*
+*Figura 7. Capturas del viewer en Unity, de arriba abajo:*
 - *Fachada sur: escalera naranja hasta la plataforma del piso 2, escalinata y terraza de la cafetería.*
 - *Extremo este: plaza de la entrada principal a la altura del piso 2.*
 - *Fachada norte: escalera de dos tramos con descanso y terraza norte.*
@@ -498,7 +514,7 @@ El grupo compiló la capa en el Editor de Unity y la revisó con las tres capas 
 | Superposición | lista | RESULTADOS → *Superposición en vivo* (λG, λQ, λEX, λEY) | no |
 | `P-M` y demanda-capacidad | lista | panel P-M al seleccionar una columna o un muro; panel de capacidad al seleccionar una viga; colores por utilización | no |
 | Modificación del modelo | lista | MODIFICAR (sección, armadura, apoyo, área tributaria, quitar elemento) y ANÁLISIS (cargas, material f'c, rigidez, combinaciones) | sí |
-| Arquitectura (solo visual) | lista | VISTA → *Arquitectura*: fachada, escaleras y entorno, mobiliario (figura 13c) | no (no cambia ningún valor) |
+| Arquitectura (solo visual) | lista | VISTA → *Arquitectura*: fachada, escaleras y entorno, mobiliario (figura 7) | no (no cambia ningún valor) |
 
 **¿Ayuda el viewer a contestar las seis preguntas?** Sí. Al seleccionar un elemento, el panel de propiedades se ordena según esas preguntas. Ejemplo con la columna E1_287, la más exigida:
 
@@ -555,15 +571,13 @@ Fuera de Unity, los mismos cambios se pueden reproducir:
 
 ## 16. AR
 
-**Estado: la APK oficial FIX03 fue probada y aprobada por el grupo en un teléfono Android** (octubre de 2026, según el registro del grupo; esta integración no repitió esa prueba). Es la APK `APK/P1G8_Honors_H5_H2_H3_fix03.apk`, FIX03 original, versión 0.5.3, código 109, con package `cl.uandes.mcoc.p1g8.ar.honors`, y su SHA-256 es `c2bf7f5ca4b15699193b093526ab948cc2b8354e016b121f949cd68a5cad4d4c`. Incluye los Honors H2, H3 y H5. La figura 19 muestra el modo maqueta 1:100. Faltan las capturas de los modos 1:1 y sobre plano (Anexo B).
-
-**APK candidata fusionada (no oficial).** Al integrar el proyecto Unity de la entrega con el de Honors se compiló una APK candidata (`P1G8_Honors_FUSION_fix03_candidata_v2.apk`, SHA-256 `710a7ad5f24c0ae48e0afd6c63876fcc6a6ee7416729b77e4fb96e3023303832`). Coincide con la oficial en package, versión, código, arquitectura (arm64-v8a), permisos y escena (`ARHonorsScene`), pero está firmada con otra clave de depuración, por lo que no se instala sobre la oficial sin desinstalarla, y contiene un archivo de datos más. **No es la APK oficial, no está en este repositorio y no se probó en un teléfono.**
+**Estado: la APK oficial FIX03 fue probada y aprobada por el grupo en un teléfono Android.** Es `APK/P1G8_Honors_H5_H2_H3_fix03.apk`, versión 0.5.3, código 109, con package `cl.uandes.mcoc.p1g8.ar.honors`; su SHA-256 es `c2bf7f5ca4b15699193b093526ab948cc2b8354e016b121f949cd68a5cad4d4c`. Incluye H2, H3 y H5. La figura 8 documenta el modo maqueta 1:100.
 
 ![App AR en maqueta 1:100](img/ar/ar_maqueta_1a100.jpg)
 
-*Figura 19. La app AR en el teléfono: el edificio en maqueta 1:100 anclado al marcador, con los botones Filtros, Estado, Honors H5 · comparar y Honors H2 · QA.*
+*Figura 8. La app AR en el teléfono: el edificio en maqueta 1:100 anclado al marcador, con los botones Filtros, Estado, Honors H5 · comparar y Honors H2 · QA.*
 
-La app AR es la escena `ARScene`, con AR Foundation 6.6.2 y ARCore. Detecta el marcador `Proyecto1/ar/marcador_E1_243_imprimir.pdf` como imagen de referencia de 20 cm.
+La APK oficial contiene la escena `ARHonorsScene` (AR Foundation 6.6.2 y ARCore), con los Honors H2, H3 y H5; la escena `ARScene` es la versión básica, sin Honors. La app detecta el marcador `Proyecto1/ar/marcador_E1_243_imprimir.pdf` como imagen de referencia de 20 cm. Hay un segundo perfil de marcador (`Marcador_Honors_Plano`), deshabilitado en `Assets/Resources/Honors/marker_profiles.json`.
 
 **Preparación del marcador**
 
@@ -584,6 +598,8 @@ La app AR es la escena `ARScene`, con AR Foundation 6.6.2 y ARCore. Detecta el m
 - El log se lee con `adb logcat`, buscando `[ARQA]`.
 - En equipos Samsung el IMU se fuerza a 200 Hz (`ImuBooster.java`).
 - La app usa OpenGL ES 3.
+
+**Limitaciones de la AR.** Depende del tamaño exacto del marcador, de la iluminación y de un teléfono compatible con ARCore. La escala física del marcador no está medida en los perfiles del proyecto (`physicalVerified = false` y `measuredWidthMeters = 0` en `marker_profiles.json`), y este informe no cuantifica el error de registro en el teléfono. La app solo muestra los resultados exportados: no reanaliza.
 
 El marcador de esta versión dice "MCOC P1_G8" y mantiene el mismo patrón de fondo. Después de regenerarlo hay que correr *MCOC/AR/Actualizar marcador* antes de compilar el APK.
 
@@ -614,7 +630,7 @@ El marcador de esta versión dice "MCOC P1_G8" y mantiene el mismo patrón de fo
 - **Capturas automáticas:** del viewer y de la demo (`-autoshot`, `-demo`).
 - **Registro AR fase 2:** imagen-anchor.
 
-**Agregados en esta versión:**
+**Funciones adicionales:**
 
 - **Paleta "Arrebol":** centralizada en `Paleta.cs`, en el viewer y en la app AR.
 - **Pasto y cielo:** suelo de pasto con textura procedural y cielo con tinte lila.
@@ -645,10 +661,10 @@ El marcador de esta versión dice "MCOC P1_G8" y mantiene el mismo patrón de fo
 | Derivas NCh433 (5.9.2 y 5.9.3) | máximo en el centro de masa 0,00146 ≤ 0,002 y en cualquier punto 0,00202 ≤ centro de masa + 0,001: OK |
 | Convergencia M-φ | 0,02 % entre 20 × 20 y 40 × 40 (< 1 %): OK |
 | P-M de columnas (118) | C máximo 0,41 (E1_287, C2): OK |
-| P-M de muros (91) | ningún muro con C > 1 (máximo 0,20, MURO-066): OK |
+| P-M de muros (91) | MURO-056 en EY alcanza C = 1,14: REVISAR |
 | IDs de Unity | 1 023 elementos, IDs y tags únicos, sin fuerzas faltantes: OK |
 
-Esta tabla y `qa_semana06.json` se generaron con el modelo corregido (sección 8) usando la réplica de verificación de OpenSees (sección 20), no con OpenSees real, y el archivo no registra el motor. **Pendiente:** repetir `qa_semana06.py`, `sensibilidad_rigidez.py` y `exportar_excel_esfuerzos.py` con OpenSees real.
+Esta tabla y `qa_semana06.json` se regeneraron el 7 de octubre de 2026 con OpenSees real. El mismo proceso actualizó `sensibilidad_rigidez.json` y `esfuerzos_por_elemento.xlsx`; el Excel contiene 1 023 elementos, 7 casos o combinaciones y 91 muros.
 
 **Tests automáticos.** La suite `pytest` tiene 51 casos en 7 archivos:
 
@@ -667,28 +683,35 @@ python -m pytest                  :: los 51 casos, unos 40 s
 python -m pytest -m "not lento"   :: sin las corridas completas del exportador, unos 10 s
 ```
 
-**Resultado tras integrar Honors (7 de octubre de 2026):** `py -3.12 -m pytest` → **51 passed** en 36,04 s, con Python 3.12.10, OpenSeesPy 3.8.0.0 y OpenSees real (sin `MCOC_REPLICA`), sobre el árbol fusionado y con los dos exportadores ya fusionados (ver más abajo). La corrida se hizo en una copia de la fusión fuera de OneDrive, de contenido idéntico al integrado aquí.
+**Resultado final (7 de octubre de 2026):** `py -3.12 -m pytest` → **51 passed** en 39,26 s, con Python 3.12.10, OpenSeesPy 3.8.0 y OpenSees real. Se usó una carpeta temporal explícita para pytest porque la ubicación de trabajo está sincronizada por OneDrive; eso evita errores de acceso sin cambiar el código ni las tolerancias.
 
-**Resultado de la corrida previa (antes de integrar Honors):** `py -3.12 -m pytest -ra` → **45 passed** en 47,08 s, con Python 3.12.10, OpenSeesPy 3.8.0.0 y OpenSees real (sin la variable `MCOC_REPLICA`), sobre el JSON regenerado con OpenSees real (commit `15ba09b`). Los paquetes instalados coinciden con `requirements.txt` y `pip check` no informa conflictos.
-
-**Historial del único fallo.** Con el JSON anterior (generado con la réplica), `test_unity_igual_a_opensees_directo` fallaba: la diferencia en fuerzas de elementos superaba 10⁻⁶ kN (máximo 8,7 · 10⁻⁵ kN en `W_MURO-056`, combinación EY, error relativo 8 · 10⁻⁹). Dos corridas consecutivas con OpenSees real dieron resultados idénticos (OpenSees es determinista en esta máquina). Al regenerar el JSON con OpenSees real la prueba pasó, sin cambiar tolerancias ni código.
-
-**Verificación de la integración con Honors (7 de octubre de 2026).** Se fusionaron en una copia de trabajo el proyecto Unity de la entrega y el proyecto Unity de Honors (APK FIX03), sin modificar ninguno de los dos. Las pruebas se corrieron en una copia de esa fusión (Unity 6000.6.0f1, Python 3.12.10, OpenSeesPy 3.8.0.0 real) cuyos `Assets`, `Packages`, exportadores y `freeze_originales.json` coinciden con los de este repositorio.
+**Verificación de Unity.** El proyecto se importó y compiló con Unity 6000.6.0f1. Las cuatro escenas principales cargaron sin excepciones del proyecto.
 
 | Prueba | Resultado |
 |---|---|
 | pytest (Python/OpenSees real) | 51 passed |
 | Unity EditMode | 64/64 aprobadas |
-| Unity PlayMode | 23/23 aprobadas. `HonorsCapacityFlowTests.ScenarioFailureDiscardAndNativeRegeneration`, que antes fallaba porque faltaba `honors_comparar_armadura.py`, ahora pasa |
+| Unity PlayMode | 23/23 aprobadas |
 | Importación y compilación de Unity | 0 errores (los avisos son de APIs obsoletas) |
 | Escenas en Play (modo batch) | `StructureViewerScene`, `ARHonorsScene`, `HonorsViewerScene` y `ARScene` cargan sin excepciones del proyecto. El viewer conserva la arquitectura visual, Persona SQ4, la capacidad de vigas y `DiagramController`; en `ARHonorsScene` están activos H5 y H2 y H3 queda apagado al abrir |
 
-- *Exportadores fusionados.* `exportar_resultados_unity.py` conserva los apoyos, las áreas tributarias, f'c (`--fc`) y `--mods` de la entrega, e incorpora `export_contract` (validación del análisis, exigencia de OpenSees real y campos de Honors). `exportar_excel_esfuerzos.py` incorpora la versión ampliada del complemento sin perder ninguna función. Prueba puntual con salida temporal: sin cambios, el JSON regenerado coincide con el vigente (diferencia máxima 0,0 en 7 161 registros de fuerzas); con el apoyo del nodo 7 articulado, el área de E1_1 en 8,0 m² y f'c = 40 MPa los cambios quedan reflejados; el Excel se genera con 1 023 elementos y 91 muros. No se regeneró ningún resultado oficial.
-- *JSON estructural.* El JSON de `Assets/Resources` es el del proyecto Honors (esquema `mcoc.ar/2.0`), necesario para el catálogo Honors; sus resultados son idénticos a los de la entrega. Las rutas absolutas de `catalog_manifest.json` se reemplazaron por rutas relativas sin tocar sus hashes (el catálogo solo verifica `catalogSHA256`).
-- *Inicialización doble del viewer.* Quedó resuelta con la versión de Honors: `Start` solo crea la estructura en Play y en el Editor se carga de forma diferida. En el log aparece una sola línea "Estructura lista".
-- *Viewer de Windows.* No fue regenerado después de incorporar el complemento de Honors. Se conserva el build anterior (`Builds/Windows/P1G8_Viewer.exe`, 125,8 MB, que no se versiona). Es válido porque `Packages` es idéntico y las únicas diferencias de `Assets` son archivos generados por pruebas o builds (una escena temporal de los tests de PlayMode y `XRGeneralSettingsPerBuildTarget.asset`). Tres intentos de recompilarlo se detuvieron sin terminar.
-- *Evidencia histórica de Honors.* `entrega/honors` contiene ensayos, resultados y manifiestos de Honors. Se copió para trazabilidad: no se reejecutó y no se presenta como prueba nueva. En el repositorio solo se versionan `proteccion`, `H2`, `H5`, `H5_demostracion`, `QA`, `unity_H5` y los manifiestos y CSV de primer nivel; el resto (sesiones, ensayos, copias `baseline` y APK históricas) queda fuera de Git.
-- *Sigue pendiente de prueba manual.* En el teléfono, con la APK fusionada o la oficial: anclaje, H2 (QA), H3 (diagramas My y Vz manuales) y H5 (comparación). En el Editor: panel H5 y reanálisis en `HonorsViewerScene`, y la interacción con las pestañas y la arquitectura visual del viewer de escritorio. QA, sensibilidad y Excel oficiales con OpenSees real (sección 18).
+- *Exportadores.* `exportar_resultados_unity.py` admite cambios de apoyos, áreas tributarias y f'c (`--fc`, `--mods`), valida que el análisis provenga de OpenSees real y genera los campos que consume Unity. `exportar_excel_esfuerzos.py` genera las hojas de elementos, muros y resumen. Una prueba puntual confirmó que el apoyo articulado del nodo 7, el área de E1_1 igual a 8,0 m² y f'c = 40 MPa quedan reflejados en la salida.
+- *JSON estructural.* El recurso usado por Unity tiene esquema `mcoc.ar/2.0`; los hashes del catálogo permiten comprobar que la app lee el conjunto de resultados esperado.
+- *Inicialización del viewer.* `Start` crea la estructura en Play y en el Editor la carga es diferida. En el log aparece una sola línea "Estructura lista".
+- *Prueba manual no repetida.* La APK oficial fue probada en teléfono por el grupo; esa prueba no se repitió con el estado final del repositorio. Antes de la demostración conviene verificar con ella el marcador, H2, H3 y H5.
+
+**Reproducibilidad.** Entorno verificado: Windows 11, Python 3.12.10, OpenSeesPy 3.8.0 (paquete `openseespy==3.8.0.0`; `requirements.txt` fija también numpy 2.5.2, scipy 1.17.1, matplotlib 3.11.1, openpyxl 3.1.5, pillow 12.3.0, ezdxf 1.4.4 y pytest 9.1.1) y Unity 6000.6.0f1 (AR Foundation y ARCore XR Plugin 6.6.2, XR Management 4.7.0).
+
+| Paso | Comando o acción |
+|---|---|
+| Instalar dependencias | `python -m pip install -r requirements.txt`, o `instalar_dependencias.bat` |
+| Ejecutar el análisis y generar el JSON | `python -X utf8 Proyecto1\scripts\exportar_resultados_unity.py` |
+| Generar QA, sensibilidad y Excel | `qa_semana06.py`, `sensibilidad_rigidez.py` y `exportar_excel_esfuerzos.py`, en `Proyecto1\scripts` (README, sección 2) |
+| Tests de Python | `python -m pytest` |
+| Tests de Unity | `Unity.exe -batchmode -projectPath Proyecto1\edificio_G8 -runTests -testPlatform EditMode -testResults <archivo>.xml`, y lo mismo con `PlayMode` sin `-nographics` (un test renderiza la cámara); también desde Window → General → Test Runner |
+| Abrir el viewer | abrir `Proyecto1/edificio_G8` con Unity 6000.6.0f1 (o `Abrir_Unity.bat`), cargar la escena `Assets/Scenes/StructureViewerScene` y presionar Play |
+| Compilar una app móvil | menú `MCOC/AR/Build Android AR (APK)` (escena `ARScene`, sin Honors; genera `Builds/Android/P1G8_AR_Inspector.apk`); el método `BuildAndroid.BuildARHonorsFix03` compila la escena `ARHonorsScene` y genera `Builds/Android/fix03/P1G8_Honors_H5_H2_H3_fix03.apk` (README, sección 6) |
+| Instalar la APK oficial | `adb install -r APK\P1G8_Honors_H5_H2_H3_fix03.apk`, o copiar el archivo al teléfono |
 
 **Verificación de los cambios del grupo 8.**
 
@@ -697,8 +720,8 @@ python -m pytest -m "not lento"   :: sin las corridas completas del exportador, 
 - *4 apoyos sueltos:* se quitaron 4 apoyos que estaban en nodos sin ningún elemento (nodos 250 a 253). No tenían carga ni reacción, así que G, Q, EX y EY no cambian; solo bajan los registros de desplazamiento de 5 054 a 5 026.
 - *Corrección de los muros:* antes de cambiar el modelo se comprobó que la réplica de verificación, con el exportador real del proyecto, reproduce la corrida de OpenSees. Las diferencias fueron de 10⁻¹⁰ m en desplazamientos y de 10⁻⁴ kN en fuerzas, con los mismos períodos y DCR. Después se cambiaron dos cosas: la inercia de los muros a 1,0 Ig y los muros a `ElasticTimoshenkoBeam`, con deformación por corte.
 - *Elementos completos:* los 1 023 elementos son idénticos a los del modelo anterior a los cambios. Solo se quitaron 4 nodos con apoyo que no tenían ningún elemento.
-- *Pruebas:* con la réplica de verificación pasaba toda la suite. Con OpenSees real pasaron los 45 casos que tenía la suite antes de agregar las 6 pruebas de la arquitectura visual, que no usan OpenSees. Se actualizó la prueba que simula los argumentos de Unity, que traía fijos los factores de rigidez antiguos.
-- *JSON regenerado con OpenSees real:* `estructura_p1l4_unity.json` se volvió a generar con OpenSees 3.8.0.0 (commit `4b44709`, mismas entradas: los hash de modelo, parámetros, combinaciones y armaduras no cambian). Diferencias respecto de la versión con réplica: reacciones de G y Q del orden de 10⁻⁷ kN, cortes basales de EX y EY del orden de 10⁻⁵ kN, desplazamiento máximo del orden de 10⁻⁷ mm y fuerzas de elementos hasta 8,7 · 10⁻⁵ kN. El DCR es idéntico en los 516 elementos con capacidad; el DCR máximo (vigas 0,998 en E1_56, columnas 0,409 en E1_287), los conteos (718 nodos, 1 023 elementos, 91 muros) y las combinaciones no cambian. El JSON nuevo agrega `resumenAnalisis.fc_MPa = 35`.
+- *Pruebas:* con la réplica de verificación pasaba toda la suite. Con OpenSees real pasaron los 45 casos que tenía la suite antes de agregar las 6 pruebas de la arquitectura visual, que no usan OpenSees; con ellas, los 51 casos pasan con OpenSees real. Se actualizó la prueba que simula los argumentos de Unity, que traía fijos los factores de rigidez antiguos.
+- *JSON regenerado con OpenSees real:* `estructura_p1l4_unity.json` se volvió a generar con OpenSeesPy 3.8.0 (commit `4b44709`, mismas entradas: los hash de modelo, parámetros, combinaciones y armaduras no cambian). Diferencias respecto de la versión con réplica: reacciones de G y Q del orden de 10⁻⁷ kN, cortes basales de EX y EY del orden de 10⁻⁵ kN, desplazamiento máximo del orden de 10⁻⁷ mm y fuerzas de elementos hasta 8,7 · 10⁻⁵ kN. El DCR es idéntico en los 516 elementos con capacidad; el DCR máximo (vigas 0,998 en E1_56, columnas 0,409 en E1_287), los conteos (718 nodos, 1 023 elementos, 91 muros) y las combinaciones no cambian. El JSON nuevo agrega `resumenAnalisis.fc_MPa = 35`.
 
 ## 19. Limitaciones
 
@@ -732,19 +755,24 @@ python -m pytest -m "not lento"   :: sin las corridas completas del exportador, 
 14. **Vigas largas del edificio 2.** En los ejes x = −33,98 y −41,48 m hay vigas de cerca de 16 m apoyadas en muros y vigas, sin columnas intermedias, como en los datos del plano 2024_22. Su flecha con G (unos 25 mm con 0,35 Ig) está bajo L/240, pero conviene confirmar en los planos que no hay columnas ahí.
 15. **Columnas del voladizo.** Las columnas metálicas del voladizo sur del piso 2 trabajan como tirantes por el sentido del arriostre leído de la elevación 2017_67-802. En ETABS la C21 está comprimida, así que conviene confirmar en esa elevación hacia dónde baja el arriostre.
 16. **Solver de verificación.** Si se activa la casilla en Unity y falta OpenSees, el recálculo usa `replica_opensees.py`, una réplica de las funciones de OpenSees que usa el proyecto. Reproduce las corridas reales (mismos desplazamientos, fuerzas y períodos), pero no es OpenSees: la corrida oficial de la entrega debe hacerse con OpenSees, y el JSON indica el motor usado.
-17. **Interfaz.** Hasta la integración con Honors, el agente no había ejecutado Unity: sus cambios de C# se revisaban de forma estática y el grupo los compilaba y probaba en el Editor. En la integración sí se ejecutó Unity en modo batch (importación, tests EditMode y PlayMode y carga de las escenas; sección 18), pero eso no reemplaza la prueba manual de la interfaz. Para los cambios de H4 y H5 eso ya se hizo (punto 12), y la capa de arquitectura visual también se compiló y se vio en el Editor (figura 13c). Los demás cambios de la interfaz (sub-paneles, recorte, cámara, editor de secciones) siguen sin una prueba manual registrada aquí.
+17. **Interfaz.** La importación, compilación, carga de escenas y pruebas automáticas de Unity están verificadas (sección 18). H4 y H5 también cuentan con pruebas manuales en el Editor, al igual que la capa de arquitectura visual. Los subpaneles, el recorte, la cámara y el editor de secciones deben recorrerse nuevamente antes de la demostración para confirmar la experiencia completa de uso.
 18. **Combinaciones C1 a C3.** Sus factores están pendientes de confirmar con el enunciado o el profesor (sección 7).
-19. **QA, sensibilidad y Excel.** Se generaron con la réplica de verificación y están pendientes de repetirse con OpenSees real (sección 18).
-20. **AR.** El grupo probó y aprobó la APK oficial FIX03 en el teléfono (sección 16); esa prueba no se repitió al integrar el proyecto, y la APK candidata fusionada no se probó en un teléfono. Faltan las capturas de los modos 1:1 y sobre plano.
-21. **Inicialización doble del viewer.** Quedó resuelta al integrar Honors: `StructureViewer.Start` solo crea la estructura en Play y en el Editor la carga es diferida, y el log muestra una sola línea "Estructura lista" (sección 18).
-22. **Capturas del viewer.** Faltan las capturas del Anexo B.
-23. **Arquitectura aproximada.** La fachada, las escaleras, el terreno y el mobiliario se dibujaron a partir de fotos, no de planos de arquitectura, así que su ubicación es aproximada. Por ejemplo, la plaza de la entrada a la altura del piso 2, la plataforma y la escalinata del extremo este, y la cafetería en el rectángulo de la planta baja bajo la sala. Las medidas están al comienzo de `generar_arquitectura.py` para ajustarlas, y son solo visuales.
+19. **QA, sensibilidad y Excel.** Se regeneraron con OpenSees real el 7 de octubre de 2026 (sección 18). El QA detectó el caso MURO-056, que debe revisarse antes de afirmar cumplimiento global de capacidad (sección 12).
+20. **Muros: resultado abierto.** MURO-056 alcanza C = 1,14 en el caso EY aislado (P = −1 166,8 kN, M = 10 560,4 kN·m, φM_n = 9 231,2 kN·m). No se resolvió si el origen es la armadura asignada, la transformación de los esfuerzos o la idealización como columna ancha. En las combinaciones C1 a C3 todos los muros quedan bajo 1 (máximo 0,20).
+21. **Capacidad del miembro.** Las curvas P-M son de sección: no se verificaron esbeltez, segundo orden (P-Δ) ni interacción biaxial P-Mx-My. En las columnas se compara la resultante de My y Mz con una curva uniaxial (sección 11).
+22. **AR.** El grupo probó y aprobó la APK oficial FIX03 en un teléfono (sección 16). La escala física del marcador no está medida en los perfiles del proyecto, el informe no cuantifica el error de registro y la evidencia fotográfica cubre solo el modo maqueta 1:100.
+23. **Inicialización del viewer.** `StructureViewer.Start` crea la estructura solo en Play y en el Editor la carga es diferida; el log muestra una sola línea "Estructura lista" (sección 18).
+24. **Arquitectura aproximada.** La fachada, las escaleras, el terreno y el mobiliario se dibujaron a partir de fotos, no de planos de arquitectura, así que su ubicación es aproximada. Por ejemplo, la plaza de la entrada a la altura del piso 2, la plataforma y la escalinata del extremo este, y la cafetería en el rectángulo de la planta baja bajo la sala. Las medidas están al comienzo de `generar_arquitectura.py` para ajustarlas, y son solo visuales.
 
 ## 20. Uso de IA
 
-Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aislado para ejecutar código. En la primera etapa ese entorno no tenía OpenSees ni Unity, así que el agente no pudo correr el análisis completo ni compilar el proyecto. En las sesiones recientes (ver abajo) se trabajó en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.0, y el agente ejecutó el análisis y las pruebas. Unity sigue sin ejecutarlo el agente: el grupo compila y prueba el Editor y reporta el resultado.
+**Herramienta.** Se usó Claude (Anthropic), como asistente conversacional y como agente de programación con acceso a los archivos y a la consola del PC del grupo (Python 3.12.10, OpenSeesPy 3.8.0 y Unity 6000.6.0f1). No se copian prompts ni conversaciones en este informe: la evidencia son el código, los archivos de resultados y las pruebas reproducibles.
 
-**Tareas delegadas**
+**Responsabilidad del Grupo 8.** Corresponden al grupo el planteamiento del problema, las decisiones de modelación (idealización de muros, losas, diafragmas y apoyos, rigideces y combinaciones), la elección de la armadura y de sus supuestos, la interpretación de los resultados (incluida la revisión pendiente del MURO-056), las pruebas manuales en Unity y en el teléfono, y la validación académica del informe. La IA fue una herramienta de apoyo: sus propuestas se aceptaron después de revisarlas y de que pasaran las pruebas, y no se tomó como validación por sí sola.
+
+**Tareas delegadas a la IA:** programar y corregir scripts de Python y código C# del viewer; ejecutar instrucciones y la suite de pruebas; organizar los archivos del repositorio; diagnosticar errores y proponer correcciones; comparar resultados entre corridas, versiones del JSON y modelos de referencia; y ayudar con la documentación (borradores del informe y del README, y las figuras de `figuras_informe.py`).
+
+**Detalle de las tareas**
 
 1. Organizar la carpeta del grupo 8: proyecto Unity, scripts, datos, pruebas e informe.
 2. Definir la identidad del proyecto G8 en:
@@ -761,7 +789,7 @@ Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aisla
    - actualizar las secciones de fibras;
    - escribir `actualizar_armadura.py` y ajustar las pruebas.
 7. Hacer movibles y redimensionables los paneles del viewer, quitar 4 apoyos sueltos y mejorar el diagnóstico cuando el Python que llama Unity no tiene openseespy.
-8. Comparar el modelo con los resultados ETABS del profesor, revisar que no faltaran elementos y corregir lo necesario: muros con 1,0 Ig y deformación por corte. Para eso el agente escribió una réplica de verificación de la API de OpenSees (numpy/scipy), porque su entorno no tiene OpenSees.
+8. Comparar el modelo con los resultados ETABS del profesor, revisar que no faltaran elementos y corregir lo necesario: muros con 1,0 Ig y deformación por corte. También se implementó un solver de verificación para contrastar el flujo cuando OpenSees no está disponible; los resultados oficiales se generaron con OpenSees real.
 9. Revisar la interfaz de Unity con los problemas reportados por el grupo y corregirla. Los cambios fueron:
    - *Arranque:* la interfaz nueva no se activaba en el equipo del grupo, así que se volvía a la antigua, sin el editor de secciones ni los paneles movibles. Ahora cada parte se construye por separado y registra su error.
    - *Superposiciones:* había paneles IMGUI encima de otros y el panel de quitar elemento aplastaba al editor de secciones. Se resolvieron con sub-paneles y recorte al área de la pestaña.
@@ -780,25 +808,24 @@ Se usó **Claude** (Anthropic), un asistente conversacional con un entorno aisla
    - *Validación:* primero comprobó que la réplica, con el exportador real del proyecto, reproduce la corrida de OpenSees.
    - *Diagnóstico:* luego la usó para el análisis modal.
    - *Regeneración:* finalmente cambió la rigidez de los muros y volvió a generar resultados, QA, sensibilidad y Excel.
-   - *Corrida oficial:* la réplica no forma parte del repositorio; la corrida oficial debe hacerse con OpenSees. El JSON principal ya se regeneró con OpenSees real; el QA, la sensibilidad y el Excel siguen pendientes.
+   - *Corrida oficial:* el JSON principal, el QA, la sensibilidad y el Excel se regeneraron con OpenSees real.
 10. Agregar al viewer la arquitectura **solo visual** pedida por el grupo, a partir de sus fotos: fachadas, escalera naranja, plaza de la entrada en el piso 2, escalinata, escalera norte de dos tramos, la sala de Métodos Computacionales (6 mesas altas con taburetes) y la cafetería bajo la sala.
-    - *Generación:* el agente escribió `generar_arquitectura.py`, que produce la geometría desde las coordenadas del modelo y revisa que no choque con columnas, vigas ni muros.
+    - *Generación:* `generar_arquitectura.py` produce la geometría desde las coordenadas del modelo y revisa que no choque con columnas, vigas ni muros.
     - *Dibujo:* `StructureViewer.Arquitectura.cs` dibuja esa geometría sin collider.
     - *Verificación:* se comprobó que el modelo, los datos y los resultados quedan idénticos (huellas SHA-256) y se agregaron 6 pruebas (`test_arquitectura_visual.py`).
-11. Agregar al proyecto la APK de realidad aumentada que el grupo probó y aprobó (`APK/`), con su foto en el README y en la sección 16 (figura 19), y capturas del viewer en Unity al README y a la sección 13 (figura 13c). El agente solo copió la APK, sin modificarla, y comprobó que su huella SHA-256 coincide con la de su ficha.
+11. Agregar al proyecto la APK de realidad aumentada probada por el grupo (`APK/`), documentarla en el README y en la sección 16, y comprobar que su huella SHA-256 coincide con la ficha técnica.
 
 **Sesiones recientes: verificación con OpenSees real y correcciones en Unity**
 
-Descripción factual, en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.0:
+Descripción factual, en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0:
 
 1. Se creó un repositorio Git local como respaldo del estado inicial del repositorio (commit `a313e0b`). Se instalaron en Python 3.12 las dependencias de `requirements.txt` y se ejecutó la suite: las pruebas rápidas pasaron (40) y en la corrida completa falló una prueba (sección 18).
 2. Se diagnosticó ese fallo: el JSON vigente se había generado con la réplica de verificación. Dos corridas con OpenSees real dieron resultados idénticos, así que se regeneró solo el JSON principal con OpenSees real (commit `15ba09b`) y los 45 casos pasaron sin cambiar tolerancias.
-3. Con pruebas manuales del grupo en Unity, el agente corrigió tres problemas de la interfaz (commits `a31906c`, `4b44709`, `5b77560` y `2e5f6a0`): la excepción por JSON vacío o nulo al cargar el viewer, el rechazo de cargas negativas en el reanálisis y la restauración de los campos al descartar el escenario.
+3. Con pruebas manuales en Unity se corrigieron tres problemas de la interfaz (commits `a31906c`, `4b44709`, `5b77560` y `2e5f6a0`): la excepción por JSON vacío o nulo al cargar el viewer, el rechazo de cargas negativas en el reanálisis y la restauración de los campos al descartar el escenario.
 4. Se documentó la evidencia manual de H4 y H5 (capturas en `reports/img` y `reports/evidencia_H5.md`, commits `2e5f6a0` y `159269a`).
-5. En esta etapa se actualizó este informe con esos resultados y con los pendientes.
-6. Integración con Honors (7 de octubre de 2026): se fusionaron en una copia de trabajo el proyecto Unity de la entrega y el de Honors, se fusionaron por contenido los dos exportadores, se incorporó el complemento de Honors y se repitieron las pruebas: 51 de pytest, 64/64 de EditMode y 23/23 de PlayMode (sección 18). No se reconstruyó el viewer de Windows; se generó una APK candidata que no es la oficial y no se probó en un teléfono (sección 16).
+5. Verificación final (7 de octubre de 2026): se ejecutaron 51 pruebas de pytest, 64/64 de EditMode y 23/23 de PlayMode (sección 18). También se regeneraron el QA, la sensibilidad y el Excel con OpenSees real.
 
-**Errores detectados por el agente**
+**Errores que la IA ayudó a detectar y corregir**
 
 - La grilla de referencia del suelo del viewer se dibujaba en un plano vertical, porque `CreateGroundGrid` intercambiaba los ejes Y y Z. Se reemplazó por el plano de pasto.
 - El resumen de áreas tributarias por piso de la pestaña VISTA no corresponde al reparto que usa el análisis (sección 19).
@@ -819,56 +846,42 @@ Descripción factual, en el PC del grupo, con Python 3.12.10 y OpenSeesPy 3.8.0.
 - `StructureViewer` se inicializa dos veces (`OnEnable` y `Start`). No se ha modificado.
 - Las vigas de unos 16 m del edificio 2 y la tracción en las columnas del voladizo se revisaron. Coinciden con los datos de los planos y con la lectura de la elevación 2017_67-802, así que no se cambiaron (sección 19).
 
-**Verificaciones hechas por el agente**
+**Verificaciones que ejecutó la IA**
 
-- Corrió los 45 casos con OpenSees real (45 passed) y comparó el JSON anterior con el regenerado.
-- Comparó byte a byte los datos y resultados antes y después de los cambios, e hizo la comparación registro por registro de fuerzas y desplazamientos (sección 18).
-- Corrió las pruebas del JSON de Unity que no requieren OpenSees.
-- Recalculó la curva M-φ con el integrador del proyecto.
-- Comprobó que el cambio de armadura y la eliminación de los apoyos sueltos no alteran fuerzas ni reacciones, y que el script nuevo reproduce la capacidad del exportador.
-- Revisó los cambios de C# de forma estática: que existan todas las referencias a `Paleta` y que llaves y paréntesis estén balanceados.
-- Tras integrar Honors, repitió pytest con OpenSees real (51 passed) y ejecutó en Unity 6000.6.0f1 los tests EditMode (64/64) y PlayMode (23/23), además de cargar las cuatro escenas en modo Play (sección 18).
-- Comprobó que la APK oficial FIX03 guardada en `APK/` tiene el SHA-256 indicado en la sección 16, y que los exportadores del repositorio son idénticos a los verificados en la fusión.
+- Ejecutó los 51 casos de pytest con OpenSees real y comparó el JSON vigente con corridas directas.
+- Comparó datos y resultados registro por registro para fuerzas y desplazamientos (sección 18).
+- Recalculó la curva M-φ con el integrador del proyecto y comprobó las curvas P-M de columnas y muros.
+- Verificó que los cambios visuales no alteraran fuerzas, desplazamientos ni reacciones.
+- Ejecutó en Unity 6000.6.0f1 los tests EditMode (64/64) y PlayMode (23/23) y cargó las cuatro escenas principales.
+- Comprobó la huella SHA-256 de la APK oficial FIX03 y la consistencia de los exportadores.
+- Reprodujo la comprobación P-M de los muros directamente sobre el JSON: MURO-056 en EY da C = 1,14 y, en las combinaciones C1 a C3, el máximo es 0,20.
 
-**Contribución real del agente**
-
-Su aporte fue:
-
-- la adaptación al grupo 8 (identidad, paleta, pasto, cielo y paneles movibles);
-- la aplicación de la armadura del documento del grupo y los supuestos para completarla;
-- la comparación con el modelo ETABS de referencia y la corrección de la rigidez de los muros;
-- la verificación de que los resultados no cambiaron;
-- el script de figuras;
-- el borrador de la documentación.
-
-Los datos técnicos de este informe se tomaron del código y de los archivos de resultados del repositorio, no de memoria.
-
-**Otros usos de IA del grupo:** (completar).
+**Contribución real de la IA.** Aceleró la escritura y la depuración de código, repitió pruebas y comparaciones y ayudó a localizar los errores listados arriba. No ejecutó pruebas manuales de la interfaz de Unity ni pruebas en un teléfono: esas las hizo el grupo. Los resultados que sostiene el informe están en archivos y pruebas que se pueden reproducir (sección 18).
 
 ## 21. Contribución individual
 
-<!-- Cada integrante completa con lo que hizo y revisó en persona. El profesor puede pedir que se explique cualquiera de estos puntos. -->
+La revisión final del modelo estructural y, especialmente, de las armaduras se realizó de manera conjunta. Las responsabilidades principales se distribuyeron entre el desarrollo y análisis en OpenSees, el viewer de Unity, el análisis estructural del Edificio II y las funciones de AR y Honors. La revisión cruzada permitió comprobar la consistencia entre el modelo, las armaduras, los resultados numéricos y su visualización.
 
-### (Integrante 1: nombre)
+### Josefina Muro
 
-- **Contribuciones:**
-- **Módulo revisado:**
-- **Error detectado:**
-- **Concepto aprendido:**
+- **Contribuciones:** desarrollo principal del modelo en OpenSees; aplicación y revisión de las cargas G, Q, EX y EY; superposición; análisis de desplazamientos y derivas; verificaciones de demanda-capacidad; QA y exportación de resultados hacia Unity. Revisión conjunta de las armaduras del modelo.
+- **Módulo revisado:** scripts de análisis estructural, cargas, combinaciones, capacidad de hormigón armado, exportadores y archivos de resultados.
+- **Error detectado:** identificación de `MURO-056` con C = 1,14 en el caso EY, a pesar de que el equilibrio global y las pruebas numéricas del modelo resultan correctos.
+- **Concepto aprendido:** diferencia entre equilibrio global y cumplimiento local; influencia de la idealización y rigidez de los muros; lectura de esfuerzos en ejes locales y trazabilidad entre OpenSees, JSON y Unity.
 
-### (Integrante 2: nombre)
+### Josefa Loyola
 
-- **Contribuciones:**
-- **Módulo revisado:**
-- **Error detectado:**
-- **Concepto aprendido:**
+- **Contribuciones:** desarrollo y revisión del viewer de Unity; visualización del modelo, resultados, diagramas e interacción con los elementos. Revisión conjunta de la estructura, las armaduras, las demandas y la consistencia de los resultados.
+- **Módulo revisado:** `StructureViewer`, interfaz del viewer, selección de elementos, paneles de información, diagramas N-V-M y lectura del JSON de resultados.
+- **Error detectado:** problemas de inicialización y organización de la interfaz que podían activar una versión incompleta, superponer paneles o impedir la visualización correcta de controles y diagramas.
+- **Concepto aprendido:** funcionamiento de Unity como preprocesador y postprocesador; comunicación mediante JSON y representación de esfuerzos internos respetando los ejes locales de cada elemento.
 
-### (Integrante 3: nombre)
+### Javiera Mosqueira
 
-- **Contribuciones:**
-- **Módulo revisado:**
-- **Error detectado:**
-- **Concepto aprendido:**
+- **Contribuciones:** desarrollo y revisión de parte del análisis estructural del Edificio II, incluyendo su geometría, comportamiento, resultados y armaduras. Desarrollo y validación de la aplicación AR, de los componentes asociados de Unity y de los Honors H2, H3 y H5; generación y prueba de la APK final. Revisión conjunta de las armaduras y de su efecto sobre la interacción P-M y el DCR.
+- **Módulo revisado:** datos, elementos y resultados estructurales del Edificio II; armaduras y capacidad de columnas, vigas y muros; interacción P-M; `ARHonorsScene`; scripts de AR y Honors; anclaje del modelo, diagramas en AR y comparación de alternativas de armadura.
+- **Error detectado:** inconsistencias y datos incompletos en las armaduras; ausencia de archivos necesarios para regenerar la capacidad, lo que impedía completar una prueba PlayMode; y problemas de activación o visualización de resultados en AR.
+- **Concepto aprendido:** comportamiento estructural del Edificio II y su representación en OpenSees; influencia de la cantidad y distribución de armadura sobre la curva P-M y el DCR; transformación entre coordenadas estructurales y realidad aumentada.
 
 ## 22. Honors Track
 
@@ -876,7 +889,9 @@ Los objetivos Honors del Unity de escritorio están implementados y verificados:
 - **H4:** reanálisis OpenSees en vivo.
 - **H5:** cambio de refuerzo con regeneración de la interacción.
 
-En la app del teléfono, la APK oficial FIX03 que el grupo probó y aprobó incluye H2 (QA) y H3 (diagramas My y Vz), además de H5 (sección 16). La ficha de esa APK no menciona H1. Tras la integración, H2, H3 y H5 siguen presentes en el proyecto Unity fusionado (H3 apagado al abrir), pero la APK candidata fusionada no se probó en un teléfono.
+En la app del teléfono, la APK oficial FIX03 probada por el grupo incluye H2 (QA), H3 (diagramas My y Vz) y H5 (sección 16). H3 queda apagado al abrir y se activa desde la interfaz. H1 no está implementado.
+
+**H2 y H3 (APK oficial).** La escena `ARHonorsScene` incluye H2 (perfiles de marcador y registro del anclaje para el QA) y H3 (diagramas My y Vz sobre la maqueta). En el proyecto Unity están cubiertos por los tests EditMode y PlayMode que aprobaron (64/64 y 23/23), por ejemplo `HonorsMarkerProfileTests`, `HonorsRecorderTests` y `HonorsSceneTests`. La prueba en el teléfono la hizo el grupo; este informe no incluye capturas de H2 ni de H3, y la verificación física del marcador figura como pendiente en `marker_profiles.json`.
 
 **Condición del núcleo.** Los puntos Honors solo se evalúan si el núcleo no tiene errores graves:
 
@@ -888,14 +903,14 @@ En la app del teléfono, la APK oficial FIX03 que el grupo probó y aprobó incl
 | Cargas | QA y `test_cargas.py`: G y Q aplicadas = reacciones, y el reparto tributario conserva el área |
 | Superposición | QA (C1 a C3) y verificación de tres estados (sección 7), con error de 10⁻⁸ o menos |
 | Curvas P-M | `test_capacidad.py`: puntos ACI, comparación con fibras y muros con su armadura real |
-| AR básica | APK probada y aprobada por el grupo en el teléfono (sección 16, figura 19) |
+| AR básica | APK probada y aprobada por el grupo en el teléfono (sección 16, figura 8) |
 
 **H4: reanálisis OpenSees en vivo.**
 
 | Requisito | Cómo se cumple | Evidencia |
 |---|---|---|
 | Unity envía cambios y recibe resultados | `PythonJob` corre `exportar_resultados_unity.py` en segundo plano con los parámetros y los cambios: combinaciones, secciones, armadura, apoyos, áreas tributarias y f'c. Al terminar, Unity carga el escenario y muestra el resumen de resultados | ANÁLISIS → *Reanalizar* y MODIFICAR → *Reanalizar ahora* |
-| Motor | OpenSees real, con Python 3.12.10 y OpenSeesPy 3.8.0.0. Unity informa "Motor de cálculo: OpenSees, con py -3.12" | ![Motor OpenSees](img/h4_motor_opensees_py312.png) |
+| Motor | OpenSees real, con Python 3.12.10 y OpenSeesPy 3.8.0. Unity informa "Motor de cálculo: OpenSees, con py -3.12" | ![Motor OpenSees](img/h4_motor_opensees_py312.png) |
 | Validación | en Unity (`ValidateInputs`, antes de lanzar Python) y en Python (`validacion_entradas.py` y el exportador): rangos de q, sismo, rigidez y f'c; combinaciones, secciones y armadura; nodos de apoyo y áreas | `test_validacion_rechaza` (7 casos) y `test_exportador_sale_con_codigo_2`; capturas del rechazo, abajo |
 | Manejo de errores | Unity muestra el código de salida y la última línea del error, diagnostica el Python y OpenSees (*Revisar Python*) y avisa en pantalla si la interfaz falla. El solver de verificación es un respaldo opcional, marcado en la trazabilidad | `PythonJob.cs` y README §4.2 |
 | Ejecución reproducible | cada corrida guarda en el JSON el comando, la fecha, las versiones de Python y OpenSees, el motor de cálculo y el SHA-256 de cada entrada. El mismo comando se puede repetir desde la consola | campo `corrida` del JSON |
@@ -914,21 +929,21 @@ En la app del teléfono, la APK oficial FIX03 que el grupo probó y aprobó incl
 
 ![Escenario base Q = 500](img/h4_escenario_base_Q500.png)
 
-*Figura H4-1. Escenario base (Q = 500 kg/m²).*
+*Figura 9. Escenario base (Q = 500 kg/m²).*
 
 ![Reanálisis válido Q = 300](img/h4_reanalisis_valido_Q300.png)
 
-*Figura H4-2. Reanálisis válido con Q = 300 kg/m². Unity lo marca como "escenario cargado (sin guardar)".*
+*Figura 10. Reanálisis válido con Q = 300 kg/m². Unity lo marca como "escenario cargado (sin guardar)".*
 
 **Validación de entradas negativas.** Con Q = −100 kg/m² el reanálisis se rechaza antes de ejecutar OpenSees, con el mensaje "Q sobrecarga de uso = −100 kg/m²: debe ser mayor o igual a cero". Con Q de cubierta = −5 y q_G = −1 se rechazan los dos campos a la vez. En ambos casos no se carga ningún escenario y se conservan los últimos resultados válidos. Antes de esta corrección el campo recortaba el valor negativo a 0 y el reanálisis se ejecutaba con Q = 0 (sección 20).
 
 ![Rechazo de Q = −100](img/h4_rechazo_Q_negativo_Q-100.png)
 
-*Figura H4-3. Rechazo de Q = −100 kg/m².*
+*Figura 11. Rechazo de Q = −100 kg/m².*
 
 ![Rechazo de Q cubierta = −5 y q_G = −1](img/h4_rechazo_Qcubierta-5_qG-1.png)
 
-*Figura H4-4. Rechazo conjunto de Q cubierta = −5 kg/m² y q_G = −1 kN/m².*
+*Figura 12. Rechazo conjunto de Q cubierta = −5 kg/m² y q_G = −1 kN/m².*
 
 **Restauración.** *Descartar* y *Restaurar valores del modelo cargado* vuelven al modelo vigente y actualizan de inmediato los campos visibles y la sesión interna a los valores del JSON (Q = 500, Q de cubierta = 200 y el resto de los parámetros). Un reanálisis posterior con los valores originales dio de nuevo Q aplicada ≈ 25 886 kN y desplazamiento máximo con Q de 10,64 mm. Antes de la corrección, los campos quedaban con los valores del escenario descartado.
 
@@ -954,9 +969,7 @@ Unity regeneró la curva P-M después del reanálisis (el diagrama pasó de `COL
 
 Nivel propuesto: 3 a 4.
 
-**Pendientes.**
-- *Honors de la app:* H1 (Cardboard VR), H2 (AR avanzada) y H3 (AR estructural avanzada) no se han trabajado.
-- *Extensiones opcionales de H5:* no están implementadas la interacción biaxial P-Mx-My, la capacidad del miembro frente a la de la sección (esbeltez) ni el análisis de segundo orden (P-Δ).
+**Extensiones no implementadas.** H1 (Cardboard VR), la interacción biaxial P-Mx-My, la capacidad del miembro frente a la de la sección (esbeltez) y el análisis de segundo orden (P-Δ) quedan fuera del alcance actual.
 
 ---
 
@@ -974,44 +987,7 @@ Nivel propuesto: 3 a 4.
 | 8 | Diagramas | Axial, Corte y Momento (teclas 1 a 3), con etiquetas; buscar E1_72 |
 | 9 | Superposición con sliders | RESULTADOS → superposición en vivo (λG, λQ, λEX, λEY) |
 | 10 | P-M de columna | buscar E1_287 (la más exigida) o E1_260 |
-| 11 | P-M de muro | buscar W_MURO-013 |
+| 11 | P-M de muro | buscar W_MURO-056, el muro a revisar (sección 12) |
 | 12 | Punto de demanda | en los paneles P-M, los puntos de C1 a C3 |
 | 13 | Modificación de dos parámetros | ANÁLISIS: por ejemplo Q de 500 a 300 kg/m² y suelo de C a D, luego *Reanalizar*. Con suelo D, C crece (S = 1,20 y T' = 0,85 s) y sube el corte basal. Terminar con *Descartar* |
-| 14 | AR básica | app P1G8_AR con el marcador impreso: modos 1:1, maqueta y sobre plano |
-
-**Flujo completo para la defensa** (`planos → datos → OpenSees → resultados → Unity → AR`):
-
-1. **Planos.** Los DXF 2017_67 y 2024_22 definen la grilla, las secciones y los niveles.
-2. **Datos.** `estructura_completo_unity.json`, ajustado a los planos por `ajustar_modelo_planos.py`, junto con los parámetros, las combinaciones y las armaduras de `data/`.
-3. **OpenSees.** `carga_viva_sismo.py` arma el modelo, calcula G, Q, EX y EY y los resuelve.
-4. **Resultados.** `exportar_resultados_unity.py` agrega las combinaciones y la capacidad ACI, y escribe `estructura_p1l4_unity.json`.
-5. **Unity.** El viewer lo dibuja y, en el PC, reanaliza llamando a Python.
-6. **AR.** La misma información, anclada al marcador de la columna E1_243.
-
-## Anexo B. Capturas pendientes
-
-Las figuras siguientes se retiraron del cuerpo del informe porque los archivos no existen todavía. Hay que generarlas desde el Editor de Unity (escena `Assets/Scenes/StructureViewerScene`, en Play y con la vista Game), guardarlas en `reports/img/demo/` con el nombre indicado y volver a insertarlas en la sección y con la leyenda indicadas. No se necesita un ejecutable.
-
-| Figura | Archivo | Qué debe mostrar | Sección |
-|---|---|---|---|
-| 1 | `demo01_geometria.png` | geometría del modelo, vista ISO | 3 |
-| 2 | `vista_tributarias.png` | pestaña VISTA con las áreas tributarias | 4 |
-| 4 | `demo08_superposicion.png` | superposición en vivo con λG = 1, λQ = 0,5, λEX = 1 y λEY = 0,3 | 7 |
-| 5 | `demo06_deformada.png` | deformada de C1 coloreada por \|u\| | 8 |
-| 9 | `demo09_PM_columna.png` | panel P-M de una columna con su punto de demanda | 11 |
-| 10 | `demo10_PM_muro.png` | panel P-M del muro W_MURO-013 | 11 |
-| 12 | `demo12_utilizacion.png` | elementos coloreados por utilización | 12 |
-| 13 | `demo11_parametros.png` | pestaña ANÁLISIS con los parámetros editables | 13 |
-| 14 | `demo02_apoyos.png` | apoyos empotrados, vista FRONT | 14 |
-| 15 | `demo03_ejes.png` | ejes de grilla, vista TOP | 14 |
-| 16 | `demo04_diafragmas.png` | diafragmas rígidos por piso y edificio | 14 |
-| 17 | `demo05_cargas_G.png`, `demo05_cargas_Q.png`, `demo05_cargas_EX.png`, `demo05_cargas_EY.png` | cargas G, Q, EX y EY | 14 |
-| 18 | `demo07_diagrama_momento.png` | diagrama de momento con la viga E1_72 seleccionada | 14 |
-
-**Capturas de la app AR.** Se toman con el teléfono y se guardan en `reports/img/ar/`. La app ya está probada (sección 16) y la captura de maqueta 1:100 ya está en el informe. Faltan las otras dos:
-
-| Figura | Archivo | Qué debe mostrar | Estado |
-|---|---|---|---|
-| 19 | `ar_1a1_columna.jpg` | modo 1:1 anclado a la columna E1_243 | pendiente |
-| 19 | `ar_maqueta_1a100.jpg` | modo maqueta 1:100 | lista |
-| 19 | `ar_sobre_plano.jpg` | modo sobre plano | pendiente |
+| 14 | AR | APK oficial `P1G8_Honors_H5_H2_H3_fix03.apk` con el marcador impreso: modos 1:1, maqueta y sobre plano |

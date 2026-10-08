@@ -63,6 +63,18 @@ python -m pytest -m "not lento"   :: sin las corridas completas del exportador, 
 
 La suite está en `tests/`. Verifica el modelo, las cargas, la capacidad, el JSON de Unity, el reanálisis desde Unity y el cambio de armadura. El detalle está en la sección 18 del informe.
 
+**Tests de Unity (EditMode y PlayMode).** Están en `Proyecto1/edificio_G8/Assets/Tests`. Con Unity 6000.6.0f1 y el proyecto cerrado (un proyecto abierto en el Editor bloquea el modo batch), desde la raíz del repositorio y con la ruta completa de `Unity.exe` si no está en el PATH:
+
+```bat
+Unity.exe -batchmode -projectPath Proyecto1\edificio_G8 -runTests -testPlatform EditMode -testResults %TEMP%\resultados_EditMode.xml -logFile %TEMP%\unity_EditMode.log
+Unity.exe -batchmode -projectPath Proyecto1\edificio_G8 -runTests -testPlatform PlayMode -testResults %TEMP%\resultados_PlayMode.xml -logFile %TEMP%\unity_PlayMode.log
+```
+
+- PlayMode no debe llevar `-nographics`: un test renderiza la cámara y el Editor se cierra sin modo gráfico.
+- Los tests de PlayMode que regeneran la capacidad usan Python 3.12 con OpenSeesPy (sección 4.2) y el archivo `entrega/honors/proteccion/freeze_originales.json`, que está en el repositorio.
+- También se pueden correr desde el Editor, en Window → General → Test Runner.
+- Resultado verificado el 7 de octubre de 2026: EditMode 64/64 y PlayMode 23/23.
+
 ## 4. Abrir el viewer
 
 1. Abrir el proyecto con `Abrir_Unity.bat`, o desde Unity Hub abrir `Proyecto1/edificio_G8` con Unity 6000.6.0f1. El .bat usa Direct3D 11 (`-force-d3d11`), porque D3D12 cierra el editor en algunos equipos.
@@ -173,7 +185,7 @@ Desde los menús del editor de Unity:
 |---|---|
 | `MCOC/Build Windows (viewer)` | `Builds/Windows/P1G8_Viewer.exe` |
 | `MCOC/Build Android (APK)` | `Builds/Android/P1G8_Viewer.apk` |
-| `MCOC/AR/Build Android AR (APK)` | `Builds/Android/P1G8_AR.apk` |
+| `MCOC/AR/Build Android AR (APK)` | `Builds/Android/P1G8_AR_Inspector.apk` (escena `ARScene`, sin Honors) |
 
 También se puede compilar por consola, con Unity cerrado:
 
@@ -183,7 +195,7 @@ Unity.exe -batchmode -quit -force-d3d11 -projectPath Proyecto1\edificio_G8 -exec
 Unity.exe -batchmode -quit -force-d3d11 -projectPath Proyecto1\edificio_G8 -executeMethod BuildAndroid.BuildAR
 ```
 
-**Instalar en el teléfono.** Con la depuración USB autorizada, correr `adb install -r P1G8_AR.apk`. Las apps se identifican como `cl.uandes.mcoc.p1g8` y `cl.uandes.mcoc.p1g8.ar`.
+**Instalar en el teléfono.** Con la depuración USB autorizada, correr `adb install -r P1G8_AR_Inspector.apk`. Las apps se identifican como `cl.uandes.mcoc.p1g8` (viewer) y `cl.uandes.mcoc.p1g8.ar.inspector` (AR básica). La APK con los Honors tiene otro package y se describe en la sección 6.
 
 **Capturas automáticas.** El viewer de Windows puede generar las capturas de la demo base:
 
@@ -197,12 +209,25 @@ Las carpetas `Builds/` no se suben al repositorio: los ejecutables van en la rel
 
 **APK lista para instalar.** Está en `APK/P1G8_Honors_H5_H2_H3_fix03.apk`, con los Honors H2 (QA), H3 (diagramas My y Vz, apagado al abrir) y H5 (comparar armaduras).
 
-- Versión 0.5.3 (build 109), package `cl.uandes.mcoc.p1g8.ar.honors`. Es otro package que el viewer (`cl.uandes.mcoc.p1g8`) y que la app AR básica (`cl.uandes.mcoc.p1g8.ar`), así que se instalan sin reemplazarse.
+- Versión 0.5.3 (build 109), package `cl.uandes.mcoc.p1g8.ar.honors`. Es otro package que el viewer (`cl.uandes.mcoc.p1g8`) y que la app AR básica (`cl.uandes.mcoc.p1g8.ar.inspector`), así que se instalan sin reemplazarse.
 - Requiere Android 10 o superior (ARM64), un teléfono compatible con ARCore y permiso de cámara.
 - Instalar con `adb install -r APK\P1G8_Honors_H5_H2_H3_fix03.apk`, o copiando el archivo al teléfono y abriéndolo.
 - SHA-256: `c2bf7f5ca4b15699193b093526ab948cc2b8354e016b121f949cd68a5cad4d4c`.
 - **Estado:** es la APK FIX03 original, probada y aprobada por el grupo en un teléfono Android (octubre de 2026). Esa prueba no se repitió al integrar el proyecto.
-- La APK candidata fusionada `P1G8_Honors_FUSION_fix03_candidata_v2.apk` (compilada desde el proyecto integrado) **no es la APK oficial, no está en este repositorio y no se probó en un teléfono.** Está firmada con otra clave de depuración: para instalarla hay que desinstalar antes la oficial.
+- **Escena:** la APK oficial usa la escena `Assets/Scenes/ARHonorsScene.unity`.
+- **APK oficial versionada:** `APK/P1G8_Honors_H5_H2_H3_fix03.apk`. Es el producto ejecutable de la entrega.
+
+**Compilar la APK Honors desde el proyecto.** Con Unity 6000.6.0f1 (el método exige esa versión exacta), Android Build Support instalado y el Editor cerrado:
+
+```bat
+Unity.exe -batchmode -quit -projectPath Proyecto1\edificio_G8 -executeMethod BuildAndroid.BuildARHonorsFix03
+```
+
+- *Escena:* `ARHonorsScene`. El método prepara los Honors (`HonorsSetup.Prepare`) y fija package `cl.uandes.mcoc.p1g8.ar.honors`, versión 0.5.3, build 109, OpenGL ES 3 y la configuración AR de ARCore.
+- *Dónde queda:* `Proyecto1/edificio_G8/Builds/Android/fix03/P1G8_Honors_H5_H2_H3_fix03.apk`, junto con `Honors_fix03_BuildConfiguration.json`, `Honors_fix03_BuildReport.json` y `Honors_fix03_SettingsRestoration.json`. `Builds/` no se sube al repositorio, así que no pisa la APK de `APK/`.
+- *Repetir la compilación:* el método falla con "APK existente" si ya está el `.apk` de salida y no sobrescribe los `.json`; hay que mover o renombrar esos archivos antes.
+- *Es otra compilación:* una APK generada así no es la oficial versionada: su SHA-256 será distinto y queda firmada con la clave de depuración local.
+- *Instalar en un teléfono Android* (depuración USB autorizada): `adb install -r APK\P1G8_Honors_H5_H2_H3_fix03.apk`, o copiar el archivo al teléfono y abrirlo. Si el teléfono ya tiene ese package firmado con otra clave, la instalación falla y hay que desinstalar antes: `adb uninstall cl.uandes.mcoc.p1g8.ar.honors`.
 
 Al anclar el marcador aparece el edificio completo en maqueta 1:100. Arriba están los botones *Filtros* y *Estado*, y abajo *Honors H5 · comparar* y *Honors H2 · QA*.
 

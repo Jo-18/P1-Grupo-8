@@ -17,12 +17,12 @@
       {
         "edificio": "edificio_1",
         "P_kN": 45897.95972530152,
-        "T_X_s": 0.43606065688261275,
-        "T_Y_s": 0.685291607859194,
+        "T_X_s": 0.4360606572629301,
+        "T_Y_s": 0.685291612407847,
         "C_X": 0.147,
-        "C_Y": 0.09157056306929694,
+        "C_Y": 0.09157056221837188,
         "Q0_X_kN": 6747.0000796193235,
-        "Q0_Y_kN": 4202.902015777774,
+        "Q0_Y_kN": 4202.90197672205,
         "C_en_limites": true,
         "sumF_igual_Q0": true,
         "sumA_k": 1.0
@@ -30,12 +30,12 @@
       {
         "edificio": "edificio_2",
         "P_kN": 34678.32733471599,
-        "T_X_s": 0.7622037104818471,
-        "T_Y_s": 0.6271181228276688,
-        "C_X": 0.0789009044161862,
-        "C_Y": 0.10367937522533972,
-        "Q0_X_kN": 2736.151390349644,
-        "Q0_Y_kN": 3595.4273119231743,
+        "T_X_s": 0.7622037021914002,
+        "T_Y_s": 0.6271181263747677,
+        "C_X": 0.07890090561766719,
+        "C_Y": 0.10367937440433746,
+        "Q0_X_kN": 2736.1514320149945,
+        "Q0_Y_kN": 3595.4272834521894,
         "C_en_limites": true,
         "sumF_igual_Q0": true,
         "sumA_k": 1.0
@@ -45,29 +45,29 @@
   },
   "G": {
     "aplicada_kN": 75700.9374789417,
-    "reaccion_kN": 75700.93747927532,
-    "error_kN": 3.3361720852553844e-07,
+    "reaccion_kN": 75700.93747892344,
+    "error_kN": -1.82626536116004e-08,
     "ok": true
   },
   "Q": {
     "aplicada_kN": 25885.85882430345,
-    "reaccion_kN": 25885.858824395775,
-    "error_kN": 9.232462616637349e-08,
+    "reaccion_kN": 25885.858824295,
+    "error_kN": -8.45102476887405e-09,
     "ok": true
   },
   "EX": {
-    "aplicada_kN": 9483.151469968967,
-    "reaccion_kN": 9483.151474020438,
-    "error_kN": -4.051471478305757e-06,
+    "aplicada_kN": 9483.151511634318,
+    "reaccion_kN": 9483.151511537882,
+    "error_kN": 9.643554221838713e-08,
     "ok": true,
-    "esperado_kN": 9483.151469968967
+    "esperado_kN": 9483.151511634318
   },
   "EY": {
-    "aplicada_kN": 7798.329327700949,
-    "reaccion_kN": 7798.329328187247,
-    "error_kN": -4.86297722090967e-07,
+    "aplicada_kN": 7798.329260174239,
+    "reaccion_kN": 7798.32926029466,
+    "error_kN": -1.2042164598824456e-07,
     "ok": true,
-    "esperado_kN": 7798.329327700949
+    "esperado_kN": 7798.329260174239
   },
   "derivas_NCh433": {
     "limite_centro_masa": 0.002,
@@ -75,29 +75,29 @@
     "edificios": {
       "edificio_1": {
         "EX": {
-          "centro_masa": 0.001096141545375377,
+          "centro_masa": 0.0010961415454023165,
           "entrepiso_bajo_z": 11.88,
-          "cualquier_punto": 0.001160143419443736,
+          "cualquier_punto": 0.0011601434194675308,
           "ok": true
         },
         "EY": {
-          "centro_masa": 0.0014576777979849302,
+          "centro_masa": 0.0014576777844494079,
           "entrepiso_bajo_z": 11.88,
-          "cualquier_punto": 0.0016027067976757269,
+          "cualquier_punto": 0.0016027067828118273,
           "ok": true
         }
       },
       "edificio_2": {
         "EX": {
-          "centro_masa": 0.0012679458824412918,
+          "centro_masa": 0.001267945900242915,
           "entrepiso_bajo_z": 11.88,
-          "cualquier_punto": 0.0012944494504381694,
+          "cualquier_punto": 0.001294449468926507,
           "ok": true
         },
         "EY": {
-          "centro_masa": 0.0013795671393908473,
+          "centro_masa": 0.0013795671282224524,
           "entrepiso_bajo_z": 15.84,
-          "cualquier_punto": 0.002018259312479745,
+          "cualquier_punto": 0.0020182592960828537,
           "ok": true
         }
       }
@@ -110,7 +110,7 @@
       "C2",
       "C3"
     ],
-    "max_err_global": 6.504706107079983e-09,
+    "max_err_global": 2.248725650133565e-09,
     "valida": true
   },
   "M_phi": {
@@ -139,26 +139,26 @@
     "peor": {
       "elementTag": "E1_287",
       "combo": "C2",
-      "P_kN": 612.8759349906031,
-      "M_kN_m": 502.14168260570756,
-      "Mcap_kN_m": 1228.467390370335,
-      "C": 0.40875458847493823
+      "P_kN": 612.8759350063416,
+      "M_kN_m": 502.14168247036787,
+      "Mcap_kN_m": 1228.4673903738042,
+      "C": 0.40875458836361434
     },
     "ok": true
   },
   "PM_muro": {
     "muros": 91,
-    "muros_C_mayor_1": 0,
+    "muros_C_mayor_1": 1,
     "peor": {
-      "muro": "MURO-066",
-      "curva": "W_600x2915_8f40",
-      "combo": "C2",
-      "P_kN": 1294.16,
-      "M_kN_m": 2415.82,
-      "Mcap_kN_m": 12011.389885998246,
-      "C": 0.20112743179006595
+      "muro": "MURO-056",
+      "curva": "W_600x2920_8f40",
+      "combo": "EY",
+      "P_kN": -1166.8,
+      "M_kN_m": 10560.4,
+      "Mcap_kN_m": 9231.21541497177,
+      "C": 1.143988036816092
     },
-    "ok": true,
+    "ok": false,
     "nota": "demanda del analisis OpenSees (columna ancha); curva de diseno de cada muro con su armadura (data/armaduras.json)"
   },
   "IDs_Unity": {
